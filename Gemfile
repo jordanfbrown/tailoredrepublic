@@ -42,3 +42,4 @@ gem "zurb-foundation", ">= 3.2.0", :group => :assets
 gem "devise", ">= 2.1.2"
 gem "cancan", ">= 1.6.8"
 gem "rolify", ">= 3.2.0"
+gem "quiet_assets", ">= 1.0.1", :group => :development
