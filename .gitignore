@@ -72,3 +72,6 @@ pickle-email-*.html
 
 # vim artifacts
 **.swp
+
+#IntelliJ project file
+tailored-republic.iml

@@ -12,18 +12,24 @@
  *= require foundation_and_overrides
  *= require_tree .
 */
+//
+//body, img {
+//  transition:all .2s linear;
+//  -o-transition:all .2s linear;
+//  -moz-transition:all .2s linear;
+//  -webkit-transition:all .2s linear;
+//}
+
 .brand {
   float: left;
   padding-right: 8px;
 }
 ul.nav {
   list-style: none;
-  margin: 0 0 2em;
+  margin-left: 4px;
   padding: 0;
 }
-ul.nav li {
-  display: inline;
-}
+
 #flash_notice, #flash_alert {
   padding: 5px 8px;
   margin: 10px 0;
@@ -36,3 +42,28 @@ ul.nav li {
   background-color: #FCC;
   border: solid 1px #C66;
 }
+
+$total-width: 1000px;
+$sidebar-width: 220px;
+
+#sidebar {
+  width: $sidebar-width;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  padding: 0 15px;
+  border-right: 1px solid #ccc;
+}
+
+#content {
+  margin-left: $sidebar-width + 15px;
+}
+
+.suit-display {
+  margin-top: 10px;
+  text-align: center;
+}
+
+
+
