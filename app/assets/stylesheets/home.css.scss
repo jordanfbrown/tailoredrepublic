@@ -1,3 +1,65 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "_mixins";
+
+article {
+  position: relative;
+}
+
+#logo {
+  display: block;
+  position: absolute;
+  margin-left: 20%;
+  margin-top: 10px;
+}
+
+.divider {
+  color: $brown;
+}
+
+$navigation-height: 20px;
+$navigation-color: #000;
+
+#home-navigation {
+  background-color: $navigation-color;
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  padding: 5px;
+  //height: $navigation-height;
+  font-weight: bold;
+  @include slanted-edges($navigation-height, $navigation-color);
+}
+
+#process {
+  height: 1000px;
+}
+
+.page-down {
+  position: absolute;
+  left: 50%;
+  margin-left: -56px;
+  bottom: 63px;
+}
+
+#sidebar {
+  position: fixed;
+  top: 200px;
+  font-weight: bold;
+
+  ul {
+    background-color: $brown;
+    padding: 10px;
+  }
+
+  li {
+    color: #fff;
+    font-size: 20px;
+  }
+}
+
+
+
+

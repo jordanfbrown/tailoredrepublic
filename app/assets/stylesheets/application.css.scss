@@ -15,27 +15,6 @@
 
 @import "compass/css3";
 
-ul {
-  list-style-type: none;
-}
-
-$sidebar-width: 220px;
-$sidebar-padding: 15px;
-
-#sidebar {
-  width: $sidebar-width;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  padding: 0 $sidebar-padding;
-  border-right: 1px solid #ccc;
-}
-
-#content {
-  margin-left: $sidebar-width + $sidebar-padding;
-}
-
 .suit-display {
   margin-top: 10px;
   text-align: center;

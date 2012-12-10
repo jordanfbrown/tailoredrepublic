@@ -26,11 +26,11 @@
 // Font Settings
 
 // $fontSmoothing: antialiased;
-// $headerFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$headerFontFamily: "United Italic Cond", "Helvetica", Helvetica, Arial, sans-serif;
 // $headerFontWeight: bold;
 // $headerFontStyle: normal;
 // $headerFontColor: #222;
-// $bodyFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$bodyFontFamily: "United Italic Cond", "Helvetica", Helvetica, Arial, sans-serif;
 // $bodyFontWeight: normal;
 // $bodyFontStyle: normal;
 // $bodyFontColor: $txtColor;
@@ -242,6 +242,22 @@ $baseFontSize: 14px;
 // http://www.modularscale.com by Tim Brown
 // https://github.com/scottkellum/modular-scale by scottkellum
 @import 'foundation';
+
+a {
+  color: #fff;
+
+  &:hover {
+    color: #ccc;
+  }
+}
+
+ul {
+  list-style-type: none;
+}
+
+h2 {
+  margin-left: 10px;
+}
 
 @media only screen and (max-width: 767px) {
 

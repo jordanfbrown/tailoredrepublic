@@ -1,0 +1,21 @@
+$brown: #CDA36D;
+
+@mixin slanted-edges($height, $color) {
+  &:before {
+    content: '';
+    border-left: $height solid transparent;
+    border-bottom: $height + 4px solid $color;
+    position: absolute;
+    left: -$height;
+    top: 0;
+  }
+
+  &:after {
+    content: '';
+    border-top: $height + 4px solid $color;
+    border-right: $height solid transparent;
+    position: absolute;
+    right: -$height;
+    top: 0;
+  }
+}

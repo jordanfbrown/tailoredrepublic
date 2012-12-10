@@ -12,11 +12,7 @@
   <body class="<%= controller_name %> <%= action_name %>">
     <div id="container" class="container">
       <div id="main" role="main">
-        <%= render 'layouts/navigation' %>
-        <section id="content">
-          <%= yield %>
-          <div id="shade"></div>
-        </section>
+        <%= yield %>
       </div>
       <footer>
       </footer>

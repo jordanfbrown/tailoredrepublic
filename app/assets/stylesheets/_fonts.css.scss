@@ -1,3 +1,5 @@
 @import "compass/css3/font-face";
 
-@include font-face("United Italic", font-files());
+@include font-face("United Italic Cond", font-files("UnitedItalicCdBd.otf"), '', 'bold');
+@include font-face("United Italic Cond", font-files("UnitedItalicCdLt.otf"), 'normal');
+
