@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import "_mixins";
+@import "compass/utilities/general/clearfix";
 
 article {
   position: relative;
@@ -47,7 +48,6 @@ $navigation-color: #000;
   @include slanted-edges($navigation-height, $navigation-color);
 }
 
-
 .page-down {
   position: absolute;
   left: 50%;
@@ -70,6 +70,59 @@ $navigation-color: #000;
   }
 }
 
+//Top Picks
+#suits-wrapper {
+  margin-left: 150px;
+  font-family: "Clarendon Lt";
+  margin-bottom: 200px;
+  @include clearfix;
+
+  img {
+    width: 300px;
+  }
+
+  .suit-wrapper {
+    display: inline-block;
+  }
+
+  .suit-info {
+    width: 70%;
+    float: left;
+    margin-top: 10px;
+  }
+
+  .suit-name {
+    color: #fff;
+    background-color: #000;
+    text-align: center;
+    padding: 5px 0 0 0;
+    font-weight: bold;
+  }
+
+  .customize {
+    color: $brown;
+    margin-top: 10px;
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+  }
+
+  .suit-price {
+    float: right;
+    width: 25%;
+    font-size: 24px;
+    margin-top: 20px;
+
+    .dollar {
+      vertical-align: super;
+      font-size: 20px;
+    }
+  }
+
+
+}
+
+//Sidebar
 #sidebar {
   position: fixed;
   top: 200px;

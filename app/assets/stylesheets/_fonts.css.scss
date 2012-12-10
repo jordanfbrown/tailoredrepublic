@@ -1,5 +1,23 @@
-@import "compass/css3/font-face";
+@font-face {
+  font-family: "United Italic Cond";
+  src: url(UnitedItalicCdLt.otf) format("opentype");
+  font-weight: normal;
+}
 
-@include font-face("United Italic Cond", font-files("UnitedItalicCdBd.otf"), '', 'bold');
-@include font-face("United Italic Cond", font-files("UnitedItalicCdLt.otf"), 'normal');
+@font-face {
+  font-family: "United Italic Cond";
+  src: url(UnitedItalicCdBd.otf) format("opentype");
+  font-weight: bold;
+}
 
+@font-face {
+  font-family: "Clarendon Lt";
+  src: url(ClarendonLTStd.otf) format("opentype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Clarendon Lt";
+  src: url(ClarendonLTStd-Bold.otf) format("opentype");
+  font-weight: bold;
+}

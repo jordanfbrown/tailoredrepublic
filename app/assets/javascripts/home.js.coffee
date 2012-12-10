@@ -15,12 +15,14 @@ $ ->
     $sidebar.find('li').removeClass('selected')
 
     pagePosition = $(window).scrollTop() + 100
+    processPosition = $('#process').offset().top
+    topPicksPosition = $('#top-picks').offset().top
 
-    $process = $('#process')
-    processPosition = $process.offset().top
-    
-    if pagePosition >= processPosition
+    if pagePosition >= topPicksPosition
+      $sidebar.find('.top-picks').addClass('selected')
+    else if pagePosition >= processPosition
       $sidebar.find('.process').addClass('selected')
+
 
 
 
