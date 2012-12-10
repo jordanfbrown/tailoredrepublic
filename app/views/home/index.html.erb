@@ -1,12 +1,4 @@
-<nav id="sidebar">
-  <ul>
-    <li><a href="#">The Process</a></li>
-    <li><a href="#">Shop</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Lookbook</a></li>
-    <li><a href="#">Info</a></li>
-  </ul>
-</nav>
+
 
 <article id="home">
   <img id="logo" src="<%= asset_path "logo-shield.png" %>" alt="Tailored Republic">
@@ -18,11 +10,24 @@
     <span class="divider">&nbsp;/&nbsp;/</span>
     <a href="#">SHOP</a>
     <span class="divider">&nbsp;/&nbsp;/</span>
-    <a href="#">or continue scrolling</a>
+    <a id="continue" href="#process">or continue scrolling</a>
   </div>
-  <a class="page-down" href="#"><img src="<%= asset_path "page-down.png" %>"></a>
+  <a class="page-down" href="#process"><img src="<%= asset_path "page-down.png" %>"></a>
 </article>
 
 <article id="process">
-  <h2>The Process</h2>
+  <h2>THE PROCESS</h2>
+  <div class="login-register">
+    <a href="#">log in</a>&nbsp;-&nbsp;<a href="#">register</a>
+  </div>
 </article>
+
+<nav id="sidebar">
+  <ul>
+    <li class="process"><a href="#process">The Process</a></li>
+    <li class="shop"><a href="#">Shop</a></li>
+    <li class="about"><a href="#">About</a></li>
+    <li class="lookbook"><a href="#">Lookbook</a></li>
+    <li class="info"><a href="#">Info</a></li>
+  </ul>
+</nav>

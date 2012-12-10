@@ -243,13 +243,6 @@ $baseFontSize: 14px;
 // https://github.com/scottkellum/modular-scale by scottkellum
 @import 'foundation';
 
-a {
-  color: #fff;
-
-  &:hover {
-    color: #ccc;
-  }
-}
 
 ul {
   list-style-type: none;

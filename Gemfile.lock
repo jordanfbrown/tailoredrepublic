@@ -72,7 +72,7 @@ GEM
     modular-scale (1.0.2)
       compass (>= 0.11.5)
       sassy-math (>= 1.2)
-    multi_json (1.4.0)
+    multi_json (1.5.0)
     orm_adapter (0.4.0)
     pg (0.14.1)
     polyglot (0.3.3)
@@ -132,7 +132,7 @@ GEM
       multi_json (~> 1.0, >= 1.0.2)
     warden (1.2.1)
       rack (>= 1.0)
-    zurb-foundation (3.2.2)
+    zurb-foundation (3.2.3)
       compass (>= 0.12.2)
       modular-scale (>= 1.0.2)
       rake
