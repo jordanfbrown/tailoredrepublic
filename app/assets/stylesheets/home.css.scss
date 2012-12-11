@@ -9,6 +9,10 @@ article {
   position: relative;
 }
 
+.content-wrapper {
+  margin-left: 150px;
+}
+
 //Home page
 
 #home a, #sidebar a {
@@ -72,9 +76,8 @@ $navigation-color: #000;
 
 //Top Picks
 #suits-wrapper {
-  margin-left: 150px;
   font-family: "Clarendon Lt";
-  margin-bottom: 200px;
+  margin-bottom: 100px;
   @include clearfix;
 
   img {
@@ -123,6 +126,11 @@ $navigation-color: #000;
 //Transition section
 #bosses {
   height: 400px;
+
+  @media only screen and (max-width: 767px) {
+    height: 200px;
+  }
+
   overflow: hidden;
 
   img {
@@ -135,6 +143,30 @@ $navigation-color: #000;
 //About Us
 #about {
   height: 800px;
+
+  #blurb {
+    font-family: "Clarendon Lt";
+  }
+
+  #get-tailored {
+    font-family: "United Serif SemiCond";
+    color: $brown;
+    float: left;
+
+    li {
+      font-size: 28px;
+    }
+  }
+
+  img {
+    position: absolute;
+    right: 0;
+
+    @media only screen and (max-width: 767px) {
+      display: none;
+    }
+
+  }
 }
 
 //Sidebar
