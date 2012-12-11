@@ -1,7 +1,7 @@
 $brown: #CDA36D;
 $grey: #B2B2B2;
 
-@mixin slanted-edges($height, $color) {
+@mixin slanted-edge-before($height, $color) {
   &:before {
     content: '';
     border-left: $height solid transparent;
@@ -10,7 +10,9 @@ $grey: #B2B2B2;
     left: -$height;
     top: 0;
   }
+}
 
+@mixin slanted-edge-after($height, $color) {
   &:after {
     content: '';
     border-top: $height + 4px solid $color;

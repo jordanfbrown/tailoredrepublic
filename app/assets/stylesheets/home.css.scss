@@ -13,8 +13,14 @@ article {
   margin-left: 150px;
 }
 
-//Home page
+$h2-margin: 20px;
 
+h2 {
+  font-size: 50px;
+  margin-left: $h2-margin;
+}
+
+//Home page
 #home a, #sidebar a {
   color: #fff;
 
@@ -49,7 +55,8 @@ $navigation-color: #000;
   padding: 5px 20px 5px 20px;
   font-weight: bold;
   font-size: 18px;
-  @include slanted-edges($navigation-height, $navigation-color);
+  @include slanted-edge-before($navigation-height, $navigation-color);
+  @include slanted-edge-after($navigation-height, $navigation-color);
 }
 
 .page-down {
@@ -66,7 +73,7 @@ $navigation-color: #000;
 }
 
 .login-register {
-  margin-left: 10px;
+  margin-left: $h2-margin;
 
   a {
     color: $grey;
@@ -126,12 +133,11 @@ $navigation-color: #000;
 //Transition section
 #bosses {
   height: 400px;
+  overflow: hidden;
 
   @media only screen and (max-width: 767px) {
     height: 200px;
   }
-
-  overflow: hidden;
 
   img {
     width: 100%;
@@ -142,7 +148,9 @@ $navigation-color: #000;
 
 //About Us
 #about {
-  height: 800px;
+  margin-top: 20px;
+  margin-bottom: 100px;
+  @include clearfix;
 
   #blurb {
     font-family: "Clarendon Lt";
@@ -159,13 +167,42 @@ $navigation-color: #000;
   }
 
   img {
-    position: absolute;
-    right: 0;
-
+    float: right;
     @media only screen and (max-width: 767px) {
       display: none;
     }
 
+  }
+}
+
+//Lookbook
+#lookbook {
+  h2 {
+    position: absolute;
+    color: #fff;
+    margin-top: 20px;
+    z-index: 4;
+  }
+
+  #lookbook-info {
+    display: inline-block;
+    //background-color: $brown;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    position: absolute;
+    top: 90px;
+    padding: 4px 0;
+    z-index: 4;
+
+    span {
+      display: inline-block;
+      margin-right: 10px;
+
+      &:first-child {
+        padding-left: $h2-margin;
+      }
+    }
   }
 }
 

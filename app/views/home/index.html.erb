@@ -19,7 +19,7 @@
 </article>
 
 <article id="top-picks">
-  <h2>Top Picks</h2>
+  <h2>TOP PICKS</h2>
   <%= render "home/login_register" %>
   <div id="suits-wrapper" class="content-wrapper">
     <%= render "home/suit_wrapper" %>
@@ -35,7 +35,7 @@
 
 <article id="about">
   <img src="<%= asset_path "about-print.png" %>">
-  <h2>About Us</h2>
+  <h2>ABOUT US</h2>
   <%= render "home/login_register" %>
   <div class="content-wrapper">
     <div id="blurb" class="four columns">
@@ -62,12 +62,33 @@
   </div>
 </article>
 
+<article id="lookbook">
+  <h2>LOOKBOOK</h2>
+  <span id="lookbook-info" class="orbit-caption">
+    <span class="suit">Charcoal grey suit</span>
+    <span>/&nbsp;/&nbsp;</span>
+    <span class="accessory">Tie by Armani</span>
+    <span>/&nbsp;/&nbsp;</span>
+    <span class="location">Los Angeles, CA</span>
+  </span>
+  <div id="slideshow">
+    <img src="<%= asset_path "lookbook-1.png" %>" alt="Test caption 1" data-suit="Charcoal grey suit"
+         data-accessory="Tie by Armani" data-location="Los Angeles, CA">
+    <img src="<%= asset_path "lookbook-1.png" %>" alt="Test caption 2" data-suit="Poop colored suit"
+         data-accessory="Tie by JB" data-location="San Francisco, CA">
+    <img src="<%= asset_path "lookbook-1.png" %>" alt="Test caption 3" data-suit="Semen flavored suit"
+         data-accessory="Tie by Brian" data-location="Portland, OR">
+    <img src="<%= asset_path "lookbook-1.png" %>" alt="Test caption 4" data-suit="Unfitted piece of shit"
+         data-accessory="Tie by Nordstorm" data-location="Seattle, WA">
+  </div>
+</article>
+
 <nav id="sidebar">
   <ul>
     <li class="process"><a href="#process">The Process</a></li>
     <li class="top-picks"><a href="#top-picks">Top Picks</a></li>
     <li class="about"><a href="#about">About</a></li>
-    <li class="lookbook"><a href="#">Lookbook</a></li>
+    <li class="lookbook"><a href="#lookbook">Lookbook</a></li>
     <li class="info"><a href="#">Info</a></li>
   </ul>
 </nav>
