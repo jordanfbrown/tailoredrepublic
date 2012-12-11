@@ -5,4 +5,6 @@ TailoredRepublic::Application.routes.draw do
   root :to => "home#index"
   devise_for :users
   resources :users
+  match "/shop" => "shop#index"
+  match "/home" => "home#index"
 end

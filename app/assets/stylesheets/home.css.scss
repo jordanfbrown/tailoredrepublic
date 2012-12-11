@@ -80,22 +80,7 @@ $navigation-color: #000;
 //Top Picks
 
 #top-picks {
-  background: url(top-picks-texture.png) no-repeat top center;
-  background-size: 100% 100%;
-  overflow: hidden;
-
-  @media only screen and (max-width: 767px) {
-    background-size: 100% auto;
-    background: url(top-picks-texture.png) repeat-y center top;
-    margin-bottom: 30px;
-  }
-
-  .suit-info-wrapper {
-    @include clearfix;
-    position: relative;
-    margin-bottom: 10px;
-  }
-
+  @include shop-texture;
 }
 
 #suits-wrapper {
@@ -103,10 +88,15 @@ $navigation-color: #000;
   margin-bottom: 100px;
   @include clearfix;
 
+  .suit-info-wrapper {
+    @include clearfix;
+    position: relative;
+    margin-bottom: 10px;
+  }
+
   img {
     border: 5px solid #fff;
   }
-
 
   .suit-wrapper {
     display: inline-block;
@@ -277,7 +267,7 @@ footer {
 }
 
 //Sidebar
-#sidebar {
+.home #sidebar {
   position: fixed;
   top: 200px;
   font-weight: bold;

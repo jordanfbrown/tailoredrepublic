@@ -6,7 +6,7 @@
     <span class="divider">&nbsp;/&nbsp;/</span>
     <a href="#">register</a>
     <span class="divider">&nbsp;/&nbsp;/</span>
-    <a href="#">SHOP</a>
+    <a href="/shop">SHOP</a>
     <span class="divider">&nbsp;/&nbsp;/</span>
     <a id="continue" href="#process">or continue scrolling</a>
   </div>
@@ -136,6 +136,10 @@
     <li class="about"><a href="#about">About</a></li>
     <li class="lookbook"><a href="#lookbook">Lookbook</a></li>
     <li class="info"><a href="#info">Info</a></li>
-    <li class="cart"><a href="#"><img src="<%= asset_path "shopping-cart.png" %>"> (0)</a></li>
+    <li class="cart">
+      <a href="<%= shop_or_cart %>">
+        <img src="<%= asset_path "shopping-cart.png" %>"> (<%= @item_count %>)
+      </a>
+    </li>
   </ul>
 </nav>

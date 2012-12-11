@@ -32,3 +32,19 @@ $grey: #B2B2B2;
     }
   }
 }
+
+@mixin shop-texture($repeat: no-repeat) {
+  background: url(top-picks-texture.png) $repeat top center;
+  @if $repeat == 'no-repeat' {
+    background-size: 100% 100%;
+  } @else {
+    background-size: 100% auto;
+  }
+  overflow: hidden;
+
+  @media only screen and (max-width: 767px) {
+    background-size: 100% auto;
+    background: url(top-picks-texture.png) repeat-y center top;
+    margin-bottom: 30px;
+  }
+}

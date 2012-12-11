@@ -1,6 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @users = User.all
-    puts @users
+    @item_count = 0
   end
 end
