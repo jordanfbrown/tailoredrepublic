@@ -286,7 +286,7 @@ footer {
 
   &.bottom {
     top: inherit;
-    bottom: 20px;
+    bottom: 0;
 
     li.selected:after {
       border-right: 10px solid #000;
@@ -313,6 +313,10 @@ footer {
       border-top: 10px solid transparent;
       border-bottom: 10px solid transparent;
       border-right: 10px solid #fff;
+    }
+
+    &.cart img {
+      width: 26px;
     }
   }
 }
