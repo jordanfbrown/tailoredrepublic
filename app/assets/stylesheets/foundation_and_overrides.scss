@@ -243,7 +243,6 @@ $baseFontSize: 14px;
 // https://github.com/scottkellum/modular-scale by scottkellum
 @import 'foundation';
 
-
 ul {
   list-style-type: none;
   margin-bottom: 0;
@@ -251,6 +250,27 @@ ul {
 
 h2 {
   margin-left: 10px;
+}
+
+input[type=text] {
+  @include border-radius(0);
+  @include background(radial-gradient(#404040, #333));
+  color: #999;
+  border: none;
+  outline: none;
+
+  &:focus {
+    @include background(radial-gradient(#404040, #333));
+  }
+}
+
+input[type=submit], button, .button {
+  @include background(radial-gradient(#999, #BBB 30px));
+  border: none;
+  color: #fff;
+  padding: 5px 10px;
+  font-family: "Lucida Grande";
+  font-size: 13px;
 }
 
 .orbit-wrapper {
