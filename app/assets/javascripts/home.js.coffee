@@ -5,14 +5,16 @@
 $ ->
   updateCaption = (data) ->
     $caption = $('#lookbook-info')
-    _.each data, (value, attribute) ->
-      $caption.find('.' + attribute).text(value)
-    
+    $caption.fadeOut(->
+      _.each data, (value, attribute) ->
+        $caption.find('.' + attribute).text(value)
+      $caption.fadeIn()
+    )
+
   $('#slideshow').orbit
     timer: false
     afterSlideChange: (previous, current) ->
-      $current = $(current)
-      updateCaption $current.data()
+      updateCaption $(current).data()
 
   $('.page-down, #sidebar a, #continue').on 'click', (e) ->
     e.preventDefault()
@@ -24,25 +26,26 @@ $ ->
     
   $(window).scroll ->
     $sidebar = $('#sidebar')
-    $sidebar.find('li').removeClass('selected')
-
-    pageTop = $(window).scrollTop()
+    $sidebar.removeClass('bottom').find('li').removeClass('selected')
 
     # Need to recalculate these every time just in case the browser width has changed
+    pageTop = $(window).scrollTop()
     processPosition = $('#process').offset().top
     topPicksPosition = $('#top-picks').offset().top
     bossesPosition = $('#bosses').offset().top
     aboutPosition = $('#about').offset().top
     lookbookPosition = $('#lookbook').offset().top
+    infoPosition = $('#info').offset().top
 
     # Parallax effect for transition image
     $('#bosses img').css 'top', (bossesPosition - pageTop - $(window).height()) / 2
 
     # Adding 100 to the page top so that we add the selected arrow slightly prematurely
     pageTop += 100
-    if pageTop >= lookbookPosition
-      $sidebar.find('.lookbook').addClass('selected')
-    else if pageTop >= aboutPosition
+    if $(window).scrollBottom() <= 230
+      $sidebar.find('.info').addClass('selected')
+      $sidebar.addClass('bottom')
+    else if pageTop + 55 >= aboutPosition
       $sidebar.find('.about').addClass('selected')
     else if pageTop >= topPicksPosition
       $sidebar.find('.top-picks').addClass('selected')

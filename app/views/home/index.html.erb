@@ -34,10 +34,10 @@
 </article>
 
 <article id="about">
-  <img src="<%= asset_path "about-print.png" %>">
   <h2>ABOUT US</h2>
   <%= render "home/login_register" %>
   <div class="content-wrapper">
+    <img src="<%= asset_path "about-print.png" %>">
     <div id="blurb" class="four columns">
       <p>
         <span class="divider">/&nbsp;/&nbsp;</span>
@@ -83,12 +83,47 @@
   </div>
 </article>
 
+<footer id="info">
+  <div class="content-wrapper">
+    <div class="three columns">
+      <h4>TR Policies</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Return Policy/Alterations</a></li>
+        <li><a href="#">Terms of Use</a></li>
+      </ul>
+    </div>
+    <div class="three columns">
+      <h4>Customer Service</h4>
+      <ul>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Contact US</a></li>
+        <li><a href="#">Measurements</a></li>
+        <li><a href="#">Get A Free Measuring Tape</a></li>
+      </ul>
+    </div>
+    <div class="three columns">
+      <h4>Etcetera</h4>
+      <ul>
+        <li><a href="#">Weddings</a></li>
+        <li><a href="#">Get #Tailored Kit</a></li>
+        <li><a href="#">Gift Cards</a></li>
+        <li><a href="#">Press</a></li>
+      </ul>
+    </div>
+    <div class="three columns">
+      <h4>Sign Up For The TR Newsletter</h4>
+      <input type="text" placeholder="you@email.com">
+    </div>
+  </div>
+</footer>
+
 <nav id="sidebar">
   <ul>
     <li class="process"><a href="#process">The Process</a></li>
     <li class="top-picks"><a href="#top-picks">Top Picks</a></li>
     <li class="about"><a href="#about">About</a></li>
     <li class="lookbook"><a href="#lookbook">Lookbook</a></li>
-    <li class="info"><a href="#">Info</a></li>
+    <li class="info"><a href="#info">Info</a></li>
   </ul>
 </nav>

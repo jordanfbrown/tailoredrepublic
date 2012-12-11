@@ -22,3 +22,13 @@ $grey: #B2B2B2;
     top: 0;
   }
 }
+
+@mixin white-anchor {
+  a {
+    color: #fff;
+
+    &:hover {
+      color: #ccc;
+    }
+  }
+}

@@ -20,17 +20,13 @@ h2 {
   margin-left: $h2-margin;
 }
 
-//Home page
-#home a, #sidebar a {
-  color: #fff;
-
-  &:hover {
-    color: #ccc;
-  }
+h4 {
+  color: $brown;
 }
 
 #home {
   z-index: 2;
+  @include white-anchor;
 }
 
 #logo {
@@ -206,11 +202,36 @@ $navigation-color: #000;
   }
 }
 
+//Footer
+footer {
+  //height: 240px;
+  background-color: #000;
+  border-top: 1px solid #fff;
+  @include white-anchor;
+  @include clearfix;
+  font-family: "United Serif";
+
+  .content-wrapper {
+    margin-top: 10px;
+  }
+}
+
 //Sidebar
 #sidebar {
   position: fixed;
   top: 200px;
   font-weight: bold;
+
+  @include white-anchor;
+
+  &.bottom {
+    top: inherit;
+    bottom: 20px;
+
+    li.selected:after {
+      border-right: 10px solid #000;
+    }
+  }
 
   ul {
     background-color: $brown;
