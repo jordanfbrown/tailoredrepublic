@@ -22,46 +22,27 @@
   <h2>Top Picks</h2>
   <%= render "home/login_register" %>
   <div id="suits-wrapper">
-    <div class="suit-wrapper three columns">
-      <img src="<%= asset_path "charcoal-grey.jpg" %>">
-      <div class="suit-info">
-        <div class="suit-name">Classic Charcoal</div>
-        <a href="#" class="customize">Click To Customize</a>
-      </div>
-      <div class="suit-price"><span class="dollar">$</span><span class="price">350</span></div>
-    </div>
-    <div class="suit-wrapper three columns">
-      <img src="<%= asset_path "charcoal-grey.jpg" %>">
-      <div class="suit-info">
-        <div class="suit-name">Classic Charcoal</div>
-        <a href="#" class="customize">Click To Customize</a>
-      </div>
-      <div class="suit-price"><span class="dollar">$</span><span class="price">350</span></div>
-    </div>
-    <div class="suit-wrapper three columns">
-      <img src="<%= asset_path "charcoal-grey.jpg" %>">
-      <div class="suit-info">
-        <div class="suit-name">Classic Charcoal</div>
-        <a href="#" class="customize">Click To Customize</a>
-      </div>
-      <div class="suit-price"><span class="dollar">$</span><span class="price">350</span></div>
-    </div>
-    <div class="suit-wrapper three columns">
-      <img src="<%= asset_path "charcoal-grey.jpg" %>">
-      <div class="suit-info">
-        <div class="suit-name">Classic Charcoal</div>
-        <a href="#" class="customize">Click To Customize</a>
-      </div>
-      <div class="suit-price"><span class="dollar">$</span><span class="price">350</span></div>
-    </div>
+    <%= render "home/suit_wrapper" %>
+    <%= render "home/suit_wrapper" %>
+    <%= render "home/suit_wrapper" %>
+    <%= render "home/suit_wrapper" %>
   </div>
+</article>
+
+<article id="bosses">
+  <img src="<%= asset_path "bosses.jpg" %>">
+</article>
+
+<article id="about">
+  <h2>About Us</h2>
+  <%= render "home/login_register" %>
 </article>
 
 <nav id="sidebar">
   <ul>
     <li class="process"><a href="#process">The Process</a></li>
     <li class="top-picks"><a href="#top-picks">Top Picks</a></li>
-    <li class="about"><a href="#">About</a></li>
+    <li class="about"><a href="#about">About</a></li>
     <li class="lookbook"><a href="#">Lookbook</a></li>
     <li class="info"><a href="#">Info</a></li>
   </ul>

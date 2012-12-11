@@ -14,14 +14,24 @@ $ ->
     $sidebar = $('#sidebar')
     $sidebar.find('li').removeClass('selected')
 
-    pagePosition = $(window).scrollTop() + 100
+    pageTop = $(window).scrollTop()
     processPosition = $('#process').offset().top
     topPicksPosition = $('#top-picks').offset().top
+    bossesPosition = $('#bosses').offset().top
+    aboutPosition = $('#about').offset().top
 
-    if pagePosition >= topPicksPosition
+    # Parallax effect for transition image
+    $('#bosses img').css 'top', (bossesPosition - pageTop - $(window).height()) / 2
+
+    pageTop += 100
+    if pageTop >= aboutPosition
+      $sidebar.find('.about').addClass('selected')
+    else if pageTop >= topPicksPosition
       $sidebar.find('.top-picks').addClass('selected')
-    else if pagePosition >= processPosition
+    else if pageTop >= processPosition
       $sidebar.find('.process').addClass('selected')
+
+
 
 
 
