@@ -48,6 +48,15 @@ $ ->
     else if pageTop >= processPosition
       $sidebar.find('.process').addClass('selected')
 
+  # Triggers for responsive font scaling
+  $(window).resize ->
+    # 70 seems to be the "magic" font resize ratio
+    resizeRatio = 70
+    width = $(window).width()
+    fontSize = if width > 767 then width / resizeRatio + 'px' else '20px';
+    $('.suit-price span').css 'font-size', fontSize
+
+  $(window).trigger 'resize'
 
 
 
