@@ -35,7 +35,7 @@ $grey: #B2B2B2;
 }
 
 @mixin shop-texture($repeat: no-repeat) {
-  background: url(top-picks-texture.png) $repeat top center;
+  background: url(textures/top-picks-texture.png) $repeat top center;
   @if $repeat == 'no-repeat' {
     background-size: 100% 100%;
   } @else {
