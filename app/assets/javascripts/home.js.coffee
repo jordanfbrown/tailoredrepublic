@@ -1,5 +1,30 @@
-$ ->
-  updateCaption = (data) ->
+TR.Pages.Home =
+  initialize: ->
+    $('#slideshow').orbit
+      timer: false
+      afterSlideChange: (previous, current) =>
+        @.updateCaption $(current).data()
+
+    $('.page-down, #sidebar a, #continue').on 'click', (e) ->
+      href = $(@).attr 'href'
+
+      # Ignore if there's no hash in the URL
+      unless _.contains href, '#'
+        return true
+
+      e.preventDefault()
+      # The lookbook header is absolutely positioned so there is no height offset
+      offset = unless href is '#lookbook' then TR.HEADER_HEIGHT else 0
+      $('html, body').stop().animate
+        scrollTop: $(href).offset().top - offset, 1000
+
+    $(window).scroll @.scroll
+
+    # Triggers for responsive font scaling
+    $(window).resize @.resize
+    @.resize()
+
+  updateCaption: (data) ->
     $caption = $('#lookbook-info')
     $caption.fadeOut(->
       _.each data, (value, attribute) ->
@@ -7,20 +32,17 @@ $ ->
       $caption.fadeIn()
     )
 
-  $('#slideshow').orbit
-    timer: false
-    afterSlideChange: (previous, current) ->
-      updateCaption $(current).data()
+  resize: ->
+    # 70 seems to be the "magic" font resize ratio
+    resizeRatio = 80
+    width = $(window).width()
+    fontSize = if width > 767 then width / resizeRatio + 'px' else '20px';
+    if width > 1200
+      base = 20
 
-  $('.page-down, #sidebar a, #continue').on 'click', (e) ->
-    e.preventDefault()
-    href = $(@).attr 'href'
-    # The lookbook header is absolutely positioned so there is no height offset
-    offset = unless href is '#lookbook' then TR.HEADER_HEIGHT else 0
-    $('html, body').stop().animate
-      scrollTop: $(href).offset().top - offset, 1000
-    
-  $(window).scroll ->
+    $('.suit-price span').css 'font-size', fontSize
+
+  scroll: ->
     $sidebar = $('#sidebar')
     $sidebar.removeClass('bottom').find('li').removeClass('selected')
 
@@ -48,15 +70,10 @@ $ ->
     else if pageTop >= processPosition
       $sidebar.find('.process').addClass('selected')
 
-  # Triggers for responsive font scaling
-  $(window).resize ->
-    # 70 seems to be the "magic" font resize ratio
-    resizeRatio = 70
-    width = $(window).width()
-    fontSize = if width > 767 then width / resizeRatio + 'px' else '20px';
-    $('.suit-price span').css 'font-size', fontSize
 
-  $(window).trigger 'resize'
+
+
+
 
 
 

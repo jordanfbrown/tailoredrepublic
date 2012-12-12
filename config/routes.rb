@@ -6,5 +6,9 @@ TailoredRepublic::Application.routes.draw do
   devise_for :users
   resources :users
   match "/shop" => "shop#index"
+  match "/shop/suits" => "shop#index"
+  #match "/shop/shirts" => "shop#shirts"
+  #match "/shop/vests" => "shop#vests"
+  #match "/shop/pants" => "shop#pants"
   match "/home" => "home#index"
 end
