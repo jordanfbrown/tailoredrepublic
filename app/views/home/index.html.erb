@@ -37,7 +37,6 @@
   <h2>ABOUT US</h2>
   <%= render "home/login_register" %>
   <div class="content-wrapper">
-    <img src="<%= asset_path "about-print.png" %>">
     <div id="blurb" class="four columns">
       <p>
         <span class="divider">/&nbsp;/&nbsp;</span>
@@ -51,7 +50,6 @@
         you the way a tailored suit should fit. And if it doesn’t, we’ll fix it at no cost to you.
       </p>
     </div>
-    <div class="four columns"></div>
     <div id="get-tailored" class="four columns">
       <ul>
         <li>SHARE OUR PASSION.</li>
@@ -59,6 +57,9 @@
         <li>GET TAILORED.</li>
         <li>JOIN THE REPUBLIC.</li>
       </ul>
+    </div>
+    <div class="four columns">
+      <img src="<%= asset_path "about-print.png" %>">
     </div>
   </div>
 </article>
