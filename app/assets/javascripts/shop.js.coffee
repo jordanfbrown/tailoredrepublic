@@ -1,3 +1,8 @@
 TR.Pages.Shop =
   initialize: ->
-    console.log('here');
+    $('.magnify').magnifier();
+
+    $('a').on 'click', (e) ->
+      e.preventDefault()
+      $('#modal').reveal
+        closeOnBackgroundClick: false

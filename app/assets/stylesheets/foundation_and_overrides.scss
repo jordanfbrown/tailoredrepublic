@@ -284,6 +284,10 @@ input[type=submit], button, .button {
   }
 }
 
+.reveal-modal .close-reveal-modal {
+  font-size: 5.2rem;
+}
+
 .orbit-wrapper {
   img {
     width: inherit;
@@ -292,7 +296,6 @@ input[type=submit], button, .button {
   .orbit {
     margin-bottom: 0;
   }
-
 }
 
 @media only screen and (max-width: 767px) {
