@@ -284,8 +284,12 @@ input[type=submit], button, .button {
   }
 }
 
-.reveal-modal .close-reveal-modal {
-  font-size: 5.2rem;
+.reveal-modal {
+  top: 10px;
+
+  .close-reveal-modal {
+    font-size: 5.2rem;
+  }
 }
 
 .orbit-wrapper {

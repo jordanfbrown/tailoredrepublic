@@ -21,7 +21,7 @@ TR.Pages.Home =
     $(window).scroll @.scroll
 
     # Triggers for responsive font scaling
-    $(window).resize @.resize
+#    $(window).resize @.resize
     @.resize()
 
   updateCaption: (data) ->

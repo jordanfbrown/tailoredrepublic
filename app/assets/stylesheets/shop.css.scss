@@ -34,6 +34,21 @@
     font-family: "United Sans Reg", sans-serif;
     font-size: 20px;
   }
+
+  @media only screen and (max-width: 767px) {
+    .preview-wrapper {
+      margin-bottom: 10px;
+    }
+    .magnify {
+      width: 75% !important;
+      float: left !important;
+    }
+
+    .modal-suit-preview {
+      width: 25% !important;
+      float: left !important;
+    }
+  }
 }
 
 .modal-suit-preview {

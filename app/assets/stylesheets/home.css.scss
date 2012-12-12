@@ -212,8 +212,8 @@ footer {
     top: inherit;
     bottom: 0;
 
-    li.selected:after {
-      border-right: 10px solid #000;
+    ul {
+      background-color: #000;
     }
   }
 
