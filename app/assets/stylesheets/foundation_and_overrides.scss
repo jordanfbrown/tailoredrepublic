@@ -241,7 +241,23 @@ $baseFontSize: 14px;
 // Produced the following list of values: 14, 17, 23, 27, 37, 44, 59, 71, 95, 115;
 // http://www.modularscale.com by Tim Brown
 // https://github.com/scottkellum/modular-scale by scottkellum
-@import 'foundation';
+//@import 'foundation';
+
+@import "compass/css3";
+@import "foundation/settings";
+@import "foundation/functions/all";
+@import "foundation/mixins/clearfix";
+@import "foundation/mixins/css-triangle";
+@import "foundation/mixins/font-size";
+@import "foundation/mixins/respond-to";
+@import "foundation/mixins/semantic-grid";
+@import "modular-scale";
+@import "foundation/common/globals";
+@import "foundation/components/grid";
+@import "foundation/common/typography";
+@import "foundation/common/forms";
+@import "foundation/components/modules/orbit";
+@import "foundation/components/modules/reveal";
 
 ul {
   list-style-type: none;

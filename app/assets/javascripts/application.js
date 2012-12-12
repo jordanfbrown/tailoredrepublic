@@ -12,7 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require underscore
+//= require vendor/underscore
+//= require vendor/backbone
 //= require foundation
 //= require namespace
 //= require_tree .

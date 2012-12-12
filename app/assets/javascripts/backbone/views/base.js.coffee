@@ -1,0 +1,1 @@
+class TR.Views.Base extends Backbone.View

@@ -22,29 +22,7 @@
 <nav id="sidebar">
 </nav>
 
-<div id="modal" class="reveal-modal expand">
-  <a class="close-reveal-modal">&#215;</a>
-  <h2>Classic Charcoal<span class="divider">&nbsp;//&nbsp;</span>$329</h2>
-  <div class="six columns preview-wrapper">
-    <ul class="modal-suit-preview three columns">
-      <li><a href="#"><img src="<%= asset_path "suits/modal-suit-preview.png" %>"></a></li>
-      <li><a href="#"><img src="<%= asset_path "suits/modal-suit-preview.png" %>"></a></li>
-      <li><a href="#"><img src="<%= asset_path "suits/modal-suit-preview.png" %>"></a></li>
-      <li><a href="#"><img src="<%= asset_path "suits/modal-suit-preview.png" %>"></a></li>
-    </ul>
-    <div class="magnify nine columns">
-      <div class="large"></div>
-      <img class="main small" src="<%= asset_path "suits/charcoal-grey.jpg" %>">
-    </div>
-  </div>
-  <div class="six columns">
-    <p class="blurb">Bring a little flavor to your suit collection. The classic charcoal suit breaks the mold of the
-      black and navy tradition without drawing a disapproving look from your stodgy old boss. Stay fly.</p>
-    <div class="customizations">
-
-    </div>
-  </div>
-</div>
+<%= render "shop/modal" %>
 
 <script>
   $(function() {
