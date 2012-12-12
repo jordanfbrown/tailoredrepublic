@@ -22,10 +22,49 @@
 <nav id="sidebar">
 </nav>
 
-<%= render "shop/modal" %>
+<script id="modal-template" type="text/x-handlebars-template">
+  <a class="close-reveal-modal">&#215;</a>
+  <h2>Classic Charcoal<span class="divider">&nbsp;//&nbsp;</span>$329</h2>
+  <div class="six columns preview-wrapper">
+    <ul class="modal-suit-preview three columns">
+      <li><a href="#"><img src="<%= asset_path "suits/modal-suit-preview.png" %>"></a></li>
+      <li><a href="#"><img src="<%= asset_path "suits/modal-suit-preview.png" %>"></a></li>
+      <li><a href="#"><img src="<%= asset_path "suits/modal-suit-preview.png" %>"></a></li>
+      <li><a href="#"><img src="<%= asset_path "suits/modal-suit-preview.png" %>"></a></li>
+    </ul>
+    <div class="magnify nine columns">
+      <div class="large"></div>
+      <img class="main small" src="<%= asset_path "suits/charcoal-grey.jpg" %>">
+    </div>
+  </div>
+  <div class="six columns">
+    <p class="blurb">Bring a little flavor to your suit collection. The classic charcoal suit breaks the mold of the
+      black and navy tradition without drawing a disapproving look from your stodgy old boss. Stay fly.</p>
+    <div class="customizations">
+      <div data-type="lapel">
+        <h3>Lapel</h3>
+        <a href="#" class="customization-wrapper" class="checked">
+          <h5>Notch</h5>
+          <img src="<%= asset_path "customizations/lapel-notch.png" %>">
+        </a>
+        <a href="#" class="customization-wrapper">
+          <h5>Peak</h5>
+          <img src="<%= asset_path "customizations/lapel-peak.png" %>">
+        </a>
+        <a href="#" class="customization-wrapper">
+          <h5>Narrow</h5>
+          <img src="<%= asset_path "customizations/lapel-narrow.png" %>">
+        </a>
+        <p>Notch lapels are the most widely used lapels and are a safe and stylish choice for any suit. Peak lapels add a
+          little pizazz for those who want to stand out. TR tip: If you are unsure, go with the notch lapel, you don’t
+          necessarily want anything to distract from the perfect fit of your tailored suit.</p>
+      </div>
+    </div>
+  </div>
+</script>
 
 <script>
   $(function() {
-    TR.Pages.Shop.initialize();
+    new TR.Views.Shop();
   });
 </script>
