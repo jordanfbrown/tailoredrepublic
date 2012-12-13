@@ -21,6 +21,10 @@ h2 {
 }
 
 h4 {
+  color: $grey;
+}
+
+h5 {
   color: $brown;
 }
 
@@ -65,7 +69,24 @@ $navigation-color: #000;
 //The Process
 
 #process {
-  height: 800px;
+  @include clearfix;
+
+  .content-wrapper {
+    p {
+      margin-top: 20px;
+      font-family: "Clarendon Lt", serif;
+      font-weight: lighter;
+    }
+  }
+
+  .twelve {
+    text-align: center;
+    margin-bottom: 40px;
+
+    @media only screen and (max-width: 767px) {
+      text-align: left;
+    }
+  }
 }
 
 .login-register {
@@ -170,7 +191,7 @@ footer {
     position: relative;
   }
 
-  h4 {
+  h5 {
     display: inline-block;
     background-color: #000;
     padding: 0 10px;
@@ -211,14 +232,10 @@ footer {
   &.bottom {
     top: inherit;
     bottom: 0;
-
-    ul {
-      background-color: #000;
-    }
   }
 
   ul {
-    background-color: $brown;
+    background-color: #000;
     padding: 20px;
   }
 

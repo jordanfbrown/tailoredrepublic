@@ -12,8 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require vendor/underscore
-//= require vendor/backbone
+//= require jquery-ui-1.9.2.custom
+//= require underscore
+//= require backbone
+//= require handlebars
 //= require foundation
 //= require namespace
 //= require_tree .

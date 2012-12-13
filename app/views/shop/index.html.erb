@@ -41,23 +41,41 @@
     <p class="blurb">Bring a little flavor to your suit collection. The classic charcoal suit breaks the mold of the
       black and navy tradition without drawing a disapproving look from your stodgy old boss. Stay fly.</p>
     <div class="customizations">
-      <div data-type="lapel">
+      <div class="customization-wrapper" data-type="lapel">
         <h3>Lapel</h3>
-        <a href="#" class="customization-wrapper" class="checked" data-option="notch">
+        <a href="#" class="customization-option" class="checked" data-option="notch">
           <h5>Notch</h5>
           <img src="<%= asset_path "customizations/lapel-notch.png" %>">
         </a>
-        <a href="#" class="customization-wrapper" data-option="peak">
+        <a href="#" class="customization-option" data-option="peak">
           <h5>Peak</h5>
           <img src="<%= asset_path "customizations/lapel-peak.png" %>">
         </a>
-        <a href="#" class="customization-wrapper" data-option="narrow">
+        <a href="#" class="customization-option" data-option="narrow">
           <h5>Narrow</h5>
           <img src="<%= asset_path "customizations/lapel-narrow.png" %>">
         </a>
         <p>Notch lapels are the most widely used lapels and are a safe and stylish choice for any suit. Peak lapels add a
           little pizazz for those who want to stand out. TR tip: If you are unsure, go with the notch lapel, you don’t
           necessarily want anything to distract from the perfect fit of your tailored suit.</p>
+      </div>
+      <div class="customization-wrapper" data-type="buttons" style="display: none;">
+        <h3>Buttons</h3>
+        <a href="#" class="customization-option" class="checked" data-option="one">
+          <h5>One</h5>
+          <img src="<%= asset_path "customizations/buttons-one.png" %>">
+        </a>
+        <a href="#" class="customization-option" data-option="two">
+          <h5>Two</h5>
+          <img src="<%= asset_path "customizations/buttons-two.png" %>">
+        </a>
+        <a href="#" class="customization-option" data-option="three">
+          <h5>Three</h5>
+          <img src="<%= asset_path "customizations/buttons-three.png" %>">
+        </a>
+        <p>The modern standard and a fashionable choice is the two button suit. Three button suits fit more of a classic
+          style and look great on taller guys. A one button suit is a very stylish option for those who want to be
+          adventurous. TR tip: If you are going to add a vest, stick with the two button jacket.</p>
       </div>
     </div>
   </div>

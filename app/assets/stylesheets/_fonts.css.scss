@@ -30,6 +30,12 @@
 
 @font-face {
   font-family: "Clarendon Lt";
+  src: url(ClarendonLTStd-Light.otf) format("opentype");
+  font-weight: light;
+}
+
+@font-face {
+  font-family: "Clarendon Lt";
   src: url(ClarendonLTStd-Bold.otf) format("opentype");
   font-weight: bold;
 }

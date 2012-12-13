@@ -36,6 +36,8 @@
   }
 
   .customizations {
+    height: 400px;
+
     h3, h5 {
       font-family: "United Sans Reg", sans-serif;
       text-align: center;
@@ -72,7 +74,7 @@
       font-size: 36px;
     }
 
-    .customization-wrapper {
+    .customization-option {
       display: block;
       width: 33.3%;
       float: left;

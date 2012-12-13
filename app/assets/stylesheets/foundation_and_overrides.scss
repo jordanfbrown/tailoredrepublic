@@ -258,6 +258,7 @@ $baseFontSize: 14px;
 @import "foundation/common/forms";
 @import "foundation/components/modules/orbit";
 @import "foundation/components/modules/reveal";
+@import "_mixins";
 
 ul {
   list-style-type: none;
@@ -266,6 +267,19 @@ ul {
 
 h2 {
   margin-left: 10px;
+}
+
+h4 {
+  font-size: 34px;
+}
+
+a {
+  color: $brown;
+
+  &:hover {
+    color: $brown;
+    text-decoration: underline;
+  }
 }
 
 input[type=text] {
