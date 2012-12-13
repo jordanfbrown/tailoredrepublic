@@ -273,15 +273,6 @@ h4 {
   font-size: 34px;
 }
 
-a {
-  color: $brown;
-
-  &:hover {
-    color: $brown;
-    text-decoration: underline;
-  }
-}
-
 input[type=text] {
   @include border-radius(0);
   @include background(radial-gradient(#404040, #333));
@@ -330,6 +321,10 @@ input[type=submit], button, .button {
   .orbit {
     margin-bottom: 0;
   }
+}
+
+.offset-by-four {
+  margin-left: 33.333333%;
 }
 
 @media only screen and (max-width: 767px) {

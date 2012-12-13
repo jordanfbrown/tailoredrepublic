@@ -2,6 +2,10 @@ $.fn.scrollBottom = function () {
   return $(document).height() - this.scrollTop() - this.height();
 };
 
+$.fn.exists = function() {
+  return this.length > 0;
+};
+
 $.fn.magnifier = function() {
   var $img = $(this).find(".small");
   var image = new Image();

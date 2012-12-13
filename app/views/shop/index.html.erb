@@ -43,15 +43,15 @@
     <div class="customizations">
       <div class="customization-wrapper" data-type="lapel">
         <h3>Lapel</h3>
-        <a href="#" class="customization-option" class="checked" data-option="notch">
+        <a href="#" class="customization-option four" class="checked" data-option="notch">
           <h5>Notch</h5>
           <img src="<%= asset_path "customizations/lapel-notch.png" %>">
         </a>
-        <a href="#" class="customization-option" data-option="peak">
+        <a href="#" class="customization-option four" data-option="peak">
           <h5>Peak</h5>
           <img src="<%= asset_path "customizations/lapel-peak.png" %>">
         </a>
-        <a href="#" class="customization-option" data-option="narrow">
+        <a href="#" class="customization-option four" data-option="narrow">
           <h5>Narrow</h5>
           <img src="<%= asset_path "customizations/lapel-narrow.png" %>">
         </a>
@@ -61,21 +61,70 @@
       </div>
       <div class="customization-wrapper" data-type="buttons" style="display: none;">
         <h3>Buttons</h3>
-        <a href="#" class="customization-option" class="checked" data-option="one">
+        <a href="#" class="customization-option four" class="checked" data-option="1">
           <h5>One</h5>
           <img src="<%= asset_path "customizations/buttons-one.png" %>">
         </a>
-        <a href="#" class="customization-option" data-option="two">
+        <a href="#" class="customization-option four" data-option="2">
           <h5>Two</h5>
           <img src="<%= asset_path "customizations/buttons-two.png" %>">
         </a>
-        <a href="#" class="customization-option" data-option="three">
+        <a href="#" class="customization-option four" data-option="3">
           <h5>Three</h5>
           <img src="<%= asset_path "customizations/buttons-three.png" %>">
         </a>
-        <p>The modern standard and a fashionable choice is the two button suit. Three button suits fit more of a classic
+        <p>The modern standard and a fashionable choice is the two button suit. four button suits fit more of a classic
           style and look great on taller guys. A one button suit is a very stylish option for those who want to be
           adventurous. TR tip: If you are going to add a vest, stick with the two button jacket.</p>
+      </div>
+      <div class="customization-wrapper" data-type="vents" style="display: none;">
+        <h3>Vents</h3>
+        <a href="#" class="customization-option four" class="checked" data-option="0">
+          <h5>None</h5>
+          <img src="<%= asset_path "customizations/vents-none.png" %>">
+        </a>
+        <a href="#" class="customization-option four" data-option="1">
+          <h5>One</h5>
+          <img src="<%= asset_path "customizations/vents-one.png" %>">
+        </a>
+        <a href="#" class="customization-option four" data-option="2">
+          <h5>Two</h5>
+          <img src="<%= asset_path "customizations/vents-two.png" %>">
+        </a>
+        <p>Having two vents is the traditional, safe and stylish choice. One vent is a way to make your suit modern and
+          sleek without distracting from the excellent fit (we love the single vent). TR tip: If you are a shorter guy,
+          go ahead and get the double vent, the vertical vents help to draw the eye upward and elongate the body.</p>
+      </div>
+      <div class="customization-wrapper" data-type="pleats" style="display: none;">
+        <h3>Pleats</h3>
+        <a href="#" class="customization-option four" class="checked" data-option="0">
+          <h5>None</h5>
+          <img src="<%= asset_path "customizations/pleats-none.png" %>">
+        </a>
+        <a href="#" class="customization-option four" data-option="1">
+          <h5>One</h5>
+          <img src="<%= asset_path "customizations/pleats-one.png" %>">
+        </a>
+        <a href="#" class="customization-option four" data-option="2">
+          <h5>Two</h5>
+          <img src="<%= asset_path "customizations/pleats-two.png" %>">
+        </a>
+        <p>Pleats are typically associated with old-fashioned suits. If you are looking for a modern, trendier look, we
+          recommend going with no pleats and no cuffs on the pants.</p>
+      </div>
+      <div class="customization-wrapper two-item" data-type="pant-cuffs" style="display: none;">
+        <h3>Cuffs</h3>
+        <a href="#" class="customization-option" class="checked" data-option="0">
+          <h5>None</h5>
+          <img src="<%= asset_path "customizations/cuffs-no.png" %>" class="cuffs">
+        </a>
+        <a href="#" class="customization-option" data-option="1">
+          <h5>Cuffs</h5>
+          <img src="<%= asset_path "customizations/cuffs-yes.png" %>" class="cuffs">
+        </a>
+        <p>Pant cuffs were a suit staple in previous decades, but unless you are going for an older, more classic look,
+          we recommend sticking with no pant cuffs. It keeps the suit lines clean and sharp, keeping those heads on a
+          swivel.</p>
       </div>
     </div>
   </div>

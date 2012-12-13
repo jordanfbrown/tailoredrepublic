@@ -36,8 +36,6 @@
   }
 
   .customizations {
-    height: 400px;
-
     h3, h5 {
       font-family: "United Sans Reg", sans-serif;
       text-align: center;
@@ -56,6 +54,10 @@
       height: 120px;
       display: block;
       margin: auto;
+
+      &.cuffs {
+       height: auto;
+      }
     }
 
     h5 {
@@ -76,8 +78,15 @@
 
     .customization-option {
       display: block;
-      width: 33.3%;
       float: left;
+    }
+
+    .customization-wrapper.two-item {
+      .customization-option {
+        width: 40%;
+        margin-left: 5%;
+        margin-right: 5%;
+      }
     }
   }
 

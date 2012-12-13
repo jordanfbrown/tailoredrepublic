@@ -1,24 +1,11 @@
 class TR.Views.Customization extends TR.Views.Base
   $checkmark: $('<span>&#x2713;</span>')
 
-  customizationOrder: [
-    'lapel'
-    'buttons'
-    'vents'
-    'pleats'
-    'pantCuffs'
-    'fit'
-    'lining'
-    'monogram'
-    'bouttoniere'
-  ]
-
   events:
     'click a.customization-option': 'setCustomization'
 
   initialize: ->
     @model = new TR.Models.Customizations()
-    @current = 0
     $(document).on 'keydown.customization', @.keydown
     
   keydown: (e) =>
@@ -28,10 +15,22 @@ class TR.Views.Customization extends TR.Views.Base
       @.next()
 
   previous: ->
-    @current-- unless @current == 0
+    $currentCustomization = @.$('.customization-wrapper:visible')
+    $previousCustomization = $currentCustomization.prev()
+    if $previousCustomization.exists()
+#      $currentCustomization.fadeOut ->
+#        $currentCustomization.prev().fadeIn()
+      $currentCustomization.hide().prev().show()
 
   next: ->
-    @current++ unless @current >= @customizationOrder.length - 1
+    $currentCustomization = @.$('.customization-wrapper:visible')
+    $nextCustomization = $currentCustomization.next();
+    if $nextCustomization.exists()
+#      $currentCustomization.fadeOut ->
+#        $currentCustomization.next().fadeIn()
+      $currentCustomization.hide().next().show()
+
+
 
   destroy: ->
     super()
@@ -43,7 +42,8 @@ class TR.Views.Customization extends TR.Views.Base
     # Update model
     $target = $(e.currentTarget)
     option = $target.data 'option'
-    @model.setByName @customizationOrder[@current], option
+    type = $target.parents('.customization-wrapper').data 'type'
+    @model.setByName type, option
 
     # Update view
     @.clearCheckboxes()

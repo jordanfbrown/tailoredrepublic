@@ -1,8 +1,8 @@
 class TR.Models.Customizations extends TR.Models.Base
   defaults:
     lapel: 'notch'
-    buttons: 'two'
-    vents: 'two'
+    buttons: '2'
+    vents: '2'
     pleats: false
     pantCuffs: false
     fit: 'tailored'

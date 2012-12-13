@@ -87,6 +87,15 @@ $navigation-color: #000;
       text-align: left;
     }
   }
+
+  a {
+    color: $brown;
+
+    &:hover {
+      color: $brown;
+      text-decoration: underline;
+    }
+  }
 }
 
 .login-register {
