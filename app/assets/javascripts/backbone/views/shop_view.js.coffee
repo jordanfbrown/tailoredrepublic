@@ -1,6 +1,9 @@
 class TR.Views.Shop extends TR.Views.Base
   el: '#shop-display'
 
+  events:
+    'click a.customize': 'renderModal'
+
   initialize: ->
     @.renderModal()
 

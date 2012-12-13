@@ -1,19 +1,30 @@
 class TR.Views.ShopModal extends TR.Views.Base
   id: 'modal'
+
   className: 'reveal-modal expand'
 
   initialize: ->
-    @customizationView = new TR.Views.Customization()
     @templateFunction = Handlebars.compile $('#modal-template').html()
 
   render: ->
-    @.$el.html @templateFunction()
+    @.$el.html @templateFunction() # Data will eventually get passed into this function
+    @customizationView = new TR.Views.Customization el: @.$ '.customizations'
+    @.enableMagnifier();
     @
+
+  destroy: ->
+    @.remove()
+    @customizationView.destroy()
+
+  enableMagnifier: ->
+    @.$('.magnify').magnifier();
 
   reveal: ->
     @.$el.reveal
       closeOnBackgroundClick: false
       animation: 'none'
+      closed: =>
+        @.destroy()
 
 
 
