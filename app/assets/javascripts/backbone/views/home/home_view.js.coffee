@@ -16,10 +16,8 @@ class TR.Views.Home extends TR.Views.Base
 
     e.preventDefault()
     
-    # The lookbook header is absolutely positioned so there is no height offset
-    offset = unless href is '#lookbook' then TR.HEADER_HEIGHT else 0
     $('html, body').stop().animate
-      scrollTop: $(href).offset().top - offset, 1000
+      scrollTop: $(href).offset().top, 1000
 
   scroll: ->
     $sidebar = $('#sidebar')

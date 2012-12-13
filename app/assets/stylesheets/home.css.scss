@@ -120,6 +120,35 @@ $navigation-color: #000;
   }
 }
 
+#constitution {
+  z-index: 2;
+  background-color: #231F20;
+  position: relative;
+  padding: 30px 0;
+  @include clearfix;
+
+  @media only screen and (max-width: 767px) {
+    img {
+      display: block;
+      margin: auto;
+      margin-bottom: 10px;
+    }
+  }
+  p.constitution {
+    color: #fff;
+    font-size: 27px;
+    font-family: "United Sans SemiCond", serif;
+    font-weight: bold;
+  }
+
+  p.extra {
+    color: $maple;
+    font-size: 21px;
+    font-weight: bold;
+    margin-top: 40px;
+  }
+}
+
 //About Us
 #about {
   margin-top: 20px;
@@ -225,7 +254,7 @@ footer {
 .home #sidebar {
   position: fixed;
   top: 200px;
-  font-weight: bold;
+  font-weight: normal;
 
   @include white-anchor;
 

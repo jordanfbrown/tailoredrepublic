@@ -1,6 +1,12 @@
 @font-face {
   font-family: "United Italic Cond";
   src: url(UnitedItalicCdLt.otf) format("opentype");
+  font-weight: lighter;
+}
+
+@font-face {
+  font-family: "United Italic Cond";
+  src: url(UnitedItalicCdMd.otf) format("opentype");
   font-weight: normal;
 }
 
