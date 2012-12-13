@@ -44,6 +44,3 @@ class TR.Views.ShopModal extends TR.Views.Base
       animation: 'none'
       closed: =>
         @.destroy()
-
-
-

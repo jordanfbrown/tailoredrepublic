@@ -23,14 +23,14 @@ class TR.Views.Customization extends TR.Views.Base
     
   keydown: (e) =>
     if e.which == 37 # Left arrow
-      @.slideLeft()
+      @.previous()
     else if e.which == 39 # Right arrow
-      @.slideRight()
-      
-  slideLeft: ->
+      @.next()
+
+  previous: ->
     @current-- unless @current == 0
 
-  slideRight: ->
+  next: ->
     @current++ unless @current >= @customizationOrder.length - 1
 
   destroy: ->
