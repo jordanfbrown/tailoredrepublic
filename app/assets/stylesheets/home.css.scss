@@ -120,35 +120,6 @@ $navigation-color: #000;
   }
 }
 
-#constitution {
-  z-index: 2;
-  background-color: #231F20;
-  position: relative;
-  padding: 30px 0;
-  @include clearfix;
-
-  @media only screen and (max-width: 767px) {
-    img {
-      display: block;
-      margin: auto;
-      margin-bottom: 10px;
-    }
-  }
-  p.constitution {
-    color: #fff;
-    font-size: 27px;
-    font-family: "United Sans SemiCond", serif;
-    font-weight: bold;
-  }
-
-  p.extra {
-    color: $maple;
-    font-size: 21px;
-    font-weight: bold;
-    margin-top: 40px;
-  }
-}
-
 //About Us
 #about {
   margin-top: 20px;
@@ -176,6 +147,55 @@ $navigation-color: #000;
 
   }
 }
+
+#constitution {
+  z-index: 2;
+  background-color: #231F20;
+  position: relative;
+  padding: 30px 0;
+  @include clearfix;
+
+  @media only screen and (max-width: 767px) {
+    img {
+      display: block;
+      margin: auto;
+      margin-bottom: 10px;
+    }
+  }
+  p.constitution {
+    color: #fff;
+    font-size: 27px;
+    font-family: "United Serif SemiCond", serif;
+    font-weight: bold;
+  }
+
+  p.extra {
+    color: $maple;
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 40px;
+
+    .divider {
+      color: #fff;
+      display: inline-block;
+      margin: 0 5px;
+    }
+  }
+}
+
+#no-fabrication {
+  @include clearfix;
+  padding: 140px 0;
+  background: url(textures/tr-texture-2.png) repeat center center;
+  h3 {
+    text-align: center;
+    font-family: "United Serif SemiCond", serif;
+    color: #ccc;
+    font-size: 40px;
+    font-weight: normal;
+  }
+}
+
 
 //Lookbook
 #lookbook {
@@ -225,6 +245,9 @@ footer {
     background-color: #000;
     padding: 0 10px;
     margin-left: -10px;
+    color: #fff;
+    font-family: "United Sans Cond";
+    font-size: 24px;
   }
 
   .strikethrough {
@@ -247,6 +270,25 @@ footer {
 
   li {
     color: #fff;
+    font-family: United Sans Cond;
+    font-size: 19px;
+  }
+
+
+  .social {
+    margin-top: 5px;
+    img {
+      width: 22px;
+      margin-right: 5px;
+
+      @media only screen and (max-width: 860px) {
+        width: 17px;
+      }
+
+      @media only screen and (max-width: 767px) {
+        width: 22px;
+      }
+    }
   }
 }
 
