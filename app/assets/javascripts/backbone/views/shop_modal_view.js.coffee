@@ -13,7 +13,7 @@ class TR.Views.ShopModal extends TR.Views.Base
     @
 
   destroy: ->
-    @.remove()
+    super()
     @customizationView.destroy()
 
   enableMagnifier: ->

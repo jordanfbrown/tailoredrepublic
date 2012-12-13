@@ -28,6 +28,7 @@ class TR.Views.Customization extends TR.Views.Base
       true
 
   destroy: ->
+    super()
     $(document).off 'keydown.customization'
 
   setCustomization: (e) =>
