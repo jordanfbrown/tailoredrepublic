@@ -11,4 +11,8 @@ class TR.Models.Customization extends TR.Models.Base
     bouttoniere: false
     pickStitching: false
 
-  url: '/customizations'
+  url: ->
+    url = '/customizations'
+    unless @.isNew()
+      url += '/' + @.get('id')
+    url
