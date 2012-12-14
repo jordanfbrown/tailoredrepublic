@@ -58,6 +58,15 @@
       &.cuffs {
        height: auto;
       }
+
+      &.lining, &.monogram {
+        height: 170px;
+
+        @media only screen and (max-width: 455px) {
+          height: 140px;
+        }
+
+      }
     }
 
     h5 {
