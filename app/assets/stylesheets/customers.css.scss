@@ -1,0 +1,19 @@
+body.customers {
+  th, td {
+    padding: 10px;
+  }
+
+  input {
+    width: 200px;
+    background: #fff;
+    //border: 1px solid #
+  }
+
+  input:focus {
+    background: #fff;
+  }
+
+  .container {
+    margin-left: 10px;
+  }
+}

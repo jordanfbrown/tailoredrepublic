@@ -1,4 +1,7 @@
 TailoredRepublic::Application.routes.draw do
+  resources :customers
+
+
   resources :carts
 
 
