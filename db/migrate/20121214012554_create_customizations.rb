@@ -1,12 +1,12 @@
 class CreateCustomizations < ActiveRecord::Migration
   def change
     create_table :customizations do |t|
-      t.string :lapel
+      t.enum :lapel
       t.integer :buttons
       t.integer :vents
       t.integer :pleats
       t.boolean :pant_cuffs
-      t.string :fit
+      t.enum :fit
       t.integer :lining
       t.string :monogram
       t.boolean :bouttoniere
