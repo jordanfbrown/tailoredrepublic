@@ -1,4 +1,4 @@
-class TR.Models.Customizations extends TR.Models.Base
+class TR.Models.Customization extends TR.Models.Base
   defaults:
     lapel: 'notch'
     buttons: '2'
@@ -10,3 +10,5 @@ class TR.Models.Customizations extends TR.Models.Base
     monogram: ''
     bouttoniere: false
     pickStitching: false
+
+  url: '/customizations'

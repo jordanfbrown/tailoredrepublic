@@ -8,6 +8,7 @@ TailoredRepublic::Application.routes.draw do
   root :to => "home#index"
   devise_for :users
   resources :users
+  resources :customizations
   match "/shop" => "shop#index"
   match "/shop/suits" => "shop#index"
   #match "/shop/shirts" => "shop#shirts"

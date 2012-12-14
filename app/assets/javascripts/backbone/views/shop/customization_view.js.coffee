@@ -5,7 +5,7 @@ class TR.Views.Customization extends TR.Views.Base
     'click a.customization-option': 'setCustomization'
 
   initialize: ->
-    @model = new TR.Models.Customizations()
+    @customization = new TR.Models.Customization()
     $(document).on 'keydown.customization', @.keydown
     
   keydown: (e) =>
@@ -43,7 +43,7 @@ class TR.Views.Customization extends TR.Views.Base
     $target = $(e.currentTarget)
     option = $target.data 'option'
     type = $target.parents('.customization-wrapper').data 'type'
-    @model.setByName type, option
+    @customization.setByName type, option
 
     # Update view
     @.clearCheckboxes()
