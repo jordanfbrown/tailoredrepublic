@@ -11,7 +11,51 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121202042203) do
+ActiveRecord::Schema.define(:version => 20121214012554) do
+
+  create_table "cart_items", :force => true do |t|
+    t.integer  "product_id"
+    t.integer  "cart_id"
+    t.integer  "customization_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  create_table "carts", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "customizations", :force => true do |t|
+    t.string   "lapel"
+    t.integer  "buttons"
+    t.integer  "vents"
+    t.integer  "pleats"
+    t.boolean  "pant_cuffs"
+    t.string   "fit"
+    t.integer  "lining"
+    t.string   "monogram"
+    t.boolean  "bouttoniere"
+    t.boolean  "pick_stitching"
+    t.integer  "vest_buttons"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "products", :force => true do |t|
+    t.string   "type"
+    t.string   "name"
+    t.string   "description"
+    t.decimal  "price"
+    t.integer  "quantity"
+    t.string   "image_large_url"
+    t.string   "image_small_1_url"
+    t.string   "image_small_2_url"
+    t.string   "image_small_3_url"
+    t.string   "image_small_4_url"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"

@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  lapel: MyString
+  buttons: 1
+  vents: 1
+  pleats: 1
+  pant_cuffs: false
+  fit: MyString
+  lining: 1
+  monogram: MyString
+  bouttoniere: false
+  pick_stitching: false
+  vest_buttons: 1
+
+two:
+  lapel: MyString
+  buttons: 1
+  vents: 1
+  pleats: 1
+  pant_cuffs: false
+  fit: MyString
+  lining: 1
+  monogram: MyString
+  bouttoniere: false
+  pick_stitching: false
+  vest_buttons: 1
