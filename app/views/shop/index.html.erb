@@ -1,21 +1,6 @@
 <div id="shop-display" class="content-wrapper">
   <div id="suits-wrapper">
     <%= render "home/suit_wrapper" %>
-    <%= render "home/suit_wrapper" %>
-    <%= render "home/suit_wrapper" %>
-    <%= render "home/suit_wrapper" %>
-    <%= render "home/suit_wrapper" %>
-    <%= render "home/suit_wrapper" %>
-    <%= render "home/suit_wrapper" %>
-    <%= render "home/suit_wrapper" %>
-    <%= render "home/suit_wrapper" %>
-    <%= render "home/suit_wrapper" %>
-    <%= render "home/suit_wrapper" %>
-    <%= render "home/suit_wrapper" %>
-    <%= render "home/suit_wrapper" %>
-    <%= render "home/suit_wrapper" %>
-    <%= render "home/suit_wrapper" %>
-    <%= render "home/suit_wrapper" %>
   </div>
 </div>
 
@@ -27,23 +12,23 @@
   <h2>Classic Charcoal<span class="divider">&nbsp;//&nbsp;</span>$329</h2>
   <div class="six columns preview-wrapper">
     <ul class="modal-suit-preview three columns">
-      <li><a href="#"><img src="<%= asset_path "suits/modal-suit-preview.png" %>"></a></li>
-      <li><a href="#"><img src="<%= asset_path "suits/modal-suit-preview.png" %>"></a></li>
-      <li><a href="#"><img src="<%= asset_path "suits/modal-suit-preview.png" %>"></a></li>
-      <li><a href="#"><img src="<%= asset_path "suits/modal-suit-preview.png" %>"></a></li>
+      <li><a href="#"><img src="<%= asset_path "products/suits/modal-suit-preview.png" %>"></a></li>
+      <li><a href="#"><img src="<%= asset_path "products/suits/modal-suit-preview.png" %>"></a></li>
+      <li><a href="#"><img src="<%= asset_path "products/suits/modal-suit-preview.png" %>"></a></li>
+      <li><a href="#"><img src="<%= asset_path "products/suits/modal-suit-preview.png" %>"></a></li>
     </ul>
     <div class="magnify nine columns">
       <div class="large"></div>
-      <img class="main small" src="<%= asset_path "suits/charcoal-grey.jpg" %>">
+      <img class="main small" src="<%= asset_path "products/suits/charcoal-grey.jpg" %>">
     </div>
   </div>
   <div class="six columns">
     <p class="blurb">Bring a little flavor to your suit collection. The classic charcoal suit breaks the mold of the
       black and navy tradition without drawing a disapproving look from your stodgy old boss. Stay fly.</p>
     <div class="customizations">
-      <div class="customization-wrapper" data-type="lapel">
+      <div class="customization-wrapper" data-type="lapel" style="display: none;">
         <h3>Lapel</h3>
-        <a href="#" class="customization-option four" class="checked" data-option="notch">
+        <a href="#" class="customization-option four" data-option="notch">
           <h5>Notch</h5>
           <img src="<%= asset_path "customizations/lapel-notch.png" %>">
         </a>
@@ -61,7 +46,7 @@
       </div>
       <div class="customization-wrapper" data-type="buttons" style="display: none;">
         <h3>Buttons</h3>
-        <a href="#" class="customization-option four" class="checked" data-option="1">
+        <a href="#" class="customization-option four" data-option="1">
           <h5>One</h5>
           <img src="<%= asset_path "customizations/buttons-one.png" %>">
         </a>
@@ -79,7 +64,7 @@
       </div>
       <div class="customization-wrapper" data-type="vents" style="display: none;">
         <h3>Vents</h3>
-        <a href="#" class="customization-option four" class="checked" data-option="0">
+        <a href="#" class="customization-option four" data-option="0">
           <h5>None</h5>
           <img src="<%= asset_path "customizations/vents-none.png" %>">
         </a>
@@ -97,7 +82,7 @@
       </div>
       <div class="customization-wrapper" data-type="pleats" style="display: none;">
         <h3>Pleats</h3>
-        <a href="#" class="customization-option four" class="checked" data-option="0">
+        <a href="#" class="customization-option four" data-option="0">
           <h5>None</h5>
           <img src="<%= asset_path "customizations/pleats-none.png" %>">
         </a>
@@ -114,7 +99,7 @@
       </div>
       <div class="customization-wrapper two-item" data-type="pant-cuffs" style="display: none;">
         <h3>Cuffs</h3>
-        <a href="#" class="customization-option" class="checked" data-option="0">
+        <a href="#" class="customization-option" data-option="0">
           <h5>None</h5>
           <img src="<%= asset_path "customizations/cuffs-no.png" %>" class="cuffs">
         </a>
@@ -128,7 +113,7 @@
       </div>
       <div class="customization-wrapper" data-type="fit" style="display: none;">
         <h3>Fit</h3>
-        <a href="#" class="customization-option four" class="checked" data-option="0">
+        <a href="#" class="customization-option four" data-option="0">
           <h5>Slim</h5>
           <img src="<%= asset_path "customizations/fit-slim.png" %>">
         </a>
@@ -182,7 +167,7 @@
       </div>
       <div class="customization-wrapper" data-type="vest" style="display: none;">
         <h3>Vest</h3>
-        <a href="#" class="customization-option four" class="checked" data-option="three">
+        <a href="#" class="customization-option four" data-option="three">
           <h5>Three Buttons</h5>
           <img src="<%= asset_path "customizations/vest-three.png" %>">
         </a>
@@ -195,6 +180,9 @@
           <img src="<%= asset_path "customizations/vest-five.png" %>">
         </a>
         <p>Text here...</p>
+      </div>
+      <div class="customization-wrapper">
+        <a href="#" class="button add-to-cart">Add to cart</a>
       </div>
     </div>
   </div>

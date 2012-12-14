@@ -6,6 +6,11 @@ $.fn.exists = function() {
   return this.length > 0;
 };
 
+$.fn.tap = function(callback) {
+  callback(this);
+  return this;
+};
+
 $.fn.magnifier = function() {
   var $img = $(this).find(".small");
   var image = new Image();

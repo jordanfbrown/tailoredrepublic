@@ -4,4 +4,8 @@ class Cart < ActiveRecord::Base
   def empty?
     cart_items.empty?
   end
+
+  def num_items
+    cart_items.length
+  end
 end

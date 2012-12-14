@@ -313,3 +313,33 @@ h4 {
   }
 
 }
+
+input[type=text] {
+  @include border-radius(0);
+  @include background(radial-gradient(#404040, #333));
+  color: #999;
+  border: none;
+  outline: none;
+
+  &:focus {
+    @include background(radial-gradient(#404040, #333));
+  }
+}
+
+input[type=submit], button, .button {
+  @include background(radial-gradient(#BBB, #999));
+  border: 1px solid #ccc;
+  font-weight: bold;
+  display: inline-block;
+  color: #fff;
+  padding: 10px;
+  font-family: "Lucida Grande";
+  font-size: 13px;
+  cursor: pointer;
+  text-transform: uppercase;
+
+  &:hover {
+    color: #fff;
+    @include background(radial-gradient(#CCC, #999));
+  }
+}

@@ -3,6 +3,7 @@ class TR.Views.Customization extends TR.Views.Base
 
   events:
     'click a.customization-option': 'setCustomization'
+    'click a.add-to-cart': 'addToCart'
 
   initialize: ->
     @customization = new TR.Models.Customization()
@@ -30,8 +31,6 @@ class TR.Views.Customization extends TR.Views.Base
 #        $currentCustomization.next().fadeIn()
       $currentCustomization.hide().next().show()
 
-
-
   destroy: ->
     super()
     $(document).off 'keydown.customization'
@@ -50,6 +49,11 @@ class TR.Views.Customization extends TR.Views.Base
     $(e.currentTarget).addClass('checked')
     .find('h5').append @.$checkmark
 
+  addToCart: (e) ->
+    e.preventDefault()
+
+
+
   clearCheckboxes: =>
-    @.$('a.customization-option:visible').removeClass('checked').end()
+    @.$('a.customization-option:visible').removeClass('checked')
       .find('h5:visible span').remove()

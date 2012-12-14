@@ -1,4 +1,7 @@
+require 'enumerated_attribute'
+
 class Product < ActiveRecord::Base
+  enum_attr :type, %w(suit pants vest jacket shirt)
   attr_accessible :description, :image_large_url, :image_small_1_url, :image_small_2_url, :image_small_3_url,
                   :image_small_4_url, :name, :price, :quantity, :type
   has_many :cart_items
