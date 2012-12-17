@@ -1,0 +1,1 @@
+class TR.Collections.Base extends Backbone.Collection

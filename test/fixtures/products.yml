@@ -1,25 +1,49 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
+charcoal:
   category: suit
   name: Charcoal Grey
   description: Boss suit
   price: 329
   quantity: 10
   image_large_url: products/suits/charcoal-grey.jpg
-  image_small_1_url: products/suits/modal-suit-preview.jpg
-  image_small_2_url: products/suits/modal-suit-preview.jpg
-  image_small_3_url: products/suits/modal-suit-preview.jpg
-  image_small_4_url: products/suits/modal-suit-preview.jpg
+  image_small_1_url: products/suits/modal-suit-preview.png
+  image_small_2_url: products/suits/modal-suit-preview.png
+  image_small_3_url: products/suits/modal-suit-preview.png
+  image_small_4_url: products/suits/modal-suit-preview.png
 
-two:
+black:
   category: suit
   name: Black
   description: Super boss suit
   price: 429
   quantity: 10
   image_large_url: products/suits/charcoal-grey.jpg
-  image_small_1_url: products/suits/modal-suit-preview.jpg
-  image_small_2_url: products/suits/modal-suit-preview.jpg
-  image_small_3_url: products/suits/modal-suit-preview.jpg
-  image_small_4_url: products/suits/modal-suit-preview.jpg
+  image_small_1_url: products/suits/modal-suit-preview.png
+  image_small_2_url: products/suits/modal-suit-preview.png
+  image_small_3_url: products/suits/modal-suit-preview.png
+  image_small_4_url: products/suits/modal-suit-preview.png
+
+sharktooth:
+  category: suit
+  name: Sharktooth
+  description: Sweet
+  price: 429
+  quantity: 10
+  image_large_url: products/suits/charcoal-grey.jpg
+  image_small_1_url: products/suits/modal-suit-preview.png
+  image_small_2_url: products/suits/modal-suit-preview.png
+  image_small_3_url: products/suits/modal-suit-preview.png
+  image_small_4_url: products/suits/modal-suit-preview.png
+
+houndstooth:
+  category: suit
+  name: Hounds tooth
+  description: Super boss suit
+  price: 529
+  quantity: 10
+  image_large_url: products/suits/charcoal-grey.jpg
+  image_small_1_url: products/suits/modal-suit-preview.png
+  image_small_2_url: products/suits/modal-suit-preview.png
+  image_small_3_url: products/suits/modal-suit-preview.png
+  image_small_4_url: products/suits/modal-suit-preview.png

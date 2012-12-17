@@ -2,7 +2,8 @@ class TR.Views.Home extends TR.Views.Base
   el: '#main'
 
   events:
-    'click .page-down, #sidebar a, #continue': 'scrollToSection'
+    'click .page-down, #sidebar a, #continue': 'scrollToSection',
+    'click .product-wrapper a': 'renderProductModal'
 
   initialize: ->
     @.createSlideshow()
@@ -49,7 +50,6 @@ class TR.Views.Home extends TR.Views.Base
 
   createSlideshow: ->
     @.$('#slideshow').orbit
-      timer: false
       afterSlideChange: (previous, current) =>
         @.updateCaption $(current).data()
 
@@ -60,3 +60,8 @@ class TR.Views.Home extends TR.Views.Base
         $caption.find('.' + attribute).text(value)
       $caption.fadeIn()
     )
+
+  renderProductModal: ->
+    @productModal = new TR.Views.ProductModal().render()
+    @productModal.$el.insertAfter('#sidebar')
+    @productModal.reveal()

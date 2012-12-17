@@ -1,12 +1,12 @@
-<div class="suit-wrapper three columns">
-  <%= image_tag product.image_large_url %>
-  <div class="suit-info-wrapper">
-    <div class="suit-info">
-      <div class="suit-name"><%= product.name %></div>
+<div class="product-wrapper three columns" data-id="<%= product.id %>">
+  <a href="#"><%= image_tag product.image_large_url %></a>
+  <div class="product-info-wrapper">
+    <div class="product-info">
+      <div class="product-name"><a href="#"><%= product.name %></a></div>
       <a href="#" class="customize">Click To Customize</a>
     </div>
-    <div class="suit-price">
-      <div class="suit-price-text-wrapper">
+    <div class="product-price">
+      <div class="product-price-text-wrapper">
         <span class="dollar">$</span><span class="price"><%= product.display_price %></span>
       </div>
     </div>

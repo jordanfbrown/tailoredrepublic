@@ -52,8 +52,6 @@ class TR.Views.Customization extends TR.Views.Base
   addToCart: (e) ->
     e.preventDefault()
 
-
-
   clearCheckboxes: =>
     @.$('a.customization-option:visible').removeClass('checked')
       .find('h5:visible span').remove()

@@ -1,4 +1,4 @@
-class TR.Views.ShopModal extends TR.Views.Base
+class TR.Views.ProductModal extends TR.Views.Base
   id: 'modal'
 
   className: 'reveal-modal expand'
@@ -6,11 +6,14 @@ class TR.Views.ShopModal extends TR.Views.Base
   events: 
     'mousemove': 'mousemove'
 
-  initialize: ->
-    @templateFunction = Handlebars.compile $('#modal-template').html()
+  initialize: () ->
+    @.getTemplateFunction('product_modal', (templateFunction) =>
+      @templateFunction = templateFunction
+      @.render()
+    )
 
   render: ->
-    @.$el.html @templateFunction() # Data will eventually get passed into this function
+    @.$el.html @templateFunction @model.toJSON()
     @customizationView = new TR.Views.Customization el: @.$ '.customizations'
     @.enableMagnifier();
     @

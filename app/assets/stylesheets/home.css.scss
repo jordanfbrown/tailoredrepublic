@@ -45,17 +45,18 @@ h5 {
   color: $brown;
 }
 
-$navigation-height: 24px;
+$navigation-height: 29px;
 $navigation-color: #000;
 
 #home-navigation {
+  font-family: "United Italic Cond", serif;
   background-color: $navigation-color;
   position: absolute;
   top: 50%;
   left: 22%;
   padding: 5px 20px 5px 20px;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 23px;
   @include slanted-edge-before($navigation-height, $navigation-color);
   @include slanted-edge-after($navigation-height, $navigation-color);
 }
@@ -101,6 +102,7 @@ $navigation-color: #000;
 
 .login-register {
   margin-left: $h2-margin;
+  font-family: "United Italic Cond", serif;
 
   a {
     color: $grey;
@@ -181,6 +183,7 @@ $navigation-color: #000;
 
   p.extra {
     color: $maple;
+    font-family: "United Italic Cond", serif;
     font-size: 25px;
     font-weight: bold;
     margin-top: 40px;
@@ -230,6 +233,7 @@ $navigation-color: #000;
     span {
       display: inline-block;
       margin-right: 10px;
+      font-family: "United Italic Cond", sans-serif;
 
       &:first-child {
         padding-left: $h2-margin;
@@ -307,6 +311,7 @@ footer {
   position: fixed;
   top: 200px;
   font-weight: normal;
+  font-family: "United Sans Cond", serif;
 
   @include white-anchor;
 
