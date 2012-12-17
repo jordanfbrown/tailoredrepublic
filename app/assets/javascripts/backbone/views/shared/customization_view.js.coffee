@@ -5,7 +5,8 @@ class TR.Views.Customization extends TR.Views.Base
     'click a.customization-option': 'setCustomization'
     'click a.add-to-cart': 'addToCart'
 
-  initialize: ->
+  initialize: (options) ->
+    @product = options.product
     @customization = new TR.Models.Customization()
     $(document).on 'keydown.customization', @.keydown
     
@@ -51,6 +52,11 @@ class TR.Views.Customization extends TR.Views.Base
 
   addToCart: (e) ->
     e.preventDefault()
+    @customization.save().then(=>
+      $.post('/cart_items', {product_id: @product.get('id'), customization_id: @customization.get('id')}).then( (response) ->
+        console.log(response);
+      )
+    )
 
   clearCheckboxes: =>
     @.$('a.customization-option:visible').removeClass('checked')

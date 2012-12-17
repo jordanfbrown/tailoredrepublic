@@ -10,4 +10,9 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  def set_basic_auth_credentials
+    @request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials('tailored', 'sodamnclean!')
+  end
+
 end

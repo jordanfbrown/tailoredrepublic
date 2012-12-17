@@ -14,7 +14,7 @@ class TR.Views.ProductModal extends TR.Views.Base
 
   render: ->
     @.$el.html @templateFunction @model.toJSON()
-    @customizationView = new TR.Views.Customization el: @.$ '.customizations'
+    @customizationView = new TR.Views.Customization el: @.$('.customizations'), product: @model
     @.enableMagnifier();
     @
 

@@ -11,4 +11,5 @@ one:
   monogram: JB
   bouttoniere: false
   pick_stitching: false
-  vest_buttons: 0
+  vest: false
+  vest_buttons: 3

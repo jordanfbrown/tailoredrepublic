@@ -6,7 +6,6 @@ class TR.Views.Shop extends TR.Views.Base
 
   initialize: (options) ->
     @products = new TR.Collections.Products options.products
-#    @.renderModal()
 
   renderProductModal: (e) ->
     e.preventDefault()

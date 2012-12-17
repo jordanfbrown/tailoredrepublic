@@ -4,3 +4,8 @@ class TR.Models.Base extends Backbone.Model
     setter = {}
     setter[key] = value
     @.set setter, options
+
+  url: (url) ->
+    unless @.isNew()
+      url += '/' + @.get('id')
+    url
