@@ -48,6 +48,18 @@ class TR.Views.Home extends TR.Views.Base
     else if pageTop >= processPosition
       $sidebar.find('.process').addClass('selected')
 
+    # Slide section titles out of the way of the navbar
+#    sidebarBottom = $sidebar.offset().top + $sidebar.height()
+#    h2Top = $('h2:first').offset().top
+#
+#    if(h2Top - 15 <= sidebarBottom )
+#      if $('h2:first').css('margin-left') == '20px'
+#        $('h2:first').animate 'margin-left': '120px', 500
+#    else
+#      if $('h2:first').css('margin-left') == '120px'
+#        $('h2:first').animate 'margin-left': '20px', 500
+
+
   createSlideshow: ->
     @.$('#slideshow').orbit
       afterSlideChange: (previous, current) =>

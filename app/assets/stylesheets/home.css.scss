@@ -17,8 +17,22 @@ article {
 $h2-margin: 20px;
 
 h2 {
-  font-size: 50px;
+  font-size: 60px;
   margin-left: $h2-margin;
+  font-weight: normal;
+
+  .article-title {
+    position: relative;
+  }
+
+  .strikethrough {
+    position: absolute;
+    width: 120%;
+    border: 1px dashed #CCC;
+    left: -20px;
+    top: 25px;
+    z-index: -1;
+  }
 }
 
 h4 {
@@ -114,6 +128,7 @@ $navigation-color: #000;
 
 #top-picks {
   @include shop-texture;
+  z-index: 0;
 }
 
 //Transition section
