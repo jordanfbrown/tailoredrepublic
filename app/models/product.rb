@@ -5,7 +5,7 @@ class Product < ActiveRecord::Base
   attr_accessible :description, :image_large_url, :image_small_1_url, :image_small_2_url, :image_small_3_url,
                   :image_small_4_url, :name, :price, :quantity, :type
   has_many :cart_items
-
+  has_many :customizations
   before_destroy :ensure_not_referenced_by_cart_item
 
   def display_price

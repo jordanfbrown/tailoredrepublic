@@ -30,7 +30,7 @@ $headerFontFamily: "United Italic Cond", "Helvetica", Helvetica, Arial, sans-ser
 // $headerFontWeight: bold;
 // $headerFontStyle: normal;
 // $headerFontColor: #222;
-$bodyFontFamily: "United Italic Cond", "Helvetica", Helvetica, Arial, sans-serif;
+$bodyFontFamily: "Clarendon Lt", serif;
 // $bodyFontWeight: normal;
 // $bodyFontStyle: normal;
 // $bodyFontColor: $txtColor;
@@ -314,7 +314,7 @@ h4 {
 
 }
 
-input[type=text] {
+input[type=text], textarea {
   @include border-radius(0);
   @include background(radial-gradient(#404040, #333));
   color: #999;

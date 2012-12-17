@@ -1,8 +1,7 @@
-body.customers {
+body.customers, body.products {
 
-  background-color: #fff;
+  background-color: #eee;
   color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
 
@@ -11,23 +10,12 @@ body.customers {
   }
 
   input {
-    width: 200px;
-    background: #fff;
-    //border: 1px solid #
-  }
-
-  input:focus {
-    background: #fff;
+    width: 300px;
+    border: 2px solid #666;
   }
 
   .container {
     margin-left: 10px;
-  }
-
-  p, ol, ul, td {
-    font-family: verdana, arial, helvetica, sans-serif;
-    font-size: 13px;
-    line-height: 18px;
   }
 
   pre {
