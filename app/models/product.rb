@@ -8,6 +8,10 @@ class Product < ActiveRecord::Base
 
   before_destroy :ensure_not_referenced_by_cart_item
 
+  def display_price
+    price.to_i
+  end
+
   private
     def ensure_not_referenced_by_cart_item
       if cart_items.empty?

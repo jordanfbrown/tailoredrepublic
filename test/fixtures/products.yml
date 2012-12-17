@@ -1,25 +1,25 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  category: Suit
+  category: suit
   name: Charcoal Grey
   description: Boss suit
-  price: 329.99
+  price: 329
   quantity: 10
-  image_large_url: assets/products/suits/charcoal-grey.jpg
-  image_small_1_url: assets/products/suits/modal-suit-preview.jpg
-  image_small_2_url: assets/products/suits/modal-suit-preview.jpg
-  image_small_3_url: assets/products/suits/modal-suit-preview.jpg
-  image_small_4_url: assets/products/suits/modal-suit-preview.jpg
+  image_large_url: products/suits/charcoal-grey.jpg
+  image_small_1_url: products/suits/modal-suit-preview.jpg
+  image_small_2_url: products/suits/modal-suit-preview.jpg
+  image_small_3_url: products/suits/modal-suit-preview.jpg
+  image_small_4_url: products/suits/modal-suit-preview.jpg
 
 two:
-  category: Suit
+  category: suit
   name: Black
   description: Super boss suit
-  price: 429.99
+  price: 429
   quantity: 10
-  image_large_url: assets/products/suits/charcoal-grey.jpg
-  image_small_1_url: assets/products/suits/modal-suit-preview.jpg
-  image_small_2_url: assets/products/suits/modal-suit-preview.jpg
-  image_small_3_url: assets/products/suits/modal-suit-preview.jpg
-  image_small_4_url: assets/products/suits/modal-suit-preview.jpg
+  image_large_url: products/suits/charcoal-grey.jpg
+  image_small_1_url: products/suits/modal-suit-preview.jpg
+  image_small_2_url: products/suits/modal-suit-preview.jpg
+  image_small_3_url: products/suits/modal-suit-preview.jpg
+  image_small_4_url: products/suits/modal-suit-preview.jpg

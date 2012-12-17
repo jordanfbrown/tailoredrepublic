@@ -1,13 +1,13 @@
 <div class="suit-wrapper three columns">
-  <img src="<%= asset_path "products/suits/charcoal-grey.jpg" %>">
+  <%= image_tag product.image_large_url %>
   <div class="suit-info-wrapper">
     <div class="suit-info">
-      <div class="suit-name">Classic Charcoal</div>
+      <div class="suit-name"><%= product.name %></div>
       <a href="#" class="customize">Click To Customize</a>
     </div>
     <div class="suit-price">
       <div class="suit-price-text-wrapper">
-        <span class="dollar">$</span><span class="price">350</span>
+        <span class="dollar">$</span><span class="price"><%= product.display_price %></span>
       </div>
     </div>
   </div>

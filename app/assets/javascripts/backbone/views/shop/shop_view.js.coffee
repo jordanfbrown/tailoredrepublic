@@ -5,7 +5,7 @@ class TR.Views.Shop extends TR.Views.Base
     'click a.customize': 'renderModal'
 
   initialize: ->
-    @.renderModal()
+#    @.renderModal()
 
   renderModal: ->
     @shopModalView = new TR.Views.ShopModal().render()
