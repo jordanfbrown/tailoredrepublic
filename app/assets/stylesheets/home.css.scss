@@ -189,11 +189,13 @@ $navigation-color: #000;
       margin-bottom: 10px;
     }
   }
-  p.constitution {
+
+  .constitution p {
     color: #fff;
-    font-size: 27px;
+    font-size: 21px;
     font-family: "United Serif SemiCond", serif;
     font-weight: bold;
+    line-height: 1;
   }
 
   p.extra {
