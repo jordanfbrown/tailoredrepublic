@@ -16,11 +16,18 @@ class TR.Views.Home extends TR.Views.Base
       return true
 
     e.preventDefault()
-    
-    $('html, body').stop().animate
-      scrollTop: $(href).offset().top, 1000
 
-  scroll: ->
+    $home = $('#home');
+    homeHeight = $home.height()
+    marginBottom = parseFloat($home.css 'margin-bottom')
+    adjustment = false
+    if $(window).scrollTop() < homeHeight + marginBottom
+      adjustment = homeHeight - homeHeight / 2.5 + Math.abs $('#process').offset().top - $(href).offset().top
+
+    $('html, body').stop().animate
+      scrollTop: (if adjustment then adjustment else $(href).offset().top), 1500
+
+  scroll: (e) ->
     $sidebar = $('#sidebar')
     $sidebar.removeClass('bottom').find('li').removeClass('selected')
 
@@ -36,6 +43,13 @@ class TR.Views.Home extends TR.Views.Base
     # Parallax effect for transition image
     $('#bosses img').css 'top', (bossesPosition - pageTop - $(window).height()) / 2
 
+    # Parallax for splash page
+    homeHeight = $('#home').height()
+    marginBottom = -(parseFloat $('#home').css 'margin-bottom')
+    if pageTop < homeHeight - marginBottom
+      $('#home').css 'margin-bottom', -pageTop / 1.5
+      
+
     # Adding 100 to the page top so that we add the selected arrow slightly prematurely
     pageTop += 100
     if $(window).scrollBottom() <= 230
@@ -47,6 +61,7 @@ class TR.Views.Home extends TR.Views.Base
       $sidebar.find('.top-picks').addClass('selected')
     else if pageTop >= processPosition
       $sidebar.find('.process').addClass('selected')
+
 
     # Slide section titles out of the way of the navbar
 #    sidebarBottom = $sidebar.offset().top + $sidebar.height()

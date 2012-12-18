@@ -260,6 +260,11 @@ $baseFontSize: 14px;
 @import "foundation/components/modules/reveal";
 @import "_mixins";
 
+body {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
 ul {
   list-style-type: none;
   margin-bottom: 0;
@@ -320,6 +325,10 @@ input[type=text], textarea {
   color: #999;
   border: none;
   outline: none;
+  font-family: "United Sans SemiCond", sans-serif;
+  font-size: 19px;
+  color: #fff;
+  font-weight: lighter;
 
   &:focus {
     @include background(radial-gradient(#404040, #333));
@@ -327,12 +336,12 @@ input[type=text], textarea {
 }
 
 input[type=submit], button, .button {
-  @include background(radial-gradient(#BBB, #999));
+  @include background(radial-gradient(#BBB, #666));
   border: 1px solid #ccc;
   font-weight: bold;
   display: inline-block;
   color: #fff;
-  padding: 10px;
+  padding: 5px 10px;
   font-family: "Lucida Grande";
   font-size: 13px;
   cursor: pointer;
@@ -340,6 +349,6 @@ input[type=submit], button, .button {
 
   &:hover {
     color: #fff;
-    @include background(radial-gradient(#CCC, #999));
+    @include background(radial-gradient(#DDD, #666));
   }
 }
