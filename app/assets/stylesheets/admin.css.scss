@@ -30,8 +30,7 @@ body.customers, body.products {
       color: #666;
     }
     &:hover {
-      color: #fff;
-      background-color: #000;
+      text-decoration: underline;
     }
   }
 
