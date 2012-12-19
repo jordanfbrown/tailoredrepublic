@@ -4,11 +4,11 @@ class TR.Views.Customization extends TR.Views.Base
   events:
     'click a.customization-option': 'setCustomization'
     'click a.add-to-cart': 'addToCart'
-    'click .chevron a': 'clickedChevron'
+    'click ul.chevrons a': 'clickedChevron'
     'click a.left': 'previous'
     'click a.right': 'next'
     'click a.lining-option': 'selectLining'
-    'keyup input[name=monogram]': 'keyupMonogram'
+    'blur input[name=monogram]': 'setMonogram'
 
   initialize: (options) ->
     @product = options.product
@@ -28,7 +28,9 @@ class TR.Views.Customization extends TR.Views.Base
       @.next()
 
   updateSummary: =>
-    @.$('.customization-summary').html @checkoutTemplateFunction @customization.toJSON()
+    price = @product.get('price') + if @customization.get('vest') then TR.VEST_PRICE else 0
+    summaryData = _.extend {price: price}, @customization.toJSON()
+    @.$('.customization-summary').html @checkoutTemplateFunction summaryData
 
   previous: (e) ->
     e.preventDefault() if e
@@ -45,8 +47,8 @@ class TR.Views.Customization extends TR.Views.Base
       @.switchPane $currentCustomization.next().data 'type'
 
   switchPane: (customizationType) ->
-    @.$('.chevron').find('img.selected').attr('src', 'assets/icons/chevron.png').removeClass 'selected'
-    @.$(".chevron[data-type=#{customizationType}] img").attr('src', 'assets/icons/chevron-selected.png').addClass 'selected'
+    @.$('.chevrons li').find('img.selected').attr('src', 'assets/icons/chevron.png').removeClass 'selected'
+    @.$(".chevrons li[data-type=#{customizationType}] img").attr('src', 'assets/icons/chevron-selected.png').addClass 'selected'
 
     @.getCurrentCustomization().hide()
     @.$(".customization-wrapper[data-type=#{customizationType}]").show()
@@ -65,7 +67,7 @@ class TR.Views.Customization extends TR.Views.Base
     e.preventDefault()
     @.switchPane $(e.currentTarget).parent().data 'type'
 
-  keyupMonogram: (e) ->
+  setMonogram: (e) ->
     @customization.set 'monogram', $(e.currentTarget).val()
 
   destroy: ->
@@ -82,11 +84,14 @@ class TR.Views.Customization extends TR.Views.Base
     $target = $(e.currentTarget)
     option = $target.data 'option'
     type = $target.parents('.customization-wrapper').data 'type'
-    @customization.setByName type, option
-    
-    # Update view
-    @.clearChecked()
-    $(e.currentTarget).addClass('checked')
+
+    unless type == 'advanced'
+      @customization.setByName type, option
+      @.clearChecked()
+      $(e.currentTarget).addClass 'checked'
+    else
+      $target.toggleClass 'checked'
+      @customization.setByName option, $target.hasClass 'checked'
 
   addToCart: (e) ->
     e.preventDefault()
