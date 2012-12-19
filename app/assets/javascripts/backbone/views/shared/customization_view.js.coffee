@@ -4,7 +4,7 @@ class TR.Views.Customization extends TR.Views.Base
   events:
     'click a.customization-option': 'setCustomization'
     'click a.add-to-cart': 'addToCart'
-    'click .chevron a': 'jumpToCustomization'
+    'click .chevron a': 'clickedChevron'
     'click a.left': 'previous'
     'click a.right': 'next'
 
@@ -12,6 +12,10 @@ class TR.Views.Customization extends TR.Views.Base
     @product = options.product
     @customization = new TR.Models.Customization()
     @customization.on 'change', @.updateSummary
+    @.getTemplateFunction('customization_checkout', (template) =>
+      @checkoutTemplateFunction = template
+      @.updateSummary()
+    )
 
     $(document).on 'keydown.customization', @.keydown
     
@@ -20,9 +24,9 @@ class TR.Views.Customization extends TR.Views.Base
       @.previous()
     else if e.which == 39 # Right arrow
       @.next()
-      
-  updateSummary: (model) =>
-    console.log(@, model);
+
+  updateSummary: =>
+    @.$('.customization-summary').html @checkoutTemplateFunction @customization.toJSON()
 
   previous: (e) ->
     e.preventDefault() if e
@@ -44,12 +48,12 @@ class TR.Views.Customization extends TR.Views.Base
 
     @.getCurrentCustomization().hide()
     @.$(".customization-wrapper[data-type=#{customizationType}]").show()
+    
 #    @.getCurrentCustomization().fadeOut(=>
 #      @.$(".customization-wrapper[data-type=#{customizationType}]").fadeIn()
 #    )
 
-
-  jumpToCustomization: (e) ->
+  clickedChevron: (e) ->
     e.preventDefault()
     @.switchPane $(e.currentTarget).parent().data 'type'
 
@@ -67,12 +71,14 @@ class TR.Views.Customization extends TR.Views.Base
     $target = $(e.currentTarget)
     option = $target.data 'option'
     type = $target.parents('.customization-wrapper').data 'type'
+    console.log(typeof option);
     @customization.setByName type, option
+    
+    console.log(@customization.toJSON());
 
     # Update view
-    @.clearCheckboxes()
+    @.clearChecked()
     $(e.currentTarget).addClass('checked')
-    .find('h5').append @.$checkmark
 
   addToCart: (e) ->
     e.preventDefault()
@@ -82,6 +88,5 @@ class TR.Views.Customization extends TR.Views.Base
       )
     )
 
-  clearCheckboxes: =>
+  clearChecked: =>
     @.$('a.customization-option:visible').removeClass('checked')
-      .find('h5:visible span').remove()

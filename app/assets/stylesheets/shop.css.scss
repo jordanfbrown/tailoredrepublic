@@ -31,7 +31,7 @@
     background-color: $customization-background-color;
     border-radius: 5px;
     @include clearfix;
-    @include box-shadow(0px 6px 8px #aaa);
+    //@include box-shadow(0px 6px 8px #aaa);
   }
 
   .blurb {

@@ -1,0 +1,24 @@
+<ul class="four columns">
+  <li><span class="label">Lapel:</span> {{uppercaseFirst lapel}}</li>
+  <li><span class="label">Buttons:</span> {{numberToString buttons}}</li>
+  <li><span class="label">Vents:</span> {{numberToString vents}}</li>
+  <li><span class="label">Pleats:</span> {{numberToString pleats}}</li>
+  <li><span class="label">Cuffs:</span> {{#if pant_cuffs}}Yes{{else}}No{{/if}}</li>
+  <li><span class="label">Fit:</span> {{uppercaseFirst fit}}</li>
+</ul>
+
+<ul class="four columns">
+  <li><span class="label">Lining:</span> {{lining}}</li>
+  <li><span class="label">Monogram:</span> {{monogram}}</li>
+  <li><span class="label">Bouttoniere:</span> {{#if bouttoniere}}Yes{{else}}No{{/if}}</li>
+  <li><span class="label">Pick Stitching:</span> {{#if pick_stitching}}Yes{{else}}No{{/if}}</li>
+  <li><span class="label">Vest:</span> {{#if vest}}Yes (+$79){{else}}No{{/if}}</li>
+  {{#if vest}}
+  <li><span class="label">Vest Buttons:</span> {{vest_buttons}}</li>
+  {{/if}}
+</ul>
+
+<div class="four columns">
+  <p>Buy that shit</p>
+  <a href="#" class="button add-to-cart">Add to cart</a>
+</div>
