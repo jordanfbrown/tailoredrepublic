@@ -8,6 +8,7 @@ class TR.Views.Customization extends TR.Views.Base
     'click a.left': 'previous'
     'click a.right': 'next'
     'click a.lining-option': 'selectLining'
+    'keyup input[name=monogram]': 'keyupMonogram'
 
   initialize: (options) ->
     @product = options.product
@@ -63,6 +64,9 @@ class TR.Views.Customization extends TR.Views.Base
   clickedChevron: (e) ->
     e.preventDefault()
     @.switchPane $(e.currentTarget).parent().data 'type'
+
+  keyupMonogram: (e) ->
+    @customization.set 'monogram', $(e.currentTarget).val()
 
   destroy: ->
     super()
