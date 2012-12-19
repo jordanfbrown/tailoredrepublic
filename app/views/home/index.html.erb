@@ -1,6 +1,6 @@
 <article id="home">
-  <img id="logo" src="<%= asset_path "logos/logo-shield.png" %>" alt="Tailored Republic">
-  <img src="<%= asset_path "background-main.jpg" %>">
+  <%= image_tag "logos/logo-shield.png", id: "logo", alt: "Tailored Republic" %>
+  <%= image_tag "background-main.jpg" %>
   <div id="home-navigation">
     <a href="#">log in</a>
     <span class="divider">&nbsp;/&nbsp;/</span>
@@ -10,7 +10,7 @@
     <span class="divider">&nbsp;/&nbsp;/</span>
     <a id="continue" href="#process">or continue scrolling</a>
   </div>
-  <a class="page-down" href="#process"><img src="<%= asset_path "icons/page-down.png" %>"></a>
+  <a class="page-down" href="#process"><%= image_tag "icons/page-down.png" %></a>
 </article>
 
 <article id="process">
@@ -25,18 +25,15 @@
     <div class="four columns">
       <h4>Choose your suit</h4>
       <div class="image-wrapper">
-        <img src="<%= asset_path "process/choose-suit.png" %>">
+        <%= image_tag "process/choose-suit.png" %>
       </div>
       <p>Getting a tailored suit will change your suit game completely. It as an eye-opening realization when your suit
         fits properly. <a href="#">Choose your suit</a> fabric/pattern and get started.</p>
     </div>
-    <!--<div class="one columns">-->
-      <!--<img src="<%= asset_path "process/divider.png" %>">-->
-    <!--</div>-->
     <div class="four columns">
       <h4>Customize your suit</h4>
       <div class="image-wrapper">
-        <img src="<%= asset_path "process/customize-suit.png" %>">
+        <%= image_tag "process/customize-suit.png" %>
       </div>
       <p>Make your suit yours. Customize your button options, linings, lapels, and personalize it with an embroidered
         monogram. Consult our <a href="#">style guide</a> so we can help you do you.</p>
@@ -44,7 +41,7 @@
     <div class="four columns">
       <h4>Input your measurements</h4>
       <div class="image-wrapper">
-        <img src="<%= asset_path "process/input-measurements.png" %>">
+        <%= image_tag "process/input-measurements.png" %>
       </div>
       <p>If you don’t know this already, it is all about the Tailored fit. Grab a friend and use our
         <a href="#">simple videos</a> to measure yourself in 10 quick minutes. Don’t have a tape measure? Input your
@@ -75,7 +72,7 @@
 </article>
 
 <article id="bosses">
-  <img src="<%= asset_path "bosses.jpg" %>">
+  <%= image_tag "bosses.jpg" %>
 </article>
 
 <article id="about">
@@ -109,14 +106,14 @@
       </ul>
     </div>
     <div class="four columns">
-      <img src="<%= asset_path "textures/about-print.png" %>">
+      <%= image_tag "textures/about-print.png" %>
     </div>
   </div>
 </article>
 
 <article id="constitution">
   <div class="three columns">
-    <img src="<%= asset_path "logos/constitution.png" %>">
+    <%= image_tag "logos/constitution.png" %>
   </div>
   <div class="nine columns">
     <div class="constitution">
@@ -155,14 +152,18 @@
     <span class="location">Los Angeles, CA</span>
   </span>
   <div id="slideshow">
-    <img src="<%= asset_path "lookbook/lookbook-1.png" %>" alt="Test caption 1" data-suit="Charcoal grey suit"
-         data-accessory="Tie by Armani" data-location="Los Angeles, CA">
-    <img src="<%= asset_path "lookbook/lookbook-1.png" %>" alt="Test caption 2" data-suit="Poop colored suit"
-         data-accessory="Tie by JB" data-location="San Francisco, CA">
-    <img src="<%= asset_path "lookbook/lookbook-1.png" %>" alt="Test caption 3" data-suit="Semen flavored suit"
-         data-accessory="Tie by Brian" data-location="Portland, OR">
-    <img src="<%= asset_path "lookbook/lookbook-1.png" %>" alt="Test caption 4" data-suit="Unfitted piece of shit"
-         data-accessory="Tie by Nordstorm" data-location="Seattle, WA">
+    <%= image_tag "lookbook/lookbook-1.png", data: {
+      suit: "Charcoal grey suit", accessory: "Tie by Armani", location: "Los Angeles, CA"
+    } %>
+    <%= image_tag "lookbook/lookbook-1.png", data: {
+      suit: "Black pinstripe suit", accessory: "Tie by Armani", location: "Los Angeles, CA"
+    } %>
+    <%= image_tag "lookbook/lookbook-1.png", data: {
+      suit: "Grey wool suit", accessory: "Tie by Armani", location: "Los Angeles, CA"
+    } %>
+    <%= image_tag "lookbook/lookbook-1.png", data: {
+      suit: "Sharktooth suit", accessory: "Tie by Armani", location: "Los Angeles, CA"
+    } %>
   </div>
 </article>
 
@@ -196,19 +197,19 @@
         <li><strong>#</strong>&nbsp;//&nbsp;213-8-TAILOR (213-382-4567)</li>
         <li class="social">
           <a href="mailto:info@tailoredrepublic.com">
-            <img src="<%= asset_path "icons/email-icon.png" %>">
+            <%= image_tag "icons/email-icon.png" %>
           </a>
           <a href="http://www.facebook.com/TailoredRepublic" target="_blank">
-            <img src="<%= asset_path "icons/facebook-icon.png" %>">
+            <%= image_tag "icons/facebook-icon.png" %>
           </a>
           <a href="https://twitter.com/T_Republic" target="_blank">
-            <img src="<%= asset_path "icons/twitter-icon.png" %>">
+            <%= image_tag "icons/twitter-icon.png" %>
           </a>
           <a href="http://instagram.com/tailoredrepublic" target="_blank">
-            <img src="<%= asset_path "icons/instagram-icon.png" %>">
+            <%= image_tag "icons/instagram-icon.png" %>
           </a>
           <a href="http://blog.tailoredrepublic.com" target="_blank">
-            <img src="<%= asset_path "icons/tumblr-icon.png" %>">
+            <%= image_tag "icons/tumblr-icon.png" %>
           </a>
         </li>
       </ul>
@@ -233,7 +234,7 @@
     <li class="info"><a href="#info">Info</a></li>
     <li class="cart">
       <a href="<%= shop_or_cart %>">
-        <img src="<%= asset_path "icons/shopping-cart.png" %>"> (<%= @cart.num_items %>)
+        <%= image_tag "icons/shopping-cart.png" %> (<%= @cart.num_items %>)
       </a>
     </li>
   </ul>
