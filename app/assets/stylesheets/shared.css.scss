@@ -1,5 +1,24 @@
 @import "_mixins";
 @import "compass/utilities/general/clearfix";
+@import "compass/css3";
+
+.button {
+  @include background(linear-gradient($brown, $darker-brown));
+  padding: 10px 5px 5px 5px;
+  border: 1px solid #CCC;
+  color: #fff;
+  display: inline-block;
+  @include border-radius(5px);
+
+  &:hover {
+    color: #fff;
+    @include background(linear-gradient($darker-brown, $brown));
+  }
+
+  &:active {
+    @include box-shadow(inset 0px 2px 7px 1px #666);
+  }
+}
 
 #suits-wrapper {
   font-family: "Clarendon Lt";

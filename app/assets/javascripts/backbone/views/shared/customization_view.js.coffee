@@ -3,7 +3,6 @@ class TR.Views.Customization extends TR.Views.Base
 
   events:
     'click a.customization-option': 'setCustomization'
-    'click a.add-to-cart': 'addToCart'
     'click .chevron a': 'clickedChevron'
     'click a.left': 'previous'
     'click a.right': 'next'
