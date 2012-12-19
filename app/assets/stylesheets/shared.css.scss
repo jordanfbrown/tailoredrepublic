@@ -4,11 +4,13 @@
 
 .button {
   @include background(linear-gradient($brown, $darker-brown));
-  padding: 10px 5px 5px 5px;
+  padding: 7px 5px 5px 5px;
+  font-family: "United Sans Cond", serif;
   border: 1px solid #CCC;
   color: #fff;
   display: inline-block;
   @include border-radius(5px);
+  font-size: 18px;
 
   &:hover {
     color: #fff;

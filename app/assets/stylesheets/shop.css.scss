@@ -194,9 +194,13 @@
     }
   }
 
-  .customization-summary img {
-    display: block;
-    margin-bottom: 10px;
+  .customization-summary {
+    font-family: "United Sans Reg", serif;
+
+    .button {
+      vertical-align: 11px;
+      margin-left: 10px;
+    }
   }
 }
 
