@@ -11,3 +11,6 @@ Handlebars.registerHelper 'numberToString', (number) ->
     when 1 then "One"
     when 2 then "Two"
     when 3 then "Three"
+
+Handlebars.registerHelper 'decimalToInteger', (decimal) ->
+  parseInt decimal

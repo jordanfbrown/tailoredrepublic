@@ -1,5 +1,5 @@
 <a class="close-reveal-modal">&#215;</a>
-<h2>Classic Charcoal<span class="divider">&nbsp;//&nbsp;</span>$329</h2>
+<h2>{{name}}<span class="divider">&nbsp;//&nbsp;</span>${{decimalToInteger price}}</h2>
 <div class="five columns preview-wrapper">
   <ul class="modal-suit-preview three columns">
     <li><a href="#"><img src="assets/{{image_small_1_url}}"></a></li>
@@ -13,8 +13,7 @@
   </div>
 </div>
 <div class="seven columns">
-  <p class="blurb">Bring a little flavor to your suit collection. The classic charcoal suit breaks the mold of the
-    black and navy tradition without drawing a disapproving look from your stodgy old boss. Stay fly.</p>
+  <p class="blurb">{{description}}</p>
   <div class="customizations">
     <h3 class="customize">Customize</h3>
     <ul class="chevrons">
@@ -142,15 +141,15 @@
     </div>
     <div class="customization-wrapper" data-type="fit" style="display: none;">
       <h3><a href="#" class="left" title="Previous customization"></a>Fit<a href="#" class="right" title="Next customization"></a></h3>
-      <a href="#" class="customization-option four" data-option="0">
+      <a href="#" class="customization-option four" data-option="slim">
         <h5>Slim</h5>
         <img src="assets/customizations/fit-slim-black.png">
       </a>
-      <a href="#" class="customization-option four" data-option="1">
+      <a href="#" class="customization-option four" data-option="tailored">
         <h5>Tailored</h5>
         <img src="assets/customizations/fit-tailored-black.png">
       </a>
-      <a href="#" class="customization-option four" data-option="2">
+      <a href="#" class="customization-option four" data-option="normal">
         <h5>Normal</h5>
         <img src="assets/customizations/fit-normal-black.png">
       </a>
