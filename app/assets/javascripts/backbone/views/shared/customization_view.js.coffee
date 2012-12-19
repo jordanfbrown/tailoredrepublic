@@ -4,10 +4,15 @@ class TR.Views.Customization extends TR.Views.Base
   events:
     'click a.customization-option': 'setCustomization'
     'click a.add-to-cart': 'addToCart'
+    'click .chevron a': 'jumpToCustomization'
+    'click a.left': 'previous'
+    'click a.right': 'next'
 
   initialize: (options) ->
     @product = options.product
     @customization = new TR.Models.Customization()
+    @customization.on 'change', @.updateSummary
+
     $(document).on 'keydown.customization', @.keydown
     
   keydown: (e) =>
@@ -15,26 +20,45 @@ class TR.Views.Customization extends TR.Views.Base
       @.previous()
     else if e.which == 39 # Right arrow
       @.next()
+      
+  updateSummary: (model) =>
+    console.log(@, model);
 
-  previous: ->
-    $currentCustomization = @.$('.customization-wrapper:visible')
-    $previousCustomization = $currentCustomization.prev()
+  previous: (e) ->
+    e.preventDefault() if e
+    $currentCustomization = @.getCurrentCustomization()
+    $previousCustomization = $currentCustomization.prev('.customization-wrapper')
     if $previousCustomization.exists()
-#      $currentCustomization.fadeOut ->
-#        $currentCustomization.prev().fadeIn()
-      $currentCustomization.hide().prev().show()
+      @.switchPane $currentCustomization.prev().data 'type'
 
-  next: ->
-    $currentCustomization = @.$('.customization-wrapper:visible')
-    $nextCustomization = $currentCustomization.next();
+  next: (e) ->
+    e.preventDefault() if e
+    $currentCustomization = @.getCurrentCustomization()
+    $nextCustomization = $currentCustomization.next('.customization-wrapper');
     if $nextCustomization.exists()
-#      $currentCustomization.fadeOut ->
-#        $currentCustomization.next().fadeIn()
-      $currentCustomization.hide().next().show()
+      @.switchPane $currentCustomization.next().data 'type'
+
+  switchPane: (customizationType) ->
+    @.$('.chevron').find('img.selected').attr('src', 'assets/icons/chevron.png').removeClass 'selected'
+    @.$(".chevron[data-type=#{customizationType}] img").attr('src', 'assets/icons/chevron-selected.png').addClass 'selected'
+
+    @.getCurrentCustomization().hide()
+    @.$(".customization-wrapper[data-type=#{customizationType}]").show()
+#    @.getCurrentCustomization().fadeOut(=>
+#      @.$(".customization-wrapper[data-type=#{customizationType}]").fadeIn()
+#    )
+
+
+  jumpToCustomization: (e) ->
+    e.preventDefault()
+    @.switchPane $(e.currentTarget).parent().data 'type'
 
   destroy: ->
     super()
     $(document).off 'keydown.customization'
+
+  getCurrentCustomization: ->
+    @.$('.customization-wrapper:visible')
 
   setCustomization: (e) =>
     e.preventDefault()

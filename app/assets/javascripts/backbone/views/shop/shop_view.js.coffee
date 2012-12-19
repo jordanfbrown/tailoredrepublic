@@ -7,6 +7,12 @@ class TR.Views.Shop extends TR.Views.Base
   initialize: (options) ->
     @products = new TR.Collections.Products options.products
 
+
+    product = @products.get '159758890'
+    @productModal = new TR.Views.ProductModal({model: product})
+    @productModal.$el.insertAfter('#sidebar')
+    @productModal.reveal()
+
   renderProductModal: (e) ->
     e.preventDefault()
     id = $(e.currentTarget).parents('.product-wrapper').data('id')
