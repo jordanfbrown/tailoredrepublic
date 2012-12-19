@@ -271,6 +271,38 @@ $navigation-color: #000;
 footer {
   height: 240px;
 
+  input[type=text] {
+    @include border-radius(0);
+    @include background(radial-gradient(#404040, #333));
+    color: #999;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-weight: lighter;
+
+    &:focus {
+      @include background(radial-gradient(#404040, #333));
+    }
+  }
+
+  input[type=submit] {
+    @include background(radial-gradient(#BBB, #666));
+    border: none;
+    font-weight: bold;
+    display: inline-block;
+    color: #fff;
+    padding: 5px 10px;
+    font-family: "Lucida Grande";
+    font-size: 13px;
+    cursor: pointer;
+    text-transform: uppercase;
+
+    &:hover {
+      color: #fff;
+      @include background(radial-gradient(#DDD, #666));
+    }
+  }
+
   @media only screen and (max-width: 767px) {
     height: inherit;
   }
