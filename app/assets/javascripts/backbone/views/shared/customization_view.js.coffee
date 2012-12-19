@@ -7,6 +7,7 @@ class TR.Views.Customization extends TR.Views.Base
     'click .chevron a': 'clickedChevron'
     'click a.left': 'previous'
     'click a.right': 'next'
+    'click a.lining-option': 'selectLining'
 
   initialize: (options) ->
     @product = options.product
@@ -53,6 +54,12 @@ class TR.Views.Customization extends TR.Views.Base
 #      @.$(".customization-wrapper[data-type=#{customizationType}]").fadeIn()
 #    )
 
+  selectLining: (e) ->
+    e.preventDefault()
+    @.$('.lining-option').removeClass 'selected'
+    $lining = $(e.currentTarget).addClass 'selected'
+    @customization.set 'lining', $lining.data 'id'
+
   clickedChevron: (e) ->
     e.preventDefault()
     @.switchPane $(e.currentTarget).parent().data 'type'
@@ -71,11 +78,8 @@ class TR.Views.Customization extends TR.Views.Base
     $target = $(e.currentTarget)
     option = $target.data 'option'
     type = $target.parents('.customization-wrapper').data 'type'
-    console.log(typeof option);
     @customization.setByName type, option
     
-    console.log(@customization.toJSON());
-
     # Update view
     @.clearChecked()
     $(e.currentTarget).addClass('checked')

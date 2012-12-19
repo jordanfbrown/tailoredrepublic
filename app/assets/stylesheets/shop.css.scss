@@ -121,6 +121,19 @@
 
       @include border-radius(5px);
 
+      .lining-option {
+        height: 35px;
+        width: 35px;
+        display: block;
+        background-color: #CCC;
+        margin: 5px;
+        border: 1px solid #000;
+
+        &.selected {
+          border: 2px solid #000;
+        }
+      }
+
       img {
         height: 120px;
         display: block;
