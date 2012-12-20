@@ -1,6 +1,8 @@
 class TR.Views.Customization extends TR.Views.Base
   $checkmark: $('<span>&#x2713;</span>')
 
+  VEST_PRICE: 79
+
   events:
     'click a.customization-option': 'setCustomization'
     'click a.add-to-cart': 'addToCart'
@@ -28,8 +30,8 @@ class TR.Views.Customization extends TR.Views.Base
       @.next()
 
   updateSummary: =>
-    price = @product.get('price') + if @customization.get('vest') then TR.VEST_PRICE else 0
-    summaryData = _.extend {price: price}, @customization.toJSON()
+    price = @product.get('price') + if @customization.get('vest') then @.VEST_PRICE else 0
+    summaryData = _.extend {price: price, vestPrice: @.VEST_PRICE}, @customization.toJSON()
     @.$('.customization-summary').html @checkoutTemplateFunction summaryData
 
   previous: (e) ->

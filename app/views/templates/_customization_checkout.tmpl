@@ -12,9 +12,9 @@
   <li><span class="label">Monogram:</span> {{monogram}}</li>
   <li><span class="label">Bouttoniere:</span> {{#if bouttoniere}}Yes{{else}}No{{/if}}</li>
   <li><span class="label">Pick Stitching:</span> {{#if pick_stitching}}Yes{{else}}No{{/if}}</li>
-  <li><span class="label">Vest:</span> {{#if vest}}Yes (+$79){{else}}No{{/if}}</li>
+  <li><span class="label">Vest:</span> {{#if vest}}Yes (+${{vestPrice}}){{else}}No{{/if}}</li>
   {{#if vest}}
-  <li><span class="label">Vest Buttons:</span> {{vest_buttons}}</li>
+    <li><span class="label">Vest Buttons:</span> {{vest_buttons}}</li>
   {{/if}}
 </ul>
 
