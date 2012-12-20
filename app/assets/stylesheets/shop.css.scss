@@ -50,13 +50,11 @@
     }
 
     h3, h5 {
-      font-family: "United Sans Reg", sans-serif;
       text-align: center;
       color: #000;
     }
 
     p {
-      font-family: "United Sans Reg", sans-serif;
       color: #000;
       clear: left;
       padding: 20px 20px 0px 20px;
@@ -76,7 +74,6 @@
       font-size: 36px;
       margin: 5px 0;
       position: relative;
-      font-weight: normal;
 
       &.customize {
         margin: 10px;
@@ -224,7 +221,7 @@
   }
 
   .customization-summary {
-    font-family: "United Sans Reg", serif;
+    //font-family: "United Sans Reg", serif;
 
     .button {
       vertical-align: 11px;
