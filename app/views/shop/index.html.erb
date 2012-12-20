@@ -8,6 +8,8 @@
 <nav id="sidebar">
 </nav>
 
+<%= render "layouts/footer" %>
+
 <script>
   $(function() {
     new TR.Views.Shop({products: <%= @suits.to_json.html_safe %>});

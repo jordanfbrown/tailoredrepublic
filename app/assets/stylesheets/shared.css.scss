@@ -23,9 +23,17 @@
 }
 
 #suits-wrapper {
-  font-family: "Clarendon Lt";
   margin-bottom: 100px;
   @include clearfix;
+
+  .product-wrapper {
+    font-family: "United Italic Cond", serif;
+    text-align: center;
+    display: inline-block;
+    @media only screen and (max-width: 1200px) {
+      width: 50%;
+    }
+  }
 
   .product-info-wrapper {
     @include clearfix;
@@ -35,14 +43,6 @@
 
   img {
     border: 5px solid #fff;
-  }
-
-  .product-wrapper {
-    text-align: center;
-    display: inline-block;
-    @media only screen and (max-width: 1200px) {
-      width: 50%;
-    }
   }
 
   .product-info {
@@ -60,7 +60,7 @@
     text-align: center;
     padding: 10px 0 5px 0;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 22px;
   }
 
   .customize {
@@ -72,12 +72,12 @@
     border: 4px solid white;
     padding: 15px 0 10px 0;
     margin-top: 5px;
-    font-size: 15px;
+    font-size: 20px;
+    font-weight: bold;
   }
 
   .product-price {
     width: 25%;
-    font-size: 22px;
     margin-top: 10px;
     background-color: #fff;
     position: absolute;
@@ -85,10 +85,15 @@
     top: 0;
     bottom: 0;
     border: 3px solid #EEE;
+    font-family: "United Sans Cond", serif;
 
     .dollar {
       vertical-align: super;
       font-size: 18px;
+    }
+
+    .price {
+      font-size: 24px;
     }
   }
 

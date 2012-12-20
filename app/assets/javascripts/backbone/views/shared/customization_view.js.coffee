@@ -25,9 +25,9 @@ class TR.Views.Customization extends TR.Views.Base
     
   keydown: (e) =>
     if e.which == 37 # Left arrow
-      @.previous()
+      @.advanceSlide 'prev'
     else if e.which == 39 # Right arrow
-      @.next()
+      @.advanceSlide 'next'
 
   updateSummary: =>
     price = parseFloat(@product.get 'price') + if @customization.get 'vest' then @.VEST_PRICE else 0
