@@ -7,9 +7,9 @@ $maple: #D0A66E;
   &:before {
     content: '';
     border-left: $height solid transparent;
-    border-bottom: $height + 4px solid $color;
+    border-bottom: $height + 1px solid $color;
     position: absolute;
-    left: -$height;
+    left: -$height + 1px;
     top: 0;
   }
 }
@@ -17,10 +17,10 @@ $maple: #D0A66E;
 @mixin slanted-edge-after($height, $color) {
   &:after {
     content: '';
-    border-top: $height + 4px solid $color;
+    border-top: $height + 1px solid $color;
     border-right: $height solid transparent;
     position: absolute;
-    right: -$height;
+    right: -$height + 1px;
     top: 0;
   }
 }
