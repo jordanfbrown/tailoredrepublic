@@ -14,7 +14,8 @@ class TR.Views.ProductModal extends TR.Views.Base
     )
 
   render: ->
-    @.$el.html @templateFunction @model.toJSON()
+    templateData = _.extend {vestPrice: TR.VEST_PRICE}, @model.toJSON()
+    @.$el.html @templateFunction templateData
     @customizationView = new TR.Views.Customization el: @.$('.customizations'), product: @model
     @.enableMagnifier();
     @

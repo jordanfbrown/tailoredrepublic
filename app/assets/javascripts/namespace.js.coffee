@@ -3,4 +3,5 @@ window.TR =
   Views: {}
   Models: {}
   Collections: {}
+  VEST_PRICE: 79
 
