@@ -25,6 +25,21 @@ $maple: #D0A66E;
   }
 }
 
+@mixin font($type) {
+  @if $type == body {
+    font-family: "United Sans Reg", sans-serif;
+    font-weight: 200;
+  } @else if $type == header {
+    font-family: "United Serif SemiCond", serif;
+  } @else if $type == italic {
+    font-family: "United Italic Cond", sans-serif;
+  } @else if $type == clean {
+    font-family: "United Sans Cond", sans-serif;
+  } @else if $type == fancy {
+    font-family: "United Serif SemiCond", serif;
+  }
+}
+
 @mixin white-anchor {
   a {
     color: #fff;

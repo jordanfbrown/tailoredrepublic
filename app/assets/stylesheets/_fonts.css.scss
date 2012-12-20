@@ -1,53 +1,89 @@
 @font-face {
   font-family: "United Italic Cond";
   src: url(UnitedItalicCdLt.otf) format("opentype");
-  font-weight: lighter;
+  font-weight: 200;
 }
 
 @font-face {
   font-family: "United Italic Cond";
   src: url(UnitedItalicCdMd.otf) format("opentype");
-  font-weight: normal;
+  font-weight: 400;
 }
 
 @font-face {
   font-family: "United Italic Cond";
   src: url(UnitedItalicCdBd.otf) format("opentype");
-  font-weight: bold;
+  font-weight: 700;
 }
 
 @font-face {
-  font-family: "United Serif SemiCond";
-  src: url(UnitedSerifSmCdLt.otf) format("opentype");
-  font-weight: lighter;
+  font-family: "United Sans Cond";
+  src: url(UnitedSansCdLt.otf) format("opentype");
+  font-weight: 200;
 }
 
 @font-face {
-  font-family: "United Serif SemiCond";
-  src: url(UnitedSerifSmCdMd.otf) format("opentype");
-  font-weight: normal;
+  font-family: "United Sans Cond";
+  src: url(UnitedSansCdMd.otf) format("opentype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "United Sans Cond";
+  src: url(UnitedSansCdBd.otf) format("opentype");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "United Sans Reg";
+  src: url(UnitedSansRgLt.otf) format("opentype");
+  font-weight: 200;
 }
 
 @font-face {
   font-family: "United Sans Reg";
   src: url(UnitedSansRgMd.otf) format("opentype");
-  font-weight: normal;
+  font-weight: 400;
 }
 
 @font-face {
-  font-family: "Clarendon Lt";
-  src: url(ClarendonLTStd.otf) format("opentype");
-  font-weight: normal;
+  font-family: "United Sans Reg";
+  src: url(UnitedSansRgBd.otf) format("opentype");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "United Serif SemiCond";
+  src: url(UnitedSerifSmCdLt.otf) format("opentype");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "United Serif SemiCond";
+  src: url(UnitedSerifSmCdMd.otf) format("opentype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "United Serif SemiCond";
+  src: url(UnitedSerifSmCdBd.otf) format("opentype");
+  font-weight: 700;
 }
 
 @font-face {
   font-family: "Clarendon Lt";
   src: url(ClarendonLTStd-Light.otf) format("opentype");
-  font-weight: light;
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Clarendon Lt";
+  src: url(ClarendonLTStd.otf) format("opentype");
+  font-weight: 400;
 }
 
 @font-face {
   font-family: "Clarendon Lt";
   src: url(ClarendonLTStd-Bold.otf) format("opentype");
-  font-weight: bold;
+  font-weight: 700;
 }

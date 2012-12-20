@@ -17,9 +17,7 @@ article {
 $h2-margin: 20px;
 
 h2 {
-  font-size: 60px;
   margin-left: $h2-margin;
-  font-weight: normal;
 
   .article-title {
     position: relative;
@@ -59,14 +57,13 @@ $navigation-height: 29px;
 $navigation-color: #000;
 
 #home-navigation {
-  font-family: "United Italic Cond", serif;
+  @include font("header");
   background-color: $navigation-color;
   position: absolute;
   top: 50%;
   left: 22%;
   padding: 5px 20px 5px 20px;
-  font-weight: bold;
-  font-size: 20px;
+  font-size: 19px;
   @include slanted-edge-before($navigation-height, $navigation-color);
   @include slanted-edge-after($navigation-height, $navigation-color);
 }
@@ -94,8 +91,6 @@ $navigation-color: #000;
   .content-wrapper {
     p {
       margin-top: 20px;
-      font-family: "Clarendon Lt", serif;
-      font-weight: lighter;
     }
   }
 
@@ -127,7 +122,7 @@ $navigation-color: #000;
 
 .login-register {
   margin-left: $h2-margin;
-  font-family: "United Italic Cond", serif;
+  @include font("header");
 
   a {
     color: $grey;
@@ -164,12 +159,8 @@ $navigation-color: #000;
   margin-bottom: 100px;
   @include clearfix;
 
-  #blurb {
-    font-family: "Clarendon Lt";
-  }
-
   #get-tailored {
-    font-family: "United Serif SemiCond";
+    @include font("fancy");
     color: $brown;
 
     li {
@@ -203,16 +194,16 @@ $navigation-color: #000;
 
   .constitution p {
     color: #fff;
-    font-size: 24px;
-    font-family: "United Sans Cond", serif;
+    @include font("header");
     font-weight: bold;
     line-height: 1;
+    font-size: 22px;
   }
 
   p.extra {
     color: $maple;
-    font-family: "United Italic Cond", serif;
-    font-size: 25px;
+    font-size: 22px;
+    @include font("clean");
     font-weight: bold;
     margin-top: 40px;
 
@@ -230,7 +221,7 @@ $navigation-color: #000;
   background: url(textures/tr-texture-2.png) repeat center center;
   h3 {
     text-align: center;
-    font-family: "United Serif SemiCond", serif;
+    @include font("fancy");
     color: #ccc;
     font-size: 40px;
     font-weight: normal;
@@ -261,7 +252,8 @@ $navigation-color: #000;
     span {
       display: inline-block;
       margin-right: 10px;
-      font-family: "United Italic Cond", sans-serif;
+      @include font("header");
+      font-weight: 400;
 
       &:first-child {
         padding-left: $h2-margin;
@@ -276,7 +268,7 @@ $navigation-color: #000;
     position: fixed;
     top: 200px;
     font-weight: normal;
-    font-family: "United Sans Cond", serif;
+    @include font("clean");
     z-index: 2;
 
     @include white-anchor;
