@@ -35,10 +35,6 @@ h2 {
   }
 }
 
-h4 {
-  color: $brown;
-}
-
 h5 {
   color: $brown;
 }
@@ -89,6 +85,12 @@ $navigation-color: #000;
   background-color: #fff;
   z-index: 2;
 
+  @media only screen and (min-width: 768px) and (max-width: 1037px) {
+    h4 {
+      height: 75px;
+    }
+  }
+
   .content-wrapper {
     p {
       margin-top: 20px;
@@ -112,11 +114,12 @@ $navigation-color: #000;
     }
   }
 
-  a {
-    color: $brown;
+
+  p a {
+    color: $darker-brown;
 
     &:hover {
-      color: $brown;
+      color: $darker-brown;
       text-decoration: underline;
     }
   }
