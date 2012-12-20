@@ -35,10 +35,6 @@ h2 {
   }
 }
 
-h4 {
-  color: $brown;
-}
-
 h5 {
   color: $brown;
 }
@@ -100,16 +96,6 @@ $navigation-color: #000;
   .twelve {
     text-align: center;
     margin-bottom: 40px;
-
-    @media only screen and (max-width: 767px) {
-      text-align: left;
-    }
-  }
-
-  @media only screen and (min-width: 767px) {
-    .image-wrapper {
-      height: 250px;
-    }
   }
 
   a {
@@ -144,10 +130,6 @@ $navigation-color: #000;
   height: 400px;
   overflow: hidden;
 
-  @media only screen and (max-width: 767px) {
-    height: 200px;
-  }
-
   img {
     width: 100%;
     top: 0;
@@ -173,14 +155,6 @@ $navigation-color: #000;
       font-size: 28px;
     }
   }
-
-  img {
-    //float: right;
-    @media only screen and (max-width: 767px) {
-      display: none;
-    }
-
-  }
 }
 
 #constitution {
@@ -189,14 +163,6 @@ $navigation-color: #000;
   position: relative;
   padding: 30px 0;
   @include clearfix;
-
-  @media only screen and (max-width: 767px) {
-    img {
-      display: block;
-      margin: auto;
-      margin-bottom: 10px;
-    }
-  }
 
   .constitution p {
     color: #fff;

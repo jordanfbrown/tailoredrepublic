@@ -1,0 +1,89 @@
+@media only screen and (max-width: 455px) {
+  img.lining, img.monogram {
+    height: 140px;
+  }
+}
+
+@media only screen and (max-width: 578px) {
+  .chevrons li {
+    width: 16.66%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  footer {
+    height: inherit;
+  }
+
+  .strikethrough {
+    display: none;
+  }
+
+  .social img {
+    width: 22px;
+  }
+
+  .column, .columns {
+    width: 100% !important;
+  }
+
+  .three {
+    width: 50%;
+  }
+
+  .content-wrapper {
+
+    .twelve {
+      text-align: left;
+    }
+
+    .image-wrapper {
+      height: 250px;
+    }
+  }
+
+  #bosses {
+    height: 200px;
+  }
+
+  #about img {
+    display: none;
+  }
+
+  #constitution img {
+    display: block;
+    margin: auto;
+    margin-bottom: 10px;
+  }
+
+  .preview-wrapper {
+    margin-bottom: 10px;
+  }
+  .magnify {
+    width: 75% !important;
+    float: left !important;
+  }
+
+  .modal-suit-preview {
+    width: 25% !important;
+    float: left !important;
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .social img {
+    width: 17px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  #suits-wrapper {
+    .product-wrapper {
+      width: 50%;
+    }
+
+    .product-price-text-wrapper {
+      left: 30%;
+    }
+  }
+}
