@@ -13,6 +13,63 @@
     <div id="container" class="container">
       <div id="main" role="main">
         <%= yield %>
+        <footer id="info">
+          <div class="content-wrapper">
+            <div class="strikethrough"></div>
+            <div class="three columns">
+              <h5>CUSTOMER SERVICE</h5>
+              <ul>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Measurements</a></li>
+                <li><a href="#">Get A Free Measuring Tape</a></li>
+              </ul>
+            </div>
+            <div class="three columns">
+              <h5>ETCETERA</h5>
+              <ul>
+                <li><a href="#">Weddings</a></li>
+                <li><a href="#">Get #Tailored Kit</a></li>
+                <li><a href="#">Gift Cards</a></li>
+                <li><a href="#">Press</a></li>
+              </ul>
+            </div>
+            <div class="three columns">
+              <h5>CONTACT</h5>
+              <ul>
+                <li>
+                  <strong>E</strong>&nbsp;//&nbsp;<a href="mailto:info@tailoredrepublic.com">info@tailoredrepublic.com</a>
+                </li>
+                <li><strong>#</strong>&nbsp;//&nbsp;213-8-TAILOR (213-382-4567)</li>
+                <li class="social">
+                  <a href="mailto:info@tailoredrepublic.com">
+                    <%= image_tag "icons/email-icon.png" %>
+                  </a>
+                  <a href="http://www.facebook.com/TailoredRepublic" target="_blank">
+                    <%= image_tag "icons/facebook-icon.png" %>
+                  </a>
+                  <a href="https://twitter.com/T_Republic" target="_blank">
+                    <%= image_tag "icons/twitter-icon.png" %>
+                  </a>
+                  <a href="http://instagram.com/tailoredrepublic" target="_blank">
+                    <%= image_tag "icons/instagram-icon.png" %>
+                  </a>
+                  <a href="http://blog.tailoredrepublic.com" target="_blank">
+                    <%= image_tag "icons/tumblr-icon.png" %>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="three columns">
+              <h5>SUBSCRIBE</h5>
+              <ul>
+                <li>// Become an affiliate of the republic</li>
+              </ul>
+              <input type="text" placeholder="enter email...">
+              <input type="submit" value="SUBMIT">
+            </div>
+          </div>
+        </footer>
       </div>
     </div>
     <script type="text/javascript">

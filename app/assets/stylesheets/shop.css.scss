@@ -10,10 +10,15 @@
     width: 150px;
     background-color: #000;
     color: #fff;
+    z-index: 2;
   }
 
   #suits-wrapper {
     margin-top: 40px;
+  }
+
+  footer {
+    padding-bottom: 10px;
   }
 }
 

@@ -263,6 +263,11 @@ $baseFontSize: 14px;
 body {
   max-width: 1920px;
   margin: 0 auto;
+  height: 100%;
+}
+
+html {
+  height: 100%;
 }
 
 ul {
