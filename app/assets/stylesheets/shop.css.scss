@@ -109,7 +109,7 @@
       li {
         float: left;
         display: block;
-        width: 10%;
+        width: 9.33%;
         margin-left: -1%;
 
         @media only screen and (max-width: 578px) {
@@ -169,10 +169,34 @@
       border-radius: 5px;
       padding: 5px;
       @include clearfix;
+      position: relative;
 
       h5 {
         margin-top: 0;
       }
+
+      .vest-overlay {
+        position: absolute;
+        background-color: black;
+        right: 5px;
+        left: 5px;
+        bottom: 5px;
+        top: 50px;
+        opacity: 0.7;
+        border-radius: 5px;
+        color: #fff;
+
+        p {
+          color: white;
+          vertical-align: middle;
+          position: absolute;
+          top: 40%;
+          font-weight: bold;
+          text-align: center;
+          padding: 0px 10px;
+        }
+      }
+
     }
 
     .customization-wrapper.two-item {

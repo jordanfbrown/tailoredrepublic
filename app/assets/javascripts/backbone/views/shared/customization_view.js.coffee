@@ -30,23 +30,31 @@ class TR.Views.Customization extends TR.Views.Base
       @.next()
 
   updateSummary: =>
-    price = @product.get('price') + if @customization.get('vest') then @.VEST_PRICE else 0
+    price = parseFloat(@product.get 'price') + if @customization.get 'vest' then @.VEST_PRICE else 0
     summaryData = _.extend {price: price, vestPrice: @.VEST_PRICE}, @customization.toJSON()
     @.$('.customization-summary').html @checkoutTemplateFunction summaryData
 
+    @.$('.vest-overlay').toggle !@.customization.get 'vest'
+
   previous: (e) ->
     e.preventDefault() if e
-    $currentCustomization = @.getCurrentCustomization()
-    $previousCustomization = $currentCustomization.prev('.customization-wrapper')
-    if $previousCustomization.exists()
-      @.switchPane $currentCustomization.prev().data 'type'
+    @.advanceSlide 'prev'
 
   next: (e) ->
     e.preventDefault() if e
+    @.advanceSlide 'next'
+
+  advanceSlide: (direction) ->
     $currentCustomization = @.getCurrentCustomization()
-    $nextCustomization = $currentCustomization.next('.customization-wrapper');
-    if $nextCustomization.exists()
-      @.switchPane $currentCustomization.next().data 'type'
+    $previousOrNext = $currentCustomization[direction] '.customization-wrapper'
+
+    # Skip over the vest button slide if user selected "No vest"
+    vestSlide = if direction == 'prev' then 'checkout' else 'vest'
+    if $currentCustomization.data('type') == vestSlide && !@customization.get 'vest'
+      $previousOrNext = $previousOrNext[direction] '.customization-wrapper'
+
+    if $previousOrNext.exists()
+      @.switchPane $previousOrNext.data 'type'
 
   switchPane: (customizationType) ->
     @.$('.chevrons li').find('img.selected').attr('src', 'assets/icons/chevron.png').removeClass 'selected'
@@ -104,4 +112,4 @@ class TR.Views.Customization extends TR.Views.Base
     )
 
   clearChecked: =>
-    @.$('a.customization-option:visible').removeClass('checked')
+    @.$('a.customization-option:visible').removeClass 'checked'
