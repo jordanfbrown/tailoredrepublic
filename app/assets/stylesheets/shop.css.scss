@@ -15,7 +15,6 @@
 
   #suits-wrapper {
     margin-top: 40px;
-    margin-bottom: 0;
   }
 
   footer {
@@ -112,6 +111,10 @@
         display: block;
         width: 9.33%;
         margin-left: -1%;
+
+        @media only screen and (max-width: 578px) {
+          width: 16.66%;
+        }
       }
     }
     .customization-option {
@@ -150,8 +153,14 @@
 
         &.lining, &.monogram {
           height: 170px;
+
+          @media only screen and (max-width: 455px) {
+            height: 140px;
+          }
+
         }
       }
+
     }
 
     .customization-wrapper {
@@ -196,6 +205,21 @@
         margin-left: 5%;
         margin-right: 5%;
       }
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+    .preview-wrapper {
+      margin-bottom: 10px;
+    }
+    .magnify {
+      width: 75% !important;
+      float: left !important;
+    }
+
+    .modal-suit-preview {
+      width: 25% !important;
+      float: left !important;
     }
   }
 

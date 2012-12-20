@@ -35,6 +35,10 @@ footer {
     }
   }
 
+  @media only screen and (max-width: 767px) {
+    height: inherit;
+  }
+
   .content-wrapper {
     position: relative;
     @include clearfix;
@@ -51,6 +55,9 @@ footer {
   }
 
   .strikethrough {
+    @media only screen and (max-width: 767px) {
+      display: none;
+    }
     border-bottom: 1px solid #fff;
     position: absolute;
     top: 23px;
@@ -85,6 +92,14 @@ footer {
     img {
       width: 22px;
       margin-right: 5px;
+
+      @media only screen and (max-width: 860px) {
+        width: 17px;
+      }
+
+      @media only screen and (max-width: 767px) {
+        width: 22px;
+      }
     }
   }
 }

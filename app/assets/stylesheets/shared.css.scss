@@ -30,6 +30,9 @@
     font-family: "United Italic Cond", serif;
     text-align: center;
     display: inline-block;
+    @media only screen and (max-width: 1200px) {
+      width: 50%;
+    }
   }
 
   .product-info-wrapper {
@@ -99,5 +102,9 @@
     left: 18%;
     font-weight: bold;
     position: absolute;
+    @media only screen and (max-width: 1200px) {
+      left: 30%;
+    }
+
   }
 }
