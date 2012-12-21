@@ -10,6 +10,11 @@ class TR.Views.Customization extends TR.Views.Base
     'click a.lining-option': 'selectLining'
     'blur input[name=monogram]': 'setMonogram'
 
+  CHEVRON:
+    SELECTED: 'selected'
+    COMPLETED: 'completed'
+
+
   initialize: (options) ->
     @product = options.product
     @customization = new TR.Models.Customization()
@@ -55,8 +60,8 @@ class TR.Views.Customization extends TR.Views.Base
       @.switchPane $previousOrNext.data 'type'
 
   switchPane: (customizationType) ->
-    @.$('.chevrons li').find('img.selected').attr('src', 'assets/icons/chevron.png').removeClass 'selected'
-    @.$(".chevrons li[data-type=#{customizationType}] img").attr('src', 'assets/icons/chevron-selected.png').addClass 'selected'
+    @.resetChevrons()
+    @.updateChevron customizationType, @.CHEVRON.SELECTED
 
     @.getCurrentCustomization().hide()
     @.$(".customization-wrapper[data-type=#{customizationType}]").show()
@@ -70,6 +75,7 @@ class TR.Views.Customization extends TR.Views.Base
     @.$('.lining-option').removeClass 'selected'
     $lining = $(e.currentTarget).addClass 'selected'
     @customization.set 'lining', $lining.data 'id'
+    @.updateChevron 'lining', @.CHEVRON.COMPLETED
 
   clickedChevron: (e) ->
     e.preventDefault()
@@ -77,6 +83,7 @@ class TR.Views.Customization extends TR.Views.Base
 
   setMonogram: (e) ->
     @customization.set 'monogram', $(e.currentTarget).val()
+    @.updateChevron 'monogram', @.CHEVRON.COMPLETED
 
   destroy: ->
     super()
@@ -94,6 +101,8 @@ class TR.Views.Customization extends TR.Views.Base
     option = $target.data 'option'
     type = $target.parents('.customization-wrapper').data 'type'
 
+    @.updateChevron type, @.CHEVRON.COMPLETED
+
     unless type == 'advanced'
       @customization.setByName type, option
       @.clearChecked()
@@ -101,6 +110,16 @@ class TR.Views.Customization extends TR.Views.Base
     else
       $img.toggleClass 'checked'
       @customization.setByName option, $img.hasClass 'checked'
+
+  updateChevron: (type, state) ->
+    $chevron = @.$(".chevrons li[data-type=#{type}] img")
+    image = if state == 'selected' then 'chevron-selected.png' else 'chevron-completed.png'
+    $chevron.attr('src', "assets/icons/#{image}").addClass state
+
+  resetChevrons: ->
+    $chevron = @.$('.chevrons li').find 'img.selected'
+    image = if $chevron.hasClass 'completed' then 'chevron-completed.png' else 'chevron.png';
+    $chevron.attr('src', "assets/icons/#{image}").removeClass 'selected'
 
   addToCart: (e) ->
     e.preventDefault()
