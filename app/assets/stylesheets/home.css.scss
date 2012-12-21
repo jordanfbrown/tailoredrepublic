@@ -6,10 +6,6 @@
 @import "compass/css3";
 @import "compass/utilities/general/clearfix";
 
-article {
-  position: relative;
-}
-
 .content-wrapper {
   margin-left: 150px;
 }
@@ -38,8 +34,15 @@ h5 {
 }
 
 #home {
-  z-index: 1;
+  z-index: 0;
   @include white-anchor;
+
+  .parallax {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
 }
 
 #logo {
@@ -264,6 +267,12 @@ $navigation-color: #000;
 
 //Sidebar
 .home {
+
+  article {
+    position: relative;
+    background: #fff;
+  }
+
   #sidebar {
     position: fixed;
     top: 200px;

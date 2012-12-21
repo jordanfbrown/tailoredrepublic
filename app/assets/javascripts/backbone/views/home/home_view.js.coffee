@@ -8,6 +8,8 @@ class TR.Views.Home extends TR.Views.Base
   initialize: ->
     @.createSlideshow()
     $(window).scroll @.scroll
+    $(window).resize @.resize
+    @.resize()
     @footerView = new TR.Views.Footer()
 
   scrollToSection: (e) =>
@@ -22,11 +24,17 @@ class TR.Views.Home extends TR.Views.Base
     homeHeight = $home.height()
     marginBottom = parseFloat($home.css 'margin-bottom')
     adjustment = false
-    if $(window).scrollTop() < homeHeight + marginBottom
-      adjustment = homeHeight - homeHeight / 2.5 + Math.abs $('#process').offset().top - $(href).offset().top
+#    if $(window).scrollTop() < homeHeight + marginBottom
+#      adjustment = homeHeight - homeHeight / 2.5 + Math.abs $('#process').offset().top - $(href).offset().top
 
     $('html, body').stop().animate
       scrollTop: (if adjustment then adjustment else $(href).offset().top), 1500
+
+  resize: (e) ->
+    console.log $(window).width()
+
+
+    console.log $('#home img.background').height()
 
   scroll: (e) ->
     $sidebar = $('#sidebar')
@@ -45,10 +53,10 @@ class TR.Views.Home extends TR.Views.Base
     $('#bosses img').css 'top', (bossesPosition - pageTop - $(window).height()) / 2
 
     # Parallax for splash page
-    homeHeight = $('#home').height()
-    marginBottom = -(parseFloat $('#home').css 'margin-bottom')
-    if pageTop < homeHeight - marginBottom
-      $('#home').css 'margin-bottom', -pageTop / 1.5
+#    homeHeight = $('#home').height()
+#    marginBottom = -(parseFloat $('#home').css 'margin-bottom')
+#    if pageTop < homeHeight - marginBottom
+#      $('#home').css 'margin-bottom', -pageTop / 1.5
       
 
     # Adding 100 to the page top so that we add the selected arrow slightly prematurely
