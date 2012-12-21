@@ -8,6 +8,7 @@ class TR.Views.Customization extends TR.Views.Base
     'click a.left': 'previous'
     'click a.right': 'next'
     'click a.lining-option': 'selectLining'
+    'click a.label': 'clickedLabelOnCheckout'
     'blur input[name=monogram]': 'setMonogram'
 
   CHEVRON:
@@ -58,6 +59,10 @@ class TR.Views.Customization extends TR.Views.Base
 
     if $previousOrNext.exists()
       @.switchPane $previousOrNext.data 'type'
+
+  clickedLabelOnCheckout: (e) ->
+    e.preventDefault()
+    @.switchPane $(e.currentTarget).data 'type'
 
   switchPane: (customizationType) ->
     @.resetChevrons()

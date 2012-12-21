@@ -1,20 +1,20 @@
 <ul class="four columns">
-  <li><span class="label">Lapel:</span> {{uppercaseFirst lapel}}</li>
-  <li><span class="label">Buttons:</span> {{numberToString buttons}}</li>
-  <li><span class="label">Vents:</span> {{numberToString vents}}</li>
-  <li><span class="label">Pleats:</span> {{numberToString pleats}}</li>
-  <li><span class="label">Cuffs:</span> {{#if pant_cuffs}}Yes{{else}}No{{/if}}</li>
-  <li><span class="label">Fit:</span> {{uppercaseFirst fit}}</li>
+  <li><a href="#" class="label" data-type="lapel">Lapel:</a> {{uppercaseFirst lapel}}</li>
+  <li><a href="#" class="label" data-type="buttons">Buttons:</a> {{numberToString buttons}}</li>
+  <li><a href="#" class="label" data-type="vents">Vents:</a> {{numberToString vents}}</li>
+  <li><a href="#" class="label" data-type="pleats">Pleats:</a> {{numberToString pleats}}</li>
+  <li><a href="#" class="label" data-type="pant_cuffs">Cuffs:</a> {{#if pant_cuffs}}Yes{{else}}No{{/if}}</li>
+  <li><a href="#" class="label" data-type="fit">Fit:</a> {{uppercaseFirst fit}}</li>
 </ul>
 
 <ul class="four columns">
-  <li><span class="label">Lining:</span> {{lining}}</li>
-  <li><span class="label">Monogram:</span> {{monogram}}</li>
-  <li><span class="label">Bouttoniere:</span> {{#if bouttoniere}}Yes{{else}}No{{/if}}</li>
-  <li><span class="label">Pick Stitching:</span> {{#if pick_stitching}}Yes{{else}}No{{/if}}</li>
-  <li><span class="label">Vest:</span> {{#if vest}}Yes (+${{vestPrice}}){{else}}No{{/if}}</li>
+  <li><a href="#" class="label" data-type="lining">Lining:</a> {{lining}}</li>
+  <li><a href="#" class="label" data-type="monogram">Monogram:</a> {{monogram}}</li>
+  <li><a href="#" class="label" data-type="advanced">Bouttoniere:</a> {{#if bouttoniere}}Yes{{else}}No{{/if}}</li>
+  <li><a href="#" class="label" data-type="advanced">Pick Stitching:</a> {{#if pick_stitching}}Yes{{else}}No{{/if}}</li>
+  <li><a href="#" class="label" data-type="vest">Vest:</a> {{#if vest}}Yes (+${{vestPrice}}){{else}}No{{/if}}</li>
   {{#if vest}}
-    <li><span class="label">Vest Buttons:</span> {{vest_buttons}}</li>
+    <li><a href="#" class="label" data-type="vest_buttons">Vest Buttons:</a> {{vest_buttons}}</li>
   {{/if}}
 </ul>
 
@@ -23,5 +23,5 @@
     <li><span class="label">Total cost:</span> ${{decimalToInteger price}}</li>
   </ul>
   <img src="assets/icons/cart-black.png">
-  <a href="#" class="button add-to-cart">Add To Cart</a>
+  <a href="#" href="#" class="button add-to-cart">Add To Cart</a>
 </div>
