@@ -11,6 +11,7 @@ footer {
     outline: none;
     color: #fff;
     font-weight: lighter;
+    max-width: 210px;
 
     &:focus {
       @include background(radial-gradient(#404040, #333));
@@ -23,10 +24,11 @@ footer {
     font-weight: bold;
     display: inline-block;
     color: #fff;
-    padding: 5px 10px;
+    padding: 8px 10px 5px 10px;
     font-size: 13px;
     cursor: pointer;
     text-transform: uppercase;
+    @include font("body");
 
     &:hover {
       color: #fff;
@@ -43,6 +45,16 @@ footer {
     @include clearfix;
   }
 
+  ul.hide-small {
+    display: block;
+  }
+
+  @media only screen and (max-width: 767px) {
+    ul.hide-small {
+      display: none;
+    }
+  }
+
   h5 {
     display: inline-block;
     background-color: #000;
@@ -52,6 +64,22 @@ footer {
     @include font("clean");
     font-weight: 700;
     font-size: 24px;
+
+    @media only screen and (max-width: 767px) {
+      &.expandable {
+        cursor: pointer;
+      }
+      padding: 0;
+      margin: 5px 0;
+    }
+
+    span {
+      display: none;
+      margin-left: 5px;
+      @media only screen and (max-width: 767px) {
+        display: inline-block;
+      }
+    }
   }
 
   .strikethrough {

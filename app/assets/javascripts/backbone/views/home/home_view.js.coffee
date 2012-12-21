@@ -8,6 +8,7 @@ class TR.Views.Home extends TR.Views.Base
   initialize: ->
     @.createSlideshow()
     $(window).scroll @.scroll
+    @footerView = new TR.Views.Footer()
 
   scrollToSection: (e) =>
     href = $(e.currentTarget).attr 'href'

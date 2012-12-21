@@ -6,7 +6,7 @@ class TR.Views.Shop extends TR.Views.Base
 
   initialize: (options) ->
     @products = new TR.Collections.Products options.products
-
+    @footerView = new TR.Views.Footer()
 
 #    product = @products.get '159758890'
 #    @productModal = new TR.Views.ProductModal({model: product})
