@@ -80,7 +80,7 @@ $navigation-color: #000;
 #process {
   @include clearfix;
   background-color: #fff;
-  z-index: 2;
+  z-index: 1;
 
   @media only screen and (min-width: 768px) and (max-width: 1037px) {
     h4 {
@@ -269,7 +269,7 @@ $navigation-color: #000;
     top: 200px;
     font-weight: normal;
     @include font("clean");
-    z-index: 2;
+    z-index: 1;
 
     @include white-anchor;
 
