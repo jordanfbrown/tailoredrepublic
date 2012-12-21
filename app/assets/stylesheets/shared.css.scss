@@ -3,13 +3,12 @@
 @import "compass/css3";
 
 .button {
-  @include background(linear-gradient($brown, $darker-brown));
-  padding: 7px 5px 5px 5px;
-  @include font("clean");
-  border: 1px solid #CCC;
+  background-color: $brown;
+  padding: 7px 10px 5px 10px;
+  @include font("header");
+  font-weight: bold;
   color: #fff;
   display: inline-block;
-  @include border-radius(5px);
   font-size: 18px;
 
   &:hover {
