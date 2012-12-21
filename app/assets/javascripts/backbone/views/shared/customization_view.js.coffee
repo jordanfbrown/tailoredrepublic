@@ -90,16 +90,17 @@ class TR.Views.Customization extends TR.Views.Base
 
     # Update model
     $target = $(e.currentTarget)
+    $img = $target.find 'img:not(.shield)'
     option = $target.data 'option'
     type = $target.parents('.customization-wrapper').data 'type'
 
     unless type == 'advanced'
       @customization.setByName type, option
       @.clearChecked()
-      $(e.currentTarget).addClass 'checked'
+      $img.addClass 'checked'
     else
-      $target.toggleClass 'checked'
-      @customization.setByName option, $target.hasClass 'checked'
+      $img.toggleClass 'checked'
+      @customization.setByName option, $img.hasClass 'checked'
 
   addToCart: (e) ->
     e.preventDefault()
@@ -110,4 +111,4 @@ class TR.Views.Customization extends TR.Views.Base
     )
 
   clearChecked: =>
-    @.$('a.customization-option:visible').removeClass 'checked'
+    @.$('a.customization-option:visible img').removeClass 'checked'
