@@ -31,10 +31,14 @@ class TR.Views.Home extends TR.Views.Base
       scrollTop: (if adjustment then adjustment else $(href).offset().top), 1500
 
   resize: (e) ->
-    console.log $(window).width()
+    imgWidth = 1920
+    imgHeight = 1280
 
-
-    console.log $('#home img.background').height()
+    backgroundHeight = $(window).width() * imgHeight / imgWidth;
+    $('#process').css 'margin-top', backgroundHeight
+    
+    pageDownOffset = if backgroundHeight > $(window).height() then $(window).height() else backgroundHeight
+    $('.page-down').css 'top', pageDownOffset - 70 + 'px'
 
   scroll: (e) ->
     $sidebar = $('#sidebar')
@@ -52,12 +56,17 @@ class TR.Views.Home extends TR.Views.Base
     # Parallax effect for transition image
     $('#bosses img').css 'top', (bossesPosition - pageTop - $(window).height()) / 2
 
-    # Parallax for splash page
-#    homeHeight = $('#home').height()
-#    marginBottom = -(parseFloat $('#home').css 'margin-bottom')
-#    if pageTop < homeHeight - marginBottom
-#      $('#home').css 'margin-bottom', -pageTop / 1.5
-      
+    # Check if background image is in view
+    $home = $('#home')
+    $backgroundImg = $home.find '.background'
+
+    if $backgroundImg.inView().exists()
+      homeTop = 0
+      $('.page-down').show();
+    else
+      homeTop = -$backgroundImg.height()
+      $('.page-down').hide();
+    $home.find('.parallax').css 'top', homeTop + 'px'
 
     # Adding 100 to the page top so that we add the selected arrow slightly prematurely
     pageTop += 100
@@ -70,19 +79,6 @@ class TR.Views.Home extends TR.Views.Base
       $sidebar.find('.top-picks').addClass('selected')
     else if pageTop >= processPosition
       $sidebar.find('.process').addClass('selected')
-
-
-    # Slide section titles out of the way of the navbar
-#    sidebarBottom = $sidebar.offset().top + $sidebar.height()
-#    h2Top = $('h2:first').offset().top
-#
-#    if(h2Top - 15 <= sidebarBottom )
-#      if $('h2:first').css('margin-left') == '20px'
-#        $('h2:first').animate 'margin-left': '120px', 500
-#    else
-#      if $('h2:first').css('margin-left') == '120px'
-#        $('h2:first').animate 'margin-left': '20px', 500
-
 
   createSlideshow: ->
     @.$('#slideshow').orbit

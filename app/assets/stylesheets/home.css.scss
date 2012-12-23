@@ -72,10 +72,9 @@ $navigation-color: #000;
 }
 
 .page-down {
-  position: absolute;
+  position: fixed;
   left: 50%;
   margin-left: -56px;
-  bottom: 15px;
 }
 
 //The Process

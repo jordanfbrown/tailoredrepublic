@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui-1.9.2.custom
+//= require jquery.inview
 //= require underscore
 //= require backbone
 //= require handlebars
