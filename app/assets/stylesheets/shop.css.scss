@@ -19,7 +19,6 @@
   $customization-background-color: #ccc;
   .customizations {
     background-color: $customization-background-color;
-    border-radius: 5px;
     @include clearfix;
   }
 
@@ -61,7 +60,6 @@
       &.customize {
         margin: 10px;
         background-color: white;
-        border-radius: 5px;
         padding: 5px
       }
 
@@ -103,8 +101,6 @@
       background-color: #fff;
       padding: 5px 10px 10px 10px;
 
-      @include border-radius(5px);
-
       .lining-option {
         height: 35px;
         width: 35px;
@@ -122,7 +118,6 @@
         height: 120px;
         display: block;
         margin: auto;
-        @include border-radius(5px);
         padding: 3px;
 
         &.checked {
@@ -148,7 +143,6 @@
     .customization-wrapper {
       background-color: #fff;
       margin: 0 10px 10px 10px;
-      border-radius: 5px;
       padding: 5px;
       @include clearfix;
       position: relative;
@@ -181,7 +175,6 @@
         bottom: 5px;
         top: 50px;
         opacity: 0.7;
-        border-radius: 5px;
         color: #fff;
 
         p {

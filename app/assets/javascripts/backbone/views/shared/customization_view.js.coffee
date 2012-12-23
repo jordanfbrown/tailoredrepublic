@@ -24,7 +24,6 @@ class TR.Views.Customization extends TR.Views.Base
       @checkoutTemplateFunction = template
       @.updateSummary()
     )
-
     $(document).on 'keydown.customization', @.keydown
     
   keydown: (e) =>
@@ -33,11 +32,10 @@ class TR.Views.Customization extends TR.Views.Base
     else if e.which == 39 # Right arrow
       @.advanceSlide 'next'
 
-  updateSummary: =>
+  updateSummary: ->
     price = parseFloat(@product.get 'price') + if @customization.get 'vest' then TR.VEST_PRICE else 0
     summaryData = _.extend {price: price, vestPrice: TR.VEST_PRICE}, @customization.toJSON()
     @.$('.customization-summary').html @checkoutTemplateFunction summaryData
-
     @.$('.vest-overlay').toggle !@.customization.get 'vest'
 
   previous: (e) ->
