@@ -2,7 +2,7 @@ class TR.Views.Home extends TR.Views.Base
   el: '#main'
 
   events:
-    'click .page-down, #sidebar a, #continue': 'scrollToSection',
+    'click .page-down, nav a, #continue': 'scrollToSection',
     'click .product-wrapper a': 'renderProductModal'
 
   initialize: ->
@@ -23,18 +23,16 @@ class TR.Views.Home extends TR.Views.Base
     $home = $('#home');
     homeHeight = $home.height()
     marginBottom = parseFloat($home.css 'margin-bottom')
-    adjustment = false
-#    if $(window).scrollTop() < homeHeight + marginBottom
-#      adjustment = homeHeight - homeHeight / 2.5 + Math.abs $('#process').offset().top - $(href).offset().top
 
     $('html, body').stop().animate
-      scrollTop: (if adjustment then adjustment else $(href).offset().top), 1500
+      scrollTop: $(href).offset().top - (if href == '#process' then 0 else 34), 1500
 
   resize: (e) ->
     imgWidth = 1920
     imgHeight = 1280
 
     backgroundHeight = $(window).width() * imgHeight / imgWidth;
+    navHeight = $('nav').height()
     $('#process').css 'margin-top', backgroundHeight
     
     pageDownOffset = if backgroundHeight > $(window).height() then $(window).height() else backgroundHeight
@@ -63,9 +61,15 @@ class TR.Views.Home extends TR.Views.Base
     if $backgroundImg.inView().exists()
       homeTop = 0
       $('.page-down').show();
+      $('nav').css { position: 'relative' }
+      $('#process').css 'padding-top', '0'
     else
       homeTop = -$backgroundImg.height()
       $('.page-down').hide();
+      $('nav').css { position: 'fixed', top: 0}
+      $('#process').css 'padding-top', '40px'
+
+
     $home.find('.parallax').css 'top', homeTop + 'px'
 
     # Adding 100 to the page top so that we add the selected arrow slightly prematurely

@@ -2,6 +2,7 @@
   <div class="parallax">
     <%= image_tag "logos/logo-shield.png", id: "logo", alt: "Tailored Republic" %>
     <%= image_tag "background-main-2.jpg", class: "background" %>
+    <h3>custom crafted suits</h3>
     <div id="home-navigation">
       <a href="#">log in</a>
       <span class="divider">&nbsp;/&nbsp;/</span>
@@ -15,7 +16,23 @@
   </div>
 </article>
 
+
+
 <article id="process">
+  <nav>
+    <ul>
+      <li class="process"><a href="#process">The Process</a></li>
+      <li class="top-picks"><a href="#top-picks">Top Picks</a></li>
+      <li class="about"><a href="#about">About</a></li>
+      <li class="lookbook"><a href="#lookbook">Lookbook</a></li>
+      <li class="info"><a href="#info">Info</a></li>
+      <li class="cart">
+        <a href="<%= shop_or_cart %>">
+          <%= image_tag "icons/shopping-cart.png" %> (<%= @cart.num_items %>)
+        </a>
+      </li>
+    </ul>
+  </nav>
   <h2>
     <span class="article-title">
       THE PROCESS
@@ -169,21 +186,6 @@
     } %>
   </div>
 </article>
-
-<nav id="sidebar">
-  <ul>
-    <li class="process"><a href="#process">The Process</a></li>
-    <li class="top-picks"><a href="#top-picks">Top Picks</a></li>
-    <li class="about"><a href="#about">About</a></li>
-    <li class="lookbook"><a href="#lookbook">Lookbook</a></li>
-    <li class="info"><a href="#info">Info</a></li>
-    <li class="cart">
-      <a href="<%= shop_or_cart %>">
-        <%= image_tag "icons/shopping-cart.png" %> (<%= @cart.num_items %>)
-      </a>
-    </li>
-  </ul>
-</nav>
 
 <%= render "layouts/footer" %>
 

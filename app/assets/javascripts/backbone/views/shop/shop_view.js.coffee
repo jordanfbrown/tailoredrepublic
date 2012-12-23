@@ -18,5 +18,5 @@ class TR.Views.Shop extends TR.Views.Base
     id = $(e.currentTarget).parents('.product-wrapper').data('id')
     product = @products.get id
     @productModal = new TR.Views.ProductModal({model: product})
-    @productModal.$el.insertAfter('#sidebar')
+    @productModal.$el.insertAfter('#shop-display')
     @productModal.reveal()
