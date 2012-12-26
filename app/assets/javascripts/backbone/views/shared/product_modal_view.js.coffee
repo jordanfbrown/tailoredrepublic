@@ -1,11 +1,8 @@
-class TR.Views.ProductModal extends TR.Views.Base
-  id: 'modal'
+class TR.Views.ProductModal extends TR.Views.Modal
 
-  className: 'reveal-modal expand'
-  
-  events: 
-    'mousemove': 'mousemove'
-    'click a.close-reveal-modal': 'close'
+  events: ->
+    _.extend super,
+      'mousemove': 'mousemove'
 
   initialize: () ->
     @.getTemplateFunction('product_modal', (templateFunction) =>
@@ -33,10 +30,6 @@ class TR.Views.ProductModal extends TR.Views.Base
   destroy: ->
     super()
     @customizationView.destroy()
-
-  close: ->
-    @.$el.trigger 'reveal:close'
-    @.destroy()
 
   enableMagnifier: ->
     @.$('.magnify').magnifier();

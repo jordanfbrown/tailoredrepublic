@@ -127,8 +127,11 @@ class TR.Views.Customization extends TR.Views.Base
   addToCart: (e) ->
     e.preventDefault()
     @customization.save().then(=>
-      $.post('/cart_items', {product_id: @product.get('id'), customization_id: @customization.get('id')}).then( (response) ->
-        console.log(response);
+      $.post('/cart_items', {product_id: @product.get('id'), customization_id: @customization.get('id')}).then(
+        (response) ->
+          console.log(response);
+        , (error) ->
+          console.log 'error'
       )
     )
 

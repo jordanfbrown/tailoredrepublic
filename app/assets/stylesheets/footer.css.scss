@@ -3,6 +3,12 @@
 @import "foundation/mixins/clearfix";
 
 footer {
+  background-color: #000;
+  border-top: 1px solid #fff;
+  @include white-anchor;
+  @include clearfix;
+  padding-bottom: 10px;
+
   input[type=text] {
     @include border-radius(0);
     @include background(radial-gradient(#404040, #333));
@@ -88,11 +94,6 @@ footer {
     right: 17px;
     left: 0;
   }
-
-  background-color: #000;
-  border-top: 1px solid #fff;
-  @include white-anchor;
-  @include clearfix;
 
   .content-wrapper {
     margin-top: 10px;
