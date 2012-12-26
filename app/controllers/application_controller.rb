@@ -1,11 +1,17 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :authenticate
+  before_filter :authenticate, :precompile_templates
 
   protected
     def authenticate
       authenticate_or_request_with_http_basic do |username, password|
         username == "tailored" && password == "sodamnclean!"
+      end
+    end
+
+    def precompile_templates
+      if Rails.env.development?
+        `handlebars -m app/assets/javascripts/backbone/templates/* -f app/assets/javascripts/templates.js`
       end
     end
 

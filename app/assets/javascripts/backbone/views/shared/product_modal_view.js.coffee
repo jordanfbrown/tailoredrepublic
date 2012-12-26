@@ -10,12 +10,12 @@ class TR.Views.ProductModal extends TR.Views.Modal
 
   initialize: () ->
     TR.Events.on 'addedToCart', @addedToCart
-    @templateFunction = @getTemplate 'product_modal'
+    @template = @getTemplate 'product_modal'
     @render()
 
   render: ->
     templateData = _.extend {vestPrice: TR.VEST_PRICE}, @model.toJSON()
-    @$el.html @templateFunction templateData
+    @$el.html @template templateData
     @customizationView = new TR.Views.Customization el: @$('.customizations'), product: @model
     @enableMagnifier();
     super()

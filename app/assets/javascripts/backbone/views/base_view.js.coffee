@@ -8,5 +8,3 @@ class TR.Views.Base extends Backbone.View
 
   getTemplate: (name) ->
     Handlebars.templates["_#{name}.tmpl"]
-
-

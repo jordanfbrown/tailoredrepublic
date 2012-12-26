@@ -18,7 +18,7 @@ class TR.Views.Customization extends TR.Views.Base
   initialize: (options) ->
     @product = options.product
     @customization = new TR.Models.Customization()
-    @templateFunction = @getTemplate 'customization_checkout'
+    @template = @getTemplate 'customization_checkout'
     @updateSummary()
     $(document).on 'keydown.customization', @keydown
 
@@ -31,7 +31,7 @@ class TR.Views.Customization extends TR.Views.Base
   updateSummary: =>
     price = parseFloat(@product.get 'price') + if @customization.get 'vest' then TR.VEST_PRICE else 0
     summaryData = _.extend {price: price, vestPrice: TR.VEST_PRICE}, @customization.toJSON()
-    @$('.customization-summary').html @templateFunction summaryData
+    @$('.customization-summary').html @template summaryData
     @$('.vest-overlay').toggle !@customization.get 'vest'
 
   previous: (e) ->
