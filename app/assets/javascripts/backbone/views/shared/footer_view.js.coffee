@@ -7,8 +7,8 @@ class TR.Views.Footer extends TR.Views.Base
   initialize: ->
     $(window).resize(->
       if $(window).width() >= 768
-        @.$('ul').css('display', '')
-        @.$('h5 span').text '+'
+        @$('ul').css('display', '')
+        @$('h5 span').text '+'
     )
 
   expandSection: (e) ->

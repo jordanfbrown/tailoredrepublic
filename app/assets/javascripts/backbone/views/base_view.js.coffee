@@ -1,9 +1,9 @@
 class TR.Views.Base extends Backbone.View
 
   destroy: ->
-    @.undelegateEvents()
-    @.$el.removeData().unbind()
-    @.remove()
+    @undelegateEvents()
+    @$el.removeData().unbind()
+    @remove()
     Backbone.View.prototype.remove.call @
 
   getTemplateFunction: (name, callback) ->

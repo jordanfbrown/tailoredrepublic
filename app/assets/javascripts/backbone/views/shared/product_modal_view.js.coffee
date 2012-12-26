@@ -1,3 +1,5 @@
+#= require ./modal_view
+
 class TR.Views.ProductModal extends TR.Views.Modal
 
   events: ->
@@ -5,17 +7,19 @@ class TR.Views.ProductModal extends TR.Views.Modal
       'mousemove': 'mousemove'
 
   initialize: () ->
-    @.getTemplateFunction('product_modal', (templateFunction) =>
+    @getTemplateFunction('product_modal', (templateFunction) =>
       @templateFunction = templateFunction
-      @.render()
+      @render()
     )
+    
+    TR.Events.on 'addedToCart', @addedToCart
 
   render: ->
     templateData = _.extend {vestPrice: TR.VEST_PRICE}, @model.toJSON()
-    @.$el.html @templateFunction templateData
-    @customizationView = new TR.Views.Customization el: @.$('.customizations'), product: @model
-    @.enableMagnifier();
-    @
+    @$el.html @templateFunction templateData
+    @customizationView = new TR.Views.Customization el: @$('.customizations'), product: @model
+    @enableMagnifier();
+    super()
 
   # This ensures that the magnifier is hidden when the mouse is no longer over the image
   mousemove: (e) ->
@@ -24,25 +28,22 @@ class TR.Views.ProductModal extends TR.Views.Modal
     offsetTop = $small.offset().top
 
     if (e.pageX < offsetLeft || e.pageX > offsetLeft + $small.width() ||
-       e.pageY < offsetTop || e.pageY > offsetTop + $small.height()) && @.magnifierVisible()
-      @.hideMagnifier()
+       e.pageY < offsetTop || e.pageY > offsetTop + $small.height()) && @magnifierVisible()
+      @hideMagnifier()
+      
+  addedToCart: (options) =>
+    new TR.Views.AddSuccessModal({product: options.product}).render()
+    @destroy()
 
   destroy: ->
     super()
     @customizationView.destroy()
 
   enableMagnifier: ->
-    @.$('.magnify').magnifier();
+    @$('.magnify').magnifier()
 
   magnifierVisible: ->
-    @.$('.large').is(':visible')
+    @$('.large').is ':visible'
 
   hideMagnifier: ->
-    @.$('.large').hide()
-
-  reveal: ->
-    @.$el.reveal
-      closeOnBackgroundClick: false
-      animation: 'fade'
-      closed: =>
-        @.destroy()
+    @$('.large').hide()

@@ -6,10 +6,10 @@ class TR.Views.Home extends TR.Views.Base
     'click .product-wrapper a': 'renderProductModal'
 
   initialize: ->
-    @.createSlideshow()
-    $(window).scroll @.scroll
-    $(window).resize @.resize
-    @.resize()
+    @createSlideshow()
+    $(window).scroll @scroll
+    $(window).resize @resize
+    @resize()
     @footerView = new TR.Views.Footer()
 
   scrollToSection: (e) =>
@@ -85,9 +85,9 @@ class TR.Views.Home extends TR.Views.Base
       $sidebar.find('.process').addClass('selected')
 
   createSlideshow: ->
-    @.$('#slideshow').orbit
+    @$('#slideshow').orbit
       afterSlideChange: (previous, current) =>
-        @.updateCaption $(current).data()
+        @updateCaption $(current).data()
 
   updateCaption: (data) ->
     $caption = $('#lookbook-info')
@@ -99,5 +99,3 @@ class TR.Views.Home extends TR.Views.Base
 
   renderProductModal: ->
     @productModal = new TR.Views.ProductModal().render()
-    @productModal.$el.insertAfter('#sidebar')
-    @productModal.reveal()
