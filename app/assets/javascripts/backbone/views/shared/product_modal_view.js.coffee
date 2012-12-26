@@ -2,17 +2,16 @@
 
 class TR.Views.ProductModal extends TR.Views.Modal
 
+  id: 'product-modal'
+
   events: ->
     _.extend super,
       'mousemove': 'mousemove'
 
   initialize: () ->
-    @getTemplateFunction('product_modal', (templateFunction) =>
-      @templateFunction = templateFunction
-      @render()
-    )
-    
     TR.Events.on 'addedToCart', @addedToCart
+    @templateFunction = @getTemplate 'product_modal'
+    @render()
 
   render: ->
     templateData = _.extend {vestPrice: TR.VEST_PRICE}, @model.toJSON()
@@ -32,7 +31,7 @@ class TR.Views.ProductModal extends TR.Views.Modal
       @hideMagnifier()
       
   addedToCart: (options) =>
-    new TR.Views.AddSuccessModal({product: options.product}).render()
+    new TR.Views.AddSuccessModal({product: options.product})
     @destroy()
 
   destroy: ->

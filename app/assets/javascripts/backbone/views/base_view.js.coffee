@@ -6,12 +6,7 @@ class TR.Views.Base extends Backbone.View
     @remove()
     Backbone.View.prototype.remove.call @
 
-  getTemplateFunction: (name, callback) ->
-    if @templateFunction
-      callback @templateFunction
-    else
-      $.get 'template', {name: name}, (template) =>
-        @templateFunction = Handlebars.compile template
-        callback @templateFunction
+  getTemplate: (name) ->
+    Handlebars.templates["_#{name}.tmpl"]
 
 

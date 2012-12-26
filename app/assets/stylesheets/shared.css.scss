@@ -13,7 +13,8 @@
 
   &:hover {
     color: #fff;
-    @include background(linear-gradient($darker-brown, $brown));
+    background-color: darken($brown, 10%);
+    text-decoration: none;
   }
 
   &:active {

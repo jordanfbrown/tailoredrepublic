@@ -15,17 +15,13 @@ class TR.Views.Customization extends TR.Views.Base
     SELECTED: 'selected'
     COMPLETED: 'completed'
 
-
   initialize: (options) ->
     @product = options.product
     @customization = new TR.Models.Customization()
-    @customization.on 'change', @updateSummary
-    @getTemplateFunction('customization_checkout', (template) =>
-      @checkoutTemplateFunction = template
-      @updateSummary()
-    )
+    @templateFunction = @getTemplate 'customization_checkout'
+    @updateSummary()
     $(document).on 'keydown.customization', @keydown
-    
+
   keydown: (e) =>
     if e.which == 37 # Left arrow
       @advanceSlide 'prev'
@@ -35,7 +31,7 @@ class TR.Views.Customization extends TR.Views.Base
   updateSummary: =>
     price = parseFloat(@product.get 'price') + if @customization.get 'vest' then TR.VEST_PRICE else 0
     summaryData = _.extend {price: price, vestPrice: TR.VEST_PRICE}, @customization.toJSON()
-    @$('.customization-summary').html @checkoutTemplateFunction summaryData
+    @$('.customization-summary').html @templateFunction summaryData
     @$('.vest-overlay').toggle !@customization.get 'vest'
 
   previous: (e) ->

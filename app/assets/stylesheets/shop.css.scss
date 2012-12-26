@@ -11,7 +11,14 @@
   }
 }
 
-.reveal-modal {
+
+#add-success-modal {
+  .button-column {
+    margin-bottom: 10px;
+  }
+}
+
+#product-modal {
   img.main {
     max-height: 500px;
   }
