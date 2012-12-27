@@ -2,15 +2,21 @@ class TR.Views.Home extends TR.Views.Base
   el: '#main'
 
   events:
-    'click .page-down, nav a, #continue': 'scrollToSection',
-    'click .product-wrapper a': 'renderProductModal'
+    'click .page-down, nav a, #continue': 'scrollToSection'
 
-  initialize: ->
+  initialize: (options) ->
     @createSlideshow()
+
     $(window).scroll @scroll
     $(window).resize @resize
     @resize()
+
     @footerView = new TR.Views.Footer()
+    @products = new TR.Collections.Products options.products
+    @products.each @renderProductView
+
+  renderProductView: (product) =>
+    @$('.suits-wrapper').append new TR.Views.Product({model: product}).render().el
 
   scrollToSection: (e) =>
     href = $(e.currentTarget).attr 'href'
@@ -96,6 +102,3 @@ class TR.Views.Home extends TR.Views.Base
         $caption.find('.' + attribute).text(value)
       $caption.fadeIn()
     )
-
-  renderProductModal: ->
-    @productModal = new TR.Views.ProductModal().render()

@@ -8,6 +8,7 @@ class TR.Views.AddSuccessModal extends TR.Views.Modal
       'click a.keep-shopping': 'close'
     
   initialize: (options) ->
+    @subviews = []
     @product = options.product
     @suggestedProducts = new TR.Collections.Products()
     @suggestedProducts.fetch().then(=>
@@ -18,4 +19,15 @@ class TR.Views.AddSuccessModal extends TR.Views.Modal
   render: ->
     templateData = product: @product.toJSON(), suggestedProducts: @suggestedProducts.toJSON()
     @$el.html @template templateData
+    @suggestedProducts.each @renderProductView
     super()
+    
+  close: ->
+    _.each @subviews, (subview) ->
+      subview.destroy()
+    super()
+
+  renderProductView: (product) =>
+    productView = new TR.Views.Product({model: product}).render()
+    @$('.suits-wrapper').append productView.el
+    @subviews.push productView

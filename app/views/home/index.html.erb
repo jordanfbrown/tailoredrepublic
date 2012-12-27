@@ -17,7 +17,7 @@
 </article>
 
 <article id="process">
-  <nav class="dark">
+  <nav>
     <ul>
       <li class="process"><a href="#process">The Process</a></li>
       <li class="top-picks"><a href="#top-picks">Top Picks</a></li>
@@ -85,7 +85,6 @@
   <%= render "home/login_register" %>
   <div class="content-wrapper suits-wrapper">
     <h4>A hand-selected showcase of our best suits</h4>
-    <%= render @top_picks %>
   </div>
 </article>
 
@@ -189,6 +188,6 @@
 
 <script>
   $(function() {
-    new TR.Views.Home();
+    new TR.Views.Home({products: <%= @top_picks.to_json.html_safe %>});
   });
 </script>
