@@ -1,13 +1,9 @@
-.clear-footer {
-  height: 215px;
-  clear: both;
-}
+@import "_mixins";
 
 .carts {
-  footer {
-    @media only screen and (max-width: 767px) {
-      height: auto;
-    }
-    height: 215px;
+  #main {
+    @include shop-texture(repeat-y);
   }
+
+
 }

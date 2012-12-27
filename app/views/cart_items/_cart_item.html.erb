@@ -1,0 +1,13 @@
+<div class="cart-item">
+  <div class="four columns">
+    <%= image_tag cart_item.product.image_large_url%>
+  </div>
+  <div class="eight columns">
+    <h3><%= cart_item.product.name %><span class="divider"> // </span>$<%= cart_item.product.display_price %></h3>
+    <h4>Customizations:</h4>
+    <p>
+      <%= print_customizations cart_item.customization%>
+    </p>
+    <a href="#">Edit Customizations</a>
+  </div>
+</div>

@@ -2,6 +2,11 @@
 @import "compass/utilities/general/clearfix";
 @import "compass/css3";
 
+.clear-footer {
+  height: 215px;
+  clear: both;
+}
+
 .button {
   background-color: darken($brown, 10%);
   padding: 7px 10px 5px 10px;

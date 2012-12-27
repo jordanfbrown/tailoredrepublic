@@ -81,6 +81,9 @@ GEM
       compass (>= 0.11.5)
       sassy-math (>= 1.2)
     multi_json (1.5.0)
+    numbers_and_words (0.5.0)
+      activesupport
+      i18n
     orm_adapter (0.4.0)
     pg (0.14.1)
     polyglot (0.3.3)
@@ -156,6 +159,7 @@ DEPENDENCIES
   devise (>= 2.1.2)
   enumerated_attribute!
   jquery-rails
+  numbers_and_words
   pg
   quiet_assets (>= 1.0.1)
   rails (= 3.2.9)

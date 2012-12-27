@@ -30,10 +30,6 @@ h2 {
   }
 }
 
-h5 {
-  color: $brown;
-}
-
 #home {
   z-index: 0;
   @include white-anchor;
@@ -297,6 +293,10 @@ nav {
 
 //Sidebar
 .home {
+
+  h5 {
+    color: $brown;
+  }
 
   article {
     position: relative;

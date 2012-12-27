@@ -1,6 +1,17 @@
-<% @cart.cart_items.each do |cart_item| %>
-  <%= cart_item.product.name %>
-<% end %>
+<div class="content-wrapper">
+  <h1>Shopping Cart</h1>
+  <div class="six columns">
+    <div class="cart-wrapper">
+      <% @cart.cart_items.each do |cart_item| %>
+        <%= render cart_item %>
+      <% end %>
+    </div>
+  </div>
+  <div class="six columns">
+    <p>Foo</p>
+  </div>
+</div>
+
 
 <script>
   $(function() {
