@@ -32,7 +32,6 @@ class TR.Views.Customization extends TR.Views.Base
   updateSummary: =>
     price = parseFloat(@product.get 'price') + if @customization.get 'vest' then TR.VEST_PRICE else 0
     summaryData = _.extend {price: price, vestPrice: TR.VEST_PRICE}, @customization.toJSON()
-    console.log(summaryData);
     @$('.customization-summary').html @template summaryData
     @$('.vest-overlay').toggle !@customization.get 'vest'
 
@@ -108,7 +107,6 @@ class TR.Views.Customization extends TR.Views.Base
       @customization.setByName type, option
       @clearChecked()
       $img.addClass 'checked'
-      console.log(type, option);
     else
       $img.toggleClass 'checked'
       @customization.setByName option, $img.hasClass 'checked'

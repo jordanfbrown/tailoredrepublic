@@ -13,7 +13,7 @@
 
   &:hover {
     color: #fff;
-    background-color: $brown;
+    background-color: darken($brown, 20%);
     text-decoration: none;
   }
 

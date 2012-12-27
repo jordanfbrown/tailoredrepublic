@@ -14,10 +14,11 @@
 //= require jquery_ujs
 //= require jquery-ui-1.9.2.custom
 //= require jquery.inview
+//= require jquery.reveal
+//= require jquery.orbit
 //= require underscore
 //= require backbone
 //= require handlebars
-//= require foundation
 //= require namespace
 //= require templates
 //= require_tree ./backbone/models
