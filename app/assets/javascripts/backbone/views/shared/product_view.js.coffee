@@ -1,4 +1,6 @@
 class TR.Views.Product extends TR.Views.Base
+  className: 'product-wrapper three columns'
+
   events:
     'click a': 'renderProductModal'
 

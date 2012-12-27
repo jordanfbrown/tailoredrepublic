@@ -8,6 +8,7 @@ footer {
   @include white-anchor;
   @include clearfix;
   padding-bottom: 10px;
+  height: 215px;
 
   input[type=text] {
     @include border-radius(0);
@@ -43,7 +44,7 @@ footer {
   }
 
   @media only screen and (max-width: 767px) {
-    height: inherit;
+    height: auto;
   }
 
   .content-wrapper {

@@ -3,11 +3,9 @@
 
 .shop {
   .suits-wrapper {
+    margin-top: 40px;
+    @include shop-texture(repeat-y);
     clear: both;
-  }
-
-  footer {
-    padding-bottom: 10px;
   }
 }
 
@@ -250,14 +248,6 @@
     border: 1px solid #ccc;
   }
 }
-
-#shop-display {
-  @include shop-texture(repeat-y);
-  .suits-wrapper {
-    margin-top: 40px;
-  }
-}
-
 
 //Magnifier
 .large {

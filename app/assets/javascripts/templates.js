@@ -9,7 +9,7 @@ templates['_add_success_modal.tmpl'] = template(function (Handlebars,depth0,help
   stack1 = depth0.product;
   stack1 = stack1 == null || stack1 === false ? stack1 : stack1.name;
   stack1 = typeof stack1 === functionType ? stack1() : stack1;
-  buffer += escapeExpression(stack1) + " has been added to your shopping cart.</h3>\n\n<div class=\"six columns button-column\">\n  <a href=\"#\" class=\"button\">Proceed To Checkout</a>\n</div>\n<div class=\"six columns button-column\">\n  <a href=\"#\" class=\"button keep-shopping\">Keep Shopping</a>\n</div>\n\n<h4>Other styles you might also like:</h4>\n\n<div class=\"suits-wrapper\">\n</div>\n\n";
+  buffer += escapeExpression(stack1) + " has been added to your shopping cart.</h3>\n\n<div class=\"six columns button-column\">\n  <a href=\"#\" class=\"button\">View Cart</a>\n</div>\n<div class=\"six columns button-column\">\n  <a href=\"#\" class=\"button keep-shopping\">Keep Shopping</a>\n</div>\n\n<h4>Other styles you might also like:</h4>\n\n<div class=\"suits-wrapper\">\n</div>\n\n";
   return buffer;});
 templates['_customization_checkout.tmpl'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
@@ -129,15 +129,11 @@ templates['_product.tmpl'] = template(function (Handlebars,depth0,helpers,partia
   var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing;
 
 
-  buffer += "<div class=\"product-wrapper three columns\" data-id=\"";
-  foundHelper = helpers.id;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\">\n  <a href=\"#\"><img src=\"assets/";
+  buffer += "<a href=\"#\"><img src=\"assets/";
   foundHelper = helpers.image_large_url;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.image_large_url; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"></a>\n  <div class=\"product-info-wrapper\">\n    <div class=\"product-info\">\n      <div class=\"product-name\">\n        <a href=\"#\">";
+  buffer += escapeExpression(stack1) + "\"></a>\n<div class=\"product-info-wrapper\">\n  <div class=\"product-info\">\n    <div class=\"product-name\">\n      <a href=\"#\">";
   foundHelper = helpers.name;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.name; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
@@ -145,7 +141,7 @@ templates['_product.tmpl'] = template(function (Handlebars,depth0,helpers,partia
   stack1 = depth0.price;
   foundHelper = helpers.decimalToInteger;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "decimalToInteger", stack1, {hash:{}});
-  buffer += escapeExpression(stack1) + "</a>\n      </div>\n      <a href=\"#\" class=\"customize\">Click To Customize</a>\n    </div>\n  </div>\n</div>";
+  buffer += escapeExpression(stack1) + "</a>\n    </div>\n    <a href=\"#\" class=\"customize\">Click To Customize</a>\n  </div>\n</div>";
   return buffer;});
 templates['_product_modal.tmpl'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;

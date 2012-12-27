@@ -13,7 +13,13 @@
     <div id="container" class="container">
       <div id="main" role="main">
         <%= yield %>
+        <% unless controller_name == "home" %>
+          <div class="clear-footer"></div>
+        <% end %>
       </div>
+      <% unless controller_name == "home" %>
+        <%= render "layouts/footer" %>
+      <% end %>
     </div>
     <script type="text/javascript">
       var _gaq = _gaq || [];

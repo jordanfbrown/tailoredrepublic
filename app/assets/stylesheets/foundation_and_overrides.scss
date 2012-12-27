@@ -266,6 +266,18 @@ html {
   height: 100%;
 }
 
+#container {
+  height: 100%;
+}
+
+#main {
+  min-height: 100%;
+  margin-bottom: -215px;
+  height: 100%;
+  margin: 0 auto -215px;
+  height: auto !important;
+}
+
 ul {
   list-style-type: none;
   margin-bottom: 0;

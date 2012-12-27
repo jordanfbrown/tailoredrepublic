@@ -1,0 +1,13 @@
+.clear-footer {
+  height: 215px;
+  clear: both;
+}
+
+.carts {
+  footer {
+    @media only screen and (max-width: 767px) {
+      height: auto;
+    }
+    height: 215px;
+  }
+}

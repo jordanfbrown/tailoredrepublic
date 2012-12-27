@@ -1,5 +1,5 @@
 class TR.Views.Shop extends TR.Views.Base
-  el: '#shop-display'
+  el: '.suits-wrapper'
 
   initialize: (options) ->
     @products = new TR.Collections.Products options.products
@@ -8,4 +8,4 @@ class TR.Views.Shop extends TR.Views.Base
     new TR.Views.AddSuccessModal {model: @products.first()}
     
   renderProductView: (product) =>
-    @$('.suits-wrapper').append new TR.Views.Product({model: product}).render().el
+    @$el.append new TR.Views.Product({model: product}).render().el

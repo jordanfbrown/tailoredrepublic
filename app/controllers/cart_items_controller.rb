@@ -4,10 +4,11 @@ class CartItemsController < ApplicationController
     product = Product.find(params[:product_id])
     customization = Customization.find(params[:customization_id])
     cart_item = cart.cart_items.build(product: product, customization: customization)
-    #if cart_item.save
-    render json: cart_item
-    #else
-    #  render json: cart_item.errors
-    #end
+
+    if cart_item.save
+      render json: cart_item
+    else
+      render json: cart_item.errors
+    end
   end
 end

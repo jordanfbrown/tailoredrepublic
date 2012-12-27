@@ -23,13 +23,13 @@
 }
 
 .suits-wrapper {
-  margin-bottom: 100px;
   @include clearfix;
 
   .product-wrapper {
     @include font("italic");
     text-align: center;
     display: inline-block;
+    margin-bottom: 20px;
     @media only screen and (max-width: 1200px) {
       width: 50%;
     }
