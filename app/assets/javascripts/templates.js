@@ -126,7 +126,7 @@ function program17(depth0,data) {
   return buffer;});
 templates['_product.tmpl'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
-  var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression;
+  var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing;
 
 
   buffer += "<div class=\"product-wrapper three columns\" data-id=\"";
@@ -137,15 +137,15 @@ templates['_product.tmpl'] = template(function (Handlebars,depth0,helpers,partia
   foundHelper = helpers.image_large_url;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.image_large_url; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"></a>\n  <div class=\"product-info-wrapper\">\n    <div class=\"product-info\">\n      <div class=\"product-name\"><a href=\"#\">";
+  buffer += escapeExpression(stack1) + "\"></a>\n  <div class=\"product-info-wrapper\">\n    <div class=\"product-info\">\n      <div class=\"product-name\">\n        <a href=\"#\">";
   foundHelper = helpers.name;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.name; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "</a></div>\n      <a href=\"#\" class=\"customize\">Click To Customize</a>\n    </div>\n    <div class=\"product-price\">\n      <div class=\"product-price-text-wrapper\">\n        <span class=\"dollar\">$</span><span class=\"price\">";
-  foundHelper = helpers.price;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.price; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "</span>\n      </div>\n    </div>\n  </div>\n</div>";
+  buffer += escapeExpression(stack1) + "<span class=\"divider\"> // </span><span class=\"dollar\">$</span>";
+  stack1 = depth0.price;
+  foundHelper = helpers.decimalToInteger;
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "decimalToInteger", stack1, {hash:{}});
+  buffer += escapeExpression(stack1) + "</a>\n      </div>\n      <a href=\"#\" class=\"customize\">Click To Customize</a>\n    </div>\n  </div>\n</div>";
   return buffer;});
 templates['_product_modal.tmpl'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;

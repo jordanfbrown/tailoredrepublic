@@ -29,7 +29,8 @@ class TR.Views.Customization extends TR.Views.Base
     else if e.which == 39 # Right arrow
       @advanceSlide 'next'
 
-  updateSummary: =>
+  updateSummary: (a, b, c) =>
+    console.log a, b, c
     price = parseFloat(@product.get 'price') + if @customization.get 'vest' then TR.VEST_PRICE else 0
     summaryData = _.extend {price: price, vestPrice: TR.VEST_PRICE}, @customization.toJSON()
     @$('.customization-summary').html @template summaryData
@@ -123,14 +124,14 @@ class TR.Views.Customization extends TR.Views.Base
 
   addToCart: (e) ->
     e.preventDefault()
-    @customization.save().then(=>
+    @customization.save(null, {silent: true}).then(=>
       $.post('/cart_items', {product_id: @product.get('id'), customization_id: @customization.get('id')}).then(
         @addSuccess, @addFailure
       )
     )
     
   addSuccess: (response) =>
-    TR.Events.trigger 'addedToCart', product: @product
+#    TR.Events.trigger 'addedToCart', product: @product
 
   addFailure: (error) =>
     console.log(error, 'failure');

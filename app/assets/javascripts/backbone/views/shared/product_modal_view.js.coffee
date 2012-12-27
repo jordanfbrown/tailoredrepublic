@@ -1,7 +1,6 @@
 #= require ./modal_view
 
 class TR.Views.ProductModal extends TR.Views.Modal
-
   id: 'product-modal'
 
   events: ->

@@ -2,13 +2,10 @@
   <a href="#"><img src="assets/{{image_large_url}}"></a>
   <div class="product-info-wrapper">
     <div class="product-info">
-      <div class="product-name"><a href="#">{{name}}</a></div>
-      <a href="#" class="customize">Click To Customize</a>
-    </div>
-    <div class="product-price">
-      <div class="product-price-text-wrapper">
-        <span class="dollar">$</span><span class="price">{{price}}</span>
+      <div class="product-name">
+        <a href="#">{{name}}<span class="divider"> // </span><span class="dollar">$</span>{{decimalToInteger price}}</a>
       </div>
+      <a href="#" class="customize">Click To Customize</a>
     </div>
   </div>
 </div>

@@ -46,8 +46,6 @@
   }
 
   .product-info {
-    width: 72%;
-    float: left;
     margin-top: 10px;
   }
 
@@ -63,6 +61,10 @@
     font-size: 22px;
   }
 
+  .dollar {
+    font-size: 18px;
+  }
+
   .customize {
     color: $brown;
     margin-top: 10px;
@@ -74,37 +76,5 @@
     margin-top: 5px;
     font-size: 20px;
     font-weight: bold;
-  }
-
-  .product-price {
-    width: 25%;
-    margin-top: 10px;
-    background-color: #fff;
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    border: 3px solid #EEE;
-    @include font("clean");
-
-    .dollar {
-      vertical-align: super;
-      font-size: 18px;
-    }
-
-    .price {
-      font-size: 24px;
-    }
-  }
-
-  .product-price-text-wrapper {
-    top: 37%;
-    left: 18%;
-    font-weight: bold;
-    position: absolute;
-    @media only screen and (max-width: 1200px) {
-      left: 30%;
-    }
-
   }
 }
