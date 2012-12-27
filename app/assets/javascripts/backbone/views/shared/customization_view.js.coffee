@@ -131,7 +131,7 @@ class TR.Views.Customization extends TR.Views.Base
     )
     
   addSuccess: (response) =>
-#    TR.Events.trigger 'addedToCart', product: @product
+    TR.Events.trigger 'addedToCart', product: @product
 
   addFailure: (error) =>
     console.log(error, 'failure');
