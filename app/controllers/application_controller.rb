@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
     def precompile_templates
       if Rails.env.development?
-        `handlebars -m app/assets/javascripts/backbone/templates/* -f app/assets/javascripts/templates.js`
+        `handlebars app/assets/javascripts/backbone/templates/* -f app/assets/javascripts/templates.js`
       end
     end
 

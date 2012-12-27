@@ -4,7 +4,8 @@ class TR.Views.AddSuccessModal extends TR.Views.Modal
   id: 'add-success-modal'
 
   events: ->
-    _.extend super
+    _.extend super,
+      'click a.keep-shopping': 'close'
     
   initialize: (options) ->
     @product = options.product
