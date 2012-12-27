@@ -4,6 +4,7 @@ class TR.Views.Customization extends TR.Views.Base
   events:
     'click a.customization-option': 'setCustomization'
     'click a.add-to-cart': 'addToCart'
+    'click a.save-changes': 'saveChanges'
     'click ul.chevrons a': 'clickedChevron'
     'click a.left': 'previous'
     'click a.right': 'next'
@@ -17,10 +18,10 @@ class TR.Views.Customization extends TR.Views.Base
 
   initialize: (options) ->
     @product = options.product
-    @customization = new TR.Models.Customization()
-    @customization.on 'change', @updateSummary
+    @customization = options.customization || new TR.Models.Customization()
+    @customization.on 'change', @render
     @template = @getTemplate 'customization_checkout'
-    @updateSummary()
+    @render()
     $(document).on 'keydown.customization', @keydown
 
   keydown: (e) =>
@@ -29,10 +30,13 @@ class TR.Views.Customization extends TR.Views.Base
     else if e.which == 39 # Right arrow
       @advanceSlide 'next'
 
-  updateSummary: (a, b, c) =>
-    console.log a, b, c
+  render: =>
     price = parseFloat(@product.get 'price') + if @customization.get 'vest' then TR.VEST_PRICE else 0
-    summaryData = _.extend {price: price, vestPrice: TR.VEST_PRICE}, @customization.toJSON()
+    summaryData = _.extend {
+      price: price, vestPrice: TR.VEST_PRICE
+      isNew: @customization.isNew()
+    }, @customization.toJSON()
+    console.log(summaryData);
     @$('.customization-summary').html @template summaryData
     @$('.vest-overlay').toggle !@customization.get 'vest'
 
@@ -128,6 +132,12 @@ class TR.Views.Customization extends TR.Views.Base
       $.post('/cart_items', {product_id: @product.get('id'), customization_id: @customization.get('id')}).then(
         @addSuccess, @addFailure
       )
+    )
+
+  saveChanges: (e) ->
+    e.preventDefault()
+    @customization.save(null, {silent: true}).then(=>
+      window.location.href = 'cart'
     )
     
   addSuccess: (response) =>

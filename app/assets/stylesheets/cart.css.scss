@@ -1,9 +1,27 @@
 @import "_mixins";
+@import "compass/utilities/general/clearfix";
 
 .carts {
   #main {
     @include shop-texture(repeat-y);
   }
 
+  .edit-customizations, .remove {
+    font-weight: bold;
+  }
 
+  .cart-item {
+    @include clearfix;
+    margin-bottom: 10px;
+    border: 2px dashed #ddd;
+    padding: 5px;
+  }
+
+  .product-image {
+    max-height: 250px;
+  }
+
+  .remove {
+    float: right;
+  }
 }

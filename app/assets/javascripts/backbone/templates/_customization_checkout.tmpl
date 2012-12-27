@@ -22,6 +22,10 @@
   <ul>
     <li><span class="label">Total cost:</span> ${{decimalToInteger price}}</li>
   </ul>
-  <img src="assets/icons/cart-black.png">
-  <a href="#" href="#" class="button add-to-cart">Add To Cart</a>
+  {{#if isNew}}
+    <img src="assets/icons/cart-black.png">
+    <a href="#" class="button add-to-cart">Add To Cart</a>
+  {{else}}
+    <a href="#" class="button save-changes">Save Changes</a>
+  {{/if}}
 </div>

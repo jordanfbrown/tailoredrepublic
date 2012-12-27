@@ -7,15 +7,24 @@ class TR.Views.ProductModal extends TR.Views.Modal
     _.extend super,
       'mousemove': 'mousemove'
 
-  initialize: () ->
+  initialize: (options) ->
+    @customization = options.customization || false
     TR.Events.on 'addedToCart', @addedToCart
     @template = @getTemplate 'product_modal'
     @render()
 
   render: ->
-    templateData = _.extend {vestPrice: TR.VEST_PRICE}, @model.toJSON()
+    templateData = _.extend {
+      vestPrice: TR.VEST_PRICE,
+      customization: if @customization then @customization.toJSON() else false
+    }, @model.toJSON()
+    
     @$el.html @template templateData
-    @customizationView = new TR.Views.Customization el: @$('.customizations'), product: @model
+
+    customizationOptions = el: @$('.customizations'), product: @model
+    if @customization then customizationOptions.customization = @customization
+    @customizationView = new TR.Views.Customization customizationOptions
+
     @enableMagnifier();
     super()
 

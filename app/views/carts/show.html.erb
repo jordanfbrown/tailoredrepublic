@@ -1,17 +1,17 @@
 <div class="content-wrapper">
   <h1>Shopping Cart</h1>
-  <div class="six columns">
+  <div class="twelve columns">
     <div class="cart-wrapper">
       <% @cart.cart_items.each do |cart_item| %>
         <%= render cart_item %>
       <% end %>
+      <% if @cart.empty? %>
+        <p>You haven't added anything to your cart yet.</p>
+        <a href="shop" class="button">Go To Shop</a>
+      <% end %>
     </div>
   </div>
-  <div class="six columns">
-    <p>Foo</p>
-  </div>
 </div>
-
 
 <script>
   $(function() {

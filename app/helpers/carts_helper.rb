@@ -8,7 +8,7 @@ module CartsHelper
       "#{wordify customization.pant_cuffs} Cuffs",
       "#{customization.fit.capitalize} Fit",
       "#{customization.lining} Lining",
-      "Monogram: #{customization.monogram.length == 0 ? "None" : monogram}",
+      "Monogram: #{customization.monogram.length == 0 ? "None" : customization.monogram}",
       "#{wordify customization.bouttoniere} Bouttoniere",
       "#{wordify customization.pick_stitching} Pick Stitching"
     ]

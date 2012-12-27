@@ -1,13 +1,15 @@
-<div class="cart-item">
-  <div class="four columns">
-    <%= image_tag cart_item.product.image_large_url%>
+<div class="cart-item" data-product-id="<%= cart_item.product.id %>"
+     data-customization-id="<%= cart_item.customization.id %>">
+  <a href="#" class="remove">Remove</a>
+  <div class="three columns">
+    <%= image_tag cart_item.product.image_large_url, class: "product-image"%>
   </div>
-  <div class="eight columns">
+  <div class="nine columns">
     <h3><%= cart_item.product.name %><span class="divider"> // </span>$<%= cart_item.product.display_price %></h3>
     <h4>Customizations:</h4>
     <p>
       <%= print_customizations cart_item.customization%>
     </p>
-    <a href="#">Edit Customizations</a>
+    <a href="#" class="edit-customizations">Edit Customizations</a>
   </div>
 </div>

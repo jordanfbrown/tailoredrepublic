@@ -12,4 +12,9 @@ class CustomizationsController < ApplicationController
       render json: customization.errors, status: :unprocessable_entity
     end
   end
+
+  def show
+    customization = Customization.find params[:id]
+    render json: customization
+  end
 end
