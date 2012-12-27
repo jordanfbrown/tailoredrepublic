@@ -30,8 +30,8 @@ class TR.Views.ProductModal extends TR.Views.Modal
        e.pageY < offsetTop || e.pageY > offsetTop + $small.height()) && @magnifierVisible()
       @hideMagnifier()
       
-  addedToCart: (options) =>
-    new TR.Views.AddSuccessModal({product: options.product})
+  addedToCart: (data) =>
+    new TR.Views.AddSuccessModal({model: data.product})
     @destroy()
 
   destroy: ->

@@ -7,9 +7,8 @@ class TR.Views.AddSuccessModal extends TR.Views.Modal
     _.extend super,
       'click a.keep-shopping': 'close'
     
-  initialize: (options) ->
+  initialize: ->
     @subviews = []
-    @product = options.product
     @suggestedProducts = new TR.Collections.Products()
     @suggestedProducts.fetch().then(=>
       @template = @getTemplate 'add_success_modal'
@@ -17,7 +16,7 @@ class TR.Views.AddSuccessModal extends TR.Views.Modal
     )
 
   render: ->
-    templateData = product: @product.toJSON(), suggestedProducts: @suggestedProducts.toJSON()
+    templateData = product: @model.toJSON(), suggestedProducts: @suggestedProducts.toJSON()
     @$el.html @template templateData
     @suggestedProducts.each @renderProductView
     super()

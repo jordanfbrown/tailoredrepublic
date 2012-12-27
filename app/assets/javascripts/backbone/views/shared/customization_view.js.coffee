@@ -18,6 +18,7 @@ class TR.Views.Customization extends TR.Views.Base
   initialize: (options) ->
     @product = options.product
     @customization = new TR.Models.Customization()
+    @customization.on 'change', @updateSummary
     @template = @getTemplate 'customization_checkout'
     @updateSummary()
     $(document).on 'keydown.customization', @keydown
@@ -31,6 +32,7 @@ class TR.Views.Customization extends TR.Views.Base
   updateSummary: =>
     price = parseFloat(@product.get 'price') + if @customization.get 'vest' then TR.VEST_PRICE else 0
     summaryData = _.extend {price: price, vestPrice: TR.VEST_PRICE}, @customization.toJSON()
+    console.log(summaryData);
     @$('.customization-summary').html @template summaryData
     @$('.vest-overlay').toggle !@customization.get 'vest'
 
@@ -99,13 +101,14 @@ class TR.Views.Customization extends TR.Views.Base
     $img = $target.find 'img:not(.shield)'
     option = $target.data 'option'
     type = $target.parents('.customization-wrapper').data 'type'
-
+    
     @updateChevron type, @CHEVRON.COMPLETED
 
     unless type == 'advanced'
       @customization.setByName type, option
       @clearChecked()
       $img.addClass 'checked'
+      console.log(type, option);
     else
       $img.toggleClass 'checked'
       @customization.setByName option, $img.hasClass 'checked'
