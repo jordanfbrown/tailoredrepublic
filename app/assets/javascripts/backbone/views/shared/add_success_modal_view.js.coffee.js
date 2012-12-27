@@ -8,10 +8,13 @@ class TR.Views.AddSuccessModal extends TR.Views.Modal
     
   initialize: (options) ->
     @product = options.product
-    @template = @getTemplate 'add_success_modal'
-    @render()
+    @suggestedProducts = new TR.Collections.Products()
+    @suggestedProducts.fetch().then(=>
+      @template = @getTemplate 'add_success_modal'
+      @render()
+    )
 
   render: ->
-    templateData = @product.toJSON()
+    templateData = product: @product.toJSON(), suggestedProducts: @suggestedProducts.toJSON()
     @$el.html @template templateData
     super()

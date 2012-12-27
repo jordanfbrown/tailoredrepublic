@@ -19,6 +19,7 @@
 //= require handlebars
 //= require foundation
 //= require namespace
+//= require templates
 //= require_tree ./backbone/models
 //= require_tree ./backbone/collections
 //= require_tree ./backbone/views

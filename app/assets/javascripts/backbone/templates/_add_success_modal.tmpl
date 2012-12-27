@@ -1,7 +1,7 @@
 <a class="close-reveal-modal">&#215;</a>
 
 <div class="twelve columns">
-  <h3>The {{name}} has been added to your shopping cart.</h3>
+  <h3>The {{product.name}} has been added to your shopping cart.</h3>
 </div>
 
 <div class="six columns button-column">
@@ -13,5 +13,11 @@
 
 <div class="twelve columns">
   <h4>Other styles you might also like:</h4>
+</div>
+
+<div class="suits-wrapper">
+  {{#each suggestedProducts}}
+    {{> product}}
+  {{/each}}
 </div>
 

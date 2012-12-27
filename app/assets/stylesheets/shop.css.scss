@@ -2,8 +2,9 @@
 @import "compass";
 
 .shop {
-  #suits-wrapper {
+  .suits-wrapper {
     margin-top: 40px;
+    clear: both;
   }
 
   footer {
@@ -13,8 +14,24 @@
 
 
 #add-success-modal {
+  h3, h4 {
+    text-align: center;
+  }
+
   .button-column {
     margin-bottom: 10px;
+
+    @media only screen and (max-width: 767px) {
+      text-align: center !important;
+    }
+
+    &:nth-of-type(2n) {
+      text-align: right;
+    }
+    
+    &:nth-of-type(2n + 1) {
+      text-align: left;
+    }
   }
 }
 

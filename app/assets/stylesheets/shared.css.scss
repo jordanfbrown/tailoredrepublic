@@ -3,7 +3,7 @@
 @import "compass/css3";
 
 .button {
-  background-color: $brown;
+  background-color: darken($brown, 10%);
   padding: 7px 10px 5px 10px;
   @include font("header");
   font-weight: bold;
@@ -13,7 +13,7 @@
 
   &:hover {
     color: #fff;
-    background-color: darken($brown, 10%);
+    background-color: $brown;
     text-decoration: none;
   }
 
@@ -22,7 +22,8 @@
   }
 }
 
-#suits-wrapper {
+
+.suits-wrapper {
   margin-bottom: 100px;
   @include clearfix;
 

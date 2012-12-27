@@ -14,3 +14,5 @@ Handlebars.registerHelper 'numberToString', (number) ->
 
 Handlebars.registerHelper 'decimalToInteger', (decimal) ->
   parseInt decimal
+
+Handlebars.registerPartial 'product', Handlebars.templates['_product.tmpl']
