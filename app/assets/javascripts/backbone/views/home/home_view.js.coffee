@@ -11,7 +11,6 @@ class TR.Views.Home extends TR.Views.Base
     $(window).resize @resize
     @resize()
 
-    @footerView = new TR.Views.Footer()
     @products = new TR.Collections.Products options.products
     @products.each @renderProductView
 
