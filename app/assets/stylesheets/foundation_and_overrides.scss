@@ -266,7 +266,7 @@ html {
   height: 100%;
 }
 
-#container {
+body:not(.home) #container {
   height: 100%;
 }
 
@@ -361,6 +361,7 @@ a {
 
 .reveal-modal {
   padding: 10px;
+  top: 0;
 
   .close-reveal-modal {
     font-size: 30px;
