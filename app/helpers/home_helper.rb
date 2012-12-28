@@ -1,5 +1,5 @@
 module HomeHelper
   def shop_or_cart
-    @item_count > 0 ? 'cart' : 'shop'
+    @cart.empty? ? 'shop': 'cart'
   end
 end

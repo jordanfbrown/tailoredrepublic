@@ -8,7 +8,6 @@ class TR.Views.DialogModal extends TR.Views.Modal
 
   initialize: (options) ->
     @action = options.action || false
-    
     @text = options.text || ''
     @template = @getTemplate 'dialog_modal'
     @render()
@@ -17,9 +16,11 @@ class TR.Views.DialogModal extends TR.Views.Modal
     @$el.html @template text: @text
     super()
 
-  confirm: ->
+  confirm: (e) ->
+    e.preventDefault()
     @action() if @action
     @close()
 
-  cancel: ->
+  cancel: (e) ->
+    e.preventDefault()
     @close()
