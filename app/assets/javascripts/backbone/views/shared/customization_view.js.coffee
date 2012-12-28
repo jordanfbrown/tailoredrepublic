@@ -36,7 +36,6 @@ class TR.Views.Customization extends TR.Views.Base
       price: price, vestPrice: TR.VEST_PRICE
       isNew: @customization.isNew()
     }, @customization.toJSON()
-    console.log(summaryData);
     @$('.customization-summary').html @template summaryData
     @$('.vest-overlay').toggle !@customization.get 'vest'
 

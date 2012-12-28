@@ -138,6 +138,17 @@ function program21(depth0,data) {
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n</div>";
   return buffer;});
+templates['_dialog_modal.tmpl'] = template(function (Handlebars,depth0,helpers,partials,data) {
+  helpers = helpers || Handlebars.helpers;
+  var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression;
+
+
+  buffer += "<div class=\"twelve columns\">\n  <p>";
+  foundHelper = helpers.text;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.text; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "</p>\n</div>\n\n<div class=\"six columns\">\n  <a href=\"#\" class=\"yes button\">Yes</a>\n</div>\n<div class=\"six columns\">\n  <a href=\"#\" class=\"no button\">No</a>\n</div>\n";
+  return buffer;});
 templates['_product.tmpl'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing;

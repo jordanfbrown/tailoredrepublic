@@ -11,4 +11,16 @@ class CartItemsController < ApplicationController
       render json: cart_item.errors
     end
   end
+
+  def destroy
+    cart = current_cart
+    cart_item = CartItem.find(params[:id])
+
+    if cart_item.cart == cart
+      cart_item.destroy
+      render json: {success: true}
+    else
+      render json: {error: 'Unauthorized'}, status: 403
+    end
+  end
 end

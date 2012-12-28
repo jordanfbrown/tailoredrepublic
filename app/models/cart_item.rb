@@ -3,4 +3,8 @@ class CartItem < ActiveRecord::Base
   belongs_to :cart
   belongs_to :product
   belongs_to :customization
+
+  def total_price
+    (product.price + (customization.vest? ? 79 : 0)).to_i
+  end
 end

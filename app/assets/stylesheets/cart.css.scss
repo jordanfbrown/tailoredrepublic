@@ -6,8 +6,10 @@
     @include shop-texture(repeat-y);
   }
 
-  .edit-customizations, .remove {
+  .remove {
     font-weight: bold;
+    margin-right: 5px;
+    margin-top: 5px;
   }
 
   .cart-item {
@@ -15,6 +17,11 @@
     margin-bottom: 10px;
     border: 2px dashed #ddd;
     padding: 5px;
+
+    h3 {
+      border-bottom: 1px solid #333;
+      padding-bottom: 5px;
+    }
   }
 
   .product-image {
