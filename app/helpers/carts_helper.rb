@@ -14,7 +14,7 @@ module CartsHelper
     ]
 
     if customization.vest
-      customizations << "Vest (#{customization.vest_buttons} Buttons)"
+      customizations << "#{customization.vest_buttons} Button Vest (+$#{Product.vest_price})"
     end
 
     customizations.join ', '

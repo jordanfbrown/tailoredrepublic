@@ -5,6 +5,6 @@ class CartItem < ActiveRecord::Base
   belongs_to :customization
 
   def total_price
-    (product.price + (customization.vest? ? 79 : 0)).to_i
+    (product.price + (customization.vest? ? Product.vest_price : 0)).to_i
   end
 end

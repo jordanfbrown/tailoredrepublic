@@ -23,6 +23,15 @@
       padding-bottom: 5px;
     }
   }
+  
+  .cart-total {
+    float: right;
+    margin-bottom: 20px;
+
+    .price {
+      font-weight: bold;
+    }
+  }
 
   .product-image {
     max-height: 250px;

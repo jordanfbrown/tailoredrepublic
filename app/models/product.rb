@@ -8,6 +8,10 @@ class Product < ActiveRecord::Base
   has_many :customizations
   before_destroy :ensure_not_referenced_by_cart_item
 
+  def self.vest_price
+    79
+  end
+
   def display_price
     price.to_i
   end

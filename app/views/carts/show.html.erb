@@ -1,14 +1,16 @@
 <div class="content-wrapper">
   <h1>Shopping Cart</h1>
   <div class="twelve columns">
-    <div class="cart-wrapper">
-      <% @cart.cart_items.each do |cart_item| %>
-        <%= render cart_item %>
-      <% end %>
-      <div class="empty-cart" <% unless @cart.empty? %> style="display: none;" <% end %>>
-        <p>You haven't added anything to your cart yet.</p>
-        <a href="shop" class="button">Go To Shop</a>
-      </div>
+    <%= render @cart.cart_items %>
+    <div class="empty-cart" <% unless @cart.empty? %> style="display: none;" <% end %>>
+      <p>You haven't added anything to your cart yet.</p>
+      <a href="shop" class="button">Go To Shop</a>
+    </div>
+  </div>
+  <div class="twelve columns">
+    <div class="cart-total">
+      <h5>Total: <span class="price">$<%= @cart.total_price %></span></h5>
+      <a href="checkout" class="button">Checkout</a>
     </div>
   </div>
 </div>
