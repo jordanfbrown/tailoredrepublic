@@ -68,7 +68,8 @@ class TR.Views.Home extends TR.Views.Base
     infoPosition = $('#info').offset().top
 
     # Parallax effect for transition image
-    $('#bosses img').css 'top', (bossesPosition - pageTop - $(window).height()) / 2
+    imgTop = (bossesPosition - pageTop - $(window).height()) / 3
+    $('#bosses img').css 'top', imgTop
 
     # Check if background image is in view
     $home = $('#home')
@@ -87,11 +88,12 @@ class TR.Views.Home extends TR.Views.Base
     @$('#slideshow').orbit
       afterSlideChange: (previous, current) =>
         @updateCaption $(current).data()
+      timer: off
 
   updateCaption: (data) ->
     $caption = $('#lookbook-info')
     $caption.fadeOut(->
       _.each data, (value, attribute) ->
-        $caption.find('.' + attribute).text(value)
+        $caption.find('.' + attribute).text(value).css 'color', data.color
       $caption.fadeIn()
     )

@@ -147,7 +147,6 @@ h2 {
 
 //About Us
 #about {
-  margin-top: 20px;
   margin-bottom: 100px;
   @include clearfix;
 
@@ -231,6 +230,7 @@ h2 {
   }
 
   #lookbook-info {
+    display: block;
     color: #fff;
     font-size: 20px;
     font-weight: bold;
