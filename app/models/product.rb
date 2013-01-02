@@ -1,7 +1,7 @@
 require 'enumerated_attribute'
 
 class Product < ActiveRecord::Base
-  enum_attr :category, %w(suit pants vest jacket shirt)
+  enum_attr :category, %w(suit shirt pants accessory)
   attr_accessible :description, :image_large_url, :image_small_1_url, :image_small_2_url, :image_small_3_url,
                   :image_small_4_url, :name, :price, :quantity, :category
   has_many :cart_items
@@ -10,6 +10,21 @@ class Product < ActiveRecord::Base
 
   def self.vest_price
     79
+  end
+
+  def self.depluralize_category(category)
+    case category
+      when 'suits'
+        :suit
+      when 'shirts'
+        :shirt
+      when 'pants'
+        :pants
+      when 'accessories'
+        :accessories
+      else
+        :suit
+    end
   end
 
   def display_price

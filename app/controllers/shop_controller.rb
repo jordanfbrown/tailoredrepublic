@@ -1,5 +1,6 @@
 class ShopController < ApplicationController
   def index
-    @products = Product.where(category: :suit)
+    category = Product.depluralize_category params[:category]
+    @products = Product.where(category: category)
   end
 end
