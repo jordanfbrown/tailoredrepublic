@@ -2,7 +2,7 @@ class TR.Views.Home extends TR.Views.Base
   el: '#main'
 
   events:
-    'click .page-down, nav a, #continue': 'scrollToSection'
+    'click .page-down, nav a': 'scrollToSection'
 
   initialize: (options) ->
     @createSlideshow()
@@ -10,7 +10,6 @@ class TR.Views.Home extends TR.Views.Base
     $(window).scroll @scroll
     $(window).resize @resize
     @resize()
-    @scroll()
 
     @products = new TR.Collections.Products options.products
     @products.each @renderProductView
@@ -53,7 +52,7 @@ class TR.Views.Home extends TR.Views.Base
     pageDownOffset = if backgroundHeight > $(window).height() then $(window).height() else backgroundHeight
     $('.page-down').css 'top', pageDownOffset - 70 + 'px'
 
-  scroll: (e) ->
+  scroll: ->
     $sidebar = $('#sidebar')
     $sidebar.removeClass('bottom').find('li').removeClass('selected')
 

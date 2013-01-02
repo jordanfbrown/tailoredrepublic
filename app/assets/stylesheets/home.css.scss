@@ -61,20 +61,6 @@ h2 {
   color: $brown;
 }
 
-$navigation-height: 29px;
-$navigation-color: #000;
-
-#home-navigation {
-  @include font("header");
-  background-color: $navigation-color;
-  position: absolute;
-  top: 50%;
-  padding: 5px 20px 5px 20px;
-  font-size: 19px;
-  @include slanted-edge-before($navigation-height, $navigation-color);
-  @include slanted-edge-after($navigation-height, $navigation-color);
-}
-
 .page-down {
   position: fixed;
   left: 50%;
