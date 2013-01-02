@@ -2,7 +2,7 @@ class TR.Views.Home extends TR.Views.Base
   el: '#main'
 
   events:
-    'click .page-down, nav a': 'scrollToSection'
+    'click .page-down': 'scrollToSection'
 
   initialize: (options) ->
     @createSlideshow()
@@ -13,6 +13,8 @@ class TR.Views.Home extends TR.Views.Base
 
     @products = new TR.Collections.Products options.products
     @products.each @renderProductView
+
+    $('nav a').on 'click.home', @scrollToSection
 
   renderProductView: (product) =>
     @$('.suits-wrapper').append new TR.Views.Product({model: product}).render().el
@@ -47,7 +49,7 @@ class TR.Views.Home extends TR.Views.Base
 
     backgroundHeight = $(window).width() * imgHeight / imgWidth;
     navHeight = $('nav').height()
-    $('#process').css 'margin-top', backgroundHeight
+    $('#process').css 'margin-top', backgroundHeight - 34
     
     pageDownOffset = if backgroundHeight > $(window).height() then $(window).height() else backgroundHeight
     $('.page-down').css 'top', pageDownOffset - 70 + 'px'

@@ -11,8 +11,8 @@
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
     <div id="container" class="container">
+      <%= render "layouts/nav" %>
       <div id="main" role="main">
-        <%= render "layouts/nav" %>
         <%= yield %>
         <% unless controller_name == "home" %>
           <div class="clear-footer"></div>
