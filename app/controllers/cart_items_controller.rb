@@ -1,9 +1,8 @@
 class CartItemsController < ApplicationController
   def create
-    cart = current_cart
     product = Product.find(params[:product_id])
     customization = Customization.find(params[:customization_id])
-    cart_item = cart.cart_items.build(product: product, customization: customization)
+    cart_item = @cart.cart_items.build(product: product, customization: customization)
 
     if cart_item.save
       render json: cart_item
@@ -13,10 +12,9 @@ class CartItemsController < ApplicationController
   end
 
   def destroy
-    cart = current_cart
     cart_item = CartItem.find(params[:id])
 
-    if cart_item.cart == cart
+    if cart_item.cart == @cart
       cart_item.destroy
       render json: {success: true}
     else

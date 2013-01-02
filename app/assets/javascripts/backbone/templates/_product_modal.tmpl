@@ -2,14 +2,14 @@
 <h2>{{name}}<span class="divider">&nbsp;//&nbsp;</span>${{decimalToInteger price}}</h2>
 <div class="five columns preview-wrapper">
   <ul class="modal-suit-preview three columns">
-    <li><a href="#"><img src="assets/{{image_small_1_url}}"></a></li>
-    <li><a href="#"><img src="assets/{{image_small_2_url}}"></a></li>
-    <li><a href="#"><img src="assets/{{image_small_3_url}}"></a></li>
-    <li><a href="#"><img src="assets/{{image_small_4_url}}"></a></li>
+    <li><a href="#"><img src="/assets/{{image_small_1_url}}"></a></li>
+    <li><a href="#"><img src="/assets/{{image_small_2_url}}"></a></li>
+    <li><a href="#"><img src="/assets/{{image_small_3_url}}"></a></li>
+    <li><a href="#"><img src="/assets/{{image_small_4_url}}"></a></li>
   </ul>
   <div class="magnify nine columns">
     <div class="large"></div>
-    <img class="main small" src="assets/{{image_large_url}}">
+    <img class="main small" src="/assets/{{image_large_url}}">
   </div>
 </div>
 <div class="seven columns">
@@ -51,25 +51,25 @@
         <a href="#">{{{customizationHelper customization.vest}}}</a>
       </li>
       <li data-type="checkout">
-        <a href="#"><img src="assets/icons/chevron.png"></a>
+        <a href="#"><img src="/assets/icons/chevron.png"></a>
       </li>
     </ul>
     <div class="customization-wrapper" data-type="lapel">
       <h3>Lapel<a href="#" class="right" title="Next customization"></a></h3>
       <a href="#" class="customization-option four" data-option="notch">
         <h5>Notch</h5>
-        <img {{#ifeq customization.lapel "notch"}}class="checked"{{/ifeq}} src="assets/customizations/lapel-notch-black.png">
+        <img {{#ifeq customization.lapel "notch"}}class="checked"{{/ifeq}} src="/assets/customizations/lapel-notch-black.png">
         <div class="recommended">
-          <img src="assets/logos/logo-stitch.png" class="shield"><span>Recommended</span>
+          <img src="/assets/logos/logo-stitch.png" class="shield"><span>Recommended</span>
         </div>
       </a>
       <a href="#" class="customization-option four" data-option="peak">
         <h5>Peak</h5>
-        <img {{#ifeq customization.lapel "peak"}}class="checked"{{/ifeq}} src="assets/customizations/lapel-peak-black.png">
+        <img {{#ifeq customization.lapel "peak"}}class="checked"{{/ifeq}} src="/assets/customizations/lapel-peak-black.png">
       </a>
       <a href="#" class="customization-option four" data-option="narrow">
         <h5>Narrow</h5>
-        <img {{#ifeq customization.lapel "narrow"}}class="checked"{{/ifeq}} src="assets/customizations/lapel-narrow-black.png">
+        <img {{#ifeq customization.lapel "narrow"}}class="checked"{{/ifeq}} src="/assets/customizations/lapel-narrow-black.png">
       </a>
       <p>Notch lapels are the most widely used lapels and are a safe and stylish choice for any suit. Peak lapels add a
         little pizazz for those who want to stand out. TR tip: If you are unsure, go with the notch lapel, you don’t
@@ -79,18 +79,18 @@
       <h3><a href="#" class="left" title="Previous customization"></a>Buttons<a href="#" class="right" title="Next customization"></a></h3>
       <a href="#" class="customization-option four" data-option="1">
         <h5>One</h5>
-        <img {{#ifeq customization.buttons 1}}class="checked"{{/ifeq}} src="assets/customizations/buttons-one-black.png">
+        <img {{#ifeq customization.buttons 1}}class="checked"{{/ifeq}} src="/assets/customizations/buttons-one-black.png">
       </a>
       <a href="#" class="customization-option four" data-option="2">
         <h5>Two</h5>
-        <img {{#ifeq customization.buttons 2}}class="checked"{{/ifeq}} src="assets/customizations/buttons-two-black.png">
+        <img {{#ifeq customization.buttons 2}}class="checked"{{/ifeq}} src="/assets/customizations/buttons-two-black.png">
         <div class="recommended">
-          <img src="assets/logos/logo-stitch.png" class="shield"><span>Recommended</span>
+          <img src="/assets/logos/logo-stitch.png" class="shield"><span>Recommended</span>
         </div>
       </a>
       <a href="#" class="customization-option four" data-option="3">
         <h5>Three</h5>
-        <img {{#ifeq customization.buttons 3}}class="checked"{{/ifeq}} src="assets/customizations/buttons-three-black.png">
+        <img {{#ifeq customization.buttons 3}}class="checked"{{/ifeq}} src="/assets/customizations/buttons-three-black.png">
       </a>
       <p>The modern standard and a fashionable choice is the two button suit. Two button suits fit more of a classic
         style and look great on taller guys. A one button suit is a very stylish option for those who want to be
@@ -100,17 +100,17 @@
       <h3><a href="#" class="left" title="Previous customization"></a>Vents<a href="#" class="right" title="Next customization"></a></h3>
       <a href="#" class="customization-option four" data-option="0">
         <h5>None</h5>
-        <img {{#ifeq customization.vents 0}}class="checked"{{/ifeq}} src="assets/customizations/vents-none-black.png">
+        <img {{#ifeq customization.vents 0}}class="checked"{{/ifeq}} src="/assets/customizations/vents-none-black.png">
       </a>
       <a href="#" class="customization-option four" data-option="1">
         <h5>One</h5>
-        <img {{#ifeq customization.vents 1}}class="checked"{{/ifeq}} src="assets/customizations/vents-one-black.png">
+        <img {{#ifeq customization.vents 1}}class="checked"{{/ifeq}} src="/assets/customizations/vents-one-black.png">
       </a>
       <a href="#" class="customization-option four" data-option="2">
         <h5>Two</h5>
-        <img {{#ifeq customization.vents 2}}class="checked"{{/ifeq}} src="assets/customizations/vents-two-black.png">
+        <img {{#ifeq customization.vents 2}}class="checked"{{/ifeq}} src="/assets/customizations/vents-two-black.png">
         <div class="recommended">
-          <img src="assets/logos/logo-stitch.png" class="shield"><span>Recommended</span>
+          <img src="/assets/logos/logo-stitch.png" class="shield"><span>Recommended</span>
         </div>
       </a>
       <p>Having two vents is the traditional, safe and stylish choice. One vent is a way to make your suit modern and
@@ -121,18 +121,18 @@
       <h3><a href="#" class="left" title="Previous customization"></a>Pleats<a href="#" class="right" title="Next customization"></a></h3>
       <a href="#" class="customization-option four" data-option="0">
         <h5>None</h5>
-        <img {{#ifeq customization.pleats 0}}class="checked"{{/ifeq}} src="assets/customizations/pleats-none-black.png">
+        <img {{#ifeq customization.pleats 0}}class="checked"{{/ifeq}} src="/assets/customizations/pleats-none-black.png">
         <div class="recommended">
-          <img src="assets/logos/logo-stitch.png" class="shield"><span>Recommended</span>
+          <img src="/assets/logos/logo-stitch.png" class="shield"><span>Recommended</span>
         </div>
       </a>
       <a href="#" class="customization-option four" data-option="1">
         <h5>One</h5>
-        <img {{#ifeq customization.pleats 1}}class="checked"{{/ifeq}} src="assets/customizations/pleats-one-black.png">
+        <img {{#ifeq customization.pleats 1}}class="checked"{{/ifeq}} src="/assets/customizations/pleats-one-black.png">
       </a>
       <a href="#" class="customization-option four" data-option="2">
         <h5>Two</h5>
-        <img {{#ifeq customization.pleats 2}}class="checked"{{/ifeq}} src="assets/customizations/pleats-two-black.png">
+        <img {{#ifeq customization.pleats 2}}class="checked"{{/ifeq}} src="/assets/customizations/pleats-two-black.png">
       </a>
       <p>Pleats are typically associated with old-fashioned suits. If you are looking for a modern, trendier look, we
         recommend going with no pleats and no cuffs on the pants.</p>
@@ -141,14 +141,14 @@
       <h3><a href="#" class="left" title="Previous customization"></a>Cuffs<a href="#" class="right" title="Next customization"></a></h3>
       <a href="#" class="customization-option" data-option="false">
         <h5>None</h5>
-        <img src="assets/customizations/cuffs-no-black.png" class="cuffs {{#if customizations.pant_cuffs}}checked{{/if}}">
+        <img src="/assets/customizations/cuffs-no-black.png" class="cuffs {{#if customizations.pant_cuffs}}checked{{/if}}">
         <div class="recommended">
-          <img src="assets/logos/logo-stitch.png" class="shield"><span>Recommended</span>
+          <img src="/assets/logos/logo-stitch.png" class="shield"><span>Recommended</span>
         </div>
       </a>
       <a href="#" class="customization-option" data-option="true">
         <h5>Cuffs</h5>
-        <img src="assets/customizations/cuffs-yes-black.png" class="cuffs {{#unless customizations.pant_cuffs}}checked{{/unless}}">
+        <img src="/assets/customizations/cuffs-yes-black.png" class="cuffs {{#unless customizations.pant_cuffs}}checked{{/unless}}">
       </a>
       <p>Pant cuffs were a suit staple in previous decades, but unless you are going for an older, more classic look,
         we recommend sticking with no pant cuffs. It keeps the suit lines clean and sharp, keeping those heads on a
@@ -158,18 +158,18 @@
       <h3><a href="#" class="left" title="Previous customization"></a>Fit<a href="#" class="right" title="Next customization"></a></h3>
       <a href="#" class="customization-option four" data-option="slim">
         <h5>Slim</h5>
-        <img {{#ifeq customization.fit "slim"}}class="checked"{{/ifeq}} src="assets/customizations/fit-slim-black.png">
+        <img {{#ifeq customization.fit "slim"}}class="checked"{{/ifeq}} src="/assets/customizations/fit-slim-black.png">
       </a>
       <a href="#" class="customization-option four" data-option="tailored">
         <h5>Tailored</h5>
-        <img {{#ifeq customization.fit "tailored"}}class="checked"{{/ifeq}} src="assets/customizations/fit-tailored-black.png">
+        <img {{#ifeq customization.fit "tailored"}}class="checked"{{/ifeq}} src="/assets/customizations/fit-tailored-black.png">
         <div class="recommended">
-          <img src="assets/logos/logo-stitch.png" class="shield"><span>Recommended</span>
+          <img src="/assets/logos/logo-stitch.png" class="shield"><span>Recommended</span>
         </div>
       </a>
       <a href="#" class="customization-option four" data-option="normal">
         <h5>Normal</h5>
-        <img {{#ifeq customization.fit "normal"}}class="checked"{{/ifeq}} src="assets/customizations/fit-normal-black.png">
+        <img {{#ifeq customization.fit "normal"}}class="checked"{{/ifeq}} src="/assets/customizations/fit-normal-black.png">
       </a>
       <p>The tailored fit is guaranteed to look great on most guys. A regular fit is great for guys with a fuller
         figure. And the slim fit is great for lean guys who want a very tight fitting suit and know they will not have
@@ -179,7 +179,7 @@
     <div class="customization-wrapper two-item" data-type="lining" style="display: none;">
       <h3><a href="#" class="left" title="Previous customization"></a>Lining<a href="#" class="right" title="Next customization"></a></h3>
       <div class="customization-option">
-        <img src="assets/customizations/lining-black.png" class="lining">
+        <img src="/assets/customizations/lining-black.png" class="lining">
       </div>
       <div class="customization-option linings">
         <div class="four columns">
@@ -209,7 +209,7 @@
     <div class="customization-wrapper two-item" data-type="monogram" style="display: none;">
       <h3><a href="#" class="left" title="Previous customization"></a>Monogram<a href="#" class="right" title="Next customization"></a></h3>
       <div href="#" class="customization-option">
-        <img src="assets/customizations/monogram-black.png" class="monogram">
+        <img src="/assets/customizations/monogram-black.png" class="monogram">
       </div>
       <div class="customization-option">
         <p>Monogram (15 character max)</p>
@@ -224,14 +224,14 @@
       <h3><a href="#" class="left" title="Previous customization"></a>Advanced<a href="#" class="right" title="Next customization"></a></h3>
       <a href="#" class="customization-option" data-option="bouttoniere">
         <h5>Functional Bouttoniere (Y/N)?</h5>
-        <img {{#if customization.bouttoniere}}class="checked"{{/if}} src="assets/customizations/bouttoniere-black.png">
+        <img {{#if customization.bouttoniere}}class="checked"{{/if}} src="/assets/customizations/bouttoniere-black.png">
         <div class="recommended">
-          <img src="assets/logos/logo-stitch.png" class="shield"><span>Recommended</span>
+          <img src="/assets/logos/logo-stitch.png" class="shield"><span>Recommended</span>
         </div>
       </a>
       <a href="#" class="customization-option" data-option="pick_stitching">
         <h5>Pick Stitching (Y/N)?</h5>
-        <img {{#if customization.pick_stitching}}class="checked"{{/if}} src="assets/customizations/pick-stitching-black.png">
+        <img {{#if customization.pick_stitching}}class="checked"{{/if}} src="/assets/customizations/pick-stitching-black.png">
       </a>
       <p>Pick stitching really emphasizes the stitching on your suit making it clear that you went with a tailored
         option. This is a fairly bold look, so we recommend opting out unless you are familiar with the look and know
@@ -242,11 +242,11 @@
       <h3><a href="#" class="left" title="Previous customization"></a>Vest (+${{vestPrice}})<a href="#" class="right" title="Next customization"></a></h3>
       <a href="#" class="customization-option four" data-option="true">
         <h5>Add Vest</h5>
-        <img src="assets/customizations/vest-three-black.png">
+        <img src="/assets/customizations/vest-three-black.png">
       </a>
       <a href="#" class="customization-option four" data-option="false">
         <h5>No Vest</h5>
-        <img src="assets/customizations/vest-three-black.png">
+        <img src="/assets/customizations/vest-three-black.png">
       </a>
       <p>Do you want to make your suit a three-piece? You can add a matching vest to your suit order for $79. A
         three-piece suit is sure to draw looks and makes a bold statement that you are serious about your style game.</p>
@@ -259,15 +259,15 @@
       <h3><a href="#" class="left" title="Previous customization"></a>Vest Buttons<a href="#" class="right" title="Next customization"></a></h3>
       <a href="#" class="customization-option four" data-option="3">
         <h5>Three Buttons</h5>
-        <img src="assets/customizations/vest-three-black.png">
+        <img src="/assets/customizations/vest-three-black.png">
       </a>
       <a href="#" class="customization-option four" data-option="4">
         <h5>Four Buttons</h5>
-        <img src="assets/customizations/vest-four-black.png">
+        <img src="/assets/customizations/vest-four-black.png">
       </a>
       <a href="#" class="customization-option four" data-option="5">
         <h5>Five Buttons</h5>
-        <img src="assets/customizations/vest-five-black.png">
+        <img src="/assets/customizations/vest-five-black.png">
       </a>
       <p>Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons!
         Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest

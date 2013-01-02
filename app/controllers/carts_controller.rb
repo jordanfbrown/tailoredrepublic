@@ -36,8 +36,4 @@ class CartsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-  def show
-    @cart = current_cart
-  end
 end

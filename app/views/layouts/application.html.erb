@@ -12,6 +12,7 @@
   <body class="<%= controller_name %> <%= action_name %>">
     <div id="container" class="container">
       <div id="main" role="main">
+        <%= render "layouts/nav" %>
         <%= yield %>
         <% unless controller_name == "home" %>
           <div class="clear-footer"></div>
@@ -33,6 +34,7 @@
       })();
 
       $(function() {
+        new TR.Views.Header();
         new TR.Views.Footer();
       });
     </script>

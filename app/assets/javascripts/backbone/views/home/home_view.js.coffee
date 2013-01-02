@@ -10,6 +10,7 @@ class TR.Views.Home extends TR.Views.Base
     $(window).scroll @scroll
     $(window).resize @resize
     @resize()
+    @scroll()
 
     @products = new TR.Collections.Products options.products
     @products.each @renderProductView
@@ -29,8 +30,17 @@ class TR.Views.Home extends TR.Views.Base
     homeHeight = $home.height()
     marginBottom = parseFloat($home.css 'margin-bottom')
 
-    $('html, body').stop().animate
-      scrollTop: $(href).offset().top - (if href == '#process' then 0 else 34), 1500
+    href = href.substr 1, href.length
+
+    if href == '#home'
+      $('.parallax').css 'top', 0
+      $('html, body').stop().animate
+        scrollTop: 0, 1500, ->
+          history.pushState href
+    else
+      $('html, body').stop().animate
+        scrollTop: $(href).offset().top, 1500, ->
+          history.pushState href
 
   resize: (e) ->
     imgWidth = 1920
@@ -66,28 +76,11 @@ class TR.Views.Home extends TR.Views.Base
     if $backgroundImg.inView().exists()
       homeTop = 0
       $('.page-down').show();
-      $('nav').css { position: 'relative' }
-      $('#process').css 'padding-top', '0'
     else
       homeTop = -$backgroundImg.height()
       $('.page-down').hide();
-      $('nav').css { position: 'fixed', top: 0}
-      $('#process').css 'padding-top', '40px'
-
 
     $home.find('.parallax').css 'top', homeTop + 'px'
-
-    # Adding 100 to the page top so that we add the selected arrow slightly prematurely
-    pageTop += 100
-    if $(window).scrollBottom() <= 230
-      $sidebar.find('.info').addClass('selected')
-      $sidebar.addClass('bottom')
-    else if pageTop + 55 >= aboutPosition
-      $sidebar.find('.about').addClass('selected')
-    else if pageTop >= topPicksPosition
-      $sidebar.find('.top-picks').addClass('selected')
-    else if pageTop >= processPosition
-      $sidebar.find('.process').addClass('selected')
 
   createSlideshow: ->
     @$('#slideshow').orbit

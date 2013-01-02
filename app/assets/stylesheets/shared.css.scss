@@ -2,6 +2,55 @@
 @import "compass/utilities/general/clearfix";
 @import "compass/css3";
 
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  @include box-shadow(0px 2px 7px #666);
+  z-index: 10;
+  text-align: center;
+  padding: 5px 0;
+  @include font("header");
+  background-color: #000;
+
+  li, a, img {
+    color: #fff;
+    font-size: 19px;
+    display: inline-block;
+    padding: 0 10px;
+    vertical-align: middle;
+  }
+
+  li {
+    width: 125px;
+  }
+
+  a:hover {
+    color: #fff;
+  }
+
+  .shop {
+    position: relative;
+  }
+
+  .shop-nav {
+    position: absolute;
+    background-color: #000;
+    left: 35px;
+
+    ul {
+      margin-left: 0;
+    }
+
+    li {
+      width: 105px;
+      padding: 0;
+      text-align: left;
+    }
+  }
+}
+
 .clear-footer {
   height: 215px;
   clear: both;

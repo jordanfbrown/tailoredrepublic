@@ -21,10 +21,10 @@ Handlebars.registerHelper 'ifeq', (a, b, options) ->
     
 Handlebars.registerHelper 'customizationHelper', (customization, lapel) ->
   if lapel == true
-    '<img class="selected completed" src="assets/icons/chevron-selected.png">'
+    '<img class="selected completed" src="/assets/icons/chevron-selected.png">'
   else if customization
-    '<img class="completed" src="assets/icons/chevron-completed.png">'
+    '<img class="completed" src="/assets/icons/chevron-completed.png">'
   else
-    '<img src="assets/icons/chevron.png">'
+    '<img src="/assets/icons/chevron.png">'
 
 

@@ -118,12 +118,12 @@ class TR.Views.Customization extends TR.Views.Base
   updateChevron: (type, state) ->
     $chevron = @$(".chevrons li[data-type=#{type}] img")
     image = if state == 'selected' then 'chevron-selected.png' else 'chevron-completed.png'
-    $chevron.attr('src', "assets/icons/#{image}").addClass state
+    $chevron.attr('src', "/assets/icons/#{image}").addClass state
 
   resetChevrons: ->
     $chevron = @$('.chevrons li').find 'img.selected'
     image = if $chevron.hasClass 'completed' then 'chevron-completed.png' else 'chevron.png';
-    $chevron.attr('src', "assets/icons/#{image}").removeClass 'selected'
+    $chevron.attr('src', "/assets/icons/#{image}").removeClass 'selected'
 
   addToCart: (e) ->
     e.preventDefault()

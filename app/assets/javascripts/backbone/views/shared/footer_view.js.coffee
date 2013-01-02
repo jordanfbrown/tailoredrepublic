@@ -5,7 +5,7 @@ class TR.Views.Footer extends TR.Views.Base
     'click h5.expandable': 'expandSection'
 
   initialize: ->
-    $(window).resize(->
+    $(window).resize(=>
       if $(window).width() >= 768
         @$('ul').css('display', '')
         @$('h5 span').text '+'

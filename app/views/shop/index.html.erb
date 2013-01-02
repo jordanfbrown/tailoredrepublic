@@ -3,6 +3,6 @@
 
 <script>
   $(function() {
-    new TR.Views.Shop({products: <%= @suits.to_json.html_safe %>});
+    new TR.Views.Shop({products: <%= @products.to_json.html_safe %>});
   });
 </script>
