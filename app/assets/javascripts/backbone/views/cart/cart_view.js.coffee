@@ -28,6 +28,7 @@ class TR.Views.Cart extends TR.Views.Base
             $cartItem.remove()
             unless @$('.cart-item').exists()
               @$('.empty-cart').show()
+              @$('.cart-total').hide()
           )
         )
     }

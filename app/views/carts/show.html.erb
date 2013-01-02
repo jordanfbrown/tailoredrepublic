@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="twelve columns">
-    <div class="cart-total">
+    <div class="cart-total" <% if @cart.empty? %> style="display: none;" <% end %>>
       <h5>Total: <span class="price">$<%= @cart.total_price %></span></h5>
       <a href="checkout" class="button">Checkout</a>
     </div>
