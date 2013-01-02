@@ -7,7 +7,6 @@ class TR.Views.Modal extends TR.Views.Base
 
   render: ->
     $('body').append @$el
-    @$el.css 'margin-top', -(@$el.height() / 2)
     @reveal()
 
   reveal: ->
