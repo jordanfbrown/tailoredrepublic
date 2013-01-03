@@ -309,6 +309,32 @@ h6 {
   font-size: 1.125em;
 }
 
+table {
+  max-width: 100%;
+  background-color: transparent;
+  border-collapse: collapse;
+  border-spacing: 0;
+
+  tr {
+    text-align: left;
+
+  }
+
+  th, td {
+    margin-top: 1px;
+    padding: 8px;
+  }
+
+  tbody > tr:nth-child(odd) > th, tbody > tr:nth-child(odd) > td {
+    background-color: #eee;
+  }
+
+  td {
+    border-top: 1px solid #ddd;
+  }
+
+
+}
 a {
   color: #000;
   &:hover {

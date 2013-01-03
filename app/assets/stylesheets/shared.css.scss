@@ -15,6 +15,11 @@
     border-color: #EED3D7;
   }
 
+  &.notice {
+    color: #000;
+    background-color: $brown;
+    border-color: darken($brown, 40%);
+  }
 }
 
 nav {
