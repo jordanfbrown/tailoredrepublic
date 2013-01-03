@@ -3,7 +3,6 @@
 
 .shop {
   .suits-wrapper {
-    margin-top: 40px;
     @include shop-texture(repeat-y);
     clear: both;
   }

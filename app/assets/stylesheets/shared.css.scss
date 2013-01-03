@@ -2,6 +2,21 @@
 @import "compass/utilities/general/clearfix";
 @import "compass/css3";
 
+#flashes {
+  margin: 0 10px;
+}
+
+.flash {
+  padding: 4px 0 0 10px;
+
+  &.alert {
+    color: #B94A48;
+    background-color: #F2DEDE;
+    border-color: #EED3D7;
+  }
+
+}
+
 nav {
   position: fixed;
   top: 0;
@@ -84,6 +99,10 @@ nav {
 
 }
 
+input[type=submit] {
+  font-weight: normal;
+}
+
 .button {
   background-color: darken($brown, 10%);
   padding: 7px 10px 5px 10px;
@@ -92,6 +111,8 @@ nav {
   color: #fff;
   display: inline-block;
   font-size: 18px;
+  border: none;
+  cursor: pointer;
 
   &:hover {
     color: #fff;

@@ -13,6 +13,13 @@
     <div id="container" class="container">
       <%= render "layouts/nav" %>
       <div id="main" role="main">
+        <div id="flashes">
+          <% flash.each do |key, msg| %>
+            <div class="flash <%= key %>">
+              <p><%= msg %></p>
+            </div>
+          <% end %>
+        </div>
         <%= yield %>
         <% unless controller_name == "home" %>
           <div class="clear-footer"></div>

@@ -8,14 +8,10 @@
 
 .content-wrapper {
   margin-left: 20px;
-  margin-top: 20px;
 }
 
-$h2-margin: 20px;
 
 h2 {
-  margin-left: $h2-margin;
-
   .article-title {
     position: relative;
   }
@@ -236,7 +232,7 @@ h2 {
       font-weight: 400;
 
       &:first-child {
-        padding-left: $h2-margin;
+        padding-left: 10px;
       }
     }
   }
