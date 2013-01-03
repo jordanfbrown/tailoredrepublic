@@ -4,21 +4,14 @@ class TR.Views.Header extends TR.Views.Base
   events:
     'mouseenter li.shop': 'openShopDropdown'
     'mouseleave li.shop': 'closeShopDropdown'
-    'click .shop-nav a': 'clickShopLink'
 
   initialize: ->
-    $(document).on 'click.header', =>
-      @$('.shop-nav').slideUp() if @$('.shop-nav').is(':visible')
-
     TR.Events.on 'removedCartItem', @decrementItemCount
     TR.Events.on 'addedCartItem', @incrementItemCount
 
   destroy: ->
     $(document).off 'click.header'
     super()
-
-  clickShopLink: (e) ->
-    e.stopPropagation()
 
   openShopDropdown: (e) ->
     e.preventDefault()
