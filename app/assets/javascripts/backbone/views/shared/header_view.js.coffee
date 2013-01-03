@@ -4,6 +4,8 @@ class TR.Views.Header extends TR.Views.Base
   events:
     'mouseenter li.shop': 'openShopDropdown'
     'mouseleave li.shop': 'closeShopDropdown'
+    'mouseleave li.home': 'closeHomeDropdown'
+    'mouseenter li.home': 'openHomeDropdown'
 
   initialize: ->
     TR.Events.on 'removedCartItem', @decrementItemCount
@@ -13,11 +15,6 @@ class TR.Views.Header extends TR.Views.Base
     $(document).off 'click.header'
     super()
 
-  openShopDropdown: (e) ->
-    e.preventDefault()
-    e.stopPropagation()
-    $shopNav = @$('.shop-nav')
-    unless $shopNav.is(':visible') then $shopNav.slideDown()
 
   decrementItemCount: =>
     @$('.num-items').text @getItemCount() - 1
@@ -28,8 +25,20 @@ class TR.Views.Header extends TR.Views.Base
   getItemCount: ->
     parseInt @$('.num-items').text()
 
+  openHomeDropdown: (e) ->
+    if $(window).width() < 856
+      $homeNav = @$('.home-nav')
+      unless $homeNav.is(':visible') then $homeNav.slideDown()
+
+  closeHomeDropdown: (e) ->
+    if $(window).width() < 856
+      $homeNav = @$('.home-nav')
+      if $homeNav.is(':visible') then $homeNav.slideUp()
+
+  openShopDropdown: (e) ->
+    $shopNav = @$('.shop-nav')
+    unless $shopNav.is(':visible') then $shopNav.slideDown()
+
   closeShopDropdown: (e) ->
-    e.preventDefault()
-    e.stopPropagation()
     $shopNav = @$('.shop-nav')
     if $shopNav.is(':visible') then $shopNav.slideUp()

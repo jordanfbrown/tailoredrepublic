@@ -1,13 +1,23 @@
 <nav>
   <ul>
-    <li><a href="/">Home</a></li>
-    <li class="process"><a href="/#process">The Process</a></li>
-    <li class="top-picks"><a href="/#top-picks">Top Picks</a></li>
-    <li class="about"><a href="/#about">About</a></li>
-    <li class="lookbook"><a href="/#lookbook">Lookbook</a></li>
+    <li class="home">
+      <a href="/">Home</a>
+      <div class="sub-nav home-nav" style="display: none;">
+        <ul>
+          <li class="process"><a href="/#process">The Process</a></li>
+          <li class="top-picks"><a href="/#top-picks">Top Picks</a></li>
+          <li class="about"><a href="/#about">About</a></li>
+          <li class="lookbook"><a href="/#lookbook">Lookbook</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="process hide-small"><a href="/#process">The Process</a></li>
+    <li class="top-picks hide-small"><a href="/#top-picks">Top Picks</a></li>
+    <li class="about hide-small"><a href="/#about">About</a></li>
+    <li class="lookbook hide-small"><a href="/#lookbook">Lookbook</a></li>
     <li class="shop">
       <a href="/shop" class="toggle-shop">Shop</a>
-      <div class="shop-nav" style="display: none;">
+      <div class="sub-nav shop-nav" style="display: none;">
         <ul>
           <li><a href="/shop/suits">Suits</a></li>
           <li><a href="/shop/shirts">Shirts</a></li>
@@ -18,8 +28,11 @@
     </li>
     <li class="cart">
       <a href="/cart">
-        <%= image_tag "icons/shopping-cart.png" %> (<span class="num-items"><%= @cart.num_items %></span>)
+        <%= image_tag "icons/shopping-cart.png" %>(<span class="num-items"><%= @cart.num_items %></span>)
       </a>
+    </li>
+    <li class="login-register">
+      <a href="#">Login</a><span class="divider">//</span><a href="#">Register</a>
     </li>
   </ul>
 </nav>

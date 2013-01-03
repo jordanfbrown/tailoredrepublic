@@ -112,16 +112,6 @@ h2 {
   }
 }
 
-.login-register {
-  margin-left: $h2-margin;
-  @include font("header");
-
-  a {
-    color: $grey;
-    font-size: 20px;
-  }
-}
-
 //Top Picks
 
 #top-picks {
@@ -253,6 +243,16 @@ h2 {
 }
 
 .home {
+  .login-register {
+    margin-left: $h2-margin;
+    @include font("header");
+
+    a {
+      color: $grey;
+      font-size: 20px;
+    }
+  }
+
   article {
     position: relative;
     background: #fff;

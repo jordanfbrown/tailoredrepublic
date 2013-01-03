@@ -22,8 +22,7 @@ class TR.Views.AddSuccessModal extends TR.Views.Modal
     super()
     
   close: ->
-    _.each @subviews, (subview) ->
-      subview.destroy()
+    subview.destroy() for subview in @subviews
     super()
 
   renderProductView: (product) =>

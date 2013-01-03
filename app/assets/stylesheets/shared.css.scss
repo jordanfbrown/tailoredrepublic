@@ -14,6 +14,11 @@ nav {
   @include font("header");
   background-color: #000;
 
+  .login-register {
+    float: right;
+    padding: 0;
+  }
+
   li, a, img {
     color: #fff;
     font-size: 19px;
@@ -22,22 +27,23 @@ nav {
     vertical-align: middle;
   }
 
-  li {
-    width: 125px;
-  }
-
   a:hover {
     color: #fff;
   }
 
-  .shop {
+  ul .shop, ul .home {
     position: relative;
   }
+  
+  .hide-small {
+    @media only screen and (max-width: 856px) {
+      display: none;
+    }
+  }
 
-  .shop-nav {
+  .sub-nav {
     position: absolute;
     background-color: #000;
-    left: 35px;
 
     ul {
       margin-left: 0;
