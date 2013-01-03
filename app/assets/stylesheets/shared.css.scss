@@ -103,6 +103,10 @@ input[type=submit] {
   font-weight: normal;
 }
 
+.inline {
+  display: inline;
+}
+
 .button {
   background-color: darken($brown, 10%);
   padding: 7px 10px 5px 10px;
