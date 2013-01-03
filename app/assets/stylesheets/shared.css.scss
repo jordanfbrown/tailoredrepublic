@@ -39,12 +39,33 @@ nav {
     padding: 0;
   }
 
-  li, a, img {
-    color: #fff;
-    font-size: 19px;
+  .home-nav {
+    width: 100px;
+  }
+
+  li {
     display: inline-block;
     padding: 0 10px;
+
+    &.login-register {
+      padding-right: 5px;
+    }
+  }
+
+  .divider {
+    padding: 0 5px;
+  }
+
+  a {
+    color: #fff;
+    font-size: 19px;
     vertical-align: middle;
+    padding: 5px;
+  }
+
+  img {
+    vertical-align: middle;
+    padding-right: 5px;
   }
 
   a:hover {
