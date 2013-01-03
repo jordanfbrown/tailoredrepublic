@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :authenticate, :precompile_templates, :current_cart, :populate_user
+  before_filter :authenticate, :precompile_templates, :current_cart
 
   protected
     def authenticate
@@ -16,22 +16,11 @@ class ApplicationController < ActionController::Base
     end
 
   def current_cart
-    @cart = Cart.find(session[:cart_id])
+    @cart = Cart.find(cookies.signed[:cart_id])
   rescue ActiveRecord::RecordNotFound
     @cart = Cart.create
-    session[:cart_id] = @cart.id
+    cookies.permanent.signed[:cart_id] = @cart.id
     @cart
-  end
-
-  def populate_user
-    if user_signed_in?
-      @user_data = {
-        name: current_user.name,
-        email: current_user.email
-      }
-    else
-      @user_data = {}
-    end
   end
 
   rescue_from CanCan::AccessDenied do |exception|
