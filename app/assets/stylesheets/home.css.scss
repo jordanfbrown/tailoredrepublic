@@ -243,16 +243,6 @@ h2 {
 }
 
 .home {
-  .login-register {
-    margin-left: $h2-margin;
-    @include font("header");
-
-    a {
-      color: $grey;
-      font-size: 20px;
-    }
-  }
-
   article {
     position: relative;
     background: #fff;
