@@ -33,7 +33,7 @@
     </li>
     <li class="login-register">
       <% if user_signed_in?  %>
-        <a href="#" class="username"><%= current_user.name %></a>
+        <%= link_to current_user.name, edit_user_registration_path, class: "username" %>
         <div class="sub-nav user-nav" style="display: none;">
           <ul>
             <li><%= link_to "Account", edit_user_registration_path %></li>

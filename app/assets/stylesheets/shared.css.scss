@@ -72,6 +72,19 @@ nav {
   }
 }
 
+#error_explanation {
+  margin-bottom: 10px;
+
+  h5 {
+    margin-top: 0;
+  }
+
+  ul {
+    list-style-type: disc;
+    margin-left: 20px;
+  }
+}
+
 .clear-footer {
   height: 215px;
   clear: both;
