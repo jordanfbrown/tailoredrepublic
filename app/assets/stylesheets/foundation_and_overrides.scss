@@ -311,6 +311,7 @@ h6 {
 
 table {
   max-width: 100%;
+  width: 100%;
   background-color: transparent;
   border-collapse: collapse;
   border-spacing: 0;
@@ -325,7 +326,7 @@ table {
     padding: 8px;
   }
 
-  tbody > tr:nth-child(odd) > th, tbody > tr:nth-child(odd) > td {
+  tbody > tr:nth-child(even) > th, tbody > tr:nth-child(even) > td {
     background-color: #eee;
   }
 
@@ -335,12 +336,17 @@ table {
 
 
 }
+
 a {
   color: #000;
   &:hover {
     color: #000;
     text-decoration: underline;
   }
+}
+
+.field {
+  margin-bottom: 10px;
 }
 
 .button {
