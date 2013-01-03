@@ -12,20 +12,22 @@
   <body class="<%= controller_name %> <%= action_name %>">
     <div id="container" class="container">
       <%= render "layouts/nav" %>
-      <div id="main" role="main">
-        <div id="flashes">
-          <% flash.each do |key, msg| %>
-            <div class="flash <%= key %>">
-              <p><%= msg %></p>
-            </div>
-          <% end %>
+      <% if controller_name == "home" %>
+        <div id="main" role="main">
+          <%= yield %>
         </div>
-        <%= yield %>
-        <% unless controller_name == "home" %>
+      <% else %>
+        <div id="main" role="main">
+          <div id="flashes">
+            <% flash.each do |key, msg| %>
+              <div class="flash <%= key %>">
+                <p><%= msg %></p>
+              </div>
+            <% end %>
+          </div>
+          <%= yield %>
           <div class="clear-footer"></div>
-        <% end %>
-      </div>
-      <% unless controller_name == "home" %>
+        </div>
         <%= render "layouts/footer" %>
       <% end %>
     </div>
@@ -41,7 +43,7 @@
       })();
 
       $(function() {
-        new TR.Views.Header();
+        new TR.Views.Header({user: <%= @user_data.to_json.html_safe %>});
         new TR.Views.Footer();
       });
     </script>

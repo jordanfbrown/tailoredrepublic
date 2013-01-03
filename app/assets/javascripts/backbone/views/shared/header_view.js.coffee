@@ -6,15 +6,17 @@ class TR.Views.Header extends TR.Views.Base
     'mouseleave li.shop': 'closeShopDropdown'
     'mouseleave li.home': 'closeHomeDropdown'
     'mouseenter li.home': 'openHomeDropdown'
+    'mouseleave a.username': 'closeUserDropdown'
+    'mouseenter a.username': 'openUserDropdown'
 
-  initialize: ->
+  initialize: (options) ->
+    @user = options.user
     TR.Events.on 'removedCartItem', @decrementItemCount
     TR.Events.on 'addedCartItem', @incrementItemCount
 
   destroy: ->
     $(document).off 'click.header'
     super()
-
 
   decrementItemCount: =>
     @$('.num-items').text @getItemCount() - 1
@@ -42,3 +44,11 @@ class TR.Views.Header extends TR.Views.Base
   closeShopDropdown: (e) ->
     $shopNav = @$('.shop-nav')
     if $shopNav.is(':visible') then $shopNav.slideUp()
+
+  openUserDropdown: (e) ->
+    $userNav = @$('.user-nav')
+    unless $userNav.is(':visible') then $userNav.slideDown()
+
+  closeUserDropdown: (e) ->
+    $userNav = @$('.user-nav')
+    if $userNav.is(':visible') then $userNav.slideUp()
