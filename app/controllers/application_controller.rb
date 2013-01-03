@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :authenticate, :precompile_templates, :populate_cart
+  before_filter :authenticate, :precompile_templates, :current_cart
 
   protected
     def authenticate
@@ -14,14 +14,6 @@ class ApplicationController < ActionController::Base
         `handlebars app/assets/javascripts/backbone/templates/* -f app/assets/javascripts/templates.js`
       end
     end
-
-  def populate_cart
-    @cart = Cart.find(session[:cart_id])
-  rescue ActiveRecord::RecordNotFound
-    @cart = Cart.create
-    session[:cart_id] = cart.id
-    @cart
-  end
 
   def current_cart
     @cart = Cart.find(session[:cart_id])

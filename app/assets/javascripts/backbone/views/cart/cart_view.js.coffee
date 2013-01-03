@@ -5,6 +5,9 @@ class TR.Views.Cart extends TR.Views.Base
     'click a.edit-customizations': 'editCustomizations'
     'click a.remove': 'removeCartItem'
 
+  initialize: (options) ->
+    @cartItems = new TR.Collections.CartItems options.cartItems
+
   editCustomizations: (e) ->
     e.preventDefault()
     $cartItem = $(e.currentTarget).parents '.cart-item'
@@ -23,9 +26,13 @@ class TR.Views.Cart extends TR.Views.Base
       action: =>
         $cartItem = $(e.currentTarget).parents('.cart-item')
         cartItemId = $cartItem.data('cart-item-id')
+        cartItem = @cartItems.get cartItemId
         $.ajax({url: "/cart_items/#{cartItemId}", type: 'DELETE'}).then(=>
           $cartItem.fadeOut(=>
             $cartItem.remove()
+            @cartItems.remove cartItem
+            TR.Events.trigger 'removedCartItem'
+            @$('.cart-total .price').text('$' + @cartItems.totalPrice())
             unless @$('.cart-item').exists()
               @$('.empty-cart').show()
               @$('.cart-total').hide()

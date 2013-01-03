@@ -136,11 +136,11 @@ class TR.Views.Customization extends TR.Views.Base
   saveChanges: (e) ->
     e.preventDefault()
     @customization.save(null, {silent: true}).then(=>
-      window.location.href = 'cart'
+      window.location.href = '/cart'
     )
     
   addSuccess: (response) =>
-    TR.Events.trigger 'addedToCart', product: @product
+    TR.Events.trigger 'addedCartItem', product: @product
 
   addFailure: (error) =>
     console.log(error, 'failure');

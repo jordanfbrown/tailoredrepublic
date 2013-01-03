@@ -36,4 +36,10 @@ class CartsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def show
+    @cart_items = @cart.cart_items.map do |cart_item|
+      {id: cart_item.id, price: cart_item.total_price}
+    end
+  end
 end

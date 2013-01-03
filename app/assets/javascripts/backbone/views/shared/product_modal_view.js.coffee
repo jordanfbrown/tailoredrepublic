@@ -9,7 +9,7 @@ class TR.Views.ProductModal extends TR.Views.Modal
 
   initialize: (options) ->
     @customization = options.customization || false
-    TR.Events.on 'addedToCart', @addedToCart
+    TR.Events.on 'addedCartItem', @addedCartItem
     @template = @getTemplate 'product_modal'
     @render()
 
@@ -37,8 +37,8 @@ class TR.Views.ProductModal extends TR.Views.Modal
     if (e.pageX < offsetLeft || e.pageX > offsetLeft + $small.width() ||
        e.pageY < offsetTop || e.pageY > offsetTop + $small.height()) && @magnifierVisible()
       @hideMagnifier()
-      
-  addedToCart: (data) =>
+
+  addedCartItem: (data) =>
     new TR.Views.AddSuccessModal({model: data.product})
     @destroy()
 

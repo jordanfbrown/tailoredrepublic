@@ -73,7 +73,7 @@ function program17(depth0,data) {
 function program19(depth0,data) {
   
   
-  return "\n    <img src=\"/assets/icons/cart-black.png\">\n    <a href=\"#\" class=\"button add-to-cart\">Add To Cart</a>\n  ";}
+  return "\n    <a href=\"#\" class=\"add-to-cart\"><img src=\"/assets/icons/cart-black.png\"></a>\n    <a href=\"#\" class=\"button add-to-cart\">Add To Cart</a>\n  ";}
 
 function program21(depth0,data) {
   

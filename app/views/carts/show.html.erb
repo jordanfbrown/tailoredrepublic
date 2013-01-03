@@ -17,6 +17,6 @@
 
 <script>
   $(function() {
-    new TR.Views.Cart();
+    new TR.Views.Cart({cartItems: <%= @cart_items.to_json.html_safe %>});
   });
 </script>

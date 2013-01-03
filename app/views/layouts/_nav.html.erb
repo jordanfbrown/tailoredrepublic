@@ -17,8 +17,8 @@
       </div>
     </li>
     <li class="cart">
-      <a href="cart">
-        <%= image_tag "icons/shopping-cart.png" %> (<%= @cart.num_items %>)
+      <a href="/cart">
+        <%= image_tag "icons/shopping-cart.png" %> (<span class="num-items"><%= @cart.num_items %></span>)
       </a>
     </li>
   </ul>
