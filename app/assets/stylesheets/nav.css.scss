@@ -1,0 +1,79 @@
+@import "_mixins";
+@import "compass/utilities/general/clearfix";
+@import "compass/css3";
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  @include box-shadow(0px 2px 7px #666);
+  z-index: 10;
+  text-align: center;
+  padding: 5px 0;
+  @include font("header");
+  background-color: #000;
+
+  .login-register {
+    float: right;
+    padding: 0;
+  }
+
+  .home-nav {
+    width: 100px;
+  }
+
+  li {
+    display: inline-block;
+    padding: 0 10px;
+
+    &.login-register {
+      padding-right: 5px;
+    }
+  }
+
+  .divider {
+    padding: 0 2px;
+  }
+
+  a {
+    color: #fff;
+    font-size: 19px;
+    vertical-align: middle;
+    padding: 5px;
+  }
+
+  img {
+    vertical-align: middle;
+    padding-right: 5px;
+  }
+
+  a:hover {
+    color: #fff;
+  }
+
+  ul .shop, ul .home {
+    position: relative;
+  }
+
+  .hide-small {
+    @media only screen and (max-width: 856px) {
+      display: none;
+    }
+  }
+
+  .sub-nav {
+    position: absolute;
+    background-color: #000;
+
+    ul {
+      margin-left: 0;
+    }
+
+    li {
+      display: block;
+      padding: 0;
+      text-align: left;
+    }
+  }
+}
