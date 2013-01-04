@@ -88,6 +88,7 @@ class TR.Views.Home extends TR.Views.Base
     @$('#slideshow').orbit
       afterSlideChange: (previous, current) =>
         @updateCaption $(current).data()
+      resetTimerOnClick: on
 
   updateCaption: (data) ->
     $caption = $('#lookbook-info')
