@@ -18,7 +18,7 @@ Handlebars.registerHelper 'decimalToInteger', (decimal) ->
 Handlebars.registerHelper 'ifeq', (a, b, options) ->
   if a == b
     options.fn(@)
-    
+
 Handlebars.registerHelper 'customizationHelper', (customization, lapel) ->
   if lapel == true
     '<img class="selected completed" src="/assets/icons/chevron-selected.png">'

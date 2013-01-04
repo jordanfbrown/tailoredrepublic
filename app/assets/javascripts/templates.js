@@ -428,14 +428,16 @@ function program37(depth0,data) {
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, 2, {hash:{},inverse:self.noop,fn:self.program(23, program23, data)}) : helperMissing.call(depth0, "ifeq", stack1, 2, {hash:{},inverse:self.noop,fn:self.program(23, program23, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += " src=\"/assets/customizations/pleats-two-black.png\">\n      </a>\n      <p>Pleats are typically associated with old-fashioned suits. If you are looking for a modern, trendier look, we\n        recommend going with no pleats and no cuffs on the pants.</p>\n    </div>\n    <div class=\"customization-wrapper two-item\" data-type=\"pant_cuffs\" style=\"display: none;\">\n      <h3><a href=\"#\" class=\"left\" title=\"Previous customization\"></a>Cuffs<a href=\"#\" class=\"right\" title=\"Next customization\"></a></h3>\n      <a href=\"#\" class=\"customization-option\" data-option=\"false\">\n        <h5>None</h5>\n        <img src=\"/assets/customizations/cuffs-no-black.png\" class=\"cuffs ";
-  stack1 = depth0.customizations;
+  stack1 = depth0.customization;
   stack1 = stack1 == null || stack1 === false ? stack1 : stack1.pant_cuffs;
-  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(25, program25, data)});
+  foundHelper = helpers.ifeq;
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, false, {hash:{},inverse:self.noop,fn:self.program(25, program25, data)}) : helperMissing.call(depth0, "ifeq", stack1, false, {hash:{},inverse:self.noop,fn:self.program(25, program25, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\">\n        <div class=\"recommended\">\n          <img src=\"/assets/logos/logo-stitch.png\" class=\"shield\"><span>Recommended</span>\n        </div>\n      </a>\n      <a href=\"#\" class=\"customization-option\" data-option=\"true\">\n        <h5>Cuffs</h5>\n        <img src=\"/assets/customizations/cuffs-yes-black.png\" class=\"cuffs ";
-  stack1 = depth0.customizations;
+  stack1 = depth0.customization;
   stack1 = stack1 == null || stack1 === false ? stack1 : stack1.pant_cuffs;
-  stack1 = helpers.unless.call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(27, program27, data)});
+  foundHelper = helpers.ifeq;
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, true, {hash:{},inverse:self.noop,fn:self.program(27, program27, data)}) : helperMissing.call(depth0, "ifeq", stack1, true, {hash:{},inverse:self.noop,fn:self.program(27, program27, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\">\n      </a>\n      <p>Pant cuffs were a suit staple in previous decades, but unless you are going for an older, more classic look,\n        we recommend sticking with no pant cuffs. It keeps the suit lines clean and sharp, keeping those heads on a\n        swivel.</p>\n    </div>\n    <div class=\"customization-wrapper\" data-type=\"fit\" style=\"display: none;\">\n      <h3><a href=\"#\" class=\"left\" title=\"Previous customization\"></a>Fit<a href=\"#\" class=\"right\" title=\"Next customization\"></a></h3>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"slim\">\n        <h5>Slim</h5>\n        <img ";
   stack1 = depth0.customization;

@@ -141,14 +141,14 @@
       <h3><a href="#" class="left" title="Previous customization"></a>Cuffs<a href="#" class="right" title="Next customization"></a></h3>
       <a href="#" class="customization-option" data-option="false">
         <h5>None</h5>
-        <img src="/assets/customizations/cuffs-no-black.png" class="cuffs {{#if customizations.pant_cuffs}}checked{{/if}}">
+        <img src="/assets/customizations/cuffs-no-black.png" class="cuffs {{#ifeq customization.pant_cuffs false}}checked{{/ifeq}}">
         <div class="recommended">
           <img src="/assets/logos/logo-stitch.png" class="shield"><span>Recommended</span>
         </div>
       </a>
       <a href="#" class="customization-option" data-option="true">
         <h5>Cuffs</h5>
-        <img src="/assets/customizations/cuffs-yes-black.png" class="cuffs {{#unless customizations.pant_cuffs}}checked{{/unless}}">
+        <img src="/assets/customizations/cuffs-yes-black.png" class="cuffs {{#ifeq customization.pant_cuffs true}}checked{{/ifeq}}">
       </a>
       <p>Pant cuffs were a suit staple in previous decades, but unless you are going for an older, more classic look,
         we recommend sticking with no pant cuffs. It keeps the suit lines clean and sharp, keeping those heads on a

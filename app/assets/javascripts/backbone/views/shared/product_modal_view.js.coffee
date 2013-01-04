@@ -8,7 +8,7 @@ class TR.Views.ProductModal extends TR.Views.Modal
       'mousemove': 'mousemove'
 
   initialize: (options) ->
-    @customization = options.customization || false
+    @customization = options.customization
     TR.Events.on 'addedCartItem', @addedCartItem
     @template = @getTemplate 'product_modal'
     @render()
