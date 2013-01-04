@@ -1,4 +1,4 @@
-class TR.Views.Header extends TR.Views.Base
+class TR.Views.Nav extends TR.Views.Base
   el: 'nav'
 
   events:
@@ -6,8 +6,8 @@ class TR.Views.Header extends TR.Views.Base
     'mouseleave li.shop': 'closeShopDropdown'
     'mouseleave li.home': 'closeHomeDropdown'
     'mouseenter li.home': 'openHomeDropdown'
-    'mouseleave a.username': 'closeUserDropdown'
-    'mouseenter a.username': 'openUserDropdown'
+    'mouseleave li.logged-in': 'closeUserDropdown'
+    'mouseenter li.logged-in': 'openUserDropdown'
 
   initialize: (options) ->
     @user = options.user

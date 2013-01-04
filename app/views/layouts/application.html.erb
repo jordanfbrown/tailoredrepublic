@@ -43,7 +43,7 @@
       })();
 
       $(function() {
-        new TR.Views.Header({user: <%= @user_data.to_json.html_safe %>});
+        new TR.Views.Nav({user: <%= @user_data.to_json.html_safe %>});
         new TR.Views.Footer();
       });
     </script>

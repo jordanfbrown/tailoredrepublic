@@ -31,7 +31,15 @@
         <%= image_tag "icons/shopping-cart.png" %>(<span class="num-items"><%= @cart.num_items %></span>)
       </a>
     </li>
-    <li class="login-register">
+
+    <li class="register">
+      <% if user_signed_in?  %>
+        <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+      <% else %>
+        <a href="/users/sign_up">Register</a>
+      <% end %>
+    </li>
+    <li class="login <% if user_signed_in? %>logged-in<% end %>">
       <% if user_signed_in?  %>
         <%= link_to current_user.name, edit_user_registration_path, class: "username" %>
         <div class="sub-nav user-nav" style="display: none;">
@@ -40,13 +48,10 @@
             <li><a href="#">Order History</a></li>
           </ul>
         </div>
-        <span class="divider">//</span>
-        <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
       <% else %>
-        <a href="/users/sign_in" class="login">Login</a>
-        <span class="divider">//</span>
-        <a href="/users/sign_up">Register</a>
+        <a href="/users/sign_in">Login</a>
       <% end %>
+      <span class="divider">//</span>
     </li>
   </ul>
 </nav>
