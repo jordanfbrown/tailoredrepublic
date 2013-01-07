@@ -3,7 +3,7 @@ Handlebars.registerHelper 'uppercaseFirst', (str) ->
 
 Handlebars.registerHelper 'ifLengthThree', (array, options) ->
   if array.length == 3
-    options.fn(@)
+    options.fn @
 
 Handlebars.registerHelper 'numberToString', (number) ->
   switch number
@@ -17,7 +17,11 @@ Handlebars.registerHelper 'decimalToInteger', (decimal) ->
 
 Handlebars.registerHelper 'ifeq', (a, b, options) ->
   if a == b
-    options.fn(@)
+    options.fn @
+
+Handlebars.registerHelper 'ifVest', (customization, numButtons, options) ->
+  if customization.vest == true && customization.vest_buttons == numButtons
+    options.fn @
 
 Handlebars.registerHelper 'customizationHelper', (customization, lapel) ->
   if lapel == true

@@ -2,8 +2,18 @@
 @import "compass/utilities/general/clearfix";
 
 .carts {
+  overflow-y: scroll;
+
   #main {
     @include shop-texture(repeat-y);
+  }
+
+  .edit-customizations {
+    margin-top: 10px;
+  }
+
+  .customization-list-wrapper {
+    margin-top: 10px;
   }
 
   .remove {

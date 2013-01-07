@@ -242,11 +242,11 @@
       <h3><a href="#" class="left" title="Previous customization"></a>Vest (+${{vestPrice}})<a href="#" class="right" title="Next customization"></a></h3>
       <a href="#" class="customization-option four" data-option="true">
         <h5>Add Vest</h5>
-        <img src="/assets/customizations/vest-three-black.png">
+        <img {{#ifeq customization.vest true}}class="checked"{{/ifeq}} src="/assets/customizations/vest-three-black.png">
       </a>
       <a href="#" class="customization-option four" data-option="false">
         <h5>No Vest</h5>
-        <img src="/assets/customizations/vest-three-black.png">
+        <img {{#ifeq customization.vest false}}class="checked"{{/ifeq}} src="/assets/customizations/vest-three-black.png">
       </a>
       <p>Do you want to make your suit a three-piece? You can add a matching vest to your suit order for $79. A
         three-piece suit is sure to draw looks and makes a bold statement that you are serious about your style game.</p>
@@ -259,15 +259,15 @@
       <h3><a href="#" class="left" title="Previous customization"></a>Vest Buttons<a href="#" class="right" title="Next customization"></a></h3>
       <a href="#" class="customization-option four" data-option="3">
         <h5>Three Buttons</h5>
-        <img src="/assets/customizations/vest-three-black.png">
+        <img {{#ifVest customization 3}}class="checked"{{/ifVest}} src="/assets/customizations/vest-three-black.png">
       </a>
       <a href="#" class="customization-option four" data-option="4">
         <h5>Four Buttons</h5>
-        <img src="/assets/customizations/vest-four-black.png">
+        <img {{#ifVest customization 4}}class="checked"{{/ifVest}} src="/assets/customizations/vest-four-black.png">
       </a>
       <a href="#" class="customization-option four" data-option="5">
         <h5>Five Buttons</h5>
-        <img src="/assets/customizations/vest-five-black.png">
+        <img {{#ifVest customization 5}}class="checked"{{/ifVest}} src="/assets/customizations/vest-five-black.png">
       </a>
       <p>Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons!
         Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest

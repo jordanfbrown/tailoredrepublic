@@ -6,10 +6,20 @@
   </div>
   <div class="nine columns">
     <h3><%= cart_item.product.name %><span class="divider"> // </span>$<%= cart_item.total_price %></h3>
-    <h4>Customizations:</h4>
-    <p>
-      <%= print_customizations cart_item.customization%>
-    </p>
-    <a href="#" class="edit-customizations button">Edit Customizations</a>
+    <p><%= cart_item.product.description %></p>
+    <span class="arrow-right"></span>
+    <a href="#" class="view-customizations">View Customizations</a>
+    <div class="customization-list-wrapper" style="display: none;">
+      <ul>
+        <% customization_list(cart_item.customization).each do |customization| %>
+          <li>
+            <a href="#" class="edit-customization-option" data-type="<%= customization_to_key(customization[:option]) %>">
+              <span class="label"><%= customization[:option] %></span>: <%= customization[:type] %>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+      <a href="#" class="button edit-customizations">Edit Customizations</a>
+    </div>
   </div>
 </div>

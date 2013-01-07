@@ -267,6 +267,31 @@ function program37(depth0,data) {
   
   return "class=\"checked\"";}
 
+function program39(depth0,data) {
+  
+  
+  return "class=\"checked\"";}
+
+function program41(depth0,data) {
+  
+  
+  return "class=\"checked\"";}
+
+function program43(depth0,data) {
+  
+  
+  return "class=\"checked\"";}
+
+function program45(depth0,data) {
+  
+  
+  return "class=\"checked\"";}
+
+function program47(depth0,data) {
+  
+  
+  return "class=\"checked\"";}
+
   buffer += "<a class=\"close-reveal-modal\">&#215;</a>\n<h2>";
   foundHelper = helpers.name;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
@@ -475,6 +500,33 @@ function program37(depth0,data) {
   foundHelper = helpers.vestPrice;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.vestPrice; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + ")<a href=\"#\" class=\"right\" title=\"Next customization\"></a></h3>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"true\">\n        <h5>Add Vest</h5>\n        <img src=\"/assets/customizations/vest-three-black.png\">\n      </a>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"false\">\n        <h5>No Vest</h5>\n        <img src=\"/assets/customizations/vest-three-black.png\">\n      </a>\n      <p>Do you want to make your suit a three-piece? You can add a matching vest to your suit order for $79. A\n        three-piece suit is sure to draw looks and makes a bold statement that you are serious about your style game.</p>\n    </div>\n    <div class=\"customization-wrapper\" data-type=\"vest_buttons\" style=\"display: none;\">\n      <div class=\"vest-overlay\" style=\"display: none;\">\n        <p>It looks like you haven't added a vest to your suit. If you'd like to add a vest, please go back to the previous\n          slide and select \"Add Vest\".</p>\n      </div>\n      <h3><a href=\"#\" class=\"left\" title=\"Previous customization\"></a>Vest Buttons<a href=\"#\" class=\"right\" title=\"Next customization\"></a></h3>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"3\">\n        <h5>Three Buttons</h5>\n        <img src=\"/assets/customizations/vest-three-black.png\">\n      </a>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"4\">\n        <h5>Four Buttons</h5>\n        <img src=\"/assets/customizations/vest-four-black.png\">\n      </a>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"5\">\n        <h5>Five Buttons</h5>\n        <img src=\"/assets/customizations/vest-five-black.png\">\n      </a>\n      <p>Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons!\n        Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest\n        buttons!</p>\n    </div>\n    <div class=\"customization-wrapper\" data-type=\"checkout\" style=\"display: none;\">\n      <h3><a href=\"#\" class=\"left\" title=\"Previous customization\"></a>Checkout</h3>\n      <div class=\"customization-summary\"></div>\n    </div>\n  </div>\n</div>";
+  buffer += escapeExpression(stack1) + ")<a href=\"#\" class=\"right\" title=\"Next customization\"></a></h3>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"true\">\n        <h5>Add Vest</h5>\n        <img ";
+  stack1 = depth0.customization;
+  stack1 = stack1 == null || stack1 === false ? stack1 : stack1.vest;
+  foundHelper = helpers.ifeq;
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, true, {hash:{},inverse:self.noop,fn:self.program(39, program39, data)}) : helperMissing.call(depth0, "ifeq", stack1, true, {hash:{},inverse:self.noop,fn:self.program(39, program39, data)});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += " src=\"/assets/customizations/vest-three-black.png\">\n      </a>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"false\">\n        <h5>No Vest</h5>\n        <img ";
+  stack1 = depth0.customization;
+  stack1 = stack1 == null || stack1 === false ? stack1 : stack1.vest;
+  foundHelper = helpers.ifeq;
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, false, {hash:{},inverse:self.noop,fn:self.program(41, program41, data)}) : helperMissing.call(depth0, "ifeq", stack1, false, {hash:{},inverse:self.noop,fn:self.program(41, program41, data)});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += " src=\"/assets/customizations/vest-three-black.png\">\n      </a>\n      <p>Do you want to make your suit a three-piece? You can add a matching vest to your suit order for $79. A\n        three-piece suit is sure to draw looks and makes a bold statement that you are serious about your style game.</p>\n    </div>\n    <div class=\"customization-wrapper\" data-type=\"vest_buttons\" style=\"display: none;\">\n      <div class=\"vest-overlay\" style=\"display: none;\">\n        <p>It looks like you haven't added a vest to your suit. If you'd like to add a vest, please go back to the previous\n          slide and select \"Add Vest\".</p>\n      </div>\n      <h3><a href=\"#\" class=\"left\" title=\"Previous customization\"></a>Vest Buttons<a href=\"#\" class=\"right\" title=\"Next customization\"></a></h3>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"3\">\n        <h5>Three Buttons</h5>\n        <img ";
+  stack1 = depth0.customization;
+  foundHelper = helpers.ifVest;
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 3, {hash:{},inverse:self.noop,fn:self.program(43, program43, data)}) : helperMissing.call(depth0, "ifVest", stack1, 3, {hash:{},inverse:self.noop,fn:self.program(43, program43, data)});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += " src=\"/assets/customizations/vest-three-black.png\">\n      </a>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"4\">\n        <h5>Four Buttons</h5>\n        <img ";
+  stack1 = depth0.customization;
+  foundHelper = helpers.ifVest;
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 4, {hash:{},inverse:self.noop,fn:self.program(45, program45, data)}) : helperMissing.call(depth0, "ifVest", stack1, 4, {hash:{},inverse:self.noop,fn:self.program(45, program45, data)});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += " src=\"/assets/customizations/vest-four-black.png\">\n      </a>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"5\">\n        <h5>Five Buttons</h5>\n        <img ";
+  stack1 = depth0.customization;
+  foundHelper = helpers.ifVest;
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 5, {hash:{},inverse:self.noop,fn:self.program(47, program47, data)}) : helperMissing.call(depth0, "ifVest", stack1, 5, {hash:{},inverse:self.noop,fn:self.program(47, program47, data)});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += " src=\"/assets/customizations/vest-five-black.png\">\n      </a>\n      <p>Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons!\n        Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest\n        buttons!</p>\n    </div>\n    <div class=\"customization-wrapper\" data-type=\"checkout\" style=\"display: none;\">\n      <h3><a href=\"#\" class=\"left\" title=\"Previous customization\"></a>Checkout</h3>\n      <div class=\"customization-summary\"></div>\n    </div>\n  </div>\n</div>";
   return buffer;});
 })();

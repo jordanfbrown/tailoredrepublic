@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  load_and_authorize_resource except: :show
+  load_and_authorize_resource except: [:show, :index]
 
   # GET /products
   # GET /products.json
