@@ -10,7 +10,7 @@ class TR.Views.Customization extends TR.Views.Base
     'click a.right': 'next'
     'click a.lining-option': 'selectLining'
     'click a.label': 'clickedLabelOnCheckout'
-    'blur input[name=monogram]': 'setMonogram'
+    'submit #monogram-form': 'submitMonogram'
 
   CHEVRON:
     SELECTED: 'selected'
@@ -80,14 +80,17 @@ class TR.Views.Customization extends TR.Views.Base
     $lining = $(e.currentTarget).addClass 'selected'
     @customization.set 'lining', $lining.data 'id'
     @updateChevron 'lining', @CHEVRON.COMPLETED
+    @advanceSlide 'next'
 
   clickedChevron: (e) ->
     e.preventDefault()
     @switchPane $(e.currentTarget).parent().data 'type'
 
-  setMonogram: (e) ->
-    @customization.set 'monogram', $(e.currentTarget).val()
+  submitMonogram: (e) ->
+    e.preventDefault()
+    @customization.set 'monogram', @$('input[name=monogram]').val()
     @updateChevron 'monogram', @CHEVRON.COMPLETED
+    @advanceSlide 'next'
 
   destroy: ->
     super()
@@ -111,6 +114,7 @@ class TR.Views.Customization extends TR.Views.Base
       @customization.setByName type, option
       @clearChecked()
       $img.addClass 'checked'
+      @advanceSlide 'next'
     else
       $img.toggleClass 'checked'
       @customization.setByName option, $img.hasClass 'checked'

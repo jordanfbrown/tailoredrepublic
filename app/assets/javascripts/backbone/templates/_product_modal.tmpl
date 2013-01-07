@@ -213,7 +213,10 @@
       </div>
       <div class="customization-option">
         <p>Monogram (15 character max)</p>
-        <input type="text" name="monogram" maxlength="15" value="{{customization.monogram}}">
+        <form id="monogram-form">
+          <input type="text" name="monogram" maxlength="15" value="{{customization.monogram}}">
+          <input type="submit" class="button" value="Ok">
+        </form>
       </div>
       <p>Monogramming can be up to 15 characters, usually used for your name (i.e. 'Richard Feynman' or 'R.P.F.' or
         'R. Feynman'). It will show up on the inside of your jacket above the left breast pocket. Feel free to put
