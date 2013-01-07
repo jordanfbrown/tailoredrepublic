@@ -16,11 +16,11 @@ class TR.Views.ProductModal extends TR.Views.Modal
   render: ->
     templateData = _.extend {
       vestPrice: TR.VEST_PRICE,
-      customization: if @customization then @customization.toJSON() else false
+      customization: if @customization then @customization.toJSON() else undefined
     }, @model.toJSON()
     
     @$el.html @template templateData
-
+    
     customizationOptions = el: @$('.customizations'), product: @model
     if @customization then customizationOptions.customization = @customization
     @customizationView = new TR.Views.Customization customizationOptions

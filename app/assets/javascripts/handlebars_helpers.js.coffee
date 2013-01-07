@@ -20,7 +20,7 @@ Handlebars.registerHelper 'ifeq', (a, b, options) ->
     options.fn @
 
 Handlebars.registerHelper 'ifVest', (customization, numButtons, options) ->
-  if customization.vest == true && customization.vest_buttons == numButtons
+  if customization && customization.vest == true && customization.vest_buttons == numButtons
     options.fn @
 
 Handlebars.registerHelper 'customizationHelper', (customization, lapel) ->
