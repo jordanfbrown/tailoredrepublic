@@ -2,7 +2,7 @@ class TR.Views.Cart extends TR.Views.Base
   el: '.carts'
 
   events:
-    'click a.view-customizations': 'viewCustomizations'
+    'click a.view-customizations': 'toggleCustomizations'
     'click a.edit-customizations': 'editCustomizations'
     'click a.remove': 'removeCartItem'
     'click a.edit-customization-option': 'editCustomizationOption'
@@ -10,12 +10,17 @@ class TR.Views.Cart extends TR.Views.Base
   initialize: (options) ->
     @cartItems = new TR.Collections.CartItems options.cartItems
 
-  viewCustomizations: (e) ->
+  toggleCustomizations: (e) ->
     $a = $(e.currentTarget)
     $customizationList = $a.next('.customization-list-wrapper')
     visible = $customizationList.toggle().is ':visible'
     $a.text(if visible then 'Hide Customizations' else 'View Customizations')
     $a.prev('span').removeClass('arrow-right arrow-down').addClass(if visible then 'arrow-down' else 'arrow-right')
+
+    # TODO: fix jumpiness when expanding
+    if visible
+      $('body').animate
+        scrollTop: $a.offset().top - 200, 1000
 
   editCustomizations: (e) ->
     e.preventDefault()
