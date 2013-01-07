@@ -215,9 +215,6 @@
         //
         .insertAfter( modal );
         //
-        // Now, fade it out a bit.
-        //
-        modalBg.fadeTo( 'fast', 0.8 );
       }
 
       //
