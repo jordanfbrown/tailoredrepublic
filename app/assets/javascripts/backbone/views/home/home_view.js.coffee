@@ -39,8 +39,10 @@ class TR.Views.Home extends TR.Views.Base
         scrollTop: 0, 1500, ->
           history.pushState href
     else
+      # Lookbook has no padding on top so that the above texture extends to the very top of the lookbook
+      offset = if href == '#lookbook' then -34 else 0
       $('html, body').stop().animate
-        scrollTop: $(href).offset().top, 1500, ->
+        scrollTop: $(href).offset().top + offset, 1500, ->
           history.pushState href
 
   resize: (e) ->
