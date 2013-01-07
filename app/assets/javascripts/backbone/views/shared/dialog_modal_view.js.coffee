@@ -15,6 +15,7 @@ class TR.Views.DialogModal extends TR.Views.Modal
   render: ->
     @$el.html @template text: @text
     super()
+    @$el.css 'top': '50%', 'margin-top': -@$el.height() / 2
 
   confirm: (e) ->
     e.preventDefault()
