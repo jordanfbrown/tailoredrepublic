@@ -15,7 +15,8 @@ class TR.Views.DialogModal extends TR.Views.Modal
   render: ->
     @$el.html @template text: @text
     super()
-    @$el.css 'top': '50%', 'margin-top': -@$el.height() / 2
+    @$el.css 'top': $(document).scrollTop() + $(window).height() / 2, 'margin-top': -@$el.height() / 2
+    $('body').append(@$el).addClass 'modal-open'
 
   confirm: (e) ->
     e.preventDefault()
@@ -25,3 +26,7 @@ class TR.Views.DialogModal extends TR.Views.Modal
   cancel: (e) ->
     e.preventDefault()
     @close()
+
+  destroy: ->
+    $('body').removeClass 'modal-open'
+    super()
