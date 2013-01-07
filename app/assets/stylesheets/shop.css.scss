@@ -115,24 +115,41 @@
         }
       }
     }
-    .customization-option {
-      display: block;
-      float: left;
-      background-color: #fff;
-      padding: 5px 10px 10px 10px;
+
+    .linings {
+      .columns {
+        padding: 0;
+      }
+
+      .button {
+        width: 94%;
+        text-align: center;
+        margin: 5px;
+      }
 
       .lining-option {
         height: 35px;
-        width: 35px;
+        width: 80%;
         display: block;
         background-color: #CCC;
         margin: 5px;
         border: 1px solid #000;
 
+        @media only screen and (max-width: 767px) {
+          width: 94%;
+        }
+
         &.selected {
           border: 2px solid #000;
         }
       }
+    }
+
+    .customization-option {
+      display: block;
+      float: left;
+      background-color: #fff;
+      padding: 5px 10px 10px 10px;
 
       img {
         height: 120px;

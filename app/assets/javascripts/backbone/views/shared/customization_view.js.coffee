@@ -10,6 +10,7 @@ class TR.Views.Customization extends TR.Views.Base
     'click a.right': 'next'
     'click a.lining-option': 'selectLining'
     'click a.label': 'clickedLabelOnCheckout'
+    'click a.select-lining': 'next'
     'submit #monogram-form': 'submitMonogram'
 
   CHEVRON:
@@ -80,7 +81,6 @@ class TR.Views.Customization extends TR.Views.Base
     $lining = $(e.currentTarget).addClass 'selected'
     @customization.set 'lining', $lining.data 'id'
     @updateChevron 'lining', @CHEVRON.COMPLETED
-    @advanceSlide 'next'
 
   clickedChevron: (e) ->
     e.preventDefault()
