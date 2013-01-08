@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130108034619) do
+ActiveRecord::Schema.define(:version => 20130108195754) do
 
   create_table "cart_items", :force => true do |t|
     t.integer  "product_id"
@@ -55,23 +55,23 @@ ActiveRecord::Schema.define(:version => 20130108034619) do
 
   create_table "measurements", :force => true do |t|
     t.decimal  "neck"
-    t.decimal  "shoulders"
+    t.decimal  "full_shoulders"
     t.decimal  "front"
     t.decimal  "back"
     t.decimal  "chest"
     t.decimal  "stomach"
     t.decimal  "waist"
-    t.decimal  "length"
-    t.decimal  "sleeves"
+    t.decimal  "arm_length"
+    t.decimal  "jacket_length"
     t.decimal  "bicep"
     t.decimal  "wrist"
     t.decimal  "hips"
     t.decimal  "crotch"
     t.decimal  "thigh"
-    t.decimal  "cuff"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.integer  "user_id"
+    t.decimal  "pant_length"
   end
 
   create_table "products", :force => true do |t|

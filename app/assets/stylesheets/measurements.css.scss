@@ -3,10 +3,33 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import "compass/utilities/general/clearfix";
+@import "_mixins";
 
 .measurements {
   .columns {
     padding: 0;
+  }
+
+  iframe {
+    border: 2px solid #000;
+  }
+
+  .measuring-tape {
+    width: 100%;
+    height: 60px;
+    background-image: url(measurements/ruler.jpg);
+    background-repeat: repeat-x;
+    margin-bottom: 10px;
+    border: 1px solid #aaa;
+    box-shadow: inset 5px 0px 20px -2px #999, inset -5px 0px 20px -2px #999;
+
+    .pointer {
+      height: 50%;
+      width: 2px;
+      background-color: #000;
+      margin: 0 auto;
+    }
+
   }
 
   .measurements-list {
@@ -18,7 +41,7 @@
     width: 150px;
   }
 
-  input[type=text] {
+  input.measurement-input {
     width: 80px;
   }
 
