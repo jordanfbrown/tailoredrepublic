@@ -270,8 +270,14 @@ html {
   height: 100%;
 }
 
-body:not(.home) #container {
-  height: 100%;
+body:not(.home) {
+  #container {
+    height: 100%;
+  }
+
+  #main {
+    padding-top: 60px;
+  }
 }
 
 #main {
@@ -280,7 +286,6 @@ body:not(.home) #container {
   height: 100%;
   margin: 0 auto -215px;
   height: auto !important;
-  padding-top: 60px;
 }
 
 ul {

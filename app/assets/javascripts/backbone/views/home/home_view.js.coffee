@@ -9,7 +9,7 @@ class TR.Views.Home extends TR.Views.Base
 
     $(window).scroll @scroll
     $(window).resize @resize
-    @resize()
+    @resize true
 
     @products = new TR.Collections.Products options.products
     @products.each @renderProductView
@@ -45,16 +45,21 @@ class TR.Views.Home extends TR.Views.Base
         scrollTop: $(href).offset().top + offset, 1500, ->
           history.pushState href
 
-  resize: (e) ->
+  resize: (first) ->
     imgWidth = 1920
     imgHeight = 1280
 
     backgroundHeight = $(window).width() * imgHeight / imgWidth;
     navHeight = $('nav').height()
-    $('#process').css 'margin-top', backgroundHeight - 34
-    
+    $('#process').css 'margin-top', backgroundHeight
+
     pageDownOffset = if backgroundHeight > $(window).height() then $(window).height() else backgroundHeight
-    $('.page-down').css 'top', pageDownOffset - 70 + 'px'
+
+    if first == true
+      $('.page-down').animate
+        'top': pageDownOffset - 78 + 'px', 750
+    else
+      $('.page-down').css 'top', pageDownOffset - 70 + 'px'
 
   scroll: ->
     $sidebar = $('#sidebar')
