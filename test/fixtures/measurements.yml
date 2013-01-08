@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  neck: 9.99
+  shoulders: 9.99
+  front: 9.99
+  back: 9.99
+  chest: 9.99
+  stomach: 9.99
+  waist: 9.99
+  length: 9.99
+  sleeves: 9.99
+  bicep: 9.99
+  wrist: 9.99
+  hips: 9.99
+  crotch: 9.99
+  thigh: 9.99
+  length: 9.99
+  cuff: 9.99
+
+two:
+  neck: 9.99
+  shoulders: 9.99
+  front: 9.99
+  back: 9.99
+  chest: 9.99
+  stomach: 9.99
+  waist: 9.99
+  length: 9.99
+  sleeves: 9.99
+  bicep: 9.99
+  wrist: 9.99
+  hips: 9.99
+  crotch: 9.99
+  thigh: 9.99
+  length: 9.99
+  cuff: 9.99
