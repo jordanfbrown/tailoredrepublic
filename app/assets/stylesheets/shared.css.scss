@@ -94,6 +94,14 @@ input[type=submit] {
   display: inline;
 }
 
+.pull-right {
+  float: right;
+}
+
+.pull-left {
+  float: left;
+}
+
 .button {
   background-color: darken($brown, 10%);
   padding: 7px 10px 5px 10px;
@@ -104,6 +112,7 @@ input[type=submit] {
   font-size: 18px;
   border: none;
   cursor: pointer;
+  text-align: center;
 
   &:hover {
     color: #fff;
@@ -113,6 +122,14 @@ input[type=submit] {
 
   &:active {
     @include box-shadow(inset 0px 2px 7px 1px #666);
+  }
+  
+  &.full-width {
+    width: 100%;
+  }
+
+  &.large {
+    font-size: 24px;
   }
 }
 

@@ -7,10 +7,10 @@
       <a href="shop" class="button">Go To Shop</a>
     </div>
   </div>
-  <div class="twelve columns">
+  <div class="three columns">
     <div class="cart-total" <% if @cart.empty? %> style="display: none;" <% end %>>
       <h5>Total: <span class="price">$<%= @cart.total_price %></span></h5>
-      <a href="checkout" class="button">Checkout</a>
+      <a href="checkout" class="button full-width large">Checkout</a>
     </div>
   </div>
 </div>

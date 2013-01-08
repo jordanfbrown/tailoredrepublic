@@ -37,6 +37,11 @@
   .cart-total {
     float: right;
     margin-bottom: 20px;
+    width: 100%;
+
+    h5 {
+      text-align: center;
+    }
 
     .price {
       font-weight: bold;

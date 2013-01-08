@@ -1,0 +1,11 @@
+<div class="four columns">
+  <ul>
+    <% customizations.each do |customization| %>
+      <li>
+        <a href="#" class="edit-customization-option" data-type="<%= customization_to_key(customization[:option]) %>">
+          <span class="label"><%= customization[:option] %></span>: <%= customization[:type] %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</div>

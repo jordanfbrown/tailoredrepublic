@@ -10,16 +10,12 @@
     <span class="arrow-right"></span>
     <a href="#" class="view-customizations">View Customizations</a>
     <div class="customization-list-wrapper" style="display: none;">
-      <ul>
-        <% customization_list(cart_item.customization).each do |customization| %>
-          <li>
-            <a href="#" class="edit-customization-option" data-type="<%= customization_to_key(customization[:option]) %>">
-              <span class="label"><%= customization[:option] %></span>: <%= customization[:type] %>
-            </a>
-          </li>
-        <% end %>
-      </ul>
-      <a href="#" class="button edit-customizations">Edit Customizations</a>
+      <%= render partial: "customization_list", locals: { customizations: customization_list(cart_item.customization)[0..3] } %>
+      <%= render partial: "customization_list", locals: { customizations: customization_list(cart_item.customization)[4..7] } %>
+      <%= render partial: "customization_list", locals: { customizations: customization_list(cart_item.customization)[8..11] } %>
+      <div class="twelve columns">
+        <a href="#" class="button edit-customizations">Edit Customizations</a>
+      </div>
     </div>
   </div>
 </div>
