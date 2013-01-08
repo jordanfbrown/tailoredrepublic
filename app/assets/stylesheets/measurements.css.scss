@@ -24,12 +24,12 @@
     box-shadow: inset 5px 0px 20px -2px #999, inset -5px 0px 20px -2px #999;
 
     .pointer {
-      height: 50%;
-      width: 2px;
-      background-color: #000;
+      background: url(measurements/tie.png) no-repeat 1px 0px;
+      height: 60px;
+      width: 10px;
       margin: 0 auto;
+      background-size: auto 59px;
     }
-
   }
 
   .measurements-list {
