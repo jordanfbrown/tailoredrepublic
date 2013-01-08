@@ -45,8 +45,10 @@ class TR.Views.Cart extends TR.Views.Base
     
   removeCartItem: (e) ->
     e.preventDefault()
-    confirmOptions = {
+    confirmOptions =
       text: 'Are you sure want to remove this item from the cart?',
+      confirmText: 'Remove'
+      cancelText: 'Cancel'
       action: =>
         $cartItem = $(e.currentTarget).parents('.cart-item')
         cartItemId = $cartItem.data('cart-item-id')
@@ -62,5 +64,5 @@ class TR.Views.Cart extends TR.Views.Base
               @$('.cart-total').hide()
           )
         )
-    }
+
     @confirmDialog = new TR.Views.DialogModal(confirmOptions)
