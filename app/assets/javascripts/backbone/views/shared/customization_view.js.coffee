@@ -10,8 +10,9 @@ class TR.Views.Customization extends TR.Views.Base
     'click a.right': 'next'
     'click a.lining-option': 'selectLining'
     'click a.label': 'clickedLabelOnCheckout'
-    'click a.select-lining': 'next'
+    'click a.advance-slide': 'next'
     'submit #monogram-form': 'submitMonogram'
+    'click .advanced-checkbox': 'setAdvancedOption'
 
   CHEVRON:
     SELECTED: 'selected'
@@ -110,14 +111,18 @@ class TR.Views.Customization extends TR.Views.Base
     
     @updateChevron type, @CHEVRON.COMPLETED
 
-    unless type == 'advanced'
-      @customization.setByName type, option
-      @clearChecked()
-      $img.addClass 'checked'
-      @advanceSlide 'next'
-    else
-      $img.toggleClass 'checked'
-      @customization.setByName option, $img.hasClass 'checked'
+    @customization.setByName type, option
+    @clearChecked()
+    $img.addClass 'checked'
+    @advanceSlide 'next'
+    
+  setAdvancedOption: (e) ->
+    $checkbox = $(e.currentTarget)
+    option = $checkbox.attr 'name'
+    value = $checkbox.is ':checked'
+
+    @updateChevron 'advanced', @CHEVRON.COMPLETED
+    @customization.setByName option, value
 
   updateChevron: (type, state) ->
     $chevron = @$(".chevrons li[data-type=#{type}] img")

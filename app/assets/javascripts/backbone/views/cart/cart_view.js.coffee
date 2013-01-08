@@ -64,4 +64,3 @@ class TR.Views.Cart extends TR.Views.Base
         )
     }
     @confirmDialog = new TR.Views.DialogModal(confirmOptions)
-

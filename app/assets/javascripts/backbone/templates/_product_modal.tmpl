@@ -201,7 +201,7 @@
           <a href="#" class="lining-option" data-id="345342"></a>
         </div>
         <div class="twelve columns">
-          <a href="#" class="button select-lining">Select</a>
+          <a href="#" class="button advance-slide">Select</a>
         </div>
       </div>
       <p>The most common selection is matching lining, which works with the suit to bring out the fabrics natural
@@ -226,19 +226,15 @@
         whatever you want here, just keep in mind that people will see it when you are showing off your envy-inducing
         lining.</p>
     </div>
-    <div class="customization-wrapper two-item" data-type="advanced" style="display: none;">
+    <div class="customization-wrapper advanced" data-type="advanced" style="display: none;">
       <h3><a href="#" class="left" title="Previous customization"></a>Advanced<a href="#" class="right" title="Next customization"></a></h3>
-      <a href="#" class="customization-option" data-option="bouttoniere">
-        <h5>Functional Bouttoniere (Y/N)?</h5>
-        <img {{#if customization.bouttoniere}}class="checked"{{/if}} src="/assets/customizations/bouttoniere-black.png">
-        <div class="recommended">
-          <img src="/assets/logos/logo-stitch.png" class="shield"><span>Recommended</span>
-        </div>
-      </a>
-      <a href="#" class="customization-option" data-option="pick_stitching">
-        <h5>Pick Stitching (Y/N)?</h5>
-        <img {{#if customization.pick_stitching}}class="checked"{{/if}} src="/assets/customizations/pick-stitching-black.png">
-      </a>
+      <div class="twelve columns">
+        <ul>
+          <li><label><input type="checkbox" class="advanced-checkbox" name="bouttoniere" {{#if customization.bouttoniere}}checked{{/if}}>Functional Bouttoniere</label></li>
+          <li><label><input type="checkbox" class="advanced-checkbox" name="pick_stitching" {{#if customization.pick_stitching}}checked{{/if}}>Pick Stitching</label></li>
+        </ul>
+        <a href="#" class="advance-slide button">Ok</a>
+      </div>
       <p>Pick stitching really emphasizes the stitching on your suit making it clear that you went with a tailored
         option. This is a fairly bold look, so we recommend opting out unless you are familiar with the look and know
         you want it. The functional boutonniere is simply a sleeve that can be unbuttoned—it doesn’t make a huge
