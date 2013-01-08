@@ -10,22 +10,6 @@
   padding: 0 30px;
 }
 
-
-h2 {
-  .article-title {
-    position: relative;
-  }
-
-  .strikethrough {
-    position: absolute;
-    width: 120%;
-    border: 1px dashed #CCC;
-    left: -20px;
-    top: 25px;
-    z-index: -1;
-  }
-}
-
 #home {
   padding-top: 0;
   z-index: 0;
@@ -241,6 +225,23 @@ h2 {
 }
 
 .home {
+  h2 {
+    margin-left: 20px;
+
+    .article-title {
+      position: relative;
+    }
+
+    .strikethrough {
+      position: absolute;
+      width: 120%;
+      border: 1px dashed #CCC;
+      left: -20px;
+      top: 25px;
+      z-index: -1;
+    }
+  }
+
   article {
     position: relative;
     background: #fff;
