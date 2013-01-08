@@ -5,7 +5,7 @@ class TR.Views.Customization extends TR.Views.Base
     'click a.customization-option': 'setCustomization'
     'click a.add-to-cart': 'addToCart'
     'click a.save-changes': 'saveChanges'
-    'click ul.chevrons a': 'clickedChevron'
+    'click ul.progress-bar a': 'clickedProgressImage'
     'click a.left': 'previous'
     'click a.right': 'next'
     'click a.lining-option': 'selectLining'
@@ -14,7 +14,7 @@ class TR.Views.Customization extends TR.Views.Base
     'submit #monogram-form': 'submitMonogram'
     'click .advanced-checkbox': 'setAdvancedOption'
 
-  CHEVRON:
+  PROGRESS:
     SELECTED: 'selected'
     COMPLETED: 'completed'
 
@@ -66,8 +66,8 @@ class TR.Views.Customization extends TR.Views.Base
     @switchPane $(e.currentTarget).data 'type'
 
   switchPane: (customizationType) ->
-    @resetChevrons()
-    @updateChevron customizationType, @CHEVRON.SELECTED
+    @resetProgressBar()
+    @updateProgressBar customizationType, @PROGRESS.SELECTED
 
     @getCurrentCustomization().hide()
     @$(".customization-wrapper[data-type=#{customizationType}]").show()
@@ -81,16 +81,16 @@ class TR.Views.Customization extends TR.Views.Base
     @$('.lining-option').removeClass 'selected'
     $lining = $(e.currentTarget).addClass 'selected'
     @customization.set 'lining', $lining.data 'id'
-    @updateChevron 'lining', @CHEVRON.COMPLETED
+    @updateProgressBar 'lining', @PROGRESS.COMPLETED
 
-  clickedChevron: (e) ->
+  clickedProgressImage: (e) ->
     e.preventDefault()
     @switchPane $(e.currentTarget).parent().data 'type'
 
   submitMonogram: (e) ->
     e.preventDefault()
     @customization.set 'monogram', @$('input[name=monogram]').val()
-    @updateChevron 'monogram', @CHEVRON.COMPLETED
+    @updateProgressBar 'monogram', @PROGRESS.COMPLETED
     @advanceSlide 'next'
 
   destroy: ->
@@ -109,7 +109,7 @@ class TR.Views.Customization extends TR.Views.Base
     option = $target.data 'option'
     type = $target.parents('.customization-wrapper').data 'type'
     
-    @updateChevron type, @CHEVRON.COMPLETED
+    @updateProgressBar type, @PROGRESS.COMPLETED
 
     @customization.setByName type, option
     @clearChecked()
@@ -121,18 +121,19 @@ class TR.Views.Customization extends TR.Views.Base
     option = $checkbox.attr 'name'
     value = $checkbox.is ':checked'
 
-    @updateChevron 'advanced', @CHEVRON.COMPLETED
+    @updateProgressBar 'advanced', @PROGRESS.COMPLETED
     @customization.setByName option, value
 
-  updateChevron: (type, state) ->
-    $chevron = @$(".chevrons li[data-type=#{type}] img")
-    image = if state == 'selected' then 'chevron-selected.png' else 'chevron-completed.png'
-    $chevron.attr('src', "/assets/icons/#{image}").addClass state
+  updateProgressBar: (type, state) ->
+    console.log(type, state);
+    $star = @$(".progress-bar li[data-type=#{type}] img")
+    image = if state == 'selected' then 'star-filled.png' else 'star-stroke.png'
+    $star.attr('src', "/assets/icons/#{image}").addClass state
 
-  resetChevrons: ->
-    $chevron = @$('.chevrons li').find 'img.selected'
-    image = if $chevron.hasClass 'completed' then 'chevron-completed.png' else 'chevron.png';
-    $chevron.attr('src', "/assets/icons/#{image}").removeClass 'selected'
+  resetProgressBar: ->
+    $star = @$('.progress-bar li').find 'img.selected'
+    image = if $star.hasClass 'completed' then 'star-stroke.png' else 'star-no-stroke.png';
+    $star.attr('src', "/assets/icons/#{image}").removeClass 'selected'
 
   addToCart: (e) ->
     e.preventDefault()

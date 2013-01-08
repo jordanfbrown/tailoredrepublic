@@ -24,11 +24,13 @@ Handlebars.registerHelper 'ifVest', (customization, numButtons, options) ->
     options.fn @
 
 Handlebars.registerHelper 'customizationHelper', (customization, lapel) ->
-  if lapel == true
-    '<img class="selected completed" src="/assets/icons/chevron-selected.png">'
+  if lapel == true && customization
+    '<img class="selected completed" src="/assets/icons/star-filled.png">'
+  else if lapel == true
+    '<img class="selected" src="/assets/icons/star-filled.png">'
   else if customization
-    '<img class="completed" src="/assets/icons/chevron-completed.png">'
+    '<img class="completed" src="/assets/icons/star-stroke.png">'
   else
-    '<img src="/assets/icons/chevron.png">'
+    '<img src="/assets/icons/star-no-stroke.png">'
 
 

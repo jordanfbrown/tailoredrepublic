@@ -100,19 +100,23 @@
       }
     }
 
-    .chevrons {
-      padding: 0 10px 0 20px;
+    .progress-bar {
+      padding: 0 10px;
       @include clearfix;
 
       li {
+        &:first-child {
+          margin-left: 1%;
+        }
+
+        &:last-child {
+          margin-right: 1%;
+        }
+
         float: left;
         display: block;
-        width: 9.33%;
-        margin-left: -1%;
-
-        @media only screen and (max-width: 578px) {
-          width: 16.66%;
-        }
+        width: 6.33%;
+        margin-right: 2%;
       }
     }
 

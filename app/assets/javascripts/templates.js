@@ -332,7 +332,7 @@ function program47(depth0,data) {
   foundHelper = helpers.description;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.description; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "</p>\n  <div class=\"customizations\">\n    <h3 class=\"customize\">Customize</h3>\n    <ul class=\"chevrons\">\n      <li data-type=\"lapel\">\n        <a href=\"#\">";
+  buffer += escapeExpression(stack1) + "</p>\n  <div class=\"customizations\">\n    <h3 class=\"customize\">Customize</h3>\n    <ul class=\"progress-bar\">\n      <li data-type=\"lapel\">\n        <a href=\"#\">";
   stack1 = depth0.customization;
   foundHelper = helpers.customizationHelper;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, true, {hash:{}}) : helperMissing.call(depth0, "customizationHelper", stack1, true, {hash:{}});
@@ -388,7 +388,7 @@ function program47(depth0,data) {
   foundHelper = helpers.customizationHelper;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "customizationHelper", stack1, {hash:{}});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "</a>\n      </li>\n      <li data-type=\"checkout\">\n        <a href=\"#\"><img src=\"/assets/icons/chevron.png\"></a>\n      </li>\n    </ul>\n    <div class=\"customization-wrapper\" data-type=\"lapel\">\n      <h3>Lapel<a href=\"#\" class=\"right\" title=\"Next customization\"></a></h3>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"notch\">\n        <h5>Notch</h5>\n        <img ";
+  buffer += "</a>\n      </li>\n      <li data-type=\"checkout\">\n        <a href=\"#\"><img src=\"/assets/icons/star-no-stroke.png\"></a>\n      </li>\n    </ul>\n    <div class=\"customization-wrapper\" data-type=\"lapel\">\n      <h3>Lapel<a href=\"#\" class=\"right\" title=\"Next customization\"></a></h3>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"notch\">\n        <h5>Notch</h5>\n        <img ";
   stack1 = depth0.customization;
   stack1 = stack1 == null || stack1 === false ? stack1 : stack1.lapel;
   foundHelper = helpers.ifeq;
