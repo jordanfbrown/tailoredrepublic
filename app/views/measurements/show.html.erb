@@ -1,0 +1,9 @@
+<div id="measurements">
+  <h2>Measurements</h2>
+</div>
+
+<script>
+  $(function() {
+    new TR.Views.Measurements({model: new TR.Models.Measurements(<%= @measurements.to_json.html_safe %>) });
+  });
+</script>
