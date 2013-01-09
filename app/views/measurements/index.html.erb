@@ -37,10 +37,10 @@
   $(function() {
     var model;
 
-    <% if @measurements.new_record? %>
-      model = new TR.Models.Measurements();
+    <% if @measurement.new_record? %>
+      model = new TR.Models.Measurement();
     <% else %>
-      model = new TR.Models.Measurements(<%= @measurements.to_json(except: [:created_at, :updated_at, :user_id]).html_safe %>);
+      model = new TR.Models.Measurement(<%= @measurement.to_json(except: [:created_at, :updated_at, :user_id]).html_safe %>);
     <% end %>
 
     new TR.Views.Measurements({model: model });

@@ -1,4 +1,4 @@
-class TR.Models.Measurements extends TR.Models.Base
+class TR.Models.Measurement extends TR.Models.Base
   url: ->
     super('/measurements')
 
@@ -18,8 +18,3 @@ class TR.Models.Measurements extends TR.Models.Base
     crotch: 27.5
     thigh: 24
     pant_length: 40.25
-
-  validate: (attrs) ->
-    console.log(attrs);
-
-

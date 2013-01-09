@@ -11,7 +11,7 @@ TailoredRepublic::Application.routes.draw do
   resources :customizations
   resources :customers
   resource  :cart
-  resource  :measurements
+  resources  :measurements
   resources :products
   resources :cart_items
 

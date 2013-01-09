@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_one :measurements
+  has_one :measurement
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :role_ids, :as => :admin

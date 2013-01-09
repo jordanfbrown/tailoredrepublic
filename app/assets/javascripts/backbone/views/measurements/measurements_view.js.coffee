@@ -131,6 +131,13 @@ class TR.Views.Measurements extends TR.Views.Base
 
   acceptMeasurements: (e) ->
     e.preventDefault()
+    @model.save({}, {silent: true}).then(@saveSuccess, @saveError)
+
+  saveSuccess: (a, b, c) =>
+    console.log('save successful', a, b, c);
+
+  saveError: =>
+    console.log('save error');
 
   setProgressBar: (index, progress) ->
     @$('.progress-bar img').eq(index).attr 'src', progress
@@ -143,6 +150,10 @@ class TR.Views.Measurements extends TR.Views.Base
 
   validateCurrentInput: ->
     $currentInput = @getCurrentInput()
+
+    unless $currentInput.exists()
+      return true
+
     inches = parseFloat $currentInput.val()
     if _.isNaN(inches) || inches < 0 || inches > 90
       $currentInput.next('.error').fadeIn()
