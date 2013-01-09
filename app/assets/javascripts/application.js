@@ -16,6 +16,7 @@
 //= require jquery.inview
 //= require jquery.reveal
 //= require jquery.orbit
+//= require jquery.bxslider
 //= require underscore
 //= require backbone
 //= require handlebars
