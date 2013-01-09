@@ -45,8 +45,9 @@ class TR.Views.Measurements extends TR.Views.Base
 
   tapeDrag: (e) ->
     if @dragging
+      offset = e.pageX - @getMeasuringTape().offset().left
       $tape = @getMeasuringTape()
-      positionX = @initialBackgroundPosition - (@initialDragPosition - e.offsetX)
+      positionX = @initialBackgroundPosition - (@initialDragPosition - offset)
       $tape.css 'background-position-x', positionX
       @updateInput positionX
 
