@@ -1,9 +1,9 @@
-<li class="measurement-list-item">
+<li class="measurement-list-item" data-measurement="<%= measurement[0] %>">
   <div class="six columns">
     <div class="video-container">
-      <iframe width="560" height="315"
-              src="http://www.youtube.com/embed/<%= measurement[1][:url] %>?frameborder=0&autohide=1&controls=0&rel=0&modestbranding=1&showinfo=0"
-              frameborder="0" allowfullscreen></iframe>
+      <!--<iframe width="560" height="315"-->
+              <!--src="http://www.youtube.com/embed/<%= measurement[1][:url] %>?frameborder=0&autohide=1&controls=0&rel=0&modestbranding=1&showinfo=0"-->
+              <!--frameborder="0" allowfullscreen></iframe>-->
     </div>
   </div>
   <div class="six columns">
@@ -14,6 +14,6 @@
     <form>
       <input type="text" class="measurement-input" name="<%= measurement[0] %>">
     </form>
-    <p>Slide slider or enter correct measurement in inches to the nearest 0.25".</p>
+    <p>Slide the measuring tape or type in your measurement in inches to the nearest 0.25" and press enter.</p>
   </div>
 </li>

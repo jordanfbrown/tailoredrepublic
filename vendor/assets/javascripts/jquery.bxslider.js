@@ -292,7 +292,7 @@
 				}).get());
 			}
       //TODO: JB -- figure out a better way than hard coding a value here
-			return height + 42;
+			return height + 30;
 		}
 		
 		/**

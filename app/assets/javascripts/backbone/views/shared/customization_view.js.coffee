@@ -125,7 +125,6 @@ class TR.Views.Customization extends TR.Views.Base
     @customization.setByName option, value
 
   updateProgressBar: (type, state) ->
-    console.log(type, state);
     $star = @$(".progress-bar li[data-type=#{type}] img")
     image = if state == 'selected' then 'star-filled.png' else 'star-stroke.png'
     $star.attr('src', "/assets/icons/#{image}").addClass state

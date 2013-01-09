@@ -20,7 +20,7 @@ class TR.Views.Measurements extends TR.Views.Base
       infiniteLoop: off
       onSlideNext: @onSlideNext
       onSlidePrev: @onSlidePrev
-      adaptiveHeight: on
+      onSlideBefore: @onSlideBefore
 
     @currentTapeValue = 10
     $(window).resize @resize
@@ -39,7 +39,7 @@ class TR.Views.Measurements extends TR.Views.Base
       inches = @roundToNearestQuarter inches
       @updateMeasuringTape inches, true
       $input.val inches
-      
+
   resize: =>
     @updateMeasuringTape @currentTapeValue, false
     
@@ -67,7 +67,7 @@ class TR.Views.Measurements extends TR.Views.Base
     @getMeasuringTape()[if animate then 'animate' else 'css'] 'background-position-x': offset, 1000
 
   getMeasuringTape: ->
-    @$(".measuring-tape:eq(#{@slider.getCurrentSlide()})")
+    @$('.measuring-tape').eq(@slider.getCurrentSlide())
     
   updateInput: (positionX) ->
     inches = @convertBackgroundPositionToInches positionX
@@ -76,7 +76,7 @@ class TR.Views.Measurements extends TR.Views.Base
     else if inches > 90
       inches = (inches - 90) % 90
 
-    @$("input.measurement-input:eq(#{@slider.getCurrentSlide()})").val inches
+    @$('input.measurement-input').eq(@slider.getCurrentSlide()).val inches
 
   roundToNearestQuarter: (number) ->
     parseFloat (Math.round(number * 4) / 4).toFixed(2)
@@ -94,6 +94,9 @@ class TR.Views.Measurements extends TR.Views.Base
   next: (e) ->
     e.preventDefault()
     @slider.goToNextSlide()
+
+  getCurrentMeasurement: ->
+    @$('.measurement-list-item').eq(@slider.getCurrentSlide()).data 'measurement'
   
   onSlideNext: ($el) =>
     @$('.previous').show() if $el.index() > 0
@@ -103,14 +106,7 @@ class TR.Views.Measurements extends TR.Views.Base
     @$('.previous').hide() if $el.index() == 0
     @$('.next').show() if $el.index() < 14
 
-
-
-
-
-
-
-
-
-
-
-
+  onSlideBefore: ($el, oldIndex) =>
+    oldMeasurement = @$('.measurement-list-item').eq(oldIndex).data 'measurement'
+    inches = @$('input.measurement-input').eq(oldIndex).val()
+    @model.setByName oldMeasurement, parseFloat inches
