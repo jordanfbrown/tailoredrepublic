@@ -8,6 +8,12 @@ class TR.Views.Measurements extends TR.Views.Base
     'mousemove .measuring-tape': 'tapeDrag'
     'click a.previous': 'previous'
     'click a.next': 'next'
+    'click .progress-bar li': 'goToSlide'
+
+  PROGRESS:
+    COMPLETED: 'assets/icons/star-stroke.png'
+    TODO: 'assets/icons/star-no-stroke.png'
+    CURRENT: 'assets/icons/star-filled.png'
 
   initialize: ->
     measuringTapePixels = 4521
@@ -99,14 +105,30 @@ class TR.Views.Measurements extends TR.Views.Base
     @$('.measurement-list-item').eq(@slider.getCurrentSlide()).data 'measurement'
   
   onSlideNext: ($el) =>
-    @$('.previous').show() if $el.index() > 0
-    @$('.next').hide() if $el.index() == 14
+    index = $el.index()
+    @$('.previous').show() if index > 0
+    @$('.next').hide() if index == 14
 
   onSlidePrev: ($el) =>
-    @$('.previous').hide() if $el.index() == 0
-    @$('.next').show() if $el.index() < 14
+    index = $el.index()
+    @$('.previous').hide() if index == 0
+    @$('.next').show() if index < 14
 
-  onSlideBefore: ($el, oldIndex) =>
+  onSlideBefore: ($el, oldIndex, newIndex) =>
     oldMeasurement = @$('.measurement-list-item').eq(oldIndex).data 'measurement'
-    inches = @$('input.measurement-input').eq(oldIndex).val()
-    @model.setByName oldMeasurement, parseFloat inches
+    inches = parseFloat @$('input.measurement-input').eq(oldIndex).val()
+    unless _.isNaN inches
+      @model.setByName oldMeasurement, parseFloat inches
+
+    @setProgressBar oldIndex, @PROGRESS.COMPLETED
+    @setProgressBar newIndex, @PROGRESS.CURRENT
+
+  setProgressBar: (index, progress) ->
+    @$('.progress-bar img').eq(index).attr 'src', progress
+
+  goToSlide: (e) ->
+    $li = $(e.currentTarget)
+    @slider.goToSlide $li.index()
+
+
+

@@ -7,8 +7,30 @@
 
 .measurements {
 
+  .progress-bar {
+    background-color: #ccc;
+    padding: 5px;
+    border: 1px solid #aaa;
+    border-bottom: none;
+    @include clearfix;
+
+    li {
+      display: block;
+      float: left;
+      width: 5.25%;
+      margin-right: 1%;
+      text-align: center;
+      cursor: pointer;
+
+      @media only screen and (max-width: 485px) {
+        width: 11.5%;
+      }
+
+    }
+  }
+
   .bx-viewport {
-    border: 1px solid #ccc;
+    border: 1px solid #aaa;
     background-color: #eee;
   }
 

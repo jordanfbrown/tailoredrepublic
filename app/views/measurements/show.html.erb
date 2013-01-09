@@ -1,10 +1,33 @@
 <div id="measurements" class="content-wrapper">
   <h2>Measurements</h2>
   <h5>Grab a friend and a tape measure and follow these tutorial videos to take and input 15 easy measurements.</h5>
+  <ul class="progress-bar">
+    <li><%= progress_current %></li>
+    <li><%= progress_todo %></li>
+    <li><%= progress_todo %></li>
+    <li><%= progress_todo %></li>
+    <li><%= progress_todo %></li>
+    <li><%= progress_todo %></li>
+    <li><%= progress_todo %></li>
+    <li><%= progress_todo %></li>
+    <li><%= progress_todo %></li>
+    <li><%= progress_todo %></li>
+    <li><%= progress_todo %></li>
+    <li><%= progress_todo %></li>
+    <li><%= progress_todo %></li>
+    <li><%= progress_todo %></li>
+    <li><%= progress_todo %></li>
+    <li><%= progress_todo %></li>
+  </ul>
   <ul class="measurements-list">
     <% measurement_metadata.each_with_index do |measurement, index| %>
       <%= render partial: "measurement_slide", locals: { measurement: measurement, index: index} %>
-  <% end %>
+    <% end %>
+    <li class="measurement-list-item">
+      <div class="twelve columns">
+        <h5>Review Measurements</h5>
+      </div>
+    </li>
   </ul>
   <div class="six columns">
     <a href="#" class="button previous" style="display: none;">Previous</a>

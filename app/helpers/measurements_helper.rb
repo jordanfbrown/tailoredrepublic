@@ -18,4 +18,16 @@ module MeasurementsHelper
       pant_length: { url: 'dY_4INxrSgM' }
     }
   end
+
+  def progress_todo
+    image_tag 'icons/star-no-stroke.png'
+  end
+
+  def progress_current
+    image_tag 'icons/star-filled.png'
+  end
+
+  def progress_completed
+    image_tag 'icons/star-stroke.png'
+  end
 end
