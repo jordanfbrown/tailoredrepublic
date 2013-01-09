@@ -24,13 +24,12 @@ class TR.Views.Measurements extends TR.Views.Base
       pager: off
       controls: off
       infiniteLoop: off
-      onSlideNext: @onSlideNext
-      onSlidePrev: @onSlidePrev
       onSlideBefore: @onSlideBefore
 
-    @currentTapeValue = 10
+    @currentTapeValue = @model.get 'neck' || @model.defaults.neck
     $(window).resize @resize
     @resize()
+    @updateInputWithInches @currentTapeValue
 
   submitMeasurement: (e) ->
     e.preventDefault()
@@ -65,7 +64,7 @@ class TR.Views.Measurements extends TR.Views.Base
       offset = e.pageX - @getMeasuringTape().offset().left
       positionX = @initialBackgroundPosition - (@initialDragPosition - offset)
       @getMeasuringTape().css 'background-position-x', positionX
-      @updateInput positionX
+      @updateInputWithPosition positionX
 
   updateMeasuringTape: (inches, animate) ->
     @currentTapeValue = inches
@@ -75,13 +74,16 @@ class TR.Views.Measurements extends TR.Views.Base
   getMeasuringTape: ->
     @$('.measuring-tape').eq(@slider.getCurrentSlide())
     
-  updateInput: (positionX) ->
+  updateInputWithPosition: (positionX) ->
     inches = @convertBackgroundPositionToInches positionX
     if inches < 0
       inches = (90 + inches) % 90
     else if inches > 90
       inches = (inches - 90) % 90
 
+    @updateInputWithInches inches
+
+  updateInputWithInches: (inches) ->
     @$('input.measurement-input').eq(@slider.getCurrentSlide()).val inches
 
   roundToNearestQuarter: (number) ->
@@ -103,16 +105,6 @@ class TR.Views.Measurements extends TR.Views.Base
 
   getCurrentMeasurement: ->
     @$('.measurement-list-item').eq(@slider.getCurrentSlide()).data 'measurement'
-  
-  onSlideNext: ($el) =>
-    index = $el.index()
-    @$('.previous').show() if index > 0
-    @$('.next').hide() if index == 14
-
-  onSlidePrev: ($el) =>
-    index = $el.index()
-    @$('.previous').hide() if index == 0
-    @$('.next').show() if index < 14
 
   onSlideBefore: ($el, oldIndex, newIndex) =>
     oldMeasurement = @$('.measurement-list-item').eq(oldIndex).data 'measurement'
@@ -120,8 +112,17 @@ class TR.Views.Measurements extends TR.Views.Base
     unless _.isNaN inches
       @model.setByName oldMeasurement, parseFloat inches
 
+    @$('.previous').show() if newIndex > 0
+    @$('.previous').hide() if newIndex == 0
+    @$('.next').hide() if newIndex == 15
+    @$('.next').show() if newIndex < 15
+
     @setProgressBar oldIndex, @PROGRESS.COMPLETED
     @setProgressBar newIndex, @PROGRESS.CURRENT
+    
+    @currentTapeValue = @model.get @getCurrentMeasurement() || @model.defaults[@getCurrentMeasurement()]
+    @updateInputWithInches @currentTapeValue
+    @resize()
 
   setProgressBar: (index, progress) ->
     @$('.progress-bar img').eq(index).attr 'src', progress
