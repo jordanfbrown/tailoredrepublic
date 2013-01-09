@@ -8,8 +8,10 @@
 .measurements {
   .video-container {
     position: relative;
-    padding-bottom: 50%;
-    padding-top: 30px;
+    padding-bottom: 315px;
+    @media only screen and (max-width: 1273px) {
+      padding-bottom: 58%;
+    }
     height: 0;
     overflow: hidden;
 
@@ -28,6 +30,9 @@
     }
   }
 
+  form {
+    margin: 0;
+  }
 
   .measuring-tape {
     width: 100%;
@@ -49,15 +54,22 @@
 
   .measurements-list {
     @include clearfix;
-    margin: 20px 0;
+    margin-bottom: 10px;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    padding: 10px;
   }
 
-  .button {
-    width: 150px;
-  }
+
 
   input.measurement-input {
     width: 80px;
+    margin: 0 auto;
+  }
+
+  a.previous, a.next {
+    margin-bottom: 20px;
+    width: 150px;
   }
 
   a.previous {
