@@ -102,6 +102,10 @@ input[type=submit] {
   float: left;
 }
 
+.error {
+  color: #B94A48;
+}
+
 .button {
   background-color: darken($brown, 10%);
   padding: 7px 10px 5px 10px;

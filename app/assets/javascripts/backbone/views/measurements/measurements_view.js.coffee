@@ -45,11 +45,7 @@ class TR.Views.Measurements extends TR.Views.Base
     $input = $(e.currentTarget).find('input')
     inches = parseFloat $input.val()
 
-    if _.isNaN inches
-      console.log('not a number');
-    unless 90 > inches > 0
-      console.log 'out of range'
-    else
+    if @validateCurrentInput()
       inches = @roundToNearestQuarter inches
       @updateMeasuringTape inches, true
       $input.val inches
@@ -93,7 +89,7 @@ class TR.Views.Measurements extends TR.Views.Base
     @updateInputWithInches inches
 
   updateInputWithInches: (inches) ->
-    @$('input.measurement-input').eq(@slider.getCurrentSlide()).val inches
+    @getCurrentInput().val inches
 
   roundToNearestQuarter: (number) ->
     parseFloat (Math.round(number * 4) / 4).toFixed(2)
@@ -106,11 +102,11 @@ class TR.Views.Measurements extends TR.Views.Base
 
   previous: (e) ->
     e.preventDefault()
-    @slider.goToPrevSlide()
+    @slider.goToPrevSlide() if @validateCurrentInput()
 
   next: (e) ->
     e.preventDefault()
-    @slider.goToNextSlide()
+    @slider.goToNextSlide() if @validateCurrentInput()
 
   getCurrentMeasurement: ->
     @$('.measurement-list-item').eq(@slider.getCurrentSlide()).data 'measurement'
@@ -128,11 +124,11 @@ class TR.Views.Measurements extends TR.Views.Base
 
     @setProgressBar oldIndex, @PROGRESS.COMPLETED
     @setProgressBar newIndex, @PROGRESS.CURRENT
-    
+
     @currentTapeValue = @model.get @getCurrentMeasurement() || @model.defaults[@getCurrentMeasurement()]
     @updateInputWithInches @currentTapeValue
     @resize()
-    
+
   acceptMeasurements: (e) ->
     e.preventDefault()
 
@@ -140,5 +136,17 @@ class TR.Views.Measurements extends TR.Views.Base
     @$('.progress-bar img').eq(index).attr 'src', progress
 
   goToSlide: (e) ->
-    $li = $(e.currentTarget)
-    @slider.goToSlide $li.index()
+    @slider.goToSlide $(e.currentTarget).index() if @validateCurrentInput()
+
+  getCurrentInput: ->
+    @$('input.measurement-input').eq(@slider.getCurrentSlide())
+
+  validateCurrentInput: ->
+    $currentInput = @getCurrentInput()
+    inches = parseFloat $currentInput.val()
+    if _.isNaN(inches) || inches < 0 || inches > 90
+      $currentInput.next('.error').fadeIn()
+      false
+    else
+      $currentInput.next('.error').fadeOut()
+      true
