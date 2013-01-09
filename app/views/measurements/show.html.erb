@@ -23,11 +23,7 @@
     <% measurement_metadata.each_with_index do |measurement, index| %>
       <%= render partial: "measurement_slide", locals: { measurement: measurement, index: index} %>
     <% end %>
-    <li class="measurement-list-item">
-      <div class="twelve columns">
-        <h5>Review Measurements</h5>
-      </div>
-    </li>
+    <li class="measurement-list-item measurement-summary"></li>
   </ul>
   <div class="six columns">
     <a href="#" class="button previous" style="display: none;">Previous</a>

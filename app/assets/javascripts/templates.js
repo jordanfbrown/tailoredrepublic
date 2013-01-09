@@ -157,6 +157,73 @@ templates['_dialog_modal.tmpl'] = template(function (Handlebars,depth0,helpers,p
   else { stack1 = depth0.cancelText; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
   buffer += escapeExpression(stack1) + "</a>\n</div>\n";
   return buffer;});
+templates['_measurement_summary.tmpl'] = template(function (Handlebars,depth0,helpers,partials,data) {
+  helpers = helpers || Handlebars.helpers;
+  var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression;
+
+
+  buffer += "<div class=\"twelve columns\">\n  <p>Please read over your measurements one last time and ensure that they are correct. If they look good, click\n    \"Accept\" to continue.</p>\n</div>\n\n<div class=\"four columns\">\n  <ul>\n    <li data-measurement=\"neck\"><span class=\"label\">Neck:</span> ";
+  foundHelper = helpers.neck;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.neck; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"chest\"><span class=\"label\">Chest:</span> ";
+  foundHelper = helpers.chest;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.chest; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"front\"><span class=\"label\">Front:</span> ";
+  foundHelper = helpers.front;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.front; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"stomach\"><span class=\"label\">Stomach:</span> ";
+  foundHelper = helpers.stomach;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.stomach; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"waist\"><span class=\"label\">Waist:</span> ";
+  foundHelper = helpers.waist;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.waist; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"</li>\n  </ul>\n</div>\n\n<div class=\"four columns\">\n  <ul>\n    <li data-measurement=\"hips\"><span class=\"label\">Hips:</span> ";
+  foundHelper = helpers.hips;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.hips; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"full_shoulders\"><span class=\"label\">Full Shoulders:</span> ";
+  foundHelper = helpers.full_shoulders;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.full_shoulders; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"back\"><span class=\"label\">Back:</span> ";
+  foundHelper = helpers.back;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.back; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"arm_length\"><span class=\"label\">Arm Length:</span> ";
+  foundHelper = helpers.arm_length;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.arm_length; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"bicep\"><span class=\"label\">Bicep:</span> ";
+  foundHelper = helpers.bicep;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.bicep; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"</li>\n  </ul>\n</div>\n\n<div class=\"four columns\">\n  <ul>\n    <li data-measurement=\"wrist\"><span class=\"label\">Wrist:</span> ";
+  foundHelper = helpers.wrist;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.wrist; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"jacket_length\"><span class=\"label\">Jacket Length:</span> ";
+  foundHelper = helpers.jacket_length;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.jacket_length; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"crotch\"><span class=\"label\">Crotch:</span> ";
+  foundHelper = helpers.crotch;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.crotch; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"thigh\"><span class=\"label\">Thigh:</span> ";
+  foundHelper = helpers.thigh;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.thigh; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"pant_length\"><span class=\"label\">Pant Length:</span> ";
+  foundHelper = helpers.pant_length;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.pant_length; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"</li>\n  </ul>\n</div>";
+  return buffer;});
 templates['_product.tmpl'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing;

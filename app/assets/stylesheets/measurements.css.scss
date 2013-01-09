@@ -29,6 +29,12 @@
     }
   }
 
+  .measurement-summary {
+    ul {
+      margin-left: 0;
+    }
+  }
+
   .bx-viewport {
     border: 1px solid #aaa;
     background-color: #eee;
@@ -91,7 +97,7 @@
     margin: 0 auto;
   }
 
-  a.previous, a.next {
+  a.previous, a.next, a.accept {
     margin-top: 10px;
     width: 150px;
   }
@@ -106,7 +112,7 @@
     }
   }
 
-  a.next {
+  a.next, a.accept {
     margin-bottom: 10px;
     @media only screen and (max-width: 767px) {
       width: 100%;

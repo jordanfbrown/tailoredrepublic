@@ -9,6 +9,7 @@ class TR.Views.Measurements extends TR.Views.Base
     'click a.previous': 'previous'
     'click a.next': 'next'
     'click .progress-bar li': 'goToSlide'
+    'click a.accept': 'acceptMeasurements'
 
   PROGRESS:
     COMPLETED: 'assets/icons/star-stroke.png'
@@ -25,11 +26,19 @@ class TR.Views.Measurements extends TR.Views.Base
       controls: off
       infiniteLoop: off
       onSlideBefore: @onSlideBefore
+      adaptiveHeight: on
 
     @currentTapeValue = @model.get 'neck' || @model.defaults.neck
     $(window).resize @resize
     @resize()
     @updateInputWithInches @currentTapeValue
+
+    @template = @getTemplate 'measurement_summary'
+    @model.on 'change', @updateSummaryPage
+    @updateSummaryPage()
+
+  updateSummaryPage: =>
+    @$('.measurement-summary').html @template @model.toJSON()
 
   submitMeasurement: (e) ->
     e.preventDefault()
@@ -114,8 +123,8 @@ class TR.Views.Measurements extends TR.Views.Base
 
     @$('.previous').show() if newIndex > 0
     @$('.previous').hide() if newIndex == 0
-    @$('.next').hide() if newIndex == 15
-    @$('.next').show() if newIndex < 15
+    @$('.next, .accept').text('Accept').removeClass('next').addClass('accept') if newIndex == 15
+    @$('.next, .accept').text('Next').removeClass('accept').addClass('next') if newIndex < 15
 
     @setProgressBar oldIndex, @PROGRESS.COMPLETED
     @setProgressBar newIndex, @PROGRESS.CURRENT
@@ -123,6 +132,9 @@ class TR.Views.Measurements extends TR.Views.Base
     @currentTapeValue = @model.get @getCurrentMeasurement() || @model.defaults[@getCurrentMeasurement()]
     @updateInputWithInches @currentTapeValue
     @resize()
+    
+  acceptMeasurements: (e) ->
+    e.preventDefault()
 
   setProgressBar: (index, progress) ->
     @$('.progress-bar img').eq(index).attr 'src', progress
@@ -130,6 +142,3 @@ class TR.Views.Measurements extends TR.Views.Base
   goToSlide: (e) ->
     $li = $(e.currentTarget)
     @slider.goToSlide $li.index()
-
-
-
