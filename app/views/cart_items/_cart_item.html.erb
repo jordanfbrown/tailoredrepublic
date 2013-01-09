@@ -7,8 +7,10 @@
   <div class="nine columns">
     <h3><%= cart_item.product.name %><span class="divider"> // </span>$<%= cart_item.total_price %></h3>
     <p><%= cart_item.product.description %></p>
-    <span class="arrow-right"></span>
-    <a href="#" class="view-customizations">View Customizations</a>
+    <a href="#" class="view-customizations">
+      <span class="arrow-right"></span>
+      <span class="text">View Customizations</span>
+    </a>
     <div class="customization-list-wrapper" style="display: none;">
       <%= render partial: "customization_list", locals: { customizations: customization_list(cart_item.customization)[0..3] } %>
       <%= render partial: "customization_list", locals: { customizations: customization_list(cart_item.customization)[4..7] } %>

@@ -14,8 +14,10 @@ class TR.Views.Cart extends TR.Views.Base
     $a = $(e.currentTarget)
     $customizationList = $a.next('.customization-list-wrapper')
     visible = $customizationList.toggle().is ':visible'
-    $a.text(if visible then 'Hide Customizations' else 'View Customizations')
-    $a.prev('span').removeClass('arrow-right arrow-down').addClass(if visible then 'arrow-down' else 'arrow-right')
+    $a.find('.text').text(if visible then 'Hide Customizations' else 'View Customizations')
+    $a.find('.arrow-right, .arrow-down')
+      .removeClass('arrow-right arrow-down')
+      .addClass(if visible then 'arrow-down' else 'arrow-right')
 
     # TODO: fix jumpiness when expanding
     if visible
