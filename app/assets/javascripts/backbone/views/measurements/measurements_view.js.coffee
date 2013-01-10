@@ -6,6 +6,7 @@ class TR.Views.Measurements extends TR.Views.Base
     'mousedown .measuring-tape': 'beginTapeDrag'
     'mouseup .measuring-tape': 'endTapeDrag'
     'mousemove .measuring-tape': 'tapeDrag'
+    'mouseout .measuring-tape': 'mouseOutMeasuringTape'
     'click a.previous': 'previous'
     'click a.next': 'next'
     'click .progress-bar li': 'goToSlide'
@@ -81,6 +82,10 @@ class TR.Views.Measurements extends TR.Views.Base
       positionX = @initialBackgroundPosition - (@initialDragPosition - offset)
       @getMeasuringTape().css 'background-position-x', positionX
       @updateInputWithPosition positionX
+      
+  mouseOutMeasuringTape: (e) ->
+    unless e.toElement.className == 'pointer' || e.toElement.className == 'measuring-tape'
+      @endTapeDrag()
 
   updateMeasuringTape: (inches, animate) ->
     @currentTapeValue = inches
