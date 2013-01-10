@@ -39,7 +39,14 @@ class TR.Views.Measurements extends TR.Views.Base
     @model.on 'change', @updateSummaryPage
     @updateSummaryPage()
 
-    @slider.goToSlide 15 unless @model.isNew()
+    unless @model.isNew()
+      @$('iframe').attr 'src', ''
+      @slider.goToSlide 15
+      _.delay @loadVideos, 500
+
+  loadVideos: ->
+    @$('iframe').each (index, el) ->
+      $(el).attr 'src', $(el).data 'src'
 
   updateSummaryPage: =>
     @$('.measurement-summary').html @template @model.toJSON()
