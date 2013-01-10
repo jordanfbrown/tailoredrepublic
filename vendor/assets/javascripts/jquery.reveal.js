@@ -360,7 +360,8 @@
             // Yes, were executing 'fade'.
             // Okay, let's set the modal properties.
             //
-            cssOpts.open.top = $doc.scrollTop() + topMeasure;
+            var landingPageAdder = $('#process').exists() ? parseFloat($('#process').css('margin-top')) : 0;
+            cssOpts.open.top = $doc.scrollTop() + topMeasure - landingPageAdder;
 
             //
             // Flip the opacity to 0.

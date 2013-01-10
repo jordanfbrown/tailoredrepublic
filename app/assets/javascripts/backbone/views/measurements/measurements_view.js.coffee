@@ -16,7 +16,9 @@ class TR.Views.Measurements extends TR.Views.Base
     TODO: 'assets/icons/star-no-stroke.png'
     CURRENT: 'assets/icons/star-filled.png'
 
-  initialize: ->
+  initialize: (options) ->
+    @entry = options.entry
+
     measuringTapePixels = 4521
     measuringTapeInches = 90
     @pixelsPerInch = measuringTapePixels / measuringTapeInches
@@ -36,6 +38,8 @@ class TR.Views.Measurements extends TR.Views.Base
     @template = @getTemplate 'measurement_summary'
     @model.on 'change', @updateSummaryPage
     @updateSummaryPage()
+
+    @slider.goToSlide 15 unless @model.isNew()
 
   updateSummaryPage: =>
     @$('.measurement-summary').html @template @model.toJSON()
@@ -134,7 +138,8 @@ class TR.Views.Measurements extends TR.Views.Base
     @model.save({}, {silent: true}).then(@saveSuccess, @saveError)
 
   saveSuccess: (a, b, c) =>
-    console.log('save successful', a, b, c);
+    if @entry == 'checkout'
+      window.location.href = '/order/new'
 
   saveError: =>
     console.log('save error');

@@ -1,5 +1,7 @@
 class MeasurementsController < ApplicationController
   def index
+    @entry = params[:entry]
+
     if user_signed_in?
       @measurement = current_user.measurement || current_user.build_measurement
     else

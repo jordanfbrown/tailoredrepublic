@@ -3,7 +3,7 @@ TailoredRepublic::Application.routes.draw do
     root :to => 'home#index'
   end
 
-  root :to => "home#index"
+  root :to => 'home#index'
 
   devise_for :users
 
@@ -15,10 +15,11 @@ TailoredRepublic::Application.routes.draw do
   resources :products
   resources :cart_items
 
-  match "/shop/:category" => "shop#index"
-  match "/shop" => "shop#index"
-  match "/home" => "home#index"
-  match "/template" => "template#index"
+  match '/shop/:category' => 'shop#index'
+  match '/shop' => 'shop#index'
+  match '/home' => 'home#index'
+  match '/template' => 'template#index'
+  match '/checkout' => 'carts#checkout'
 
   #match "/shop/shirts" => "shop#shirts"
   #match "/shop/vests" => "shop#vests"

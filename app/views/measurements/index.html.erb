@@ -3,21 +3,21 @@
   <h5>Grab a friend and a tape measure and follow these tutorial videos to take and input 15 easy measurements.</h5>
   <ul class="progress-bar">
     <li><%= progress_current %></li>
-    <li><%= progress_todo %></li>
-    <li><%= progress_todo %></li>
-    <li><%= progress_todo %></li>
-    <li><%= progress_todo %></li>
-    <li><%= progress_todo %></li>
-    <li><%= progress_todo %></li>
-    <li><%= progress_todo %></li>
-    <li><%= progress_todo %></li>
-    <li><%= progress_todo %></li>
-    <li><%= progress_todo %></li>
-    <li><%= progress_todo %></li>
-    <li><%= progress_todo %></li>
-    <li><%= progress_todo %></li>
-    <li><%= progress_todo %></li>
-    <li><%= progress_todo %></li>
+    <li><%= progress_todo_or_completed @measurement %></li>
+    <li><%= progress_todo_or_completed @measurement %></li>
+    <li><%= progress_todo_or_completed @measurement %></li>
+    <li><%= progress_todo_or_completed @measurement %></li>
+    <li><%= progress_todo_or_completed @measurement %></li>
+    <li><%= progress_todo_or_completed @measurement %></li>
+    <li><%= progress_todo_or_completed @measurement %></li>
+    <li><%= progress_todo_or_completed @measurement %></li>
+    <li><%= progress_todo_or_completed @measurement %></li>
+    <li><%= progress_todo_or_completed @measurement %></li>
+    <li><%= progress_todo_or_completed @measurement %></li>
+    <li><%= progress_todo_or_completed @measurement %></li>
+    <li><%= progress_todo_or_completed @measurement %></li>
+    <li><%= progress_todo_or_completed @measurement %></li>
+    <li><%= progress_todo_or_completed @measurement %></li>
   </ul>
   <ul class="measurements-list">
     <% measurement_metadata.each_with_index do |measurement, index| %>
@@ -43,6 +43,6 @@
       model = new TR.Models.Measurement(<%= @measurement.to_json(except: [:created_at, :updated_at, :user_id]).html_safe %>);
     <% end %>
 
-    new TR.Views.Measurements({model: model });
+    new TR.Views.Measurements({model: model, entry: '<%= @entry %>'});
   });
 </script>
