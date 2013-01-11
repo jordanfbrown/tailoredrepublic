@@ -3,6 +3,7 @@ class TR.Views.Order extends TR.Views.Base
 
   events:
     'submit #payment-form': 'submitPaymentForm'
+    'click input[name=billing-same-as-shipping]': 'copyShippingToBilling'
 
   initialize: ->
     Stripe.setPublishableKey $('meta[name=stripe-key]').attr 'content'
@@ -27,3 +28,9 @@ class TR.Views.Order extends TR.Views.Base
       token = response.id
       console.log(token);
 
+  copyShippingToBilling: ->
+    @$('#billing_address_line1').val @$('#shipping_address_line1').val()
+    @$('#billing_address_line2').val @$('#shipping_address_line2').val()
+    @$('#billing_address_city').val @$('#shipping_address_city').val()
+    @$('#billing_address_state').val @$('#shipping_address_state').val()
+    @$('#billing_address_zip').val @$('#shipping_address_zip').val()

@@ -238,26 +238,28 @@ $bodyFontFamily: "United Sans Reg", serif;
 $baseFontSize: 16px;
 // $importantModNum: 44px;
 // $base-size: $baseFontSize $importantModNum;
-//@import 'foundation';
+@import 'foundation';
 
-@import "compass/css3";
-@import "foundation/settings";
-@import "foundation/functions/all";
-@import "foundation/mixins/clearfix";
-@import "foundation/mixins/css-triangle";
-@import "foundation/mixins/font-size";
-@import "foundation/mixins/respond-to";
-@import "foundation/mixins/semantic-grid";
-@import "modular-scale";
-@import "foundation/common/globals";
-@import "foundation/components/grid";
-@import "foundation/common/typography";
-@import "foundation/common/forms";
-@import "foundation/components/modules/orbit";
-@import "_mixins";
+//@import "compass/css3";
+//@import "foundation/settings";
+//@import "foundation/functions/all";
+//@import "foundation/mixins/clearfix";
+//@import "foundation/mixins/css-triangle";
+//@import "foundation/mixins/font-size";
+//@import "foundation/mixins/respond-to";
+//@import "foundation/mixins/semantic-grid";
+//@import "modular-scale";
+//@import "foundation/common/globals";
+//@import "foundation/components/grid";
+//@import "foundation/common/typography";
+//@import "foundation/common/forms";
+//@import "foundation/components/modules/orbit";
+//@import "foundation/components/modules/_mqueries";
+//@import "_mixins";
 
 body {
   max-width: 1920px;
+  min-width: 320px;
   margin: 0 auto;
   height: 100%;
 
@@ -360,12 +362,6 @@ a {
   display: inline;
 }
 
-.column, .columns {
-  @media only screen and (max-width: 767px) {
-    width: 100% !important;
-  }
-}
-
 .orbit-wrapper {
   img {
     width: inherit;
@@ -414,4 +410,8 @@ a {
 
 .row {
   min-width: 320px;
+}
+
+fieldset {
+  padding: 12px;
 }

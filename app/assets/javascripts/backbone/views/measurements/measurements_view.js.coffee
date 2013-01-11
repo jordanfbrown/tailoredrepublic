@@ -151,7 +151,7 @@ class TR.Views.Measurements extends TR.Views.Base
 
   saveSuccess: (a, b, c) =>
     if @entry == 'checkout'
-      window.location.href = '/order/new'
+      window.location.href = '/orders/new'
 
   saveError: =>
     console.log('save error');

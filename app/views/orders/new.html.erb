@@ -1,34 +1,81 @@
 <div id="new-order" class="row">
-  <div class="six columns">
+  <div class="four columns push-six">
+    <p>Test</p>
+  </div>
+  <div class="six columns pull-six">
+    <h2></h2>
     <%= form_for(@order) do |f| %>
       <%= f.hidden_field :stripe_card_token %>
-
-      <div class="field">
-        <%= label_tag :card_number, "Credit Card Number" %>
-        <%= text_field_tag :card_number, nil, name: nil %>
-      </div>
-      <div class="field">
-        <%= label_tag :card_code, "Security Code on Card (CVV)" %>
-        <%= text_field_tag :card_code, nil, name: nil %>
-      </div>
-      <div class="field">
-        <%= label_tag :card_month, "Card Expiration" %>
-      </div>
-      <div class="row">
-        <div class="six columns">
-          <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
+      <fieldset>
+        <legend>Shipping Address</legend>
+        <%= fields_for @order.shipping_address do |shipping_address_form| %>
+          <%= shipping_address_form.label 'Address' %>
+          <%= shipping_address_form.text_field :line1 %>
+          <%= shipping_address_form.label 'Address 2 (Optional)' %>
+          <%= shipping_address_form.text_field :line1 %>
+          <div class="row">
+            <div class="six columns">
+              <%= shipping_address_form.label 'City' %>
+              <%= shipping_address_form.text_field :city %>
+            </div>
+            <div class="three columns">
+              <%= shipping_address_form.label 'State' %>
+              <%= shipping_address_form.select :state, us_states %>
+            </div>
+            <div class="three columns">
+              <%= shipping_address_form.label 'Zip' %>
+              <%= shipping_address_form.text_field :zip %>
+            </div>
+          </div>
+        <% end %>
+      </fieldset>
+      <fieldset>
+        <legend>Payment Information</legend>
+          <%= label_tag :card_number, "Credit Card Number" %>
+          <%= text_field_tag :card_number, nil, name: nil %>
+          <%= label_tag :card_code, "Security Code on Card (CVV)" %>
+          <%= text_field_tag :card_code, nil, name: nil %>
+          <%= label_tag :card_month, "Card Expiration" %>
+        <div class="row">
+          <div class="six columns">
+            <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
+          </div>
+          <div class="six columns">
+            <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
+          </div>
         </div>
-        <div class="six columns">
-          <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
-        </div>
-      </div>
+      </fieldset>
+      <label><input type="checkbox" name="billing-same-as-shipping"> Billing address is the same as the shipping address.</label>
+      <fieldset>
+        <legend>Billing Address</legend>
+        <%= fields_for @order.billing_address do |billing_address_form| %>
+          <%= billing_address_form.label 'Address' %>
+          <%= billing_address_form.text_field :line1 %>
+          <%= billing_address_form.label 'Address 2 (Optional)' %>
+          <%= billing_address_form.text_field :line1 %>
+          <div class="row">
+            <div class="six columns">
+              <%= billing_address_form.label 'City' %>
+              <%= billing_address_form.text_field :city %>
+            </div>
+            <div class="three columns">
+              <%= billing_address_form.label 'State' %>
+              <%= billing_address_form.select :state, us_states %>
+            </div>
+            <div class="three columns">
+              <%= billing_address_form.label 'Zip' %>
+              <%= billing_address_form.text_field :zip %>
+            </div>
+          </div>
+        <% end %>
+      </fieldset>
+      <%= f.submit 'Submit Order', class: 'button full-width large' %>
       <div id="stripe_error">
         <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
       </div>
     <% end %>
   </div>
 </div>
-
 
 <script>
   $(function() {
