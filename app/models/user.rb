@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_one :measurement
   has_one :shipping_address, as: :addressable
   has_one :billing_address, as: :addressable
+  has_many :orders
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :role_ids, :as => :admin

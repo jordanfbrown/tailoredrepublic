@@ -4,7 +4,7 @@
 
 // Grid Settings
 
-// $rowWidth: 1000px;
+$rowWidth: 1920px;
 // $columnGutter: 30px;
 // $totalColumns: 12;
 // $mobileTotalColumns: 4;
@@ -410,4 +410,8 @@ a {
       text-decoration: none;
     }
   }
+}
+
+.row {
+  min-width: 320px;
 }

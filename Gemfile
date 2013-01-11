@@ -28,3 +28,4 @@ gem 'rolify', '>= 3.2.0'
 gem 'quiet_assets', '>= 1.0.1', :group => :development
 gem 'enumerated_attribute', :git => 'git://github.com/jeffp/enumerated_attribute.git'
 gem 'numbers_and_words'
+gem 'stripe'

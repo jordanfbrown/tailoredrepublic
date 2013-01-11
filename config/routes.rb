@@ -14,6 +14,7 @@ TailoredRepublic::Application.routes.draw do
   resource  :measurements
   resources :products
   resources :cart_items
+  resources :orders
 
   match '/shop/:category' => 'shop#index'
   match '/shop' => 'shop#index'
