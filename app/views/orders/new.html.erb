@@ -9,6 +9,8 @@
       <fieldset>
         <legend>Shipping Address</legend>
         <%= fields_for @order.shipping_address do |shipping_address_form| %>
+          <%= shipping_address_form.label 'Name' %>
+          <%= shipping_address_form.text_field :name %>
           <%= shipping_address_form.label 'Address' %>
           <%= shipping_address_form.text_field :line1 %>
           <%= shipping_address_form.label 'Address 2 (Optional)' %>
@@ -49,6 +51,8 @@
       <fieldset>
         <legend>Billing Address</legend>
         <%= fields_for @order.billing_address do |billing_address_form| %>
+          <%= billing_address_form.label 'Name' %>
+          <%= billing_address_form.text_field :name %>
           <%= billing_address_form.label 'Address' %>
           <%= billing_address_form.text_field :line1 %>
           <%= billing_address_form.label 'Address 2 (Optional)' %>
