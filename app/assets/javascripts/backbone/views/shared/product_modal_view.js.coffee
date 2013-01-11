@@ -9,7 +9,7 @@ class TR.Views.ProductModal extends TR.Views.Modal
 
   initialize: (options) ->
     @customization = options.customization
-    TR.Events.on 'addedCartItem', @addedCartItem
+    TR.Events.on 'addedLineItem', @addedLineItem
     @template = @getTemplate 'product_modal'
     @render()
 
@@ -38,7 +38,7 @@ class TR.Views.ProductModal extends TR.Views.Modal
        e.pageY < offsetTop || e.pageY > offsetTop + $small.height()) && @magnifierVisible()
       @hideMagnifier()
 
-  addedCartItem: (data) =>
+  addedLineItem: (data) =>
     new TR.Views.AddSuccessModal({model: data.product})
     @destroy()
 

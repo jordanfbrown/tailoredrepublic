@@ -4,9 +4,9 @@ class Product < ActiveRecord::Base
   enum_attr :category, %w(suit shirt pants accessory)
   attr_accessible :description, :image_large_url, :image_small_1_url, :image_small_2_url, :image_small_3_url,
                   :image_small_4_url, :name, :price, :quantity, :category
-  has_many :cart_items
+  has_many :line_items
   has_many :customizations
-  before_destroy :ensure_not_referenced_by_cart_item
+  before_destroy :ensure_not_referenced_by_line_item
 
   def self.vest_price
     79
@@ -32,8 +32,8 @@ class Product < ActiveRecord::Base
   end
 
   private
-    def ensure_not_referenced_by_cart_item
-      if cart_items.empty?
+    def ensure_not_referenced_by_line_item
+      if line_items.empty?
         true
       else
         errors.add :base, 'Cart items present'

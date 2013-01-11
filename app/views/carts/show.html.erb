@@ -1,7 +1,7 @@
 <div class="content-wrapper">
   <h1>Shopping Cart</h1>
   <div class="twelve columns">
-    <%= render @cart.cart_items %>
+    <%= render @cart.line_items %>
     <div class="empty-cart" <% unless @cart.empty? %> style="display: none;" <% end %>>
       <p>You haven't added anything to your cart yet.</p>
       <a href="/shop" class="button">Go To Shop</a>
@@ -17,6 +17,6 @@
 
 <script>
   $(function() {
-    new TR.Views.Cart({cartItems: <%= @cart_items.to_json.html_safe %>});
+    new TR.Views.Cart({lineItems: <%= @line_items.to_json.html_safe %>});
   });
 </script>

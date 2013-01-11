@@ -1,0 +1,23 @@
+<div class="line-item" data-product-id="<%= line_item.product.id %>"
+     data-customization-id="<%= line_item.customization.id %>" data-line-item-id="<%= line_item.id %>">
+  <a href="#" class="remove">Remove</a>
+  <div class="three columns">
+    <%= image_tag line_item.product.image_large_url, class: "product-image"%>
+  </div>
+  <div class="nine columns">
+    <h3><%= line_item.product.name %><span class="divider"> // </span>$<%= line_item.total_price %></h3>
+    <p><%= line_item.product.description %></p>
+    <a href="#" class="view-customizations">
+      <span class="arrow-right"></span>
+      <span class="text">View Customizations</span>
+    </a>
+    <div class="customization-list-wrapper" style="display: none;">
+      <%= render partial: "customization_list", locals: { customizations: customization_list(line_item.customization)[0..3] } %>
+      <%= render partial: "customization_list", locals: { customizations: customization_list(line_item.customization)[4..7] } %>
+      <%= render partial: "customization_list", locals: { customizations: customization_list(line_item.customization)[8..11] } %>
+      <div class="twelve columns">
+        <a href="#" class="button edit-customizations">Edit Customizations</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,3 @@
-class TR.Models.CartItem extends TR.Models.Base
+class TR.Models.LineItem extends TR.Models.Base
   url: ->
-    super('/cart_items')
+    super('/line_items')

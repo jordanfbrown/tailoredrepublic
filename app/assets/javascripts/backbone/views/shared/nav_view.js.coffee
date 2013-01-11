@@ -11,8 +11,8 @@ class TR.Views.Nav extends TR.Views.Base
 
   initialize: (options) ->
     @user = options.user
-    TR.Events.on 'removedCartItem', @decrementItemCount
-    TR.Events.on 'addedCartItem', @incrementItemCount
+    TR.Events.on 'removedLineItem', @decrementItemCount
+    TR.Events.on 'addedLineItem', @incrementItemCount
 
   destroy: ->
     $(document).off 'click.header'

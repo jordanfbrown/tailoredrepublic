@@ -1,5 +1,5 @@
-class TR.Collections.CartItems extends TR.Collections.Base
-  model: TR.Models.CartItem
+class TR.Collections.LineItems extends TR.Collections.Base
+  model: TR.Models.LineItem
 
   totalPrice: ->
     @reduce (memo, value) ->

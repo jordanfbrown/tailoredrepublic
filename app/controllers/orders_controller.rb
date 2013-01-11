@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
   end
 
   def create
+    puts params
     token = params[:stripe_token]
 
     ## create Stripe customer
@@ -22,11 +23,11 @@ class OrdersController < ApplicationController
     #)
 
     # charge card
-    Stripe::Charge.create(
-      amount: 1000, #cents
-      currency: 'usd',
-      card: token,
-      description: 'test charge'
-    )
+    #Stripe::Charge.create(
+    #  amount: 1000, #cents
+    #  currency: 'usd',
+    #  card: token,
+    #  description: 'test charge'
+    #)
   end
 end

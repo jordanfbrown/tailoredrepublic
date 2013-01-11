@@ -5,5 +5,5 @@ class Customization < ActiveRecord::Base
   enum_attr :fit, %w(slim fit tailored)
   attr_accessible :lapel, :buttons, :bouttoniere, :fit, :lining, :monogram, :pant_cuffs, :pick_stitching, :pleats,
                   :vents, :vest_buttons, :vest
-  has_many :cart_items
+  has_many :line_items
 end

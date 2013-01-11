@@ -4,11 +4,11 @@ class TR.Views.Cart extends TR.Views.Base
   events:
     'click a.view-customizations': 'toggleCustomizations'
     'click a.edit-customizations': 'editCustomizations'
-    'click a.remove': 'removeCartItem'
+    'click a.remove': 'removeLineItem'
     'click a.edit-customization-option': 'editCustomizationOption'
 
   initialize: (options) ->
-    @cartItems = new TR.Collections.CartItems options.cartItems
+    @lineItems = new TR.Collections.LineItems options.lineItems
 
   toggleCustomizations: (e) ->
     $a = $(e.currentTarget)
@@ -35,9 +35,9 @@ class TR.Views.Cart extends TR.Views.Base
     @openCustomizationModal $target, customizationType
 
   openCustomizationModal: ($target, customizationType) ->
-    $cartItem = $target.parents '.cart-item'
-    customizationId = $cartItem.data 'customization-id'
-    productId = $cartItem.data 'product-id'
+    $lineItem = $target.parents '.line-item'
+    customizationId = $lineItem.data 'customization-id'
+    productId = $lineItem.data 'product-id'
     customization = new TR.Models.Customization id: customizationId
     product = new TR.Models.Product id: productId
     $.when(customization.fetch(), product.fetch()).then(->
@@ -45,23 +45,23 @@ class TR.Views.Cart extends TR.Views.Base
       if customizationType then @productModalView.$el.find("li[data-type=#{customizationType}] a").click()
     )
     
-  removeCartItem: (e) ->
+  removeLineItem: (e) ->
     e.preventDefault()
     confirmOptions =
       text: 'Are you sure want to remove this item from the cart?',
       confirmText: 'Remove'
       cancelText: 'Cancel'
       action: =>
-        $cartItem = $(e.currentTarget).parents('.cart-item')
-        cartItemId = $cartItem.data('cart-item-id')
-        cartItem = @cartItems.get cartItemId
-        $.ajax({url: "/cart_items/#{cartItemId}", type: 'DELETE'}).then(=>
-          $cartItem.fadeOut(=>
-            $cartItem.remove()
-            @cartItems.remove cartItem
-            TR.Events.trigger 'removedCartItem'
-            @$('.cart-total .price').text('$' + @cartItems.totalPrice())
-            unless @$('.cart-item').exists()
+        $lineItem = $(e.currentTarget).parents('.line-item')
+        lineItemId = $lineItem.data('line-item-id')
+        lineItem = @lineItems.get lineItemId
+        $.ajax({url: "/line_items/#{lineItemId}", type: 'DELETE'}).then(=>
+          $lineItem.fadeOut(=>
+            $lineItem.remove()
+            @lineItems.remove lineItem
+            TR.Events.trigger 'removedLineItem'
+            @$('.cart-total .price').text('$' + @lineItems.totalPrice())
+            unless @$('.line-item').exists()
               @$('.empty-cart').show()
               @$('.cart-total').hide()
           )

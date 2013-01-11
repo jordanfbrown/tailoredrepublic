@@ -38,8 +38,8 @@ class CartsController < ApplicationController
   end
 
   def show
-    @cart_items = @cart.cart_items.map do |cart_item|
-      {id: cart_item.id, price: cart_item.total_price}
+    @line_items = @cart.line_items.map do |line_item|
+      {id: line_item.id, price: line_item.total_price}
     end
   end
 end
