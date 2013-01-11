@@ -1,11 +1,15 @@
 class MeasurementsController < ApplicationController
-  def index
+  def show
     @entry = params[:entry]
 
     if user_signed_in?
       @measurement = current_user.measurement || current_user.build_measurement
     else
-     @measurement = Measurement.new
+      if session[:measurement_id]
+        @measurement = Measurement.find(session[:measurement_id]) || Measurement.new
+      else
+        @measurement = Measurement.new
+      end
     end
   end
 
@@ -17,6 +21,7 @@ class MeasurementsController < ApplicationController
     end
 
     if measurement.save
+      session[:measurement_id] = measurement.id
       render json: measurement
     else
       render json: measurement.errors, status: :unprocessable_entity
@@ -25,7 +30,14 @@ class MeasurementsController < ApplicationController
     end
 
   def update
-    measurement = Measurement.find params[:id]
+    if user_signed_in?
+      measurement = current_user.measurement
+    elsif session[:measurement_id]
+      measurement = Measurement.find(session[:measurement_id])
+      unless measurement
+        render json: 'Unable to find measurement', status: 500
+      end
+    end
 
     if measurement.update_attributes params[:measurement]
       render json: measurement

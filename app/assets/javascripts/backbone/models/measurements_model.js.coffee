@@ -1,6 +1,5 @@
 class TR.Models.Measurement extends TR.Models.Base
-  url: ->
-    super('/measurements')
+  url: '/measurements'
 
   defaults:
     neck: 15.5
