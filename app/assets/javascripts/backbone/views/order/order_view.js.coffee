@@ -2,27 +2,29 @@ class TR.Views.Order extends TR.Views.Base
   el: '#new-order'
 
   events:
-    'submit #payment-form': 'submitPaymentForm'
+    'submit form#new_order': 'submitOrder'
     'click input[name=billing-same-as-shipping]': 'copyShippingToBilling'
 
   initialize: ->
     Stripe.setPublishableKey $('meta[name=stripe-key]').attr 'content'
 
-  submitPaymentForm: (e) ->
-    @$('.submit-button').attr 'disabled', 'disabled'
-  
-    Stripe.createToken
-      number: @$('.card-number').val()
-      cvc: @$('.card-cvc').val()
-      exp_month: @$('.card-expiry-month').val()
-      exp_year: @$('.card-expiry-year').val()
-    , @stripeResponseHandler
+  submitOrder: (e) ->
+    if @validateForm()
+      console.log 'here'
+  #    @$('.submit-button').attr 'disabled', 'disabled'
+
+  #    Stripe.createToken
+  #      number: @$('#card_number').val()
+  #      cvc: @$('#card_code').val()
+  #      exp_month: @$('#card_month').val()
+  #      exp_year: @$('#card_year').val()
+  #    , @stripeResponseHandler
 
     false
   
   stripeResponseHandler: (status, response) ->
     if response.errors
-      @$('.payment-errors').text response.error.message
+      @$('.payment-errors').show().find('p').text response.error.message
       @$('.submit-button').removeAttr 'disabled'
     else
       token = response.id
@@ -34,3 +36,52 @@ class TR.Views.Order extends TR.Views.Base
     @$('#billing_address_city').val @$('#shipping_address_city').val()
     @$('#billing_address_state').val @$('#shipping_address_state').val()
     @$('#billing_address_zip').val @$('#shipping_address_zip').val()
+
+  setError: ($input, message) ->
+    $input.addClass 'error'
+
+    if $input.next('.error').exists()
+      $input.next('.error').text message
+    else
+      $('<small class="error">' + message + '</small>').insertAfter $input
+
+  removeError: ($input) ->
+    $input.removeClass('error').next('.error').fadeOut()
+
+  validateForm: ->
+    valid = true
+
+    if Stripe.validateCardNumber @$('#card-number').val()
+      @removeError @$('#card-number')
+    else
+      @setError @$('#card_number'), 'Invalid credit card number.'
+      valid = false
+
+    if Stripe.validateCVC @$('#card_code').val()
+      @removeError @$('#card_code')
+    else
+      @setError @$('#card_code'), 'Invalid security code.'
+      valid = false
+
+    nonEmptyFields = [
+      '#shipping_address_name'
+      '#shipping_address_line1'
+      '#shipping_address_city'
+      '#shipping_address_zip'
+      '#billing_address_name'
+      '#billing_address_line1'
+      '#billing_address_city'
+      '#billing_address_zip'
+    ]
+
+    @$(nonEmptyFields.join(', ')).each (index, el) =>
+      if $(el).val().trim() == ''
+        @setError $(el), 'This field cannot be left blank.'
+        valid = false
+        null
+      else
+        @removeError $(el)
+
+    valid
+
+

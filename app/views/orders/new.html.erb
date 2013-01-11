@@ -14,7 +14,7 @@
           <%= shipping_address_form.label 'Address' %>
           <%= shipping_address_form.text_field :line1 %>
           <%= shipping_address_form.label 'Address 2 (Optional)' %>
-          <%= shipping_address_form.text_field :line1 %>
+          <%= shipping_address_form.text_field :line2 %>
           <div class="row">
             <div class="six columns">
               <%= shipping_address_form.label 'City' %>
@@ -33,6 +33,9 @@
       </fieldset>
       <fieldset>
         <legend>Payment Information</legend>
+          <div class="payment-errors error" style="display: none;">
+            <p></p>
+          </div>
           <%= label_tag :card_number, "Credit Card Number" %>
           <%= text_field_tag :card_number, nil, name: nil %>
           <%= label_tag :card_code, "Security Code on Card (CVV)" %>
@@ -56,7 +59,7 @@
           <%= billing_address_form.label 'Address' %>
           <%= billing_address_form.text_field :line1 %>
           <%= billing_address_form.label 'Address 2 (Optional)' %>
-          <%= billing_address_form.text_field :line1 %>
+          <%= billing_address_form.text_field :line2 %>
           <div class="row">
             <div class="six columns">
               <%= billing_address_form.label 'City' %>
