@@ -12,19 +12,20 @@ class TR.Views.Order extends TR.Views.Base
     if @validateForm()
       @$('.submit-button').attr 'disabled', 'disabled'
 
-      Stripe.createToken
-        number: @$('#card_number').val()
-        cvc: @$('#card_code').val()
-        exp_month: @$('#card_month').val()
-        exp_year: @$('#card_year').val()
-        name: @$('#billing_address_name').val()
-        address_line1: @$('#billing_address_line1').val()
-        address_line2: @$('#billing_address_line2').val()
-        address_city: @$('#billing_address_city').val()
-        address_state: @$('#billing_address_state').val()
-        address_zip: @$('#billing_address_zip').val()
-      , @stripeResponseHandler
+#      Stripe.createToken
+#        number: @$('#card_number').val()
+#        cvc: @$('#card_code').val()
+#        exp_month: @$('#card_month').val()
+#        exp_year: @$('#card_year').val()
+#        name: @$('#billing_address_name').val()
+#        address_line1: @$('#billing_address_line1').val()
+#        address_line2: @$('#billing_address_line2').val()
+#        address_city: @$('#billing_address_city').val()
+#        address_state: @$('#billing_address_state').val()
+#        address_zip: @$('#billing_address_zip').val()
+#      , @stripeResponseHandler
 
+      @stripeResponseHandler(true, {id: 1})
     false
   
   stripeResponseHandler: (status, response) =>
@@ -32,10 +33,11 @@ class TR.Views.Order extends TR.Views.Base
       @$('.payment-errors').show().find('p').text response.error.message
       @$('.submit-button').removeAttr 'disabled'
     else
-      token = response.id
-      console.log(token);
+      @$('#order_stripe_card_token').val response.id
+      @$('form')[0].submit()
 
   copyShippingToBilling: ->
+    @$('#billing_address_name').val @$('#shipping_address_name').val()
     @$('#billing_address_line1').val @$('#shipping_address_line1').val()
     @$('#billing_address_line2').val @$('#shipping_address_line2').val()
     @$('#billing_address_city').val @$('#shipping_address_city').val()
