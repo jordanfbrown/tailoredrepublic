@@ -10,19 +10,24 @@ class TR.Views.Order extends TR.Views.Base
 
   submitOrder: (e) ->
     if @validateForm()
-      console.log 'here'
-  #    @$('.submit-button').attr 'disabled', 'disabled'
+      @$('.submit-button').attr 'disabled', 'disabled'
 
-  #    Stripe.createToken
-  #      number: @$('#card_number').val()
-  #      cvc: @$('#card_code').val()
-  #      exp_month: @$('#card_month').val()
-  #      exp_year: @$('#card_year').val()
-  #    , @stripeResponseHandler
+      Stripe.createToken
+        number: @$('#card_number').val()
+        cvc: @$('#card_code').val()
+        exp_month: @$('#card_month').val()
+        exp_year: @$('#card_year').val()
+        name: @$('#billing_address_name').val()
+        address_line1: @$('#billing_address_line1').val()
+        address_line2: @$('#billing_address_line2').val()
+        address_city: @$('#billing_address_city').val()
+        address_state: @$('#billing_address_state').val()
+        address_zip: @$('#billing_address_zip').val()
+      , @stripeResponseHandler
 
     false
   
-  stripeResponseHandler: (status, response) ->
+  stripeResponseHandler: (status, response) =>
     if response.errors
       @$('.payment-errors').show().find('p').text response.error.message
       @$('.submit-button').removeAttr 'disabled'
@@ -51,17 +56,17 @@ class TR.Views.Order extends TR.Views.Base
   validateForm: ->
     valid = true
 
-    if Stripe.validateCardNumber @$('#card-number').val()
-      @removeError @$('#card-number')
-    else
-      @setError @$('#card_number'), 'Invalid credit card number.'
-      valid = false
-
-    if Stripe.validateCVC @$('#card_code').val()
-      @removeError @$('#card_code')
-    else
-      @setError @$('#card_code'), 'Invalid security code.'
-      valid = false
+#    if Stripe.validateCardNumber @$('#card-number').val()
+#      @removeError @$('#card-number')
+#    else
+#      @setError @$('#card_number'), 'Invalid credit card number.'
+#      valid = false
+#
+#    if Stripe.validateCVC @$('#card_code').val()
+#      @removeError @$('#card_code')
+#    else
+#      @setError @$('#card_code'), 'Invalid security code.'
+#      valid = false
 
     nonEmptyFields = [
       '#shipping_address_name'

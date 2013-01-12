@@ -1,5 +1,5 @@
 <div id="new-order" class="row">
-  <div class="four columns push-six">
+  <div class="six columns push-six">
     <p>Test</p>
   </div>
   <div class="six columns pull-six">
@@ -37,9 +37,9 @@
             <p></p>
           </div>
           <%= label_tag :card_number, "Credit Card Number" %>
-          <%= text_field_tag :card_number, nil, name: nil %>
+          <%= text_field_tag :card_number, nil, name: nil, autocomplete: 'off' %>
           <%= label_tag :card_code, "Security Code on Card (CVV)" %>
-          <%= text_field_tag :card_code, nil, name: nil %>
+          <%= text_field_tag :card_code, nil, name: nil, autocomplete: 'off' %>
           <%= label_tag :card_month, "Card Expiration" %>
         <div class="row">
           <div class="six columns">
