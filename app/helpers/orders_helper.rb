@@ -9,11 +9,11 @@ module OrdersHelper
   end
 
   def card_month
-    @stripe_customer ? @stripe_customer[:active_card][:exp_month] : '4'
+    @stripe_customer ? @stripe_customer[:active_card][:exp_month] : 4
   end
 
   def card_year
-    @stripe_customer ? @stripe_customer[:active_card][:exp_year] : '2015'
+    @stripe_customer ? @stripe_customer[:active_card][:exp_year] : 2015
   end
 
   def us_states

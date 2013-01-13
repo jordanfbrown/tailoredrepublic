@@ -10,9 +10,12 @@ class OrdersController < ApplicationController
   def create
     card_token = params[:order][:stripe_card_token]
 
-    # new user - create user, sign in, create stripe customer, charge amount to stripe customer
+    # new user - create user, saved shipping/billing address, sign in, create stripe customer,
+    # charge amount to stripe customer
     if params[:user]
       @user = User.new params[:user]
+      @user.build_billing_address params[:billing_address]
+      @user.build_shipping_address params[:shipping_address]
 
       unless @user.save
         return render action: 'new'
@@ -20,8 +23,8 @@ class OrdersController < ApplicationController
 
       sign_in :user, @user
 
-      stripe_customer = create_stripe_customer @user, card_token, params[:user][:email]
-      charge_customer stripe_customer.id
+      #stripe_customer = create_stripe_customer @user, card_token, params[:user][:email]
+      #charge_customer stripe_customer.id
     else
       # user with existing stripe customer id, just charge them
       if current_user.stripe_customer_id?

@@ -7,11 +7,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :measurement
-  has_one :shipping_address, as: :addressable
-  has_one :billing_address, as: :addressable
+  has_one :shipping_address, as: :addressable, validate: true
+  has_one :billing_address, as: :addressable, validate: true
   has_many :orders
 
-  # Setup accessible (or protected) attributes for your model
   attr_accessible :role_ids, :as => :admin
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
   attr_protected :stripe_customer_id

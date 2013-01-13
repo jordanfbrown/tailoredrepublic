@@ -13,6 +13,7 @@
     <h3>Order</h3>
     <%= form_for @order do |f| %>
       <%= f.hidden_field :stripe_card_token %>
+
       <% if user_signed_in? %>
         <p>Welcome back, <%= current_user.name %>. Please verify that the details below are correct.</p>
       <% else %>
@@ -21,16 +22,18 @@
           <%= render partial: 'users/light_form', locals: { user: @user } %>
         </fieldset>
       <% end %>
+
       <fieldset>
         <legend>Shipping Address</legend>
         <%= render partial: 'addresses/form', locals: { address: @order.shipping_address } %>
       </fieldset>
+
       <fieldset>
         <legend>Payment Information</legend>
-        <% if @stripe_customer %>
-          <p>We found the following billing information saved to your account.</p>
-          <label><input type="checkbox" name="billing-same-as-shipping" class="billing-shipping-label" checked> Use the billing information listed below.</label>
-      <% end %>
+          <% if @stripe_customer %>
+            <p>We found the following billing information saved to your account.</p>
+            <label><input type="checkbox" name="billing-same-as-shipping" class="billing-shipping-label" checked> Use the billing information listed below.</label>
+          <% end %>
           <div class="payment-errors error" style="display: none;">
             <p></p>
           </div>
@@ -47,8 +50,11 @@
             <%= select_year card_year, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
           </div>
         </div>
-        <label><input type="checkbox" name="billing-same-as-shipping" class="billing-shipping-label"> Billing address is the same as the shipping address.</label>
-        <%= render partial: 'addresses/form', locals: { address: @order.billing_address } %>
+      </fieldset>
+      <label><input type="checkbox" name="billing-same-as-shipping" class="billing-shipping-label"> Billing address is the same as the shipping address.</label>
+      <fieldset>
+        <legend>Billing Address</legend>
+          <%= render partial: 'addresses/form', locals: { address: @order.billing_address } %>
       </fieldset>
       <%= f.submit 'Submit Order', class: 'button full-width large' %>
     <% end %>
