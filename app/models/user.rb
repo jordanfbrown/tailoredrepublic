@@ -14,4 +14,8 @@ class User < ActiveRecord::Base
   attr_accessible :role_ids, :as => :admin
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
   attr_protected :stripe_customer_id
+
+  def get_stripe_customer
+    Stripe::Customer.retrieve stripe_customer_id
+  end
 end

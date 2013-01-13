@@ -417,3 +417,7 @@ fieldset {
   padding: 12px;
   @include border-radius(0px);
 }
+
+select {
+  margin-bottom: 12px;
+}

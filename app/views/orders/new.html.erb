@@ -14,9 +14,7 @@
     <%= form_for @order do |f| %>
       <%= f.hidden_field :stripe_card_token %>
 
-      <% if user_signed_in? %>
-        <p>Welcome back, <%= current_user.name %>. Please verify that the details below are correct.</p>
-      <% else %>
+      <% unless user_signed_in? %>
         <fieldset>
           <legend>Create an Account</legend>
           <%= render partial: 'users/light_form', locals: { user: @user } %>
@@ -50,11 +48,14 @@
             <%= select_year card_year, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
           </div>
         </div>
+        <% unless @stripe_customer %>
+          <label><%= check_box_tag :save_card_for_later, 'save_card_for_later', checked: true %>Save this credit card for purchases in the future</label>
+        <% end %>
       </fieldset>
-      <label><input type="checkbox" name="billing-same-as-shipping" class="billing-shipping-label"> Billing address is the same as the shipping address.</label>
       <fieldset>
         <legend>Billing Address</legend>
-          <%= render partial: 'addresses/form', locals: { address: @order.billing_address } %>
+        <label><input type="checkbox" name="billing-same-as-shipping" class="billing-shipping-label"> Billing address is the same as the shipping address.</label>
+        <%= render partial: 'addresses/form', locals: { address: @order.billing_address } %>
       </fieldset>
       <%= f.submit 'Submit Order', class: 'button full-width large' %>
     <% end %>

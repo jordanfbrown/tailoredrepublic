@@ -4,6 +4,7 @@ class TR.Views.Order extends TR.Views.Base
   events:
     'submit form#new_order': 'submitOrder'
     'click input[name=billing-same-as-shipping]': 'copyShippingToBilling'
+    'keyup #user_name': 'copyUserNameToShippingName'
 
   initialize: ->
     Stripe.setPublishableKey $('meta[name=stripe-key]').attr 'content'
@@ -50,6 +51,9 @@ class TR.Views.Order extends TR.Views.Base
 
   removeError: ($input) ->
     $input.removeClass('error').next('.error').fadeOut()
+
+  copyUserNameToShippingName: (e) ->
+    @$('#shipping_address_name').val $(e.currentTarget).val()
 
   validateForm: ->
     valid = true

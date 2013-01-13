@@ -8,6 +8,8 @@
 <% end %>
 
 <%= fields_for user do |u| %>
+  <%= u.label :name %>
+  <%= u.text_field :name, value: 'Test User' %>
   <%= u.label :email %>
   <%= u.text_field :email, value: 'test@test.com' %>
   <%= u.label :password %>
