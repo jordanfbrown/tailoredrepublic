@@ -2,9 +2,9 @@
 
 one:
   lapel: notch
-  buttons: 1
+  buttons: 2
   vents: 1
-  pleats: 1
+  pleats: 0
   pant_cuffs: false
   fit: tailored
   lining: 1

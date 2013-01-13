@@ -1,7 +1,4 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  stripe_card_token: MyString
-
-two:
-  stripe_card_token: MyString
+  user_id: 1

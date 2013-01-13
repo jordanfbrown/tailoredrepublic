@@ -5,7 +5,7 @@ class LineItemsControllerTest < ActionController::TestCase
     set_basic_auth_credentials
   end
 
-  test "should be able to post to create new cart items" do
+  test "should be able to post to create new line items" do
     assert_difference('LineItem.count') do
       product = products(:charcoal)
       customization = customizations(:one)

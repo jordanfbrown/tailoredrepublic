@@ -18,4 +18,23 @@ class User < ActiveRecord::Base
   def get_stripe_customer
     Stripe::Customer.retrieve stripe_customer_id
   end
+
+  def create_stripe_customer(card_token)
+    stripe_customer = Stripe::Customer.create(
+        card: card_token,
+        email: email
+    )
+    self.stripe_customer_id = stripe_customer.id
+    save
+    stripe_customer
+  end
+
+  def charge_customer(amount)
+    Stripe::Charge.create(
+      amount: amount,
+      currency: 'usd',
+      customer: stripe_customer_id,
+      description: 'Customer charge'
+    )
+  end
 end

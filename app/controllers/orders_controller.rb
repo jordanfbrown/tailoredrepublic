@@ -25,10 +25,8 @@ class OrdersController < ApplicationController
         sign_in :user, @user
         create_customer_or_charge_card
       else
-        # user with existing stripe customer id, just charge them
         if current_user.stripe_customer_id?
-          charge_customer stripe_customer_id
-          # user with no existing stripe customer id, create stripe customer, charge amount to stripe customer
+          current_user.charge_customer @cart.total_price * 100
         else
           create_customer_or_charge_card
         end
@@ -48,20 +46,11 @@ class OrdersController < ApplicationController
   private
     def create_customer_or_charge_card
       if params[:save_card_for_later]
-        @stripe_customer = create_stripe_customer @user, @card_token, current_user.email
-        charge_customer @stripe_customer.id
+        current_user.create_stripe_customer @card_token
+        current_user.charge_customer @cart.total_price * 100
       else
         charge_card @card_token
       end
-    end
-
-    def charge_customer(customer_id)
-      Stripe::Charge.create(
-        amount: @cart.total_price * 100,
-        currency: 'usd',
-        customer: customer_id,
-        description: 'Customer charge'
-      )
     end
 
     def charge_card(token)
@@ -71,16 +60,6 @@ class OrdersController < ApplicationController
         card: token,
         description: 'Single token charge'
       )
-    end
-
-    def create_stripe_customer(user, card_token, email)
-      stripe_customer = Stripe::Customer.create(
-        card: card_token,
-        email: email
-      )
-      user.stripe_customer_id = stripe_customer.id
-      user.save
-      stripe_customer
     end
 
     def check_for_empty
