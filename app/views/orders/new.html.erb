@@ -27,20 +27,24 @@
       </fieldset>
       <fieldset>
         <legend>Payment Information</legend>
+        <% if @stripe_customer %>
+          <p>We found the following billing information saved to your account.</p>
+          <label><input type="checkbox" name="billing-same-as-shipping" class="billing-shipping-label" checked> Use the billing information listed below.</label>
+      <% end %>
           <div class="payment-errors error" style="display: none;">
             <p></p>
           </div>
           <%= label_tag :card_number, "Credit Card Number" %>
-          <%= text_field_tag :card_number, nil, name: nil, autocomplete: 'off', value: '4242424242424242' %>
+          <%= text_field_tag :card_number, nil, name: nil, autocomplete: 'off', value: card_number %>
           <%= label_tag :card_code, "Security Code on Card (CVV)" %>
-          <%= text_field_tag :card_code, nil, name: nil, autocomplete: 'off', value: '123' %>
+          <%= text_field_tag :card_code, nil, name: nil, autocomplete: 'off', value: card_code %>
           <%= label_tag :card_month, "Card Expiration" %>
         <div class="row">
           <div class="six columns">
-            <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
+            <%= select_month card_month, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
           </div>
           <div class="six columns">
-            <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
+            <%= select_year card_year, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
           </div>
         </div>
         <label><input type="checkbox" name="billing-same-as-shipping" class="billing-shipping-label"> Billing address is the same as the shipping address.</label>

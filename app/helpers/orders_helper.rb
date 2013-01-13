@@ -1,5 +1,21 @@
 module OrdersHelper
 
+  def card_number
+    @stripe_customer ? "XXXX-XXXX-XXXX-#{@stripe_customer[:active_card][:last4]}" : '4242424242424242'
+  end
+
+  def card_code
+    @stripe_customer ? 'XXX' : '123'
+  end
+
+  def card_month
+    @stripe_customer ? @stripe_customer[:active_card][:exp_month] : '4'
+  end
+
+  def card_year
+    @stripe_customer ? @stripe_customer[:active_card][:exp_year] : '2015'
+  end
+
   def us_states
     [
       ['Alabama', 'AL'],
