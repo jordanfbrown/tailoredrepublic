@@ -11,53 +11,19 @@
       <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
     </div>
     <h3>Order</h3>
-    <%= form_for(@order) do |f| %>
+    <%= form_for @order do |f| %>
       <%= f.hidden_field :stripe_card_token %>
       <% if user_signed_in? %>
         <p>Welcome back, <%= current_user.name %>. Please verify that the details below are correct.</p>
       <% else %>
         <fieldset>
           <legend>Create an Account</legend>
-          <% if @user.errors.any? %>
-            <p class="error">There was some problems creating your account:</p>
-            <ul class="error">
-            <% @user.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-            </ul>
-          <% end %>
-          <%= label :user, :email, 'Email' %>
-          <%= text_field :user, :email, value: 'test@test.com' %>
-          <%= label :user, :password, 'Password' %>
-          <%= password_field :user, :password, value: 'abc123' %>
-          <%= label :user, :password_confirmation, 'Confirm Password' %>
-          <%= password_field :user, :password_confirmation, value: 'abc123' %>
+          <%= render partial: 'users/light_form', locals: { user: @user } %>
         </fieldset>
       <% end %>
       <fieldset>
         <legend>Shipping Address</legend>
-        <%= fields_for @order.shipping_address do |shipping_address_form| %>
-          <%= shipping_address_form.label 'Name' %>
-          <%= shipping_address_form.text_field :name, value: 'Jordan Brown' %>
-          <%= shipping_address_form.label 'Address' %>
-          <%= shipping_address_form.text_field :line1, value: '11 Downey St.' %>
-          <%= shipping_address_form.label 'Address 2 (Optional)' %>
-          <%= shipping_address_form.text_field :line2 %>
-          <div class="row">
-            <div class="six columns">
-              <%= shipping_address_form.label 'City' %>
-              <%= shipping_address_form.text_field :city, value: 'San Francisco' %>
-            </div>
-            <div class="three columns">
-              <%= shipping_address_form.label 'State' %>
-              <%= shipping_address_form.select :state, us_states, selected: 'CA' %>
-            </div>
-            <div class="three columns">
-              <%= shipping_address_form.label 'Zip' %>
-              <%= shipping_address_form.text_field :zip, value: '94117' %>
-            </div>
-          </div>
-        <% end %>
+        <%= render partial: 'addresses/form', locals: { address: @order.shipping_address } %>
       </fieldset>
       <fieldset>
         <legend>Payment Information</legend>
@@ -78,28 +44,7 @@
           </div>
         </div>
         <label><input type="checkbox" name="billing-same-as-shipping" class="billing-shipping-label"> Billing address is the same as the shipping address.</label>
-        <%= fields_for @order.billing_address do |billing_address_form| %>
-          <%= billing_address_form.label 'Name' %>
-          <%= billing_address_form.text_field :name %>
-          <%= billing_address_form.label 'Address' %>
-          <%= billing_address_form.text_field :line1 %>
-          <%= billing_address_form.label 'Address 2 (Optional)' %>
-          <%= billing_address_form.text_field :line2 %>
-          <div class="row">
-            <div class="six columns">
-              <%= billing_address_form.label 'City' %>
-              <%= billing_address_form.text_field :city %>
-            </div>
-            <div class="three columns">
-              <%= billing_address_form.label 'State' %>
-              <%= billing_address_form.select :state, us_states %>
-            </div>
-            <div class="three columns">
-              <%= billing_address_form.label 'Zip' %>
-              <%= billing_address_form.text_field :zip %>
-            </div>
-          </div>
-        <% end %>
+        <%= render partial: 'addresses/form', locals: { address: @order.billing_address } %>
       </fieldset>
       <%= f.submit 'Submit Order', class: 'button full-width large' %>
     <% end %>

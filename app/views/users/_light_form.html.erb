@@ -1,0 +1,17 @@
+<% if user.errors.any? %>
+  <p class="error">There was some problems creating your account:</p>
+  <ul class="error">
+    <% user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= fields_for user do |u| %>
+  <%= u.label :email %>
+  <%= u.text_field :email, value: 'test@test.com' %>
+  <%= u.label :password %>
+  <%= u.password_field :password, value: 'abc123' %>
+  <%= u.label :password_confirmation, 'Confirm Password' %>
+  <%= u.password_field :password_confirmation, value: 'abc123' %>
+<% end %>
