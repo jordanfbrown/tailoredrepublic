@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def after_sign_out_path_for(resource_or_scope)
+      request.referrer
+    end
+
   def current_cart
     @cart = Cart.find(cookies.signed[:cart_id])
   rescue ActiveRecord::RecordNotFound
