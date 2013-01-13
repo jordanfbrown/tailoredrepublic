@@ -37,12 +37,8 @@ class TR.Views.Order extends TR.Views.Base
       @$('form')[0].submit()
 
   copyShippingToBilling: ->
-    @$('#billing_address_name').val @$('#shipping_address_name').val()
-    @$('#billing_address_line1').val @$('#shipping_address_line1').val()
-    @$('#billing_address_line2').val @$('#shipping_address_line2').val()
-    @$('#billing_address_city').val @$('#shipping_address_city').val()
-    @$('#billing_address_state').val @$('#shipping_address_state').val()
-    @$('#billing_address_zip').val @$('#shipping_address_zip').val()
+    for field in ['name', 'line1', 'line2', 'city', 'state', 'zip']
+      @$("#billing_address_#{field}").val @$("#shipping_address_#{field}").val()
 
   setError: ($input, message) ->
     $input.addClass 'error'
