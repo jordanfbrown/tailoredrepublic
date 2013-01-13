@@ -40,10 +40,7 @@ class OrdersController < ApplicationController
       @order.build_shipping_address params[:shipping_address]
       @order.user = current_user
       @order.stripe_card_token = params[:save_card_for_later] ? @stripe_customer.id : @card_token
-      @cart.line_items.each do |line_item|
-        line_item.cart_id = nil
-        @order.line_items << line_item
-      end
+      @order.copy_line_items_from_cart @cart
       @order.save
     end
   end
