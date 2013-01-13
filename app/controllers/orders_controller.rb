@@ -1,46 +1,46 @@
 class OrdersController < ApplicationController
-  before_filter :setup_order
+  before_filter :check_for_empty, :setup_order
 
   def new
-    if @cart.empty?
-      redirect_to shop_url
-    end
+
   end
 
   def create
-    if @cart.empty?
-      render action: 'new'
-    else
-      if params[:user]
-        @user = User.create params[:user]
-        if @user.errors
-          render action: 'new'
-        end
+    card_token = params[:order][:stripe_card_token]
+
+    # new user
+    if params[:user]
+      @user = User.new params[:user]
+
+      unless @user.save
+        return render action: 'new'
       end
-      # create Stripe customer
-      #customer = Stripe::Customer.create(
-      #  card: token,
-      #  description: 'Some user'
-      #)
 
-      ## charge customer
-      #Stripe::Charge.create(
-      #  amount: 1000, #cents
-      #  currency: 'usd',
-      #  customer: customer.id
-      #)
+      sign_in :user, @user
 
-      # charge card
-      #Stripe::Charge.create(
-      #  amount: 1000, #cents
-      #  currency: 'usd',
-      #  card: token,
-      #  description: 'test charge'
-      #)
+      stripe_customer = Stripe::Customer.create(
+        card: card_token,
+        description: 'Test user'
+      )
+      @user.stripe_customer_id = stripe_customer.id
+      @user.save
     end
+
+    # charge customer
+    Stripe::Charge.create(
+      amount: @cart.total_price,
+      currency: 'usd',
+      customer: card_token
+    )
   end
 
   private
+    def check_for_empty
+      if @cart.empty?
+        redirect_to shop_url
+      end
+    end
+
     def setup_order
       if user_signed_in?
         @user = current_user
@@ -50,7 +50,7 @@ class OrdersController < ApplicationController
         @order.build_billing_address
       else
         @user = User.new
-        @order = Order.new
+        @order = @user.orders.build
         @order.build_shipping_address
         @order.build_billing_address
       end
