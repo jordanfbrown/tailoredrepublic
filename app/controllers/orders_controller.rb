@@ -19,6 +19,9 @@ class OrdersController < ApplicationController
         @user.build_shipping_address params[:shipping_address]
 
         unless @user.save
+          # Need to populate the order so that the information isn't lost
+          @order.build_billing_address params[:billing_address]
+          @order.build_shipping_address params[:shipping_address]
           return render action: 'new'
         end
 
