@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  product_id: 1
+  product: charcoal
   cart_id: 1
-  customization_id: 1
+  customization: one
 
 two:
-  product_id: 1
+  product: black
   cart_id: 1
-  customization_id: 1
+  customization: one

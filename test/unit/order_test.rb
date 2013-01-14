@@ -3,9 +3,7 @@ require 'test_helper'
 class OrderTest < ActiveSupport::TestCase
   test "copy_line_items_from_cart" do
     cart = Cart.new
-    product = products(:charcoal)
-    customization = customizations(:one)
-    cart.line_items.build(product: product, customization: customization)
+    add_item_to_cart cart
     assert !cart.empty?
 
     order = Order.new

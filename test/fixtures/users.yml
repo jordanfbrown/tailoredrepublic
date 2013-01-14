@@ -4,8 +4,9 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one:
-  email: test1@test.com
-#
-two:
-  email: test2@test.com
+user_with_stripe:
+  email: test@test.com
+  stripe_customer_id: cus_16A19ol7XcLHqx
+
+user_without_stripe:
+  email: jordan@tailoredrepublic.com
