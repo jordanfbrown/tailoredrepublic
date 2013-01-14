@@ -39,7 +39,10 @@ class OrdersController < ApplicationController
       @order.user = current_user
       @order.stripe_card_token = params[:save_card_for_later] ? @stripe_customer.id : @card_token
       @order.copy_line_items_from_cart @cart
-      @order.save
+
+      unless @order.save
+        render action: 'new'
+      end
     end
   end
 
@@ -72,9 +75,8 @@ class OrdersController < ApplicationController
       if user_signed_in?
         @user = current_user
         @order = @user.orders.build
-        # TODO: Load in shipping/billing from the user
-        @order.build_shipping_address
-        @order.build_billing_address
+        @order.build_address_from_address 'shipping', @user.shipping_address
+        @order.build_address_from_address 'billing', @user.billing_address
       else
         @user = User.new
         @order = @user.orders.build

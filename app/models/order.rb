@@ -11,4 +11,18 @@ class Order < ActiveRecord::Base
     end
     cart.destroy
   end
+
+  def build_address_from_address(address_type, address)
+    if %w(shipping billing).include? address_type
+      new_address = self.send("build_#{address_type}_address")
+      new_address.line1 = address.line1
+      new_address.line2 = address.line2
+      new_address.city = address.city
+      new_address.state = address.state
+      new_address.zip = address.zip
+      new_address.name = address.name
+    else
+      raise "build_address_from_address must take a first argument of shipping or billing"
+    end
+  end
 end

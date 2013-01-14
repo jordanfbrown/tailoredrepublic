@@ -9,11 +9,11 @@
 
 <%= fields_for user do |u| %>
   <%= u.label :name %>
-  <%= u.text_field :name, value: 'Test User' %>
+  <%= u.text_field :name %>
   <%= u.label :email %>
-  <%= u.text_field :email, value: 'test@test.com' %>
+  <%= u.text_field :email %>
   <%= u.label :password %>
-  <%= u.password_field :password, value: 'abc123' %>
+  <%= u.password_field :password %>
   <%= u.label :password_confirmation, 'Confirm Password' %>
-  <%= u.password_field :password_confirmation, value: 'abc123' %>
+  <%= u.password_field :password_confirmation %>
 <% end %>

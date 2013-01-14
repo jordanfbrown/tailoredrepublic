@@ -1,22 +1,22 @@
 <%= fields_for address do |address_form| %>
   <%= address_form.label 'Name' %>
-  <%= address_form.text_field :name, value: 'Jordan Brown' %>
+  <%= address_form.text_field :name %>
   <%= address_form.label 'Address' %>
-  <%= address_form.text_field :line1, value: '11 Downey St.' %>
+  <%= address_form.text_field :line1 %>
   <%= address_form.label 'Address 2 (Optional)' %>
   <%= address_form.text_field :line2 %>
   <div class="row">
     <div class="six columns">
       <%= address_form.label 'City' %>
-      <%= address_form.text_field :city, value: 'San Francisco' %>
+      <%= address_form.text_field :city %>
     </div>
     <div class="three columns">
       <%= address_form.label 'State' %>
-      <%= address_form.select :state, us_states, selected: 'CA' %>
+      <%= address_form.select :state, us_states %>
     </div>
     <div class="three columns">
       <%= address_form.label 'Zip' %>
-      <%= address_form.text_field :zip, value: '94117' %>
+      <%= address_form.text_field :zip %>
     </div>
   </div>
 <% end %>

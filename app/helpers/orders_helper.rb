@@ -1,19 +1,19 @@
 module OrdersHelper
 
   def card_number
-    @stripe_customer ? "XXXX-XXXX-XXXX-#{@stripe_customer[:active_card][:last4]}" : '4242424242424242'
+    @stripe_customer ? "XXXX-XXXX-XXXX-#{@stripe_customer[:active_card][:last4]}" : ''
   end
 
   def card_code
-    @stripe_customer ? 'XXX' : '123'
+    @stripe_customer ? 'XXX' : ''
   end
 
   def card_month
-    @stripe_customer ? @stripe_customer[:active_card][:exp_month] : 4
+    @stripe_customer ? @stripe_customer[:active_card][:exp_month] : 1
   end
 
   def card_year
-    @stripe_customer ? @stripe_customer[:active_card][:exp_year] : 2015
+    @stripe_customer ? @stripe_customer[:active_card][:exp_year] : 2013
   end
 
   def us_states
