@@ -13,7 +13,6 @@ class TR.Views.Order extends TR.Views.Base
     if @validateForm()
       @$('.submit-button').attr 'disabled', 'disabled'
 
-
       # If we're using a saved card, then we don't need to create a one time payment token -- we can just submit the
       # form and charge the existing customer
       if @$('input[name=use_saved_card]').is ':checked'
@@ -34,7 +33,7 @@ class TR.Views.Order extends TR.Views.Base
         false
   
   stripeResponseHandler: (status, response) =>
-    if response.errors
+    if response.error
       @$('.payment-errors').show().find('p').text response.error.message
       @$('.submit-button').removeAttr 'disabled'
     else
