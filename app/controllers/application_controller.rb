@@ -19,6 +19,10 @@ class ApplicationController < ActionController::Base
       request.referrer
     end
 
+    def after_sign_in_path_for(resource_or_scope)
+      session[:redirect_to]
+    end
+
   def current_cart
     @cart = Cart.find(cookies.signed[:cart_id])
   rescue ActiveRecord::RecordNotFound
