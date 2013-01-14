@@ -31,6 +31,7 @@
       <% unless user_signed_in? %>
         <fieldset>
           <legend>Create an Account</legend>
+          <p><%= link_to 'Already have an account? Click here to login.', new_user_session_path %></p>
           <%= render partial: 'users/light_form', locals: { user: @user } %>
         </fieldset>
       <% end %>
