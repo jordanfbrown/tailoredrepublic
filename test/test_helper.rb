@@ -15,6 +15,14 @@ class ActiveSupport::TestCase
     @request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Basic.encode_credentials('tailored', 'sodamnclean!')
   end
 
+  def set_full_cart_cookie
+    @request.cookie_jar.signed[:cart_id] = 1
+  end
+
+  def set_empty_cart_cookie
+    @request.cookie_jar.signed[:cart_id] = 2
+  end
+
 end
 
 class ActionController::TestCase
