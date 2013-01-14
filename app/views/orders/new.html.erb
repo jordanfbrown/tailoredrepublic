@@ -10,7 +10,7 @@
       <li><span class="label">Tax:</span>  $0</li>
       <li class="total"><span class="label">Total:</span>  $<%= @cart.total_price %></li>
     </ul>
-    <p class="view-cart">Does something not look right? <a href="/cart">Click here to view your cart and edit any customizations.</a></p>
+    <p class="view-cart"><%= link_to 'Does something not look right? Click here to view your cart and edit any customizations.', cart_path %></p>
     <h3>FAQ</h3>
     <p>If you have any questions, please give us a call any time of the day at 123-456-7890.</p>
     <h4>Free Shipping</h4>
@@ -45,7 +45,7 @@
         <legend>Payment Information</legend>
           <% if @stripe_customer %>
             <p>We found the following credit card saved to your account.</p>
-            <label><input type="checkbox" name="use_saved_card" class="billing-shipping-label" checked> Use this credit card</label>
+            <label><input type="checkbox" name="use_saved_card" class="billing-shipping-label" checked> Use my saved credit card</label>
           <% end %>
           <div class="payment-errors error" style="display: none;">
             <p></p>
@@ -55,7 +55,7 @@
           <%= label_tag :card_code, "Security Code on Card (CVV)" %>
           <%= text_field_tag :card_code, nil, name: nil, autocomplete: 'off', value: card_code %>
           <%= label_tag :card_month, "Card Expiration" %>
-        <div class="row">
+        <div class="row">                                s
           <div class="six columns">
             <%= select_month card_month, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
           </div>
