@@ -5,8 +5,10 @@ class TR.Views.Order extends TR.Views.Base
     'submit form#new_order': 'submitOrder'
     'click input[name=billing-same-as-shipping]': 'copyShippingToBilling'
     'keyup #user_name': 'copyUserNameToShippingName'
+    'click input[name=use_saved_card]': 'toggleSavedCreditCard'
 
-  initialize: ->
+  initialize: (options) ->
+    @cardInfo = options.cardInfo || false
     Stripe.setPublishableKey $('meta[name=stripe-key]').attr 'content'
 
   submitOrder: (e) ->
@@ -57,6 +59,18 @@ class TR.Views.Order extends TR.Views.Base
 
   copyUserNameToShippingName: (e) ->
     @$('#shipping_address_name').val $(e.currentTarget).val()
+
+  toggleSavedCreditCard: (e) ->
+    if $(e.currentTarget).is ':checked'
+      @$('#card_number').val "XXXX-XXXX-XXXX-#{@cardInfo.last4}"
+      @$('#card_code').val "XXX"
+      @$('#card_month').val @cardInfo.exp_month
+      @$('#card_year').val @cardInfo.exp_year
+    else
+      @$('#card_number').val ''
+      @$('#card_code').val ''
+      @$('#card_month').val ''
+      @$('#card_year').val ''
 
   validateForm: ->
     valid = true

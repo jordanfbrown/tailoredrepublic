@@ -43,8 +43,8 @@
       <fieldset>
         <legend>Payment Information</legend>
           <% if @stripe_customer %>
-            <p>We found the following billing information saved to your account.</p>
-            <label><input type="checkbox" name="use_saved_card" class="billing-shipping-label" checked> Use the billing information listed below.</label>
+            <p>We found the following credit card saved to your account.</p>
+            <label><input type="checkbox" name="use_saved_card" class="billing-shipping-label" checked> Use this credit card</label>
           <% end %>
           <div class="payment-errors error" style="display: none;">
             <p></p>
@@ -78,6 +78,10 @@
 
 <script>
   $(function() {
-    new TR.Views.Order();
+    var options = {};
+    <% if @stripe_customer %>
+      options.cardInfo = <%= @stripe_customer[:active_card].to_json.html_safe %>;
+    <% end %>
+    new TR.Views.Order(options);
   });
 </script>
