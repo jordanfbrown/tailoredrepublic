@@ -1,10 +1,24 @@
 <div id="new-order" class="row">
   <div class="six columns push-six">
     <h3>Cart Summary</h3>
-    <% @cart.line_items.each do |line_item| %>
-      <p><%= line_item.product.name %> // $<%= line_item.total_price %></p>
-    <% end %>
-    <p>Total: $<%= @cart.total_price %></p>
+    <ul class="cart-summary">
+      <% @cart.line_items.each do |line_item| %>
+        <li><span class="label"><%= line_item.product.name %> <%= line_item.product.category.capitalize %>:</span>
+          $<%= line_item.total_price %></li>
+      <% end %>
+      <li><span class="label">Shipping:</span> $0</li>
+      <li><span class="label">Tax:</span>  $0</li>
+      <li class="total"><span class="label">Total:</span>  $<%= @cart.total_price %></li>
+    </ul>
+    <p class="view-cart">Does something not look right? <a href="/cart">Click here to view your cart and edit any customizations.</a></p>
+    <h3>FAQ</h3>
+    <p>If you have any questions, please give us a call any time of the day at 123-456-7890.</p>
+    <h4>Free Shipping</h4>
+    <p>Always free shipping.</p>
+    <h4>Return Policy</h4>
+    <p>Stuff</p>
+    <h4>Free Alterations</h4>
+    <p>Yup</p>
   </div>
   <div class="six columns pull-six">
     <div id="stripe_error" class="error">

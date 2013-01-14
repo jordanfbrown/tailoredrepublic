@@ -8,4 +8,26 @@
   .billing-shipping-label {
     margin: 10px 0;
   }
+
+  .cart-summary {
+    .label {
+      font-weight: bold;
+      width: 160px;
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .total {
+      padding-top: 5px;
+      border-top: 1px solid #aaa;
+    }
+  }
+
+  .view-cart {
+    margin-top: 10px;
+    a {
+      font-weight: bold;
+    }
+  }
+
 }
