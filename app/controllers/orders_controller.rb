@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_filter :check_for_empty, :setup_order
+  before_filter :check_for_empty, :setup_order, except: :thank_you
 
   def new
     if user_signed_in? && current_user.stripe_customer_id?
@@ -45,8 +45,11 @@ class OrdersController < ApplicationController
         render action: 'new'
       end
 
-      @cart = current_cart
+      redirect_to thank_you
     end
+  end
+
+  def thank_you
   end
 
   private
