@@ -30,7 +30,7 @@
         <legend>Payment Information</legend>
           <% if @stripe_customer %>
             <p>We found the following billing information saved to your account.</p>
-            <label><input type="checkbox" name="billing-same-as-shipping" class="billing-shipping-label" checked> Use the billing information listed below.</label>
+            <label><input type="checkbox" name="use_saved_card" class="billing-shipping-label" checked> Use the billing information listed below.</label>
           <% end %>
           <div class="payment-errors error" style="display: none;">
             <p></p>

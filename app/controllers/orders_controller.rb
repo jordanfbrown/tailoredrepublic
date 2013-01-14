@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
         sign_in :user, @user
         create_customer_or_charge_card
       else
-        if current_user.stripe_customer_id?
+        if current_user.stripe_customer_id? && params[:use_saved_card]
           current_user.charge_customer @cart.total_price * 100
         else
           create_customer_or_charge_card
@@ -37,12 +37,15 @@ class OrdersController < ApplicationController
       @order.build_billing_address params[:billing_address]
       @order.build_shipping_address params[:shipping_address]
       @order.user = current_user
-      @order.stripe_card_token = params[:save_card_for_later] ? @stripe_customer.id : @card_token
+      @order.stripe_card_token = params[:save_card_for_later] || params[:use_saved_card] ?
+        current_user.stripe_customer_id : @card_token
       @order.copy_line_items_from_cart @cart
 
       unless @order.save
         render action: 'new'
       end
+
+      @cart = current_cart
     end
   end
 

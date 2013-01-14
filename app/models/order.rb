@@ -9,7 +9,6 @@ class Order < ActiveRecord::Base
       line_item.cart_id = nil
       line_items << line_item
     end
-    cart.destroy
   end
 
   def build_address_from_address(address_type, address)

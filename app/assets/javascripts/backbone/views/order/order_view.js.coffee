@@ -13,21 +13,25 @@ class TR.Views.Order extends TR.Views.Base
     if @validateForm()
       @$('.submit-button').attr 'disabled', 'disabled'
 
-      Stripe.createToken
-        number: @$('#card_number').val()
-        cvc: @$('#card_code').val()
-        exp_month: @$('#card_month').val()
-        exp_year: @$('#card_year').val()
-        name: @$('#billing_address_name').val()
-        address_line1: @$('#billing_address_line1').val()
-        address_line2: @$('#billing_address_line2').val()
-        address_city: @$('#billing_address_city').val()
-        address_state: @$('#billing_address_state').val()
-        address_zip: @$('#billing_address_zip').val()
-      , @stripeResponseHandler
 
-#      @stripeResponseHandler(true, {id: 1})
-    false
+      # If we're using a saved card, then we don't need to create a one time payment token -- we can just submit the
+      # form and charge the existing customer
+      if @$('input[name=use_saved_card]').is ':checked'
+        true
+      else
+        Stripe.createToken
+          number: @$('#card_number').val()
+          cvc: @$('#card_code').val()
+          exp_month: @$('#card_month').val()
+          exp_year: @$('#card_year').val()
+          name: @$('#billing_address_name').val()
+          address_line1: @$('#billing_address_line1').val()
+          address_line2: @$('#billing_address_line2').val()
+          address_city: @$('#billing_address_city').val()
+          address_state: @$('#billing_address_state').val()
+          address_zip: @$('#billing_address_zip').val()
+        , @stripeResponseHandler
+        false
   
   stripeResponseHandler: (status, response) =>
     if response.errors

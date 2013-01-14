@@ -26,7 +26,6 @@ class User < ActiveRecord::Base
     )
     self.stripe_customer_id = stripe_customer.id
     save
-    stripe_customer
   end
 
   def charge_customer(amount)
