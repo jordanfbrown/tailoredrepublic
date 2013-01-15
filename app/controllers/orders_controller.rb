@@ -37,16 +37,7 @@ class OrdersController < ApplicationController
         end
       end
 
-      # Create order
-      @order = Order.new
-      @order.build_billing_address params[:billing_address]
-      @order.build_shipping_address params[:shipping_address]
-      @order.user = current_user
-      @order.measurement = @measurement.dup
-      @order.stripe_card_token = params[:save_card_for_later] || params[:use_saved_card] ?
-          current_user.stripe_customer_id : @card_token
-      @order.copy_line_items_from_cart @cart
-
+      @order = Order.create_order(params, current_user, @card_token, @cart)
       unless @order.save
         sign_out @user
         render action: "new"

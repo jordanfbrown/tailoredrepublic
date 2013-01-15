@@ -7,6 +7,18 @@ class Order < ActiveRecord::Base
 
   validates_presence_of :shipping_address, :billing_address, :user, :line_items, :measurement
 
+  def self.create_order(params, user, stripe_card_token, cart)
+    order = Order.new
+    order.build_billing_address params[:billing_address]
+    order.build_shipping_address params[:shipping_address]
+    order.user = user
+    order.measurement = user.measurement
+    order.stripe_card_token = params[:save_card_for_later] || params[:use_saved_card] ?
+       user.stripe_customer_id : stripe_card_token
+    order.copy_line_items_from_cart cart
+    order
+  end
+
   def copy_line_items_from_cart(cart)
     cart.line_items.each do |line_item|
       line_item.cart_id = nil

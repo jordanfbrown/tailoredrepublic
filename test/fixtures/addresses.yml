@@ -1,15 +1,32 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
+user_address:
   line1: MyString
   line2: MyString
   city: MyString
   state: MyString
   zip: MyString
+  addressable: user_with_stripe (User)
 
-two:
+order_shipping_address:
+  name: Jordan
   line1: MyString
   line2: MyString
   city: MyString
   state: MyString
-  zip: MyString
+  zip: 94041
+  addressable_id: 1
+  addressable_type: Order
+  type: ShippingAddress
+
+order_billing_address:
+  name: Jordan
+  line1: MyString
+  line2: MyString
+  city: MyString
+  state: MyString
+  zip: 94117
+  addressable_id: 1
+  addressable_type: Order
+  type: BillingAddress
+
