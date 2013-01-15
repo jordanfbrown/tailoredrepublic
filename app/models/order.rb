@@ -3,6 +3,9 @@ class Order < ActiveRecord::Base
   has_one :billing_address, as: :addressable
   belongs_to :user
   has_many :line_items
+  has_one :measurement
+
+  validates_presence_of :shipping_address, :billing_address, :user, :line_items
 
   def copy_line_items_from_cart(cart)
     cart.line_items.each do |line_item|
@@ -25,5 +28,10 @@ class Order < ActiveRecord::Base
     else
       raise "build_address_from_address must take a first argument of 'shipping' or 'billing'"
     end
+  end
+
+  after_rollback do |order|
+    puts 'here'
+    puts order.inspect
   end
 end

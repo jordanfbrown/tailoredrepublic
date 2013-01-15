@@ -6,7 +6,7 @@ class MeasurementsController < ApplicationController
       @measurement = current_user.measurement || current_user.build_measurement
     else
       if session[:measurement_id]
-        @measurement = Measurement.find(session[:measurement_id]) || Measurement.new
+        @measurement = get_measurement_from_session || Measurement.new
       else
         @measurement = Measurement.new
       end
@@ -27,14 +27,14 @@ class MeasurementsController < ApplicationController
       render json: measurement.errors, status: :unprocessable_entity
     end
 
-    end
+  end
 
   def update
     if user_signed_in?
       measurement = current_user.measurement
     elsif session[:measurement_id]
-      measurement = Measurement.find(session[:measurement_id])
-      unless measurement
+      measurement = get_measurement_from_session
+      if measurement.nil?
         render json: 'Unable to find measurement', status: 500
       end
     end

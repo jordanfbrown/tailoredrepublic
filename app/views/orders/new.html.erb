@@ -55,7 +55,7 @@
           <%= label_tag :card_code, "Security Code on Card (CVV)" %>
           <%= text_field_tag :card_code, nil, name: nil, autocomplete: 'off', value: card_code %>
           <%= label_tag :card_month, "Card Expiration" %>
-        <div class="row">                                s
+        <div class="row">
           <div class="six columns">
             <%= select_month card_month, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
           </div>

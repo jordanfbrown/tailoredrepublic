@@ -23,6 +23,12 @@ class ApplicationController < ActionController::Base
       session[:redirect_to]
     end
 
+    def get_measurement_from_session
+      Measurement.find(session[:measurement_id])
+    rescue ActiveRecord::RecordNotFound
+      nil
+    end
+
   def current_cart
     @cart = Cart.find(cookies.signed[:cart_id])
   rescue ActiveRecord::RecordNotFound

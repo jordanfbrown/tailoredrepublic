@@ -157,7 +157,7 @@ class TR.Views.Measurements extends TR.Views.Base
     else
       @saveMeasurements()
 
-  saveMeasurements: ->
+  saveMeasurements: =>
     @model.save({}, {silent: true}).then(@saveSuccess, @saveError)
 
   saveSuccess: (a, b, c) =>
