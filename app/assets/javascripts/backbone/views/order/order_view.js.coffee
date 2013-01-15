@@ -39,7 +39,7 @@ class TR.Views.Order extends TR.Views.Base
       @$('.payment-errors').show().find('p').text response.error.message
       @$('.submit-button').removeAttr 'disabled'
     else
-      @$('#order_stripe_card_token').val response.id
+      @$('#stripe_card_token').val response.id
       @$('form')[0].submit()
 
   copyShippingToBilling: ->

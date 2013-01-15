@@ -29,11 +29,12 @@ class User < ActiveRecord::Base
   end
 
   def charge_customer(amount)
-    Stripe::Charge.create(
+    charge = Stripe::Charge.create(
       amount: amount,
       currency: 'usd',
       customer: stripe_customer_id,
       description: 'Customer charge'
     )
+    charge[:id]
   end
 end

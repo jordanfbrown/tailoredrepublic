@@ -7,14 +7,13 @@ class Order < ActiveRecord::Base
 
   validates_presence_of :shipping_address, :billing_address, :user, :line_items, :measurement
 
-  def self.create_order(params, user, stripe_card_token, cart)
+  def self.create_order(params, user, stripe_charge_id, cart)
     order = Order.new
     order.build_billing_address params[:billing_address]
     order.build_shipping_address params[:shipping_address]
     order.user = user
     order.measurement = user.measurement
-    order.stripe_card_token = params[:save_card_for_later] || params[:use_saved_card] ?
-       user.stripe_customer_id : stripe_card_token
+    order.stripe_charge_id = stripe_charge_id
     order.copy_line_items_from_cart cart
     order
   end
@@ -43,7 +42,7 @@ class Order < ActiveRecord::Base
   end
 
   after_rollback do |order|
-    # TODO: refund stripe charge
-    puts order.inspect
+    charge = Stripe::Charge.retrieve order.stripe_charge_id
+    charge.refund
   end
 end

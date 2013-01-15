@@ -2,13 +2,11 @@ class OrdersController < ApplicationController
   before_filter :ensure_cart_not_empty, :ensure_measurement_not_nil, :setup_order, except: :thank_you
 
   def new
-    if user_signed_in? && current_user.stripe_customer_id?
-      @stripe_customer = current_user.get_stripe_customer
-    end
+    set_stripe_customer
   end
 
   def create
-    @card_token = params[:order][:stripe_card_token]
+    @card_token = params[:stripe_card_token]
 
     ActiveRecord::Base.transaction do
       # new user - create user, saved shipping/billing address, sign in, create stripe customer,
@@ -28,18 +26,19 @@ class OrdersController < ApplicationController
         end
 
         sign_in :user, @user
-        create_customer_or_charge_card
+        charge_id = create_customer_or_charge_card
       else
         if current_user.stripe_customer_id? && params[:use_saved_card]
-          current_user.charge_customer @cart.total_price * 100
+          charge_id = current_user.charge_customer @cart.total_price * 100
         else
-          create_customer_or_charge_card
+          charge_id = create_customer_or_charge_card
         end
       end
 
-      @order = Order.create_order(params, current_user, @card_token, @cart)
+      @order = Order.create_order(params, current_user, charge_id, @cart)
       unless @order.save
-        sign_out @user
+        sign_out @user if params[:user]
+        set_stripe_customer
         render action: "new"
         raise ActiveRecord::Rollback and return
       end
@@ -62,12 +61,13 @@ class OrdersController < ApplicationController
     end
 
     def charge_card(token)
-      Stripe::Charge.create(
+      charge = Stripe::Charge.create(
         amount: @cart.total_price * 100,
         currency: 'usd',
         card: token,
         description: 'Single token charge'
       )
+      charge[:id]
     end
 
     def ensure_cart_not_empty
@@ -80,6 +80,12 @@ class OrdersController < ApplicationController
       @measurement = user_signed_in? && current_user.measurement ? current_user.measurement : get_measurement_from_session
       if @measurement.nil?
         redirect_to measurements_path
+      end
+    end
+
+    def set_stripe_customer
+      if user_signed_in? && current_user.stripe_customer_id?
+        @stripe_customer = current_user.get_stripe_customer
       end
     end
 
