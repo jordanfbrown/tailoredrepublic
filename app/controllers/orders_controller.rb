@@ -1,6 +1,5 @@
 class OrdersController < ApplicationController
   before_filter :ensure_cart_not_empty, :ensure_measurement_not_nil, :setup_order, except: :thank_you
-  rescue_from ActiveRecord::Rollback, with: :render_new
 
   def new
     if user_signed_in? && current_user.stripe_customer_id?
@@ -24,7 +23,8 @@ class OrdersController < ApplicationController
           # Need to populate the order so that the information isn't lost
           @order.build_billing_address params[:billing_address]
           @order.build_shipping_address params[:shipping_address]
-          raise ActiveRecord::Rollback
+          render action: "new"
+          raise ActiveRecord::Rollback and return
         end
 
         sign_in :user, @user
@@ -41,14 +41,16 @@ class OrdersController < ApplicationController
       @order = Order.new
       @order.build_billing_address params[:billing_address]
       @order.build_shipping_address params[:shipping_address]
-      @order.user = current_user
-      @order.measurement = @measurement.dup
+      #@order.user = current_user
+      #@order.measurement = @measurement.dup
       @order.stripe_card_token = params[:save_card_for_later] || params[:use_saved_card] ?
-        current_user.stripe_customer_id : @card_token
+          current_user.stripe_customer_id : @card_token
       @order.copy_line_items_from_cart @cart
 
       unless @order.save
-        raise ActiveRecord::Rollback
+        sign_out @user
+        render action: "new"
+        raise ActiveRecord::Rollback and return
       end
 
       redirect_to thank_you_path
@@ -59,10 +61,6 @@ class OrdersController < ApplicationController
   end
 
   private
-    def render_new
-      render action: 'new'
-    end
-
     def create_customer_or_charge_card
       if params[:save_card_for_later]
         current_user.create_stripe_customer @card_token

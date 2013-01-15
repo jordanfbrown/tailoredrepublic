@@ -26,6 +26,15 @@
     </div>
     <h3>Order</h3>
     <%= form_for @order do |f| %>
+      <% if @order.errors.any? %>
+        <p class="error">There were some problems submitting your order:</p>
+        <ul class="error">
+          <% @order.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
       <%= f.hidden_field :stripe_card_token %>
 
       <% unless user_signed_in? %>

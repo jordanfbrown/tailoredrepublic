@@ -5,7 +5,7 @@ class Order < ActiveRecord::Base
   has_many :line_items
   has_one :measurement
 
-  validates_presence_of :shipping_address, :billing_address, :user, :line_items
+  validates_presence_of :shipping_address, :billing_address, :user, :line_items, :measurement
 
   def copy_line_items_from_cart(cart)
     cart.line_items.each do |line_item|
@@ -31,7 +31,7 @@ class Order < ActiveRecord::Base
   end
 
   after_rollback do |order|
-    puts 'here'
+    # TODO: refund stripe charge
     puts order.inspect
   end
 end
