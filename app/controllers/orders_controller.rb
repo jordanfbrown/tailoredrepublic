@@ -77,9 +77,9 @@ class OrdersController < ApplicationController
     end
 
     def ensure_measurement_not_nil
-      @measurement = user_signed_in? && current_user.measurement ? current_user.measurement : get_measurement_from_session
+      @measurement = user_signed_in? ? current_user.measurement : get_measurement_from_session
       if @measurement.nil?
-        redirect_to measurements_path
+        redirect_to measurements_path, notice: 'You need to enter your measurements before you can complete your order.'
       end
     end
 

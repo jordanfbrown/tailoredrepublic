@@ -6,10 +6,6 @@
   font-weight: bold;
 }
 
-#flashes {
-  margin: 0 10px;
-}
-
 $arrow-edge-length: 6px;
 
 .arrow-down {
@@ -31,18 +27,20 @@ $arrow-edge-length: 6px;
 }
 
 .flash {
-  padding: 4px 0 0 10px;
+  padding: 10px;
 
   &.alert {
     color: #B94A48;
     background-color: #F2DEDE;
-    border-color: #EED3D7;
+    border-bottom: 1px solid #EED3D7;
+    border-top: 1px solid #EED3D7;
   }
 
   &.notice {
-    color: #000;
+    color: #fff;
     background-color: $brown;
-    border-color: darken($brown, 40%);
+    border-top: 1px solid darken($brown, 20%);
+    border-bottom: 1px solid darken($brown, 20%);
   }
 }
 
