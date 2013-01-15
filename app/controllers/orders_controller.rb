@@ -41,8 +41,8 @@ class OrdersController < ApplicationController
       @order = Order.new
       @order.build_billing_address params[:billing_address]
       @order.build_shipping_address params[:shipping_address]
-      #@order.user = current_user
-      #@order.measurement = @measurement.dup
+      @order.user = current_user
+      @order.measurement = @measurement.dup
       @order.stripe_card_token = params[:save_card_for_later] || params[:use_saved_card] ?
           current_user.stripe_customer_id : @card_token
       @order.copy_line_items_from_cart @cart
@@ -88,7 +88,7 @@ class OrdersController < ApplicationController
     def ensure_measurement_not_nil
       @measurement = user_signed_in? && current_user.measurement ? current_user.measurement : get_measurement_from_session
       if @measurement.nil?
-        redirect_to measurements_path(entry: 'checkout')
+        redirect_to measurements_path
       end
     end
 

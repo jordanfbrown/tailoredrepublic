@@ -35,14 +35,7 @@
 
 <script>
   $(function() {
-    var model;
-
-    <% if @measurement.new_record? %>
-      model = new TR.Models.Measurement();
-    <% else %>
-      model = new TR.Models.Measurement(<%= @measurement.to_json(except: [:created_at, :updated_at, :user_id]).html_safe %>);
-    <% end %>
-
-    new TR.Views.Measurements({model: model, entry: '<%= @entry %>'});
+    var model = new TR.Models.Measurement(<%= @measurement.to_json(except: [:created_at, :updated_at, :user_id]).html_safe unless @measurement.new_record? %>);
+    new TR.Views.Measurements({model: model, lineItemCount: <%= @cart.num_items %>});
   });
 </script>

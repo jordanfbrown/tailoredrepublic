@@ -18,8 +18,7 @@ class TR.Views.Measurements extends TR.Views.Base
     CURRENT: 'assets/icons/star-filled.png'
 
   initialize: (options) ->
-    @entry = options.entry
-
+    @lineItemCount = options.lineItemCount
     measuringTapePixels = 4521
     measuringTapeInches = 90
     @pixelsPerInch = measuringTapePixels / measuringTapeInches
@@ -160,9 +159,8 @@ class TR.Views.Measurements extends TR.Views.Base
   saveMeasurements: =>
     @model.save({}, {silent: true}).then(@saveSuccess, @saveError)
 
-  saveSuccess: (a, b, c) =>
-    if @entry == 'checkout'
-      window.location.href = '/orders/new'
+  saveSuccess: =>
+    window.location.href = if @lineItemCount > 0 then '/orders/new' else '/shop'
 
   saveError: =>
     console.log('save error');

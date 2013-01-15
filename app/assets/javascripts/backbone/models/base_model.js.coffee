@@ -12,5 +12,5 @@ class TR.Models.Base extends Backbone.Model
 
   hasDefaultAttributes: ->
     _.all @defaults, (value, name) =>
-      @defaults[name] == value
+      @attributes[name] == value
       
