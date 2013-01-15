@@ -9,3 +9,8 @@ class TR.Models.Base extends Backbone.Model
     unless @isNew()
       url += '/' + @get('id')
     url
+
+  hasDefaultAttributes: ->
+    _.all @defaults, (value, name) =>
+      @defaults[name] == value
+      

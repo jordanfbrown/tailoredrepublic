@@ -147,6 +147,17 @@ class TR.Views.Measurements extends TR.Views.Base
 
   acceptMeasurements: (e) ->
     e.preventDefault()
+    if @model.hasDefaultAttributes()
+      @confirmDialog = new TR.Views.DialogModal({
+        text: 'It looks like your measurements are the same as our defaults. Are you sure that your measurements were entered correctly?',
+        confirmText: 'Yes'
+        cancelText: 'No'
+        action: @saveMeasurements
+      })
+    else
+      @saveMeasurements()
+
+  saveMeasurements: ->
     @model.save({}, {silent: true}).then(@saveSuccess, @saveError)
 
   saveSuccess: (a, b, c) =>

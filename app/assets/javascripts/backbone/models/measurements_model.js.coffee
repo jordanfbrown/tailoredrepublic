@@ -1,6 +1,10 @@
 class TR.Models.Measurement extends TR.Models.Base
   url: '/measurements'
 
+  initialize: (attributes) ->
+    _.each attributes, (value, name) =>
+      @attributes[name] = parseFloat value
+
   defaults:
     neck: 15.5
     chest: 38.25
