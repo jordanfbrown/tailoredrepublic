@@ -20,8 +20,8 @@
     <li><%= progress_todo_or_completed @measurement %></li>
   </ul>
   <ul class="measurements-list">
-    <% measurement_metadata.each_with_index do |measurement, index| %>
-      <%= render partial: "measurement_slide", locals: { measurement: measurement, index: index} %>
+    <% measurement_metadata.each do |measurement, metadata| %>
+      <%= render partial: "measurement_slide", locals: { measurement: measurement, metadata: metadata} %>
     <% end %>
     <li class="measurement-list-item measurement-summary"></li>
   </ul>
