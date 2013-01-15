@@ -1,4 +1,7 @@
 <div id="new-order" class="row">
+  <div class="content-wrapper">
+    <%= render partial: 'shared/checkout_progress', locals: { current: :customer_information } %>
+  </div>
   <div class="six columns push-six cart-summary">
     <h3>Cart Summary</h3>
     <ul class="cart-summary">

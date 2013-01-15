@@ -1,0 +1,24 @@
+<div id="checkout-progress">
+  <div class="row">
+    <div class="three columns <%= 'current' if current == :measurements %>">
+      <% if current == :customer_information || current == :review_order  %>
+        <%= link_to '1. Measurements', measurements_path %>
+      <% else %>
+        1. Measurements
+      <% end %>
+    </div>
+    <div class="three columns <%= 'current' if current == :customer_information %>">
+      <% if current == :review_order  %>
+        <%= link_to '2. Customer Information', new_order_path %>
+      <% else %>
+        2. Customer Information
+      <% end %>
+    </div>
+    <div class="three columns <%= 'current' if current == :review_order %>">
+      3. Review Order
+    </div>
+    <div class="three columns <%= 'current' if current == :order_complete %>">
+      4. Order Complete
+    </div>
+  </div>
+</div>

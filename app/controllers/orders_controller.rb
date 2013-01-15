@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
     @card_token = params[:stripe_card_token]
 
     ActiveRecord::Base.transaction do
-      # new user - create user, saved shipping/billing address, sign in, create stripe customer,
+      # new user - create user, save shipping/billing address, sign in, create stripe customer,
       # charge amount to stripe customer
       if params[:user]
         @user = User.new params[:user]

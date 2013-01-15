@@ -28,6 +28,7 @@ $arrow-edge-length: 6px;
 
 .flash {
   padding: 10px;
+  margin-bottom: 20px;
 
   &.alert {
     color: #B94A48;
@@ -209,5 +210,40 @@ p.error {
   input {
     border-color: #c60f13;
     background-color: rgba(198, 15, 19, 0.1);
+  }
+}
+
+#checkout-progress {
+  margin-bottom: 20px;
+  $border-color: #666;
+  .three {
+    @include font("header");
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 10px 5px;
+    text-align: center;
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+    border-left: 1px solid $border-color;
+
+    &:last-child {
+      border-right: 1px solid $border-color;
+    }
+
+    @media only screen and (max-width: 767px) {
+      border-top: 1px solid $border-color;
+      border-right: 1px solid $border-color;
+      border-left: 1px solid $border-color;
+      border-bottom: none;
+
+      &:last-child {
+        border-bottom: 1px solid $border-color;
+      }
+    }
+
+    &.current {
+      background-color: $brown;
+      color: #fff;
+    }
   }
 }
