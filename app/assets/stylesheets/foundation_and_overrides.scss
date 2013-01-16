@@ -110,7 +110,7 @@ $topBarDropBgColor: #000;
 // $topBarDropToggleColor: #fff;
 // $topBarDropToggleAlpha: 0.5;
 // $topBarSearchWidth: 200px;
-$topBarBreakPoint: 898px; // Change to 9999px for always mobile layout
+$topBarBreakPoint: 932px; // Change to 9999px for always mobile layout
 // $topBarNavToggleSize: 8px;
 
 // UI Settings
@@ -450,7 +450,7 @@ legend {
   }
   
   .hide-for-small {
-    @media only screen and (max-width: 898px) {
+    @media only screen and (max-width: $topBarBreakPoint) {
       display: none !important;
     }
   }
@@ -460,4 +460,10 @@ legend {
 .top-bar ul.right .has-dropdown .dropdown {
   left: inherit;
   right: inherit;
+}
+
+.top-bar > ul .name img {
+  margin-top: 0;
+  width: 140px;
+  padding-right: 0;
 }

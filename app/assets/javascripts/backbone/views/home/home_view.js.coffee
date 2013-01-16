@@ -59,7 +59,7 @@ class TR.Views.Home extends TR.Views.Base
       $('.page-down').animate
         'top': pageDownOffset - 78 + 'px', 750
     else
-      $('.page-down').css 'top', pageDownOffset - 70 + 'px'
+      $('.page-down').css 'top', pageDownOffset - 78 + 'px'
 
   scroll: ->
     $sidebar = $('#sidebar')
