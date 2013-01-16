@@ -1,6 +1,6 @@
-<div class="row ">
-  <h2>Account Settings</h2>
+<div class="row">
   <div class="six columns">
+    <h2>Account Settings</h2>
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
       <%= devise_error_messages! %>
       <fieldset>
@@ -28,14 +28,22 @@
       </fieldset>
       <fieldset>
         <legend>Credit Card</legend>
+        <div class="payment-errors error" style="display: none;">
+          <p></p>
+        </div>
         <%= render 'users/credit_card_form' %>
+        <%= hidden_field_tag :stripe_card_token %>
       </fieldset>
       <fieldset>
         <legend>Billing Address</legend>
         <%= render partial: 'addresses/form', locals: { address: resource.billing_address } %>
       </fieldset>
-      <div><%= f.submit "Update", class: "button full-width large" %></div>
+      <div><%= f.submit "Update", class: "button full-width large submit" %></div>
     <% end %>
   </div>
 </div>
+
+<script>
+  new TR.Views.EditUser();
+</script>
 

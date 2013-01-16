@@ -1,36 +1,42 @@
-<div id="measurements" class="content-wrapper row">
+<div id="measurements">
   <%= render partial: 'shared/checkout_progress', locals: { current: :measurements } %>
-  <h2>Measurements</h2>
-  <h5>Grab a friend and a tape measure and follow these tutorial videos to take and input 15 easy measurements.</h5>
-  <ul class="progress-bar">
-    <li><%= progress_current %></li>
-    <li><%= progress_todo_or_completed @measurement %></li>
-    <li><%= progress_todo_or_completed @measurement %></li>
-    <li><%= progress_todo_or_completed @measurement %></li>
-    <li><%= progress_todo_or_completed @measurement %></li>
-    <li><%= progress_todo_or_completed @measurement %></li>
-    <li><%= progress_todo_or_completed @measurement %></li>
-    <li><%= progress_todo_or_completed @measurement %></li>
-    <li><%= progress_todo_or_completed @measurement %></li>
-    <li><%= progress_todo_or_completed @measurement %></li>
-    <li><%= progress_todo_or_completed @measurement %></li>
-    <li><%= progress_todo_or_completed @measurement %></li>
-    <li><%= progress_todo_or_completed @measurement %></li>
-    <li><%= progress_todo_or_completed @measurement %></li>
-    <li><%= progress_todo_or_completed @measurement %></li>
-    <li><%= progress_todo_or_completed @measurement %></li>
-  </ul>
-  <ul class="measurements-list">
-    <% measurement_metadata.each do |measurement, metadata| %>
-      <%= render partial: "measurement_slide", locals: { measurement: measurement, metadata: metadata} %>
-    <% end %>
-    <li class="measurement-list-item measurement-summary"></li>
-  </ul>
-  <div class="six columns">
-    <a href="#" class="button previous" style="display: none;">Previous</a>
+  <div class="row">
+    <div class="twelve columns">
+      <h2>Measurements</h2>
+      <h5>Grab a friend and a tape measure and follow these tutorial videos to take and input 15 easy measurements.</h5>
+      <ul class="progress-bar">
+        <li><%= progress_current %></li>
+        <li><%= progress_todo_or_completed @measurement %></li>
+        <li><%= progress_todo_or_completed @measurement %></li>
+        <li><%= progress_todo_or_completed @measurement %></li>
+        <li><%= progress_todo_or_completed @measurement %></li>
+        <li><%= progress_todo_or_completed @measurement %></li>
+        <li><%= progress_todo_or_completed @measurement %></li>
+        <li><%= progress_todo_or_completed @measurement %></li>
+        <li><%= progress_todo_or_completed @measurement %></li>
+        <li><%= progress_todo_or_completed @measurement %></li>
+        <li><%= progress_todo_or_completed @measurement %></li>
+        <li><%= progress_todo_or_completed @measurement %></li>
+        <li><%= progress_todo_or_completed @measurement %></li>
+        <li><%= progress_todo_or_completed @measurement %></li>
+        <li><%= progress_todo_or_completed @measurement %></li>
+        <li><%= progress_todo_or_completed @measurement %></li>
+      </ul>
+      <ul class="measurements-list">
+        <% measurement_metadata.each do |measurement, metadata| %>
+          <%= render partial: "measurement_slide", locals: { measurement: measurement, metadata: metadata} %>
+        <% end %>
+        <li class="measurement-list-item measurement-summary"></li>
+      </ul>
+    </div>
   </div>
-  <div class="six columns">
-    <a href="#" class="button next">Next</a>
+  <div class="row">
+    <div class="six columns">
+      <a href="#" class="button previous" style="display: none;">Previous</a>
+    </div>
+    <div class="six columns">
+      <a href="#" class="button next">Next</a>
+    </div>
   </div>
 </div>
 

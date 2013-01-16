@@ -9,7 +9,7 @@ class TR.Views.Order extends TR.Views.Base
 
   initialize: (options) ->
     @cardInfo = options.cardInfo || false
-    Stripe.setPublishableKey $('meta[name=stripe-key]').attr 'content'
+    TR.setStripeKey()
 
   submitOrder: (e) ->
     if @validateForm()
@@ -22,18 +22,7 @@ class TR.Views.Order extends TR.Views.Base
       else if @$('#stripe_card_token').val().length > 0
         true
       else
-        Stripe.createToken
-          number: @$('#card_number').val()
-          cvc: @$('#card_code').val()
-          exp_month: @$('#card_month').val()
-          exp_year: @$('#card_year').val()
-          name: @$('#billing_address_name').val()
-          address_line1: @$('#billing_address_line1').val()
-          address_line2: @$('#billing_address_line2').val()
-          address_city: @$('#billing_address_city').val()
-          address_state: @$('#billing_address_state').val()
-          address_zip: @$('#billing_address_zip').val()
-        , @stripeResponseHandler
+        TR.createStripeToken @stripeResponseHandler
         false
   
   stripeResponseHandler: (status, response) =>
