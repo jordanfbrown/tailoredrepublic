@@ -95,7 +95,7 @@ $bodyFontFamily: "United Sans Reg", serif;
 
 // Top Bar Settings
 
-// $topBarBgColor: #222;
+$topBarBgColor: #000;
 // $topBarHeight: 45px;
 // $topBarHeightMobile: 45px;
 // $topBarBtmMargin: 30px;
@@ -103,14 +103,14 @@ $bodyFontFamily: "United Sans Reg", serif;
 // $topBarTitleSize: 17px;
 // $topBarLinkColor: #fff;
 // $topBarLinkWeight: bold;
-// $topBarLinkSize: 13px;
-// $topBarDropBgColor: #222;
+$topBarLinkSize: 15px;
+$topBarDropBgColor: #000;
 // $topBarDropLinkColor: #fff;
 // $topBarDropToggleSize: 5px;
 // $topBarDropToggleColor: #fff;
 // $topBarDropToggleAlpha: 0.5;
 // $topBarSearchWidth: 200px;
-// $topBarBreakPoint: 940px; // Change to 9999px for always mobile layout
+$topBarBreakPoint: 898px; // Change to 9999px for always mobile layout
 // $topBarNavToggleSize: 8px;
 
 // UI Settings
@@ -252,6 +252,7 @@ $baseFontSize: 16px;
 @import "foundation/common/globals";
 @import "foundation/components/grid";
 @import "foundation/components/_grid";
+@import "foundation/components/modules/_topbar";
 @import "foundation/common/typography";
 @import "foundation/common/forms";
 @import "foundation/components/modules/orbit";
@@ -279,7 +280,7 @@ body:not(.home) {
   }
 
   #main {
-    padding-top: 60px;
+    padding-top: 20px;
   }
 }
 
@@ -398,7 +399,7 @@ a {
 
 .reveal-modal {
   padding: 10px;
-  top: 10px;
+  top: 60px;
 
   .close-reveal-modal {
     font-size: 30px;
@@ -424,4 +425,32 @@ select {
 
 legend {
   font-size: 1.05em;
+}
+
+.top-bar {
+  @include font("header");
+  @include box-shadow(0px 2px 7px #666);
+
+  li {
+    display: inline-block;
+    padding-left: 5px;
+  }
+
+  img {
+    vertical-align: middle;
+    padding-right: 5px;
+  }
+
+  a:hover {
+    color: #fff;
+  }
+
+  .dropdown {
+    text-align: left;
+  }
+}
+
+.top-bar ul.right .has-dropdown .dropdown {
+  left: inherit;
+  right: inherit;
 }

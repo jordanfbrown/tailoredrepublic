@@ -22,9 +22,9 @@ class TR.Views.Home extends TR.Views.Base
   scrollToSection: (e) =>
     href = $(e.currentTarget).attr 'href'
     # Ignore if there's no hash in the URL
-    unless _.contains href, '#'
+    if !_.contains(href, '#') || href == '#'
       return true
-
+      
     e.preventDefault()
 
     $home = $('#home');

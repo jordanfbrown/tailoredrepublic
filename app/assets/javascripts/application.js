@@ -17,6 +17,8 @@
 //= require jquery.reveal
 //= require jquery.orbit
 //= require jquery.bxslider
+//= require modernizr.foundation
+//= require jquery.foundation.topbar
 //= require underscore
 //= require backbone
 //= require handlebars

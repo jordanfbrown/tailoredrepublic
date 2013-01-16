@@ -1,58 +1,60 @@
-<nav class="row">
-  <ul>
-    <li class="home">
-      <a href="/#home">Home</a>
-      <div class="sub-nav home-nav" style="display: none;">
-        <ul>
-          <li class="process"><a href="/#process">The Process</a></li>
-          <li class="top-picks"><a href="/#top-picks">Top Picks</a></li>
-          <li class="about"><a href="/#about">About</a></li>
-          <li class="lookbook"><a href="/#lookbook">Lookbook</a></li>
-        </ul>
-      </div>
-    </li>
-    <li class="process hide-small"><a href="/#process">The Process</a></li>
-    <li class="top-picks hide-small"><a href="/#top-picks">Top Picks</a></li>
-    <li class="about hide-small"><a href="/#about">About</a></li>
-    <li class="lookbook hide-small"><a href="/#lookbook">Lookbook</a></li>
-    <li class="shop">
-      <a href="/shop" class="toggle-shop">Shop</a>
-      <div class="sub-nav shop-nav" style="display: none;">
-        <ul>
-          <li><a href="/shop/suits">Suits</a></li>
-          <li><a href="/shop/shirts">Shirts</a></li>
-          <li><a href="/shop/pants">Pants</a></li>
-          <li><a href="/shop/accessories">Accessories</a></li>
-        </ul>
-      </div>
-    </li>
-    <li class="cart">
-      <a href="/cart">
-        <%= image_tag "icons/shopping-cart.png" %>(<span class="num-items"><%= @cart.num_items %></span>)
-      </a>
-    </li>
-
-    <li class="register">
-      <% if user_signed_in?  %>
-        <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
-      <% else %>
-        <a href="/users/sign_up">Sign Up</a>
-      <% end %>
-    </li>
-    <li class="login <% if user_signed_in? %>logged-in<% end %>">
-      <% if user_signed_in?  %>
-        <%= link_to current_user.name, edit_user_registration_path, class: "username" %>
-        <div class="sub-nav user-nav" style="display: none;">
-          <ul>
-            <li><%= link_to "Account", edit_user_registration_path %></li>
-            <li><%= link_to "Measurements", measurements_path %></li>
-            <li><a href="#">Order History</a></li>
+<div class="fixed contain-to-grid">
+  <nav class="top-bar">
+    <ul>
+      <li class="name"><h1><a href="/#home">Tailored Republic</a></h1></li>
+      <li class="divider hide-for-small"></li>
+      <li class="toggle-topbar"><a href="#"></a></li>
+    </ul>
+    <section>
+      <ul class="left">
+        <li class="process"><a href="/#process">The Process</a></li>
+        <li class="divider"></li>
+        <li class="top-picks"><a href="/#top-picks">Top Picks</a></li>
+        <li class="divider"></li>
+        <li class="about"><a href="/#about">About</a></li>
+        <li class="divider"></li>
+        <li class="lookbook"><a href="/#lookbook">Lookbook</a></li>
+        <li class="divider"></li>
+        <li class="shop has-dropdown">
+          <a href="#">Shop</a>
+          <ul class="dropdown">
+            <li><a href="/shop/suits">Suits</a></li>
+            <li><a href="/shop/shirts">Shirts</a></li>
+            <li><a href="/shop/pants">Pants</a></li>
+            <li><a href="/shop/accessories">Accessories</a></li>
           </ul>
-        </div>
-      <% else %>
-        <a href="/users/sign_in">Login</a>
-      <% end %>
-      <span class="divider">//</span>
-    </li>
-  </ul>
-</nav>
+        </li>
+        <li class="divider"></li>
+      </ul>
+      <ul class="right">
+        <li class="cart">
+          <a href="/cart">
+            <%= image_tag "icons/shopping-cart.png" %>(<span class="num-items"><%= @cart.num_items %></span>)
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li class="login <% if user_signed_in? %>has-dropdown<% end %>">
+          <% if user_signed_in?  %>
+            <%= link_to 'Account', edit_user_registration_path %>
+            <ul class="dropdown">
+              <li><%= link_to "Settings", edit_user_registration_path %></li>
+              <li><%= link_to "Measurements", measurements_path %></li>
+              <li><a href="#">Order History</a></li>
+            </ul>
+          <% else %>
+            <a href="/users/sign_in">Login</a>
+          <% end %>
+        </li>
+        <li class="divider"></li>
+        <li class="register">
+          <% if user_signed_in?  %>
+            <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+          <% else %>
+            <a href="/users/sign_up">Sign Up</a>
+          <% end %>
+        </li>
+      </ul>
+    </section>
+    </ul>
+  </nav>
+</div>
