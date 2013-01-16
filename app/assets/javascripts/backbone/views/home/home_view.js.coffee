@@ -57,7 +57,13 @@ class TR.Views.Home extends TR.Views.Base
 
     if first == true
       $('.page-down').animate
-        'top': pageDownOffset - 78 + 'px', 750
+        'top': pageDownOffset - 78 + 'px', 750, ->
+          $(this).animate 'top': pageDownOffset - 110, 100, ->
+            $(this).animate 'top': pageDownOffset - 78, 100, ->
+              $(this).animate 'top': pageDownOffset - 100, 100, ->
+                $(this).animate 'top': pageDownOffset - 78, 100, ->
+                  $(this).animate 'top': pageDownOffset - 90, 100, ->
+                    $(this).animate 'top': pageDownOffset - 78, 100, ->
     else
       $('.page-down').css 'top', pageDownOffset - 78 + 'px'
 
