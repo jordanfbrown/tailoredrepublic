@@ -448,6 +448,13 @@ legend {
   .dropdown {
     text-align: left;
   }
+  
+  .hide-for-small {
+    @media only screen and (max-width: 898px) {
+      display: none !important;
+    }
+  }
+  
 }
 
 .top-bar ul.right .has-dropdown .dropdown {
