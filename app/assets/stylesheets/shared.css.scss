@@ -111,7 +111,7 @@ input[type=submit] {
 }
 
 .button {
-  background-color: darken($brown, 10%);
+  background-color: $brown;
   padding: 7px 10px 5px 10px;
   @include font("header");
   font-weight: bold;
@@ -121,11 +121,13 @@ input[type=submit] {
   border: none;
   cursor: pointer;
   text-align: center;
+  -webkit-transition: all 250ms;
 
   &:hover {
     color: #fff;
-    background-color: darken($brown, 20%);
+    background-color: darken($brown, 10%);
     text-decoration: none;
+    -webkit-transition: all 250ms;
   }
 
   &:active {
