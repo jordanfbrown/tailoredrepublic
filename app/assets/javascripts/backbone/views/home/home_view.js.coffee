@@ -49,9 +49,8 @@ class TR.Views.Home extends TR.Views.Base
     imgWidth = 1920
     imgHeight = 1280
 
-    backgroundHeight = $(window).width() * imgHeight / imgWidth;
-    navHeight = $('nav').height()
-    $('#process').css 'margin-top', backgroundHeight
+    backgroundHeight = $(window).width() * imgHeight / imgWidth
+    $('#process').css 'margin-top', backgroundHeight - $('nav').height()
 
     pageDownOffset = if backgroundHeight > $(window).height() then $(window).height() else backgroundHeight
 
