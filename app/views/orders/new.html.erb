@@ -34,7 +34,7 @@
       <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
     </div>
     <h3>Order</h3>
-    <%= form_for @order do |f| %>
+    <%= form_for @order, url: { action: 'review' } do |f| %>
       <% if @order.errors.any? %>
         <p class="error">There were some problems submitting your order:</p>
         <ul class="error">
@@ -43,8 +43,6 @@
           <% end %>
         </ul>
       <% end %>
-
-      <%= hidden_field_tag :stripe_card_token %>
 
       <% unless user_signed_in? %>
         <fieldset>
@@ -73,6 +71,10 @@
           <%= label_tag :card_code, "Security Code on Card (CVV)" %>
           <%= text_field_tag :card_code, nil, name: nil, autocomplete: 'off', value: card_code %>
           <%= label_tag :card_month, "Card Expiration" %>
+          <%= hidden_field_tag :stripe_card_token, (@card_token if @card_token) %>
+          <%= hidden_field_tag :card_last4, (@card_last4 if @card_last4) %>
+          <%= hidden_field_tag :card_exp_month, (@card_exp_month if @card_exp_month) %>
+          <%= hidden_field_tag :card_exp_year, (@card_exp_year if @card_exp_year) %>
         <div class="row">
           <div class="six columns">
             <%= select_month card_month, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
@@ -90,7 +92,7 @@
         <label><input type="checkbox" name="billing-same-as-shipping" class="billing-shipping-label"> Billing address is the same as the shipping address.</label>
         <%= render partial: 'addresses/form', locals: { address: @order.billing_address } %>
       </fieldset>
-      <%= f.submit 'Submit Order', class: 'button full-width large' %>
+      <%= f.submit 'Review Order', class: 'button full-width large' %>
     <% end %>
   </div>
 </div>

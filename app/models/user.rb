@@ -15,6 +15,14 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
   attr_protected :stripe_customer_id
 
+  def self.new_from_params_and_measurement(params, measurement)
+    user = User.new params[:user]
+    user.build_billing_address params[:billing_address]
+    user.build_shipping_address params[:shipping_address]
+    user.measurement = measurement
+    user
+  end
+
   def get_stripe_customer
     Stripe::Customer.retrieve stripe_customer_id
   end

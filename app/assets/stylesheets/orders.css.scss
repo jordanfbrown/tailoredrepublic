@@ -1,4 +1,21 @@
+@import "_mixins";
+
 .orders {
+
+  &.review {
+    .label {
+      width: 126px;
+      display: inline-block;
+    }
+
+    .edit-information {
+      display: inline-block;
+      margin-top: 10px;
+      font-weight: bold;
+      color: darken($brown, 20%);
+    }
+  }
+
   #shipping_address_state, #billing_address_state {
     height: 34px;
     border: 1px solid #ccc;
@@ -25,9 +42,5 @@
 
   .view-cart {
     margin-top: 10px;
-  }
-
-  .cart-summary {
-    background-color: #eee;
   }
 }

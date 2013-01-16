@@ -14,7 +14,12 @@ TailoredRepublic::Application.routes.draw do
   resource  :measurements
   resources :products
   resources :line_items
-  resources :orders
+  resources :orders do
+    collection do
+      post 'review'
+      post 'new', path: 'new'
+    end
+  end
 
   match '/shop/:category' => 'shop#index'
   match '/shop' => 'shop#index'

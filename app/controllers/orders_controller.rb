@@ -1,50 +1,76 @@
 class OrdersController < ApplicationController
-  before_filter :ensure_cart_not_empty, :ensure_measurement_not_nil, :setup_order, except: :thank_you
+  before_filter :ensure_cart_not_empty, :ensure_measurement_not_nil, except: :thank_you
 
   def new
     set_stripe_customer
+    if request.post? && params[:user] && params[:billing_address] && params[:shipping_address]
+      @user = User.new_from_params_and_measurement(params, @measurement)
+      @order = Order.new_order(params, @user, @cart)
+      @card_token = params[:stripe_card_token]
+      @card_last4 = params[:card_last4]
+      @card_exp_month = params[:card_exp_month]
+      @card_exp_year = params[:card_exp_year]
+      @password = params[:user][:password]
+    else
+      if user_signed_in?
+        @user = current_user
+        @order = @user.orders.build
+        @order.build_address_from_address 'shipping', @user.shipping_address
+        @order.build_address_from_address 'billing', @user.billing_address
+      else
+        @user = User.new
+        @order = @user.orders.build
+        @order.build_shipping_address
+        @order.build_billing_address
+      end
+    end
   end
 
-  def create
+  def show
+    if params[:id] == 'review'
+      redirect_to new_order_path
+    end
+  end
+
+  def review
+    set_stripe_customer
+
     @card_token = params[:stripe_card_token]
+    @card_last4 = @stripe_customer ? @stripe_customer[:active_card][:last4] : params[:card_last4]
+    @card_exp_month = @stripe_customer ? @stripe_customer[:active_card][:exp_month].to_s : params[:card_exp_month]
+    @card_exp_year = @stripe_customer ? @stripe_customer[:active_card][:exp_year].to_s : params[:card_exp_year]
 
-    ActiveRecord::Base.transaction do
-      # new user - create user, save shipping/billing address, sign in, create stripe customer,
-      # charge amount to stripe customer
-      if params[:user]
-        @user = User.new params[:user]
-        @user.build_billing_address params[:billing_address]
-        @user.build_shipping_address params[:shipping_address]
-        @user.measurement = @measurement
-
-        unless @user.save
-          # Need to populate the order so that the information isn't lost
-          @order.build_billing_address params[:billing_address]
-          @order.build_shipping_address params[:shipping_address]
-          render action: "new"
-          raise ActiveRecord::Rollback and return
-        end
-
-        sign_in :user, @user
-        charge_id = create_customer_or_charge_card
-      else
-        if current_user.stripe_customer_id? && params[:use_saved_card]
-          charge_id = current_user.charge_customer @cart.total_price * 100
-        else
-          charge_id = create_customer_or_charge_card
-        end
-      end
-
-      @order = Order.create_order(params, current_user, charge_id, @cart)
-      unless @order.save
-        sign_out @user if params[:user]
-        set_stripe_customer
+    if params[:user]
+      @user = User.new_from_params_and_measurement(params, @measurement)
+      unless @user.valid?
+        # Need to populate the order so that the information isn't lost
+        @order.build_billing_address params[:billing_address]
+        @order.build_shipping_address params[:shipping_address]
         render action: "new"
         raise ActiveRecord::Rollback and return
       end
 
-      redirect_to thank_you_path
+      #sign_in :user, @user
+      #charge_id = create_customer_or_charge_card
+    else
+      #if current_user.stripe_customer_id? && params[:use_saved_card]
+      #  charge_id = current_user.charge_customer @cart.total_price * 100
+      #else
+      #  charge_id = create_customer_or_charge_card
+      #end
     end
+
+    @user ||= current_user
+    @order = Order.new_order(params, @user, @cart)
+    unless @order.valid?
+      #sign_out @user if params[:user]
+      set_stripe_customer
+      render action: "new"
+      raise ActiveRecord::Rollback and return
+    end
+  end
+
+  def create
   end
 
   def thank_you
@@ -86,20 +112,6 @@ class OrdersController < ApplicationController
     def set_stripe_customer
       if user_signed_in? && current_user.stripe_customer_id?
         @stripe_customer = current_user.get_stripe_customer
-      end
-    end
-
-    def setup_order
-      if user_signed_in?
-        @user = current_user
-        @order = @user.orders.build
-        @order.build_address_from_address 'shipping', @user.shipping_address
-        @order.build_address_from_address 'billing', @user.billing_address
-      else
-        @user = User.new
-        @order = @user.orders.build
-        @order.build_shipping_address
-        @order.build_billing_address
       end
     end
 end

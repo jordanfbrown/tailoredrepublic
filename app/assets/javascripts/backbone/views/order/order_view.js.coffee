@@ -19,6 +19,8 @@ class TR.Views.Order extends TR.Views.Base
       # form and charge the existing customer
       if @$('input[name=use_saved_card]').is ':checked'
         true
+      else if @$('#stripe_card_token').val().length > 0
+        true
       else
         Stripe.createToken
           number: @$('#card_number').val()
@@ -40,6 +42,9 @@ class TR.Views.Order extends TR.Views.Base
       @$('.submit-button').removeAttr 'disabled'
     else
       @$('#stripe_card_token').val response.id
+      @$('#card_last4').val response.card.last4
+      @$('#card_exp_month').val response.card.exp_month
+      @$('#card_exp_year').val response.card.exp_year
       @$('form')[0].submit()
 
   copyShippingToBilling: ->
