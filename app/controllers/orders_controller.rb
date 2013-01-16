@@ -43,16 +43,17 @@ class OrdersController < ApplicationController
     if params[:user]
       @user = User.new_from_params_and_measurement(params, @measurement)
       unless @user.valid?
+        @order = Order.new
         # Need to populate the order so that the information isn't lost
         @order.build_billing_address params[:billing_address]
         @order.build_shipping_address params[:shipping_address]
-        render action: "new"
-        raise ActiveRecord::Rollback and return
+        render action: "new" and return
       end
 
       #sign_in :user, @user
       #charge_id = create_customer_or_charge_card
     else
+      @user = current_user
       #if current_user.stripe_customer_id? && params[:use_saved_card]
       #  charge_id = current_user.charge_customer @cart.total_price * 100
       #else
@@ -60,13 +61,11 @@ class OrdersController < ApplicationController
       #end
     end
 
-    @user ||= current_user
     @order = Order.new_order(params, @user, @cart)
     unless @order.valid?
       #sign_out @user if params[:user]
       set_stripe_customer
-      render action: "new"
-      raise ActiveRecord::Rollback and return
+      render action: "new" and return
     end
   end
 
