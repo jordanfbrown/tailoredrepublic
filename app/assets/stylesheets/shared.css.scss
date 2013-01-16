@@ -231,14 +231,18 @@ p.error {
     border-bottom: 1px solid $border-color;
     border-left: 1px solid $border-color;
 
+    &:first-child {
+      border-left: none;
+    }
+
     &:last-child {
-      border-right: 1px solid $border-color;
+      border-right: none;
     }
 
     @media only screen and (max-width: 767px) {
       border-top: 1px solid $border-color;
-      border-right: 1px solid $border-color;
-      border-left: 1px solid $border-color;
+      border-right: none;
+      border-left: none;
       border-bottom: none;
 
       &:last-child {
