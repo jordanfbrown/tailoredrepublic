@@ -1,0 +1,10 @@
+Thank you for order, <%= @user.name %>
+=========================================
+
+Order Summary
+-------------
+<% @order.line_items.each do |line_item|  %>
+  <%= line_item.product.name %>
+<% end %>
+
+Thanks again!
