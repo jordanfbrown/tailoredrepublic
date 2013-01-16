@@ -92,6 +92,10 @@ class OrdersController < ApplicationController
     render 'thank_you'
   end
 
+  def thank_you
+    @order = Order.last
+  end
+
   private
     def create_customer_or_charge_card(user)
       if params[:save_card_for_later]

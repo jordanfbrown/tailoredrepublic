@@ -1,5 +1,11 @@
+<div class="content-wrapper">
+  <%= render partial: 'shared/checkout_progress', locals: { current: :order_complete } %>
+</div>
+
 <div class="row">
   <div class="twelve columns">
-    <h4>Thank you for your order!</h4>
+    <h4>Thank you for your order, <%= @order.user.name %>!</h4>
+    <p>Your order number is: <strong><%= @order.stripe_charge_id %>.</strong></p>
+    <p>An order confirmation email is being sent to <strong><%= @order.user.email %></strong> right now.</p>
   </div>
 </div>
