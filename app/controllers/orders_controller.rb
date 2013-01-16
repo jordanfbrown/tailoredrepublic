@@ -41,6 +41,7 @@ class OrdersController < ApplicationController
     @card_exp_month = @stripe_customer ? @stripe_customer[:active_card][:exp_month].to_s : params[:card_exp_month]
     @card_exp_year = @stripe_customer ? @stripe_customer[:active_card][:exp_year].to_s : params[:card_exp_year]
     @save_card_for_later = params[:save_card_for_later]
+    @use_saved_card = params[:use_saved_card]
 
     if params[:user]
       @user = User.new_from_params_and_measurement(params, @measurement)
@@ -75,7 +76,7 @@ class OrdersController < ApplicationController
         charge_id = create_customer_or_charge_card @user
       else
         @user = current_user
-        if @user.stripe_customer_id? && params[:use_saved_card]
+        if @user.stripe_customer_id? && params[:use_saved_card] == 'on'
           charge_id = @user.charge_customer @cart.total_price * 100
         else
           charge_id = create_customer_or_charge_card @user
@@ -89,6 +90,7 @@ class OrdersController < ApplicationController
       end
     end
 
+    @cart = current_cart
     render 'thank_you'
   end
 
@@ -98,7 +100,7 @@ class OrdersController < ApplicationController
 
   private
     def create_customer_or_charge_card(user)
-      if params[:save_card_for_later]
+      if params[:save_card_for_later] == 'on'
         user.create_stripe_customer @card_token
         user.charge_customer @cart.total_price * 100
       else
