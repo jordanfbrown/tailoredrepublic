@@ -14,7 +14,6 @@ class RegistrationsController < Devise::RegistrationsController
     @user = User.find(current_user.id)
     params[:user][:shipping_address_attributes] = params[:shipping_address]
     params[:user][:billing_address_attributes] = params[:billing_address]
-    puts params[:user]
     if @user.update_attributes(params[:user])
       set_flash_message :notice, :updated
       # Sign in the user bypassing validation in case his password changed
