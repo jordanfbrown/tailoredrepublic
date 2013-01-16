@@ -84,7 +84,7 @@
           </div>
         </div>
         <% unless @stripe_customer %>
-          <label><%= check_box_tag :save_card_for_later, 'save_card_for_later', checked: true %>Save this credit card for purchases in the future</label>
+          <label><%= check_box_tag :save_card_for_later, '1', @save_card_for_later == '1' %>Save this credit card for purchases in the future</label>
         <% end %>
       </fieldset>
       <fieldset>

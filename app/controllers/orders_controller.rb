@@ -11,6 +11,7 @@ class OrdersController < ApplicationController
       @card_exp_month = params[:card_exp_month]
       @card_exp_year = params[:card_exp_year]
       @password = params[:user][:password]
+      @save_card_for_later = params[:save_card_for_later]
     else
       if user_signed_in?
         @user = current_user
@@ -39,6 +40,7 @@ class OrdersController < ApplicationController
     @card_last4 = @stripe_customer ? @stripe_customer[:active_card][:last4] : params[:card_last4]
     @card_exp_month = @stripe_customer ? @stripe_customer[:active_card][:exp_month].to_s : params[:card_exp_month]
     @card_exp_year = @stripe_customer ? @stripe_customer[:active_card][:exp_year].to_s : params[:card_exp_year]
+    @save_card_for_later = params[:save_card_for_later]
 
     if params[:user]
       @user = User.new_from_params_and_measurement(params, @measurement)
@@ -49,37 +51,52 @@ class OrdersController < ApplicationController
         @order.build_shipping_address params[:shipping_address]
         render action: "new" and return
       end
-
-      #sign_in :user, @user
-      #charge_id = create_customer_or_charge_card
     else
       @user = current_user
-      #if current_user.stripe_customer_id? && params[:use_saved_card]
-      #  charge_id = current_user.charge_customer @cart.total_price * 100
-      #else
-      #  charge_id = create_customer_or_charge_card
-      #end
     end
 
     @order = Order.new_order(params, @user, @cart)
     unless @order.valid?
-      #sign_out @user if params[:user]
-      set_stripe_customer
-      render action: "new" and return
+      render action: "new"
     end
   end
 
   def create
-  end
+    @card_token = params[:stripe_card_token]
 
-  def thank_you
+    ActiveRecord::Base.transaction do
+      if params[:user]
+        @user = User.new_from_params_and_measurement(params, @measurement)
+        unless @user.save
+          render action: "review"
+          raise ActiveRecord::Rollback and return
+        end
+        sign_in :user, @user
+        charge_id = create_customer_or_charge_card @user
+      else
+        @user = current_user
+        if @user.stripe_customer_id? && params[:use_saved_card]
+          charge_id = @user.charge_customer @cart.total_price * 100
+        else
+          charge_id = create_customer_or_charge_card @user
+        end
+      end
+
+      @order = Order.new_order(params, @user, @cart, charge_id)
+      unless @order.save
+        render action: "review"
+        raise ActiveRecord::Rollback and return
+      end
+    end
+
+    render 'thank_you'
   end
 
   private
-    def create_customer_or_charge_card
+    def create_customer_or_charge_card(user)
       if params[:save_card_for_later]
-        current_user.create_stripe_customer @card_token
-        current_user.charge_customer @cart.total_price * 100
+        user.create_stripe_customer @card_token
+        user.charge_customer @cart.total_price * 100
       else
         charge_card @card_token
       end

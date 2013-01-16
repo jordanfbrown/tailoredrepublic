@@ -7,13 +7,14 @@ class Order < ActiveRecord::Base
 
   validates_presence_of :shipping_address, :billing_address, :user, :line_items, :measurement
 
-  def self.new_order(params, user, cart)
+  def self.new_order(params, user, cart, stripe_charge_id = nil)
     order = Order.new
     order.build_billing_address params[:billing_address]
     order.build_shipping_address params[:shipping_address]
     order.user = user
     order.measurement = user.measurement.dup
     order.copy_line_items_from_cart cart
+    order.stripe_charge_id = stripe_charge_id unless stripe_charge_id.nil?
     order
   end
 

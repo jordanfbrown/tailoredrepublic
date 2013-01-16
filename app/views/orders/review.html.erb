@@ -34,7 +34,7 @@
       <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
     </div>
     <h3>Review Order</h3>
-    <%= form_for @order do |f| %>
+    <%= form_for @order, url: '/orders' do |f| %>
       <% unless user_signed_in? %>
         <fieldset>
           <legend>Account</legend>
@@ -70,6 +70,7 @@
         <%= hidden_field_tag :card_last4, @card_last4 %>
         <%= hidden_field_tag :card_exp_month, @card_exp_month %>
         <%= hidden_field_tag :card_exp_year, @card_exp_year %>
+        <%= hidden_field_tag :save_card_for_later, @save_card_for_later %>
       </fieldset>
 
       <fieldset>
