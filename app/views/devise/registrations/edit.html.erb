@@ -1,30 +1,43 @@
-<h2>Account Settings</h2>
-
-<div class="twelve columns">
-  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-    <%= devise_error_messages! %>
-  <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+<div class="row ">
+  <h2>Account Settings</h2>
+  <div class="six columns">
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+      <%= devise_error_messages! %>
+      <fieldset>
+        <legend>User Information</legend>
+        <div>
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+        </div>
+        <div>
+          <%= f.label :email %>
+          <%= f.email_field :email %>
+        </div>
+        <div>
+          <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+          <%= f.password_field :password, :autocomplete => "off" %>
+        </div>
+        <div>
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation %>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Shipping Address</legend>
+        <%= render partial: 'addresses/form', locals: { address: resource.shipping_address } %>
+      </fieldset>
+      <fieldset>
+        <legend>Credit Card</legend>
+        <%= render 'users/credit_card_form' %>
+      </fieldset>
+      <fieldset>
+        <legend>Billing Address</legend>
+        <%= render partial: 'addresses/form', locals: { address: resource.billing_address } %>
+      </fieldset>
+      <div><%= f.submit "Update", class: "button" %></div>
+    <% end %>
+    <h3>Cancel my account</h3>
+    <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
   </div>
-  <div>
-    <%= f.label :email %>
-    <%= f.email_field :email %>
-  </div>
-  <div>
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
-    <%= f.password_field :password, :autocomplete => "off" %>
-  </div>
-  <div>
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div>
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
-    <%= f.password_field :current_password %>
-  </div>
-  <div><%= f.submit "Update", class: "button" %></div>
-  <% end %>
-  <h3>Cancel my account</h3>
-  <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
 </div>
+

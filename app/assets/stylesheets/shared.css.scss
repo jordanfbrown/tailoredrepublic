@@ -255,3 +255,15 @@ p.error {
     }
   }
 }
+
+.row {
+  h2 {
+    margin-left: 15px;
+  }
+}
+
+#shipping_address_state, #billing_address_state {
+  height: 34px;
+  border: 1px solid #ccc;
+  margin-bottom: 7px;
+}

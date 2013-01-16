@@ -9,7 +9,7 @@ module DeviseHelper
 
     html = <<-HTML
     <div id="error_explanation" class="flash alert">
-      <h5>#{sentence}</h5>
+      <p>#{sentence}</p>
       <ul>#{messages}</ul>
     </div>
     HTML

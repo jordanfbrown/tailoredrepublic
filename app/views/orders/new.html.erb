@@ -66,26 +66,14 @@
           <div class="payment-errors error" style="display: none;">
             <p></p>
           </div>
-          <%= label_tag :card_number, "Credit Card Number" %>
-          <%= text_field_tag :card_number, nil, name: nil, autocomplete: 'off', value: card_number %>
-          <%= label_tag :card_code, "Security Code on Card (CVV)" %>
-          <%= text_field_tag :card_code, nil, name: nil, autocomplete: 'off', value: card_code %>
-          <%= label_tag :card_month, "Card Expiration" %>
+          <%= render 'users/credit_card_form' %>
           <%= hidden_field_tag :stripe_card_token, (@card_token if @card_token) %>
           <%= hidden_field_tag :card_last4, (@card_last4 if @card_last4) %>
           <%= hidden_field_tag :card_exp_month, (@card_exp_month if @card_exp_month) %>
           <%= hidden_field_tag :card_exp_year, (@card_exp_year if @card_exp_year) %>
-        <div class="row">
-          <div class="six columns">
-            <%= select_month card_month, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
-          </div>
-          <div class="six columns">
-            <%= select_year card_year, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
-          </div>
-        </div>
-        <% unless @stripe_customer %>
-          <label><%= check_box_tag :save_card_for_later, 'on', @save_card_for_later ? @save_card_for_later == '1' : true %>Save this credit card for purchases in the future</label>
-        <% end %>
+          <% unless @stripe_customer %>
+            <label><%= check_box_tag :save_card_for_later, 'on', @save_card_for_later ? @save_card_for_later == '1' : true %>Save this credit card for purchases in the future</label>
+          <% end %>
       </fieldset>
       <fieldset>
         <legend>Billing Address</legend>
