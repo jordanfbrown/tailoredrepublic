@@ -107,6 +107,6 @@ class TR.Views.Home extends TR.Views.Base
     $caption = $('#lookbook-info')
     $caption.fadeOut(->
       _.each data, (value, attribute) ->
-        $caption.find('.' + attribute).text(value).css 'color', data.color
+        $caption.find('.' + attribute).text value
       $caption.fadeIn()
     )
