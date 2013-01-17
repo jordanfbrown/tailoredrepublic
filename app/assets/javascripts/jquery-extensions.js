@@ -12,11 +12,11 @@ $.fn.tap = function(callback) {
 };
 
 $.fn.magnifier = function() {
-  var $img = $(this).find(".small");
+  var $img = $(this).find(".magnify-small");
   var image = new Image();
   image.src = $img.attr("src");
 
-  $(this).find('.large').css('background', "url('" + image.src + "') no-repeat");
+  $(this).find('.magnify-large').css('background', "url('" + image.src + "') no-repeat");
   var that = this;
 
   $(image).load(function() {
@@ -33,19 +33,19 @@ $.fn.magnifier = function() {
       var imgY = e.pageY - imgOffset.top;
 
       if (imgX < $img.width() && imgY < $img.height() && imgX > 0 && imgY > 0) {
-        $(".large").fadeIn(100);
+        $(".magnify-large").fadeIn(100);
       }
       else {
-        $(".large").fadeOut(100);
+        $(".magnify-large").fadeOut(100);
       }
       
-      if ($(".large").is(":visible")) {
-        var rx = Math.round(mx / $(".small").width() * native_width - $(".large").width() / 2) * -1;
-        var ry = Math.round(my / $(".small").height() * native_height - $(".large").height() / 2) * -1;
+      if ($(".magnify-large").is(":visible")) {
+        var rx = Math.round(mx / $(".magnify-small").width() * native_width - $(".magnify-large").width() / 2) * -1;
+        var ry = Math.round(my / $(".magnify-small").height() * native_height - $(".magnify-large").height() / 2) * -1;
         var bgp = rx + "px " + ry + "px";
-        var px = mx - $(".large").width() / 2;
-        var py = my - $(".large").height() / 2;
-        $(".large").css({left:px, top:py, backgroundPosition:bgp});
+        var px = mx - $(".magnify-large").width() / 2;
+        var py = my - $(".magnify-large").height() / 2;
+        $(".magnify-large").css({left:px, top:py, backgroundPosition:bgp});
       }
     });
   });

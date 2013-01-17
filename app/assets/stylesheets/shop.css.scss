@@ -36,220 +36,6 @@
     max-height: 500px;
   }
 
-  $customization-background-color: #ccc;
-  .customizations {
-    background-color: $customization-background-color;
-    @include clearfix;
-  }
-
-  .customizations {
-    font-weight: 200;
-
-    .label {
-      font-weight: bold;
-      color: #000;
-    }
-
-    h3, h5 {
-      text-align: center;
-      color: #000;
-    }
-
-    p {
-      color: #000;
-      clear: left;
-      padding: 0 15px;
-      font-weight: 200;
-    }
-
-    h5 {
-      margin-bottom: 5px;
-      position: relative;
-
-      span {
-        position: absolute;
-        margin-left: 5px;
-      }
-    }
-
-    h3 {
-      font-size: 36px;
-      margin: 5px 0;
-      position: relative;
-
-      &.customize {
-        margin: 10px;
-        background-color: white;
-        padding: 5px
-      }
-
-      a {
-        height: 35px;
-        width: 22px;
-        position: absolute;
-
-        &.left {
-          left: 10px;
-          background: url(icons/left-arrow-brown.png) no-repeat center center;
-        }
-
-        &.right {
-          right: 10px;
-          background: url(icons/right-arrow-brown.png) no-repeat center center;
-        }
-      }
-    }
-
-    .progress-bar {
-      padding: 0 10px;
-      @include clearfix;
-
-      li {
-        &:first-child {
-          margin-left: 1%;
-        }
-
-        &:last-child {
-          margin-right: 1%;
-        }
-
-        float: left;
-        display: block;
-        width: 6.33%;
-        margin-right: 2%;
-      }
-    }
-
-    .linings {
-      .columns {
-        padding: 0;
-      }
-
-      .button {
-        width: 94%;
-        text-align: center;
-        margin: 5px;
-      }
-
-      .lining-option {
-        height: 35px;
-        width: 80%;
-        display: block;
-        background-color: #CCC;
-        margin: 5px;
-        border: 1px solid #000;
-
-        @media only screen and (max-width: 767px) {
-          width: 94%;
-        }
-
-        &.selected {
-          border: 2px solid #000;
-        }
-      }
-    }
-
-    .customization-option {
-      display: block;
-      float: left;
-      background-color: #fff;
-      padding: 5px 10px 10px 10px;
-
-      img {
-        height: 120px;
-        display: block;
-        margin: auto;
-        padding: 3px;
-
-        &.checked {
-          background-color: #ccc;
-        }
-
-        &.cuffs {
-          height: auto;
-        }
-
-        &.lining, &.monogram {
-          height: 170px;
-
-          @media only screen and (max-width: 455px) {
-            height: 140px;
-          }
-
-        }
-      }
-
-    }
-
-    .customization-wrapper {
-      background-color: #fff;
-      margin: 0 10px 10px 10px;
-      padding: 5px;
-      @include clearfix;
-      position: relative;
-
-      .recommended {
-        color: #000;
-        padding: 5px;
-        text-align: center;
-
-        img {
-          height: 24px;
-          margin-right: 3px;
-          display: inline-block;
-        }
-
-        span {
-          vertical-align: 7px;
-        }
-      }
-
-      h5 {
-        margin-top: 0;
-      }
-
-      .vest-overlay {
-        position: absolute;
-        background-color: black;
-        right: 5px;
-        left: 5px;
-        bottom: 5px;
-        top: 50px;
-        opacity: 0.7;
-        color: #fff;
-
-        p {
-          color: white;
-          vertical-align: middle;
-          position: absolute;
-          top: 40%;
-          font-weight: bold;
-          text-align: center;
-          padding: 0px 10px;
-        }
-      }
-
-      &.advanced {
-        .twelve {
-          margin-bottom: 10px;
-          text-align: center;
-        }
-
-        .button {
-          width: 100px;
-        }
-      }
-    }
-
-    .customization-wrapper.two-item {
-      .customization-option {
-        width: 40%;
-        margin-left: 5%;
-        margin-right: 5%;
-      }
-    }
-  }
-
   @media only screen and (max-width: 767px) {
     .preview-wrapper {
       margin-bottom: 10px;
@@ -264,12 +50,224 @@
       float: left !important;
     }
   }
+}
 
-  .customization-summary {
-    .button {
-      vertical-align: 11px;
-      margin-left: 10px;
+.customizations {
+  background-color: #ccc;
+  clear: both;
+  @include clearfix;
+
+  font-weight: 200;
+
+  .label {
+    font-weight: bold;
+    color: #000;
+  }
+
+  h3, h5 {
+    text-align: center;
+    color: #000;
+  }
+
+  p {
+    color: #000;
+    clear: left;
+    padding: 0 15px;
+    font-weight: 200;
+  }
+
+  h5 {
+    margin-bottom: 5px;
+    position: relative;
+
+    span {
+      position: absolute;
+      margin-left: 5px;
     }
+  }
+
+  h3 {
+    font-size: 36px;
+    margin: 5px 0;
+    position: relative;
+
+    &.customize {
+      margin: 10px;
+      background-color: white;
+      padding: 5px
+    }
+
+    a {
+      height: 35px;
+      width: 22px;
+      position: absolute;
+
+      &.left {
+        left: 10px;
+        background: url(icons/left-arrow-brown.png) no-repeat center center;
+      }
+
+      &.right {
+        right: 10px;
+        background: url(icons/right-arrow-brown.png) no-repeat center center;
+      }
+    }
+  }
+
+  .progress-bar {
+    padding: 10px;
+    @include clearfix;
+
+    li {
+      &:first-child {
+        margin-left: 1%;
+      }
+
+      &:last-child {
+        margin-right: 1%;
+      }
+
+      float: left;
+      display: block;
+      width: 6.33%;
+      margin-right: 2%;
+    }
+  }
+
+  .linings {
+    .columns {
+      padding: 0;
+    }
+
+    .button {
+      width: 94%;
+      text-align: center;
+      margin: 5px;
+    }
+
+    .lining-option {
+      height: 35px;
+      width: 80%;
+      display: block;
+      background-color: #CCC;
+      margin: 5px;
+      border: 1px solid #000;
+
+      @media only screen and (max-width: 767px) {
+        width: 94%;
+      }
+
+      &.selected {
+        border: 2px solid #000;
+      }
+    }
+  }
+
+  .customization-option {
+    display: block;
+    float: left;
+    background-color: #fff;
+    padding: 5px 10px 10px 10px;
+
+    img {
+      height: 120px;
+      display: block;
+      margin: auto;
+      padding: 3px;
+
+      &.checked {
+        background-color: #ccc;
+      }
+
+      &.cuffs {
+        height: auto;
+      }
+
+      &.lining, &.monogram {
+        height: 170px;
+
+        @media only screen and (max-width: 455px) {
+          height: 140px;
+        }
+
+      }
+    }
+
+  }
+
+  .customization-wrapper {
+    background-color: #fff;
+    margin: 0 10px 10px 10px;
+    padding: 5px;
+    @include clearfix;
+    position: relative;
+
+    .recommended {
+      color: #000;
+      padding: 5px;
+      text-align: center;
+
+      img {
+        height: 24px;
+        margin-right: 3px;
+        display: inline-block;
+      }
+
+      span {
+        vertical-align: 7px;
+      }
+    }
+
+    h5 {
+      margin-top: 0;
+    }
+
+    .vest-overlay {
+      position: absolute;
+      background-color: black;
+      right: 5px;
+      left: 5px;
+      bottom: 5px;
+      top: 50px;
+      opacity: 0.7;
+      color: #fff;
+
+      p {
+        color: white;
+        vertical-align: middle;
+        position: absolute;
+        top: 40%;
+        font-weight: bold;
+        text-align: center;
+        padding: 0px 10px;
+      }
+    }
+
+    &.advanced {
+      .twelve {
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      .button {
+        width: 100px;
+      }
+    }
+  }
+
+  .customization-wrapper.two-item {
+    .customization-option {
+      width: 40%;
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+  }
+}
+
+.customization-summary {
+  .button {
+    vertical-align: 11px;
+    margin-left: 10px;
   }
 }
 

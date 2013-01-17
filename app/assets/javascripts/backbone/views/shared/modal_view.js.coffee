@@ -1,6 +1,7 @@
 class TR.Views.Modal extends TR.Views.Base
 
-  className: 'reveal-modal expand'
+  className: ->
+    'reveal-modal expand'
 
   events: ->
     'click a.close-reveal-modal': 'close'

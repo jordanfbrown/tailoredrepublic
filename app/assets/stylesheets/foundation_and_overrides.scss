@@ -404,6 +404,9 @@ a {
   .close-reveal-modal {
     font-size: 30px;
     margin-top: 5px;
+    margin-bottom: 5px;
+    position: static;
+    float: right;
     &:hover {
       text-decoration: none;
     }

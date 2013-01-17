@@ -1,18 +1,19 @@
-class TR.Views.Customization extends TR.Views.Base
-  $checkmark: $('<span>&#x2713;</span>')
+class TR.Views.CustomizationModal extends TR.Views.Modal
+  id: 'customization-modal'
 
-  events:
-    'click a.customization-option': 'setCustomization'
-    'click a.add-to-cart': 'addToCart'
-    'click a.save-changes': 'saveChanges'
-    'click ul.progress-bar a': 'clickedProgressImage'
-    'click a.left': 'previous'
-    'click a.right': 'next'
-    'click a.lining-option': 'selectLining'
-    'click a.label': 'clickedLabelOnCheckout'
-    'click a.advance-slide': 'next'
-    'submit #monogram-form': 'submitMonogram'
-    'click .advanced-checkbox': 'setAdvancedOption'
+  events: ->
+    _.extend super,
+      'click a.customization-option': 'setCustomization'
+      'click a.add-to-cart': 'addToCart'
+      'click a.save-changes': 'saveChanges'
+      'click ul.progress-bar a': 'clickedProgressImage'
+      'click a.left': 'previous'
+      'click a.right': 'next'
+      'click a.lining-option': 'selectLining'
+      'click a.label': 'clickedLabelOnCheckout'
+      'click a.advance-slide': 'next'
+      'submit #monogram-form': 'submitMonogram'
+      'click .advanced-checkbox': 'setAdvancedOption'
 
   PROGRESS:
     SELECTED: 'selected'
@@ -21,8 +22,9 @@ class TR.Views.Customization extends TR.Views.Base
   initialize: (options) ->
     @product = options.product
     @customization = options.customization || new TR.Models.Customization()
-    @customization.on 'change', @render
-    @template = @getTemplate 'customization_checkout'
+    @customization.on 'change', @updateCheckoutSlide
+    @template = @getTemplate 'customization_modal'
+    @checkoutTemplate = @getTemplate 'customization_checkout'
     @render()
     $(document).on 'keydown.customization', @keydown
 
@@ -33,12 +35,24 @@ class TR.Views.Customization extends TR.Views.Base
       @advanceSlide 'next'
 
   render: =>
+    @$el.html @template @getTemplateData()
+    @toggleVestOverlay()
+    super()
+
+  getTemplateData: ->
     price = parseFloat(@product.get 'price') + if @customization.get 'vest' then TR.VEST_PRICE else 0
-    summaryData = _.extend {
-      price: price, vestPrice: TR.VEST_PRICE
+    _.extend
+      product: @product.toJSON()
+      price: price
+      vestPrice: TR.VEST_PRICE
       isNew: @customization.isNew()
-    }, @customization.toJSON()
-    @$('.customization-summary').html @template summaryData
+    , @customization.toJSON()
+
+  updateCheckoutSlide: =>
+    @toggleVestOverlay()
+    @$('.customization-summary').html @checkoutTemplate @getTemplateData()
+
+  toggleVestOverlay: ->
     @$('.vest-overlay').toggle !@customization.get 'vest'
 
   previous: (e) ->
@@ -71,10 +85,6 @@ class TR.Views.Customization extends TR.Views.Base
 
     @getCurrentCustomization().hide()
     @$(".customization-wrapper[data-type=#{customizationType}]").show()
-    
-#    @getCurrentCustomization().fadeOut(=>
-#      @$(".customization-wrapper[data-type=#{customizationType}]").fadeIn()
-#    )
 
   selectLining: (e) ->
     e.preventDefault()
@@ -150,6 +160,8 @@ class TR.Views.Customization extends TR.Views.Base
     
   addSuccess: (response) =>
     TR.Events.trigger 'addedLineItem', product: @product
+    new TR.Views.AddSuccessModal({model: @product})
+    @destroy()
 
   addFailure: (error) =>
     console.log(error, 'failure');
