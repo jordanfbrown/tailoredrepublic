@@ -1,15 +1,23 @@
 <div id="checkout-progress">
   <div class="row">
     <div class="three columns <%= 'current' if current == :measurements %>">
-      1. Measurements
+      <% if [:customer_information, :review_order].include? current %>
+        <%= link_to '1. Measurements', measurements_path %>
+      <% else %>
+        1. Measurements
+      <% end %>
     </div>
-    <div class="three columns <%= 'current' if current == :customer_information %>">
-      2. Customer Information
+    <div class="three columns <%= 'current' if current == :customer_information %> <%= 'disabled' if current == :measurements%>">
+      <% if current == :review_order %>
+        <%= link_to '2. Customer Information', '#', class: 'edit-information' %>
+      <% else %>
+        2. Customer Information
+      <% end %>
     </div>
-    <div class="three columns <%= 'current' if current == :review_order %>">
+    <div class="three columns <%= 'current' if current == :review_order %> <%= 'disabled' if current == :measurements || current == :customer_information %>">
       3. Review Order
     </div>
-    <div class="three columns <%= 'current' if current == :order_complete %>">
+    <div class="three columns <%= 'current' if current == :order_complete %> <%= 'disabled' if current == :measurements || current == :customer_information || current == :review_order %>">
       4. Order Complete
     </div>
   </div>

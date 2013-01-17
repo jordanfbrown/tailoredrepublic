@@ -222,6 +222,11 @@ p.error {
 
 #checkout-progress {
   $border-color: #666;
+
+  .disabled {
+    color: #666;
+  }
+
   .three {
     @include font("header");
     font-size: 1.1em;
