@@ -36,7 +36,7 @@
         <li class="divider"></li>
         <li class="login <% if user_signed_in? %>has-dropdown<% end %>">
           <% if user_signed_in?  %>
-            <%= link_to 'Account', edit_user_registration_path %>
+            <%= link_to current_user.name, edit_user_registration_path %>
             <ul class="dropdown">
               <li><%= link_to "Settings", edit_user_registration_path %></li>
               <li><%= link_to "Measurements", measurements_path %></li>

@@ -13,7 +13,7 @@ class TR.Views.Nav extends TR.Views.Base
     super()
 
   resize: =>
-    if $(window).width() > 851
+    if $(window).width() > 865
       $('ul.dropdown').css 'height', 'inherit'
 
   decrementItemCount: =>

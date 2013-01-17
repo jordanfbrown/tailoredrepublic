@@ -110,7 +110,7 @@ $topBarDropBgColor: #000;
 // $topBarDropToggleColor: #fff;
 // $topBarDropToggleAlpha: 0.5;
 // $topBarSearchWidth: 200px;
-$topBarBreakPoint: 851px; // Change to 9999px for always mobile layout
+$topBarBreakPoint: 865px; // Change to 9999px for always mobile layout
 // $topBarNavToggleSize: 8px;
 
 // UI Settings
@@ -430,6 +430,12 @@ legend {
 .top-bar {
   @include font("header");
   @include box-shadow(0px 2px 7px #666);
+
+  .login a {
+    max-width: 108px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
   img {
     vertical-align: middle;
