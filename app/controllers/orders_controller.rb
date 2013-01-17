@@ -16,8 +16,8 @@ class OrdersController < ApplicationController
       if user_signed_in?
         @user = current_user
         @order = @user.orders.build
-        @order.build_address_from_address 'shipping', @user.shipping_address
-        @order.build_address_from_address 'billing', @user.billing_address
+        @order.build_address_from_address @user.shipping_address
+        @order.build_address_from_address @user.billing_address
       else
         @user = User.new
         @order = @user.orders.build
@@ -46,17 +46,17 @@ class OrdersController < ApplicationController
     if params[:user]
       @user = User.new_from_params_and_measurement(params, @measurement)
       unless @user.valid?
-        @order = Order.new
+        @order = Order.new(params[:order])
         # Need to populate the order so that the information isn't lost
-        @order.build_billing_address params[:billing_address]
-        @order.build_shipping_address params[:shipping_address]
+        #@order.build_billing_address params[:billing_address]
+        #@order.build_shipping_address params[:shipping_address]
         render action: "new" and return
       end
     else
       @user = current_user
     end
 
-    @order = Order.new_order(params, @user, @cart)
+    @order = Order.new_order(params[:order], @user, @cart)
     unless @order.valid?
       render action: "new"
     end
@@ -83,7 +83,7 @@ class OrdersController < ApplicationController
         end
       end
 
-      @order = Order.new_order(params, @user, @cart, charge_id)
+      @order = Order.new_order(params[:order], @user, @cart, charge_id)
       unless @order.save
         render action: "review"
         raise ActiveRecord::Rollback and return

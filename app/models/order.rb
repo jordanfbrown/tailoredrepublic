@@ -1,20 +1,23 @@
 class Order < ActiveRecord::Base
-  has_one :shipping_address, as: :addressable
-  has_one :billing_address, as: :addressable
+  has_one :shipping_address, as: :addressable, validate: true
+  has_one :billing_address, as: :addressable, validate: true
   belongs_to :user
   has_many :line_items
   has_one :measurement
 
+  attr_accessible :shipping_address_attributes, :billing_address_attributes
   validates_presence_of :shipping_address, :billing_address, :user, :line_items, :measurement
 
-  def self.new_order(params, user, cart, stripe_charge_id = nil)
-    order = Order.new
-    order.build_billing_address params[:billing_address]
-    order.build_shipping_address params[:shipping_address]
+  accepts_nested_attributes_for :shipping_address, :billing_address
+
+  def self.new_order(order_params, user, cart, stripe_charge_id = nil)
+    order = Order.new(order_params)
     order.user = user
-    order.measurement = user.measurement.dup
+    measurement = user.measurement.dup
+    measurement.user_id = nil
+    order.measurement = measurement
     order.copy_line_items_from_cart cart
-    order.stripe_charge_id = stripe_charge_id unless stripe_charge_id.nil?
+    order.stripe_charge_id = stripe_charge_id unless stripe_charge_id.blank?
     order
   end
 
@@ -25,19 +28,15 @@ class Order < ActiveRecord::Base
     end
   end
 
-  def build_address_from_address(address_type, address)
-    if %w(shipping billing).include? address_type
-      new_address = self.send("build_#{address_type}_address")
-      unless address.nil?
-        new_address.line1 = address.line1
-        new_address.line2 = address.line2
-        new_address.city = address.city
-        new_address.state = address.state
-        new_address.zip = address.zip
-        new_address.name = address.name
-      end
-    else
-      raise "build_address_from_address must take a first argument of 'shipping' or 'billing'"
+  def build_address_from_address(address)
+    unless address.blank?
+      new_address = self.send("build_#{address.type.underscore}")
+      new_address.line1 = address.line1
+      new_address.line2 = address.line2
+      new_address.city = address.city
+      new_address.state = address.state
+      new_address.zip = address.zip
+      new_address.name = address.name
     end
   end
 

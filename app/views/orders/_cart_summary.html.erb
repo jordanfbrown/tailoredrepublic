@@ -1,0 +1,29 @@
+<div class="six columns push-six cart-summary">
+  <h3>Cart Summary</h3>
+  <ul class="cart-summary">
+    <% @cart.line_items.each do |line_item| %>
+      <li><span class="label"><%= line_item.product.name %> <%= line_item.product.category.capitalize %>:</span>
+        $<%= line_item.total_price %></li>
+    <% end %>
+    <li><span class="label">Shipping:</span> $0</li>
+    <li><span class="label">Tax:</span>  $0</li>
+    <li class="total"><span class="label">Total:</span>  $<%= @cart.total_price %></li>
+  </ul>
+  <p class="view-cart"><%= link_to 'Does something not look right? Click here to view your cart and edit any customizations.', cart_path %></p>
+  <div class="faq-wrapper">
+    <h3>Ordering FAQ</h3>
+    <p>If you have any questions or concerns, please check out our <%= link_to 'FAQ', '/faq' %>, call us any time at
+      1-218-3-TAILOR, or send us an email at
+      <%= link_to 'support@tailoredrepublic.com', 'mailto:support@tailoredrepublic.com' %>.</p>
+    <h4>Free Shipping</h4>
+    <p>Always free shipping anywhere within the U.S. Yeah, we know, free shipping is the jam. Your suit will arrive 3-4
+      weeks after you place your order. If you would like to ship to other countries please send an email to
+      <%= link_to 'support@tailoredrepublic.com', 'mailto:support@tailoredrepublic.com' %> and we will do our best to
+      accommodate your request.</p>
+    <h4>Alterations/Return Policy</h4>
+    <p>We want to ensure that your suit fits you as it should and makes you look like the man you want to be. Therefore
+      we will give you up to $75 of alteration credit* or a full remake if the fit is irreparable*.
+      <br/><br/>*You must contact us within 2 weeks of suit delivery for these offers to be valid.
+    </p>
+  </div>
+</div>

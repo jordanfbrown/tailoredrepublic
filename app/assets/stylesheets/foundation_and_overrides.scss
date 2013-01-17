@@ -431,7 +431,7 @@ legend {
   @include font("header");
   @include box-shadow(0px 2px 7px #666);
 
-  .login a {
+  .username {
     max-width: 108px;
     overflow: hidden;
     text-overflow: ellipsis;

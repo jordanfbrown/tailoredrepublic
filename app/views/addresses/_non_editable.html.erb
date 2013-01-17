@@ -1,11 +1,11 @@
 <ul>
-  <li><span class="label">Name:</span> <%= address.name %></li>
-  <li><span class="label">Address Line 1:</span> <%= address.line1 %></li>
-  <li><span class="label">Address Line 2:</span> <%= address.line2 %></li>
-  <li><span class="label">City:</span> <%= address.city %></li>
-  <li><span class="label">State:</span> <%= address.state %></li>
-  <li><span class="label">Zip:</span> <%= address.zip %></li>
-  <%= fields_for address do |address_fields| %>
+  <li><span class="label">Name:</span> <%= parent_form.object.send(address_type.to_s).name %></li>
+  <li><span class="label">Address Line 1:</span> <%= parent_form.object.send(address_type.to_s).line1 %></li>
+  <li><span class="label">Address Line 2:</span> <%= parent_form.object.send(address_type.to_s).line2 %></li>
+  <li><span class="label">City:</span> <%= parent_form.object.send(address_type.to_s).city %></li>
+  <li><span class="label">State:</span> <%= parent_form.object.send(address_type.to_s).state %></li>
+  <li><span class="label">Zip:</span> <%= parent_form.object.send(address_type.to_s).zip %></li>
+  <%= parent_form.fields_for address_type do |address_fields| %>
     <%= address_fields.hidden_field :name  %>
     <%= address_fields.hidden_field :line1  %>
     <%= address_fields.hidden_field :line2  %>

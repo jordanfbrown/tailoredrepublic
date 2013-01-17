@@ -1,4 +1,4 @@
-<%= fields_for address do |address_form| %>
+<%= parent_form.fields_for address_type do |address_form| %>
   <%= address_form.label 'Name' %>
   <%= address_form.text_field :name %>
   <%= address_form.label 'Address' %>

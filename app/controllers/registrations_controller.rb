@@ -6,7 +6,6 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def update
-    # required for settings form to submit when password is left blank
     params[:user] ||= {}
     if params[:user][:password].blank?
       params[:user].delete("password")
@@ -15,11 +14,8 @@ class RegistrationsController < Devise::RegistrationsController
 
     @user = User.find(current_user.id)
 
-    params[:user][:shipping_address_attributes] = params[:shipping_address] unless params[:shipping_address].nil?
-    params[:user][:billing_address_attributes] = params[:billing_address] unless params[:billing_address].nil?
-
     if @user.update_attributes(params[:user])
-      unless params[:stripe_card_token].nil? || params[:stripe_card_token].empty?
+      unless params[:stripe_card_token].blank?
         @user.stripe_customer_id? ? @user.update_stripe_customer(params[:stripe_card_token]) :
           @user.create_stripe_customer(params[:stripe_card_token])
       end
