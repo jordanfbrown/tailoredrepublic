@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :shipping_address, :billing_address
   attr_protected :stripe_customer_id
 
+  validates_presence_of :name
+
   accepts_nested_attributes_for :shipping_address, :billing_address
 
   def self.new_from_params_and_measurement(params, measurement)
