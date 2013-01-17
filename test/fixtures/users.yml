@@ -5,7 +5,7 @@
 # below each fixture, per the syntax in the comments below
 #
 user_with_stripe:
-  email: test@test.com
+  email: jordanfbrown@gmail.com
   stripe_customer_id: cus_16A19ol7XcLHqx
 
 user_without_stripe:

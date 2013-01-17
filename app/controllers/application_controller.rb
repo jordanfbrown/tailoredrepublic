@@ -20,7 +20,9 @@ class ApplicationController < ActionController::Base
     end
 
     def after_sign_in_path_for(resource_or_scope)
-      session[:redirect_to]
+      redirect_path = session[:redirect_to] || session[:user_return_to]
+      session.delete :redirect_to
+      redirect_path
     end
 
     def get_measurement_from_session
