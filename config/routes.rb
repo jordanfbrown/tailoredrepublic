@@ -5,9 +5,7 @@ TailoredRepublic::Application.routes.draw do
 
   root :to => 'home#index'
 
-  devise_for :users,
-    path: 'account',
-    controllers: { sessions: :sessions, registrations: :registrations }
+  devise_for :users, controllers: { sessions: :sessions, registrations: :registrations }
 
   resources :users
   resources :customizations
