@@ -3,9 +3,9 @@ class OrdersController < ApplicationController
 
   def new
     set_stripe_customer
-    if request.post? && params[:user] && params[:billing_address] && params[:shipping_address]
+    if request.post?
       @user = User.new_from_params_and_measurement(params, @measurement)
-      @order = Order.new_order(params, @user, @cart)
+      @order = Order.new_order(params[:order], @user, @cart)
       @card_token = params[:stripe_card_token]
       @card_last4 = params[:card_last4]
       @card_exp_month = params[:card_exp_month]
@@ -47,9 +47,6 @@ class OrdersController < ApplicationController
       @user = User.new_from_params_and_measurement(params, @measurement)
       unless @user.valid?
         @order = Order.new(params[:order])
-        # Need to populate the order so that the information isn't lost
-        #@order.build_billing_address params[:billing_address]
-        #@order.build_shipping_address params[:shipping_address]
         render action: "new" and return
       end
     else
@@ -90,7 +87,7 @@ class OrdersController < ApplicationController
       end
     end
 
-    @cart = current_cart
+    @cart.reload
     render 'thank_you'
   end
 
