@@ -36,16 +36,16 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
       adaptiveHeight: on
     $(document).on 'keydown.customization', @keydown
 
+  render: =>
+    @$el.html @template @getTemplateData()
+    @toggleVestOverlay()
+    super()
+
   keydown: (e) =>
     if e.which == 37 # Left arrow
       @slider.goToPrevSlide()
     else if e.which == 39 # Right arrow
       @slider.goToNextSlide()
-
-  render: =>
-    @$el.html @template @getTemplateData()
-    @toggleVestOverlay()
-    super()
 
   onSlideBefore: ($el, oldIndex, newIndex) =>
     @$('.previous').show() if newIndex > 0
