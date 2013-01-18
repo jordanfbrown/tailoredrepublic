@@ -1,5 +1,5 @@
 class LineItem < ActiveRecord::Base
-  attr_accessible :cart_id, :product, :customization
+  attr_accessible :cart_id, :product, :customization, :cart, :order
   belongs_to :cart
   belongs_to :product
   belongs_to :customization, dependent: :destroy

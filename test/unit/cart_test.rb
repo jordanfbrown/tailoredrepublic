@@ -1,7 +1,13 @@
 require 'test_helper'
 
 class CartTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "total_price" do
+    cart = carts(:empty)
+    product = products(:charcoal)
+    product.price = 500
+    product.save
+    LineItem.create(product: product, cart_id: cart.id, customization: customizations(:one))
+    LineItem.create(product: product, cart_id: cart.id, customization: customizations(:two))
+    assert_equal cart.total_price, 1000
+  end
 end

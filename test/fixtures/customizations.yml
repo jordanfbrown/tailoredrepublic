@@ -13,3 +13,17 @@ one:
   pick_stitching: false
   vest: false
   vest_buttons: 3
+
+two:
+  lapel: notch
+  buttons: 2
+  vents: 1
+  pleats: 0
+  pant_cuffs: false
+  fit: tailored
+  lining: 1
+  monogram: JBizz
+  bouttoniere: false
+  pick_stitching: false
+  vest: false
+  vest_buttons: 3
