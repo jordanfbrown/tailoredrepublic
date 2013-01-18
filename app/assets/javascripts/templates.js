@@ -801,7 +801,7 @@ function program69(depth0,data) {
   foundHelper = helpers.customizationHelper;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "customizationHelper", stack1, {hash:{}});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "</li>\n    <li data-type=\"checkout\"><img src=\"/assets/icons/star-no-stroke.png\"></li>\n  </ul>\n  <ul class=\"customization-list \">\n    <li class=\"customization-wrapper\" data-type=\"lapel\">\n      <h3>Lapel</h3>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"notch\">\n        <h5>Notch</h5>\n        <img ";
+  buffer += "</li>\n    <li data-type=\"checkout\"><img src=\"/assets/icons/star-no-stroke.png\"></li>\n  </ul>\n  <ul class=\"customization-list\">\n    <li class=\"customization-wrapper\" data-type=\"lapel\">\n      <h3>Lapel</h3>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"notch\">\n        <h5>Notch</h5>\n        <img ";
   stack1 = depth0.lapel;
   foundHelper = helpers.ifeq;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, "notch", {hash:{},inverse:self.noop,fn:self.program(1, program1, data)}) : helperMissing.call(depth0, "ifeq", stack1, "notch", {hash:{},inverse:self.noop,fn:self.program(1, program1, data)});

@@ -8,8 +8,8 @@ class OrderTest < ActiveSupport::TestCase
     assert !cart.empty?
     order = orders(:first_order)
     order.copy_line_items_from_cart cart
-    # TODO: fix this
-    #assert_equal cart.line_items.length, 0
+    cart.reload
+    assert_equal cart.line_items.length, 0
     assert_equal order.line_items.length, 1
   end
 end
