@@ -7,14 +7,14 @@ TailoredRepublic::Application.routes.draw do
 
   devise_for :users, controllers: { sessions: :sessions, registrations: :registrations }
 
-  resources :users
-  resources :customizations
+  resources :users, only: [:show, :update, :destroy, :index]
+  resources :customizations, only: [:show, :create, :update]
   resources :customers
-  resource  :cart
-  resource  :measurements
+  resource  :cart, only: [:show, :create, :update, :destroy]
+  resource  :measurements, only: [:show, :create, :update]
   resources :products
-  resources :line_items
-  resources :orders do
+  resources :line_items, only: [:create, :destroy]
+  resources :orders, only: [:show, :new, :create] do
     collection do
       post 'review'
       post 'new', path: 'new'

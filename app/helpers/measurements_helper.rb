@@ -143,8 +143,4 @@ module MeasurementsHelper
   def progress_current
     image_tag 'icons/star-filled.png'
   end
-
-  def progress_completed
-    image_tag 'icons/star-stroke.png'
-  end
 end
