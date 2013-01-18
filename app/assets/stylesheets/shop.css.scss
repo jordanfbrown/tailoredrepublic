@@ -120,6 +120,15 @@
     padding: 10px 0;
     @include clearfix;
 
+    &.suit li {
+      width: 6.33%;
+    }
+
+    &.shirt li {
+      width: 18%;
+      text-align: center;
+    }
+
     li {
       cursor: pointer;
       &:first-child {
@@ -132,7 +141,7 @@
 
       float: left;
       display: block;
-      width: 6.33%;
+
       margin-right: 2%;
     }
   }
