@@ -11,11 +11,12 @@ class TR.Views.DialogModal extends TR.Views.Modal
     @text = options.text || ''
     @confirmText = options.confirmText || 'Ok'
     @cancelText = options.cancelText || 'Cancel'
+    @confirmOnly = options.confirmOnly || false
     @template = @getTemplate 'dialog_modal'
     @render()
 
   render: ->
-    @$el.html @template text: @text, confirmText: @confirmText, cancelText: @cancelText
+    @$el.html @template text: @text, confirmText: @confirmText, cancelText: @cancelText, confirmOnly: @confirmOnly
     super()
     @$el.css 'top': $(document).scrollTop() + $(window).height() / 2, 'margin-top': -@$el.height() / 2
     $('body').append(@$el).addClass 'modal-open'

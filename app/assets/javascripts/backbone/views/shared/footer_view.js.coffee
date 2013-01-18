@@ -3,6 +3,7 @@ class TR.Views.Footer extends TR.Views.Base
 
   events:
     'click h5.expandable': 'expandSection'
+    'submit form': 'subscribeToNewsletter'
 
   initialize: ->
     $(window).resize(=>
@@ -21,4 +22,21 @@ class TR.Views.Footer extends TR.Views.Base
       else
         $target.next('ul').show 'slideUp'
         $target.find('span').text '-'
+
+  subscribeToNewsletter: (e) ->
+    $form = $(e.currentTarget)
+    $.post($form.attr('action'), $form.serialize()).then(@subscribeSuccess, @subscribeFailure)
+    false
+    
+  subscribeSuccess: =>
+    @confirmDialog = new TR.Views.DialogModal
+      text: 'Your e-mail address has been added to the TR Affiliate mailing list. Please check your e-mail to confirm your subscription.',
+      confirmText: 'Ok'
+      confirmOnly: true
+
+  subscribeFailure: =>
+    @confirmDialog = new TR.Views.DialogModal
+      text: 'We\'re sorry, but there was a problem adding your e-mail address to the TR Affiliate mailing list. Please try again, and if your problem persists, shoot us an e-mail at help@tailoredrepublic.com.',
+      confirmText: 'Ok'
+      confirmOnly: true
 

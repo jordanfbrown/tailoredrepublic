@@ -64,7 +64,13 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     fssm (0.2.9)
+    gibbon (0.4.2)
+      httparty
+      json
     hike (1.2.1)
+    httparty (0.10.0)
+      multi_json (~> 1.0)
+      multi_xml
     i18n (0.6.1)
     journey (1.0.4)
     jquery-rails (2.1.4)
@@ -81,6 +87,7 @@ GEM
       compass (>= 0.11.5)
       sassy-math (>= 1.2)
     multi_json (1.5.0)
+    multi_xml (0.5.2)
     numbers_and_words (0.5.0)
       activesupport
       i18n
@@ -163,6 +170,7 @@ DEPENDENCIES
   compass-rails (>= 1.0.3)
   devise (>= 2.1.2)
   enumerated_attribute!
+  gibbon
   jquery-rails
   numbers_and_words
   pg

@@ -47,7 +47,7 @@ class TR.Views.Cart extends TR.Views.Base
     
   removeLineItem: (e) ->
     e.preventDefault()
-    confirmOptions =
+    @confirmDialog = new TR.Views.DialogModal
       text: 'Are you sure want to remove this item from the cart?',
       confirmText: 'Remove'
       cancelText: 'Cancel'
@@ -66,5 +66,3 @@ class TR.Views.Cart extends TR.Views.Base
               @$('.cart-total').hide()
           )
         )
-
-    @confirmDialog = new TR.Views.DialogModal(confirmOptions)

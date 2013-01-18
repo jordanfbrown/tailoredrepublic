@@ -50,8 +50,9 @@
       <ul>
         <li>// Become an affiliate of The Republic</li>
       </ul>
-      <input type="text" placeholder="enter email...">
-      <input type="submit" value="SUBMIT">
+      <%= form_tag subscribe_to_newsletter_path %>
+      <%= text_field_tag :email, '', placeholder: 'enter email...' %>
+      <%= submit_tag 'SUBMIT' %>
     </div>
   </div>
 </footer>
