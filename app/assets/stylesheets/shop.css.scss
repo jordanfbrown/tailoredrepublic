@@ -2,7 +2,7 @@
 @import "compass";
 
 .shop {
-  .suits-wrapper {
+  .products-wrapper {
     @include shop-texture(repeat-y);
     clear: both;
   }

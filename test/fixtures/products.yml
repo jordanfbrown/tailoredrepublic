@@ -47,3 +47,27 @@ houndstooth:
   image_small_2_url: products/suits/modal-suit-preview.png
   image_small_3_url: products/suits/modal-suit-preview.png
   image_small_4_url: products/suits/modal-suit-preview.png
+
+white_shirt:
+  category: shirt
+  name: White Shirt
+  description: White shirt
+  price: 100
+  quantity: 10
+  image_large_url: products/suits/charcoal-grey.jpg
+  image_small_1_url: products/suits/modal-suit-preview.png
+  image_small_2_url: products/suits/modal-suit-preview.png
+  image_small_3_url: products/suits/modal-suit-preview.png
+  image_small_4_url: products/suits/modal-suit-preview.png
+
+blue_shirt:
+  category: shirt
+  name: Blue Shirt
+  description: Blue shirt
+  price: 100
+  quantity: 10
+  image_large_url: products/suits/charcoal-grey.jpg
+  image_small_1_url: products/suits/modal-suit-preview.png
+  image_small_2_url: products/suits/modal-suit-preview.png
+  image_small_3_url: products/suits/modal-suit-preview.png
+  image_small_4_url: products/suits/modal-suit-preview.png

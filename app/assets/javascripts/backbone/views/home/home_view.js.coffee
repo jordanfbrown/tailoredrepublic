@@ -17,7 +17,7 @@ class TR.Views.Home extends TR.Views.Base
     $('nav a').on 'click.home', @scrollToSection
 
   renderProductView: (product) =>
-    @$('.suits-wrapper').append new TR.Views.Product({model: product}).render().el
+    @$('.products-wrapper').append new TR.Views.Product({model: product}).render().el
 
   scrollToSection: (e) =>
     href = $(e.currentTarget).attr 'href'

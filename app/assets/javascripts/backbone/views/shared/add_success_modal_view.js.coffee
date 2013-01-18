@@ -27,5 +27,5 @@ class TR.Views.AddSuccessModal extends TR.Views.Modal
 
   renderProductView: (product) =>
     productView = new TR.Views.Product({model: product}).render()
-    @$('.suits-wrapper').append productView.el
+    @$('.products-wrapper').append productView.el
     @subviews.push productView
