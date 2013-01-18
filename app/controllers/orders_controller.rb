@@ -15,14 +15,10 @@ class OrdersController < ApplicationController
     else
       if user_signed_in?
         @user = current_user
-        @order = @user.orders.build
-        @order.build_address_from_address @user.shipping_address
-        @order.build_address_from_address @user.billing_address
+        @order = @user.build_order
       else
         @user = User.new
-        @order = @user.orders.build
-        @order.build_shipping_address
-        @order.build_billing_address
+        @order = @user.build_order
       end
     end
   end

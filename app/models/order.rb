@@ -20,7 +20,7 @@ class Order < ActiveRecord::Base
     order.stripe_charge_id = stripe_charge_id unless stripe_charge_id.blank?
     order
   end
-
+  
   def copy_line_items_from_cart(cart)
     cart.line_items.each do |line_item|
       line_item.cart_id = nil

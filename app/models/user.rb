@@ -26,6 +26,13 @@ class User < ActiveRecord::Base
     user
   end
 
+  def build_order
+    order = orders.build
+    shipping_address.blank? ? order.build_shipping_address : order.build_address_from_address(shipping_address)
+    billing_address.blank? ? order.build_billing_address : order.build_address_from_address(billing_address)
+    order
+  end
+
   def get_stripe_customer
     Stripe::Customer.retrieve stripe_customer_id
   end
