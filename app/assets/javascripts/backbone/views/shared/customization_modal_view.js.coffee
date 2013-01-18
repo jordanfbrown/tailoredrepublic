@@ -6,9 +6,9 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
       'click a.customization-option': 'setCustomization'
       'click a.add-to-cart': 'addToCart'
       'click a.save-changes': 'saveChanges'
-      'click ul.progress-bar a': 'clickedProgressImage'
-      'click a.left': 'previous'
-      'click a.right': 'next'
+      'click ul.progress-bar li': 'goToSlide'
+      'click a.previous': 'previous'
+      'click a.next': 'next'
       'click a.lining-option': 'selectLining'
       'click a.label': 'clickedLabelOnCheckout'
       'click a.advance-slide': 'next'
@@ -16,8 +16,9 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
       'click .advanced-checkbox': 'setAdvancedOption'
 
   PROGRESS:
-    SELECTED: 'selected'
-    COMPLETED: 'completed'
+    COMPLETED: '/assets/icons/star-stroke.png'
+    TODO: '/assets/icons/star-no-stroke.png'
+    CURRENT: '/assets/icons/star-filled.png'
 
   initialize: (options) ->
     @product = options.product
@@ -26,18 +27,38 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     @template = @getTemplate 'customization_modal'
     @checkoutTemplate = @getTemplate 'customization_checkout'
     @render()
+    @slider = @$('.customization-list').bxSlider
+      pager: off
+      controls: off
+      infiniteLoop: off
+      onSlideBefore: @onSlideBefore
+      onSlideAfter: @onSlideAfter
+      adaptiveHeight: on
     $(document).on 'keydown.customization', @keydown
 
   keydown: (e) =>
     if e.which == 37 # Left arrow
-      @advanceSlide 'prev'
+      @slider.goToPrevSlide()
     else if e.which == 39 # Right arrow
-      @advanceSlide 'next'
+      @slider.goToNextSlide()
 
   render: =>
     @$el.html @template @getTemplateData()
     @toggleVestOverlay()
     super()
+
+  onSlideBefore: ($el, oldIndex, newIndex) =>
+    @$('.previous').show() if newIndex > 0
+    @$('.previous').hide() if newIndex == 0
+    @$('.next').show() if newIndex < 12
+    @$('.next').hide() if newIndex == 11
+
+    @setProgressBar oldIndex, @PROGRESS.COMPLETED
+    @setProgressBar newIndex, @PROGRESS.CURRENT
+
+  onSlideAfter: ($el, oldIndex, newIndex) =>
+    if $el.data('type') == 'vest_buttons' && !@customization.get('vest')
+      if oldIndex < newIndex then @slider.goToNextSlide() else @slider.goToPrevSlide()
 
   getTemplateData: ->
     price = parseFloat(@product.get 'price') + if @customization.get 'vest' then TR.VEST_PRICE else 0
@@ -56,52 +77,33 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     @$('.vest-overlay').toggle !@customization.get 'vest'
 
   previous: (e) ->
-    e.preventDefault() if e
-    @advanceSlide 'prev'
+    e.preventDefault()
+    @slider.goToPrevSlide()
 
   next: (e) ->
-    e.preventDefault() if e
-    @advanceSlide 'next'
-
-  advanceSlide: (direction) ->
-    $currentCustomization = @getCurrentCustomization()
-    $previousOrNext = $currentCustomization[direction] '.customization-wrapper'
-
-    # Skip over the vest button slide if user selected "No vest"
-    vestSlide = if direction == 'prev' then 'checkout' else 'vest'
-    if $currentCustomization.data('type') == vestSlide && !@customization.get 'vest'
-      $previousOrNext = $previousOrNext[direction] '.customization-wrapper'
-
-    if $previousOrNext.exists()
-      @switchPane $previousOrNext.data 'type'
+    e.preventDefault()
+    @slider.goToNextSlide()
 
   clickedLabelOnCheckout: (e) ->
     e.preventDefault()
-    @switchPane $(e.currentTarget).data 'type'
-
-  switchPane: (customizationType) ->
-    @resetProgressBar()
-    @updateProgressBar customizationType, @PROGRESS.SELECTED
-
-    @getCurrentCustomization().hide()
-    @$(".customization-wrapper[data-type=#{customizationType}]").show()
+    type = $(e.currentTarget).data 'type'
+    index = @$(".customization-wrapper[data-type=#{type}]").index()
+    @slider.goToSlide index
 
   selectLining: (e) ->
     e.preventDefault()
     @$('.lining-option').removeClass 'selected'
     $lining = $(e.currentTarget).addClass 'selected'
     @customization.set 'lining', $lining.data 'id'
-    @updateProgressBar 'lining', @PROGRESS.COMPLETED
 
-  clickedProgressImage: (e) ->
+  goToSlide: (e) ->
     e.preventDefault()
-    @switchPane $(e.currentTarget).parent().data 'type'
+    @slider.goToSlide $(e.currentTarget).index()
 
   submitMonogram: (e) ->
     e.preventDefault()
     @customization.set 'monogram', @$('input[name=monogram]').val()
-    @updateProgressBar 'monogram', @PROGRESS.COMPLETED
-    @advanceSlide 'next'
+    @slider.goToNextSlide()
 
   destroy: ->
     super()
@@ -113,43 +115,29 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
   setCustomization: (e) =>
     e.preventDefault()
 
-    # Update model
     $target = $(e.currentTarget)
     $img = $target.find 'img:not(.shield)'
     option = $target.data 'option'
     type = $target.parents('.customization-wrapper').data 'type'
-    
-    @updateProgressBar type, @PROGRESS.COMPLETED
 
     @customization.setByName type, option
     @clearChecked()
     $img.addClass 'checked'
-    @advanceSlide 'next'
+    @slider.goToNextSlide()
     
   setAdvancedOption: (e) ->
     $checkbox = $(e.currentTarget)
     option = $checkbox.attr 'name'
     value = $checkbox.is ':checked'
-
-    @updateProgressBar 'advanced', @PROGRESS.COMPLETED
     @customization.setByName option, value
-
-  updateProgressBar: (type, state) ->
-    $star = @$(".progress-bar li[data-type=#{type}] img")
-    image = if state == 'selected' then 'star-filled.png' else 'star-stroke.png'
-    $star.attr('src', "/assets/icons/#{image}").addClass state
-
-  resetProgressBar: ->
-    $star = @$('.progress-bar li').find 'img.selected'
-    image = if $star.hasClass 'completed' then 'star-stroke.png' else 'star-no-stroke.png';
-    $star.attr('src', "/assets/icons/#{image}").removeClass 'selected'
 
   addToCart: (e) ->
     e.preventDefault()
-    @customization.save(null, {silent: true}).then(=>
-      $.post('/line_items', {product_id: @product.get('id'), customization_id: @customization.get('id')}).then(
-        @addSuccess, @addFailure
-      )
+    @customization.save(null, {silent: true}).then(@addLineItem, @addCustomizationFailure)
+
+  addLineItem: =>
+    $.post('/line_items', {product_id: @product.get('id'), customization_id: @customization.get('id')}).then(
+      @addSuccess, @addLineItemFailure
     )
 
   saveChanges: (e) ->
@@ -163,8 +151,14 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     new TR.Views.AddSuccessModal({model: @product})
     @destroy()
 
-  addFailure: (error) =>
+  addLineItemFailure: (error) =>
+    console.log(error, 'failure');
+
+  addCustomizationFailure: (error) =>
     console.log(error, 'failure');
 
   clearChecked: =>
-    @$('a.customization-option:visible img').removeClass 'checked'
+    @$('.customization-wrapper').eq(@slider.getCurrentSlide()).find('img').removeClass 'checked'
+
+  setProgressBar: (index, progress) ->
+    @$('.progress-bar img').eq(index).attr 'src', progress

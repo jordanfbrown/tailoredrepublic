@@ -56,8 +56,10 @@
   background-color: #ccc;
   clear: both;
   @include clearfix;
-
   font-weight: 200;
+  margin-bottom: 15px;
+  border-left: 10px solid #ccc;
+  border-right: 10px solid #ccc;
 
   .label {
     font-weight: bold;
@@ -115,10 +117,11 @@
   }
 
   .progress-bar {
-    padding: 10px;
+    padding: 10px 0;
     @include clearfix;
 
     li {
+      cursor: pointer;
       &:first-child {
         margin-left: 1%;
       }
@@ -197,7 +200,6 @@
 
   .customization-wrapper {
     background-color: #fff;
-    margin: 0 10px 10px 10px;
     padding: 5px;
     @include clearfix;
     position: relative;
@@ -265,6 +267,9 @@
 }
 
 .customization-summary {
+  ul {
+    margin-left: 0;
+  }
   .button {
     vertical-align: 11px;
     margin-left: 10px;

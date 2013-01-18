@@ -13,9 +13,9 @@ class TR.Views.Measurements extends TR.Views.Base
     'click a.accept': 'acceptMeasurements'
 
   PROGRESS:
-    COMPLETED: 'assets/icons/star-stroke.png'
-    TODO: 'assets/icons/star-no-stroke.png'
-    CURRENT: 'assets/icons/star-filled.png'
+    COMPLETED: '/assets/icons/star-stroke.png'
+    TODO: '/assets/icons/star-no-stroke.png'
+    CURRENT: '/assets/icons/star-filled.png'
 
   initialize: (options) ->
     @lineItemCount = options.lineItemCount

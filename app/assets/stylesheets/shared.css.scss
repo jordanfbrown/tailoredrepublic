@@ -121,7 +121,7 @@ input[type=submit] {
   border: none;
   cursor: pointer;
   text-align: center;
-  -webkit-transition: all 250ms;
+  -webkit-transition: background-color 250ms;
 
   &:hover {
     color: #fff;
@@ -267,4 +267,26 @@ p.error {
   height: 34px;
   border: 1px solid #ccc;
   margin-bottom: 7px;
+}
+
+a.previous, a.next, a.accept {
+  margin-top: 10px;
+  width: 150px;
+}
+
+a.previous {
+  float: right;
+  margin-right: 10px;
+
+  @media only screen and (max-width: 767px) {
+    float: none;
+    width: 100%;
+  }
+}
+
+a.next, a.accept {
+  margin-bottom: 10px;
+  @media only screen and (max-width: 767px) {
+    width: 100%;
+  }
 }

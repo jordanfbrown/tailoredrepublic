@@ -101,28 +101,6 @@
     margin: 0 auto;
   }
 
-  a.previous, a.next, a.accept {
-    margin-top: 10px;
-    width: 150px;
-  }
-
-  a.previous {
-    float: right;
-    margin-right: 10px;
-
-    @media only screen and (max-width: 767px) {
-      float: none;
-      width: 100%;
-    }
-  }
-
-  a.next, a.accept {
-    margin-bottom: 10px;
-    @media only screen and (max-width: 767px) {
-      width: 100%;
-    }
-  }
-
   p.error {
     margin-top: 10px;
     text-align: center;
