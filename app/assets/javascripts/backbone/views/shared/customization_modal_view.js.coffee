@@ -24,7 +24,6 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     @product = options.product
     @customization = options.customization || new TR.Models.Customization()
     @customization.on 'change', @updateCheckoutSlide
-    console.log @product.get('category')
     @template = @getTemplate "customization_modal_#{@product.get('category')}"
     @checkoutTemplate = @getTemplate 'customization_checkout'
     @render()
@@ -49,10 +48,11 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
       @slider.goToNextSlide()
 
   onSlideBefore: ($el, oldIndex, newIndex) =>
+    slideCount = @slider.getSlideCount()
     @$('.previous').show() if newIndex > 0
     @$('.previous').hide() if newIndex == 0
-    @$('.next').show() if newIndex < 12
-    @$('.next').hide() if newIndex == 11
+    @$('.next').show() if newIndex < slideCount
+    @$('.next').hide() if newIndex == slideCount - 1
 
     @setProgressBar oldIndex, @PROGRESS.COMPLETED
     @setProgressBar newIndex, @PROGRESS.CURRENT

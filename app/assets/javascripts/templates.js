@@ -185,152 +185,12 @@ function program15(depth0,data) {
 function program17(depth0,data) {
   
   
-  return "class=\"checked\"";}
+  return "\n            <a href=\"#\" class=\"add-to-cart\"><img src=\"/assets/icons/shopping-cart-black.png\"></a>\n            <a href=\"#\" class=\"button add-to-cart\">Add To Cart</a>\n          ";}
 
 function program19(depth0,data) {
   
   
-  return "class=\"checked\"";}
-
-function program21(depth0,data) {
-  
-  
-  return "class=\"checked\"";}
-
-function program23(depth0,data) {
-  
-  
-  return "class=\"checked\"";}
-
-function program25(depth0,data) {
-  
-  
-  return "class=\"checked\"";}
-
-function program27(depth0,data) {
-  
-  
-  return "checked";}
-
-function program29(depth0,data) {
-  
-  
-  return "checked";}
-
-function program31(depth0,data) {
-  
-  
-  return "class=\"checked\"";}
-
-function program33(depth0,data) {
-  
-  
-  return "class=\"checked\"";}
-
-function program35(depth0,data) {
-  
-  
-  return "class=\"checked\"";}
-
-function program37(depth0,data) {
-  
-  
-  return "checked";}
-
-function program39(depth0,data) {
-  
-  
-  return "checked";}
-
-function program41(depth0,data) {
-  
-  
-  return "class=\"checked\"";}
-
-function program43(depth0,data) {
-  
-  
-  return "class=\"checked\"";}
-
-function program45(depth0,data) {
-  
-  
-  return "class=\"checked\"";}
-
-function program47(depth0,data) {
-  
-  
-  return "class=\"checked\"";}
-
-function program49(depth0,data) {
-  
-  
-  return "class=\"checked\"";}
-
-function program51(depth0,data) {
-  
-  
-  return "Yes";}
-
-function program53(depth0,data) {
-  
-  
-  return "No";}
-
-function program55(depth0,data) {
-  
-  
-  return "Yes";}
-
-function program57(depth0,data) {
-  
-  
-  return "No";}
-
-function program59(depth0,data) {
-  
-  
-  return "Yes";}
-
-function program61(depth0,data) {
-  
-  
-  return "No";}
-
-function program63(depth0,data) {
-  
-  var buffer = "", stack1, foundHelper;
-  buffer += "Yes (+$";
-  foundHelper = helpers.vestPrice;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.vestPrice; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + ")";
-  return buffer;}
-
-function program65(depth0,data) {
-  
-  
-  return "No";}
-
-function program67(depth0,data) {
-  
-  var buffer = "", stack1, foundHelper;
-  buffer += "\n          <li><a href=\"#\" class=\"label\" data-type=\"vest_buttons\">Vest Buttons:</a> ";
-  foundHelper = helpers.vest_buttons;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.vest_buttons; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "</li>\n          ";
-  return buffer;}
-
-function program69(depth0,data) {
-  
-  
-  return "\n          <a href=\"#\" class=\"add-to-cart\"><img src=\"/assets/icons/shopping-cart-black.png\"></a>\n          <a href=\"#\" class=\"button add-to-cart\">Add To Cart</a>\n          ";}
-
-function program71(depth0,data) {
-  
-  
-  return "\n          <a href=\"#\" class=\"button save-changes\">Save Changes</a>\n          ";}
+  return "\n            <a href=\"#\" class=\"button save-changes\">Save Changes</a>\n          ";}
 
   buffer += "<a class=\"close-reveal-modal\">&#215;</a>\n<h2>";
   stack1 = depth0.product;
@@ -380,172 +240,53 @@ function program71(depth0,data) {
   foundHelper = helpers.ifeq;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, "button-down", {hash:{},inverse:self.noop,fn:self.program(7, program7, data)}) : helperMissing.call(depth0, "ifeq", stack1, "button-down", {hash:{},inverse:self.noop,fn:self.program(7, program7, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += " src=\"/assets/customizations/shirts/collar-button-down.png\">\n      </a>\n      <p>The standard or straight collars are always a nice, clean TR-approved look. The cutaway collar is a solid\n        option for someone that really wants to emphasize a wide tie knot, such as a Windsor. Button-down collars tend\n        to be slightly more casual and can be a nice choice if you are not wearing the shirt with a suit.</p>\n    </li>\n    <li class=\"customization-wrapper\" data-type=\"buttons\">\n      <h3>Buttons</h3>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"1\">\n        <h5>One</h5>\n        <img ";
-  stack1 = depth0.buttons;
-  foundHelper = helpers.ifeq;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 1, {hash:{},inverse:self.noop,fn:self.program(9, program9, data)}) : helperMissing.call(depth0, "ifeq", stack1, 1, {hash:{},inverse:self.noop,fn:self.program(9, program9, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += " src=\"/assets/customizations/suits/buttons-one.png\">\n      </a>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"2\">\n        <h5>Two</h5>\n        <img ";
-  stack1 = depth0.buttons;
-  foundHelper = helpers.ifeq;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 2, {hash:{},inverse:self.noop,fn:self.program(11, program11, data)}) : helperMissing.call(depth0, "ifeq", stack1, 2, {hash:{},inverse:self.noop,fn:self.program(11, program11, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += " src=\"/assets/customizations/suits/buttons-two.png\">\n        <div class=\"recommended\">\n          <img src=\"/assets/logos/logo-stitch.png\" class=\"shield\"><span>Recommended</span>\n        </div>\n      </a>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"3\">\n        <h5>Three</h5>\n        <img ";
-  stack1 = depth0.buttons;
-  foundHelper = helpers.ifeq;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 3, {hash:{},inverse:self.noop,fn:self.program(13, program13, data)}) : helperMissing.call(depth0, "ifeq", stack1, 3, {hash:{},inverse:self.noop,fn:self.program(13, program13, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += " src=\"/assets/customizations/suits/buttons-three.png\">\n      </a>\n\n      <p>The modern standard and a fashionable choice is the two button suit. Two button suits fit more of a classic\n        style and look great on taller guys. A one button suit is a very stylish option for those who want to be\n        adventurous. TR tip: If you are going to add a vest, stick with the two button jacket.</p>\n    </li>\n    <li class=\"customization-wrapper\" data-type=\"vents\">\n      <h3>Vents</h3>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"0\">\n        <h5>None</h5>\n        <img ";
-  stack1 = depth0.vents;
-  foundHelper = helpers.ifeq;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 0, {hash:{},inverse:self.noop,fn:self.program(15, program15, data)}) : helperMissing.call(depth0, "ifeq", stack1, 0, {hash:{},inverse:self.noop,fn:self.program(15, program15, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += " src=\"/assets/customizations/suits/vents-none.png\">\n      </a>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"1\">\n        <h5>One</h5>\n        <img ";
-  stack1 = depth0.vents;
-  foundHelper = helpers.ifeq;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 1, {hash:{},inverse:self.noop,fn:self.program(17, program17, data)}) : helperMissing.call(depth0, "ifeq", stack1, 1, {hash:{},inverse:self.noop,fn:self.program(17, program17, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += " src=\"/assets/customizations/suits/vents-one.png\">\n        <div class=\"recommended\">\n          <img src=\"/assets/logos/logo-stitch.png\" class=\"shield\"><span>Recommended</span>\n        </div>\n      </a>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"2\">\n        <h5>Two</h5>\n        <img ";
-  stack1 = depth0.vents;
-  foundHelper = helpers.ifeq;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 2, {hash:{},inverse:self.noop,fn:self.program(19, program19, data)}) : helperMissing.call(depth0, "ifeq", stack1, 2, {hash:{},inverse:self.noop,fn:self.program(19, program19, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += " src=\"/assets/customizations/suits/vents-two.png\">\n      </a>\n\n      <p>Having two vents is the traditional, safe and stylish choice. One vent is a way to make your suit modern and\n        sleek without distracting from the excellent fit (we love the single vent). TR tip: If you are a shorter guy,\n        go ahead and get the double vent, the vertical vents help to draw the eye upward and elongate the body.</p>\n    </li>\n    <li class=\"customization-wrapper\" data-type=\"pleats\">\n      <h3>Pleats</h3>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"0\">\n        <h5>None</h5>\n        <img ";
-  stack1 = depth0.pleats;
-  foundHelper = helpers.ifeq;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 0, {hash:{},inverse:self.noop,fn:self.program(21, program21, data)}) : helperMissing.call(depth0, "ifeq", stack1, 0, {hash:{},inverse:self.noop,fn:self.program(21, program21, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += " src=\"/assets/customizations/suits/pleats-none.png\">\n        <div class=\"recommended\">\n          <img src=\"/assets/logos/logo-stitch.png\" class=\"shield\"><span>Recommended</span>\n        </div>\n      </a>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"1\">\n        <h5>One</h5>\n        <img ";
-  stack1 = depth0.pleats;
-  foundHelper = helpers.ifeq;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 1, {hash:{},inverse:self.noop,fn:self.program(23, program23, data)}) : helperMissing.call(depth0, "ifeq", stack1, 1, {hash:{},inverse:self.noop,fn:self.program(23, program23, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += " src=\"/assets/customizations/suits/pleats-one.png\">\n      </a>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"2\">\n        <h5>Two</h5>\n        <img ";
-  stack1 = depth0.pleats;
-  foundHelper = helpers.ifeq;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 2, {hash:{},inverse:self.noop,fn:self.program(25, program25, data)}) : helperMissing.call(depth0, "ifeq", stack1, 2, {hash:{},inverse:self.noop,fn:self.program(25, program25, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += " src=\"/assets/customizations/suits/pleats-two.png\">\n      </a>\n\n      <p>Pleats are typically associated with old-fashioned suits. If you are looking for a modern, trendier look, we\n        recommend going with no pleats and no cuffs on the pants.</p>\n    </li>\n    <li class=\"customization-wrapper two-item\" data-type=\"pant_cuffs\">\n      <h3>Cuffs</h3>\n      <a href=\"#\" class=\"customization-option\" data-option=\"false\">\n        <h5>None</h5>\n        <img src=\"/assets/customizations/suits/cuffs-no.png\" class=\"cuffs ";
-  stack1 = depth0.pant_cuffs;
-  foundHelper = helpers.ifeq;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, false, {hash:{},inverse:self.noop,fn:self.program(27, program27, data)}) : helperMissing.call(depth0, "ifeq", stack1, false, {hash:{},inverse:self.noop,fn:self.program(27, program27, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\">\n\n        <div class=\"recommended\">\n          <img src=\"/assets/logos/logo-stitch.png\" class=\"shield\"><span>Recommended</span>\n        </div>\n      </a>\n      <a href=\"#\" class=\"customization-option\" data-option=\"true\">\n        <h5>Cuffs</h5>\n        <img src=\"/assets/customizations/suits/cuffs-yes.png\" class=\"cuffs ";
-  stack1 = depth0.pant_cuffs;
-  foundHelper = helpers.ifeq;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, true, {hash:{},inverse:self.noop,fn:self.program(29, program29, data)}) : helperMissing.call(depth0, "ifeq", stack1, true, {hash:{},inverse:self.noop,fn:self.program(29, program29, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\">\n      </a>\n\n      <p>Pant cuffs were a suit staple in previous decades, but unless you are going for an older, more classic look,\n        we recommend sticking with no pant cuffs. It keeps the suit lines clean and sharp, keeping those heads on a\n        swivel.</p>\n    </li>\n    <li class=\"customization-wrapper\" data-type=\"fit\">\n      <h3>Fit</h3>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"slim\">\n        <h5>Slim</h5>\n        <img ";
+  buffer += " src=\"/assets/customizations/shirts/collar-button-down.png\">\n      </a>\n      <p>The standard or straight collars are always a nice, clean TR-approved look. The cutaway collar is a solid\n        option for someone that really wants to emphasize a wide tie knot, such as a Windsor. Button-down collars tend\n        to be slightly more casual and can be a nice choice if you are not wearing the shirt with a suit.</p>\n    </li>\n    <li class=\"customization-wrapper two-item\" data-type=\"fit\">\n      <h3>Fit</h3>\n      <a href=\"#\" class=\"customization-option\" data-option=\"slim\">\n        <h5>Slim</h5>\n        <img ";
   stack1 = depth0.fit;
   foundHelper = helpers.ifeq;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, "slim", {hash:{},inverse:self.noop,fn:self.program(31, program31, data)}) : helperMissing.call(depth0, "ifeq", stack1, "slim", {hash:{},inverse:self.noop,fn:self.program(31, program31, data)});
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, "slim", {hash:{},inverse:self.noop,fn:self.program(9, program9, data)}) : helperMissing.call(depth0, "ifeq", stack1, "slim", {hash:{},inverse:self.noop,fn:self.program(9, program9, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += " src=\"/assets/customizations/suits/fit-slim.png\">\n      </a>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"tailored\">\n        <h5>Tailored</h5>\n        <img ";
+  buffer += " src=\"/assets/customizations/shirts/fit-slim.png\">\n        <div class=\"recommended\">\n          <img src=\"/assets/logos/logo-stitch.png\" class=\"shield\"><span>Recommended</span>\n        </div>\n      </a>\n      <a href=\"#\" class=\"customization-option\" data-option=\"normal\">\n        <h5>Normal</h5>\n        <img ";
   stack1 = depth0.fit;
   foundHelper = helpers.ifeq;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, "tailored", {hash:{},inverse:self.noop,fn:self.program(33, program33, data)}) : helperMissing.call(depth0, "ifeq", stack1, "tailored", {hash:{},inverse:self.noop,fn:self.program(33, program33, data)});
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, "normal", {hash:{},inverse:self.noop,fn:self.program(11, program11, data)}) : helperMissing.call(depth0, "ifeq", stack1, "normal", {hash:{},inverse:self.noop,fn:self.program(11, program11, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += " src=\"/assets/customizations/suits/fit-tailored.png\">\n        <div class=\"recommended\">\n          <img src=\"/assets/logos/logo-stitch.png\" class=\"shield\"><span>Recommended</span>\n        </div>\n      </a>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"normal\">\n        <h5>Normal</h5>\n        <img ";
-  stack1 = depth0.fit;
+  buffer += " src=\"/assets/customizations/shirts/fit-normal.png\">\n      </a>\n      <p>A slim fit helps to keep the shirt nice and tight to the body so that it doesn’t pooch out the suit in an\n        unsightly way. If you are a fuller-figure man or are planning on wearing the shirt without a suit, a normal fit\n        will look great.</p>\n    </li>\n    <li class=\"customization-wrapper two-item\" data-type=\"pocket\">\n      <h3>Pocket</h3>\n      <a href=\"#\" class=\"customization-option\" data-option=\"false\">\n        <h5>No Pocket</h5>\n        <img ";
+  stack1 = depth0.pocket;
   foundHelper = helpers.ifeq;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, "normal", {hash:{},inverse:self.noop,fn:self.program(35, program35, data)}) : helperMissing.call(depth0, "ifeq", stack1, "normal", {hash:{},inverse:self.noop,fn:self.program(35, program35, data)});
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, false, {hash:{},inverse:self.noop,fn:self.program(13, program13, data)}) : helperMissing.call(depth0, "ifeq", stack1, false, {hash:{},inverse:self.noop,fn:self.program(13, program13, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += " src=\"/assets/customizations/suits/fit-normal.png\">\n      </a>\n\n      <p>The tailored fit is guaranteed to look great on most guys. A regular fit is great for guys with a fuller\n        figure. And the slim fit is great for lean guys who want a very tight fitting suit and know they will not have\n        any weight changes in the future. TR tip: Regardless of the fit option, our suits are tailored to your\n        measurements, so slim or full-figured, your suit will look and feel great.</p>\n    </li>\n    <li class=\"customization-wrapper two-item\" data-type=\"lining\">\n      <h3>Lining</h3>\n\n      <div class=\"customization-option\">\n        <img src=\"/assets/customizations/suits/lining.png\" class=\"lining\">\n      </div>\n      <div class=\"customization-option linings\">\n        <div class=\"four columns\">\n          <a href=\"#\" class=\"lining-option\" data-id=\"12345\"></a>\n          <a href=\"#\" class=\"lining-option\" data-id=\"2312\"></a>\n          <a href=\"#\" class=\"lining-option\" data-id=\"23523\"></a>\n          <a href=\"#\" class=\"lining-option\" data-id=\"123213\"></a>\n        </div>\n        <div class=\"four columns\">\n          <a href=\"#\" class=\"lining-option\" data-id=\"461\"></a>\n          <a href=\"#\" class=\"lining-option\" data-id=\"346\"></a>\n          <a href=\"#\" class=\"lining-option\" data-id=\"345\"></a>\n          <a href=\"#\" class=\"lining-option\" data-id=\"123531\"></a>\n        </div>\n        <div class=\"four columns\">\n          <a href=\"#\" class=\"lining-option\" data-id=\"967\"></a>\n          <a href=\"#\" class=\"lining-option\" data-id=\"3463\"></a>\n          <a href=\"#\" class=\"lining-option\" data-id=\"1245745345\"></a>\n          <a href=\"#\" class=\"lining-option\" data-id=\"345342\"></a>\n        </div>\n        <div class=\"twelve columns\">\n          <a href=\"#\" class=\"button advance-slide\">Select</a>\n        </div>\n      </div>\n      <p>The most common selection is matching lining, which works with the suit to bring out the fabrics natural\n        intrigue. Contrasting linings are a great choice if you want to add a little flash to your suit, making your\n        suit stand out. TR tip: A unique lining is a great way to make your suit stand out and really separates your\n        suit from the off-the-rack crowd; we recommend being bold.</p>\n    </li>\n    <li class=\"customization-wrapper two-item\" data-type=\"monogram\">\n      <h3>Monogram</h3>\n\n      <div href=\"#\" class=\"customization-option\">\n        <img src=\"/assets/customizations/suits/monogram.png\" class=\"monogram\">\n      </div>\n      <div class=\"customization-option\">\n        <p>Monogram (15 character max)</p>\n\n        <form id=\"monogram-form\">\n          <input type=\"text\" name=\"monogram\" maxlength=\"15\" value=\"";
+  buffer += " src=\"/assets/customizations/shirts/pocket-no.png\">\n        <div class=\"recommended\">\n          <img src=\"/assets/logos/logo-stitch.png\" class=\"shield\"><span>Recommended</span>\n        </div>\n      </a>\n      <a href=\"#\" class=\"customization-option\" data-option=\"true\">\n        <h5>Pocket</h5>\n        <img ";
+  stack1 = depth0.pocket;
+  foundHelper = helpers.ifeq;
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, true, {hash:{},inverse:self.noop,fn:self.program(15, program15, data)}) : helperMissing.call(depth0, "ifeq", stack1, true, {hash:{},inverse:self.noop,fn:self.program(15, program15, data)});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += " src=\"/assets/customizations/shirts/pocket-yes.png\">\n      </a>\n      <p>So the argument for pockets is that they are functional, but we say ditch the pocket and give your shirt that\n        clean look. This is especially true if you are rocking a skinny tie; a bulky pocket can really throw off the\n        whole balance of the look.</p>\n    </li>\n    <li class=\"customization-wrapper two-item\" data-type=\"monogram\">\n      <h3>Monogram</h3>\n      <div href=\"#\" class=\"customization-option\">\n        <img src=\"/assets/customizations/suits/monogram.png\" class=\"monogram\">\n      </div>\n      <div class=\"customization-option\">\n        <form id=\"monogram-form\">\n          <label>Monogram (3 character max)</label>\n          <input type=\"text\" name=\"monogram\" maxlength=\"3\" value=\"";
   foundHelper = helpers.monogram;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.monogram; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\">\n          <input type=\"submit\" class=\"button\" value=\"Ok\">\n        </form>\n      </div>\n      <p>Monogramming can be up to 15 characters, usually used for your name (i.e. 'Richard Feynman' or 'R.P.F.' or\n        'R. Feynman'). It will show up on the inside of your jacket above the left breast pocket. Feel free to put\n        whatever you want here, just keep in mind that people will see it when you are showing off your envy-inducing\n        lining.</p>\n    </li>\n    <li class=\"customization-wrapper advanced\" data-type=\"advanced\">\n      <h3>Advanced</h3>\n\n      <div class=\"twelve columns\">\n        <ul>\n          <li><label><input type=\"checkbox\" class=\"advanced-checkbox\" name=\"bouttoniere\" ";
-  stack1 = depth0.bouttoniere;
-  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(37, program37, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += ">Functional Bouttoniere</label></li>\n          <li><label><input type=\"checkbox\" class=\"advanced-checkbox\" name=\"pick_stitching\" ";
-  stack1 = depth0.pick_stitching;
-  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(39, program39, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += ">Pick Stitching</label></li>\n        </ul>\n        <a href=\"#\" class=\"advance-slide button\">Ok</a>\n      </div>\n      <p>Pick stitching really emphasizes the stitching on your suit making it clear that you went with a tailored\n        option. This is a fairly bold look, so we recommend opting out unless you are familiar with the look and know\n        you want it. The functional boutonniere is simply a sleeve that can be unbuttoned—it doesn’t make a huge\n        difference what you choose here.</p>\n    </li>\n    <li class=\"customization-wrapper two-item\" data-type=\"vest\">\n      <h3>Vest (+$";
-  foundHelper = helpers.vestPrice;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.vestPrice; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + ")</h3>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"true\">\n        <h5>Add Vest</h5>\n        <img ";
-  stack1 = depth0.vest;
-  foundHelper = helpers.ifeq;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, true, {hash:{},inverse:self.noop,fn:self.program(41, program41, data)}) : helperMissing.call(depth0, "ifeq", stack1, true, {hash:{},inverse:self.noop,fn:self.program(41, program41, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += " src=\"/assets/customizations/suits/vest-three.png\">\n      </a>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"false\">\n        <h5>No Vest</h5>\n        <img ";
-  stack1 = depth0.vest;
-  foundHelper = helpers.ifeq;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, false, {hash:{},inverse:self.noop,fn:self.program(43, program43, data)}) : helperMissing.call(depth0, "ifeq", stack1, false, {hash:{},inverse:self.noop,fn:self.program(43, program43, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += " src=\"/assets/customizations/suits/vest-three.png\">\n      </a>\n\n      <p>Do you want to make your suit a three-piece? You can add a matching vest to your suit order for $79. A\n        three-piece suit is sure to draw looks and makes a bold statement that you are serious about your style game.</p>\n    </li>\n    <li class=\"customization-wrapper\" data-type=\"vest_buttons\">\n      <div class=\"vest-overlay\" style=\"display: none;\">\n        <p>It looks like you haven't added a vest to your suit. If you'd like to add a vest, please go back to the previous\n          slide and select \"Add Vest\".</p>\n      </div>\n      <h3>Vest Buttons</h3>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"3\">\n        <h5>Three Buttons</h5>\n        <img ";
-  stack1 = depth0.customization;
-  foundHelper = helpers.ifVest;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 3, {hash:{},inverse:self.noop,fn:self.program(45, program45, data)}) : helperMissing.call(depth0, "ifVest", stack1, 3, {hash:{},inverse:self.noop,fn:self.program(45, program45, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += " src=\"/assets/customizations/suits/vest-three.png\">\n      </a>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"4\">\n        <h5>Four Buttons</h5>\n        <img ";
-  stack1 = depth0.customization;
-  foundHelper = helpers.ifVest;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 4, {hash:{},inverse:self.noop,fn:self.program(47, program47, data)}) : helperMissing.call(depth0, "ifVest", stack1, 4, {hash:{},inverse:self.noop,fn:self.program(47, program47, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += " src=\"/assets/customizations/suits/vest-four.png\">\n      </a>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"5\">\n        <h5>Five Buttons</h5>\n        <img ";
-  stack1 = depth0.customization;
-  foundHelper = helpers.ifVest;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 5, {hash:{},inverse:self.noop,fn:self.program(49, program49, data)}) : helperMissing.call(depth0, "ifVest", stack1, 5, {hash:{},inverse:self.noop,fn:self.program(49, program49, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += " src=\"/assets/customizations/suits/vest-five.png\">\n      </a>\n\n      <p>Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons!\n        Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest\n        buttons!</p>\n    </li>\n    <li class=\"customization-wrapper\" data-type=\"checkout\">\n      <h3>Checkout</h3>\n\n      <div class=\"customization-summary row\">\n        <ul class=\"four columns\">\n          <li><a href=\"#\" class=\"label\" data-type=\"lapel\">Lapel:</a> ";
-  stack1 = depth0.lapel;
-  foundHelper = helpers.uppercaseFirst;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "uppercaseFirst", stack1, {hash:{}});
-  buffer += escapeExpression(stack1) + "</li>\n          <li><a href=\"#\" class=\"label\" data-type=\"buttons\">Buttons:</a> ";
-  stack1 = depth0.buttons;
-  foundHelper = helpers.numberToString;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "numberToString", stack1, {hash:{}});
-  buffer += escapeExpression(stack1) + "</li>\n          <li><a href=\"#\" class=\"label\" data-type=\"vents\">Vents:</a> ";
-  stack1 = depth0.vents;
-  foundHelper = helpers.numberToString;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "numberToString", stack1, {hash:{}});
-  buffer += escapeExpression(stack1) + "</li>\n          <li><a href=\"#\" class=\"label\" data-type=\"pleats\">Pleats:</a> ";
-  stack1 = depth0.pleats;
-  foundHelper = helpers.numberToString;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "numberToString", stack1, {hash:{}});
-  buffer += escapeExpression(stack1) + "</li>\n          <li><a href=\"#\" class=\"label\" data-type=\"pant_cuffs\">Cuffs:</a> ";
-  stack1 = depth0.pant_cuffs;
-  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(53, program53, data),fn:self.program(51, program51, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "</li>\n          <li><a href=\"#\" class=\"label\" data-type=\"fit\">Fit:</a> ";
+  buffer += escapeExpression(stack1) + "\">\n          <input type=\"submit\" class=\"button full-width\" value=\"Ok\">\n        </form>\n      </div>\n      <p>Shirt monogramming can be up to 3 characters, and is almost exclusively used to sport some initials. The\n        monogram will show up on the sleeve cuff that will poke out the bottom of your suit sleeve. TR tip: keep the\n        shirt monogram subtle and make it the same color of the shirt. It is still noticeable without being obnoxious.\n        Black on black, white on white, pink on pink, you get the idea.</p>\n    </li>\n    <li class=\"customization-wrapper\" data-type=\"checkout\">\n      <h3>Checkout</h3>\n\n      <div class=\"customization-summary row\">\n        <ul class=\"six columns\">\n          <li><a href=\"#\" class=\"label\" data-type=\"collar\">Collar:</a> ";
   stack1 = depth0.fit;
   foundHelper = helpers.uppercaseFirst;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "uppercaseFirst", stack1, {hash:{}});
-  buffer += escapeExpression(stack1) + "</li>\n        </ul>\n        <ul class=\"four columns\">\n          <li><a href=\"#\" class=\"label\" data-type=\"lining\">Lining:</a> ";
-  foundHelper = helpers.lining;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.lining; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "</li>\n          <li><a href=\"#\" class=\"label\" data-type=\"fit\">Fit:</a> ";
+  stack1 = depth0.fit;
+  foundHelper = helpers.uppercaseFirst;
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "uppercaseFirst", stack1, {hash:{}});
+  buffer += escapeExpression(stack1) + "</li>\n          <li><a href=\"#\" class=\"label\" data-type=\"pocket\">Pocket:</a> ";
+  stack1 = depth0.fit;
+  foundHelper = helpers.uppercaseFirst;
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "uppercaseFirst", stack1, {hash:{}});
   buffer += escapeExpression(stack1) + "</li>\n          <li><a href=\"#\" class=\"label\" data-type=\"monogram\">Monogram:</a> ";
-  foundHelper = helpers.monogram;
+  foundHelper = helpers.fit;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.monogram; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "</li>\n          <li><a href=\"#\" class=\"label\" data-type=\"advanced\">Bouttoniere:</a> ";
-  stack1 = depth0.bouttoniere;
-  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(57, program57, data),fn:self.program(55, program55, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "</li>\n          <li><a href=\"#\" class=\"label\" data-type=\"advanced\">Pick Stitching:</a> ";
-  stack1 = depth0.pick_stitching;
-  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(61, program61, data),fn:self.program(59, program59, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n          </li>\n          <li><a href=\"#\" class=\"label\" data-type=\"vest\">Vest:</a> ";
-  stack1 = depth0.vest;
-  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(65, program65, data),fn:self.program(63, program63, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "</li>\n          ";
-  stack1 = depth0.vest;
-  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(67, program67, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n        </ul>\n        <div class=\"four columns\">\n          <ul>\n            <li><span class=\"label\">Total cost:</span> $";
+  else { stack1 = depth0.fit; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "</li>\n        </ul>\n        <div class=\"six columns\">\n          <ul>\n            <li><span class=\"label\">Total cost:</span> $";
   stack1 = depth0.price;
   foundHelper = helpers.decimalToInteger;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "decimalToInteger", stack1, {hash:{}});
   buffer += escapeExpression(stack1) + "</li>\n          </ul>\n          ";
   stack1 = depth0.isNew;
-  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(71, program71, data),fn:self.program(69, program69, data)});
+  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(19, program19, data),fn:self.program(17, program17, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n        </div>\n      </div>\n    </li>\n  </ul>\n</div>\n<div class=\"row\">\n  <div class=\"six columns\">\n    <a href=\"#\" class=\"button previous\" style=\"display: none;\">Previous</a>\n  </div>\n  <div class=\"six columns\">\n    <a href=\"#\" class=\"button next\">Next</a>\n  </div>\n</div>";
   return buffer;});
@@ -886,11 +627,11 @@ function program69(depth0,data) {
   foundHelper = helpers.ifeq;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, "normal", {hash:{},inverse:self.noop,fn:self.program(33, program33, data)}) : helperMissing.call(depth0, "ifeq", stack1, "normal", {hash:{},inverse:self.noop,fn:self.program(33, program33, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += " src=\"/assets/customizations/suits/fit-normal.png\">\n      </a>\n      <p>The tailored fit is guaranteed to look great on most guys. A regular fit is great for guys with a fuller\n        figure. And the slim fit is great for lean guys who want a very tight fitting suit and know they will not have\n        any weight changes in the future. TR tip: Regardless of the fit option, our suits are tailored to your\n        measurements, so slim or full-figured, your suit will look and feel great.</p>\n    </li>\n    <li class=\"customization-wrapper two-item\" data-type=\"lining\">\n      <h3>Lining</h3>\n      <div class=\"customization-option lining\">\n        <img src=\"/assets/customizations/suits/lining.png\" class=\"lining\">\n      </div>\n      <div class=\"customization-option linings\">\n        <div class=\"four columns\">\n          <a href=\"#\" class=\"lining-option\" data-id=\"12345\"></a>\n          <a href=\"#\" class=\"lining-option\" data-id=\"2312\"></a>\n          <a href=\"#\" class=\"lining-option\" data-id=\"23523\"></a>\n          <a href=\"#\" class=\"lining-option\" data-id=\"123213\"></a>\n        </div>\n        <div class=\"four columns\">\n          <a href=\"#\" class=\"lining-option\" data-id=\"461\"></a>\n          <a href=\"#\" class=\"lining-option\" data-id=\"346\"></a>\n          <a href=\"#\" class=\"lining-option\" data-id=\"345\"></a>\n          <a href=\"#\" class=\"lining-option\" data-id=\"123531\"></a>\n        </div>\n        <div class=\"four columns\">\n          <a href=\"#\" class=\"lining-option\" data-id=\"967\"></a>\n          <a href=\"#\" class=\"lining-option\" data-id=\"3463\"></a>\n          <a href=\"#\" class=\"lining-option\" data-id=\"1245745345\"></a>\n          <a href=\"#\" class=\"lining-option\" data-id=\"345342\"></a>\n        </div>\n        <div class=\"twelve columns\">\n          <a href=\"#\" class=\"button advance-slide\">Select</a>\n        </div>\n      </div>\n      <p>The most common selection is matching lining, which works with the suit to bring out the fabrics natural\n        intrigue. Contrasting linings are a great choice if you want to add a little flash to your suit, making your\n        suit stand out. TR tip: A unique lining is a great way to make your suit stand out and really separates your\n        suit from the off-the-rack crowd; we recommend being bold.</p>\n    </li>\n    <li class=\"customization-wrapper two-item\" data-type=\"monogram\">\n      <h3>Monogram</h3>\n      <div href=\"#\" class=\"customization-option\">\n        <img src=\"/assets/customizations/suits/monogram.png\" class=\"monogram\">\n      </div>\n      <div class=\"customization-option\">\n        <p>Monogram (15 character max)</p>\n        <form id=\"monogram-form\">\n          <input type=\"text\" name=\"monogram\" maxlength=\"15\" value=\"";
+  buffer += " src=\"/assets/customizations/suits/fit-normal.png\">\n      </a>\n      <p>The tailored fit is guaranteed to look great on most guys. A regular fit is great for guys with a fuller\n        figure. And the slim fit is great for lean guys who want a very tight fitting suit and know they will not have\n        any weight changes in the future. TR tip: Regardless of the fit option, our suits are tailored to your\n        measurements, so slim or full-figured, your suit will look and feel great.</p>\n    </li>\n    <li class=\"customization-wrapper two-item\" data-type=\"lining\">\n      <h3>Lining</h3>\n      <div class=\"customization-option lining\">\n        <img src=\"/assets/customizations/suits/lining.png\" class=\"lining\">\n      </div>\n      <div class=\"customization-option linings\">\n        <div class=\"four columns\">\n          <a href=\"#\" class=\"lining-option\" data-id=\"12345\"></a>\n          <a href=\"#\" class=\"lining-option\" data-id=\"2312\"></a>\n          <a href=\"#\" class=\"lining-option\" data-id=\"23523\"></a>\n          <a href=\"#\" class=\"lining-option\" data-id=\"123213\"></a>\n        </div>\n        <div class=\"four columns\">\n          <a href=\"#\" class=\"lining-option\" data-id=\"461\"></a>\n          <a href=\"#\" class=\"lining-option\" data-id=\"346\"></a>\n          <a href=\"#\" class=\"lining-option\" data-id=\"345\"></a>\n          <a href=\"#\" class=\"lining-option\" data-id=\"123531\"></a>\n        </div>\n        <div class=\"four columns\">\n          <a href=\"#\" class=\"lining-option\" data-id=\"967\"></a>\n          <a href=\"#\" class=\"lining-option\" data-id=\"3463\"></a>\n          <a href=\"#\" class=\"lining-option\" data-id=\"1245745345\"></a>\n          <a href=\"#\" class=\"lining-option\" data-id=\"345342\"></a>\n        </div>\n        <div class=\"twelve columns\">\n          <a href=\"#\" class=\"button advance-slide\">Select</a>\n        </div>\n      </div>\n      <p>The most common selection is matching lining, which works with the suit to bring out the fabrics natural\n        intrigue. Contrasting linings are a great choice if you want to add a little flash to your suit, making your\n        suit stand out. TR tip: A unique lining is a great way to make your suit stand out and really separates your\n        suit from the off-the-rack crowd; we recommend being bold.</p>\n    </li>\n    <li class=\"customization-wrapper two-item\" data-type=\"monogram\">\n      <h3>Monogram</h3>\n      <div href=\"#\" class=\"customization-option\">\n        <img src=\"/assets/customizations/suits/monogram.png\" class=\"monogram\">\n      </div>\n      <div class=\"customization-option\">\n        <form id=\"monogram-form\">\n          <label>Monogram (15 character max)</label>\n          <input type=\"text\" name=\"monogram\" maxlength=\"15\" value=\"";
   foundHelper = helpers.monogram;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.monogram; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\">\n          <input type=\"submit\" class=\"button\" value=\"Ok\">\n        </form>\n      </div>\n      <p>Monogramming can be up to 15 characters, usually used for your name (i.e. 'Richard Feynman' or 'R.P.F.' or\n        'R. Feynman'). It will show up on the inside of your jacket above the left breast pocket. Feel free to put\n        whatever you want here, just keep in mind that people will see it when you are showing off your envy-inducing\n        lining.</p>\n    </li>\n    <li class=\"customization-wrapper advanced\" data-type=\"advanced\">\n      <h3>Advanced</h3>\n      <div class=\"twelve columns\">\n        <ul>\n          <li><label><input type=\"checkbox\" class=\"advanced-checkbox\" name=\"bouttoniere\" ";
+  buffer += escapeExpression(stack1) + "\">\n          <input type=\"submit\" class=\"button full-width\" value=\"Ok\">\n        </form>\n      </div>\n      <p>Monogramming can be up to 15 characters, usually used for your name (i.e. 'Richard Feynman' or 'R.P.F.' or\n        'R. Feynman'). It will show up on the inside of your jacket above the left breast pocket. Feel free to put\n        whatever you want here, just keep in mind that people will see it when you are showing off your envy-inducing\n        lining.</p>\n    </li>\n    <li class=\"customization-wrapper advanced\" data-type=\"advanced\">\n      <h3>Advanced</h3>\n      <div class=\"twelve columns\">\n        <ul>\n          <li><label><input type=\"checkbox\" class=\"advanced-checkbox\" name=\"bouttoniere\" ";
   stack1 = depth0.bouttoniere;
   stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(35, program35, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }

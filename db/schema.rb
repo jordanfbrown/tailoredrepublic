@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130118041137) do
+ActiveRecord::Schema.define(:version => 20130118181856) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -57,9 +57,13 @@ ActiveRecord::Schema.define(:version => 20130118041137) do
     t.boolean  "bouttoniere"
     t.boolean  "pick_stitching"
     t.integer  "vest_buttons"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.boolean  "vest"
+    t.string   "collar"
+    t.boolean  "pocket"
+    t.string   "monogram_color"
+    t.string   "product_category"
   end
 
   create_table "line_items", :force => true do |t|
