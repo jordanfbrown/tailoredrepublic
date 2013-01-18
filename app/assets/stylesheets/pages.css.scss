@@ -1,0 +1,25 @@
+@import '_mixins';
+
+.faq {
+  h4, h5 {
+    font-weight: bold;
+  }
+  h4 {
+    border-bottom: 2px dotted #000;
+  }
+  p {
+    margin-bottom: 25px;
+  }
+
+  .sub-nav dd {
+    display: inline-block;
+    font-weight: bold;
+    padding-right: 5px;
+    @include font("header");
+    font-size: 20px;
+    
+    @media only screen and (max-width: 767px) {
+      display: block;
+    }
+  }
+}

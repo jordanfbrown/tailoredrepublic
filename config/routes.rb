@@ -27,6 +27,7 @@ TailoredRepublic::Application.routes.draw do
   match '/template' => 'template#index'
   match '/checkout' => 'carts#checkout'
   match '/thank_you' => 'orders#thank_you'
+  match '/faq' => 'pages#faq'
 
   #match "/shop/shirts" => "shop#shirts"
   #match "/shop/vests" => "shop#vests"
