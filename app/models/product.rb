@@ -27,6 +27,11 @@ class Product < ActiveRecord::Base
     end
   end
 
+  def self.top_picks
+    # TODO: come up with real top picks instead of first 4 products
+    self.all(limit: 4)
+  end
+
   def display_price
     price.to_i
   end
