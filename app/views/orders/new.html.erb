@@ -1,6 +1,6 @@
 <div id="new-order" class="row">
   <div class="content-wrapper">
-    <%= render partial: 'shared/checkout_progress', locals: { current: :customer_information } %>
+    <%= render 'shared/checkout_progress', current: :customer_information %>
   </div>
   <%= render 'cart_summary' %>
   <div class="six columns pull-six">
@@ -22,13 +22,13 @@
         <fieldset>
           <legend>Create an Account</legend>
           <p><%= link_to 'Already have an account? Click here to login.', new_user_session_path %></p>
-          <%= render partial: 'users/light_form', locals: { user: @user } %>
+          <%= render 'users/light_form', user: @user %>
         </fieldset>
       <% end %>
 
       <fieldset>
         <legend>Shipping Address</legend>
-        <%= render partial: 'addresses/form', locals: { parent_form: f, address_type: :shipping_address } %>
+        <%= render 'addresses/form', parent_form: f, address_type: :shipping_address %>
       </fieldset>
 
       <fieldset>
@@ -52,7 +52,7 @@
       <fieldset>
         <legend>Billing Address</legend>
         <label><input type="checkbox" name="billing-same-as-shipping" class="billing-shipping-label"> Billing address is the same as the shipping address.</label>
-        <%= render partial: 'addresses/form', locals: { parent_form: f, address_type: :billing_address } %>
+        <%= render 'addresses/form', parent_form: f, address_type: :billing_address %>
       </fieldset>
       <%= f.submit 'Review Order', class: 'button full-width large' %>
     <% end %>

@@ -12,9 +12,9 @@
       <span class="text">View Customizations</span>
     </a>
     <div class="customization-list-wrapper" style="display: none;">
-      <%= render partial: "carts/customization_list", locals: { customizations: customization_list(line_item.customization)[0..3] } %>
-      <%= render partial: "carts/customization_list", locals: { customizations: customization_list(line_item.customization)[4..7] } %>
-      <%= render partial: "carts/customization_list", locals: { customizations: customization_list(line_item.customization)[8..11] } %>
+      <%= render "carts/customization_list", customizations: customization_list(line_item.customization)[0..3] %>
+      <%= render "carts/customization_list", customizations: customization_list(line_item.customization)[4..7] %>
+      <%= render "carts/customization_list", customizations: customization_list(line_item.customization)[8..11] %>
       <div class="twelve columns">
         <a href="#" class="button edit-customizations">Edit Customizations</a>
       </div>

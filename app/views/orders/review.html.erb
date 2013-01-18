@@ -1,6 +1,6 @@
 <div id="review-order" class="row">
   <div class="content-wrapper">
-    <%= render partial: 'shared/checkout_progress', locals: { current: :review_order } %>
+    <%= render 'shared/checkout_progress', current: :review_order %>
   </div>
   <%= render 'cart_summary' %>
   <div class="six columns pull-six">
@@ -28,7 +28,7 @@
 
       <fieldset>
         <legend>Shipping Address</legend>
-        <%= render partial: 'addresses/non_editable', locals: { parent_form: f, address_type: :shipping_address } %>
+        <%= render 'addresses/non_editable', parent_form: f, address_type: :shipping_address %>
         <a href="#" class="edit-information">Edit Information</a>
       </fieldset>
 
@@ -50,7 +50,7 @@
 
       <fieldset>
         <legend>Billing Address</legend>
-        <%= render partial: 'addresses/non_editable', locals: { parent_form: f, address_type: :billing_address } %>
+        <%= render 'addresses/non_editable', parent_form: f, address_type: :billing_address %>
         <a href="#" class="edit-information">Edit Information</a>
       </fieldset>
       <%= f.submit 'Submit Order', class: 'button full-width large' %>

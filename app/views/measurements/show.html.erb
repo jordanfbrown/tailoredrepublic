@@ -1,5 +1,5 @@
 <div id="measurements">
-  <%= render partial: 'shared/checkout_progress', locals: { current: :measurements } %>
+  <%= render 'shared/checkout_progress', current: :measurements %>
   <div class="row">
     <div class="twelve columns">
       <h2>Measurements</h2>
@@ -24,7 +24,7 @@
       </ul>
       <ul class="measurements-list">
         <% measurement_metadata.each do |measurement, metadata| %>
-          <%= render partial: "measurement_slide", locals: { measurement: measurement, metadata: metadata} %>
+          <%= render "measurement_slide", measurement: measurement, metadata: metadata %>
         <% end %>
         <li class="measurement-list-item measurement-summary"></li>
       </ul>
