@@ -9,15 +9,7 @@
     </div>
     <h3>Order</h3>
     <%= form_for @order, url: { action: 'review' } do |f| %>
-      <% if @order.errors.any? %>
-        <p class="error">There were some problems submitting your order:</p>
-        <ul class="error">
-          <% @order.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      <% end %>
-
+      <%= render 'shared/form_errors', resource: @order %>
       <% unless user_signed_in? %>
         <fieldset>
           <legend>Create an Account</legend>

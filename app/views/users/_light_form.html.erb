@@ -1,12 +1,4 @@
-<% if user.errors.any? %>
-  <p class="error">There were some problems creating your account:</p>
-  <ul class="error">
-    <% user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
-
+<%= render 'shared/form_errors', resource: @user %>
 <%= fields_for user do |u| %>
   <%= u.label :name %>
   <%= u.text_field :name %>

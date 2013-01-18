@@ -12,7 +12,7 @@
     </div>
     <div class="three columns">
       <%= address_form.label 'State' %>
-      <%= address_form.select :state, us_states %>
+      <%= address_form.select :state, us_states, {}, class: 'state-dropdown' %>
     </div>
     <div class="three columns">
       <%= address_form.label 'Zip' %>

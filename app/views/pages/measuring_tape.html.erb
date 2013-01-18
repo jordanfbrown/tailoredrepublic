@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="twelve columns">
+    <h2>Get a Free Measuring Tape</h2>
+    <p>Input your name and address and we will send you a free Tailored Republic measuring tape.</p>
+  </div>
+</div>
+<div class="row">
+  <div class="six columns">
+    <fieldset>
+      <legend>Address</legend>
+      <%= render 'shared/form_errors', resource: @address %>
+      <%= form_for @address, url: { action: 'new_tape_address' } do |f| %>
+        <%= f.label 'Name' %>
+        <%= f.text_field :name %>
+        <%= f.label 'Address' %>
+        <%= f.text_field :line1 %>
+        <%= f.label 'Address 2 (Optional)' %>
+        <%= f.text_field :line2 %>
+        <div class="row">
+          <div class="six columns">
+            <%= f.label 'City' %>
+            <%= f.text_field :city %>
+          </div>
+          <div class="three columns">
+            <%= f.label 'State' %>
+            <%= f.select :state, us_states, {}, class: 'state-dropdown' %>
+          </div>
+          <div class="three columns">
+            <%= f.label 'Zip' %>
+            <%= f.text_field :zip %>
+          </div>
+        </div>
+        <%= f.submit 'Submit', class: 'button large full-width' %>
+      <% end %>
+    </fieldset>
+  </div>
+</div>

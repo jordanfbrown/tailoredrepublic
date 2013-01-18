@@ -378,12 +378,6 @@ a {
   margin-left: 33.333333%;
 }
 
-@media only screen and (max-width: 767px) {
-  .three {
-    width: 50% !important;
-  }
-}
-
 .reveal-modal-bg { position: fixed; height: 100%; width: 100%; background: #000; background: rgba(0, 0, 0, 0.75); z-index: 40; display: none; top: 0; left: 0; }
 
 .reveal-modal { background: #fff; visibility: hidden; display: none; top: 100px; left: 50%; margin-left: -260px; width: 520px; position: absolute; z-index: 41; padding: 30px; -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); }
@@ -458,7 +452,6 @@ legend {
       display: none !important;
     }
   }
-  
 }
 
 .top-bar ul.right .has-dropdown .dropdown {
@@ -475,3 +468,4 @@ legend {
 .top-bar ul > li.divider {
   @include box-shadow(1px 0 0 rgba(255, 255, 255, 0.2));
 }
+
