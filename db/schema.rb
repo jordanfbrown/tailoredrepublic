@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130117221528) do
+ActiveRecord::Schema.define(:version => 20130118041137) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -26,6 +26,9 @@ ActiveRecord::Schema.define(:version => 20130117221528) do
     t.datetime "updated_at",       :null => false
     t.string   "name"
   end
+
+  add_index "addresses", ["addressable_id"], :name => "index_addresses_on_addressable_id"
+  add_index "addresses", ["addressable_type"], :name => "index_addresses_on_addressable_type"
 
   create_table "carts", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -68,6 +71,11 @@ ActiveRecord::Schema.define(:version => 20130117221528) do
     t.integer  "order_id"
   end
 
+  add_index "line_items", ["cart_id"], :name => "index_line_items_on_cart_id"
+  add_index "line_items", ["customization_id"], :name => "index_line_items_on_customization_id"
+  add_index "line_items", ["order_id"], :name => "index_line_items_on_order_id"
+  add_index "line_items", ["product_id"], :name => "index_line_items_on_product_id"
+
   create_table "measurements", :force => true do |t|
     t.decimal  "neck"
     t.decimal  "full_shoulders"
@@ -90,12 +98,17 @@ ActiveRecord::Schema.define(:version => 20130117221528) do
     t.integer  "order_id"
   end
 
+  add_index "measurements", ["order_id"], :name => "index_measurements_on_order_id"
+  add_index "measurements", ["user_id"], :name => "index_measurements_on_user_id"
+
   create_table "orders", :force => true do |t|
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
     t.integer  "user_id"
     t.string   "stripe_charge_id"
   end
+
+  add_index "orders", ["user_id"], :name => "index_orders_on_user_id"
 
   create_table "products", :force => true do |t|
     t.string   "category"
