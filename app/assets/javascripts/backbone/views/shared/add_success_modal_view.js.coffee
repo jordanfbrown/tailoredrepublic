@@ -9,8 +9,9 @@ class TR.Views.AddSuccessModal extends TR.Views.Modal
     
   initialize: ->
     @subviews = []
+    productParams = data: $.param(suggested: true, product_id: @model.get 'id')
     @suggestedProducts = new TR.Collections.Products()
-    @suggestedProducts.fetch().then(=>
+    @suggestedProducts.fetch(productParams).then(=>
       @template = @getTemplate 'add_success_modal'
       @render()
     )

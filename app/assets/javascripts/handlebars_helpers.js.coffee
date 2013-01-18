@@ -33,4 +33,7 @@ Handlebars.registerHelper 'customizationHelper', (customization, lapel) ->
   else
     '<img src="/assets/icons/star-no-stroke.png">'
 
+Handlebars.registerPartial 'customizationCheckoutSuit', Handlebars.templates['_customization_checkout_suit.tmpl']
+Handlebars.registerPartial 'customizationCheckoutShirt', Handlebars.templates['_customization_checkout_shirt.tmpl']
+
 

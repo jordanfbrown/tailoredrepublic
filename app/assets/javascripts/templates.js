@@ -11,7 +11,61 @@ templates['_add_success_modal.tmpl'] = template(function (Handlebars,depth0,help
   stack1 = typeof stack1 === functionType ? stack1() : stack1;
   buffer += escapeExpression(stack1) + " has been added to your shopping cart.</h3>\n\n<div class=\"six columns button-column\">\n  <a href=\"/cart\" class=\"button\">View Cart</a>\n</div>\n<div class=\"six columns button-column\">\n  <a href=\"#\" class=\"button keep-shopping\">Keep Shopping</a>\n</div>\n\n<h4>Other styles you might also like:</h4>\n\n<div class=\"products-wrapper\">\n</div>\n\n";
   return buffer;});
-templates['_customization_checkout.tmpl'] = template(function (Handlebars,depth0,helpers,partials,data) {
+templates['_customization_checkout_shirt.tmpl'] = template(function (Handlebars,depth0,helpers,partials,data) {
+  helpers = helpers || Handlebars.helpers;
+  var buffer = "", stack1, foundHelper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this, functionType="function";
+
+function program1(depth0,data) {
+  
+  
+  return "Yes";}
+
+function program3(depth0,data) {
+  
+  
+  return "No";}
+
+function program5(depth0,data) {
+  
+  
+  return "\n  <a href=\"#\" class=\"add-to-cart\"><img src=\"/assets/icons/shopping-cart-black.png\"></a>\n  <a href=\"#\" class=\"button add-to-cart\">Add To Cart</a>\n  ";}
+
+function program7(depth0,data) {
+  
+  
+  return "\n  <a href=\"#\" class=\"button save-changes\">Save Changes</a>\n  ";}
+
+  buffer += "<ul class=\"six columns\">\n  <li><a href=\"#\" class=\"label\" data-type=\"collar\">Collar:</a> ";
+  stack1 = depth0.collar;
+  foundHelper = helpers.uppercaseFirst;
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "uppercaseFirst", stack1, {hash:{}});
+  buffer += escapeExpression(stack1) + "</li>\n  <li><a href=\"#\" class=\"label\" data-type=\"fit\">Fit:</a> ";
+  stack1 = depth0.fit;
+  foundHelper = helpers.uppercaseFirst;
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "uppercaseFirst", stack1, {hash:{}});
+  buffer += escapeExpression(stack1) + "</li>\n  <li><a href=\"#\" class=\"label\" data-type=\"pocket\">Pocket:</a> ";
+  stack1 = depth0.pocket;
+  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data)});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "</li>\n  <li><a href=\"#\" class=\"label\" data-type=\"monogram\">Monogram:</a>";
+  foundHelper = helpers.monogram;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.monogram; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + " (";
+  foundHelper = helpers.monogram_color;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.monogram_color; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + ")</li>\n</ul>\n<div class=\"six columns\">\n  <ul>\n    <li><span class=\"label\">Total cost:</span> $";
+  stack1 = depth0.price;
+  foundHelper = helpers.decimalToInteger;
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "decimalToInteger", stack1, {hash:{}});
+  buffer += escapeExpression(stack1) + "</li>\n  </ul>\n  ";
+  stack1 = depth0.isNew;
+  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(7, program7, data),fn:self.program(5, program5, data)});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n</div>";
+  return buffer;});
+templates['_customization_checkout_suit.tmpl'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, self=this;
 
@@ -139,7 +193,7 @@ function program21(depth0,data) {
   buffer += "\n</div>";
   return buffer;});
 templates['_customization_modal_shirt.tmpl'] = template(function (Handlebars,depth0,helpers,partials,data) {
-  helpers = helpers || Handlebars.helpers;
+  helpers = helpers || Handlebars.helpers; partials = partials || Handlebars.partials;
   var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, self=this;
 
 function program1(depth0,data) {
@@ -181,16 +235,6 @@ function program15(depth0,data) {
   
   
   return "class=\"checked\"";}
-
-function program17(depth0,data) {
-  
-  
-  return "\n            <a href=\"#\" class=\"add-to-cart\"><img src=\"/assets/icons/shopping-cart-black.png\"></a>\n            <a href=\"#\" class=\"button add-to-cart\">Add To Cart</a>\n          ";}
-
-function program19(depth0,data) {
-  
-  
-  return "\n            <a href=\"#\" class=\"button save-changes\">Save Changes</a>\n          ";}
 
   buffer += "<a class=\"close-reveal-modal\">&#215;</a>\n<h2>";
   stack1 = depth0.product;
@@ -264,34 +308,14 @@ function program19(depth0,data) {
   foundHelper = helpers.monogram;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.monogram; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\">\n          <input type=\"submit\" class=\"button full-width\" value=\"Ok\">\n        </form>\n      </div>\n      <p>Shirt monogramming can be up to 3 characters, and is almost exclusively used to sport some initials. The\n        monogram will show up on the sleeve cuff that will poke out the bottom of your suit sleeve. TR tip: keep the\n        shirt monogram subtle and make it the same color of the shirt. It is still noticeable without being obnoxious.\n        Black on black, white on white, pink on pink, you get the idea.</p>\n    </li>\n    <li class=\"customization-wrapper\" data-type=\"checkout\">\n      <h3>Checkout</h3>\n\n      <div class=\"customization-summary row\">\n        <ul class=\"six columns\">\n          <li><a href=\"#\" class=\"label\" data-type=\"collar\">Collar:</a> ";
-  stack1 = depth0.fit;
-  foundHelper = helpers.uppercaseFirst;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "uppercaseFirst", stack1, {hash:{}});
-  buffer += escapeExpression(stack1) + "</li>\n          <li><a href=\"#\" class=\"label\" data-type=\"fit\">Fit:</a> ";
-  stack1 = depth0.fit;
-  foundHelper = helpers.uppercaseFirst;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "uppercaseFirst", stack1, {hash:{}});
-  buffer += escapeExpression(stack1) + "</li>\n          <li><a href=\"#\" class=\"label\" data-type=\"pocket\">Pocket:</a> ";
-  stack1 = depth0.fit;
-  foundHelper = helpers.uppercaseFirst;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "uppercaseFirst", stack1, {hash:{}});
-  buffer += escapeExpression(stack1) + "</li>\n          <li><a href=\"#\" class=\"label\" data-type=\"monogram\">Monogram:</a> ";
-  foundHelper = helpers.fit;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.fit; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "</li>\n        </ul>\n        <div class=\"six columns\">\n          <ul>\n            <li><span class=\"label\">Total cost:</span> $";
-  stack1 = depth0.price;
-  foundHelper = helpers.decimalToInteger;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "decimalToInteger", stack1, {hash:{}});
-  buffer += escapeExpression(stack1) + "</li>\n          </ul>\n          ";
-  stack1 = depth0.isNew;
-  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(19, program19, data),fn:self.program(17, program17, data)});
+  buffer += escapeExpression(stack1) + "\">\n          <input type=\"submit\" class=\"button full-width\" value=\"Ok\">\n        </form>\n      </div>\n      <p>Shirt monogramming can be up to 3 characters, and is almost exclusively used to sport some initials. The\n        monogram will show up on the sleeve cuff that will poke out the bottom of your suit sleeve. TR tip: keep the\n        shirt monogram subtle and make it the same color of the shirt. It is still noticeable without being obnoxious.\n        Black on black, white on white, pink on pink, you get the idea.</p>\n    </li>\n    <li class=\"customization-wrapper\" data-type=\"checkout\">\n      <h3>Checkout</h3>\n      <div class=\"customization-summary row\">\n        ";
+  stack1 = depth0;
+  stack1 = self.invokePartial(partials.customizationCheckoutShirt, 'customizationCheckoutShirt', stack1, helpers, partials);;
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n        </div>\n      </div>\n    </li>\n  </ul>\n</div>\n<div class=\"row\">\n  <div class=\"six columns\">\n    <a href=\"#\" class=\"button previous\" style=\"display: none;\">Previous</a>\n  </div>\n  <div class=\"six columns\">\n    <a href=\"#\" class=\"button next\">Next</a>\n  </div>\n</div>";
+  buffer += "\n      </div>\n    </li>\n  </ul>\n</div>\n<div class=\"row\">\n  <div class=\"six columns\">\n    <a href=\"#\" class=\"button previous\" style=\"display: none;\">Previous</a>\n  </div>\n  <div class=\"six columns\">\n    <a href=\"#\" class=\"button next\">Next</a>\n  </div>\n</div>";
   return buffer;});
 templates['_customization_modal_suit.tmpl'] = template(function (Handlebars,depth0,helpers,partials,data) {
-  helpers = helpers || Handlebars.helpers;
+  helpers = helpers || Handlebars.helpers; partials = partials || Handlebars.partials;
   var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, self=this;
 
 function program1(depth0,data) {
@@ -413,71 +437,6 @@ function program47(depth0,data) {
   
   
   return "class=\"checked\"";}
-
-function program49(depth0,data) {
-  
-  
-  return "Yes";}
-
-function program51(depth0,data) {
-  
-  
-  return "No";}
-
-function program53(depth0,data) {
-  
-  
-  return "Yes";}
-
-function program55(depth0,data) {
-  
-  
-  return "No";}
-
-function program57(depth0,data) {
-  
-  
-  return "Yes";}
-
-function program59(depth0,data) {
-  
-  
-  return "No";}
-
-function program61(depth0,data) {
-  
-  var buffer = "", stack1, foundHelper;
-  buffer += "Yes (+$";
-  foundHelper = helpers.vestPrice;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.vestPrice; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + ")";
-  return buffer;}
-
-function program63(depth0,data) {
-  
-  
-  return "No";}
-
-function program65(depth0,data) {
-  
-  var buffer = "", stack1, foundHelper;
-  buffer += "\n          <li><a href=\"#\" class=\"label\" data-type=\"vest_buttons\">Vest Buttons:</a> ";
-  foundHelper = helpers.vest_buttons;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.vest_buttons; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "</li>\n          ";
-  return buffer;}
-
-function program67(depth0,data) {
-  
-  
-  return "\n          <a href=\"#\" class=\"add-to-cart\"><img src=\"/assets/icons/shopping-cart-black.png\"></a>\n          <a href=\"#\" class=\"button add-to-cart\">Add To Cart</a>\n          ";}
-
-function program69(depth0,data) {
-  
-  
-  return "\n          <a href=\"#\" class=\"button save-changes\">Save Changes</a>\n          ";}
 
   buffer += "<a class=\"close-reveal-modal\">&#215;</a>\n<h2>";
   stack1 = depth0.product;
@@ -668,63 +627,11 @@ function program69(depth0,data) {
   foundHelper = helpers.ifVest;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, 5, {hash:{},inverse:self.noop,fn:self.program(47, program47, data)}) : helperMissing.call(depth0, "ifVest", stack1, 5, {hash:{},inverse:self.noop,fn:self.program(47, program47, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += " src=\"/assets/customizations/suits/vest-five.png\">\n      </a>\n      <p>Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons!\n        Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest\n        buttons!</p>\n    </li>\n    <li class=\"customization-wrapper\" data-type=\"checkout\">\n      <h3>Checkout</h3>\n      <div class=\"customization-summary row\">\n        <ul class=\"four columns\">\n          <li><a href=\"#\" class=\"label\" data-type=\"lapel\">Lapel:</a> ";
-  stack1 = depth0.lapel;
-  foundHelper = helpers.uppercaseFirst;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "uppercaseFirst", stack1, {hash:{}});
-  buffer += escapeExpression(stack1) + "</li>\n          <li><a href=\"#\" class=\"label\" data-type=\"buttons\">Buttons:</a> ";
-  stack1 = depth0.buttons;
-  foundHelper = helpers.numberToString;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "numberToString", stack1, {hash:{}});
-  buffer += escapeExpression(stack1) + "</li>\n          <li><a href=\"#\" class=\"label\" data-type=\"vents\">Vents:</a> ";
-  stack1 = depth0.vents;
-  foundHelper = helpers.numberToString;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "numberToString", stack1, {hash:{}});
-  buffer += escapeExpression(stack1) + "</li>\n          <li><a href=\"#\" class=\"label\" data-type=\"pleats\">Pleats:</a> ";
-  stack1 = depth0.pleats;
-  foundHelper = helpers.numberToString;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "numberToString", stack1, {hash:{}});
-  buffer += escapeExpression(stack1) + "</li>\n          <li><a href=\"#\" class=\"label\" data-type=\"pant_cuffs\">Cuffs:</a> ";
-  stack1 = depth0.pant_cuffs;
-  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(51, program51, data),fn:self.program(49, program49, data)});
+  buffer += " src=\"/assets/customizations/suits/vest-five.png\">\n      </a>\n      <p>Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons!\n        Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest\n        buttons!</p>\n    </li>\n    <li class=\"customization-wrapper\" data-type=\"checkout\">\n      <h3>Checkout</h3>\n      <div class=\"customization-summary row\">\n        ";
+  stack1 = depth0;
+  stack1 = self.invokePartial(partials.customizationCheckoutSuit, 'customizationCheckoutSuit', stack1, helpers, partials);;
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "</li>\n          <li><a href=\"#\" class=\"label\" data-type=\"fit\">Fit:</a> ";
-  stack1 = depth0.fit;
-  foundHelper = helpers.uppercaseFirst;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "uppercaseFirst", stack1, {hash:{}});
-  buffer += escapeExpression(stack1) + "</li>\n        </ul>\n        <ul class=\"four columns\">\n          <li><a href=\"#\" class=\"label\" data-type=\"lining\">Lining:</a> ";
-  foundHelper = helpers.lining;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.lining; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "</li>\n          <li><a href=\"#\" class=\"label\" data-type=\"monogram\">Monogram:</a> ";
-  foundHelper = helpers.monogram;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.monogram; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "</li>\n          <li><a href=\"#\" class=\"label\" data-type=\"advanced\">Bouttoniere:</a> ";
-  stack1 = depth0.bouttoniere;
-  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(55, program55, data),fn:self.program(53, program53, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "</li>\n          <li><a href=\"#\" class=\"label\" data-type=\"advanced\">Pick Stitching:</a> ";
-  stack1 = depth0.pick_stitching;
-  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(59, program59, data),fn:self.program(57, program57, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "</li>\n          <li><a href=\"#\" class=\"label\" data-type=\"vest\">Vest:</a> ";
-  stack1 = depth0.vest;
-  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(63, program63, data),fn:self.program(61, program61, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "</li>\n          ";
-  stack1 = depth0.vest;
-  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(65, program65, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n        </ul>\n        <div class=\"four columns\">\n          <ul>\n            <li><span class=\"label\">Total cost:</span> $";
-  stack1 = depth0.price;
-  foundHelper = helpers.decimalToInteger;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "decimalToInteger", stack1, {hash:{}});
-  buffer += escapeExpression(stack1) + "</li>\n          </ul>\n          ";
-  stack1 = depth0.isNew;
-  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(69, program69, data),fn:self.program(67, program67, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n        </div>\n      </div>\n    </li>\n  </ul>\n</div>\n<div class=\"row\">\n  <div class=\"six columns\">\n    <a href=\"#\" class=\"button previous\" style=\"display: none;\">Previous</a>\n  </div>\n  <div class=\"six columns\">\n    <a href=\"#\" class=\"button next\">Next</a>\n  </div>\n</div>";
+  buffer += "\n      </div>\n    </li>\n  </ul>\n</div>\n<div class=\"row\">\n  <div class=\"six columns\">\n    <a href=\"#\" class=\"button previous\" style=\"display: none;\">Previous</a>\n  </div>\n  <div class=\"six columns\">\n    <a href=\"#\" class=\"button next\">Next</a>\n  </div>\n</div>";
   return buffer;});
 templates['_dialog_modal.tmpl'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;

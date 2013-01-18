@@ -4,7 +4,11 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    if params[:suggested]
+      @products = Product.suggested(params[:product_id])
+    else
+      @products = Product.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb

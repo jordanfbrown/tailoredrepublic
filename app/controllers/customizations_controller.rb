@@ -1,11 +1,11 @@
 class CustomizationsController < ApplicationController
   def create
-    customization = Customization.create params[:customization]
+    customization = Customization.create!(params[:customization])
     render json: customization
   end
 
   def update
-    customization = Customization.find params[:id]
+    customization = Customization.find(params[:id])
     if customization.update_attributes params[:customization]
       render json: customization
     else
@@ -14,7 +14,7 @@ class CustomizationsController < ApplicationController
   end
 
   def show
-    customization = Customization.find params[:id]
+    customization = Customization.find(params[:id])
     render json: customization
   end
 end

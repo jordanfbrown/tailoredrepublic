@@ -87,25 +87,8 @@
     </li>
     <li class="customization-wrapper" data-type="checkout">
       <h3>Checkout</h3>
-
       <div class="customization-summary row">
-        <ul class="six columns">
-          <li><a href="#" class="label" data-type="collar">Collar:</a> {{uppercaseFirst fit}}</li>
-          <li><a href="#" class="label" data-type="fit">Fit:</a> {{uppercaseFirst fit}}</li>
-          <li><a href="#" class="label" data-type="pocket">Pocket:</a> {{uppercaseFirst fit}}</li>
-          <li><a href="#" class="label" data-type="monogram">Monogram:</a> {{fit}}</li>
-        </ul>
-        <div class="six columns">
-          <ul>
-            <li><span class="label">Total cost:</span> ${{decimalToInteger price}}</li>
-          </ul>
-          {{#if isNew}}
-            <a href="#" class="add-to-cart"><img src="/assets/icons/shopping-cart-black.png"></a>
-            <a href="#" class="button add-to-cart">Add To Cart</a>
-          {{else}}
-            <a href="#" class="button save-changes">Save Changes</a>
-          {{/if}}
-        </div>
+        {{> customizationCheckoutShirt}}
       </div>
     </li>
   </ul>

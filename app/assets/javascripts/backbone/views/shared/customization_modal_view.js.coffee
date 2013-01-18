@@ -22,10 +22,10 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
 
   initialize: (options) ->
     @product = options.product
-    @customization = options.customization || new TR.Models.Customization()
+    @customization = options.customization || new TR.Models.Customization({}, {category: @product.get('category')})
     @customization.on 'change', @updateCheckoutSlide
     @template = @getTemplate "customization_modal_#{@product.get('category')}"
-    @checkoutTemplate = @getTemplate 'customization_checkout'
+    @checkoutTemplate = @getTemplate "customization_checkout_#{@product.get('category')}"
     @render()
     @slider = @$('.customization-list').bxSlider
       pager: off

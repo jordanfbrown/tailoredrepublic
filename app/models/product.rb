@@ -32,6 +32,11 @@ class Product < ActiveRecord::Base
     self.all(limit: 4)
   end
 
+  def self.suggested(product_id)
+    # TODO: come up with real suggested products instead of first 4 products
+    self.all(limit: 4)
+  end
+
   private
     def ensure_not_referenced_by_line_item
       if line_items.empty?
