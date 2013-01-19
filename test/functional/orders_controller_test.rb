@@ -36,6 +36,15 @@ class OrdersControllerTest < ActionController::TestCase
     assert_redirected_to '/measurements'
   end
 
+  test "Should populate credit card info when a logged in user has a stripe_customer_id" do
+    set_full_cart_cookie
+    sign_in :user, users(:user_with_stripe)
+    get :new
+    assert_select 'form #card_number' do
+      assert_select '[value=?]', /.+/
+    end
+  end
+
   test "Should redirect to measurements when an existing user has no measurements" do
     user = users(:user_without_stripe)
     user.measurement = nil
