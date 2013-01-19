@@ -113,7 +113,7 @@
 
 //About Us
 #about {
-  margin-bottom: 100px;
+  padding-bottom: 50px;
   @include clearfix;
 
   #get-tailored {
@@ -145,7 +145,7 @@
     img {
       display: block;
       margin: auto;
-      margin-bottom: 10px;
+      margin-bottom: 30px;
     }
   }
 
@@ -155,14 +155,21 @@
     font-weight: bold;
     line-height: 1;
     font-size: 22px;
+
+    &:last-child {
+      margin-top: 40px;
+    }
   }
 
-  p.extra {
+  .extra {
     color: $maple;
-    font-size: 22px;
     @include font("clean");
     font-weight: bold;
     margin-top: 40px;
+
+    li {
+      font-size: 22px;
+    }
 
     .divider {
       color: #fff;
@@ -174,8 +181,9 @@
 
 #no-fabrication {
   @include clearfix;
-  padding: 140px 0;
+  padding: 100px 0;
   background: url(textures/tr-texture-2.png) repeat center center;
+  background-color: #fff;
   h3 {
     text-align: center;
     @include font("fancy");
@@ -185,8 +193,6 @@
   }
 }
 
-
-//Lookbook
 #lookbook {
   padding-top: 0;
 
