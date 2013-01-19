@@ -1,6 +1,4 @@
 class PagesController < ApplicationController
-  caches_page :faq
-
   def measuring_tape
     @address = Address.new
   end
