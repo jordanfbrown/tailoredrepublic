@@ -28,7 +28,7 @@ class TR.Views.Measurements extends TR.Views.Base
       controls: off
       infiniteLoop: off
       onSlideBefore: @onSlideBefore
-      adaptiveHeight: on
+      adaptiveHeight: off
 
     @currentTapeValue = @model.get 'neck' || @model.defaults.neck
     $(window).resize @resize
