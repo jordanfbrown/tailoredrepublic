@@ -1,6 +1,8 @@
 class TR.Views.CustomizationModal extends TR.Views.Modal
   id: 'customization-modal'
 
+  className: 'reveal-modal xlarge'
+
   events: ->
     _.extend super,
       'click a.customization-option': 'setCustomization'
@@ -35,6 +37,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
       onSlideAfter: @onSlideAfter
       adaptiveHeight: on
     $(document).on 'keydown.customization', @keydown
+    $(window).on 'resize.customization', @resize
 
   render: =>
     @$el.html @template @getTemplateData()
@@ -46,6 +49,12 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
       @slider.goToPrevSlide()
     else if e.which == 39 # Right arrow
       @slider.goToNextSlide()
+
+  resize: =>
+    if $(window).width() < 768
+      @$el.removeClass('xlarge').addClass('expand')
+    else
+      @$el.removeClass('expand').addClass('xlarge')
 
   onSlideBefore: ($el, oldIndex, newIndex) =>
     slideCount = @slider.getSlideCount()
@@ -107,8 +116,9 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     @slider.goToNextSlide()
 
   destroy: ->
-    super()
     $(document).off 'keydown.customization'
+    $(document).off 'resize.customization'
+    super()
 
   getCurrentCustomization: ->
     @$('.customization-wrapper:visible')

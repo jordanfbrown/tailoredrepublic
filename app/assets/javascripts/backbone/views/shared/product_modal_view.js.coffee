@@ -3,6 +3,8 @@
 class TR.Views.ProductModal extends TR.Views.Modal
   id: 'product-modal'
 
+  className: 'reveal-modal xlarge'
+
   events: ->
     _.extend super,
       'mousemove': 'mousemove'
@@ -11,12 +13,19 @@ class TR.Views.ProductModal extends TR.Views.Modal
   initialize: (options) ->
     @customization = options.customization
     @template = @getTemplate 'product_modal'
+    $(window).on 'resize.product', @resize
     @render()
 
   render: ->
     @$el.html @template @model.toJSON()
     @enableMagnifier();
     super()
+
+  resize: =>
+    if $(window).width() < 768
+      @$el.removeClass('xlarge').addClass('expand')
+    else
+      @$el.removeClass('expand').addClass('xlarge')
 
   # This ensures that the magnifier is hidden when the mouse is no longer over the image
   mousemove: (e) ->
@@ -41,4 +50,9 @@ class TR.Views.ProductModal extends TR.Views.Modal
 
   hideMagnifier: ->
     @$('.magnify-large').hide()
+
+  destroy: ->
+    $(window).off 'resize.product'
+    super()
+
 
