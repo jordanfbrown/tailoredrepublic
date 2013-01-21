@@ -21,7 +21,7 @@
         <%= image_tag "process/choose-suit.png" %>
       </div>
       <p>Getting a tailored suit will change your suit game completely. It as an eye-opening realization when your suit
-        fits properly. <a href="#">Choose your suit</a> fabric/pattern and get started.</p>
+        fits properly. <%= link_to 'Choose your suit', '/shop/suits' %> fabric/pattern and get started.</p>
     </div>
     <div class="four columns">
       <h4>Customize your suit</h4>
@@ -37,8 +37,8 @@
         <%= image_tag "process/input-measurements.png" %>
       </div>
       <p>If you don’t know this already, it is all about the Tailored fit. Grab a friend and use our
-        <a href="#">simple videos</a> to measure yourself in 10 quick minutes. Don’t have a tape measure? Input your
-        info <a href="#">here</a> and we will send you a free one.</p>
+        <%= link_to 'simple videos', measurements_path %> to measure yourself in 10 quick minutes. Don’t have a tape
+        measure? Input your info <%= link_to 'here', measuring_tape_path %> and we will send you a free one.</p>
     </div>
   </div>
   <div class="content-wrapper">
