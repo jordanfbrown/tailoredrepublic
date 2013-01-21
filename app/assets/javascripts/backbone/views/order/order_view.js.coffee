@@ -24,6 +24,8 @@ class TR.Views.Order extends TR.Views.Base
       else
         TR.createStripeToken @stripeResponseHandler
         false
+    else
+      false
   
   stripeResponseHandler: (status, response) =>
     if response.error
@@ -38,7 +40,7 @@ class TR.Views.Order extends TR.Views.Base
 
   copyShippingToBilling: ->
     for field in ['name', 'line1', 'line2', 'city', 'state', 'zip']
-      @$("#billing_address_#{field}").val @$("#shipping_address_#{field}").val()
+      @$("#order_billing_address_attributes_#{field}").val @$("#order_shipping_address_attributes_#{field}").val()
 
   setError: ($input, message) ->
     $input.addClass 'error'
@@ -52,7 +54,7 @@ class TR.Views.Order extends TR.Views.Base
     $input.removeClass('error').next('.error').fadeOut()
 
   copyUserNameToShippingName: (e) ->
-    @$('#shipping_address_name').val $(e.currentTarget).val()
+    @$('#order_shipping_address_attributes_name').val $(e.currentTarget).val()
 
   toggleSavedCreditCard: (e) ->
     if $(e.currentTarget).is ':checked'
@@ -82,14 +84,14 @@ class TR.Views.Order extends TR.Views.Base
 #      valid = false
 
     nonEmptyFields = [
-      '#shipping_address_name'
-      '#shipping_address_line1'
-      '#shipping_address_city'
-      '#shipping_address_zip'
-      '#billing_address_name'
-      '#billing_address_line1'
-      '#billing_address_city'
-      '#billing_address_zip'
+      '#order_shipping_address_attributes_name'
+      '#order_shipping_address_attributes_line1'
+      '#order_shipping_address_attributes_city'
+      '#order_shipping_address_attributes_zip'
+      '#order_billing_address_attributes_name'
+      '#order_billing_address_attributes_line1'
+      '#order_billing_address_attributes_city'
+      '#order_billing_address_attributes_zip'
     ]
 
     @$(nonEmptyFields.join(', ')).each (index, el) =>
