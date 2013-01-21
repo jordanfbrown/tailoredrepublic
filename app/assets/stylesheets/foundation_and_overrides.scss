@@ -349,7 +349,13 @@ table {
 }
 
 p a {
-  font-weight: bold;;
+  color: $darker-brown;
+  font-weight: bold;
+
+  &:hover {
+    color: $darker-brown;
+    text-decoration: underline;
+  }
 }
 
 a {
