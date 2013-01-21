@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_filter :ensure_cart_not_empty, :ensure_measurement_not_nil, except: :thank_you
+  before_filter :ensure_cart_not_empty, :ensure_measurement_not_nil, except: [:thank_you, :index]
 
   def new
     set_stripe_customer
@@ -26,6 +26,14 @@ class OrdersController < ApplicationController
   def show
     if params[:id] == 'review'
       redirect_to new_order_path
+    end
+  end
+
+  def index
+    if !user_signed_in?
+      redirect_to root_path
+    else
+      @orders = current_user.eager_orders
     end
   end
 

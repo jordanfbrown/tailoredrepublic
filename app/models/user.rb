@@ -68,4 +68,8 @@ class User < ActiveRecord::Base
     )
     charge[:id]
   end
+
+  def eager_orders
+    orders.includes({line_items: :product}, :shipping_address, :billing_address).reverse
+  end
 end

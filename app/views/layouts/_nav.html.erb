@@ -38,9 +38,9 @@
           <% if user_signed_in?  %>
             <%= link_to current_user.name, edit_user_registration_path, class: 'username' %>
             <ul class="dropdown">
-              <li><%= link_to "Settings", edit_user_registration_path %></li>
-              <li><%= link_to "Measurements", measurements_path %></li>
-              <li><a href="#">Order History</a></li>
+              <li><%= link_to 'Settings', edit_user_registration_path %></li>
+              <li><%= link_to 'Measurements', measurements_path %></li>
+              <li><%= link_to 'Order History', '/orders' %>
             </ul>
           <% else %>
             <a href="/users/sign_in">Login</a>

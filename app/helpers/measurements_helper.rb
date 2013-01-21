@@ -101,7 +101,6 @@ module MeasurementsHelper
           'Stand straight with your arms comfortably at your side and remain looking straight forward',
           'Start at the intersection where the rise of your Neck meets the surface of your shoulder and measure directly down your body',
           'End the measurement at the level in between your thumb knuckles',
-          'See video for exact technique',
           'Important note: It is the tendency of the person being measured to lean forward and look down at the measuring tape as the measurer brings it down to their thumb. Do not do this or it will result in the measurement being too short; remain standing straight and looking straight forward.'
         ]
       },
@@ -109,11 +108,10 @@ module MeasurementsHelper
         url: '8F1gGzlGu0U',
         steps: [
           'This measurement will determine the length of the seam running from your fly to the top of your butt.  The goal here is to make it tight enough to look like proper tailored pants, but not so tight as to cause a ball wedgie (seriously).',
-          'Make sure the waistline of your pants is at the level where you would wear your dress pants (this may differ from where you wear shorts/sweats)',
+          'Make sure the waistline of your pants is at the level where you would wear your dress pants',
           'Start this measurement at the back of the waistline as seen in the video',
           'Run the tape down the middle seam passing under the crotch',
-          'Bring it to the front side of the pants',
-          'End the measurement at the top of the waistline on the front'
+          'Bring it to the front side of the pants and end the measurement at the top of the waistline on the front'
         ]
       },
       thigh: {

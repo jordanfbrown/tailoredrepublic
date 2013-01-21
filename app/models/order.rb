@@ -40,6 +40,10 @@ class Order < ActiveRecord::Base
     end
   end
 
+  def total_cost
+    line_items.map { |c| c.total_price }.sum.to_i
+  end
+
   after_rollback do |order|
     charge = Stripe::Charge.retrieve order.stripe_charge_id
     charge.refund

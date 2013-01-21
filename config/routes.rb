@@ -14,7 +14,7 @@ TailoredRepublic::Application.routes.draw do
   resource  :measurements, only: [:show, :create, :update]
   resources :products
   resources :line_items, only: [:create, :destroy]
-  resources :orders, only: [:show, :new, :create] do
+  resources :orders, only: [:show, :new, :create, :index] do
     collection do
       post 'review'
       post 'new', path: 'new'

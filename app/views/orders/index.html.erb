@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="twelve columns">
+    <h2>Order History</h2>
+  </div>
+</div>
+
+<% @orders.each do |order| %>
+  <div class="order-list-item">
+    <div class="four columns">
+      <ul>
+        <li>Order placed on <strong><%= order.created_at.to_date.to_formatted_s(:long_ordinal) %></strong>.</li>
+        <li>Order number: <strong><%= order.stripe_charge_id %></strong>.</li>
+      </ul>
+      <ul class="items-purchased">
+        <li><strong>Items purchased:</strong></li>
+        <% order.line_items.each do |line_item|  %>
+          <li><%= line_item.product.name %> <span class="divider">//</span> $<%= line_item.total_price %></span></li>
+        <% end %>
+        <li>Total cost: $<%= order.total_cost %></li>
+      </ul>
+    </div>
+    <div class="four columns">
+      <ul>
+        <li><strong>Sent to:</strong></li>
+        <li><%= order.shipping_address.name %></li>
+        <li><%= order.shipping_address.line1 %></li>
+        <li><%= order.shipping_address.line2 %></li>
+        <li><%= order.shipping_address.city %>, <%= order.shipping_address.state %>, <%= order.shipping_address.zip %></li>
+      </ul>
+    </div>
+    <div class="four columns">
+      <ul>
+        <li><strong>Billed to:</strong></li>
+        <li><%= order.billing_address.name %></li>
+        <li><%= order.billing_address.line1 %></li>
+        <li><%= order.billing_address.line2 %></li>
+        <li><%= order.billing_address.city %>, <%= order.billing_address.state %>, <%= order.billing_address.zip %></li>
+      </ul>
+    </div>
+  </div>
+<% end %>
