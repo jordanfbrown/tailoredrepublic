@@ -4,13 +4,13 @@ class OrdersController < ApplicationController
   def new
     set_stripe_customer
     if request.post?
-      @user = User.new_from_params_and_measurement(params, @measurement)
+      @user = user_signed_in? ? current_user : User.new_from_params_and_measurement(params, @measurement)
       @order = Order.new_order(params[:order], @user, @cart)
       @card_token = params[:stripe_card_token]
       @card_last4 = params[:card_last4]
       @card_exp_month = params[:card_exp_month]
       @card_exp_year = params[:card_exp_year]
-      @password = params[:user][:password]
+      @password = params[:user][:password] if params[:user]
       @save_card_for_later = params[:save_card_for_later]
     else
       if user_signed_in?
