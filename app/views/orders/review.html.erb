@@ -1,9 +1,7 @@
 <div id="review-order" class="row">
-  <div class="content-wrapper">
-    <%= render 'shared/checkout_progress', current: :review_order %>
-  </div>
+  <%= render 'shared/checkout_progress', current: :review_order %>
   <%= render 'cart_summary' %>
-  <div class="six columns pull-six">
+  <div class="six columns pull-six content-wrapper">
     <div id="stripe_error" class="error">
       <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
     </div>
