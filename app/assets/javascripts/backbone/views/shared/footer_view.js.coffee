@@ -6,11 +6,10 @@ class TR.Views.Footer extends TR.Views.Base
     'submit form': 'subscribeToNewsletter'
 
   initialize: ->
-    $(window).resize(=>
+    $(window).resize =>
       if $(window).width() >= 768
         @$('ul').css('display', '')
         @$('h5 span').text '+'
-    )
 
   expandSection: (e) ->
     if $(window).width() < 768
