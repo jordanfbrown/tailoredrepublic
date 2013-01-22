@@ -17,11 +17,6 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
       'submit #monogram-form': 'submitMonogram'
       'click .advanced-checkbox': 'setAdvancedOption'
 
-  PROGRESS:
-    COMPLETED: '/assets/icons/star-stroke.png'
-    TODO: '/assets/icons/star-no-stroke.png'
-    CURRENT: '/assets/icons/star-filled.png'
-
   initialize: (options) ->
     @product = options.product
     @customization = options.customization || new TR.Models.Customization({}, {category: @product.get('category')})
@@ -38,6 +33,11 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
       adaptiveHeight: on
     $(document).on 'keydown.customization', @keydown
     $(window).on 'resize.customization', @resize
+
+    @PROGRESS =
+      COMPLETED: TR.ASSET_HOST + '/assets/icons/star-stroke.png'
+      TODO: TR.ASSET_HOST + '/assets/icons/star-no-stroke.png'
+      CURRENT: TR.ASSET_HOST + '/assets/icons/star-filled.png'
 
   render: =>
     @$el.html @template @getTemplateData()

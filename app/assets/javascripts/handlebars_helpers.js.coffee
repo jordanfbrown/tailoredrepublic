@@ -25,13 +25,16 @@ Handlebars.registerHelper 'ifVest', (customization, numButtons, options) ->
 
 Handlebars.registerHelper 'customizationHelper', (customization, lapel) ->
   if lapel == true && customization
-    '<img class="selected completed" src="/assets/icons/star-filled.png">'
+    '<img class="selected completed" src="' + TR.ASSET_HOST + '/assets/icons/star-filled.png">'
   else if lapel == true
-    '<img class="selected" src="/assets/icons/star-filled.png">'
+    '<img class="selected" src="' + TR.ASSET_HOST + '/assets/icons/star-filled.png">'
   else if customization
-    '<img class="completed" src="/assets/icons/star-stroke.png">'
+    '<img class="completed" src="' + TR.ASSET_HOST + '/assets/icons/star-stroke.png">'
   else
-    '<img src="/assets/icons/star-no-stroke.png">'
+    '<img src="' + TR.ASSET_HOST + '/assets/icons/star-no-stroke.png">'
+
+Handlebars.registerHelper 'imgSrc', (path) ->
+  TR.ASSET_HOST + '/assets/' + path
 
 Handlebars.registerPartial 'customizationCheckoutSuit', Handlebars.templates['_customization_checkout_suit.tmpl']
 Handlebars.registerPartial 'customizationCheckoutShirt', Handlebars.templates['_customization_checkout_shirt.tmpl']

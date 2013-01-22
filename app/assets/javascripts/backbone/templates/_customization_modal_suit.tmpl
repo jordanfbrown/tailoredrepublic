@@ -13,25 +13,25 @@
     <li data-type="advanced">{{{customizationHelper customization}}}</li>
     <li data-type="vest">{{{customizationHelper customization}}}</li>
     <li data-type="vest_buttons">{{{customizationHelper vest}}}</li>
-    <li data-type="checkout"><img src="/assets/icons/star-no-stroke.png"></li>
+    <li data-type="checkout"><img src="{{imgSrc 'icons/star-no-stroke.png'}}"></li>
   </ul>
   <ul class="customization-list">
     <li class="customization-wrapper" data-type="lapel">
       <h3>Lapel</h3>
       <a href="#" class="customization-option four" data-option="notch">
         <h5>Notch</h5>
-        <img {{#ifeq lapel "notch"}}class="checked"{{/ifeq}} src="/assets/customizations/suits/lapel-notch.png">
+        <img {{#ifeq lapel "notch"}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/lapel-notch.png'}}">
         <div class="recommended">
-          <img src="/assets/logos/logo-stitch.png" class="shield"><span>Recommended</span>
+          <img src="{{imgSrc 'logos/logo-stitch.png'}}" class="shield"><span>Recommended</span>
         </div>
       </a>
       <a href="#" class="customization-option four" data-option="peak">
         <h5>Peak</h5>
-        <img {{#ifeq lapel "peak"}}class="checked"{{/ifeq}} src="/assets/customizations/suits/lapel-peak.png">
+        <img {{#ifeq lapel "peak"}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/lapel-peak.png'}}">
       </a>
       <a href="#" class="customization-option four" data-option="narrow">
         <h5>Narrow</h5>
-        <img {{#ifeq lapel "narrow"}}class="checked"{{/ifeq}} src="/assets/customizations/suits/lapel-narrow.png">
+        <img {{#ifeq lapel "narrow"}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/lapel-narrow.png'}}">
       </a>
       <p>Notch lapels are the most widely used lapels and are a safe and stylish choice for any suit. Peak lapels add a
         little pizazz for those who want to stand out. TR tip: If you are unsure, go with the notch lapel, you don’t
@@ -41,18 +41,18 @@
       <h3>Buttons</h3>
       <a href="#" class="customization-option four" data-option="1">
         <h5>One</h5>
-        <img {{#ifeq buttons 1}}class="checked"{{/ifeq}} src="/assets/customizations/suits/buttons-one.png">
+        <img {{#ifeq buttons 1}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/buttons-one.png'}}">
       </a>
       <a href="#" class="customization-option four" data-option="2">
         <h5>Two</h5>
-        <img {{#ifeq buttons 2}}class="checked"{{/ifeq}} src="/assets/customizations/suits/buttons-two.png">
+        <img {{#ifeq buttons 2}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/buttons-two.png'}}">
         <div class="recommended">
-          <img src="/assets/logos/logo-stitch.png" class="shield"><span>Recommended</span>
+          <img src="{{imgSrc 'logos/logo-stitch.png'}}" class="shield"><span>Recommended</span>
         </div>
       </a>
       <a href="#" class="customization-option four" data-option="3">
         <h5>Three</h5>
-        <img {{#ifeq buttons 3}}class="checked"{{/ifeq}} src="/assets/customizations/suits/buttons-three.png">
+        <img {{#ifeq buttons 3}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/buttons-three.png'}}">
       </a>
       <p>The modern standard and a fashionable choice is the two button suit. Two button suits fit more of a classic
         style and look great on taller guys. A one button suit is a very stylish option for those who want to be
@@ -62,18 +62,18 @@
       <h3>Vents</h3>
       <a href="#" class="customization-option four" data-option="0">
         <h5>None</h5>
-        <img {{#ifeq vents 0}}class="checked"{{/ifeq}} src="/assets/customizations/suits/vents-none.png">
+        <img {{#ifeq vents 0}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/vents-none.png'}}">
       </a>
       <a href="#" class="customization-option four" data-option="1">
         <h5>One</h5>
-        <img {{#ifeq vents 1}}class="checked"{{/ifeq}} src="/assets/customizations/suits/vents-one.png">
+        <img {{#ifeq vents 1}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/vents-one.png'}}">
         <div class="recommended">
-          <img src="/assets/logos/logo-stitch.png" class="shield"><span>Recommended</span>
+          <img src="{{imgSrc 'logos/logo-stitch.png'}}" class="shield"><span>Recommended</span>
         </div>
       </a>
       <a href="#" class="customization-option four" data-option="2">
         <h5>Two</h5>
-        <img {{#ifeq vents 2}}class="checked"{{/ifeq}} src="/assets/customizations/suits/vents-two.png">
+        <img {{#ifeq vents 2}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/vents-two.png'}}">
       </a>
       <p>Having two vents is the traditional, safe and stylish choice. One vent is a way to make your suit modern and
         sleek without distracting from the excellent fit (we love the single vent). TR tip: If you are a shorter guy,
@@ -83,18 +83,18 @@
       <h3>Pleats</h3>
       <a href="#" class="customization-option four" data-option="0">
         <h5>None</h5>
-        <img {{#ifeq pleats 0}}class="checked"{{/ifeq}} src="/assets/customizations/suits/pleats-none.png">
+        <img {{#ifeq pleats 0}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/pleats-none.png'}}">
         <div class="recommended">
-          <img src="/assets/logos/logo-stitch.png" class="shield"><span>Recommended</span>
+          <img src="{{imgSrc 'logos/logo-stitch.png'}}" class="shield"><span>Recommended</span>
         </div>
       </a>
       <a href="#" class="customization-option four" data-option="1">
         <h5>One</h5>
-        <img {{#ifeq pleats 1}}class="checked"{{/ifeq}} src="/assets/customizations/suits/pleats-one.png">
+        <img {{#ifeq pleats 1}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/pleats-one.png'}}">
       </a>
       <a href="#" class="customization-option four" data-option="2">
         <h5>Two</h5>
-        <img {{#ifeq pleats 2}}class="checked"{{/ifeq}} src="/assets/customizations/suits/pleats-two.png">
+        <img {{#ifeq pleats 2}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/pleats-two.png'}}">
       </a>
       <p>Pleats are typically associated with old-fashioned suits. If you are looking for a modern, trendier look, we
         recommend going with no pleats and no cuffs on the pants.</p>
@@ -103,14 +103,14 @@
       <h3>Cuffs</h3>
       <a href="#" class="customization-option" data-option="false">
         <h5>None</h5>
-        <img src="/assets/customizations/suits/cuffs-no.png" class="cuffs {{#ifeq pant_cuffs false}}checked{{/ifeq}}">
+        <img src="{{imgSrc 'customizations/suits/cuffs-no.png'}}" class="cuffs {{#ifeq pant_cuffs false}}checked{{/ifeq}}">
         <div class="recommended">
-          <img src="/assets/logos/logo-stitch.png" class="shield"><span>Recommended</span>
+          <img src="{{imgSrc 'logos/logo-stitch.png'}}" class="shield"><span>Recommended</span>
         </div>
       </a>
       <a href="#" class="customization-option" data-option="true">
         <h5>Cuffs</h5>
-        <img src="/assets/customizations/suits/cuffs-yes.png" class="cuffs {{#ifeq pant_cuffs true}}checked{{/ifeq}}">
+        <img src="{{imgSrc 'customizations/suits/cuffs-yes.png'}}" class="cuffs {{#ifeq pant_cuffs true}}checked{{/ifeq}}">
       </a>
       <p>Pant cuffs were a suit staple in previous decades, but unless you are going for an older, more classic look,
         we recommend sticking with no pant cuffs. It keeps the suit lines clean and sharp, keeping those heads on a
@@ -120,18 +120,18 @@
       <h3>Fit</h3>
       <a href="#" class="customization-option four" data-option="slim">
         <h5>Slim</h5>
-        <img {{#ifeq fit "slim"}}class="checked"{{/ifeq}} src="/assets/customizations/suits/fit-slim.png">
+        <img {{#ifeq fit "slim"}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/fit-slim.png'}}">
       </a>
       <a href="#" class="customization-option four" data-option="tailored">
         <h5>Tailored</h5>
-        <img {{#ifeq fit "tailored"}}class="checked"{{/ifeq}} src="/assets/customizations/suits/fit-tailored.png">
+        <img {{#ifeq fit "tailored"}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/fit-tailored.png'}}">
         <div class="recommended">
-          <img src="/assets/logos/logo-stitch.png" class="shield"><span>Recommended</span>
+          <img src="{{imgSrc 'logos/logo-stitch.png'}}" class="shield"><span>Recommended</span>
         </div>
       </a>
       <a href="#" class="customization-option four" data-option="normal">
         <h5>Normal</h5>
-        <img {{#ifeq fit "normal"}}class="checked"{{/ifeq}} src="/assets/customizations/suits/fit-normal.png">
+        <img {{#ifeq fit "normal"}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/fit-normal.png'}}">
       </a>
       <p>The tailored fit is guaranteed to look great on most guys. A regular fit is great for guys with a fuller
         figure. And the slim fit is great for lean guys who want a very tight fitting suit and know they will not have
@@ -141,7 +141,7 @@
     <li class="customization-wrapper two-item" data-type="lining">
       <h3>Lining</h3>
       <div class="customization-option lining">
-        <img src="/assets/customizations/suits/lining.png" class="lining">
+        <img src="{{imgSrc 'customizations/suits/lining.png'}}" class="lining">
       </div>
       <div class="customization-option linings">
         <div class="four columns">
@@ -174,7 +174,7 @@
     <li class="customization-wrapper two-item" data-type="monogram">
       <h3>Monogram</h3>
       <div href="#" class="customization-option">
-        <img src="/assets/customizations/suits/monogram.png" class="monogram">
+        <img src="{{imgSrc 'customizations/suits/monogram.png'}}" class="monogram">
       </div>
       <div class="customization-option">
         <form id="monogram-form">
@@ -206,11 +206,11 @@
       <h3>Vest (+${{vestPrice}})</h3>
       <a href="#" class="customization-option four" data-option="true">
         <h5>Add Vest</h5>
-        <img {{#ifeq vest true}}class="checked"{{/ifeq}} src="/assets/customizations/suits/vest-three.png">
+        <img {{#ifeq vest true}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/vest-three.png'}}">
       </a>
       <a href="#" class="customization-option four" data-option="false">
         <h5>No Vest</h5>
-        <img {{#ifeq vest false}}class="checked"{{/ifeq}} src="/assets/customizations/suits/vest-three.png">
+        <img {{#ifeq vest false}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/vest-three.png'}}">
       </a>
       <p>Do you want to make your suit a three-piece? You can add a matching vest to your suit order for $79. A
         three-piece suit is sure to draw looks and makes a bold statement that you are serious about your style game.</p>
@@ -223,15 +223,15 @@
       <h3>Vest Buttons</h3>
       <a href="#" class="customization-option four" data-option="3">
         <h5>Three Buttons</h5>
-        <img {{#ifVest customization 3}}class="checked"{{/ifVest}} src="/assets/customizations/suits/vest-three.png">
+        <img {{#ifVest customization 3}}class="checked"{{/ifVest}} src="{{imgSrc 'customizations/suits/vest-three.png'}}">
       </a>
       <a href="#" class="customization-option four" data-option="4">
         <h5>Four Buttons</h5>
-        <img {{#ifVest customization 4}}class="checked"{{/ifVest}} src="/assets/customizations/suits/vest-four.png">
+        <img {{#ifVest customization 4}}class="checked"{{/ifVest}} src="{{imgSrc 'customizations/suits/vest-four.png'}}">
       </a>
       <a href="#" class="customization-option four" data-option="5">
         <h5>Five Buttons</h5>
-        <img {{#ifVest customization 5}}class="checked"{{/ifVest}} src="/assets/customizations/suits/vest-five.png">
+        <img {{#ifVest customization 5}}class="checked"{{/ifVest}} src="{{imgSrc 'customizations/suits/vest-five.png'}}">
       </a>
       <p>Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons!
         Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest

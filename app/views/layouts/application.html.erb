@@ -10,6 +10,9 @@
     <%= tag :meta, :name => "stripe-key", :content => ::STRIPE_PUBLIC_KEY %>
     <%= csrf_meta_tags %>
     <%= yield(:head) %>
+    <script>
+      TR.ASSET_HOST = '<%= TailoredRepublic::Application.config.action_controller.asset_host %>';
+    </script>
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
     <div id="container" class="container">

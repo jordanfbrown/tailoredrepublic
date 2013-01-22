@@ -12,12 +12,12 @@ class TR.Views.Measurements extends TR.Views.Base
     'click .progress-bar li': 'goToSlide'
     'click a.accept': 'acceptMeasurements'
 
-  PROGRESS:
-    COMPLETED: '/assets/icons/star-stroke.png'
-    TODO: '/assets/icons/star-no-stroke.png'
-    CURRENT: '/assets/icons/star-filled.png'
-
   initialize: (options) ->
+    @PROGRESS =
+      COMPLETED: TR.ASSET_HOST + '/assets/icons/star-stroke.png'
+      TODO: TR.ASSET_HOST + '/assets/icons/star-no-stroke.png'
+      CURRENT: TR.ASSET_HOST + '/assets/icons/star-filled.png'
+
     @lineItemCount = options.lineItemCount
     measuringTapePixels = 4521
     measuringTapeInches = 90

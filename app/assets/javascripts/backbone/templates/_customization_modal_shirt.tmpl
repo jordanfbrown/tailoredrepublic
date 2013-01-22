@@ -6,29 +6,29 @@
     <li data-type="fit">{{{customizationHelper customization}}}</li>
     <li data-type="pocket">{{{customizationHelper customization}}}</li>
     <li data-type="monogram">{{{customizationHelper customization}}}</li>
-    <li data-type="checkout"><img src="/assets/icons/star-no-stroke.png"></li>
+    <li data-type="checkout"><img src="{{imgSrc 'icons/star-no-stroke.png'}}"></li>
   </ul>
   <ul class="customization-list">
     <li class="customization-wrapper" data-type="collar">
       <h3>Collar</h3>
       <a href="#" class="customization-option three shirt" data-option="standard">
         <h5>Standard</h5>
-        <img {{#ifeq collar "standard"}}class="checked"{{/ifeq}} src="/assets/customizations/shirts/collar-standard.png">
+        <img {{#ifeq collar "standard"}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/shirts/collar-standard.png'}}">
         <div class="recommended">
-          <img src="/assets/logos/logo-stitch.png" class="shield"><span>Recommended</span>
+          <img src="{{imgSrc 'logos/logo-stitch.png'}}" class="shield"><span>Recommended</span>
         </div>
       </a>
       <a href="#" class="customization-option three shirt" data-option="cutaway">
         <h5>Cutaway</h5>
-        <img {{#ifeq collar "cutaway"}}class="checked"{{/ifeq}} src="/assets/customizations/shirts/collar-cutaway.png">
+        <img {{#ifeq collar "cutaway"}}class="checked"{{/ifeq}} src={{imgSrc 'customizations/shirts/collar-cutaway.png'}}>
       </a>
       <a href="#" class="customization-option three shirt" data-option="straight">
         <h5>Straight</h5>
-        <img {{#ifeq collar "straight"}}class="checked"{{/ifeq}} src="/assets/customizations/shirts/collar-straight.png">
+        <img {{#ifeq collar "straight"}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/shirts/collar-straight.png'}}">
       </a>
       <a href="#" class="customization-option three shirt" data-option="button-down">
         <h5>Button Down</h5>
-        <img {{#ifeq collar "button-down"}}class="checked"{{/ifeq}} src="/assets/customizations/shirts/collar-button-down.png">
+        <img {{#ifeq collar "button-down"}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/shirts/collar-button-down.png'}}">
       </a>
       <p>The standard or straight collars are always a nice, clean TR-approved look. The cutaway collar is a solid
         option for someone that really wants to emphasize a wide tie knot, such as a Windsor. Button-down collars tend
@@ -38,14 +38,14 @@
       <h3>Fit</h3>
       <a href="#" class="customization-option" data-option="slim">
         <h5>Slim</h5>
-        <img {{#ifeq fit "slim"}}class="checked"{{/ifeq}} src="/assets/customizations/shirts/fit-slim.png">
+        <img {{#ifeq fit "slim"}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/shirts/fit-slim.png'}}">
         <div class="recommended">
-          <img src="/assets/logos/logo-stitch.png" class="shield"><span>Recommended</span>
+          <img src="{{imgSrc 'logos/logo-stitch.png'}}" class="shield"><span>Recommended</span>
         </div>
       </a>
       <a href="#" class="customization-option" data-option="normal">
         <h5>Normal</h5>
-        <img {{#ifeq fit "normal"}}class="checked"{{/ifeq}} src="/assets/customizations/shirts/fit-normal.png">
+        <img {{#ifeq fit "normal"}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/shirts/fit-normal.png'}}">
       </a>
       <p>A slim fit helps to keep the shirt nice and tight to the body so that it doesn’t pooch out the suit in an
         unsightly way. If you are a fuller-figure man or are planning on wearing the shirt without a suit, a normal fit
@@ -55,14 +55,14 @@
       <h3>Pocket</h3>
       <a href="#" class="customization-option" data-option="false">
         <h5>No Pocket</h5>
-        <img {{#ifeq pocket false}}class="checked"{{/ifeq}} src="/assets/customizations/shirts/pocket-no.png">
+        <img {{#ifeq pocket false}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/shirts/pocket-no.png'}}">
         <div class="recommended">
-          <img src="/assets/logos/logo-stitch.png" class="shield"><span>Recommended</span>
+          <img src="{{imgSrc 'logos/logo-stitch.png'}}" class="shield"><span>Recommended</span>
         </div>
       </a>
       <a href="#" class="customization-option" data-option="true">
         <h5>Pocket</h5>
-        <img {{#ifeq pocket true}}class="checked"{{/ifeq}} src="/assets/customizations/shirts/pocket-yes.png">
+        <img {{#ifeq pocket true}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/shirts/pocket-yes.png'}}">
       </a>
       <p>So the argument for pockets is that they are functional, but we say ditch the pocket and give your shirt that
         clean look. This is especially true if you are rocking a skinny tie; a bulky pocket can really throw off the
@@ -71,7 +71,7 @@
     <li class="customization-wrapper two-item" data-type="monogram">
       <h3>Monogram</h3>
       <div href="#" class="customization-option">
-        <img src="/assets/customizations/suits/monogram.png" class="monogram">
+        <img src="{{imgSrc 'customizations/suits/monogram.png'}}" class="monogram">
       </div>
       <div class="customization-option">
         <form id="monogram-form">
