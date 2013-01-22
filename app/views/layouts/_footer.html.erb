@@ -50,9 +50,10 @@
       <ul>
         <li>// Become an affiliate of The Republic</li>
       </ul>
-      <%= form_tag subscribe_to_newsletter_path %>
-      <%= text_field_tag :email, '', placeholder: 'enter email...' %>
-      <%= submit_tag 'SUBMIT' %>
+      <%= form_tag subscribe_to_newsletter_path do %>
+        <%= text_field_tag :email, '', placeholder: 'enter email...' %>
+        <%= submit_tag 'SUBMIT' %>
+      <% end %>
     </div>
   </div>
 </footer>
