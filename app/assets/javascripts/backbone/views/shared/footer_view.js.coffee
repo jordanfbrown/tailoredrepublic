@@ -30,7 +30,7 @@ class TR.Views.Footer extends TR.Views.Base
     
   subscribeSuccess: =>
     @confirmDialog = new TR.Views.DialogModal
-      text: 'Your e-mail address has been added to the TR Affiliate mailing list. Please check your e-mail to confirm your subscription.',
+      text: 'A subscription request to become a Tailored Republic Affiliate has been sent to your e-mail. Please check your e-mail to confirm your subscription.',
       confirmText: 'Ok'
       confirmOnly: true
 
