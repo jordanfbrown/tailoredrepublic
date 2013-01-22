@@ -74,6 +74,7 @@ pickle-email-*.html
 **.swp
 
 .env
+/config/initializers/dev_environment.rb
 
 #IntelliJ project file
 tailored-republic.iml
