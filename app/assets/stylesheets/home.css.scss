@@ -47,8 +47,18 @@
 
 #process {
   @include clearfix;
-  background-color: #fff;
+  background-color: #000;
+  color: #fff;
   z-index: 4;
+
+  h2, h4 {
+    color: #fff;
+  }
+
+  a {
+    color: #BEA374;
+  }
+
 
   @media only screen and (min-width: 768px) and (max-width: 1037px) {
     h4 {
