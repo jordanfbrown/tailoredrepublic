@@ -930,7 +930,11 @@ templates['_product_modal.tmpl'] = template(function (Handlebars,depth0,helpers,
   stack1 = depth0.image_large_url;
   foundHelper = helpers.imgSrc;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "imgSrc", stack1, {hash:{}});
-  buffer += escapeExpression(stack1) + "\">\n    </div>\n  </div>\n  <div class=\"seven columns\">\n    <p class=\"blurb\">";
+  buffer += escapeExpression(stack1) + "\">\n    </div>\n  </div>\n  <div class=\"seven columns\">\n    <h4>";
+  foundHelper = helpers.summary;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.summary; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "</h4>\n    <p class=\"blurb\">";
   foundHelper = helpers.description;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.description; stack1 = typeof stack1 === functionType ? stack1() : stack1; }

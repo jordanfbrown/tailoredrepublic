@@ -159,6 +159,8 @@ input[type=submit] {
   @include clearfix;
 
   .product-wrapper {
+    float: left !important;
+
     @include font("italic");
     text-align: center;
     display: inline-block;

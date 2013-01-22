@@ -10,13 +10,13 @@ class ProductTest < ActiveSupport::TestCase
   end
 
   test "can't delete a product if its referenced by a line item" do
-    product = products(:charcoal)
+    product = products(:executive)
     LineItem.new(product: product)
     product.destroy
     assert product.errors.any?
   end
 
-  test "can' delete a product if its not referenced by a line item" do
+  test "can delete a product if its not referenced by a line item" do
     product = Product.new
     product.destroy
     assert !product.errors.any?

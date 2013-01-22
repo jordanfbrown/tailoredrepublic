@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130118181856) do
+ActiveRecord::Schema.define(:version => 20130122212711) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -127,6 +127,7 @@ ActiveRecord::Schema.define(:version => 20130118181856) do
     t.string   "image_small_4_url"
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
+    t.string   "summary"
   end
 
   create_table "roles", :force => true do |t|
