@@ -3,21 +3,18 @@ class TR.Views.Home extends TR.Views.Base
 
   events:
     'click .page-down': 'scrollToSection'
+    'click .product-wrapper a': 'renderProductModal'
 
   initialize: (options) ->
+    @products = new TR.Collections.Products options.products
     @createSlideshow()
-
     $(window).scroll @scroll
     $(window).resize @resize
     @resize true
-
-    @products = new TR.Collections.Products options.products
-    @products.each @renderProductView
-
     $('nav a').on 'click.home', @scrollToSection
-
-  renderProductView: (product) =>
-    @$('.products-wrapper').append new TR.Views.Product({model: product}).render().el
+    
+  renderProductModal: (e) =>
+    TR.renderProductModal.call @, e
 
   scrollToSection: (e) =>
     href = $(e.currentTarget).attr 'href'

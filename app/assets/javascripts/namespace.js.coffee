@@ -28,3 +28,9 @@ window.TR =
       address_zip: $('#billing_address_zip').val()
     , callback
 
+  renderProductModal: (e) ->
+    e.preventDefault()
+    id = $(e.currentTarget).parents('.product-wrapper').data 'id'
+    product = @products.get id
+    @productModal = new TR.Views.ProductModal({model: product})
+

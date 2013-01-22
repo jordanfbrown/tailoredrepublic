@@ -14,6 +14,7 @@ class TR.Views.ProductModal extends TR.Views.Modal
     @customization = options.customization
     @template = @getTemplate 'product_modal'
     $(window).on 'resize.product', @resize
+    @resize()
     @render()
 
   render: ->

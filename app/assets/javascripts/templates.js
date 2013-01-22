@@ -895,7 +895,7 @@ templates['_product.tmpl'] = template(function (Handlebars,depth0,helpers,partia
   stack1 = depth0.price;
   foundHelper = helpers.decimalToInteger;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "decimalToInteger", stack1, {hash:{}});
-  buffer += escapeExpression(stack1) + "</a>\n    </div>\n    <a href=\"#\" class=\"customize\">Click To View</a>\n  </div>\n</div>";
+  buffer += escapeExpression(stack1) + "</a>\n    </div>\n    <a href=\"#\" class=\"customize\">Click To View</a>\n  </div>\n</div>\n";
   return buffer;});
 templates['_product_modal.tmpl'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;

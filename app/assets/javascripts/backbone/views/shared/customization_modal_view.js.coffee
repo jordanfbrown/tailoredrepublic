@@ -24,6 +24,11 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     @template = @getTemplate "customization_modal_#{@product.get('category')}"
     @checkoutTemplate = @getTemplate "customization_checkout_#{@product.get('category')}"
     @render()
+
+    $(document).on 'keydown.customization', @keydown
+    $(window).on 'resize.customization', @resize
+    @resize()
+
     @slider = @$('.customization-list').bxSlider
       pager: off
       controls: off
@@ -31,8 +36,6 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
       onSlideBefore: @onSlideBefore
       onSlideAfter: @onSlideAfter
       adaptiveHeight: on
-    $(document).on 'keydown.customization', @keydown
-    $(window).on 'resize.customization', @resize
 
     @PROGRESS =
       COMPLETED: TR.ASSET_HOST + '/assets/icons/star-stroke.png'
