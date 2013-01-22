@@ -31,8 +31,7 @@ function program5(depth0,data) {
   buffer += "\n    <a href=\"#\" class=\"add-to-cart\"><img src=\"";
   foundHelper = helpers.imgSrc;
   stack1 = foundHelper ? foundHelper.call(depth0, "icons/shopping-cart-black.png", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "icons/shopping-cart-black.png", {hash:{}});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\"></a>\n    <a href=\"#\" class=\"button add-to-cart\">Add To Cart</a>\n  ";
+  buffer += escapeExpression(stack1) + "\"></a>\n    <a href=\"#\" class=\"button add-to-cart\">Add To Cart</a>\n  ";
   return buffer;}
 
 function program7(depth0,data) {
@@ -135,8 +134,7 @@ function program19(depth0,data) {
   buffer += "\n    <a href=\"#\" class=\"add-to-cart\"><img src=\"";
   foundHelper = helpers.imgSrc;
   stack1 = foundHelper ? foundHelper.call(depth0, "icons/shopping-cart-black.png", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "icons/shopping-cart-black.png", {hash:{}});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\"></a>\n    <a href=\"#\" class=\"button add-to-cart\">Add To Cart</a>\n  ";
+  buffer += escapeExpression(stack1) + "\"></a>\n    <a href=\"#\" class=\"button add-to-cart\">Add To Cart</a>\n  ";
   return buffer;}
 
 function program21(depth0,data) {
@@ -882,15 +880,14 @@ templates['_measurement_summary.tmpl'] = template(function (Handlebars,depth0,he
   return buffer;});
 templates['_product.tmpl'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
-  var buffer = "", stack1, foundHelper, helperMissing=helpers.helperMissing, functionType="function", escapeExpression=this.escapeExpression;
+  var buffer = "", stack1, foundHelper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, functionType="function";
 
 
   buffer += "<a href=\"#\"><img src=\"";
   stack1 = depth0.image_large_url;
   foundHelper = helpers.imgSrc;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "imgSrc", stack1, {hash:{}});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\"></a>\n<div class=\"product-info-wrapper\">\n  <div class=\"product-info\">\n    <div class=\"product-name\">\n      <a href=\"#\">";
+  buffer += escapeExpression(stack1) + "\"></a>\n<div class=\"product-info-wrapper\">\n  <div class=\"product-info\">\n    <div class=\"product-name\">\n      <a href=\"#\">";
   foundHelper = helpers.name;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.name; stack1 = typeof stack1 === functionType ? stack1() : stack1; }

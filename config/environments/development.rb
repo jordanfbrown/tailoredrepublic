@@ -27,6 +27,10 @@ TailoredRepublic::Application.configure do
     enable_starttls_auto: true
   }
 
+  config.action_controller.asset_host = Proc.new { |source, request = nil, *_|
+    "#{(request && request.ssl? ? 'https' : 'http')}://d2m2h3mqh6fv2p.cloudfront.net"
+  }
+
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
 

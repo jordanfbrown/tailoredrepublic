@@ -11,7 +11,10 @@
     <%= csrf_meta_tags %>
     <%= yield(:head) %>
     <script>
-      TR.ASSET_HOST = '<%= TailoredRepublic::Application.config.action_controller.asset_host %>';
+      TR.ASSET_HOST = '<%= TailoredRepublic::Application.config.action_controller.asset_host.call %>';
+      if(location.protocol === 'https:') {
+        TR.ASSET_HOST.replace('http', 'https');
+      }
     </script>
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
