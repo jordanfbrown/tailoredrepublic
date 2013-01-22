@@ -11,7 +11,9 @@
   a, em, span {
     background-color: darken($brown, 10%);
     color: #fff;
-    padding: 5px 10px;
+    padding: 7px 10px 5px 10px;
+    @include font('header');
+    font-size: 1.05em;
   }
 
   span {

@@ -19,12 +19,17 @@
   </head>
   <body class="<%= controller_name %> <%= action_name %>">
     <div id="container" class="container">
-      <%= render "layouts/nav" %>
       <% if controller_name == "home" %>
+        <div class="fixed contain-to-grid">
+          <%= render "layouts/nav" %>
+        </div>
         <div id="main" role="main">
           <%= yield %>
         </div>
       <% else %>
+        <div class="contain-to-grid">
+          <%= render "layouts/nav" %>
+        </div>
         <div id="main" role="main">
           <div id="flashes">
             <% flash.each do |key, msg| %>
