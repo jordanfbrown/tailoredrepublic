@@ -13,7 +13,7 @@
     <script>
       TR.ASSET_HOST = '<%= TailoredRepublic::Application.config.action_controller.asset_host.call %>';
       if(location.protocol === 'https:') {
-        TR.ASSET_HOST.replace('http', 'https');
+        TR.ASSET_HOST = TR.ASSET_HOST.replace('http', 'https');
       }
     </script>
   </head>
