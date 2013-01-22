@@ -21,8 +21,8 @@ TailoredRepublic::Application.configure do
     address:              'smtp.gmail.com',
     port:                 587,
     domain:               'tailoredrepublic.com',
-    user_name:            'jordan@tailoredrepublic.com',
-    password:             'tail0r3d1',
+    user_name:            ENV['GMAIL_USER'],
+    password:             ENV['GMAIL_PASSWORD'],
     authentication:       'plain',
     enable_starttls_auto: true
   }
