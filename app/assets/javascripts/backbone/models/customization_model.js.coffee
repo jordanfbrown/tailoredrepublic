@@ -7,7 +7,7 @@ class TR.Models.Customization extends TR.Models.Base
         @attributes = _.extend {}, {
           lapel: 'notch'
           buttons: 2
-          vents: 1
+          vents: 2
           pleats: 0
           pant_cuffs: false
           fit: 'tailored'

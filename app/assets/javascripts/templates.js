@@ -621,10 +621,7 @@ function program47(depth0,data) {
   buffer += " src=\"";
   foundHelper = helpers.imgSrc;
   stack1 = foundHelper ? foundHelper.call(depth0, "customizations/suits/vents-one.png", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "customizations/suits/vents-one.png", {hash:{}});
-  buffer += escapeExpression(stack1) + "\">\n        <div class=\"recommended\">\n          <img src=\"";
-  foundHelper = helpers.imgSrc;
-  stack1 = foundHelper ? foundHelper.call(depth0, "logos/logo-stitch.png", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "logos/logo-stitch.png", {hash:{}});
-  buffer += escapeExpression(stack1) + "\" class=\"shield\"><span>Recommended</span>\n        </div>\n      </a>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"2\">\n        <h5>Two</h5>\n        <img ";
+  buffer += escapeExpression(stack1) + "\">\n\n      </a>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"2\">\n        <h5>Two</h5>\n        <img ";
   stack1 = depth0.vents;
   foundHelper = helpers.ifeq;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, 2, {hash:{},inverse:self.noop,fn:self.program(17, program17, data)}) : helperMissing.call(depth0, "ifeq", stack1, 2, {hash:{},inverse:self.noop,fn:self.program(17, program17, data)});
@@ -632,7 +629,10 @@ function program47(depth0,data) {
   buffer += " src=\"";
   foundHelper = helpers.imgSrc;
   stack1 = foundHelper ? foundHelper.call(depth0, "customizations/suits/vents-two.png", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "customizations/suits/vents-two.png", {hash:{}});
-  buffer += escapeExpression(stack1) + "\">\n      </a>\n      <p>Having two vents is the traditional, safe and stylish choice. One vent is a way to make your suit modern and\n        sleek without distracting from the excellent fit (we love the single vent). TR tip: If you are a shorter guy,\n        go ahead and get the double vent, the vertical vents help to draw the eye upward and elongate the body.</p>\n    </li>\n    <li class=\"customization-wrapper\" data-type=\"pleats\">\n      <h3>Pleats</h3>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"0\">\n        <h5>None</h5>\n        <img ";
+  buffer += escapeExpression(stack1) + "\">\n        <div class=\"recommended\">\n          <img src=\"";
+  foundHelper = helpers.imgSrc;
+  stack1 = foundHelper ? foundHelper.call(depth0, "logos/logo-stitch.png", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "logos/logo-stitch.png", {hash:{}});
+  buffer += escapeExpression(stack1) + "\" class=\"shield\"><span>Recommended</span>\n        </div>\n      </a>\n      <p>Having two vents is the traditional, safe and stylish choice. One vent is a way to make your suit modern and\n        sleek without distracting from the excellent fit (we love the single vent). TR tip: If you are a shorter guy,\n        go ahead and get the double vent, the vertical vents help to draw the eye upward and elongate the body.</p>\n    </li>\n    <li class=\"customization-wrapper\" data-type=\"pleats\">\n      <h3>Pleats</h3>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"0\">\n        <h5>None</h5>\n        <img ";
   stack1 = depth0.pleats;
   foundHelper = helpers.ifeq;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, 0, {hash:{},inverse:self.noop,fn:self.program(19, program19, data)}) : helperMissing.call(depth0, "ifeq", stack1, 0, {hash:{},inverse:self.noop,fn:self.program(19, program19, data)});
