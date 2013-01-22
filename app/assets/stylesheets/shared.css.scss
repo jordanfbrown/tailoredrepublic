@@ -141,6 +141,10 @@ input[type=submit] {
   &.large {
     font-size: 24px;
   }
+
+  &.disabled {
+    color: lighten($brown, 10%);
+  }
 }
 
 .products-wrapper {

@@ -147,7 +147,10 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
 
   addToCart: (e) ->
     e.preventDefault()
-    @customization.save(null, {silent: true}).then(@addLineItem, @addCustomizationFailure)
+    $button = $(e.currentTarget)
+    unless $button.hasClass 'disabled'
+      $button.addClass 'disabled'
+      @customization.save(null, {silent: true}).then(@addLineItem, @addCustomizationFailure)
 
   addLineItem: =>
     $.post('/line_items', {product_id: @product.get('id'), customization_id: @customization.get('id')}).then(
