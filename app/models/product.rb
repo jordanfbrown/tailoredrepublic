@@ -37,6 +37,10 @@ class Product < ActiveRecord::Base
     self.all(limit: 4)
   end
 
+  def display_price
+    price.to_i
+  end
+
   private
     def ensure_not_referenced_by_line_item
       if line_items.empty?
