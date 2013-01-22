@@ -1,0 +1,25 @@
+@import "_mixins";
+
+.pagination {
+  margin-top: 5px;
+  margin-bottom: 15px;
+
+  .current {
+    background-color: darken($brown, 20%);
+  }
+
+  a, em, span {
+    background-color: darken($brown, 10%);
+    color: #fff;
+    padding: 5px 10px;
+  }
+
+  span {
+    background-color: $brown;
+  }
+
+  .current {
+    font-weight: bold;
+    font-style: normal;
+  }
+}

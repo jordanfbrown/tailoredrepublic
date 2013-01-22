@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
     if !user_signed_in?
       redirect_to root_path
     else
-      @orders = current_user.eager_orders
+      @orders = current_user.paginated_orders(params[:page] ||= 1)
     end
   end
 

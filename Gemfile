@@ -30,3 +30,4 @@ gem 'enumerated_attribute', :git => 'git://github.com/jeffp/enumerated_attribute
 gem 'numbers_and_words'
 gem 'stripe'
 gem 'gibbon'
+gem 'will_paginate', '~> 3.0'

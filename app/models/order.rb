@@ -10,6 +10,8 @@ class Order < ActiveRecord::Base
 
   accepts_nested_attributes_for :shipping_address, :billing_address
 
+  self.per_page = 5
+
   def self.new_order(order_params, user, cart, stripe_charge_id = nil)
     order = Order.new(order_params)
     order.user = user

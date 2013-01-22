@@ -69,7 +69,8 @@ class User < ActiveRecord::Base
     charge[:id]
   end
 
-  def eager_orders
-    orders.includes({line_items: :product}, :shipping_address, :billing_address).reverse
+  def paginated_orders(page)
+    Order.where(user_id: id).includes({line_items: [:product, :customization]}, :shipping_address, :billing_address,
+                                      :measurement).paginate(page: page).order('created_at DESC')
   end
 end

@@ -621,7 +621,7 @@ function program47(depth0,data) {
   buffer += " src=\"";
   foundHelper = helpers.imgSrc;
   stack1 = foundHelper ? foundHelper.call(depth0, "customizations/suits/vents-one.png", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "customizations/suits/vents-one.png", {hash:{}});
-  buffer += escapeExpression(stack1) + "\">\n\n      </a>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"2\">\n        <h5>Two</h5>\n        <img ";
+  buffer += escapeExpression(stack1) + "\">\n      </a>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"2\">\n        <h5>Two</h5>\n        <img ";
   stack1 = depth0.vents;
   foundHelper = helpers.ifeq;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, 2, {hash:{},inverse:self.noop,fn:self.program(17, program17, data)}) : helperMissing.call(depth0, "ifeq", stack1, 2, {hash:{},inverse:self.noop,fn:self.program(17, program17, data)});
