@@ -1,7 +1,7 @@
 <div class="row">
   <div class="six columns">
     <h2>Account Settings</h2>
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :id => 'user_form' }) do |f| %>
       <%= devise_error_messages! %>
       <fieldset>
         <legend>User Information</legend>
@@ -16,14 +16,14 @@
           <%= f.submit "Save", class: "button full-width large submit" %>
       </fieldset>
     <% end %>
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :id => 'shipping_address_form'}) do |f| %>
       <fieldset>
         <legend>Shipping Address</legend>
         <%= render 'addresses/form', parent_form: f, address_type: :shipping_address %>
         <%= f.submit "Save", class: "button full-width large submit" %>
       </fieldset>
     <% end %>
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :id => 'billing_information_form' }) do |f| %>
       <fieldset>
         <legend>Billing Information</legend>
         <div class="payment-errors error" style="display: none;">

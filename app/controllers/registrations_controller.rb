@@ -20,7 +20,6 @@ class RegistrationsController < Devise::RegistrationsController
           @user.create_stripe_customer(params[:stripe_card_token])
       end
       set_flash_message :notice, :updated
-      # Sign in the user bypassing validation in case his password changed
       sign_in @user, :bypass => true
       redirect_to edit_user_registration_path
     else

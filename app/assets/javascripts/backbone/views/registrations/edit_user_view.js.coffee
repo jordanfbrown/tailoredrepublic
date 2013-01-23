@@ -1,5 +1,5 @@
 class TR.Views.EditUser extends TR.Views.Base
-  el: '#edit_user'
+  el: '#billing_information_form'
 
   initialize: ->
     TR.setStripeKey()
@@ -12,7 +12,19 @@ class TR.Views.EditUser extends TR.Views.Base
 
     cardNumber = @$('#card_number').val()
     unless cardNumber.indexOf('****-****-****') == 0 || cardNumber.length == 0
-      TR.createStripeToken @stripeResponseHandler
+      Stripe.createToken
+        number: $('#card_number').val()
+        cvc: $('#card_code').val()
+        exp_month: $('#card_month').val()
+        exp_year: $('#card_year').val()
+        name: $('#user_billing_address_attributes_name').val()
+        address_line1: $('#user_billing_address_attributes_line1').val()
+        address_line2: $('#user_billing_address_attributes_line2').val()
+        address_city: $('#user_billing_address_attributes_city').val()
+        address_state: $('#user_billing_address_attributes_state').val()
+        address_zip: $('#user_billing_address_attributes_zip').val()
+      , @stripeResponseHandler
+      TR.createStripeToken 
       false
 
   stripeResponseHandler: (status, response) =>
