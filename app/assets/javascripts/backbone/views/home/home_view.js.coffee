@@ -83,8 +83,10 @@ class TR.Views.Home extends TR.Views.Base
     infoPosition = $('#info').offset().top
 
     # Parallax effect for transition image
-    imgTop = (bossesPosition - pageTop - $(window).height()) / 3
-    $('#bosses img').css 'top', imgTop
+    bossImgTop = (bossesPosition - pageTop - $(window).height()) / 3
+    manImgTop = (aboutPosition - pageTop - $(window).height() + 1000) / 5
+    $('#bosses img').css 'top', bossImgTop
+    $('#about img').css 'right', manImgTop
 
     # Check if background image is in view
     $home = $('#home')
