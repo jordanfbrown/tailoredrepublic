@@ -111,6 +111,7 @@
 
 //About Us
 #about {
+  z-index: 3;
   padding-bottom: 50px;
   @include clearfix;
 
@@ -123,12 +124,19 @@
     }
   }
 
-  img {
-    //float: right;
-    @media only screen and (max-width: 767px) {
-      display: none;
-    }
+  h3 {
+    padding: 30px;
+    line-height: 1.5;
+    border: 1px dashed #ccc;
+    background-color: rgba(255, 255, 255, 0.4);
+  }
 
+  img {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
   }
 }
 
