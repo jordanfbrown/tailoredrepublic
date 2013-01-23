@@ -7,7 +7,15 @@
     </div>
   </div>
   <div class="six columns">
-    <h4><%= titleize measurement %></h4>
+    <div class="row">
+      <h4 class="four columns"><%= titleize measurement %></h4>
+      <div class="four columns">
+        <a href="#" class="button previous" style="display: none;">Previous</a>
+      </div>
+      <div class="four columns">
+        <a href="#" class="button next">Next</a>
+      </div>
+    </div>
     <ul class="disc">
       <% metadata[:steps].each do |step| %>
         <li><%= step %></li>

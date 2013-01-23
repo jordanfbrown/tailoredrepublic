@@ -7,6 +7,10 @@
 
 .measurements {
 
+  .bx-wrapper {
+    margin-bottom: 20px;
+  }
+
   .measurements-list ul {
     margin-bottom: 20px;
   }
@@ -101,6 +105,15 @@
 
     form {
       margin: 15px 0 10px 0;
+    }
+
+    a.previous, a.next, a.accept {
+      max-width: 150px;
+      width: 100%;
+      
+      @media only screen and (max-width: 767px) {
+        max-width: 100%;
+      }
     }
   }
 

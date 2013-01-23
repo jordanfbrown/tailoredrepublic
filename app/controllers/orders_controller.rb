@@ -95,6 +95,7 @@ class OrdersController < ApplicationController
     render 'thank_you'
   end
 
+  # TODO: delete this before going live
   def thank_you
     @order = Order.last
   end
