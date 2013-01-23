@@ -1,14 +1,92 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
 </head>
-<body>
-<h1>Thank you for order, <%= @user.name %></h1>
-<h3>Order Summary</h3>
-<% @order.line_items.each do |line_item|  %>
-  <p><%= line_item.product.name %></p>
-<% end %>
-<p>Thanks again!</p>
+<body style="color: #000000;font-size: 14px;font-family: Verdana,Helvetica,Arial,sans-serif;">
+<table width="100%" id="background" border="0" cellpadding="0" cellspacing="0">
+  <tr><td align="center" valign="top" style="color: #000000;font-size: 14px;font-family: Verdana,Helvetica,Arial,sans-serif;">
+    <table width="650" id="main" border="0" cellpadding="0" cellspacing="20">
+      <tr>
+        <td id="header" colspan="2" style="color: #000000;font-size: 14px;font-family: Verdana,Helvetica,Arial,sans-serif;text-align: center;">
+          <a href="https://www.tailoredrepublic.com"><img src="https://d2m2h3mqh6fv2p.cloudfront.net/assets/logos/logo-shield.png" width="443" height="66" alt="Tailored Republic"></a>
+        </td>
+      </tr>
+      <tr>
+        <td style="color: #000000;font-size: 14px;font-family: Verdana,Helvetica,Arial,sans-serif;">
+          <h2>Thank you for your order, <%= @user.name %>!</h2>
+        </td>
+      </tr>
+      <tr>
+        <td class="divider" colspan="2" bgcolor="#fff" style="color: #000000;font-size: 14px;font-family: Verdana,Helvetica,Arial,sans-serif;background-color: #fff;height: 0;border-bottom: 2px solid #aaa;"></td>
+      </tr>
+      <tr>
+        <td colspan="2" style="color: #000000;font-size: 14px;font-family: Verdana,Helvetica,Arial,sans-serif;">
+          <h4 style="margin-bottom: 5px;margin-top: 5px;">Order ID: <strong><%= @order.stripe_charge_id %></strong></h4>
+        </td>
+      </tr>
+      <tr>
+        <td class="divider" colspan="2" bgcolor="#fff" style="color: #000000;font-size: 14px;font-family: Verdana,Helvetica,Arial,sans-serif;background-color: #fff;height: 0;border-bottom: 2px solid #aaa;"></td>
+      </tr>
+      <tr>
+        <td colspan="2" style="color: #000000;font-size: 14px;font-family: Verdana,Helvetica,Arial,sans-serif;">
+          <h4 style="margin-bottom: 5px;margin-top: 5px;">Shipping Address</h4>
+          <ul style="list-style-type: none;padding-left: 5px;list-style: none;margin: 0;">
+            <li style="margin-left: 0;"><%= @order.shipping_address.name %></li>
+            <li style="margin-left: 0;"><%= @order.shipping_address.line1 %></li>
+            <li style="margin-left: 0;"><%= @order.shipping_address.line2 %></li>
+            <li style="margin-left: 0;"><%= @order.shipping_address.city %>, <%= @order.shipping_address.state %>, <%= @order.shipping_address.zip %></li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" style="color: #000000;font-size: 14px;font-family: Verdana,Helvetica,Arial,sans-serif;">
+          <h4 style="margin-bottom: 5px;margin-top: 5px;">Billing Address</h4>
+          <ul style="list-style-type: none;padding-left: 5px;list-style: none;margin: 0;">
+            <li style="margin-left: 0;"><%= @order.billing_address.name %></li>
+            <li style="margin-left: 0;"><%= @order.billing_address.line1 %></li>
+            <li style="margin-left: 0;"><%= @order.billing_address.line2 %></li>
+            <li style="margin-left: 0;"><%= @order.billing_address.city %>, <%= @order.billing_address.state %>, <%= @order.billing_address.zip %></li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td class="divider" colspan="2" bgcolor="#fff" style="color: #000000;font-size: 14px;font-family: Verdana,Helvetica,Arial,sans-serif;background-color: #fff;height: 0;border-bottom: 2px solid #aaa;"></td>
+      </tr>
+      <tr>
+        <td colspan="2" style="color: #000000;font-size: 14px;font-family: Verdana,Helvetica,Arial,sans-serif;">
+          <h4 style="margin-bottom: 5px;margin-top: 5px;">Order Summary</h4>
+          <div class="item_divider" style="background-color: #fff;height: 0;margin: 10px 0;border-bottom: 1px dashed #aaa;"></div>
+          <% @order.line_items.each do |line_item|  %>
+            <div>
+              <p><%= line_item.product.name %> // $<%= line_item.total_price %></p>
+              <% if line_item.product.category == :suit || line_item.product.category == :shirt %>
+                <p>Customizations:</p>
+                <ul style="list-style-type: none;padding-left: 5px;list-style: none;margin: 0;">
+                  <% customization_list(line_item.customization).each do |customization| %>
+                    <li style="margin-left: 0;"><strong><%= customization[:option] %></strong>: <%= customization[:type] %></li>
+                  <% end %>
+                </ul>
+              <% end %>
+            </div>
+            <div class="item_divider" style="background-color: #fff;height: 0;margin: 10px 0;border-bottom: 1px dashed #aaa;"></div>
+          <% end %>
+          <h4 style="margin-bottom: 5px;margin-top: 5px;">Total price: $<%= @order.total_cost %></h4>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" style="color: #000000;font-size: 14px;font-family: Verdana,Helvetica,Arial,sans-serif;">
+          <p>Thanks again from the Tailored Republic Team!</p>
+        </td>
+      </tr>
+      <tr>
+        <td id="footer" colspan="2" align="center" style="color: #555555;font-size: 11px;font-family: Verdana,Helvetica,Arial,sans-serif;">
+          <p>Tailored Republic, 2013</p>
+        </td>
+      </tr>
+    </table>
+  </td></tr>
+</table>
 </body>
 </html>
