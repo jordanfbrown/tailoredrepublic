@@ -57,17 +57,18 @@ class TR.Views.Home extends TR.Views.Base
 
     pageDownOffset = if backgroundHeight > $(window).height() then $(window).height() else backgroundHeight
 
+    restingPosition = 108
     if first == true
       $('.page-down').animate
-        'top': pageDownOffset - 78 + 'px', 750, ->
-          $(this).animate 'top': pageDownOffset - 110, 100, ->
-            $(this).animate 'top': pageDownOffset - 78, 100, ->
-              $(this).animate 'top': pageDownOffset - 100, 100, ->
-                $(this).animate 'top': pageDownOffset - 78, 100, ->
-                  $(this).animate 'top': pageDownOffset - 90, 100, ->
-                    $(this).animate 'top': pageDownOffset - 78, 100, ->
+        'top': pageDownOffset - restingPosition + 'px', 750, ->
+          $(this).animate 'top': pageDownOffset - 140, 100, ->
+            $(this).animate 'top': pageDownOffset - restingPosition, 100, ->
+              $(this).animate 'top': pageDownOffset - 130, 100, ->
+                $(this).animate 'top': pageDownOffset - restingPosition, 100, ->
+                  $(this).animate 'top': pageDownOffset - 120, 100, ->
+                    $(this).animate 'top': pageDownOffset - restingPosition, 100, ->
     else
-      $('.page-down').css 'top', pageDownOffset - 78 + 'px'
+      $('.page-down').css 'top', pageDownOffset - restingPosition + 'px'
 
   scroll: ->
     $sidebar = $('#sidebar')
