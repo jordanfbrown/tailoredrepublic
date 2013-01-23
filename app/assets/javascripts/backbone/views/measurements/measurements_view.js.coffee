@@ -19,6 +19,8 @@ class TR.Views.Measurements extends TR.Views.Base
       CURRENT: TR.ASSET_HOST + '/assets/icons/star-filled.png'
 
     @lineItemCount = options.lineItemCount
+    @shirtOnly = options.shirtOnly
+
     measuringTapePixels = 4521
     measuringTapeInches = 90
     @pixelsPerInch = measuringTapePixels / measuringTapeInches
@@ -29,6 +31,7 @@ class TR.Views.Measurements extends TR.Views.Base
       infiniteLoop: off
       onSlideBefore: @onSlideBefore
       adaptiveHeight: off
+    @slideCount = @slider.getSlideCount() - 1
 
     @currentTapeValue = @model.get 'neck' || @model.defaults.neck
     $(window).resize @resize
@@ -41,7 +44,7 @@ class TR.Views.Measurements extends TR.Views.Base
 
     unless @model.isNew()
       @$('iframe').attr 'src', ''
-      @slider.goToSlide 15
+      @slider.goToSlide @slideCount
       _.delay @loadVideos, 500
 
   loadVideos: ->
@@ -49,7 +52,8 @@ class TR.Views.Measurements extends TR.Views.Base
       $(el).attr 'src', $(el).data 'src'
 
   updateSummaryPage: =>
-    @$('.measurement-summary').html @template @model.toJSON()
+    templateData = _.extend {shirtOnly: @shirtOnly}, @model.toJSON()
+    @$('.measurement-summary').html @template templateData
 
   submitMeasurement: (e) ->
     e.preventDefault()
@@ -134,8 +138,8 @@ class TR.Views.Measurements extends TR.Views.Base
 
     @$('.previous').show() if newIndex > 0
     @$('.previous').hide() if newIndex == 0
-    @$('.next, .accept').text('Accept').removeClass('next').addClass('accept') if newIndex == 15
-    @$('.next, .accept').text('Next').removeClass('accept').addClass('next') if newIndex < 15
+    @$('.next, .accept').text('Accept').removeClass('next').addClass('accept') if newIndex == @slideCount
+    @$('.next, .accept').text('Next').removeClass('accept').addClass('next') if newIndex < @slideCount
 
     @setProgressBar oldIndex, @PROGRESS.COMPLETED
     @setProgressBar newIndex, @PROGRESS.CURRENT

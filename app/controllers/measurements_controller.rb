@@ -9,6 +9,9 @@ class MeasurementsController < ApplicationController
         @measurement = Measurement.new
       end
     end
+
+    @shirt_only = @cart.shirt_only?
+    @num_measurements = Product.num_measurements(@shirt_only)
   end
 
   def create

@@ -16,4 +16,8 @@ class Cart < ActiveRecord::Base
       line_items.map { |c| c.total_price }.sum.to_i
     end
   end
+
+  def shirt_only?
+    !line_items.any? { |l| l.product.category == :suit } && line_items.any? { |l| l.product.category == :shirt }
+  end
 end

@@ -813,8 +813,25 @@ function program3(depth0,data) {
   return buffer;});
 templates['_measurement_summary.tmpl'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
-  var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression;
+  var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression, self=this;
 
+function program1(depth0,data) {
+  
+  var buffer = "", stack1, foundHelper;
+  buffer += "\n      <li data-measurement=\"crotch\"><span class=\"label\">Crotch:</span> ";
+  foundHelper = helpers.crotch;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.crotch; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"</li>\n      <li data-measurement=\"thigh\"><span class=\"label\">Thigh:</span> ";
+  foundHelper = helpers.thigh;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.thigh; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"</li>\n      <li data-measurement=\"pant_length\"><span class=\"label\">Pant Length:</span> ";
+  foundHelper = helpers.pant_length;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.pant_length; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"</li>\n    ";
+  return buffer;}
 
   buffer += "<div class=\"twelve columns\">\n  <p>Please read over your measurements one last time and ensure that they are correct. If they look good, click\n    \"Accept\" to continue.</p>\n</div>\n\n<div class=\"four columns\">\n  <ul>\n    <li data-measurement=\"neck\"><span class=\"label\">Neck:</span> ";
   foundHelper = helpers.neck;
@@ -864,19 +881,11 @@ templates['_measurement_summary.tmpl'] = template(function (Handlebars,depth0,he
   foundHelper = helpers.jacket_length;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.jacket_length; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"crotch\"><span class=\"label\">Crotch:</span> ";
-  foundHelper = helpers.crotch;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.crotch; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"thigh\"><span class=\"label\">Thigh:</span> ";
-  foundHelper = helpers.thigh;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.thigh; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"pant_length\"><span class=\"label\">Pant Length:</span> ";
-  foundHelper = helpers.pant_length;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.pant_length; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"</li>\n  </ul>\n</div>";
+  buffer += escapeExpression(stack1) + "\"</li>\n    ";
+  stack1 = depth0.shirtOnly;
+  stack1 = helpers.unless.call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(1, program1, data)});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n  </ul>\n</div>";
   return buffer;});
 templates['_product.tmpl'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;

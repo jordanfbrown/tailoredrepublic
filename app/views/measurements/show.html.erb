@@ -3,27 +3,16 @@
   <div class="row content-wrapper">
     <div class="twelve columns">
       <h2>Measurements</h2>
-      <h5>Grab a friend and a tape measure and follow these tutorial videos to take and input 15 easy measurements.</h5>
-      <ul class="progress-bar">
+      <h5>Grab a friend and a tape measure and follow these tutorial videos to take and input <%= @num_measurements %>
+        easy measurements.</h5>
+      <ul class="progress-bar <%= 'shirt-only' if @shirt_only %>">
         <li><%= progress_current %></li>
-        <li><%= progress_todo_or_completed @measurement %></li>
-        <li><%= progress_todo_or_completed @measurement %></li>
-        <li><%= progress_todo_or_completed @measurement %></li>
-        <li><%= progress_todo_or_completed @measurement %></li>
-        <li><%= progress_todo_or_completed @measurement %></li>
-        <li><%= progress_todo_or_completed @measurement %></li>
-        <li><%= progress_todo_or_completed @measurement %></li>
-        <li><%= progress_todo_or_completed @measurement %></li>
-        <li><%= progress_todo_or_completed @measurement %></li>
-        <li><%= progress_todo_or_completed @measurement %></li>
-        <li><%= progress_todo_or_completed @measurement %></li>
-        <li><%= progress_todo_or_completed @measurement %></li>
-        <li><%= progress_todo_or_completed @measurement %></li>
-        <li><%= progress_todo_or_completed @measurement %></li>
-        <li><%= progress_todo_or_completed @measurement %></li>
+        <% @num_measurements.times do %>
+          <li><%= progress_todo_or_completed @measurement %></li>
+        <% end %>
       </ul>
       <ul class="measurements-list">
-        <% measurement_metadata.each do |measurement, metadata| %>
+        <% measurement_metadata(@shirt_only).each do |measurement, metadata| %>
           <%= render "measurement_slide", measurement: measurement, metadata: metadata %>
         <% end %>
         <li class="measurement-list-item measurement-summary"></li>
@@ -43,6 +32,6 @@
 <script>
   $(function() {
     var model = new TR.Models.Measurement(<%= @measurement.to_json(except: [:created_at, :updated_at, :user_id]).html_safe unless @measurement.new_record? %>);
-    new TR.Views.Measurements({model: model, lineItemCount: <%= @cart.num_items %>});
+    new TR.Views.Measurements({model: model, lineItemCount: <%= @cart.num_items %>, shirtOnly: <%= @shirt_only %>});
   });
 </script>

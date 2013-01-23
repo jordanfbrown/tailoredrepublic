@@ -1,8 +1,8 @@
 module MeasurementsHelper
   include ActiveSupport::Inflector
 
-  def measurement_metadata
-    {
+  def measurement_metadata(shirt_only)
+    metadata = {
       neck: {
         url: 'SborRZpbXs0',
         steps: [
@@ -132,6 +132,14 @@ module MeasurementsHelper
         ]
       }
     }
+
+    if shirt_only
+      metadata.delete(:crotch)
+      metadata.delete(:thigh)
+      metadata.delete(:pant_length)
+    end
+
+    metadata
   end
 
   def progress_todo_or_completed(measurement)

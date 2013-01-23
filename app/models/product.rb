@@ -12,6 +12,10 @@ class Product < ActiveRecord::Base
     79
   end
 
+  def self.num_measurements(shirt_only)
+    shirt_only ? 12: 15
+  end
+
   def self.depluralize_category(category)
     case category
       when 'suits'
