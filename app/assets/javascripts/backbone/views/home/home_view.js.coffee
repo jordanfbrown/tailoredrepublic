@@ -12,6 +12,11 @@ class TR.Views.Home extends TR.Views.Base
     $(window).resize @resize
     @resize true
     $('nav a').on 'click.home', @scrollToSection
+
+    if window.location.hash == '#lookbook'
+      _.delay ->
+        $('nav .lookbook a').click()
+      , 500
     
   renderProductModal: (e) =>
     TR.renderProductModal.call @, e
