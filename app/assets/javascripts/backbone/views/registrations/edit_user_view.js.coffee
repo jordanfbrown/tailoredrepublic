@@ -11,7 +11,7 @@ class TR.Views.EditUser extends TR.Views.Base
     @$('.submit').attr 'disabled', 'disabled'
 
     cardNumber = @$('#card_number').val()
-    unless cardNumber.indexOf('XXXX-XXXX-XXXX') == 0 || cardNumber.length == 0
+    unless cardNumber.indexOf('****-****-****') == 0 || cardNumber.length == 0
       TR.createStripeToken @stripeResponseHandler
       false
 

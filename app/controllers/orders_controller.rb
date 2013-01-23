@@ -77,6 +77,12 @@ class OrdersController < ApplicationController
         charge_id = create_customer_or_charge_card @user
       else
         @user = current_user
+
+        unless @user.save_address_if_address_nil(params[:order])
+          render action: "review"
+          raise ActiveRecord::Rollback and return
+        end
+
         if @user.stripe_customer_id? && params[:use_saved_card] == 'on'
           charge_id = @user.charge_customer @cart.total_price * 100
         else

@@ -3,15 +3,13 @@
 
 .orders {
 
-  &.thank_you {
-    .thank-you-row {
-      margin: 20px auto;
-      max-width: 800px;
+  .thank-you-row {
+    margin: 20px auto;
+    max-width: 800px;
 
-      .twelve {
-        border: 1px dashed #ccc;
-        padding: 20px 20px;
-      }
+    .twelve {
+      border: 1px dashed #ccc;
+      padding: 20px 20px;
     }
   }
 
@@ -38,10 +36,10 @@
   &.index {
 
    .order-list-item {
-     border: 2px dashed #ccc;
+     border: 1px dashed #ccc;
      @include clearfix;
      margin: 0 15px 10px 15px;
-     padding: 5px;
+     padding: 10px 5px;
     }
 
     @media only screen and (max-width: 767px) {

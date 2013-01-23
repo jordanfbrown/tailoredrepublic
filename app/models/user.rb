@@ -69,6 +69,14 @@ class User < ActiveRecord::Base
     charge[:id]
   end
 
+  def save_address_if_address_nil(params)
+    if shipping_address.blank? || billing_address.blank?
+      update_attributes(params)
+    else
+      true
+    end
+  end
+
   def paginated_orders(page)
     Order.where(user_id: id).includes({line_items: [:product, :customization]}, :shipping_address, :billing_address,
                                       :measurement).paginate(page: page).order('created_at DESC')

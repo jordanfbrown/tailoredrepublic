@@ -58,8 +58,8 @@ class TR.Views.Order extends TR.Views.Base
 
   toggleSavedCreditCard: (e) ->
     if $(e.currentTarget).is ':checked'
-      @$('#card_number').val "XXXX-XXXX-XXXX-#{@cardInfo.last4}"
-      @$('#card_code').val "XXX"
+      @$('#card_number').val "****-****-****-#{@cardInfo.last4}"
+      @$('#card_code').val "***"
       @$('#card_month').val @cardInfo.exp_month
       @$('#card_year').val @cardInfo.exp_year
     else
