@@ -25,8 +25,8 @@
   .line-item {
     @include clearfix;
     margin-bottom: 10px;
-    border: 2px dashed #ddd;
-    padding: 5px;
+    border: 1px dashed #ccc;
+    padding: 15px 5px;
 
     h3 {
       border-bottom: 1px solid #333;

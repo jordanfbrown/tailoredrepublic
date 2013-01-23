@@ -2,7 +2,7 @@
   <h3>Cart Summary</h3>
   <ul class="cart-summary">
     <% @cart.line_items.each do |line_item| %>
-      <li><span class="label"><%= line_item.product.name %> <%= line_item.product.category.capitalize %>:</span>
+      <li><span class="label"><%= line_item.product.name %>:</span>
         $<%= line_item.total_price %></li>
     <% end %>
     <li><span class="label">Shipping:</span> $0</li>
