@@ -1,5 +1,5 @@
 <div class="six columns push-six cart-summary content-wrapper">
-  <h3>Purchase Summary</h3>
+  <h3>Order Summary</h3>
   <ul class="cart-summary">
     <% @order.line_items.each do |line_item| %>
       <li><span class="label"><%= line_item.product.name %>:</span>
@@ -8,7 +8,7 @@
     <li><span class="label">Shipping:</span> $0</li>
     <li><span class="label">Tax:</span>  $0</li>
     <% unless @order.coupon.nil? %>
-      <li class="total"><span class="label">Discount:</span> -$<%= @order.calculate_discount %></li>
+      <li class="total"><span class="label"><%= @order.coupon.description %>:</span> -$<%= @order.calculate_discount %></li>
     <% end %>
     <li class="total"><span class="label">Total:</span> $<%= @order.total_cost %></li>
   </ul>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130124020217) do
+ActiveRecord::Schema.define(:version => 20130124193338) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -124,6 +124,8 @@ ActiveRecord::Schema.define(:version => 20130124020217) do
     t.integer  "user_id"
     t.string   "stripe_charge_id"
     t.integer  "coupon_id"
+    t.decimal  "discount"
+    t.decimal  "final_cost"
   end
 
   add_index "orders", ["user_id"], :name => "index_orders_on_user_id"

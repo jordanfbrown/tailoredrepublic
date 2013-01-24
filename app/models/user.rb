@@ -61,13 +61,15 @@ class User < ActiveRecord::Base
   end
 
   def charge_customer(amount)
-    charge = Stripe::Charge.create(
-      amount: amount,
-      currency: 'usd',
-      customer: stripe_customer_id,
-      description: 'Customer charge'
-    )
-    charge[:id]
+    if amount >= 50
+      charge = Stripe::Charge.create(
+        amount: amount.to_i,
+        currency: 'usd',
+        customer: stripe_customer_id,
+        description: 'Customer charge'
+      )
+      charge[:id]
+    end
   end
 
   def save_address_if_address_nil(params)
@@ -76,6 +78,12 @@ class User < ActiveRecord::Base
     else
       true
     end
+  end
+
+  def duplicate_measurement
+    duplicated_measurement = measurement.dup
+    duplicated_measurement.user_id = nil
+    duplicated_measurement
   end
 
   def paginated_orders(page)

@@ -61,11 +61,11 @@ class OrdersController < ApplicationController
 
     @order = Order.new_order(params[:order], @user, @cart)
     unless @order.valid?
-      render action: "new"
+      render action: "new" and return
     end
 
     unless @coupon_code.blank?
-      @coupon = Coupon.get_by_code(@coupon_code)
+      @coupon = Coupon.find_by_code(@coupon_code)
       if @coupon.nil? || @coupon.invalid?
         @order.errors.add(:coupon, 'code invalid.')
         render action: "new" and return
@@ -77,8 +77,10 @@ class OrdersController < ApplicationController
 
   def create
     @card_token = params[:stripe_card_token]
+    @coupon_code = params[:coupon_code]
 
     ActiveRecord::Base.transaction do
+      # Create a new user and sign them in, or get the current_user if already signed in
       if params[:user]
         @user = User.new_from_params_and_measurement(params, @measurement)
         unless @user.save
@@ -86,27 +88,41 @@ class OrdersController < ApplicationController
           raise ActiveRecord::Rollback and return
         end
         sign_in :user, @user
-        charge_id = create_customer_or_charge_card @user
       else
         @user = current_user
-
         unless @user.save_address_if_address_nil(params[:order])
           render action: "review"
           raise ActiveRecord::Rollback and return
         end
-
-        if @user.stripe_customer_id? && params[:use_saved_card] == 'on'
-          charge_id = @user.charge_customer @cart.total_price * 100
-        else
-          charge_id = create_customer_or_charge_card @user
-        end
       end
 
-      @order = Order.new_order(params[:order], @user, @cart, charge_id)
-      unless @order.save
+      # Create the order, copy user, user's measurements, and line items from cart, check for validity but don't save
+      @order = Order.new_order(params[:order], @user, @cart)
+      unless @order.valid?
         render action: "review"
         raise ActiveRecord::Rollback and return
       end
+
+      # Apply coupon if coupon code has been entered
+      unless @coupon_code.blank?
+        @coupon = Coupon.find_by_code(@coupon_code)
+        if @coupon.nil? || @coupon.invalid?
+          @order.errors.add(:coupon, 'code invalid.')
+          render action: "review" and return
+        else
+          @coupon.apply_to_order(@order)
+        end
+      end
+
+      # Charge the credit card
+      if @user.stripe_customer_id? && params[:use_saved_card] == 'on'
+        @order.stripe_charge_id = @user.charge_customer @order.final_cost * 100
+      else
+        @order.stripe_charge_id = create_customer_or_charge_card @user
+      end
+
+      # Save the charge id to the order
+      @order.save
     end
 
     @cart.reload
@@ -122,20 +138,23 @@ class OrdersController < ApplicationController
     def create_customer_or_charge_card(user)
       if params[:save_card_for_later] == 'on'
         user.create_stripe_customer @card_token
-        user.charge_customer @cart.total_price * 100
+        user.charge_customer @order.final_cost * 100
       else
         charge_card @card_token
       end
     end
 
     def charge_card(token)
-      charge = Stripe::Charge.create(
-        amount: @cart.total_price * 100,
-        currency: 'usd',
-        card: token,
-        description: 'Single token charge'
-      )
-      charge[:id]
+      amount = (@order.total_cost * 100).to_i
+      if amount >= 50
+        charge = Stripe::Charge.create(
+          amount: (@order.total_cost * 100).to_i,
+          currency: 'usd',
+          card: token,
+          description: 'Single token charge'
+        )
+        charge[:id]
+      end
     end
 
     def ensure_cart_not_empty

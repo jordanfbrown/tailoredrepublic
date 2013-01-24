@@ -1,10 +1,10 @@
 class Order < ActiveRecord::Base
   has_one :shipping_address, as: :addressable, validate: true
   has_one :billing_address, as: :addressable, validate: true
-  belongs_to :user
-  has_many :line_items
   has_one :measurement
+  belongs_to :user
   belongs_to :coupon
+  has_many :line_items
 
   attr_accessible :shipping_address_attributes, :billing_address_attributes
   validates_presence_of :shipping_address, :billing_address, :user, :line_items, :measurement
@@ -13,14 +13,12 @@ class Order < ActiveRecord::Base
 
   self.per_page = 5
 
-  def self.new_order(order_params, user, cart, stripe_charge_id = nil)
+  def self.new_order(order_params, user, cart)
     order = Order.new(order_params)
     order.user = user
-    measurement = user.measurement.dup
-    measurement.user_id = nil
-    order.measurement = measurement
-    order.copy_line_items_from_cart cart
-    order.stripe_charge_id = stripe_charge_id unless stripe_charge_id.blank?
+    order.measurement = user.duplicate_measurement
+    order.copy_line_items_from_cart(cart)
+    order.final_cost = order.total_cost
     order
   end
 
@@ -47,9 +45,8 @@ class Order < ActiveRecord::Base
     total = cost_before_discount
 
     unless coupon.nil?
-      puts 'here'
-      discount = coupon.calculate_discount(self)
-      total -= discount
+      coupon_discount = coupon.calculate_discount(total)
+      total -= coupon_discount
       total = 0 if total < 0
     end
 
@@ -64,12 +61,18 @@ class Order < ActiveRecord::Base
     if coupon.nil?
       0
     else
-      coupon.calculate_discount(cost_before_discount)
+      coupon_discount = coupon.calculate_discount(cost_before_discount)
+      if coupon_discount > cost_before_discount
+        coupon_discount = cost_before_discount
+      end
+      coupon_discount
     end
   end
 
   after_rollback do |order|
-    charge = Stripe::Charge.retrieve order.stripe_charge_id
-    charge.refund
+    unless order.stripe_charge_id.blank?
+      charge = Stripe::Charge.retrieve order.stripe_charge_id
+      charge.refund
+    end
   end
 end
