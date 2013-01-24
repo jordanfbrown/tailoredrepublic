@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130124010625) do
+ActiveRecord::Schema.define(:version => 20130124020217) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(:version => 20130124010625) do
     t.string   "coupon_type"
     t.string   "discount_type"
     t.integer  "amount"
-    t.datetime "begin_date"
-    t.datetime "end_date"
+    t.date     "begin_date"
+    t.date     "end_date"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(:version => 20130124010625) do
     t.datetime "updated_at",       :null => false
     t.integer  "user_id"
     t.string   "stripe_charge_id"
+    t.integer  "coupon_id"
   end
 
   add_index "orders", ["user_id"], :name => "index_orders_on_user_id"

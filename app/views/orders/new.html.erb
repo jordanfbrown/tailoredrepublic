@@ -39,11 +39,20 @@
             <label><%= check_box_tag :save_card_for_later, 'on', @save_card_for_later ? @save_card_for_later == '1' : true %>Save this credit card for purchases in the future</label>
           <% end %>
       </fieldset>
+
       <fieldset>
         <legend>Billing Address</legend>
         <label><input type="checkbox" name="billing-same-as-shipping" class="billing-shipping-label"> Billing address is the same as the shipping address.</label>
         <%= render 'addresses/form', parent_form: f, address_type: :billing_address %>
       </fieldset>
+
+      <fieldset>
+        <legend>Coupon/Gift Card</legend>
+        <p>If you have a coupon or a gift card, enter the code here.</p>
+        <%= label_tag :coupon_code, 'Code' %>
+        <%= text_field_tag :coupon_code, @coupon_code %>
+      </fieldset>
+
       <%= f.submit 'Review Order', class: 'button full-width large' %>
     <% end %>
   </div>

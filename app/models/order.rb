@@ -4,6 +4,7 @@ class Order < ActiveRecord::Base
   belongs_to :user
   has_many :line_items
   has_one :measurement
+  belongs_to :coupon
 
   attr_accessible :shipping_address_attributes, :billing_address_attributes
   validates_presence_of :shipping_address, :billing_address, :user, :line_items, :measurement
@@ -43,7 +44,28 @@ class Order < ActiveRecord::Base
   end
 
   def total_cost
+    total = cost_before_discount
+
+    unless coupon.nil?
+      puts 'here'
+      discount = coupon.calculate_discount(self)
+      total -= discount
+      total = 0 if total < 0
+    end
+
+    total
+  end
+
+  def cost_before_discount
     line_items.map { |c| c.total_price }.sum.to_i
+  end
+
+  def calculate_discount
+    if coupon.nil?
+      0
+    else
+      coupon.calculate_discount(cost_before_discount)
+    end
   end
 
   after_rollback do |order|

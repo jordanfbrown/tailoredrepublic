@@ -14,7 +14,7 @@
             <li><span class="label">Name:</span> <%= @user.name %></li>
             <li><span class="label">Email:</span> <%= @user.email %></li>
           </ul>
-          <a href="#" class="edit-information">Edit Information</a>
+          <a href="#" class="edit-information">Edit User Information</a>
           <%= fields_for @user do |user_fields| %>
             <%= user_fields.hidden_field :name  %>
             <%= user_fields.hidden_field :email  %>
@@ -27,7 +27,7 @@
       <fieldset>
         <legend>Shipping Address</legend>
         <%= render 'addresses/non_editable', parent_form: f, address_type: :shipping_address %>
-        <a href="#" class="edit-information">Edit Information</a>
+        <a href="#" class="edit-information">Edit Shipping Address</a>
       </fieldset>
 
       <fieldset>
@@ -49,8 +49,19 @@
       <fieldset>
         <legend>Billing Address</legend>
         <%= render 'addresses/non_editable', parent_form: f, address_type: :billing_address %>
-        <a href="#" class="edit-information">Edit Information</a>
+        <a href="#" class="edit-information">Edit Billing Address</a>
       </fieldset>
+
+      <% unless @coupon_code.blank? %>
+        <fieldset>
+          <ul>
+            <li><span class="label">Coupon Code:</span> <%= @coupon_code %></li>
+          </ul>
+          <%= hidden_field_tag :coupon_code, @coupon_code %>
+          <a href="#" class="edit-information">Edit Code</a>
+        </fieldset>
+      <% end %>
+
       <%= f.submit 'Submit Order', class: 'button full-width large' %>
     <% end %>
   </div>

@@ -1,19 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  code: MyString
-  description: MyString
+  code: BCXKPVFU
+  description: $100 Gift Card
   quantity: 1
-  coupon_type: MyString
-  discount_type: MyString
-  begin_date: 2013-01-23 17:06:25
-  end_date: 2013-01-23 17:06:25
+  amount: 100
+  coupon_type: gift_card
+  discount_type: fixed
+  begin_date: NULL
+  end_date: NULL
 
 two:
-  code: MyString
-  description: MyString
-  quantity: 1
-  coupon_type: MyString
-  discount_type: MyString
-  begin_date: 2013-01-23 17:06:25
-  end_date: 2013-01-23 17:06:25
+  code: BQTHRSCA
+  description: 10% Off Promotion
+  amount: 10
+  quantity: 20
+  coupon_type: promotion
+  discount_type: percentage
+  begin_date: 2013-01-23
+  end_date: 2013-02-23

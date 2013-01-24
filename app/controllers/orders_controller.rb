@@ -12,13 +12,14 @@ class OrdersController < ApplicationController
       @card_exp_year = params[:card_exp_year]
       @password = params[:user][:password] if params[:user]
       @save_card_for_later = params[:save_card_for_later]
+      @coupon_code = params[:coupon_code]
     else
       if user_signed_in?
         @user = current_user
-        @order = @user.build_order
+        @order = @user.build_order(@cart)
       else
         @user = User.new
-        @order = @user.build_order
+        @order = @user.build_order(@cart)
       end
     end
   end
@@ -46,6 +47,7 @@ class OrdersController < ApplicationController
     @card_exp_year = @stripe_customer ? @stripe_customer[:active_card][:exp_year].to_s : params[:card_exp_year]
     @save_card_for_later = params[:save_card_for_later]
     @use_saved_card = params[:use_saved_card]
+    @coupon_code = params[:coupon_code]
 
     if params[:user]
       @user = User.new_from_params_and_measurement(params, @measurement)
@@ -60,6 +62,16 @@ class OrdersController < ApplicationController
     @order = Order.new_order(params[:order], @user, @cart)
     unless @order.valid?
       render action: "new"
+    end
+
+    unless @coupon_code.blank?
+      @coupon = Coupon.get_by_code(@coupon_code)
+      if @coupon.nil? || @coupon.invalid?
+        @order.errors.add(:coupon, 'code invalid.')
+        render action: "new" and return
+      else
+        @order.coupon = @coupon
+      end
     end
   end
 
