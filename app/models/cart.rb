@@ -21,6 +21,7 @@ class Cart < ActiveRecord::Base
     !line_items.any? { |l| l.product.category == :suit } && line_items.any? { |l| l.product.category == :shirt }
   end
 
+  # Can skip measurements if there are no suits or shirts in the cart
   def skip_measurements?
     !line_items.any? { |l| l.product.category == :suit } && !line_items.any? { |l| l.product.category == :shirt }
   end
