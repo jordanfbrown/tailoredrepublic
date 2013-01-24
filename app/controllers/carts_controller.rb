@@ -38,8 +38,7 @@ class CartsController < ApplicationController
   end
 
   def show
-    @line_items = @cart.line_items.map do |line_item|
-      {id: line_item.id, price: line_item.total_price}
-    end
+    @line_items = @cart.line_items.map { |line_item| {id: line_item.id, price: line_item.total_price} }
+    @skip_measurements = @cart.skip_measurements?
   end
 end

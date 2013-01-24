@@ -36,15 +36,4 @@ body.pages {
       }
     }
   }
-
-  .gift-card-row img {
-    margin-bottom: 30px;
-    padding: 10px;
-    border: 1px solid transparent;
-
-    &:hover {
-      border: 1px dashed #aaa;
-      @include border-radius(5px);
-    }
-  }
 }

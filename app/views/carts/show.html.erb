@@ -10,7 +10,7 @@
   <div class="three columns">
     <div class="cart-total" <% if @cart.empty? %> style="display: none;" <% end %>>
       <h5>Total: <span class="price">$<%= @cart.total_price %></span></h5>
-      <a href="/measurements" class="button full-width large">Checkout</a>
+      <%= link_to 'Checkout', @skip_measurements ? new_order_path : measurements_path, class: 'button full-width large' %>
     </div>
   </div>
 </div>

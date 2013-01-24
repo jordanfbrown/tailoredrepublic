@@ -6,6 +6,10 @@ class LineItem < ActiveRecord::Base
   belongs_to :order
 
   def total_price
-    (product.price + (customization.vest? ? Product.vest_price : 0)).to_i
+    if customization.nil?
+      product.price.to_i
+    else
+      (product.price + (customization.vest? ? Product.vest_price : 0)).to_i
+    end
   end
 end

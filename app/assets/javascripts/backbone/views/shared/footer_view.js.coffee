@@ -35,7 +35,7 @@ class TR.Views.Footer extends TR.Views.Base
 
   subscribeFailure: =>
     @confirmDialog = new TR.Views.DialogModal
-      text: 'We\'re sorry, but there was a problem adding your e-mail address to the TR Affiliate mailing list. Please try again, and if your problem persists, shoot us an e-mail at help@tailoredrepublic.com.',
+      text: 'We\'re sorry, but there was a problem adding your e-mail address to the TR Affiliate mailing list. Please try again, and if the problem persists, shoot us an e-mail at help@tailoredrepublic.com.',
       confirmText: 'Ok'
       confirmOnly: true
 

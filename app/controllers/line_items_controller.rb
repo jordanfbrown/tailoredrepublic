@@ -1,8 +1,13 @@
 class LineItemsController < ApplicationController
   def create
     product = Product.find(params[:product_id])
-    customization = Customization.find(params[:customization_id])
-    line_item = @cart.line_items.build(product: product, customization: customization)
+
+    if params[:customization_id]
+      customization = Customization.find(params[:customization_id])
+      line_item = @cart.line_items.build(product: product, customization: customization)
+    else
+      line_item = @cart.line_items.build(product: product)
+    end
 
     if line_item.save
       render json: line_item

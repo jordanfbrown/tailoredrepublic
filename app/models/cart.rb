@@ -20,4 +20,8 @@ class Cart < ActiveRecord::Base
   def shirt_only?
     !line_items.any? { |l| l.product.category == :suit } && line_items.any? { |l| l.product.category == :shirt }
   end
+
+  def skip_measurements?
+    !line_items.any? { |l| l.product.category == :suit } && !line_items.any? { |l| l.product.category == :shirt }
+  end
 end

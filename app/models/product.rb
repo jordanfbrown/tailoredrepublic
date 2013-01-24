@@ -1,7 +1,7 @@
 require 'enumerated_attribute'
 
 class Product < ActiveRecord::Base
-  enum_attr :category, %w(suit shirt pants accessory)
+  enum_attr :category, %w(suit shirt accessory gift_card)
   attr_accessible :description, :image_large_url, :image_small_1_url, :image_small_2_url, :image_small_3_url,
                   :image_small_4_url, :name, :price, :quantity, :category
   has_many :line_items
@@ -25,7 +25,7 @@ class Product < ActiveRecord::Base
       when 'pants'
         :pants
       when 'accessories'
-        :accessories
+        :accessory
       else
         :suit
     end

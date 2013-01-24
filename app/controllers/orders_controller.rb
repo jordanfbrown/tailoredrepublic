@@ -133,9 +133,11 @@ class OrdersController < ApplicationController
     end
 
     def ensure_measurement_not_nil
-      @measurement = user_signed_in? ? current_user.measurement : get_measurement_from_session
-      if @measurement.nil?
-        redirect_to measurements_path, notice: 'You need to enter your measurements before you can complete your order.'
+      unless @cart.skip_measurements?
+        @measurement = user_signed_in? ? current_user.measurement : get_measurement_from_session
+        if @measurement.nil?
+          redirect_to measurements_path, notice: 'You need to enter your measurements before you can complete your order.'
+        end
       end
     end
 

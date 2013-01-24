@@ -1,5 +1,5 @@
 <div class="line-item" data-product-id="<%= line_item.product.id %>"
-     data-customization-id="<%= line_item.customization.id %>" data-line-item-id="<%= line_item.id %>">
+     data-customization-id="<%= line_item.customization.id if line_item.customization %>" data-line-item-id="<%= line_item.id %>">
   <a href="#" class="remove">Remove</a>
   <div class="three columns">
     <%= image_tag line_item.product.image_large_url, class: "product-image"%>
@@ -7,21 +7,23 @@
   <div class="nine columns">
     <h3><%= line_item.product.name %><span class="divider"> // </span>$<%= line_item.total_price %></h3>
     <h4><%= line_item.product.summary %></h4>
-    <a href="#" class="view-customizations">
-      <span class="arrow-right"></span>
-      <span class="text">View Customizations</span>
-    </a>
-    <div class="customization-list-wrapper" style="display: none;">
-      <% if line_item.customization.product_category == 'suit' %>
-        <%= render "carts/customization_list", customizations: customization_list(line_item.customization)[0..3] %>
-        <%= render "carts/customization_list", customizations: customization_list(line_item.customization)[4..7] %>
-        <%= render "carts/customization_list", customizations: customization_list(line_item.customization)[8..11] %>
-      <% elsif line_item.customization.product_category == 'shirt' %>
-        <%= render "carts/customization_list", customizations: customization_list(line_item.customization)[0..4] %>
-      <% end %>
-      <div class="twelve columns">
-        <a href="#" class="button edit-customizations">Edit Customizations</a>
+    <% unless line_item.customization.nil? %>
+      <a href="#" class="view-customizations">
+        <span class="arrow-right"></span>
+        <span class="text">View Customizations</span>
+      </a>
+      <div class="customization-list-wrapper" style="display: none;">
+        <% if line_item.customization.product_category == 'suit' %>
+          <%= render "carts/customization_list", customizations: customization_list(line_item.customization)[0..3] %>
+          <%= render "carts/customization_list", customizations: customization_list(line_item.customization)[4..7] %>
+          <%= render "carts/customization_list", customizations: customization_list(line_item.customization)[8..11] %>
+        <% elsif line_item.customization.product_category == 'shirt' %>
+          <%= render "carts/customization_list", customizations: customization_list(line_item.customization)[0..4] %>
+        <% end %>
+        <div class="twelve columns">
+          <a href="#" class="button edit-customizations">Edit Customizations</a>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>

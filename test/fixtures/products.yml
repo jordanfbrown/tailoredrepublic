@@ -95,6 +95,45 @@ build_own:
   image_small_3_url: products/suits/modal-suit-preview.png
   image_small_4_url: products/suits/modal-suit-preview.png
 
+gift_card_25:
+  category: gift_card
+  name: $25 Gift Card
+  price: 25
+  image_large_url: gift_cards/gift-card-25.jpg
+
+gift_card_50:
+  category: gift_card
+  name: $50 Gift Card
+  price: 50
+  image_large_url: gift_cards/gift-card-50.jpg
+
+
+gift_card_100:
+  category: gift_card
+  name: $100 Gift Card
+  price: 100
+  image_large_url: gift_cards/gift-card-100.jpg
+
+gift_card_349:
+  category: gift_card
+  name: $349 Gift Card
+  price: 349
+  image_large_url: gift_cards/gift-card-349.jpg
+
+
+gift_card_469:
+  category: gift_card
+  name: $469 Gift Card
+  price: 469
+  image_large_url: gift_cards/gift-card-469.jpg
+
+
+gift_card_629:
+  category: gift_card
+  name: $629 Gift Card
+  price: 629
+  image_large_url: gift_cards/gift-card-629.jpg
+
 white_shirt:
   category: shirt
   name: White Shirt
