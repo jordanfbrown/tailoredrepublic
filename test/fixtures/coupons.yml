@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  code: MyString
+  description: MyString
+  quantity: 1
+  coupon_type: MyString
+  discount_type: MyString
+  begin_date: 2013-01-23 17:06:25
+  end_date: 2013-01-23 17:06:25
+
+two:
+  code: MyString
+  description: MyString
+  quantity: 1
+  coupon_type: MyString
+  discount_type: MyString
+  begin_date: 2013-01-23 17:06:25
+  end_date: 2013-01-23 17:06:25
