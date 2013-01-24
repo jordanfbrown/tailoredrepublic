@@ -4,8 +4,9 @@ class ApplicationController < ActionController::Base
 
   protected
     def authenticate
-      authenticate_or_request_with_http_basic do |username, password|
-        username == "tailored" && password == "sodamnclean!"
+      unless cookies[:access_code] == ENV['ACCESS_CODE'] || request.path == '/request_access_code' ||
+          request.path == '/authenticate_access_code'
+        redirect_to root_path unless request.path == '/'
       end
     end
 

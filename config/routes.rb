@@ -3,7 +3,8 @@ TailoredRepublic::Application.routes.draw do
     root :to => 'home#index'
   end
 
-  root :to => 'home#index'
+  root :to => 'home#index', constraints: lambda { |req| req.cookies['access_code'] == ENV['ACCESS_CODE'] }
+  root :to => 'pages#coming_soon', constraints: lambda { |req| req.cookies['access_code'] != ENV['ACCESS_CODE'] }
 
   devise_for :users, controllers: { sessions: :sessions, registrations: :registrations }
 
@@ -30,6 +31,9 @@ TailoredRepublic::Application.routes.draw do
   match '/gift_cards' => 'shop#gift_cards'
   match '/faq' => 'pages#faq'
   match '/get_tailored' => 'pages#get_tailored'
+  match '/authenticate_access_code' => 'pages#authenticate_access_code'
+  match '/request_access_code' => 'pages#request_access_code'
+  match '/coming_soon' => 'pages#coming_soon'
   match '/press' => 'pages#press'
   match '/team' => 'pages#team'
   match '/team' => 'pages#team'
