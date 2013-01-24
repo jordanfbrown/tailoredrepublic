@@ -12,9 +12,11 @@
 <div id="container" class="container">
     <div id="main" role="main">
       <h1><%= image_tag 'logos/logo-white.png', class: 'logo' %></h1>
-      <% unless flash[:notice].blank? %>
-        <h5>Thank you for requesting an invite -- Prepare to get Tailored by checking us out on Facebook. (<%= link_to 'http://www.facebook.com/tailoredrepublic', 'www.facebook.com/tailoredrepublic' %>)</h5>
-      <% end %>
+      <% if flash[:notice] == :new_user %>
+        <h5>Thank you for requesting an invite -- Prepare to get Tailored by checking us out on Facebook. (<%= link_to 'www.facebook.com/tailoredrepublic', 'http://www.facebook.com/tailoredrepublic', target: '_blank' %>)</h5>
+      <% elsif flash[:notice] == :error %>
+        <h5>Access code invalid. Please submit your email below to request an access code.</h5>
+    <% end %>
       <div class="text-wrapper">
         <h3>Made-to-measure, custom suits.<br/>Step your game up. Get Tailored.</h3>
         <h4>Site coming soon.*</h4>
