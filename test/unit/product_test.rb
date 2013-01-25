@@ -5,7 +5,7 @@ class ProductTest < ActiveSupport::TestCase
     assert_equal Product.depluralize_category('suits'), :suit
     assert_equal Product.depluralize_category('shirts'), :shirt
     assert_equal Product.depluralize_category('pants'), :pants
-    assert_equal Product.depluralize_category('accessories'), :accessories
+    assert_equal Product.depluralize_category('accessories'), :accessory
     assert_equal Product.depluralize_category('foo'), :suit
   end
 

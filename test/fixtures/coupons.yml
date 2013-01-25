@@ -1,6 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
+hundred_gift_card:
   code: BCXKPVFU
   description: $100 Gift Card
   quantity: 1
@@ -10,7 +10,7 @@ one:
   begin_date: NULL
   end_date: NULL
 
-two:
+ten_percent_off:
   code: BQTHRSCA
   description: 10% Off Promotion
   amount: 10
@@ -19,3 +19,33 @@ two:
   discount_type: percentage
   begin_date: 2013-01-23
   end_date: 2013-02-23
+
+expired_end_date:
+  code: BQTHRSCA
+  description: 10% Off Promotion
+  amount: 10
+  quantity: 20
+  coupon_type: promotion
+  discount_type: percentage
+  begin_date: 2013-01-15
+  end_date: 2013-01-22
+
+hasnt_started:
+  code: BQTHRSCA
+  description: 10% Off Promotion
+  amount: 10
+  quantity: 20
+  coupon_type: promotion
+  discount_type: percentage
+  begin_date: 2050-01-15
+  end_date: 2050-03-22
+
+zero_quantity:
+  code: JUPBAMQR
+  description: $100 Gift Card
+  quantity: 0
+  amount: 100
+  coupon_type: gift_card
+  discount_type: fixed
+  begin_date: NULL
+  end_date: NULL

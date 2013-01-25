@@ -9,3 +9,7 @@ two:
   product: entrepreneur
   cart_id: 1
   customization: one
+
+line_item_gift_card_100:
+  product: gift_card_100
+  order_id: 2

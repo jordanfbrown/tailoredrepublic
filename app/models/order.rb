@@ -41,18 +41,6 @@ class Order < ActiveRecord::Base
     end
   end
 
-  def total_cost
-    total = cost_before_discount
-
-    unless coupon.nil?
-      coupon_discount = coupon.calculate_discount(total)
-      total -= coupon_discount
-      total = 0 if total < 0
-    end
-
-    total
-  end
-
   def cost_before_discount
     line_items.map { |c| c.total_price }.sum.to_i
   end
@@ -67,6 +55,26 @@ class Order < ActiveRecord::Base
       end
       coupon_discount
     end
+  end
+
+  def total_cost
+    total = cost_before_discount
+
+    unless coupon.nil?
+      coupon_discount = coupon.calculate_discount(total)
+      total -= coupon_discount
+      total = 0 if total < 0
+    end
+
+    total
+  end
+
+  def has_gift_cards?
+    gift_cards.length > 0
+  end
+
+  def gift_cards
+    line_items.select { |l| l.product.category == :gift_card }
   end
 
   after_rollback do |order|
