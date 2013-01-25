@@ -81,24 +81,3 @@
   src: local('United Serif SemiCond'), local('United Serif'), url(UnitedSerifSmCdBd.otf) format('opentype');
   font-weight: 700;
 }
-
-@font-face {
-  font-family: 'Clarendon Lt';
-  src: url(ClarendonLTStd-Light.eot);
-  src: local('Clarendon Lt'), local('Clarendon'), url(ClarendonLTStd-Light.otf) format('opentype');
-  font-weight: 200;
-}
-
-@font-face {
-  font-family: 'Clarendon Lt';
-  src: url(ClarendonLTStd.eot);
-  src: local('Clarendon Lt'), local('Clarendon'), url(ClarendonLTStd.otf) format('opentype');
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: 'Clarendon Lt';
-  src: url(ClarendonLTStd-Bold.eot);
-  src: local('Clarendon Lt'), local('Clarendon'), url(ClarendonLTStd-Bold.otf) format('opentype');
-  font-weight: 700;
-}
