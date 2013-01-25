@@ -12,7 +12,7 @@ footer {
 
   input[type=text] {
     @include border-radius(0);
-    @include background(radial-gradient(#404040, #333));
+    background: rgba(255, 255, 255, 0.1);
     color: #999;
     border: none;
     outline: none;
@@ -21,12 +21,12 @@ footer {
     max-width: 210px;
 
     &:focus {
-      @include background(radial-gradient(#404040, #333));
+      background: rgba(255, 255, 255, 0.2);
     }
   }
 
   input[type=submit] {
-    @include background(radial-gradient(#BBB, #666));
+    background: rgba(255, 255, 255, 0.1);
     border: none;
     font-weight: bold;
     display: inline-block;
@@ -38,8 +38,7 @@ footer {
     @include font("body");
 
     &:hover {
-      color: #fff;
-      @include background(radial-gradient(#DDD, #666));
+      background: #222;
     }
   }
 
