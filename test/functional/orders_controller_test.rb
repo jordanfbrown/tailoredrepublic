@@ -2,7 +2,7 @@ require 'test_helper'
 
 class OrdersControllerTest < ActionController::TestCase
   setup do
-    set_basic_auth_credentials
+    Stripe.api_key = 'sk_test_MEOI9a9zOelkZmmDUq3ib7qC'
   end
 
   test "Should set @stripe_customer when a logged in user has a stripe_customer_id" do

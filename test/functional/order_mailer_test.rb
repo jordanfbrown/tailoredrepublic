@@ -8,6 +8,6 @@ class OrderMailerTest < ActionMailer::TestCase
     assert !ActionMailer::Base.deliveries.empty?
 
     assert_equal [order.user.email], email.to
-    assert_equal 'Tailored Republic Order Confirmation', email.subject
+    assert_equal 'Tailored Republic Order Confirmation ()', email.subject
   end
 end
