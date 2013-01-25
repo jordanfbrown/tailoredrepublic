@@ -57,7 +57,6 @@
       <tr>
         <td colspan="2" style="color: #000000;font-size: 14px;font-family: Verdana,Helvetica,Arial,sans-serif;">
           <h4 style="margin-bottom: 5px;margin-top: 5px;">Order Summary</h4>
-          <div class="item_divider" style="background-color: #fff;height: 0;margin: 10px 0;border-bottom: 1px dashed #aaa;"></div>
           <% @order.line_items.each do |line_item|  %>
             <div>
               <p><%= line_item.product.name %> // $<%= line_item.total_price %></p>
@@ -80,6 +79,22 @@
           <h4 style="margin-bottom: 5px;margin-top: 5px;">Total price: $<%= @order.final_cost %></h4>
         </td>
       </tr>
+      <tr>
+        <td class="divider" colspan="2" bgcolor="#fff" style="color: #000000;font-size: 14px;font-family: Verdana,Helvetica,Arial,sans-serif;background-color: #fff;height: 0;border-bottom: 2px solid #aaa;"></td>
+      </tr>
+      <% unless @order.generated_coupons.blank? %>
+        <tr>
+          <td colspan="2" style="color: #000000;font-size: 14px;font-family: Verdana,Helvetica,Arial,sans-serif;">
+            <h4 style="margin-bottom: 5px;margin-top: 5px;">Gift Card Coupon Codes</h4>
+            <% @order.generated_coupons.each do |coupon| %>
+              <p><strong><%= coupon.description %></strong>: <%= coupon.code %></p>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td class="divider" colspan="2" bgcolor="#fff" style="color: #000000;font-size: 14px;font-family: Verdana,Helvetica,Arial,sans-serif;background-color: #fff;height: 0;border-bottom: 2px solid #aaa;"></td>
+        </tr>
+      <% end %>
       <tr>
         <td colspan="2" style="color: #000000;font-size: 14px;font-family: Verdana,Helvetica,Arial,sans-serif;">
           <p>Thanks again from the Tailored Republic Team!</p>

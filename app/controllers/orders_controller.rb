@@ -121,10 +121,15 @@ class OrdersController < ApplicationController
         @order.stripe_charge_id = create_customer_or_charge_card @user
       end
 
+      if @order.has_gift_cards?
+        Coupon.create_coupons_from_order(@order)
+      end
+
       # Save the charge id to the order
       @order.save
     end
 
+    # Need to reload the cart because its line items have been copied to the order
     @cart.reload
     render 'thank_you'
   end

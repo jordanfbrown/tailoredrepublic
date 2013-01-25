@@ -39,4 +39,21 @@ class CouponTest < ActiveSupport::TestCase
     assert_equal coupon.quantity, coupon_quantity_before - 1
     assert_equal coupon.amount, 0
   end
+
+  test "create_coupons_from_order" do
+    order = orders(:gift_card_order)
+    coupon_count = Coupon.count
+    Coupon.create_coupons_from_order(order)
+
+    assert_equal Coupon.count, coupon_count + 1
+    assert_equal order.generated_coupons.length, 1
+
+    generated_coupon = order.generated_coupons.last
+    assert_equal generated_coupon.amount, 100
+    assert_equal generated_coupon.description, '$100 Gift Card'
+    assert_equal generated_coupon.quantity, 1
+    assert_equal generated_coupon.coupon_type, 'gift_card'
+    assert_equal generated_coupon.discount_type, 'fixed'
+    assert_not_nil generated_coupon.code
+  end
 end

@@ -5,6 +5,7 @@ class Order < ActiveRecord::Base
   belongs_to :user
   belongs_to :coupon
   has_many :line_items
+  has_many :generated_coupons, foreign_key: 'generated_by_order_id', class_name: 'Coupon'
 
   attr_accessible :shipping_address_attributes, :billing_address_attributes
   validates_presence_of :shipping_address, :billing_address, :user, :line_items, :measurement
