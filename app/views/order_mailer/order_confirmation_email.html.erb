@@ -59,7 +59,7 @@
           <h4 style="margin-bottom: 5px;margin-top: 5px;">Order Summary</h4>
           <% @order.line_items.each do |line_item|  %>
             <div>
-              <p><%= line_item.product.name %> // $<%= line_item.total_price %></p>
+              <p><%= line_item.product.name %> // <%= number_to_currency line_item.total_price %></p>
               <% if line_item.product.category == :suit || line_item.product.category == :shirt %>
                 <p>Customizations:</p>
                 <ul style="list-style-type: none;padding-left: 5px;list-style: none;margin: 0;">
@@ -73,10 +73,10 @@
           <% end %>
           <% unless @order.coupon.nil? %>
             <h4 style="margin-bottom: 5px;margin-top: 5px;">Discounts</h4>
-            <p><%= @order.coupon.description %>: -$<%= @order.discount %></p>
+            <p><%= @order.coupon.description %>: -<%= number_to_currency @order.discount %></p>
             <div class="item_divider" style="background-color: #fff;height: 0;margin: 10px 0;border-bottom: 1px dashed #aaa;"></div>
         <% end %>
-          <h4 style="margin-bottom: 5px;margin-top: 5px;">Total price: $<%= @order.final_cost %></h4>
+          <h4 style="margin-bottom: 5px;margin-top: 5px;">Total price: <%= number_to_currency @order.final_cost %></h4>
         </td>
       </tr>
       <tr>

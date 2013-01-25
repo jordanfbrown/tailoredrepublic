@@ -1,4 +1,5 @@
 class OrderMailer < ActionMailer::Base
+  include ActionView::Helpers::NumberHelper
   helper :carts
   default from: "no-reply@tailoredrepublic.com"
 
