@@ -1,0 +1,16 @@
+<div class="twelve columns">
+  <p>{{text}}</p>
+</div>
+
+{{#if confirmOnly}}
+  <div class="twelve columns">
+    <a href="#" class="confirm button">{{confirmText}}</a>
+  </div>
+{{else}}
+  <div class="six columns">
+    <a href="#" class="confirm button">{{confirmText}}</a>
+  </div>
+  <div class="six columns">
+    <a href="#" class="cancel button">{{cancelText}}</a>
+  </div>
+{{/if}}
