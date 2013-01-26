@@ -1,11 +1,11 @@
-<div class="row content-wrapper">
-  <div class="twelve columns">
+<div class="row">
+  <div class="six columns centered">
     <h2>Get a Free Measuring Tape</h2>
     <p>Input your name and address and we will send you a free Tailored Republic measuring tape.</p>
   </div>
 </div>
 <div class="row">
-  <div class="six columns">
+  <div class="six columns centered">
     <%= render 'shared/form_errors', resource: @address %>
     <%= form_for @address, url: { action: 'new_tape_address' } do |f| %>
       <%= f.label 'Name' %>
