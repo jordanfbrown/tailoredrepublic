@@ -19,6 +19,7 @@
 //= require jquery.bxslider
 //= require modernizr.foundation
 //= require jquery.foundation.topbar
+//= require jquery.foundation.magellan
 //= require underscore
 //= require backbone
 //= require handlebars

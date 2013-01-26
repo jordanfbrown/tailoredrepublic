@@ -8,6 +8,8 @@ class TR.Views.Home extends TR.Views.Base
   initialize: (options) ->
     @products = new TR.Collections.Products options.products
     @createSlideshow()
+    $(document).foundationMagellan
+      threshold: 100
     $(window).scroll @scroll
     $(window).resize @resize
     @resize true

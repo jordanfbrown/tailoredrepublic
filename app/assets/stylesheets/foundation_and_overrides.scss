@@ -1,4 +1,5 @@
 @import "foundation/common/ratios";
+@import "compass/css3";
 
 // Settings file containing Foundation defaults
 
@@ -450,6 +451,10 @@ legend {
 
   a:hover {
     color: #fff;
+  }
+
+  .active {
+   @include box-shadow(inset 0px 0px 70px 2px $brown);
   }
 
   .dropdown {
