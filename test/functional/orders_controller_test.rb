@@ -73,7 +73,7 @@ class OrdersControllerTest < ActionController::TestCase
 
   test "New customer, bad user data posted to review" do
     set_full_cart_cookie
-    bad_user_params = user_params()
+    bad_user_params = user_params
     bad_user_params[:password_confirmation] = 'foo'
     post :review, {
         user: bad_user_params,
@@ -106,6 +106,42 @@ class OrdersControllerTest < ActionController::TestCase
     assert_template :review
     assert !assigns(:order).line_items.empty?
     assert_equal assigns(:order).measurement.chest, user.measurement.chest
+  end
+
+  test "Existing customer, successfully placed order with saved card" do
+    set_full_cart_cookie
+    user = users(:user_with_stripe)
+    order_count = user.orders.count
+    sign_in :user, user
+    post :create, {
+      order: order_params,
+      use_saved_card: 'on'
+    }
+    assert_response :success
+    assert_template :thank_you
+    assert_equal assigns(:order).line_items.count, 2
+    assert_not_nil assigns(:order).stripe_charge_id
+    assert_equal user.orders.count, order_count + 1
+  end
+
+  test "Existing customer, successfully placed order with saved card and a 10% discount" do
+    set_full_cart_cookie
+    user = users(:user_with_stripe)
+    coupon = coupons(:ten_percent_off)
+    coupon_quantity = coupon.quantity
+    sign_in :user, user
+    post :create, {
+      order: order_params,
+      use_saved_card: 'on',
+      coupon_code: 'BQTHRSCA'
+    }
+    assert_response :success
+    assert_template :thank_you
+    assert_not_nil assigns(:order).coupon
+    assert_equal assigns(:order).coupon.description, '10% Off Promotion'
+    assert_equal assigns(:order).final_cost, 682.2
+    coupon.reload
+    assert_equal coupon.quantity, coupon_quantity - 1
   end
 
   def user_params
