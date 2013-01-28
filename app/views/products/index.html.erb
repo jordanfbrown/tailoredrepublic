@@ -1,6 +1,6 @@
-<h2>Products</h2>
-
 <div class="twelve columns">
+  <h2>Products</h2>
+
   <p id="notice"><%= notice %></p>
 
   <table>
@@ -24,7 +24,7 @@
       <td><%= product.name %></td>
       <td><%= product.category %></td>
       <td><%= product.description %></td>
-      <td><%= product.price %></td>
+      <td><%= number_to_currency product.price %></td>
       <td><%= product.quantity %></td>
       <td><%= product.image_large_url %></td>
       <td><%= product.image_small_1_url %></td>
@@ -37,7 +37,6 @@
   <% end %>
   </table>
 
-  <br />
-
   <%= link_to 'New Product', new_product_path, class: "button" %>
+  <br />
 </div>

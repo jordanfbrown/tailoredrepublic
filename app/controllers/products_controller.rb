@@ -11,7 +11,9 @@ class ProductsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html do
+        authorize! :index, @products
+      end
       format.json { render json: @products }
     end
   end
@@ -22,7 +24,9 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html do
+        authorize! :show, @products
+      end
       format.json { render json: @product }
     end
   end

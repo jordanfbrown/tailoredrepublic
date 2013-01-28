@@ -14,6 +14,7 @@ TailoredRepublic::Application.routes.draw do
   resource  :cart, only: [:show, :create, :update, :destroy]
   resource  :measurements, only: [:show, :create, :update]
   resources :products
+  resources :coupons, except: [:show]
   resources :line_items, only: [:create, :destroy]
   resources :orders, only: [:show, :new, :create, :index] do
     collection do

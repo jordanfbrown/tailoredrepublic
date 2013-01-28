@@ -5,7 +5,7 @@ templates['_add_success_modal.tmpl'] = template(function (Handlebars,depth0,help
   var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  buffer += "<a class=\"close-reveal-modal\">&#215;</a>\n\n<h3>The ";
+  buffer += "<a class=\"close-reveal-modal\">&#215;</a>\n\n<h3>";
   stack1 = depth0.product;
   stack1 = stack1 == null || stack1 === false ? stack1 : stack1.name;
   stack1 = typeof stack1 === functionType ? stack1() : stack1;
