@@ -40,24 +40,36 @@
   &.index {
 
    .order-list-item {
-     border: 1px dashed #ccc;
+     border-bottom: 1px dashed #aaa;
      @include clearfix;
      margin: 0 15px 10px 15px;
      padding: 10px 5px;
     }
 
+    h5 {
+      font-weight: bold;
+    }
+
     @media only screen and (max-width: 767px) {
       ul {
         margin-bottom: 10px;
-        border-bottom: 1px solid #ccc;
       }
       .items-purchased {
         margin-top: 0;
       }
     }
 
+    .order-number {
+      margin-top: 30px;
+    }
+
     .items-purchased {
       margin-top: 10px;
+
+      li:last-child {
+        padding-top: 5px;
+        border-top: 1px solid #aaa;
+      }
     }
   }
 
