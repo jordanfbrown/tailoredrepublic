@@ -108,6 +108,7 @@ GEM
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-ssh (2.6.3)
+    newrelic_rpm (3.5.6.46)
     nokogiri (1.5.6)
     numbers_and_words (0.5.0)
       activesupport
@@ -197,6 +198,7 @@ DEPENDENCIES
   font_assets
   gibbon
   jquery-rails
+  newrelic_rpm
   numbers_and_words
   pg
   quiet_assets (>= 1.0.1)
