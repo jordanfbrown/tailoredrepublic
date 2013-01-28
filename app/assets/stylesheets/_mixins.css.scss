@@ -52,17 +52,17 @@ $maple: #D0A66E;
 }
 
 @mixin shop-texture($repeat: no-repeat) {
-  background: url(textures/top-picks-texture.png) $repeat top center;
+  background: url(textures/top-picks-texture.jpg) $repeat top center;
   @if $repeat == 'no-repeat' {
     background-size: 100% 100%;
   } @else {
-    background-size: 100% auto;
+    background-size: auto 100%;
   }
   overflow: hidden;
 
   @media only screen and (max-width: 767px) {
     background-size: 100% auto;
-    background: url(textures/top-picks-texture.png) repeat-y center top;
+    background: url(textures/top-picks-texture.jpg) repeat-y center top;
     margin-bottom: 30px;
   }
 }
