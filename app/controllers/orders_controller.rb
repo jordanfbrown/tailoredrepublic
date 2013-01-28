@@ -31,10 +31,14 @@ class OrdersController < ApplicationController
   end
 
   def index
-    if !user_signed_in?
-      redirect_to root_path
+    if user_signed_in?
+      if current_user.has_role? :admin
+        @orders = Order.paginated_orders(params[:page] ||= 1)
+      else
+        @orders = current_user.paginated_orders(params[:page] ||= 1)
+      end
     else
-      @orders = current_user.paginated_orders(params[:page] ||= 1)
+      redirect_to root_path
     end
   end
 

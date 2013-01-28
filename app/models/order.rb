@@ -23,6 +23,11 @@ class Order < ActiveRecord::Base
     order
   end
 
+  def self.paginated_orders(page)
+    Order.includes({ line_items: [:product, :customization] }, :shipping_address, :billing_address, :measurement)
+         .paginate(page: page).order('created_at DESC')
+  end
+
   def copy_line_items_from_cart(cart)
     cart.line_items.each do |line_item|
       line_item.cart_id = nil
