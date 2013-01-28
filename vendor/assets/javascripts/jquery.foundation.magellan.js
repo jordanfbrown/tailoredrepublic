@@ -72,10 +72,12 @@
 
     // Determine when a destination has been reached, ah0y!
     var $lastDestination = $('[data-magellan-destination]:last');
+    var $navItem = $('.top-bar .left li');
     $window.on('scroll.magellan', function(e){
 	  var windowScrollTop = $window.scrollTop(),
 		  scrolltopPlusHeight = windowScrollTop+$window.outerHeight(true),
 		  lastDestinationTop = Math.ceil($lastDestination.offset().top);
+      $navItem.removeClass('active');
       $('[data-magellan-destination]').each(function(){
         var $destination = $(this),
             destination_name = $destination.attr('data-magellan-destination'),
