@@ -35,9 +35,9 @@
     });
 
     // Set starting point as the current destination
-    var $expedition = $('[data-magellan-expedition]');
-    $expedition.find('[data-magellan-arrival]:first')
-      .addClass($expedition.attr('data-magellan-active-class') || options.activeClass);
+//    var $expedition = $('[data-magellan-expedition]');
+//    $expedition.find('[data-magellan-arrival]:first')
+//      .addClass($expedition.attr('data-magellan-active-class') || options.activeClass);
 
     // Update fixed position
     $fixedMagellan.on('magellan.update-position', function(){
