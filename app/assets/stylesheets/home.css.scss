@@ -11,6 +11,58 @@
   z-index: 0;
   @include white-anchor;
 
+  .shop-schedule {
+    position: absolute;
+    top: 47%;
+    right: 10%;
+    margin-top: -39px;
+    font-family: United Serif SemiCond;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 2px;
+    border: 1px solid #999;
+    
+    @media only screen and (max-width: 1000px) {
+      right: 4%;
+    }
+
+    @media only screen and (max-width: 560px) {
+      left: 10%;
+      bottom: 15%;
+      top: auto;
+      right: auto;
+    }
+
+    @media only screen and (max-width: 360px) {
+      left: 2%;
+      bottom: 15%;
+      top: auto;
+      right: auto;
+    }
+
+    a {
+      @media only screen and (max-width: 1920px) {
+        font-size: 1.3em
+      }
+      @media only screen and (max-width: 1000px) {
+        font-size: 1.1em;
+      }
+      @media only screen and (max-width: 660px) {
+        font-size: 0.9em;
+      }
+      @media only screen and (max-width: 560px) {
+       font-size: 0.8em;
+      }
+      display: inline-block;
+      padding: 7px 5px 5px 5px;
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid #fff;
+
+      &:first-child {
+        margin-right: -4px;
+      }
+    }
+  }
+
   .parallax {
     position: fixed;
     top: 0;
