@@ -11,6 +11,7 @@ class TR.Views.ProductModal extends TR.Views.Modal
       'click a.customize': 'openCustomizationModal'
 
   initialize: (options) ->
+    super()
     @customization = options.customization
     @template = @getTemplate 'product_modal'
     $(window).on 'resize.product', @resize

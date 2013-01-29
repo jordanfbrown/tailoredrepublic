@@ -62,7 +62,6 @@ module TailoredRepublic
 
     # Enable the asset pipeline
     config.assets.enabled = true
-    config.assets.digest = true
     config.assets.initialize_on_precompile = false
     config.assets.paths << "#{Rails.root}/app/assets/fonts"
 

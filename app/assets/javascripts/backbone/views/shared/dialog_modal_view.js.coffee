@@ -7,6 +7,7 @@ class TR.Views.DialogModal extends TR.Views.Modal
       'click a.cancel': 'cancel'
 
   initialize: (options) ->
+    super()
     @action = options.action || false
     @text = options.text || ''
     @confirmText = options.confirmText || 'Ok'
@@ -19,7 +20,6 @@ class TR.Views.DialogModal extends TR.Views.Modal
     @$el.html @template text: @text, confirmText: @confirmText, cancelText: @cancelText, confirmOnly: @confirmOnly
     super()
     @$el.css 'top': $(document).scrollTop() + $(window).height() / 2, 'margin-top': -@$el.height() / 2
-    $('body').append(@$el).addClass 'modal-open'
 
   confirm: (e) ->
     e.preventDefault()
@@ -29,7 +29,3 @@ class TR.Views.DialogModal extends TR.Views.Modal
   cancel: (e) ->
     e.preventDefault()
     @close()
-
-  destroy: ->
-    $('body').removeClass 'modal-open'
-    super()

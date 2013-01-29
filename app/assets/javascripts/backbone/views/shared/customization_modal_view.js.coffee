@@ -18,6 +18,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
       'click .advanced-checkbox': 'setAdvancedOption'
 
   initialize: (options) ->
+    super()
     @product = options.product
     @customization = options.customization || new TR.Models.Customization({}, {category: @product.get('category')})
     @customization.on 'change', @updateCheckoutSlide

@@ -8,6 +8,7 @@ class TR.Views.AddSuccessModal extends TR.Views.Modal
       'click a.keep-shopping': 'close'
     
   initialize: ->
+    super()
     @subviews = []
     productParams = data: $.param(suggested: true, product_id: @model.get 'id')
     @suggestedProducts = new TR.Collections.Products()
