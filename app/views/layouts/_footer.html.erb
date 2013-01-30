@@ -4,19 +4,19 @@
     <div class="three columns">
       <h5 class="expandable">CUSTOMER SERVICE<span>+</span></h5>
       <ul class="hide-small">
-        <li><a href="/faq">FAQ</a></li>
-        <li><a href="/team">TR Team</a></li>
-        <li><a href="/measurements">Measurements</a></li>
-        <li><a href="/measuring_tape">Get A Free Measuring Tape</a></li>
+        <li><%= link_to 'FAQ', faq_path %></li>
+        <li><%= link_to 'TR Team', team_path %></li>
+        <li><%= link_to 'Measurements', measurements_path %></li>
+        <li><%= link_to 'Get A Free Measuring Tape', measuring_tape_path %></li>
       </ul>
     </div>
     <div class="three columns">
       <h5 class="expandable">ETCETERA<span>+</span></h5>
       <ul class="hide-small">
-        <li><a href="/weddings">Weddings</a></li>
-        <li><a href="/get_tailored">Get #Tailored Kit</a></li>
-        <li><a href="/gift_cards">Gift Cards</a></li>
-        <li><a href="/press">Press</a></li>
+        <li><%= link_to 'Weddings', weddings_path %></li>
+        <li><%= link_to 'Get #Tailored Kit', get_tailored_path %></li>
+        <li><%= link_to 'Gift Cards', gift_cards_path %></li>
+        <li><%= link_to 'Press', press_path %></li>
       </ul>
     </div>
     <div class="three columns">
@@ -27,21 +27,11 @@
         </li>
         <li><strong>#</strong>&nbsp;//&nbsp;213-8-TAILOR (213-382-4567)</li>
         <li class="social">
-          <a href="mailto:info@tailoredrepublic.com">
-            <%= image_tag "icons/social/email-icon.png" %>
-          </a>
-          <a href="http://www.facebook.com/TailoredRepublic" target="_blank">
-            <%= image_tag "icons/social/facebook-icon.png" %>
-          </a>
-          <a href="https://twitter.com/T_Republic" target="_blank">
-            <%= image_tag "icons/social/twitter-icon.png" %>
-          </a>
-          <a href="http://instagram.com/tailoredrepublic" target="_blank">
-            <%= image_tag "icons/social/instagram-icon.png" %>
-          </a>
-          <a href="http://blog.tailoredrepublic.com" target="_blank">
-            <%= image_tag "icons/social/tumblr-icon.png" %>
-          </a>
+          <%= link_to image_tag('icons/social/email-icon.png'), 'mailto:info@tailoredrepublic.com' %>
+          <%= link_to image_tag('icons/social/facebook-icon.png'), 'http://www.facebook.com/TailoredRepublic', target: '_blank' %>
+          <%= link_to image_tag('icons/social/twitter-icon.png'), 'https://twitter.com/T_Republic', target: '_blank' %>
+          <%= link_to image_tag('icons/social/instagram-icon.png'), 'http://instagram.com/tailoredrepublic', target: '_blank' %>
+          <%= link_to image_tag('icons/social/tumblr-icon.png'), 'http://blog.tailoredrepublic.com', target: '_blank' %>
         </li>
       </ul>
     </div>
