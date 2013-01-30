@@ -31,6 +31,8 @@ class TR.Views.Measurements extends TR.Views.Base
       infiniteLoop: off
       onSlideBefore: @onSlideBefore
       adaptiveHeight: on
+      touchEnabled: off
+
     @slideCount = @slider.getSlideCount() - 1
 
     @currentTapeValue = @model.get 'neck' || @model.defaults.neck
