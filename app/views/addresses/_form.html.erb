@@ -1,22 +1,27 @@
-<%= parent_form.fields_for address_type do |address_form| %>
-  <%= address_form.label 'Name' %>
-  <%= address_form.text_field :name %>
-  <%= address_form.label 'Address' %>
-  <%= address_form.text_field :line1 %>
-  <%= address_form.label 'Address 2 (Optional)' %>
-  <%= address_form.text_field :line2 %>
+<%= form_for address, url: { action: action } do |f| %>
+  <%= f.label 'Name' %>
+  <%= f.text_field :name %>
+  <%= f.label 'Address' %>
+  <%= f.text_field :line1 %>
+  <%= f.label 'Address 2 (Optional)' %>
+  <%= f.text_field :line2 %>
   <div class="row">
     <div class="six columns">
-      <%= address_form.label 'City' %>
-      <%= address_form.text_field :city %>
+      <%= f.label 'City' %>
+      <%= f.text_field :city %>
     </div>
     <div class="three columns">
-      <%= address_form.label 'State' %>
-      <%= address_form.select :state, us_states, {}, class: 'state-dropdown' %>
+      <%= f.label 'State' %>
+      <%= f.select :state, us_states, {}, class: 'state-dropdown' %>
     </div>
     <div class="three columns">
-      <%= address_form.label 'Zip' %>
-      <%= address_form.text_field :zip %>
+      <%= f.label 'Zip' %>
+      <%= f.text_field :zip %>
     </div>
   </div>
+  <% if phone %>
+    <%= f.label 'Phone Number' %>
+    <%= f.text_field :phone_number %>
+  <% end %>
+  <%= f.submit 'Submit', class: 'button large full-width' %>
 <% end %>

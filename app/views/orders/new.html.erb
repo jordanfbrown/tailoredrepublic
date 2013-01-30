@@ -18,7 +18,7 @@
 
       <fieldset>
         <legend>Shipping Address</legend>
-        <%= render 'addresses/form', parent_form: f, address_type: :shipping_address %>
+        <%= render 'addresses/nested_form', parent_form: f, address_type: :shipping_address %>
       </fieldset>
 
       <fieldset>
@@ -43,7 +43,7 @@
       <fieldset>
         <legend>Billing Address</legend>
         <label><input type="checkbox" name="billing-same-as-shipping" class="billing-shipping-label"> Billing address is the same as the shipping address.</label>
-        <%= render 'addresses/form', parent_form: f, address_type: :billing_address %>
+        <%= render 'addresses/nested_form', parent_form: f, address_type: :billing_address %>
       </fieldset>
 
       <fieldset>

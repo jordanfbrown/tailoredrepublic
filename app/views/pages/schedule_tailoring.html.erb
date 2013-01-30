@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="six columns centered">
+    <h2>Schedule A Tailoring</h2>
+    <p>Input your name, address, and phone number and we will contact you about scheduling a tailoring.</p>
+  </div>
+</div>
+<div class="row">
+  <div class="six columns centered">
+    <%= render 'shared/form_errors', resource: @address %>
+    <%= render 'addresses/form', address: @address, action: 'create_schedule_tailoring', phone: true %>
+  </div>
+</div>

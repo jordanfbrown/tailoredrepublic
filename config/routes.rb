@@ -41,6 +41,8 @@ TailoredRepublic::Application.routes.draw do
   match '/weddings' => 'pages#weddings'
   match '/measuring_tape' => 'pages#measuring_tape'
   match '/new_tape_address' => 'pages#new_tape_address'
+  match '/schedule_tailoring' => 'pages#schedule_tailoring'
+  match '/create_schedule_tailoring' => 'pages#create_schedule_tailoring'
   match '/subscribe_to_newsletter' => 'mailing_list#subscribe'
 
   #match "/shop/shirts" => "shop#shirts"

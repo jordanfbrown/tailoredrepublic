@@ -19,7 +19,7 @@
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :id => 'shipping_address_form'}) do |f| %>
       <fieldset>
         <legend>Shipping Address</legend>
-        <%= render 'addresses/form', parent_form: f, address_type: :shipping_address %>
+        <%= render 'addresses/nested_form', parent_form: f, address_type: :shipping_address %>
         <%= f.submit "Save", class: "button full-width large submit" %>
       </fieldset>
     <% end %>
@@ -30,7 +30,7 @@
           <p></p>
         </div>
         <%= render 'users/credit_card_form' %>
-        <%= render 'addresses/form', parent_form: f, address_type: :billing_address %>
+        <%= render 'addresses/nested_form', parent_form: f, address_type: :billing_address %>
         <%= hidden_field_tag :stripe_card_token %>
         <%= f.submit "Save", class: "button full-width large submit" %>
       </fieldset>
