@@ -216,26 +216,6 @@
 #lookbook {
   padding-top: 0;
 
-  @media only screen and (max-width: 767px) {
-    h2 {
-      font-size: 2.5em;
-    }
-
-    #lookbook-info span {
-      font-size: 16px;
-    }
-  }
-
-  @media only screen and (max-width: 450px) {
-    h2 {
-      font-size: 2em;
-    }
-
-    #lookbook-info span {
-      font-size: 14px;
-    }
-  }
-
   h2 {
     position: absolute;
     color: #fff;
@@ -265,6 +245,30 @@
       &:first-child {
         padding-left: 10px;
       }
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+    h2 {
+      font-size: 2.5em;
+    }
+
+    #lookbook-info {
+      top: auto;
+      bottom: 20px;
+    }
+    #lookbook-info span {
+      font-size: 16px;
+    }
+  }
+
+  @media only screen and (max-width: 450px) {
+    h2 {
+      font-size: 2em;
+    }
+
+    #lookbook-info span {
+      font-size: 14px;
     }
   }
 }
