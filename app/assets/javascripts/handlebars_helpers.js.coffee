@@ -23,7 +23,7 @@ Handlebars.registerHelper 'ifVest', (customization, numButtons, options) ->
   if customization && customization.vest == true && customization.vest_buttons == numButtons
     options.fn @
 
-Handlebars.registerHelper 'customizationHelper', (customization, lapel) ->
+Handlebars.registerHelper 'progressBarImage', (customization, lapel) ->
   if lapel == true && customization
     '<img class="selected completed" src="' + TR.ASSET_HOST + '/assets/icons/star-filled.png">'
   else if lapel == true

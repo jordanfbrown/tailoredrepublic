@@ -1,7 +1,7 @@
 module CartsHelper
   def customization_list(customization)
     if customization.product_category == 'suit'
-      [
+      customizations = [
         { option: "Lapel", type: customization.lapel.capitalize },
         { option: "Buttons", type: wordify(customization.buttons) },
         { option: "Vents", type: wordify(customization.vents) },
@@ -15,6 +15,10 @@ module CartsHelper
         { option: "Vest", type:
           (customization.vest ? "#{customization.vest_buttons} Button Vest (+$#{Product.vest_price})" : "No") }
       ]
+      unless customization.fabric.blank?
+        customizations.unshift({ option: "Fabric", type: customization.fabric })
+      end
+      customizations
     elsif customization.product_category == 'shirt'
       [
         { option: "Collar", type: customization.collar.capitalize },

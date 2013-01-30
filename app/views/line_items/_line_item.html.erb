@@ -16,7 +16,7 @@
         <% if line_item.customization.product_category == 'suit' %>
           <%= render "carts/customization_list", customizations: customization_list(line_item.customization)[0..3] %>
           <%= render "carts/customization_list", customizations: customization_list(line_item.customization)[4..7] %>
-          <%= render "carts/customization_list", customizations: customization_list(line_item.customization)[8..11] %>
+          <%= render "carts/customization_list", customizations: customization_list(line_item.customization)[8..12] %>
         <% elsif line_item.customization.product_category == 'shirt' %>
           <%= render "carts/customization_list", customizations: customization_list(line_item.customization)[0..4] %>
         <% end %>

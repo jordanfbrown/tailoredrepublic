@@ -24,7 +24,7 @@ class TR.Views.ProductModal extends TR.Views.Modal
     super()
 
   resize: =>
-    if $(window).width() < 768
+    if $(window).width() < 1024
       @$el.removeClass('xlarge').addClass('expand')
     else
       @$el.removeClass('expand').addClass('xlarge')

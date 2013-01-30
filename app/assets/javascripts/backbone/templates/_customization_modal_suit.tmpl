@@ -1,21 +1,46 @@
 <a class="close-reveal-modal">&#215;</a>
 <h2>{{product.name}} <span class="divider">//</span> Customize</h2>
 <div class="customizations">
-  <ul class="progress-bar {{product.category}}">
-    <li data-type="lapel">{{{customizationHelper customization true}}}</li>
-    <li data-type="buttons">{{{customizationHelper customization}}}</li>
-    <li data-type="vents">{{{customizationHelper customization}}}</li>
-    <li data-type="pleats">{{{customizationHelper customization}}}</li>
-    <li data-type="pant_cuffs">{{{customizationHelper customization}}}</li>
-    <li data-type="fit">{{{customizationHelper customization}}}</li>
-    <li data-type="lining">{{{customizationHelper customization}}}</li>
-    <li data-type="monogram">{{{customizationHelper customization}}}</li>
-    <li data-type="advanced">{{{customizationHelper customization}}}</li>
-    <li data-type="vest">{{{customizationHelper customization}}}</li>
-    <li data-type="vest_buttons">{{{customizationHelper vest}}}</li>
+  <ul class="progress-bar {{product.category}} {{#if chooseFabric}} suit-swatch {{/if}}">
+    {{#if chooseFabric}}
+      <li data-type="swatch">{{{progressBarImage customization true}}}</li>
+      <li data-type="lapel">{{{progressBarImage customization}}}</li>
+    {{else}}
+      <li data-type="lapel">{{{progressBarImage customization true}}}</li>
+    {{/if}}
+    <li data-type="buttons">{{{progressBarImage customization}}}</li>
+    <li data-type="vents">{{{progressBarImage customization}}}</li>
+    <li data-type="pleats">{{{progressBarImage customization}}}</li>
+    <li data-type="pant_cuffs">{{{progressBarImage customization}}}</li>
+    <li data-type="fit">{{{progressBarImage customization}}}</li>
+    <li data-type="lining">{{{progressBarImage customization}}}</li>
+    <li data-type="monogram">{{{progressBarImage customization}}}</li>
+    <li data-type="advanced">{{{progressBarImage customization}}}</li>
+    <li data-type="vest">{{{progressBarImage customization}}}</li>
+    <li data-type="vest_buttons">{{{progressBarImage vest}}}</li>
     <li data-type="checkout"><img src="{{imgSrc 'icons/star-no-stroke.png'}}"></li>
   </ul>
   <ul class="customization-list">
+    {{#if chooseFabric}}
+      <li class="customization-wrapper fabric" data-type="swatch">
+        <h3>Fabric</h3>
+        <div class="row">
+          <div class="three columns">
+            <a href="#" class="fabric-option {{#ifeq fabric 'fabric-1'}}selected{{/ifeq}}" data-id="fabric-1"><img src="{{imgSrc 'swatches/swatch-1.jpg'}}"></a>
+          </div>
+          <div class="three columns">
+            <a href="#" class="fabric-option {{#ifeq fabric 'fabric-2'}}selected{{/ifeq}}" data-id="fabric-2"><img src="{{imgSrc 'swatches/swatch-2.jpg'}}"></a>
+          </div>
+          <div class="three columns">
+            <a href="#" class="fabric-option {{#ifeq fabric 'fabric-3'}}selected{{/ifeq}}" data-id="fabric-3"><img src="{{imgSrc 'swatches/swatch-3.jpg'}}"></a>
+          </div>
+          <div class="three columns">
+            <a href="#" class="fabric-option {{#ifeq fabric 'fabric-4'}}selected{{/ifeq}}" data-id="fabric-4"><img src="{{imgSrc 'swatches/swatch-4.jpg'}}"></a>
+          </div>
+        </div>
+        <p>Fabric copy.</p>
+      </li>
+    {{/if}}
     <li class="customization-wrapper" data-type="lapel">
       <h3>Lapel</h3>
       <a href="#" class="customization-option four" data-option="notch">

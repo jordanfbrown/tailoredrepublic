@@ -1,4 +1,7 @@
 <ul class="four columns">
+  {{#if chooseFabric}}
+    <li><a href="#" class="label" data-type="swatch">Fabric:</a> {{fabric}}</li>
+  {{/if}}
   <li><a href="#" class="label" data-type="lapel">Lapel:</a> {{uppercaseFirst lapel}}</li>
   <li><a href="#" class="label" data-type="buttons">Buttons:</a> {{numberToString buttons}}</li>
   <li><a href="#" class="label" data-type="vents">Vents:</a> {{numberToString vents}}</li>
@@ -13,7 +16,7 @@
   <li><a href="#" class="label" data-type="advanced">Pick Stitching:</a> {{#if pick_stitching}}Yes{{else}}No{{/if}}</li>
   <li><a href="#" class="label" data-type="vest">Vest:</a> {{#if vest}}Yes (+${{vestPrice}}){{else}}No{{/if}}</li>
   {{#if vest}}
-  <li><a href="#" class="label" data-type="vest_buttons">Vest Buttons:</a> {{vest_buttons}}</li>
+    <li><a href="#" class="label" data-type="vest_buttons">Vest Buttons:</a> {{vest_buttons}}</li>
   {{/if}}
 </ul>
 <div class="four columns">

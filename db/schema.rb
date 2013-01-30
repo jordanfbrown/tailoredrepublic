@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130130174752) do
+ActiveRecord::Schema.define(:version => 20130130201825) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20130130174752) do
     t.boolean  "pocket"
     t.string   "monogram_color"
     t.string   "product_category"
+    t.string   "fabric"
   end
 
   create_table "line_items", :force => true do |t|

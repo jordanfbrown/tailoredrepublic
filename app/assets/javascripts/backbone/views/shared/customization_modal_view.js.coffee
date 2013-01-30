@@ -12,6 +12,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
       'click a.previous': 'previous'
       'click a.next': 'next'
       'click a.lining-option': 'selectLining'
+      'click a.fabric-option': 'selectFabric'
       'click a.label': 'clickedLabelOnCheckout'
       'click a.advance-slide': 'next'
       'submit #monogram-form': 'submitMonogram'
@@ -56,7 +57,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
       @slider.goToNextSlide()
 
   resize: =>
-    if $(window).width() < 768
+    if $(window).width() < 1024
       @$el.removeClass('xlarge').addClass('expand')
     else
       @$el.removeClass('expand').addClass('xlarge')
@@ -82,6 +83,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
       price: price
       vestPrice: TR.VEST_PRICE
       isNew: @customization.isNew()
+      chooseFabric: @product.customFabric()
     , @customization.toJSON()
 
   updateCheckoutSlide: =>
@@ -110,6 +112,13 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     @$('.lining-option').removeClass 'selected'
     $lining = $(e.currentTarget).addClass 'selected'
     @customization.set 'lining', $lining.data 'id'
+
+  selectFabric: (e) ->
+    e.preventDefault()
+    @$('.fabric-option').removeClass 'selected'
+    $fabric = $(e.currentTarget).addClass 'selected'
+    @customization.set 'fabric', $fabric.data 'id'
+    @slider.goToNextSlide()
 
   goToSlide: (e) ->
     e.preventDefault()

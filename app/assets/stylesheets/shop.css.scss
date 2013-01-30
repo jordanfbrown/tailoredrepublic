@@ -124,6 +124,10 @@
       width: 6.33%;
     }
 
+    &.suit-swatch li {
+      width: 5.69%;
+    }
+
     &.shirt li {
       width: 18%;
       text-align: center;
@@ -281,6 +285,31 @@
 
       .button {
         width: 100px;
+      }
+    }
+
+    &.fabric {
+
+      .selected img {
+        background-color: #ccc;
+      }
+
+      img {
+        border: 1px dashed #ccc;
+        padding: 5px;
+
+        &:hover {
+          background-color: #ccc;
+        }
+      }
+
+      .three {
+        text-align: center;
+        
+        @media only screen and (max-width: 767px) {
+          width: 50% !important;
+          float: left !important;
+        }
       }
     }
   }
