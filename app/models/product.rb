@@ -17,6 +17,10 @@ class Product < ActiveRecord::Base
   end
 
   def self.depluralize_category(category)
+    if category.blank?
+      return :suit
+    end
+
     case category
       when 'suits'
         :suit
@@ -27,7 +31,7 @@ class Product < ActiveRecord::Base
       when 'accessories'
         :accessory
       else
-        :suit
+        :error
     end
   end
 
