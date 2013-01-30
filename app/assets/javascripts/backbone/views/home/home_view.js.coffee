@@ -72,6 +72,9 @@ class TR.Views.Home extends TR.Views.Base
     else
       $('.page-down').css 'top', pageDownOffset - restingPosition + 'px'
 
+    shopOffset = if $(window).width() > 600 then 150 else 50
+    $('.shop-schedule').css top: pageDownOffset - shopOffset + 'px'
+
   scroll: ->
     $sidebar = $('#sidebar')
     $sidebar.removeClass('bottom').find('li').removeClass('selected')
