@@ -6,7 +6,7 @@ class OrderTest < ActiveSupport::TestCase
     assert cart.empty?
     cart.line_items << line_items(:one)
     assert !cart.empty?
-    order = orders(:first_order)
+    order = orders(:empty_order)
     order.copy_line_items_from_cart cart
     cart.reload
     assert_equal cart.line_items.length, 0

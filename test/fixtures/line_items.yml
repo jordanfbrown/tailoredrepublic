@@ -3,32 +3,32 @@
 one:
   product: executive
   cart: one_suit
-  customization: one
+  customization: suit
 
 two:
   product: entrepreneur
   cart: two_suits
-  customization: one
+  customization: suit
 
 three:
   product: executive
   cart: two_suits
-  customization: one
+  customization: suit
 
 four:
   product: white_shirt
   cart: one_shirt
-  customization: one
+  customization: shirt
 
 five:
   product: white_shirt
   cart: one_shirt_one_suit
-  customization: one
+  customization: shirt
 
 six:
   product: tuxedo
   cart: one_shirt_one_suit
-  customization: one
+  customization: suit
 
 line_item_gift_card_100:
   product: gift_card_100
@@ -37,3 +37,4 @@ line_item_gift_card_100:
 seven:
   product: white_shirt
   order: shirt_order
+  customization: shirt

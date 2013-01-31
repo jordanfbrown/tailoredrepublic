@@ -1,6 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-first_order:
+empty_order:
   user: user_with_stripe
 
 gift_card_order:

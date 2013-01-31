@@ -15,8 +15,7 @@ order_shipping_address:
   city: MyString
   state: MyString
   zip: 94041
-  addressable_id: 1
-  addressable_type: Order
+  addressable: shirt_order (Order)
   type: ShippingAddress
 
 order_billing_address:
@@ -26,7 +25,6 @@ order_billing_address:
   city: MyString
   state: MyString
   zip: 94117
-  addressable_id: 1
-  addressable_type: Order
+  addressable: shirt_order (Order)
   type: BillingAddress
 

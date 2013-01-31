@@ -1,4 +1,4 @@
-one:
+suit:
   lapel: notch
   buttons: 2
   vents: 1
@@ -13,16 +13,9 @@ one:
   vest_buttons: 3
   product_category: suit
 
-two:
-  lapel: notch
-  buttons: 2
-  vents: 1
-  pleats: 0
-  pant_cuffs: false
-  fit: tailored
-  lining: 1
+shirt:
+  collar: standard
+  fit: slim
+  pocket: false
   monogram: JBizz
-  bouttoniere: false
-  pick_stitching: false
-  vest: false
-  vest_buttons: 3
+  product_category: shirt

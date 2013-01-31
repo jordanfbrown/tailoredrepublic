@@ -2,7 +2,7 @@ require 'test_helper'
 
 class OrderMailerTest < ActionMailer::TestCase
   test 'order confirmation email' do
-    order = orders(:first_order)
+    order = orders(:shirt_order)
 
     email = OrderMailer.order_confirmation_email(order).deliver
     assert !ActionMailer::Base.deliveries.empty?
