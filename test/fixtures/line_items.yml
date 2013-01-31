@@ -32,5 +32,8 @@ six:
 
 line_item_gift_card_100:
   product: gift_card_100
-  order_id: 2
-  cart: gift_card
+  order: gift_card_order
+
+seven:
+  product: white_shirt
+  order: shirt_order

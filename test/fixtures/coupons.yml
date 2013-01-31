@@ -10,6 +10,16 @@ hundred_gift_card:
   begin_date: NULL
   end_date: NULL
 
+four_hundred_gift_card:
+  code: BCXKPVFA
+  description: $400 Gift Card
+  quantity: 1
+  amount: 400
+  coupon_type: gift_card
+  discount_type: fixed
+  begin_date: NULL
+  end_date: NULL
+
 ten_percent_off:
   code: BQTHRSCA
   description: 10% Off Promotion

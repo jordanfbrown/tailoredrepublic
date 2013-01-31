@@ -1,9 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 first_order:
-  id: 1
   user: user_with_stripe
 
 gift_card_order:
-  id: 2
+  user: user_with_stripe
+
+shirt_order:
   user: user_with_stripe
