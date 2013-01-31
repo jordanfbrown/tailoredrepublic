@@ -486,9 +486,3 @@ legend {
 .row .row {
   margin: auto;
 }
-
-@-moz-document url-prefix() {
-  p, h1, h2, h3, h4, h5, h6, a, span, li {
-    font-weight: 100 !important;
-  }
-}
