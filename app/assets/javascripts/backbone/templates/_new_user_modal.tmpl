@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="twelve columns">
+    <h2>Create Account</h2>
+    <p>We noticed that you don't have an account. If you'd like your measurements to be saved, please create an account.
+    If you don't want to create an account, click "Cancel".</p>
+    <p class="error" style="display: none;">There were some problems creating your account:</p>
+    <ul class="error" style="display: none;"></ul>
+    <form accept-charset="UTF-8" action="/users" class="new_user" id="new_user" method="post">
+      <label for="user_name">Name</label>
+      <input id="user_name" name="user[name]" size="30" type="text" value="Test"/>
+      <label for="user_email">Email</label>
+      <input id="user_email" name="user[email]" size="30" type="email" value="test5@test.com" />
+      <label for="user_password">Password</label>
+      <input id="user_password" name="user[password]" size="30" type="password" value="abc123"/>
+      <label for="user_password_confirmation">Password confirmation</label>
+      <input id="user_password_confirmation" name="user[password_confirmation]" size="30" type="password" value="abc123"/>
+      <input id="measurement_id" name="measurement_id" type="hidden" value="52">
+      <div class="row">
+        <div class="six columns">
+          <input class="button full-width" name="commit" type="submit" value="Sign Up" />
+        </div>
+        <div class="six columns">
+          <a href="#" class="button full-width cancel">Cancel</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -28,6 +28,38 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def create
+    build_resource
+
+    if resource.save
+      if resource.active_for_authentication?
+        set_flash_message :notice, :signed_up if is_navigational_format?
+        sign_in(resource_name, resource)
+        if request.xhr?
+          unless params[:measurement_id].blank?
+            measurement = Measurement.find(params[:measurement_id])
+            measurement.user = resource
+            measurement.save
+          end
+          render json: {}
+        else
+          respond_with resource, :location => after_sign_up_path_for(resource)
+        end
+      else
+        set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_navigational_format?
+        expire_session_data_after_sign_in!
+        respond_with resource, :location => after_inactive_sign_up_path_for(resource)
+      end
+    else
+      clean_up_passwords resource
+      if request.xhr?
+        render json: resource.errors, status: :unprocessable_entity
+      else
+        respond_with resource
+      end
+    end
+  end
+
   protected
 
   def build_addresses

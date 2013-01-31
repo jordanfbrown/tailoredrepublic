@@ -28,6 +28,9 @@ class TR.Views.Modal extends TR.Views.Base
       closed: =>
         @destroy()
 
+  centerVertically: ->
+    @$el.css 'top': $(document).scrollTop() + $(window).height() / 2, 'margin-top': -@$el.height() / 2
+
   destroy: ->
     $('body').removeClass 'modal-open'
     $(window).off 'resize.modal'

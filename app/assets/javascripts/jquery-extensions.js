@@ -11,6 +11,10 @@ $.fn.tap = function(callback) {
   return this;
 };
 
+String.prototype.capitalize = function() {
+  return this.charAt(0).toUpperCase() + this.slice(1);
+};
+
 $.fn.magnifier = function() {
   var $img = $(this).find(".magnify-small");
   var image = new Image();

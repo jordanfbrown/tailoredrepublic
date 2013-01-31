@@ -89,6 +89,6 @@
 <script>
   $(function() {
     var model = new TR.Models.Measurement(<%= @measurement.to_json(except: [:created_at, :updated_at, :user_id, :order_id]).html_safe unless @measurement.new_record? %>);
-    new TR.Views.Measurements({model: model, lineItemCount: <%= @cart.num_items %>, shirtOnly: <%= @shirt_only %>});
+    new TR.Views.Measurements({model: model, lineItemCount: <%= @cart.num_items %>, shirtOnly: <%= @shirt_only %>, signedIn: <%= @signed_in %>});
   });
 </script>

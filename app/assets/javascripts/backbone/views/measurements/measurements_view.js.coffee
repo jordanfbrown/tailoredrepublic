@@ -15,13 +15,14 @@ class TR.Views.Measurements extends TR.Views.Base
     'click a.accept': 'acceptMeasurements'
 
   initialize: (options) ->
+    @lineItemCount = options.lineItemCount
+    @shirtOnly = options.shirtOnly
+    @signedIn = options.signedIn
+
     @PROGRESS =
       COMPLETED: TR.ASSET_HOST + '/assets/icons/star-stroke.png'
       TODO: TR.ASSET_HOST + '/assets/icons/star-no-stroke.png'
       CURRENT: TR.ASSET_HOST + '/assets/icons/star-filled.png'
-
-    @lineItemCount = options.lineItemCount
-    @shirtOnly = options.shirtOnly
 
     measuringTapePixels = 4521
     measuringTapeInches = 90
@@ -170,11 +171,13 @@ class TR.Views.Measurements extends TR.Views.Base
   saveSuccess: =>
     if @lineItemCount > 0
       window.location.href = '/orders/new'
-    else
+    else if @lineItemCount == 0 && @signedIn
       window.location.href = '/shop/suits'
+    else if @lineItemCount == 0 && !@signedIn
+      @newUserModal = new TR.Views.NewUserModal(measurements: @model)
 
   saveError: =>
-    TR.renderErrorModal "We're sorry, but there was a problem saving your measurements. Please try again, and if the " +
+    TR.renderSimpleModal "We're sorry, but there was a problem saving your measurements. Please try again, and if the " +
      "problem persists, shoot us an e-mail at help@tailoredrepublic.com."
 
   setProgressBar: (index, progress) ->

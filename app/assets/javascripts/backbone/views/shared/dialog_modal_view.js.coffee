@@ -19,7 +19,7 @@ class TR.Views.DialogModal extends TR.Views.Modal
   render: ->
     @$el.html @template text: @text, confirmText: @confirmText, cancelText: @cancelText, confirmOnly: @confirmOnly
     super()
-    @$el.css 'top': $(document).scrollTop() + $(window).height() / 2, 'margin-top': -@$el.height() / 2
+    @centerVertically()
 
   confirm: (e) ->
     e.preventDefault()

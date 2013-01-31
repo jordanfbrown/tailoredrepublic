@@ -28,5 +28,7 @@
 //= require templates
 //= require_tree ./backbone/models
 //= require_tree ./backbone/collections
+//= require ./backbone/views/base_view
+//= require ./backbone/views/shared/modal_view
 //= require_tree ./backbone/views
 //= require_tree .
