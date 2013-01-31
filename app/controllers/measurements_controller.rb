@@ -13,6 +13,7 @@ class MeasurementsController < ApplicationController
     @shirt_only = @cart.shirt_only?
     @num_measurements = Product.num_measurements(@shirt_only)
     @signed_in = user_signed_in?
+    @is_https = request.ssl?
   end
 
   def create
