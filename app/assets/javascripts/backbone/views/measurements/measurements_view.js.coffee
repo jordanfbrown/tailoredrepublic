@@ -174,7 +174,8 @@ class TR.Views.Measurements extends TR.Views.Base
       window.location.href = '/shop/suits'
 
   saveError: =>
-    console.log('save error');
+    TR.renderErrorModal "We're sorry, but there was a problem saving your measurements. Please try again, and if the " +
+     "problem persists, shoot us an e-mail at help@tailoredrepublic.com."
 
   setProgressBar: (index, progress) ->
     @$('.progress-bar img').eq(index).attr 'src', progress
