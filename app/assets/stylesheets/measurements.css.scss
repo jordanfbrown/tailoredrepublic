@@ -7,6 +7,18 @@
 
 .measurements {
 
+  .measurement-overview {
+    @media only screen and (max-width: 861px) and (min-width: 767px) {
+      label {
+        height: 47px;
+      }
+    }
+
+    input.error {
+      @include input-error;
+    }
+  }
+
   .bx-wrapper {
     margin-bottom: 20px;
   }
@@ -23,8 +35,7 @@
     @include clearfix;
 
     &.shirt-only li {
-      width: 6.6%;
-      
+      width: 6.1%;
       @media only screen and (max-width: 485px) {
         width: 13.2%;
       }
@@ -33,15 +44,14 @@
     li {
       display: block;
       float: left;
-      width: 5.25%;
+      width: 4.88%;
       margin-right: 1%;
       text-align: center;
       cursor: pointer;
 
       @media only screen and (max-width: 485px) {
-        width: 11.5%;
+        width: 10.1%;
       }
-
     }
   }
 

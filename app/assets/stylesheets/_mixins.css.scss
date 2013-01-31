@@ -25,6 +25,11 @@ $maple: #D0A66E;
   }
 }
 
+@mixin input-error {
+  border-color: #c60f13;
+  background-color: rgba(198, 15, 19, 0.1);
+}
+
 @mixin font($type) {
   @if $type == body {
     font-family: "United Sans Reg", sans-serif;

@@ -6,7 +6,7 @@ module MeasurementsHelper
       neck: {
         url: 'SborRZpbXs0',
         steps: [
-          'This measurement will determine how your collar will fit.',
+          'This measurement will determine how your collar will fit',
           'Measure around the neck',
           'Leave two fingers between the measuring tape and your neck',
           'Finish the measurement right below the Adam\'s apple'
@@ -15,7 +15,7 @@ module MeasurementsHelper
       chest: {
         url: 't88GRfoRMdw',
         steps: [
-          'Stand straight with your arms comfortably at your side.',
+          'Stand straight with your arms comfortably at your side',
           'Raise your arms out wide to allow measurer to wrap the tape measure around the widest part of the chest',
           'Make sure to go high up under the armpits while keeping the measuring tape horizontal (no tilt)',
           'End the measurement on the sternum making sure the tape doesn\'t feel too tight and there are two fingers of space between tape and chest'
@@ -24,7 +24,7 @@ module MeasurementsHelper
       front: {
         url: 'NE3XAplw24A',
         steps: [
-          'Stand straight with your arms comfortably at your side.',
+          'Stand straight with your arms comfortably at your side',
           'Place tape measurer on the front of the right armpit where the bicep and torso meet',
           'Measure across the chest running measuring tape across the nipples',
           'End measurement on the front of the left armpit where the bicep and torso meet',
@@ -50,7 +50,7 @@ module MeasurementsHelper
       hips: {
         url: 'CE3_EoB0Q78',
         steps: [
-          'This measurement wraps around the butt and hips.',
+          'This measurement wraps around the butt and hips',
           'Wrap around the widest part of the hips and butt making sure to keep the tape measure level',
           'Leave at least two fingers between the measuring tape and the body, most people don\'t want this particular measurement too tight',
         ]
@@ -107,7 +107,7 @@ module MeasurementsHelper
       crotch: {
         url: '8F1gGzlGu0U',
         steps: [
-          'This measurement will determine the length of the seam running from your fly to the top of your butt.  The goal here is to make it tight enough to look like proper tailored pants, but not so tight as to cause a ball wedgie (seriously).',
+          'This measurement will determine the length of the seam running from your fly to the top of your butt. The goal here is to make it tight enough to look like proper tailored pants, but not so tight as to cause a ball wedgie (seriously).',
           'Make sure the waistline of your pants is at the level where you would wear your dress pants',
           'Start this measurement at the back of the waistline as seen in the video',
           'Run the tape down the middle seam passing under the crotch',

@@ -9,6 +9,8 @@ class TR.Views.Measurements extends TR.Views.Base
     'mouseout .measuring-tape': 'mouseOutMeasuringTape'
     'click a.previous': 'previous'
     'click a.next': 'next'
+    'click a.begin': 'next'
+    'click a.accept-quick': 'acceptQuickFill'
     'click .progress-bar li': 'goToSlide'
     'click a.accept': 'acceptMeasurements'
 
@@ -165,7 +167,10 @@ class TR.Views.Measurements extends TR.Views.Base
     @model.save({}, {silent: true}).then(@saveSuccess, @saveError)
 
   saveSuccess: =>
-    window.location.href = if @lineItemCount > 0 then '/orders/new' else '/shop'
+    if @lineItemCount > 0
+      window.location.href = '/orders/new'
+    else
+      window.location.href = '/shop/suits'
 
   saveError: =>
     console.log('save error');
@@ -178,6 +183,31 @@ class TR.Views.Measurements extends TR.Views.Base
 
   getCurrentInput: ->
     @$('input.measurement-input').eq(@slider.getCurrentSlide())
+
+  acceptQuickFill: (e) ->
+    e.preventDefault()
+    valid = true
+
+    @$('.quick-measurement-form input[type=text]').each (index, el) =>
+      $el = $(el)
+      # ID is in the form measurement_attr_name -- this split returns attr_name
+      name = $el.attr('id').split('measurement_')[1]
+      inches = parseFloat $el.val()
+      if _.isNaN(inches) || inches < 0 || inches > 90
+        valid = false
+        $el.addClass 'error'
+      else
+        $el.removeClass 'error'
+        @model.setByName name, inches
+      true
+
+    if valid
+      @$('.quick-fill-error').fadeOut()
+      @slider.triggerResize(true)
+      @saveMeasurements()
+    else
+      @$('.quick-fill-error').fadeIn()
+      @slider.triggerResize(true)
 
   validateCurrentInput: ->
     $currentInput = @getCurrentInput()

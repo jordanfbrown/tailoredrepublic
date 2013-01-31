@@ -7,11 +7,76 @@
         easy measurements.</h5>
       <ul class="progress-bar <%= 'shirt-only' if @shirt_only %>">
         <li><%= progress_current %></li>
-        <% @num_measurements.times do %>
+        <% (@num_measurements + 1).times do %>
           <li><%= progress_todo_or_completed @measurement %></li>
         <% end %>
       </ul>
       <ul class="measurements-list">
+        <li class="measurement-list-item measurement-overview">
+          <div class="row">
+            <div class="six columns">
+              <h4>How to Measure</h4>
+              <p>There are two ways that you can measure yourself. You can either follow along with our step-by-step
+              measurement guide, or <%= link_to 'schedule a tailoring', schedule_tailoring_path %> and we will reimburse
+              you for the cost.</p>
+              <p>If you don't know your measurements already, click "Begin" to proceed with our step-by-step guide.</p>
+              <%= link_to 'Begin', '#', class: 'button full-width large begin' %>
+            </div>
+            <div class="six columns">
+              <h4>Quick Fill</h4>
+              <p>Already know your measurements? Enter them below and click "Accept" to skip over our
+              step-by-step measurement guide.</p>
+              <%= form_for @measurement, url: '', html: { class: 'quick-measurement-form' } do |f| %>
+                <div class="row">
+                  <div class="four columns">
+                    <%= f.label :neck %>
+                    <%= f.text_field :neck %>
+                    <%= f.label :waist %>
+                    <%= f.text_field :waist %>
+                    <%= f.label :arm_length %>
+                    <%= f.text_field :arm_length %>
+                    <%= f.label :stomach %>
+                    <%= f.text_field :stomach %>
+                    <% unless @shirt_only %>
+                      <%= f.label :crotch %>
+                      <%= f.text_field :crotch %>
+                    <% end %>
+                  </div>
+                  <div class="four columns">
+                    <%= f.label :chest %>
+                    <%= f.text_field :chest %>
+                    <%= f.label :hips %>
+                    <%= f.text_field :hips %>
+                    <%= f.label :bicep %>
+                    <%= f.text_field :bicep %>
+                    <%= f.label :back %>
+                    <%= f.text_field :back %>
+                    <% unless @shirt_only %>
+                      <%= f.label :thigh %>
+                      <%= f.text_field :thigh %>
+                    <% end %>
+                  </div>
+                  <div class="four columns">
+                    <%= f.label :front %>
+                    <%= f.text_field :front %>
+                    <%= f.label :full_shoulders %>
+                    <%= f.text_field :full_shoulders %>
+                    <%= f.label :wrist %>
+                    <%= f.text_field :wrist %>
+                    <%= f.label :jacket_length %>
+                    <%= f.text_field :jacket_length %>
+                    <% unless @shirt_only %>
+                      <%= f.label :pant_length %>
+                      <%= f.text_field :pant_length %>
+                    <% end %>
+                  </div>
+                </div>
+                <p class="error quick-fill-error" style="display: none;">Measurements must be a number in inches between 0 and 90.</p>
+                <%= link_to 'Accept', '#', class: 'button full-width large accept-quick' %>
+              <% end %>
+            </div>
+          </div>
+        </li>
         <% measurement_metadata(@shirt_only).each do |measurement, metadata| %>
           <%= render "measurement_slide", measurement: measurement, metadata: metadata %>
         <% end %>
@@ -23,7 +88,7 @@
 
 <script>
   $(function() {
-    var model = new TR.Models.Measurement(<%= @measurement.to_json(except: [:created_at, :updated_at, :user_id]).html_safe unless @measurement.new_record? %>);
+    var model = new TR.Models.Measurement(<%= @measurement.to_json(except: [:created_at, :updated_at, :user_id, :order_id]).html_safe unless @measurement.new_record? %>);
     new TR.Views.Measurements({model: model, lineItemCount: <%= @cart.num_items %>, shirtOnly: <%= @shirt_only %>});
   });
 </script>

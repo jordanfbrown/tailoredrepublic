@@ -1118,6 +1118,36 @@
 		el.getSlideCount = function(){
 			return slider.children.length;
 		}
+
+    el.triggerResize = function(force){
+      // get the new window dimens (again, thank you IE)
+      var windowWidthNew = $(window).width();
+      var windowHeightNew = $(window).height();
+      // make sure that it is a true window resize
+      // *we must check this because our dinosaur friend IE fires a window resize event when certain DOM elements
+      // are resized. Can you just die already?*
+      if(windowWidth != windowWidthNew || windowHeight != windowHeightNew || force){
+        // set the new window dimens
+        windowWidth = windowWidthNew;
+        windowHeight = windowHeightNew;
+        // resize all children in ratio to new screen size
+        slider.children.add(el.find('.bx-clone')).width(getSlideWidth());
+        // adjust the height
+        slider.viewport.css('height', getViewportHeight());
+        // if active.last was true before the screen resize, we want
+        // to keep it last no matter what screen size we end on
+        if (slider.active.last) slider.active.index = getPagerQty() - 1;
+        // if the active index (page) no longer exists due to the resize, simply set the index as last
+        if (slider.active.index >= getPagerQty()) slider.active.last = true;
+        // if a pager is being displayed and a custom pager is not being used, update it
+        if(slider.settings.pager && !slider.settings.pagerCustom){
+          populatePager();
+          updatePagerActive(slider.active.index);
+        }
+        // update the slide position
+        if(!slider.settings.ticker) setSlidePosition();
+      }
+    }
 		
 		/**
 		 * Makes slideshow responsive
@@ -1125,36 +1155,7 @@
 		// first get the original window dimens (thanks alot IE)
 		var windowWidth = $(window).width();
 		var windowHeight = $(window).height();
-		$(window).resize(function(){
-			// get the new window dimens (again, thank you IE)
-			var windowWidthNew = $(window).width();
-			var windowHeightNew = $(window).height();
-			// make sure that it is a true window resize
-			// *we must check this because our dinosaur friend IE fires a window resize event when certain DOM elements
-			// are resized. Can you just die already?*
-			if(windowWidth != windowWidthNew || windowHeight != windowHeightNew){
-				// set the new window dimens
-				windowWidth = windowWidthNew;
-				windowHeight = windowHeightNew;
-				// resize all children in ratio to new screen size
-				slider.children.add(el.find('.bx-clone')).width(getSlideWidth());
-				// adjust the height
-				slider.viewport.css('height', getViewportHeight());
-				// if active.last was true before the screen resize, we want
-				// to keep it last no matter what screen size we end on
-				if (slider.active.last) slider.active.index = getPagerQty() - 1;
-				// if the active index (page) no longer exists due to the resize, simply set the index as last
-				if (slider.active.index >= getPagerQty()) slider.active.last = true;
-				// if a pager is being displayed and a custom pager is not being used, update it
-				if(slider.settings.pager && !slider.settings.pagerCustom){
-					populatePager();
-					updatePagerActive(slider.active.index);
-				}
-				// update the slide position
-				if(!slider.settings.ticker) setSlidePosition();
-			}
-		});
-		
+		$(window).resize(el.triggerResize);
 		init();
 		
 		// returns the current jQuery object

@@ -239,8 +239,7 @@ p.error {
     color: #B94A48;
   }
   input {
-    border-color: #c60f13;
-    background-color: rgba(198, 15, 19, 0.1);
+    @include input-error;
   }
 }
 

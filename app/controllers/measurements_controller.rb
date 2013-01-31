@@ -15,7 +15,7 @@ class MeasurementsController < ApplicationController
   end
 
   def create
-    measurement = Measurement.new params[:measurement]
+    measurement = Measurement.new(params[:measurement])
     measurement.user = current_user if user_signed_in?
 
     if measurement.save
