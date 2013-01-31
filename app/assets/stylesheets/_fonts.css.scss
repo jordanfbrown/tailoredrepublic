@@ -1,83 +1,119 @@
 @font-face {
   font-family: 'United Italic Cond';
   src: url(UnitedItalicCdLt.eot);
-  src: url(UnitedItalicCdLt.ttf) format('truetype');
+  src: url(UnitedItalicCdLt.eot?#iefix) format("embedded-opentype")
+       url(UnitedItalicCdLt.woff) format('woff'),
+       url(UnitedItalicCdLt.ttf) format('truetype'),
+       url(UnitedItalicCdLt.svg#UnitedItalicCond-Light) format('svg');
   font-weight: 100;
 }
 
 @font-face {
   font-family: 'United Italic Cond';
   src: url(UnitedItalicCdMd.eot);
-  src: url(UnitedItalicCdMd.ttf) format('truetype');
+  src: url(UnitedItalicCdMd.eot?#iefix) format("embedded-opentype"),
+       url(UnitedItalicCdMd.woff) format('woff'),
+       url(UnitedItalicCdMd.ttf) format('truetype'),
+       url(UnitedItalicCdMd.svg#UnitedItalicCond-Medium) format('svg');
   font-weight: 400;
 }
 
 @font-face {
   font-family: 'United Italic Cond';
   src: url(UnitedItalicCdBd.eot);
-  src: url(UnitedItalicCdBd.ttf) format('truetype');
+  src: url(UnitedItalicCdBd.eot?#iefix) format("embedded-opentype"),
+       url(UnitedItalicCdBd.woff) format('woff'),
+       url(UnitedItalicCdBd.ttf) format('truetype'),
+       url(UnitedItalicCdBd.svg#UnitedItalicCond-Bold) format('svg');
   font-weight: 700;
 }
 
 @font-face {
   font-family: 'United Sans Cond';
   src: url(UnitedSansCdLt.eot);
-  src: url(UnitedSansCdLt.ttf) format('truetype');
+  src: url(UnitedSansCdLt.eot?#iefix) format("embedded-opentype"),
+       url(UnitedSansCdLt.woff) format('woff'),
+       url(UnitedSansCdLt.ttf) format('truetype'),
+       url(UnitedSansCdLt.svg#UnitedSansCond-Light) format('svg');
   font-weight: 100;
 }
 
 @font-face {
   font-family: 'United Sans Cond';
   src: url(UnitedSansCdMd.eot);
-  src: url(UnitedSansCdMd.ttf) format('truetype');
+  src: url(UnitedSansCdMd.eot?#iefix) format("embedded-opentype"),
+       url(UnitedSansCdMd.woff) format('woff'),
+       url(UnitedSansCdMd.ttf) format('truetype'),
+       url(UnitedSansCdMd.svg#UnitedSansCond-Medium) format('svg');
   font-weight: 400;
 }
 
 @font-face {
   font-family: 'United Sans Cond';
   src: url(UnitedSansCdBd.eot);
-  src: url(UnitedSansCdBd.ttf) format('truetype');
+  src: url(UnitedSansCdBd.eot?#iefix) format("embedded-opentype"),
+       url(UnitedSansCdBd.woff) format('woff'),
+       url(UnitedSansCdBd.ttf) format('truetype'),
+       url(UnitedSansCdBd.svg#UnitedSansCond-Bold) format('svg');
   font-weight: 700;
 }
 
 @font-face {
   font-family: 'United Sans Reg';
   src: url(UnitedSansRgLt.eot);
-  src: url(UnitedSansRgLt.ttf) format('truetype');
+  src: url(UnitedSansRgLt.eot?#iefix) format("embedded-opentype"),
+       url(UnitedSansRgLt.woff) format('woff'),
+       url(UnitedSansRgLt.ttf) format('truetype'),
+       url(UnitedSansRgLt.svg#UnitedSansReg-Light) format('svg');
   font-weight: 100;
 }
 
 @font-face {
   font-family: 'United Sans Reg';
   src: url(UnitedSansRgMd.eot);
-  src: url(UnitedSansRgMd.ttf) format('truetype');
-  font-weight: 400;
+  src: url(UnitedSansRgMd.eot?#iefix) format("embedded-opentype"),
+       url(UnitedSansRgMd.woff) format('woff'),
+       url(UnitedSansRgMd.ttf) format('truetype'),
+       url(UnitedSansRgMd.svg#UnitedSansReg-Medium) format('svg');
+font-weight: 400;
 }
 
 @font-face {
   font-family: 'United Sans Reg';
   src: url(UnitedSansRgBd.eot);
-  src: url(UnitedSansRgBd.ttf) format('truetype');
+  src: url(UnitedSansRgBd.eot?#iefix) format("embedded-opentype"),
+       url(UnitedSansRgBd.woff) format('woff'),
+       url(UnitedSansRgBd.ttf) format('truetype'),
+       url(UnitedSansRgBd.svg#UnitedSansReg-Bold) format('svg');
   font-weight: 700;
 }
 
 @font-face {
   font-family: 'United Serif SemiCond';
   src: url(UnitedSerifSmCdLt.eot);
-  src: url(UnitedSerifSmCdLt.ttf) format('truetype');
+  src: url(UnitedSerifSmCdLt.eot?#iefix) format("embedded-opentype"),
+       url(UnitedSerifSmCdLt.woff) format('woff'),
+       url(UnitedSerifSmCdLt.ttf) format('truetype'),
+       url(UnitedSerifSmCdLt.svg#UnitedSerifSemiCond-Light) format('svg');
   font-weight: 100;
 }
 
 @font-face {
   font-family: 'United Serif SemiCond';
   src: url(UnitedSerifSmCdMd.eot);
-  src: url(UnitedSerifSmCdMd.ttf) format('truetype');
+  src: url(UnitedSerifSmCdMd.eot?#iefix) format("embedded-opentype"),
+       url(UnitedSerifSmCdMd.woff) format('woff'),
+       url(UnitedSerifSmCdMd.ttf) format('truetype'),
+       url(UnitedSerifSmCdMd.svg#UnitedSerifSemiCond-Medium) format('svg');
   font-weight: 400;
 }
 
 @font-face {
   font-family: 'United Serif SemiCond';
   src: url(UnitedSerifSmCdBd.eot);
-  src: url(UnitedSerifSmCdBd.ttf) format('truetype');
+  src: url(UnitedSerifSmCdBd.eot?#iefix) format("embedded-opentype"),
+       url(UnitedSerifSmCdBd.woff) format('woff'),
+       url(UnitedSerifSmCdBd.ttf) format('truetype'),
+       url(UnitedSerifSmCdBd.svg#UnitedSerifSemiCond-Bold) format('svg');
   font-weight: 700;
 }
