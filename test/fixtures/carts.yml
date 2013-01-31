@@ -1,6 +1,12 @@
-one:
-  id: 1
+one_suit: {}
 
-empty:
-  id: 2
+empty: {}
+
+two_suits: {}
+
+one_shirt: {}
+
+one_shirt_one_suit: {}
+
+gift_card: {}
 

@@ -2,14 +2,35 @@
 
 one:
   product: executive
-  cart_id: 1
+  cart: one_suit
   customization: one
 
 two:
   product: entrepreneur
-  cart_id: 1
+  cart: two_suits
+  customization: one
+
+three:
+  product: executive
+  cart: two_suits
+  customization: one
+
+four:
+  product: white_shirt
+  cart: one_shirt
+  customization: one
+
+five:
+  product: white_shirt
+  cart: one_shirt_one_suit
+  customization: one
+
+six:
+  product: tuxedo
+  cart: one_shirt_one_suit
   customization: one
 
 line_item_gift_card_100:
   product: gift_card_100
   order_id: 2
+  cart: gift_card
