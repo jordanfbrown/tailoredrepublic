@@ -17,6 +17,7 @@
 //= require jquery.reveal
 //= require jquery.orbit
 //= require jquery.bxslider
+//= require jquery.fitvid
 //= require modernizr.foundation
 //= require jquery.foundation.topbar
 //= require jquery.foundation.magellan

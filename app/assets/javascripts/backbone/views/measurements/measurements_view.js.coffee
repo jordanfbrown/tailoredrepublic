@@ -34,6 +34,7 @@ class TR.Views.Measurements extends TR.Views.Base
       onSlideBefore: @onSlideBefore
       adaptiveHeight: on
       touchEnabled: off
+      video: on
 
     @slideCount = @slider.getSlideCount() - 1
 
