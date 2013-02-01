@@ -6,6 +6,10 @@
     @include shop-texture(repeat-y);
     clear: both;
   }
+
+  a.selected {
+    font-weight: normal;
+  }
 }
 
 
