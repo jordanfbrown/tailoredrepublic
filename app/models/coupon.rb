@@ -6,7 +6,7 @@ class Coupon < ActiveRecord::Base
   validates :coupon_type, inclusion: { in: %w(gift_card promotion), message: "%{value} is not a valid coupon type" }
   validates :discount_type, inclusion: { in: %w(fixed percentage), message: "%{value} is not a valid discount type" }
   validates :code, :description, :quantity, :coupon_type, :discount_type, :amount, presence: true
-  validates :amount, :quantity, numericality: { greater_than: 0 }
+  validates :amount, :quantity, numericality: { greater_than_or_equal_to: 0 }
 
   def self.create_coupons_from_order(order)
     order.gift_cards.each do |gift_card|
