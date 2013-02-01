@@ -2,16 +2,14 @@
 @import "compass";
 
 .shop {
-  .products-wrapper {
-    @include shop-texture(repeat-y);
-    clear: both;
-  }
-
   a.selected {
     font-weight: normal;
   }
 }
 
+#shop {
+  @include shop-texture(repeat-y);
+}
 
 #add-success-modal {
   h3, h4 {
