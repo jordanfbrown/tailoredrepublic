@@ -91,7 +91,7 @@ class TR.Views.Home extends TR.Views.Base
 
   animatePageDown: (shouldAnimate, pageDownOffset) ->
     restingPosition = 108
-    if shouldAnimate
+    if shouldAnimate == true
       @els.pageDown.animate
         'top': pageDownOffset - restingPosition, 750, =>
           @els.pageDown.animate 'top': pageDownOffset - 140, 100, =>
