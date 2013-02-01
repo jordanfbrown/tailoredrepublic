@@ -480,7 +480,7 @@ legend {
   }
 
   .active {
-   @include box-shadow(inset 0px 0px 70px 2px $brown);
+   @include box-shadow(inset 0px -10px 0px -5px $brown);
   }
 
   .dropdown {
