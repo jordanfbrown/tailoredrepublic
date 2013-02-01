@@ -12,7 +12,7 @@
         <% end %>
       </ul>
       <ul class="measurements-list">
-        <li class="measurement-list-item measurement-overview">
+        <li class="measurement-overview">
           <div class="row">
             <div class="six columns">
               <h4>How to Measure</h4>
@@ -80,7 +80,7 @@
         <% measurement_metadata(@shirt_only).each do |measurement, metadata| %>
           <%= render "measurement_slide", measurement: measurement, metadata: metadata, is_https: @is_https %>
         <% end %>
-        <li class="measurement-list-item measurement-summary"></li>
+        <li class="measurement-summary"></li>
       </ul>
     </div>
   </div>

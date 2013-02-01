@@ -102,7 +102,7 @@ class TR.Views.Measurements extends TR.Views.Base
     @getMeasuringTape()[if animate then 'animate' else 'css'] 'background-position-x': offset, 1000
 
   getMeasuringTape: ->
-    @$('.measuring-tape').eq(@slider.getCurrentSlide())
+    @$('.measuring-tape').eq(@slider.getCurrentSlide() - 1)
     
   updateInputWithPosition: (positionX) ->
     inches = @convertBackgroundPositionToInches positionX
@@ -134,11 +134,12 @@ class TR.Views.Measurements extends TR.Views.Base
     @slider.goToNextSlide() if @validateCurrentInput()
 
   getCurrentMeasurement: ->
-    @$('.measurement-list-item').eq(@slider.getCurrentSlide()).data 'measurement'
+    @$('.measurement-list-item').eq(@slider.getCurrentSlide() - 1).data 'measurement'
 
   onSlideBefore: ($el, oldIndex, newIndex) =>
-    oldMeasurement = @$('.measurement-list-item').eq(oldIndex).data 'measurement'
-    inches = parseFloat @$('input.measurement-input').eq(oldIndex).val()
+    adjustedIndex = if oldIndex - 1 < 0 then 1000 else oldIndex - 1
+    oldMeasurement = @$('.measurement-list-item').eq(adjustedIndex).data 'measurement'
+    inches = parseFloat @$('input.measurement-input').eq(adjustedIndex).val()
     unless _.isNaN inches
       @model.setByName oldMeasurement, parseFloat inches
 
@@ -187,7 +188,7 @@ class TR.Views.Measurements extends TR.Views.Base
     @slider.goToSlide $(e.currentTarget).index() if @validateCurrentInput()
 
   getCurrentInput: ->
-    @$('input.measurement-input').eq(@slider.getCurrentSlide())
+    @$('input.measurement-input').eq(@slider.getCurrentSlide() - 1)
 
   acceptQuickFill: (e) ->
     e.preventDefault()
@@ -223,7 +224,9 @@ class TR.Views.Measurements extends TR.Views.Base
     inches = parseFloat $currentInput.val()
     if _.isNaN(inches) || inches < 0 || inches > 90
       $currentInput.next('.error').fadeIn()
+      @slider.triggerResize(true)
       false
     else
       $currentInput.next('.error').fadeOut()
+      @slider.triggerResize(true)
       true
