@@ -77,6 +77,8 @@ class OrdersController < ApplicationController
         @order.coupon = @coupon
       end
     end
+
+    @order.apply_tax
   end
 
   def create
@@ -114,9 +116,11 @@ class OrdersController < ApplicationController
           @order.errors.add(:coupon, 'code invalid.')
           render action: "review" and return
         else
-          @coupon.apply_to_order(@order)
+          @order.apply_coupon(@coupon)
         end
       end
+
+      @order.apply_tax
 
       # Charge the credit card
       if @user.stripe_customer_id? && params[:use_saved_card] == 'on'
@@ -154,10 +158,10 @@ class OrdersController < ApplicationController
     end
 
     def charge_card(token)
-      amount = (@order.total_cost * 100).to_i
+      amount = (@order.final_cost * 100).to_i
       if amount >= 50
         charge = Stripe::Charge.create(
-          amount: (@order.total_cost * 100).to_i,
+          amount: (@order.final_cost * 100).to_i,
           currency: 'usd',
           card: token,
           description: 'Single token charge'

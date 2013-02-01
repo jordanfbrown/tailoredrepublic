@@ -19,17 +19,19 @@ class OrderTest < ActiveSupport::TestCase
     assert order.has_gift_cards?
   end
 
-  test "calculate_discount with no coupon should be 0" do
-    order = orders(:gift_card_order)
-    assert_equal order.calculate_discount, 0
-    assert_equal order.total_cost, 100
+  test "apply_coupon where order is $100 and coupon is $100" do
+    coupon = coupons(:hundred_gift_card)
+    order = orders(:gift_card_order) # $100 order
+    order.apply_coupon(coupon)
+    assert_equal order.coupon, coupon
+    assert_equal order.discount, 100
   end
 
-  test "calculate_discount with a 10% off coupon, $100 order, should be $10" do
-    order = orders(:gift_card_order)
-    order.coupon = coupons(:ten_percent_off)
-    assert_equal order.cost_before_discount, 100
-    assert_equal order.calculate_discount, 10
-    assert_equal order.total_cost, 90
+  test "apply_coupon where order is $100 and coupon is $400, discount should be $100" do
+    coupon = coupons(:four_hundred_gift_card)
+    order = orders(:gift_card_order) # $100 order
+    order.apply_coupon(coupon)
+    assert_equal order.coupon, coupon
+    assert_equal order.discount, 100
   end
 end

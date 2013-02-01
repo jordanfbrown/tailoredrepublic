@@ -124,22 +124,48 @@ class OrdersControllerTest < ActionController::TestCase
     assert_equal user.orders.count, order_count + 1
   end
 
-  test "Existing customer, successfully placed order with saved card and a 10% discount" do
+  test "Existing customer, successfully placed order with saved card and a 10% discount in California" do
     set_full_cart_cookie
     user = users(:user_with_stripe)
     coupon = coupons(:ten_percent_off)
     coupon_quantity = coupon.quantity
     sign_in :user, user
     post :create, {
-      order: order_params,
-      use_saved_card: 'on',
-      coupon_code: 'BQTHRSCA'
+        order: order_params,
+        use_saved_card: 'on',
+        coupon_code: 'BQTHRSCA'
     }
     assert_response :success
     assert_template :thank_you
     assert_not_nil assigns(:order).coupon
     assert_equal assigns(:order).coupon.description, '10% Off Promotion'
+    assert_equal assigns(:order).tax, 61.4
+    assert_equal assigns(:order).final_cost, 743.6
+    assert_equal assigns(:order).discount, 75.8
+    coupon.reload
+    assert_equal coupon.quantity, coupon_quantity - 1
+  end
+
+  test "Existing customer, successfully placed order with saved card and a 10% discount outside of California" do
+    set_full_cart_cookie
+    user = users(:user_with_stripe)
+    coupon = coupons(:ten_percent_off)
+    coupon_quantity = coupon.quantity
+    sign_in :user, user
+    params = order_params
+    params[:shipping_address_attributes][:state] = 'MA'
+    post :create, {
+        order: params,
+        use_saved_card: 'on',
+        coupon_code: 'BQTHRSCA'
+    }
+    assert_response :success
+    assert_template :thank_you
+    assert_not_nil assigns(:order).coupon
+    assert_equal assigns(:order).coupon.description, '10% Off Promotion'
+    assert_equal assigns(:order).tax, 0
     assert_equal assigns(:order).final_cost, 682.2
+    assert_equal assigns(:order).discount, 75.8
     coupon.reload
     assert_equal coupon.quantity, coupon_quantity - 1
   end

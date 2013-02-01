@@ -20,8 +20,8 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :shipping_address, :billing_address
 
   def self.new_from_params_and_measurement(params, measurement)
-    params[:user].merge! params[:order]
-    user = User.new params[:user]
+    params[:user].merge!(params[:order])
+    user = User.new(params[:user])
     user.measurement = measurement
     user
   end
@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
   end
 
   def get_stripe_customer
-    Stripe::Customer.retrieve stripe_customer_id
+    Stripe::Customer.retrieve(stripe_customer_id)
   end
 
   def update_stripe_customer(card_token)

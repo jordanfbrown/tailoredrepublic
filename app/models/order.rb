@@ -19,7 +19,6 @@ class Order < ActiveRecord::Base
     order.user = user
     order.measurement = user.duplicate_measurement
     order.copy_line_items_from_cart(cart)
-    order.final_cost = order.total_cost
     order
   end
 
@@ -47,29 +46,16 @@ class Order < ActiveRecord::Base
     end
   end
 
-  def cost_before_discount
+  def line_item_total
     line_items.map { |c| c.total_price }.sum.to_i
   end
 
-  def calculate_discount
-    if coupon.nil?
-      0
-    else
-      coupon_discount = coupon.calculate_discount(cost_before_discount)
-      if coupon_discount > cost_before_discount
-        coupon_discount = cost_before_discount
-      end
-      coupon_discount
-    end
-  end
-
-  def total_cost
-    total = cost_before_discount
+  def cost_before_tax
+    total = line_item_total
 
     unless coupon.nil?
-      coupon_discount = coupon.calculate_discount(total)
-      total -= coupon_discount
-      total = 0 if total < 0
+      discount = coupon.calculate_discount(total)
+      total -= discount
     end
 
     total
@@ -83,10 +69,21 @@ class Order < ActiveRecord::Base
     line_items.select { |l| l.product.category == :gift_card }
   end
 
+  def apply_coupon(coupon)
+    self.coupon = coupon
+    self.discount = coupon.calculate_discount(line_item_total)
+  end
+
+  def apply_tax
+    self.tax = ((shipping_address.state == 'CA' ? 0.09 : 0) * cost_before_tax).round(2)
+    self.final_cost = self.tax + cost_before_tax
+  end
+
   after_rollback do |order|
     unless order.stripe_charge_id.blank?
-      charge = Stripe::Charge.retrieve order.stripe_charge_id
+      charge = Stripe::Charge.retrieve(order.stripe_charge_id)
       charge.refund
     end
   end
+
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130130201825) do
+ActiveRecord::Schema.define(:version => 20130201184957) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -122,13 +122,14 @@ ActiveRecord::Schema.define(:version => 20130130201825) do
   add_index "measurements", ["user_id"], :name => "index_measurements_on_user_id"
 
   create_table "orders", :force => true do |t|
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                                      :null => false
+    t.datetime "updated_at",                                      :null => false
     t.integer  "user_id"
     t.string   "stripe_charge_id"
     t.integer  "coupon_id"
-    t.decimal  "discount"
-    t.decimal  "final_cost"
+    t.decimal  "discount",         :precision => 10, :scale => 2
+    t.decimal  "final_cost",       :precision => 10, :scale => 2
+    t.decimal  "tax",              :precision => 10, :scale => 2
   end
 
   add_index "orders", ["user_id"], :name => "index_orders_on_user_id"
@@ -143,15 +144,15 @@ ActiveRecord::Schema.define(:version => 20130130201825) do
     t.string   "category"
     t.string   "name"
     t.string   "description",       :limit => 1000
-    t.decimal  "price"
+    t.decimal  "price",                             :precision => 10, :scale => 2
     t.integer  "quantity"
     t.string   "image_large_url"
     t.string   "image_small_1_url"
     t.string   "image_small_2_url"
     t.string   "image_small_3_url"
     t.string   "image_small_4_url"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.datetime "created_at",                                                       :null => false
+    t.datetime "updated_at",                                                       :null => false
     t.string   "summary"
   end
 

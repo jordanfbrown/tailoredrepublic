@@ -22,7 +22,7 @@
           <li><h5>Discounts</h5></li>
           <li><%= order.coupon.description %> <span class="divider">//</span> <%= number_to_currency order.coupon.amount %></li>
         <% end %>
-        <li>Total cost: <%= number_to_currency order.total_cost %></li>
+        <li>Total cost: <%= number_to_currency order.final_cost %></li>
       </ul>
     </div>
     <div class="four columns">

@@ -16,39 +16,22 @@ class CouponTest < ActiveSupport::TestCase
     assert coupon.invalid?
   end
 
-  test "calculate_discount for a fixed amount coupon should always return the amount, regardless of total price" do
+  test "calculate_discount for a fixed amount coupon should return the coupon amount if the order costs more than the coupon" do
     coupon = coupons(:hundred_gift_card)
     assert_equal coupon.calculate_discount(500), 100
     assert_equal coupon.calculate_discount(1000), 100
+  end
+
+  test "calculate_discount for a fixed amount coupon should return the order amount if the coupon is worth more than the order" do
+    coupon = coupons(:hundred_gift_card)
+    assert_equal coupon.calculate_discount(50), 50
+    assert_equal coupon.calculate_discount(25), 25
   end
 
   test "calculate_discount for a percentage coupon should return a percentage of the total price" do
     coupon = coupons(:ten_percent_off)
     assert_equal coupon.calculate_discount(500), 50
     assert_equal coupon.calculate_discount(1000), 100
-  end
-
-  test "apply_to_order where total comes out to 0" do
-    coupon = coupons(:hundred_gift_card)
-    order = orders(:gift_card_order) # $100 order
-    coupon_quantity_before = coupon.quantity
-    coupon.apply_to_order(order)
-
-    assert_equal order.discount, 100
-    assert_equal order.final_cost, 0
-    assert_equal coupon.quantity, coupon_quantity_before - 1
-    assert_equal coupon.amount, 0
-  end
-
-  test "apply_to_order where gift card amount is more than order ($400 gift card, $100 order)" do
-    coupon = coupons(:four_hundred_gift_card)
-    order = orders(:shirt_order)
-    coupon.apply_to_order(order)
-
-    assert_equal order.discount, 100
-    assert_equal order.final_cost, 0
-    assert_equal coupon.quantity, 1  # Coupon still exists
-    assert_equal coupon.amount, 300 # Amount of order has been subtracted
   end
 
   test "create_coupons_from_order" do
@@ -66,5 +49,34 @@ class CouponTest < ActiveSupport::TestCase
     assert_equal generated_coupon.coupon_type, 'gift_card'
     assert_equal generated_coupon.discount_type, 'fixed'
     assert_not_nil generated_coupon.code
+  end
+
+  test "update_amount! should reduce quantity by 1 if full value has been used for a fixed coupon and subtract discount" do
+    coupon = coupons(:hundred_gift_card)
+    order = orders(:gift_card_order)
+    order.discount = 100
+    coupon.update_amount!(order)
+    assert_equal coupon.quantity, 0
+    assert_equal coupon.amount, 0
+  end
+
+  test "update_amount! should not reduce quantity by 1 if full value of fixed coupon hasnt been used" do
+    coupon = coupons(:hundred_gift_card)
+    order = orders(:gift_card_order)
+    order.discount = 50
+    coupon.update_amount!(order)
+    assert_equal coupon.quantity, 1
+    assert_equal coupon.amount, 50
+  end
+
+  test "update_amount! should not reduce amount of a promotional coupon but should reduce quantity by 1" do
+    coupon = coupons(:ten_percent_off)
+    coupon_amount_before = coupon.amount
+    coupon_quantity_before = coupon.quantity
+    order = orders(:gift_card_order)
+    order.discount = 50
+    coupon.update_amount!(order)
+    assert_equal coupon.quantity, coupon_quantity_before - 1
+    assert_equal coupon.amount, coupon_amount_before
   end
 end

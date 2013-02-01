@@ -25,23 +25,19 @@ class Coupon < ActiveRecord::Base
     quantity == 0 || (!end_date.nil? && Date.today > end_date) || (!begin_date.nil? && begin_date > Date.today)
   end
 
-  def calculate_discount(cost_before_discount)
+  def calculate_discount(line_item_total)
     if discount_type == 'fixed'
-      amount
+      amount > line_item_total ? line_item_total : amount
     elsif discount_type == 'percentage'
-      cost_before_discount * amount * 0.01
+      (line_item_total * amount * 0.01).round(2)
     end
   end
 
-  def apply_to_order(order)
-    order.coupon = self
-    order.discount = order.calculate_discount
-    order.final_cost = order.total_cost
-
+  def update_amount!(order)
     if coupon_type == 'promotion'
       self.quantity -= 1
-    elsif coupon_type == 'gift_card'
-      self.amount -= order.cost_before_discount
+    elsif self.coupon_type == 'gift_card'
+      self.amount -= order.discount
       if self.amount <= 0
         self.quantity -= 1
       end
