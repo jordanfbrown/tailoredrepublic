@@ -11,8 +11,9 @@ class TR.Views.Measurements extends TR.Views.Base
     'click a.next': 'next'
     'click a.begin': 'next'
     'click a.accept-quick': 'acceptQuickFill'
-    'click .progress-bar li': 'goToSlide'
+    'click .progress-bar li': 'validateAndGoToSlide'
     'click a.accept': 'acceptMeasurements'
+    'click .measurement-summary-list a': 'goToSlide'
 
   initialize: (options) ->
     @lineItemCount = options.lineItemCount
@@ -184,8 +185,12 @@ class TR.Views.Measurements extends TR.Views.Base
   setProgressBar: (index, progress) ->
     @$('.progress-bar img').eq(index).attr 'src', progress
 
-  goToSlide: (e) ->
+  validateAndGoToSlide: (e) ->
     @slider.goToSlide $(e.currentTarget).index() if @validateCurrentInput()
+
+  goToSlide: (e) ->
+    e.preventDefault()
+    @slider.goToSlide $(e.currentTarget).data 'index'
 
   getCurrentInput: ->
     @$('input.measurement-input').eq(@slider.getCurrentSlide() - 1)
