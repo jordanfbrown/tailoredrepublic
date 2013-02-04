@@ -6,6 +6,9 @@ class TR.Views.Measurements extends TR.Views.Base
     'mousedown .measuring-tape': 'beginTapeDrag'
     'mouseup .measuring-tape': 'endTapeDrag'
     'mousemove .measuring-tape': 'tapeDrag'
+    'touchstart .measuring-tape': 'beginTapeDrag'
+    'touchend .measuring-tape': 'endTapeDrag'
+    'touchmove .measuring-tape': 'tapeDrag'
     'mouseout .measuring-tape': 'mouseOutMeasuringTape'
     'click a.previous': 'previous'
     'click a.next': 'next'
@@ -76,19 +79,24 @@ class TR.Views.Measurements extends TR.Views.Base
     @updateMeasuringTape @currentTapeValue, false
     
   beginTapeDrag: (e) ->
+    e.preventDefault()
     @dragging = true
-    @initialDragPosition = e.offsetX
+    touch = e.originalEvent.touches && (e.originalEvent.touches[0] || e.originalEvent.changedTouches[0])
+    @initialDragPosition = e.offsetX || touch.pageX
     @initialBackgroundPosition = parseFloat @getMeasuringTape().css 'background-position-x'
  
-  endTapeDrag: ->
+  endTapeDrag: (e) ->
+    e.preventDefault() if e
     @dragging = false
     finalBackgroundPosition = parseFloat @getMeasuringTape().css 'background-position-x'
     inches = @convertBackgroundPositionToInches finalBackgroundPosition
     @updateMeasuringTape inches, false
 
   tapeDrag: (e) ->
+    e.preventDefault()
     if @dragging
-      offset = e.pageX - @getMeasuringTape().offset().left
+      touch = e.originalEvent.touches && (e.originalEvent.touches[0] || e.originalEvent.changedTouches[0])
+      offset = (e.pageX || touch.pageX) - @getMeasuringTape().offset().left
       positionX = @initialBackgroundPosition - (@initialDragPosition - offset)
       @getMeasuringTape().css 'background-position-x', positionX
       @updateInputWithPosition positionX
