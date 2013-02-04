@@ -81,7 +81,7 @@ class Order < ActiveRecord::Base
   end
 
   after_rollback do |order|
-    unless order.stripe_charge_id.blank?
+    if order.stripe_charge_id?
       charge = Stripe::Charge.retrieve(order.stripe_charge_id)
       charge.refund
     end

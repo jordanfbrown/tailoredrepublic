@@ -15,7 +15,7 @@ module CartsHelper
         { option: "Vest", type:
           (customization.vest ? "#{customization.vest_buttons} Button Vest (+$#{Product.vest_price})" : "No") }
       ]
-      unless customization.fabric.blank?
+      if customization.fabric?
         customizations.unshift({ option: "Fabric", type: customization.fabric })
       end
       customizations

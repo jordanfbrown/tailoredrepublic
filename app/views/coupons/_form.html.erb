@@ -1,5 +1,5 @@
-<%= form_for(@coupon) do |f| %>
-  <%= render 'shared/form_errors', resource: @coupon %>
+<%= form_for(coupon) do |f| %>
+  <%= render 'shared/form_errors', resource: coupon %>
   <%= f.label 'Description' %>
   <%= f.text_field :description %>
   <%= f.label 'Amount (dollar amount for fixed: 10 = $10, percent for percentage: 10 = 10%' %>
