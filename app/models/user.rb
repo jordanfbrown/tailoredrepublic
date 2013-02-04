@@ -57,19 +57,11 @@ class User < ActiveRecord::Base
       email: email
     )
     self.stripe_customer_id = stripe_customer.id
-    save
+    save!
   end
 
-  def charge_customer(amount)
-    if amount >= 50
-      charge = Stripe::Charge.create(
-        amount: amount.to_i,
-        currency: 'usd',
-        customer: stripe_customer_id,
-        description: 'Customer charge'
-      )
-      charge[:id]
-    end
+  def charge_card(amount)
+    Payments.charge_saved_card(amount, stripe_customer_id)
   end
 
   def save_address_if_address_nil(params)

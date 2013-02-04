@@ -6,6 +6,7 @@ class TR.Views.Order extends TR.Views.Base
     'click input[name=billing-same-as-shipping]': 'copyShippingToBilling'
     'keyup #user_name': 'copyUserNameToShippingName'
     'click input[name=use_saved_card]': 'toggleSavedCreditCard'
+    'change #card_month, #card_year, #card_number, #card_code': 'changedCreditCard'
 
   initialize: (options) ->
     @cardInfo = options.cardInfo || false
@@ -31,6 +32,7 @@ class TR.Views.Order extends TR.Views.Base
     if response.error
       @$('.payment-errors').show().find('p').text response.error.message
       @$('.submit-button').removeAttr 'disabled'
+      $('html, body').animate { scrollTop: @$('.payment-errors').offset().top }, 200
     else
       @$('#stripe_card_token').val response.id
       @$('#card_last4').val response.card.last4
@@ -67,6 +69,11 @@ class TR.Views.Order extends TR.Views.Base
       @$('#card_code').val ''
       @$('#card_month').val ''
       @$('#card_year').val ''
+      
+  changedCreditCard: (e) ->
+    $useSavedCard = $('input[name=use_saved_card]')
+    if $useSavedCard.is ':checked'
+      $useSavedCard.removeAttr 'checked'
 
   validateForm: ->
     valid = true
