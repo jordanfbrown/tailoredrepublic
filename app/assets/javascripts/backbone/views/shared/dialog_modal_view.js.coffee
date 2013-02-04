@@ -7,6 +7,8 @@ class TR.Views.DialogModal extends TR.Views.Modal
       'click a.cancel': 'cancel'
 
   initialize: (options) ->
+    if $(window).width() < 480
+      @$el.removeClass('small').addClass('expand')
     super()
     @action = options.action || false
     @text = options.text || ''

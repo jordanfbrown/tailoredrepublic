@@ -95,7 +95,7 @@ $arrow-edge-length: 6px;
     margin-bottom: 5px;
   }
 
-  @media only screen and (max-width: 767px) {
+  @media only screen and (max-width: 767px) and (min-width: 480px) {
     width: 50% !important;
     margin-left: -25% !important;
   }

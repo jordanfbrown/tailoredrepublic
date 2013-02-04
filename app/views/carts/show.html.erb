@@ -1,13 +1,11 @@
 <div class="content-wrapper">
   <h1>Shopping Cart</h1>
-  <div class="twelve columns">
-    <%= render @cart.line_items %>
-    <div class="empty-cart" <% unless @cart.empty? %> style="display: none;" <% end %>>
-      <p>You haven't added anything to your cart yet.</p>
-      <a href="/shop" class="button">Go To Shop</a>
-    </div>
+  <%= render @cart.line_items %>
+  <div class="empty-cart" <% unless @cart.empty? %> style="display: none;" <% end %>>
+    <p>You haven't added anything to your cart yet.</p>
+    <a href="/shop" class="button">Go To Shop</a>
   </div>
-  <div class="three columns">
+  <div class="three columns pull-right">
     <div class="cart-total" <% if @cart.empty? %> style="display: none;" <% end %>>
       <h5>Total: <span class="price">$<%= @cart.total_price %></span></h5>
       <%= link_to 'Checkout', @skip_measurements ? new_order_path : measurements_path, class: 'button full-width large' %>

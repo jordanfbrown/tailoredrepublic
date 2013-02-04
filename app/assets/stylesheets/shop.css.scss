@@ -196,6 +196,10 @@
 
     &.shirt {
       height: 190px;
+      
+      @media only screen and (max-width: 767px) {
+        width: 50%;
+      }
     }
 
     @media only screen and (max-width: 767px) {
