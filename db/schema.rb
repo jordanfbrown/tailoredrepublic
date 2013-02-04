@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130201184957) do
+ActiveRecord::Schema.define(:version => 20130204181757) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -132,6 +132,7 @@ ActiveRecord::Schema.define(:version => 20130201184957) do
     t.decimal  "tax",              :precision => 10, :scale => 2
   end
 
+  add_index "orders", ["coupon_id"], :name => "index_orders_on_coupon_id"
   add_index "orders", ["user_id"], :name => "index_orders_on_user_id"
 
   create_table "potential_users", :force => true do |t|
