@@ -16,7 +16,7 @@
       <ul class="items-purchased">
         <li><h5>Items Purchased</h5></li>
         <% order.line_items.each do |line_item|  %>
-          <li><%= line_item.product.name %> <span class="divider">//</span> <%= number_to_currency line_item.total_price %></span></li>
+          <li><%= line_item.name %> <span class="divider">//</span> <%= number_to_currency line_item.total_price %></span></li>
         <% end %>
         <% unless order.coupon.blank? %>
           <li><h5>Discounts</h5></li>

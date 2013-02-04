@@ -10,7 +10,7 @@ class Coupon < ActiveRecord::Base
 
   def self.create_coupons_from_order(order)
     order.gift_cards.each do |gift_card|
-      coupon = Coupon.create(coupon_type: 'gift_card', description: "$#{gift_card.product.display_price} Gift Card",
+      coupon = Coupon.create!(coupon_type: 'gift_card', description: "$#{gift_card.product.display_price} Gift Card",
                              discount_type: 'fixed', amount: gift_card.product.price, quantity: 1,
                              code: Coupon.generate_code)
       order.generated_coupons << coupon

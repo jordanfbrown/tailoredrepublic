@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
   def current_cart
     @cart = Cart.includes(:line_items).find(cookies.signed[:cart_id])
   rescue ActiveRecord::RecordNotFound
-    @cart = Cart.create
+    @cart = Cart.create!
     cookies.permanent.signed[:cart_id] = @cart.id
     @cart
   end

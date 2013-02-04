@@ -39,7 +39,7 @@ class RegistrationsController < Devise::RegistrationsController
           unless params[:measurement_id].blank?
             measurement = Measurement.find(params[:measurement_id])
             measurement.user = resource
-            measurement.save
+            measurement.save!
           end
           render json: {}
         else

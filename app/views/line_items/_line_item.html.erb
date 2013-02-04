@@ -2,11 +2,11 @@
      data-customization-id="<%= line_item.customization.id if line_item.customization %>" data-line-item-id="<%= line_item.id %>">
   <a href="#" class="remove">Remove</a>
   <div class="three columns">
-    <%= image_tag line_item.product.image_large_url, class: "product-image"%>
+    <%= image_tag line_item.image_large_url, class: "product-image"%>
   </div>
   <div class="nine columns">
-    <h3><%= line_item.product.name %><span class="divider"> // </span>$<%= line_item.total_price %></h3>
-    <h4><%= line_item.product.summary %></h4>
+    <h3><%= line_item.name %><span class="divider"> // </span>$<%= line_item.total_price %></h3>
+    <h4><%= line_item.summary %></h4>
     <% unless line_item.customization.nil? %>
       <a href="#" class="view-customizations">
         <span class="arrow-right"></span>

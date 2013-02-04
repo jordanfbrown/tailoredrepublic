@@ -134,7 +134,7 @@ class OrdersController < ApplicationController
       end
 
       # Save the charge id to the order
-      @order.save
+      @order.save!
     end
 
     # Need to reload the cart because its line items have been copied to the order

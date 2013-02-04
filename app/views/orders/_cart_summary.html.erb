@@ -2,7 +2,7 @@
   <h3>Order Summary</h3>
   <ul class="cart-summary">
     <% @order.line_items.each do |line_item| %>
-      <li><span class="label"><%= line_item.product.name %>:</span>
+      <li><span class="label"><%= line_item.name %>:</span>
         <%= number_to_currency line_item.total_price %></li>
     <% end %>
     <% unless @order.coupon.nil? %>

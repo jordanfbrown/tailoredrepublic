@@ -5,6 +5,8 @@ class LineItem < ActiveRecord::Base
   belongs_to :customization, dependent: :destroy
   belongs_to :order
 
+  delegate :image_large_url, :name, :summary, :category, to: :product
+
   def total_price
     if customization.nil?
       product.price.to_i
