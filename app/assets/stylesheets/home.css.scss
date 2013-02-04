@@ -16,6 +16,10 @@
     left: 32%;
     margin-left: -113px;
     
+    @media only screen and (max-width: 325px) {
+      left: 38%;
+    }
+    
     a {
       display: inline-block;
       padding: 9px 7px 7px 7px;
@@ -24,6 +28,10 @@
       
       @media only screen and (max-width: 480px) {
         font-size: 0.85em;
+      }
+    
+      @media only screen and (max-width: 325px) {
+        font-size: 0.7em;
       }
 
       &:first-child {

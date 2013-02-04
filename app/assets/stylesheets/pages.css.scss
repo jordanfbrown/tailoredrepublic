@@ -105,6 +105,10 @@ body.pages {
       &:focus {
         background: rgba(255, 255, 255, 0.2);
       }
+      
+      @media only screen and (max-width: 360px) {
+        margin-top: 10px;
+      }
     }
 
     input[type=submit] {

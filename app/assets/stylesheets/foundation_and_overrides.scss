@@ -516,3 +516,9 @@ legend {
 .row .row {
   margin: auto;
 }
+
+input[type=submit] {
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
