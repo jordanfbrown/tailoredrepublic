@@ -73,7 +73,7 @@
           <% end %>
           <% unless @order.coupon.nil? %>
             <h4 style="margin-bottom: 5px;margin-top: 5px;">Discounts</h4>
-            <p><%= @order.coupon.description %>: -<%= number_to_currency @order.discount %></p>
+            <p><%= @order.coupon_description %>: -<%= number_to_currency @order.discount %></p>
             <div class="item_divider" style="background-color: #fff;height: 0;margin: 10px 0;border-bottom: 1px dashed #aaa;"></div>
           <% end %>
           <p>Shipping: $0.00</p>

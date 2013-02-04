@@ -9,6 +9,7 @@ class Order < ActiveRecord::Base
 
   attr_accessible :shipping_address_attributes, :billing_address_attributes
   validates_presence_of :shipping_address, :billing_address, :user, :line_items, :measurement
+  delegate :description, :amount, to: :coupon, prefix: true
 
   accepts_nested_attributes_for :shipping_address, :billing_address
 

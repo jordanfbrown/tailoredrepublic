@@ -20,7 +20,7 @@
         <% end %>
         <% unless order.coupon.blank? %>
           <li><h5>Discounts</h5></li>
-          <li><%= order.coupon.description %> <span class="divider">//</span> <%= number_to_currency order.coupon.amount %></li>
+          <li><%= order.coupon_description %> <span class="divider">//</span> <%= number_to_currency order.coupon_amount %></li>
         <% end %>
         <li>Total cost: <%= number_to_currency order.final_cost %></li>
       </ul>
