@@ -137,4 +137,19 @@ body.pages {
       text-decoration: underline;
     }
   }
+
+}
+
+body.weddings {
+  background: url(pages/wedding.jpg) no-repeat top center !important;
+
+  #weddings {
+    color: #fff;
+    border: 1px dashed #aaa;
+    background: rgba(0, 0, 0, 0.3);
+
+    h2 {
+      color: #fff;
+    }
+  }
 }
