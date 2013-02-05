@@ -12,11 +12,13 @@ class OrdersController < ApplicationController
       @card_exp_year = params[:card_exp_year]
       @password = params[:user][:password] if params[:user]
       @save_card_for_later = params[:save_card_for_later]
+      @card_radio = params[:card_radio]
       @coupon_code = params[:coupon_code]
     else
       if user_signed_in?
         @user = current_user
         @order = @user.build_order(@cart)
+        @card_radio = 'use_saved_card'
       else
         @user = User.new
         @order = @user.build_order(@cart)
@@ -46,11 +48,11 @@ class OrdersController < ApplicationController
     set_stripe_customer
 
     @card_token = params[:stripe_card_token]
-    @card_last4 = @stripe_customer ? @stripe_customer[:active_card][:last4] : params[:card_last4]
-    @card_exp_month = @stripe_customer ? @stripe_customer[:active_card][:exp_month].to_s : params[:card_exp_month]
-    @card_exp_year = @stripe_customer ? @stripe_customer[:active_card][:exp_year].to_s : params[:card_exp_year]
+    @card_last4 = @stripe_customer && params[:card_radio] == 'use_saved_card' ? @stripe_customer[:active_card][:last4] : params[:card_last4]
+    @card_exp_month = @stripe_customer && params[:card_radio] == 'use_saved_card' ? @stripe_customer[:active_card][:exp_month].to_s : params[:card_exp_month]
+    @card_exp_year = @stripe_customer && params[:card_radio] == 'use_saved_card' ? @stripe_customer[:active_card][:exp_year].to_s : params[:card_exp_year]
     @save_card_for_later = params[:save_card_for_later]
-    @use_saved_card = params[:use_saved_card]
+    @card_radio = params[:card_radio]
     @coupon_code = params[:coupon_code]
 
     if params[:user]
@@ -123,10 +125,10 @@ class OrdersController < ApplicationController
       @order.apply_tax
 
       # Attempt to charge the credit card
-      if @user.stripe_customer_id? && params[:use_saved_card] == 'on'
+      if @user.stripe_customer_id? && params[:card_radio] == 'use_saved_card'
         stripe_charge_id = @user.charge_card(@order.final_cost)
       else
-        stripe_charge_id = create_customer_or_charge_card(@user)
+        stripe_charge_id = create_customer_or_charge_card(@user, @card_token, @order.final_cost)
       end
 
       if stripe_charge_id.is_a?(Hash)
@@ -155,12 +157,12 @@ class OrdersController < ApplicationController
   end
 
   private
-    def create_customer_or_charge_card(user)
+    def create_customer_or_charge_card(user, token, final_cost)
       if params[:save_card_for_later] == 'on'
-        user.create_stripe_customer(@card_token)
-        user.charge_card(@order.final_cost)
+        user.create_stripe_customer(token)
+        user.charge_card(final_cost)
       else
-        Payments.charge_unsaved_card(@order.final_cost, @card_token)
+        Payments.charge_unsaved_card(final_cost, token)
       end
     end
 

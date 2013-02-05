@@ -29,7 +29,7 @@
         <div class="payment-errors error" style="display: none;">
           <p></p>
         </div>
-        <%= render 'users/credit_card_form' %>
+        <%= render 'users/credit_card_form', stripe_customer: @stripe_customer %>
         <%= render 'addresses/nested_form', parent_form: f, address_type: :billing_address %>
         <%= hidden_field_tag :stripe_card_token %>
         <%= f.submit "Save", class: "button full-width large submit" %>

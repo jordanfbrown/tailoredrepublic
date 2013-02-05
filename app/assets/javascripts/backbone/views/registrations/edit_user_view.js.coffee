@@ -24,7 +24,6 @@ class TR.Views.EditUser extends TR.Views.Base
         address_state: $('#user_billing_address_attributes_state').val()
         address_zip: $('#user_billing_address_attributes_zip').val()
       , @stripeResponseHandler
-      TR.createStripeToken 
       false
 
   stripeResponseHandler: (status, response) =>

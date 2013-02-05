@@ -36,15 +36,6 @@ class OrdersControllerTest < ActionController::TestCase
     assert_redirected_to '/measurements'
   end
 
-  test "Should populate credit card info when a logged in user has a stripe_customer_id" do
-    set_full_cart_cookie
-    sign_in :user, users(:user_with_stripe)
-    get :new
-    assert_select 'form #card_number' do
-      assert_select '[value=?]', /.+/
-    end
-  end
-
   test "Should redirect to measurements when an existing user has no measurements" do
     user = users(:user_without_stripe)
     user.measurement = nil
@@ -62,9 +53,9 @@ class OrdersControllerTest < ActionController::TestCase
       user: user_params,
       order: order_params,
       stripe_card_token: 'tok_17p90hyqwrWF2b',
-      card_last_4: '1117',
+      card_last4: '1117',
       card_exp_month: '1',
-      card_exp_year: '2013',
+      card_exp_year: '2020',
       save_card_for_later: 'on'
     }, { measurement_id: 1 }
     assert_response :success
@@ -79,9 +70,9 @@ class OrdersControllerTest < ActionController::TestCase
         user: bad_user_params,
         order: order_params,
         stripe_card_token: 'tok_17p90hyqwrWF2b',
-        card_last_4: '1117',
+        card_last4: '1117',
         card_exp_month: '1',
-        card_exp_year: '2013',
+        card_exp_year: '2020',
         save_card_for_later: 'on'
     }, { measurement_id: 1 }
     assert_response :success
@@ -97,7 +88,7 @@ class OrdersControllerTest < ActionController::TestCase
     post :review, {
       order: order_params,
       stripe_card_token: 'tok_17p90hyqwrWF2b',
-      card_last_4: '1117',
+      card_last4: '1117',
       card_exp_month: '1',
       card_exp_year: '2013',
       save_card_for_later: 'on'
@@ -115,7 +106,7 @@ class OrdersControllerTest < ActionController::TestCase
     sign_in :user, user
     post :create, {
       order: order_params,
-      use_saved_card: 'on'
+      card_radio: 'use_saved_card'
     }
     assert_response :success
     assert_template :thank_you
@@ -132,7 +123,7 @@ class OrdersControllerTest < ActionController::TestCase
     sign_in :user, user
     post :create, {
         order: order_params,
-        use_saved_card: 'on',
+        card_radio: 'use_saved_card',
         coupon_code: 'BQTHRSCA'
     }
     assert_response :success
@@ -156,7 +147,7 @@ class OrdersControllerTest < ActionController::TestCase
     params[:shipping_address_attributes][:state] = 'MA'
     post :create, {
         order: params,
-        use_saved_card: 'on',
+        card_radio: 'use_saved_card',
         coupon_code: 'BQTHRSCA'
     }
     assert_response :success

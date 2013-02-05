@@ -18,12 +18,21 @@ class TR.Views.Order extends TR.Views.Base
 
       # If we're using a saved card, then we don't need to create a one time payment token -- we can just submit the
       # form and charge the existing customer
-      if @$('input[name=use_saved_card]').is ':checked'
-        true
-      else if @$('#stripe_card_token').val().length > 0
+      if @$('input[name=card_radio]:checked').val() == 'use_saved_card'
         true
       else
-        TR.createStripeToken @stripeResponseHandler
+        Stripe.createToken
+          number: $('#card_number').val()
+          cvc: $('#card_code').val()
+          exp_month: $('#card_month').val()
+          exp_year: $('#card_year').val()
+          name: $('#order_billing_address_attributes_name').val()
+          address_line1: $('#order_billing_address_attributes_line1').val()
+          address_line2: $('#order_billing_address_attributes_line2').val()
+          address_city: $('#order_billing_address_attributes_city').val()
+          address_state: $('#order_billing_address_attributes_state').val()
+          address_zip: $('#order_billing_address_attributes_zip').val()
+        , @stripeResponseHandler
         false
     else
       false

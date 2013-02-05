@@ -1,13 +1,13 @@
 <%= label_tag :card_number, "Credit Card Number" %>
-<%= text_field_tag :card_number, nil, name: nil, autocomplete: 'off', value: card_number %>
+<%= text_field_tag :card_number, nil, name: nil, autocomplete: 'off', value: stripe_customer ? censored_card(stripe_customer[:active_card][:last4]) : '' %>
 <%= label_tag :card_code, "Security Code on Card (CVV)" %>
-<%= text_field_tag :card_code, nil, name: nil, autocomplete: 'off', value: card_code %>
+<%= text_field_tag :card_code, nil, name: nil, autocomplete: 'off', value: stripe_customer ? '***' : '' %>
 <%= label_tag :card_month, "Card Expiration" %>
 <div class="row">
   <div class="six columns">
-    <%= select_month card_month, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
+    <%= select_month stripe_customer ? stripe_customer[:active_card][:exp_month] : nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
   </div>
   <div class="six columns">
-    <%= select_year card_year, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
+    <%= select_year stripe_customer ? stripe_customer[:active_card][:exp_year] : nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
   </div>
 </div>

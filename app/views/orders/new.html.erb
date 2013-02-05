@@ -21,23 +21,28 @@
         <%= render 'addresses/nested_form', parent_form: f, address_type: :shipping_address %>
       </fieldset>
 
-      <fieldset>
+      <fieldset id="payment-information">
         <legend>Payment Information</legend>
-          <% if @stripe_customer %>
-            <p>We found the following credit card saved to your account.</p>
-            <label><input type="checkbox" name="use_saved_card" class="billing-shipping-label" checked> Use my saved credit card</label>
-          <% end %>
           <div class="payment-errors error" style="display: none;">
             <p></p>
           </div>
-          <%= render 'users/credit_card_form' %>
+          <% if @stripe_customer %>
+            <label><%= radio_button_tag 'card_radio', 'use_saved_card', @card_radio == 'use_saved_card', class: 'billing-shipping-label' %> Use my saved credit card</label>
+            <ul>
+              <li><span class="label">Card Number:</span> <%= censored_card(@stripe_customer[:active_card][:last4]) %></li>
+              <li><span class="label">Security Code:</span> ***</li>
+              <li><span class="label">Card Expiration:</span> <%= @stripe_customer[:active_card][:exp_month].to_s + '/' + @stripe_customer[:active_card][:exp_year].to_s %></li>
+            </ul>
+            <label><%= radio_button_tag 'card_radio', 'use_new_card', @card_radio != 'use_saved_card', class: 'billing-shipping-label' %> Use a new card</label>
+            <%= render 'users/credit_card_form', stripe_customer: nil %>
+          <% else %>
+            <%= render 'users/credit_card_form', stripe_customer: nil %>
+          <% end %>
           <%= hidden_field_tag :stripe_card_token, (@card_token if @card_token) %>
           <%= hidden_field_tag :card_last4, (@card_last4 if @card_last4) %>
           <%= hidden_field_tag :card_exp_month, (@card_exp_month if @card_exp_month) %>
           <%= hidden_field_tag :card_exp_year, (@card_exp_year if @card_exp_year) %>
-          <% unless @stripe_customer %>
-            <label><%= check_box_tag :save_card_for_later, 'on', @save_card_for_later ? @save_card_for_later == '1' : true %>Save this credit card for purchases in the future</label>
-          <% end %>
+          <label><%= check_box_tag :save_card_for_later, 'on', @save_card_for_later ? @save_card_for_later == 'on' : false %>Save this credit card for purchases in the future</label>
       </fieldset>
 
       <fieldset>

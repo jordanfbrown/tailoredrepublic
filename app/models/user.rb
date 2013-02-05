@@ -41,23 +41,22 @@ class User < ActiveRecord::Base
   def update_stripe_customer(card_token)
     stripe_customer = get_stripe_customer
     stripe_customer.card = card_token
-    #stripe_customer.address_line1 = billing_address.line1
-    #stripe_customer.address_line2 = billing_address.line2
-    #stripe_customer.address_city = billing_address.city
-    #stripe_customer.address_state = billing_address.state
-    #stripe_customer.address_zip = billing_address.zip
-    new_customer = stripe_customer.save
-    self.stripe_customer_id = new_customer.id
-    save
+    updated_customer = stripe_customer.save
+    self.stripe_customer_id = updated_customer.id
+    save!
   end
 
   def create_stripe_customer(card_token)
-    stripe_customer = Stripe::Customer.create(
-      card: card_token,
-      email: email
-    )
-    self.stripe_customer_id = stripe_customer.id
-    save!
+    if stripe_customer_id?
+      update_stripe_customer(card_token)
+    else
+      stripe_customer = Stripe::Customer.create(
+        card: card_token,
+        email: email
+      )
+      self.stripe_customer_id = stripe_customer.id
+      save!
+    end
   end
 
   def charge_card(amount)

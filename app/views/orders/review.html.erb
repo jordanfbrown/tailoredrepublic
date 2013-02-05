@@ -33,17 +33,17 @@
       <fieldset>
         <legend>Payment Information</legend>
         <ul>
-          <li><span class="label">Card Number:</span> ****-****-****-<%= @card_last4 %></li>
+          <li><span class="label">Card Number:</span> <%= censored_card(@card_last4) %></li>
           <li><span class="label">Security Code:</span> ***</li>
           <li><span class="label">Card Expiration:</span> <%= @card_exp_month + '/' + @card_exp_year %></li>
         </ul>
-        <a href="#" class="edit-information">Edit Information</a>
+        <a href="#" class="edit-information">Edit Payment Information</a>
         <%= hidden_field_tag :stripe_card_token, @card_token %>
         <%= hidden_field_tag :card_last4, @card_last4 %>
         <%= hidden_field_tag :card_exp_month, @card_exp_month %>
         <%= hidden_field_tag :card_exp_year, @card_exp_year %>
         <%= hidden_field_tag :save_card_for_later, @save_card_for_later %>
-        <%= hidden_field_tag :use_saved_card, @use_saved_card %>
+        <%= hidden_field_tag :card_radio, @card_radio %>
       </fieldset>
 
       <fieldset>
