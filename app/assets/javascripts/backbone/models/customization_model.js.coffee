@@ -1,6 +1,7 @@
 class TR.Models.Customization extends TR.Models.Base
   initialize: (attributes, options) ->
     @productCategory = options.category if options
+    customFabric = options.customFabric if options
 
     if @productCategory
       if @productCategory == 'suit'
@@ -17,6 +18,7 @@ class TR.Models.Customization extends TR.Models.Base
           pick_stitching: false
           vest: false
           product_category: @productCategory
+          fabric: 'charcoal-pinstripe' if customFabric
         }, attributes
       else if @productCategory == 'shirt'
         @attributes = _.extend {}, {

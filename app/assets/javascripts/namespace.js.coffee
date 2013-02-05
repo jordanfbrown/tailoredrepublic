@@ -26,3 +26,6 @@ window.TR =
       confirmText: 'Ok'
       confirmOnly: true
 
+  uppercaseFirst: (str) ->
+    str.substr(0,1).toUpperCase() + str.substr 1, str.length
+

@@ -21,7 +21,10 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
   initialize: (options) ->
     super()
     @product = options.product
-    @customization = options.customization || new TR.Models.Customization({}, {category: @product.get('category')})
+    @customization = options.customization || new TR.Models.Customization({}, {
+      category: @product.get('category')
+      customFabric: @product.customFabric()
+    })
     @customization.on 'change', @updateCheckoutSlide
     @template = @getTemplate "customization_modal_#{@product.get('category')}"
     @checkoutTemplate = @getTemplate "customization_checkout_#{@product.get('category')}"

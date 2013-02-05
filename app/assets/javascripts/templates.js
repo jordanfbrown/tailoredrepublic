@@ -71,15 +71,15 @@ function program7(depth0,data) {
   return buffer;});
 templates['_customization_checkout_suit.tmpl'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
-  var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, self=this;
+  var buffer = "", stack1, foundHelper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, functionType="function", self=this;
 
 function program1(depth0,data) {
   
   var buffer = "", stack1, foundHelper;
   buffer += "\n    <li><a href=\"#\" class=\"label\" data-type=\"swatch\">Fabric:</a> ";
-  foundHelper = helpers.fabric;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.fabric; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  stack1 = depth0.fabric;
+  foundHelper = helpers.titleize;
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "titleize", stack1, {hash:{}});
   buffer += escapeExpression(stack1) + "</li>\n  ";
   return buffer;}
 
@@ -408,36 +408,36 @@ function program7(depth0,data) {
   buffer += "\n      <li class=\"customization-wrapper fabric\" data-type=\"fabric\">\n        <h3>Fabric</h3>\n        <div class=\"row\">\n          <div class=\"three columns\">\n            <a href=\"#\" class=\"fabric-option ";
   stack1 = depth0.fabric;
   foundHelper = helpers.ifeq;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, "fabric-1", {hash:{},inverse:self.noop,fn:self.program(8, program8, data)}) : helperMissing.call(depth0, "ifeq", stack1, "fabric-1", {hash:{},inverse:self.noop,fn:self.program(8, program8, data)});
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, "charcoal-pinstripe", {hash:{},inverse:self.noop,fn:self.program(8, program8, data)}) : helperMissing.call(depth0, "ifeq", stack1, "charcoal-pinstripe", {hash:{},inverse:self.noop,fn:self.program(8, program8, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\" data-id=\"fabric-1\"><img src=\"";
+  buffer += "\" data-id=\"charcoal-pinstripe\"><img src=\"";
   foundHelper = helpers.imgSrc;
-  stack1 = foundHelper ? foundHelper.call(depth0, "swatches/swatch-1.jpg", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "swatches/swatch-1.jpg", {hash:{}});
-  buffer += escapeExpression(stack1) + "\"></a>\n          </div>\n          <div class=\"three columns\">\n            <a href=\"#\" class=\"fabric-option ";
+  stack1 = foundHelper ? foundHelper.call(depth0, "swatches/charcoal-with-pinstripe.jpg", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "swatches/charcoal-with-pinstripe.jpg", {hash:{}});
+  buffer += escapeExpression(stack1) + "\"></a>\n            <p>Dark Charcoal w/ Wide Pinstripes</p>\n          </div>\n          <div class=\"three columns\">\n            <a href=\"#\" class=\"fabric-option ";
   stack1 = depth0.fabric;
   foundHelper = helpers.ifeq;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, "fabric-2", {hash:{},inverse:self.noop,fn:self.program(10, program10, data)}) : helperMissing.call(depth0, "ifeq", stack1, "fabric-2", {hash:{},inverse:self.noop,fn:self.program(10, program10, data)});
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, "granite-red", {hash:{},inverse:self.noop,fn:self.program(10, program10, data)}) : helperMissing.call(depth0, "ifeq", stack1, "granite-red", {hash:{},inverse:self.noop,fn:self.program(10, program10, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\" data-id=\"fabric-2\"><img src=\"";
+  buffer += "\" data-id=\"granite-red\"><img src=\"";
   foundHelper = helpers.imgSrc;
-  stack1 = foundHelper ? foundHelper.call(depth0, "swatches/swatch-2.jpg", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "swatches/swatch-2.jpg", {hash:{}});
-  buffer += escapeExpression(stack1) + "\"></a>\n          </div>\n          <div class=\"three columns\">\n            <a href=\"#\" class=\"fabric-option ";
+  stack1 = foundHelper ? foundHelper.call(depth0, "swatches/granite-with-red.jpg", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "swatches/granite-with-red.jpg", {hash:{}});
+  buffer += escapeExpression(stack1) + "\"></a>\n            <p>Granite w/ Red Crosschecks</p>\n          </div>\n          <div class=\"three columns\">\n            <a href=\"#\" class=\"fabric-option ";
   stack1 = depth0.fabric;
   foundHelper = helpers.ifeq;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, "fabric-3", {hash:{},inverse:self.noop,fn:self.program(12, program12, data)}) : helperMissing.call(depth0, "ifeq", stack1, "fabric-3", {hash:{},inverse:self.noop,fn:self.program(12, program12, data)});
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, "heathered-light-gray", {hash:{},inverse:self.noop,fn:self.program(12, program12, data)}) : helperMissing.call(depth0, "ifeq", stack1, "heathered-light-gray", {hash:{},inverse:self.noop,fn:self.program(12, program12, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\" data-id=\"fabric-3\"><img src=\"";
+  buffer += "\" data-id=\"heathered-light-gray\"><img src=\"";
   foundHelper = helpers.imgSrc;
-  stack1 = foundHelper ? foundHelper.call(depth0, "swatches/swatch-3.jpg", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "swatches/swatch-3.jpg", {hash:{}});
-  buffer += escapeExpression(stack1) + "\"></a>\n          </div>\n          <div class=\"three columns\">\n            <a href=\"#\" class=\"fabric-option ";
+  stack1 = foundHelper ? foundHelper.call(depth0, "swatches/heathered-light-gray.jpg", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "swatches/heathered-light-gray.jpg", {hash:{}});
+  buffer += escapeExpression(stack1) + "\"></a>\n            <p>Heathered Light Gray</p>\n          </div>\n          <div class=\"three columns\">\n            <a href=\"#\" class=\"fabric-option ";
   stack1 = depth0.fabric;
   foundHelper = helpers.ifeq;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, "fabric-4", {hash:{},inverse:self.noop,fn:self.program(14, program14, data)}) : helperMissing.call(depth0, "ifeq", stack1, "fabric-4", {hash:{},inverse:self.noop,fn:self.program(14, program14, data)});
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, "stone-gray-with-blue", {hash:{},inverse:self.noop,fn:self.program(14, program14, data)}) : helperMissing.call(depth0, "ifeq", stack1, "stone-gray-with-blue", {hash:{},inverse:self.noop,fn:self.program(14, program14, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\" data-id=\"fabric-4\"><img src=\"";
+  buffer += "\" data-id=\"stone-gray-with-blue\"><img src=\"";
   foundHelper = helpers.imgSrc;
-  stack1 = foundHelper ? foundHelper.call(depth0, "swatches/swatch-4.jpg", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "swatches/swatch-4.jpg", {hash:{}});
-  buffer += escapeExpression(stack1) + "\"></a>\n          </div>\n        </div>\n        <p>For the bold suit connoisseur we have the option to build your own suit; including selecting a unique fabric\n          that is not available in our permanent collection. Start by choosing one of our 100% wool premium fabrics\n          above.\n        </p>\n      </li>\n    ";
+  stack1 = foundHelper ? foundHelper.call(depth0, "swatches/stone-gray-with-blue.jpg", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "swatches/stone-gray-with-blue.jpg", {hash:{}});
+  buffer += escapeExpression(stack1) + "\"></a>\n            <p>Stone Gray w/ Blue Crosschecks</p>\n          </div>\n        </div>\n        <p>For the bold suit connoisseur we have the option to build your own suit; including selecting a unique fabric\n          that is not available in our permanent collection. Start by choosing one of our 100% wool premium fabrics\n          above.\n        </p>\n      </li>\n    ";
   return buffer;}
 function program8(depth0,data) {
   

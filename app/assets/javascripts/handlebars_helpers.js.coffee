@@ -1,5 +1,4 @@
-Handlebars.registerHelper 'uppercaseFirst', (str) ->
-  str.substr(0,1).toUpperCase() + str.substr 1, str.length
+Handlebars.registerHelper 'uppercaseFirst', TR.uppercaseFirst
 
 Handlebars.registerHelper 'ifLengthThree', (array, options) ->
   if array.length == 3
@@ -24,6 +23,10 @@ Handlebars.registerHelper 'decimalToInteger', (decimal) ->
 Handlebars.registerHelper 'ifeq', (a, b, options) ->
   if a == b
     options.fn @
+
+# Takes a string in the form "an-example-string" and returns "An Example String"
+Handlebars.registerHelper 'titleize', (str) ->
+  (_.map str.split('-'), TR.uppercaseFirst).join ' '
 
 Handlebars.registerHelper 'progressBarImage', (customization, lapel) ->
   if lapel == true && customization
