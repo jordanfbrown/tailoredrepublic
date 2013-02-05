@@ -5,6 +5,12 @@ Handlebars.registerHelper 'ifLengthThree', (array, options) ->
   if array.length == 3
     options.fn @
 
+Handlebars.registerHelper 'ifGreaterThan', (first, second, options) ->
+  if first > second
+    options.fn @
+  else
+    options.inverse @
+
 Handlebars.registerHelper 'numberToString', (number) ->
   switch number
     when 0 then 'None'
@@ -17,10 +23,6 @@ Handlebars.registerHelper 'decimalToInteger', (decimal) ->
 
 Handlebars.registerHelper 'ifeq', (a, b, options) ->
   if a == b
-    options.fn @
-
-Handlebars.registerHelper 'ifVest', (customization, numButtons, options) ->
-  if customization && customization.vest == true && customization.vest_buttons == numButtons
     options.fn @
 
 Handlebars.registerHelper 'progressBarImage', (customization, lapel) ->

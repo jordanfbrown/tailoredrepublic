@@ -116,7 +116,11 @@ function program13(depth0,data) {
 function program15(depth0,data) {
   
   var buffer = "", stack1, foundHelper;
-  buffer += "Yes (+$";
+  buffer += " ";
+  foundHelper = helpers.vest;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.vest; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + " Buttons (+$";
   foundHelper = helpers.vestPrice;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.vestPrice; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
@@ -131,23 +135,13 @@ function program17(depth0,data) {
 function program19(depth0,data) {
   
   var buffer = "", stack1, foundHelper;
-  buffer += "\n    <li><a href=\"#\" class=\"label\" data-type=\"vest_buttons\">Vest Buttons:</a> ";
-  foundHelper = helpers.vest_buttons;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.vest_buttons; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "</li>\n  ";
-  return buffer;}
-
-function program21(depth0,data) {
-  
-  var buffer = "", stack1, foundHelper;
   buffer += "\n    <a href=\"#\" class=\"add-to-cart\"><img src=\"";
   foundHelper = helpers.imgSrc;
   stack1 = foundHelper ? foundHelper.call(depth0, "icons/shopping-cart-black.png", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "icons/shopping-cart-black.png", {hash:{}});
   buffer += escapeExpression(stack1) + "\"></a>\n    <a href=\"#\" class=\"button add-to-cart\">Add To Cart</a>\n  ";
   return buffer;}
 
-function program23(depth0,data) {
+function program21(depth0,data) {
   
   
   return "\n    <a href=\"#\" class=\"button save-changes\">Save Changes</a>\n  ";}
@@ -198,19 +192,16 @@ function program23(depth0,data) {
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "</li>\n  <li><a href=\"#\" class=\"label\" data-type=\"vest\">Vest:</a> ";
   stack1 = depth0.vest;
-  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(17, program17, data),fn:self.program(15, program15, data)});
+  foundHelper = helpers.ifGreaterThan;
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 0, {hash:{},inverse:self.program(17, program17, data),fn:self.program(15, program15, data)}) : helperMissing.call(depth0, "ifGreaterThan", stack1, 0, {hash:{},inverse:self.program(17, program17, data),fn:self.program(15, program15, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "</li>\n  ";
-  stack1 = depth0.vest;
-  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(19, program19, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n</ul>\n<div class=\"four columns\">\n  <ul>\n    <li><span class=\"label\">Total cost:</span> $";
+  buffer += "</li>\n</ul>\n<div class=\"four columns\">\n  <ul>\n    <li><span class=\"label\">Total cost:</span> $";
   stack1 = depth0.price;
   foundHelper = helpers.decimalToInteger;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "decimalToInteger", stack1, {hash:{}});
   buffer += escapeExpression(stack1) + "</li>\n  </ul>\n  ";
   stack1 = depth0.isNew;
-  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(23, program23, data),fn:self.program(21, program21, data)});
+  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(21, program21, data),fn:self.program(19, program19, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n</div>";
   return buffer;});
@@ -583,11 +574,6 @@ function program60(depth0,data) {
   
   return "class=\"checked\"";}
 
-function program62(depth0,data) {
-  
-  
-  return "class=\"checked\"";}
-
   buffer += "<a class=\"close-reveal-modal\">&#215;</a>\n<h2>";
   stack1 = depth0.product;
   stack1 = stack1 == null || stack1 === false ? stack1 : stack1.name;
@@ -646,11 +632,6 @@ function program62(depth0,data) {
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "</li>\n    <li data-type=\"vest\">";
   stack1 = depth0.customization;
-  foundHelper = helpers.progressBarImage;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "progressBarImage", stack1, {hash:{}});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "</li>\n    <li data-type=\"vest_buttons\">";
-  stack1 = depth0.vest;
   foundHelper = helpers.progressBarImage;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "progressBarImage", stack1, {hash:{}});
   if(stack1 || stack1 === 0) { buffer += stack1; }
@@ -833,51 +814,51 @@ function program62(depth0,data) {
   stack1 = depth0.pick_stitching;
   stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(52, program52, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += ">Pick Stitching</label></li>\n        </ul>\n        <a href=\"#\" class=\"advance-slide button\">Ok</a>\n      </div>\n      <p>Pick stitching really emphasizes the stitching on your suit making it clear that you went with a tailored\n        option. This is a fairly bold look, so we recommend opting out unless you are familiar with the look and know\n        you want it. The functional boutonniere is simply a sleeve that can be unbuttoned—it doesn’t make a huge\n        difference what you choose here.</p>\n    </li>\n    <li class=\"customization-wrapper two-item\" data-type=\"vest\">\n      <h3>Vest (+$";
+  buffer += ">Pick Stitching</label></li>\n        </ul>\n        <a href=\"#\" class=\"advance-slide button\">Ok</a>\n      </div>\n      <p>Pick stitching really emphasizes the stitching on your suit making it clear that you went with a tailored\n        option. This is a fairly bold look, so we recommend opting out unless you are familiar with the look and know\n        you want it. The functional boutonniere is simply a sleeve that can be unbuttoned—it doesn’t make a huge\n        difference what you choose here.</p>\n    </li>\n    <li class=\"customization-wrapper\" data-type=\"vest\">\n      <h3>Vest</h3>\n      <a href=\"#\" class=\"customization-option three vest\" data-option=\"0\">\n        <h5>No Vest (+$0)</h5>\n        <img ";
+  stack1 = depth0.vest;
+  foundHelper = helpers.ifeq;
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 0, {hash:{},inverse:self.noop,fn:self.program(54, program54, data)}) : helperMissing.call(depth0, "ifeq", stack1, 0, {hash:{},inverse:self.noop,fn:self.program(54, program54, data)});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += " src=\"";
+  foundHelper = helpers.imgSrc;
+  stack1 = foundHelper ? foundHelper.call(depth0, "customizations/suits/vest-no.png", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "customizations/suits/vest-no.png", {hash:{}});
+  buffer += escapeExpression(stack1) + "\">\n      </a>\n      <a href=\"#\" class=\"customization-option three vest\" data-option=\"3\">\n        <h5>3 Buttons (+$";
   foundHelper = helpers.vestPrice;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.vestPrice; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + ")</h3>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"true\">\n        <h5>Add Vest</h5>\n        <img ";
+  buffer += escapeExpression(stack1) + ")</h5>\n        <img ";
   stack1 = depth0.vest;
   foundHelper = helpers.ifeq;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, true, {hash:{},inverse:self.noop,fn:self.program(54, program54, data)}) : helperMissing.call(depth0, "ifeq", stack1, true, {hash:{},inverse:self.noop,fn:self.program(54, program54, data)});
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 3, {hash:{},inverse:self.noop,fn:self.program(56, program56, data)}) : helperMissing.call(depth0, "ifeq", stack1, 3, {hash:{},inverse:self.noop,fn:self.program(56, program56, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += " src=\"";
   foundHelper = helpers.imgSrc;
   stack1 = foundHelper ? foundHelper.call(depth0, "customizations/suits/vest-three.png", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "customizations/suits/vest-three.png", {hash:{}});
-  buffer += escapeExpression(stack1) + "\">\n      </a>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"false\">\n        <h5>No Vest</h5>\n        <img ";
+  buffer += escapeExpression(stack1) + "\">\n      </a>\n      <a href=\"#\" class=\"customization-option three vest\" data-option=\"4\">\n        <h5>4 Buttons (+$";
+  foundHelper = helpers.vestPrice;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.vestPrice; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + ")</h5>\n        <img ";
   stack1 = depth0.vest;
   foundHelper = helpers.ifeq;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, false, {hash:{},inverse:self.noop,fn:self.program(56, program56, data)}) : helperMissing.call(depth0, "ifeq", stack1, false, {hash:{},inverse:self.noop,fn:self.program(56, program56, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += " src=\"";
-  foundHelper = helpers.imgSrc;
-  stack1 = foundHelper ? foundHelper.call(depth0, "customizations/suits/vest-three.png", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "customizations/suits/vest-three.png", {hash:{}});
-  buffer += escapeExpression(stack1) + "\">\n      </a>\n      <p>Do you want to make your suit a three-piece? You can add a matching vest to your suit order for $79. A\n        three-piece suit is sure to draw looks and makes a bold statement that you are serious about your style game.</p>\n    </li>\n    <li class=\"customization-wrapper\" data-type=\"vest_buttons\">\n      <div class=\"vest-overlay\" style=\"display: none;\">\n        <p>It looks like you haven't added a vest to your suit. If you'd like to add a vest, please go back to the previous\n          slide and select \"Add Vest\".</p>\n      </div>\n      <h3>Vest Buttons</h3>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"3\">\n        <h5>Three Buttons</h5>\n        <img ";
-  stack1 = depth0.customization;
-  foundHelper = helpers.ifVest;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 3, {hash:{},inverse:self.noop,fn:self.program(58, program58, data)}) : helperMissing.call(depth0, "ifVest", stack1, 3, {hash:{},inverse:self.noop,fn:self.program(58, program58, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += " src=\"";
-  foundHelper = helpers.imgSrc;
-  stack1 = foundHelper ? foundHelper.call(depth0, "customizations/suits/vest-three.png", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "customizations/suits/vest-three.png", {hash:{}});
-  buffer += escapeExpression(stack1) + "\">\n      </a>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"4\">\n        <h5>Four Buttons</h5>\n        <img ";
-  stack1 = depth0.customization;
-  foundHelper = helpers.ifVest;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 4, {hash:{},inverse:self.noop,fn:self.program(60, program60, data)}) : helperMissing.call(depth0, "ifVest", stack1, 4, {hash:{},inverse:self.noop,fn:self.program(60, program60, data)});
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 4, {hash:{},inverse:self.noop,fn:self.program(58, program58, data)}) : helperMissing.call(depth0, "ifeq", stack1, 4, {hash:{},inverse:self.noop,fn:self.program(58, program58, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += " src=\"";
   foundHelper = helpers.imgSrc;
   stack1 = foundHelper ? foundHelper.call(depth0, "customizations/suits/vest-four.png", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "customizations/suits/vest-four.png", {hash:{}});
-  buffer += escapeExpression(stack1) + "\">\n      </a>\n      <a href=\"#\" class=\"customization-option four\" data-option=\"5\">\n        <h5>Five Buttons</h5>\n        <img ";
-  stack1 = depth0.customization;
-  foundHelper = helpers.ifVest;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 5, {hash:{},inverse:self.noop,fn:self.program(62, program62, data)}) : helperMissing.call(depth0, "ifVest", stack1, 5, {hash:{},inverse:self.noop,fn:self.program(62, program62, data)});
+  buffer += escapeExpression(stack1) + "\">\n      </a>\n      <a href=\"#\" class=\"customization-option three vest\" data-option=\"5\">\n        <h5>5 Buttons (+$";
+  foundHelper = helpers.vestPrice;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.vestPrice; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + ")</h5>\n        <img ";
+  stack1 = depth0.vest;
+  foundHelper = helpers.ifeq;
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 5, {hash:{},inverse:self.noop,fn:self.program(60, program60, data)}) : helperMissing.call(depth0, "ifeq", stack1, 5, {hash:{},inverse:self.noop,fn:self.program(60, program60, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += " src=\"";
   foundHelper = helpers.imgSrc;
   stack1 = foundHelper ? foundHelper.call(depth0, "customizations/suits/vest-five.png", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "customizations/suits/vest-five.png", {hash:{}});
-  buffer += escapeExpression(stack1) + "\">\n      </a>\n      <p>Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons!\n        Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest buttons! Vest\n        buttons!</p>\n    </li>\n    <li class=\"customization-wrapper\" data-type=\"checkout\">\n      <h3>Checkout</h3>\n      <div class=\"customization-summary row\">\n        ";
+  buffer += escapeExpression(stack1) + "\">\n      </a>\n      <p>Do you want to make your suit a three-piece? You can add a matching vest to your suit order for $79. A\n        three-piece suit is sure to draw looks and makes a bold statement that you are serious about your style game.</p>\n    </li>\n    <li class=\"customization-wrapper\" data-type=\"checkout\">\n      <h3>Checkout</h3>\n      <div class=\"customization-summary row\">\n        ";
   stack1 = depth0;
   stack1 = self.invokePartial(partials.customizationCheckoutSuit, 'customizationCheckoutSuit', stack1, helpers, partials);;
   if(stack1 || stack1 === 0) { buffer += stack1; }

@@ -16,7 +16,6 @@ class TR.Models.Customization extends TR.Models.Base
           bouttoniere: true
           pick_stitching: false
           vest: false
-          vest_buttons: 3
           product_category: @productCategory
         }, attributes
       else if @productCategory == 'shirt'

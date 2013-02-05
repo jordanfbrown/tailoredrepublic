@@ -14,10 +14,7 @@
   <li><a href="#" class="label" data-type="monogram">Monogram:</a> {{monogram}}</li>
   <li><a href="#" class="label" data-type="advanced">Bouttoniere:</a> {{#if bouttoniere}}Yes{{else}}No{{/if}}</li>
   <li><a href="#" class="label" data-type="advanced">Pick Stitching:</a> {{#if pick_stitching}}Yes{{else}}No{{/if}}</li>
-  <li><a href="#" class="label" data-type="vest">Vest:</a> {{#if vest}}Yes (+${{vestPrice}}){{else}}No{{/if}}</li>
-  {{#if vest}}
-    <li><a href="#" class="label" data-type="vest_buttons">Vest Buttons:</a> {{vest_buttons}}</li>
-  {{/if}}
+  <li><a href="#" class="label" data-type="vest">Vest:</a> {{#ifGreaterThan vest 0}} {{vest}} Buttons (+${{vestPrice}}){{else}}No{{/ifGreaterThan}}</li>
 </ul>
 <div class="four columns">
   <ul>

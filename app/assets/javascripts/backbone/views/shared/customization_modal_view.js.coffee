@@ -47,7 +47,6 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
 
   render: =>
     @$el.html @template @getTemplateData()
-    @toggleVestOverlay()
     super()
 
   keydown: (e) =>
@@ -72,10 +71,6 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     @setProgressBar oldIndex, @PROGRESS.COMPLETED
     @setProgressBar newIndex, @PROGRESS.CURRENT
 
-  onSlideAfter: ($el, oldIndex, newIndex) =>
-    if $el.data('type') == 'vest_buttons' && !@customization.get('vest')
-      if oldIndex < newIndex then @slider.goToNextSlide() else @slider.goToPrevSlide()
-
   getTemplateData: ->
     price = parseFloat(@product.get 'price') + if @customization.get 'vest' then TR.VEST_PRICE else 0
     _.extend
@@ -87,11 +82,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     , @customization.toJSON()
 
   updateCheckoutSlide: =>
-    @toggleVestOverlay()
     @$('.customization-summary').html @checkoutTemplate @getTemplateData()
-
-  toggleVestOverlay: ->
-    @$('.vest-overlay').toggle !@customization.get 'vest'
 
   previous: (e) ->
     e.preventDefault()
@@ -149,7 +140,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     @clearChecked()
     $img.addClass 'checked'
     @slider.goToNextSlide()
-    
+
   setAdvancedOption: (e) ->
     $checkbox = $(e.currentTarget)
     option = $checkbox.attr 'name'

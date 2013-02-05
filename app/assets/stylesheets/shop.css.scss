@@ -122,16 +122,20 @@
     padding: 10px 0;
     @include clearfix;
 
+    $suitSteps: 11;
+    $buildSuitSteps: $suitSteps + 1;
+    $shirtSteps: 5;
+
     &.suit li {
-      width: 6.33%;
+      width: (100 / $suitSteps) - 2%;
     }
 
     &.suit-swatch li {
-      width: 5.69%;
+      width: (100 / $buildSuitSteps) - 2%;
     }
 
     &.shirt li {
-      width: 18%;
+      width: (100 / $shirtSteps) - 2%;
       text-align: center;
     }
 
@@ -196,7 +200,9 @@
 
     &.shirt {
       height: 190px;
-      
+    }
+
+    &.vest, &.shirt {
       @media only screen and (max-width: 767px) {
         width: 50%;
       }

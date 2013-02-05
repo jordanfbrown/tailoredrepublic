@@ -34,7 +34,7 @@ class OrdersController < ApplicationController
 
   def index
     if user_signed_in?
-      if current_user.has_role? :admin
+      if current_user.role == 'admin'
         @orders = Order.paginated_orders(params[:page] ||= 1)
       else
         @orders = current_user.paginated_orders(params[:page] ||= 1)
