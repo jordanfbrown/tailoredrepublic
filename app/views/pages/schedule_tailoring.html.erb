@@ -2,6 +2,9 @@
   <div class="six columns centered">
     <h2>Schedule A Tailoring</h2>
     <p>Input your name, address, and phone number and we will contact you about scheduling a tailoring.</p>
+    <% unless user_signed_in? %>
+      <p>If you have an account with a shipping address, <%= link_to 'sign in', new_user_session_path %> to autofill your address.</p>
+    <% end %>
   </div>
 </div>
 <div class="row">

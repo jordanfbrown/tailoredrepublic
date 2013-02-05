@@ -1,10 +1,10 @@
 class PagesController < ApplicationController
   def measuring_tape
-    @address = Address.new
+    @address = new_address_or_from_user
   end
 
   def schedule_tailoring
-    @address = Address.new
+    @address = new_address_or_from_user
   end
 
   def create_schedule_tailoring
@@ -45,4 +45,9 @@ class PagesController < ApplicationController
     end
 
   end
+
+  private
+    def new_address_or_from_user
+      user_signed_in? && !current_user.shipping_address.blank? ? current_user.shipping_address : Address.new
+    end
 end
