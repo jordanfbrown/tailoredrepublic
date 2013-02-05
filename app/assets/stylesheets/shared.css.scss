@@ -6,6 +6,9 @@
   font-weight: bold;
 }
 
+body.gift_cards, body.pages, body.measurements {
+  background-image: url(textures/roughcloth.png); zoom: 1; background-repeat: repeat repeat;
+}
 
 .content-wrapper {
   padding: 0 60px;
