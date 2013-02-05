@@ -136,11 +136,11 @@ gift_card_629:
 
 white_shirt:
   category: shirt
-  name: White Shirt
+  name: The White Shirt
   description: White shirt
   price: 100
   quantity: 10
-  image_large_url: products/suits/blue-suit.jpg
+  image_large_url: products/shirts/white-shirt.png
   image_small_1_url: products/suits/modal-suit-preview.png
   image_small_2_url: products/suits/modal-suit-preview.png
   image_small_3_url: products/suits/modal-suit-preview.png
@@ -148,11 +148,11 @@ white_shirt:
 
 blue_shirt:
   category: shirt
-  name: Blue Shirt
+  name: The Blue Shirt
   description: Blue shirt
   price: 100
   quantity: 10
-  image_large_url: products/suits/blue-suit.jpg
+  image_large_url: products/shirts/blue-shirt.png
   image_small_1_url: products/suits/modal-suit-preview.png
   image_small_2_url: products/suits/modal-suit-preview.png
   image_small_3_url: products/suits/modal-suit-preview.png
