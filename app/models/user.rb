@@ -10,7 +10,6 @@ class User < ActiveRecord::Base
   has_one :billing_address, as: :addressable, validate: true
   has_many :orders
 
-  attr_accessible :role_ids, :as => :admin
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :shipping_address, :billing_address
   attr_protected :stripe_customer_id
 
