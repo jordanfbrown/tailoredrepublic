@@ -446,7 +446,7 @@ function program7(depth0,data) {
   buffer += "\" data-id=\"fabric-4\"><img src=\"";
   foundHelper = helpers.imgSrc;
   stack1 = foundHelper ? foundHelper.call(depth0, "swatches/swatch-4.jpg", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "swatches/swatch-4.jpg", {hash:{}});
-  buffer += escapeExpression(stack1) + "\"></a>\n          </div>\n        </div>\n        <p>Fabric copy.</p>\n      </li>\n    ";
+  buffer += escapeExpression(stack1) + "\"></a>\n          </div>\n        </div>\n        <p>For the bold suit connoisseur we have the option to build your own suit; including selecting a unique fabric\n          that is not available in our permanent collection. Start by choosing one of our 100% wool premium fabrics\n          above.\n        </p>\n      </li>\n    ";
   return buffer;}
 function program8(depth0,data) {
   
