@@ -146,10 +146,17 @@ body.weddings {
   #weddings {
     color: #fff;
     border: 1px dashed #aaa;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.5);
 
     h2 {
       color: #fff;
+    }
+
+    a {
+      color: #fff;
+      &:hover {
+        color: #fff;
+      }
     }
   }
 }
