@@ -16,7 +16,7 @@ class TR.Models.Customization extends TR.Models.Base
           monogram: ''
           bouttoniere: true
           pick_stitching: false
-          vest: false
+          vest: 0
           product_category: @productCategory
           fabric: 'charcoal-pinstripe' if customFabric
         }, attributes
