@@ -4,7 +4,7 @@
 
 #home {
   padding-top: 0;
-  z-index: 0;
+  z-index: -1;
   @include white-anchor;
 
   .shop-schedule {
@@ -324,15 +324,15 @@
     .article-title {
       position: relative;
     }
-  }
 
-  .strikethrough {
-    position: absolute;
-    width: 120%;
-    border: 1px dashed #CCC;
-    left: -20px;
-    top: 25px;
-    z-index: -1;
+    .strikethrough {
+      position: absolute;
+      width: 120%;
+      border: 1px dashed #CCC;
+      left: -20px;
+      top: 25px;
+      z-index: -1;
+    }
   }
 
   article {
