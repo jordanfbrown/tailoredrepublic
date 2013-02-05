@@ -8,7 +8,7 @@ TailoredRepublic::Application.routes.draw do
 
   devise_for :users, controllers: { sessions: :sessions, registrations: :registrations }
 
-  resources :users, only: [:show, :update, :destroy, :index]
+  resources :users, only: [:show, :update, :destroy, :index, :edit]
   resources :customizations, only: [:show, :create, :update]
   resources :customers
   resource  :cart, only: [:show, :create, :update, :destroy]

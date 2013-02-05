@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  rolify
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -18,6 +17,8 @@ class User < ActiveRecord::Base
   validates_presence_of :name
 
   accepts_nested_attributes_for :shipping_address, :billing_address
+
+  ROLES = %w(user admin)
 
   def self.new_from_params_and_measurement(params, measurement)
     params[:user].merge!(params[:order])
