@@ -11,6 +11,7 @@ class TR.Views.Cart extends TR.Views.Base
     @lineItems = new TR.Collections.LineItems options.lineItems
 
   toggleCustomizations: (e) ->
+    e.preventDefault()
     $a = $(e.currentTarget)
     $customizationList = $a.next('.customization-list-wrapper')
     visible = $customizationList.toggle().is ':visible'
@@ -19,7 +20,6 @@ class TR.Views.Cart extends TR.Views.Base
       .removeClass('arrow-right arrow-down')
       .addClass(if visible then 'arrow-down' else 'arrow-right')
 
-    # TODO: fix jumpiness when expanding
     if visible
       $('body').animate
         scrollTop: $a.offset().top - 200, 1000

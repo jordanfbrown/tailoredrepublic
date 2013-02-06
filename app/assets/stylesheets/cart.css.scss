@@ -23,7 +23,7 @@
   .line-item {
     @include clearfix;
     margin-bottom: 10px;
-    border: 1px dashed #ccc;
+    border-bottom: 1px dashed #999;
     padding: 15px 5px;
 
     .twelve {

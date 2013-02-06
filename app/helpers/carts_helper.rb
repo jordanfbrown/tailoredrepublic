@@ -16,7 +16,7 @@ module CartsHelper
           (customization.has_vest? ? "#{customization.vest} Button Vest (+$#{Product.vest_price})" : "No") }
       ]
       if customization.fabric?
-        customizations.unshift({ option: "Fabric", type: customization.fabric })
+        customizations.unshift({ option: "Fabric", type: titleize(customization.fabric) })
       end
       customizations
     elsif customization.product_category == 'shirt'
