@@ -11,7 +11,10 @@ class LineItem < ActiveRecord::Base
     if customization.nil?
       product.price.to_i
     else
-      (product.price + (customization.vest? ? Product.vest_price : 0)).to_i
+      adders = 0
+      adders += Product.vest_price if customization.vest?
+      adders += Product.pick_stitching_price if customization.pick_stitching?
+      (product.price + adders).to_i
     end
   end
 end

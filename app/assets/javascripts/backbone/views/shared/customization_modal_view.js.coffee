@@ -74,14 +74,21 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     @setProgressBar newIndex, @PROGRESS.CURRENT
 
   getTemplateData: ->
-    price = parseFloat(@product.get 'price') + if @customization.get 'vest' then TR.VEST_PRICE else 0
+    price = @calculatePrice()
     _.extend
       product: @product.toJSON()
       price: price
       vestPrice: TR.VEST_PRICE
+      pickStitchingPrice: TR.PICK_STITCHING_PRICE
       isNew: @customization.isNew()
       chooseFabric: @product.customFabric()
     , @customization.toJSON()
+
+  calculatePrice: ->
+    adders = 0
+    adders += TR.VEST_PRICE if @customization.get 'vest'
+    adders += TR.PICK_STITCHING_PRICE if @customization.get 'pick_stitching'
+    parseFloat(@product.get 'price') + adders
 
   updateCheckoutSlide: =>
     @$('.customization-summary').html @checkoutTemplate @getTemplateData()

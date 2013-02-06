@@ -10,7 +10,8 @@ module CartsHelper
         { option: "Fit", type: customization.fit.capitalize },
         { option: "Lining", type: customization.lining },
         { option: "Monogram", type: customization.monogram.length == 0 ? "None" : customization.monogram },
-        { option: "Pick Stitching", type: wordify(customization.pick_stitching) },
+        { option: "Pick Stitching", type:
+          (customization.pick_stitching? ? "Yes (+$#{Product.pick_stitching_price})" : 'No' ) },
         { option: "Vest", type:
           (customization.has_vest? ? "#{customization.vest} Button Vest (+$#{Product.vest_price})" : "No") }
       ]

@@ -9,8 +9,6 @@ window.TR =
 
   Events: _.extend {}, Backbone.Events
 
-  VEST_PRICE: 79
-
   setStripeKey: ->
     Stripe.setPublishableKey $('meta[name=stripe-key]').attr 'content'
 

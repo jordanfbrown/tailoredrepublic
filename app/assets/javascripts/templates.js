@@ -95,8 +95,13 @@ function program5(depth0,data) {
 
 function program7(depth0,data) {
   
-  
-  return "Yes";}
+  var buffer = "", stack1, foundHelper;
+  buffer += "Yes (+$";
+  foundHelper = helpers.pickStitchingPrice;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.pickStitchingPrice; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + ") ";
+  return buffer;}
 
 function program9(depth0,data) {
   
@@ -172,7 +177,7 @@ function program17(depth0,data) {
   foundHelper = helpers.monogram;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.monogram; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "</li>\n  <li><a href=\"#\" class=\"label\" data-type=\"advanced\">Pick Stitching:</a> ";
+  buffer += escapeExpression(stack1) + "</li>\n  <li><a href=\"#\" class=\"label\" data-type=\"pick_stitching\">Pick Stitching:</a> ";
   stack1 = depth0.pick_stitching;
   stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(9, program9, data),fn:self.program(7, program7, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
@@ -803,7 +808,11 @@ function program60(depth0,data) {
   buffer += "\">\n        <div class=\"recommended\">\n          <img src=\"";
   foundHelper = helpers.imgSrc;
   stack1 = foundHelper ? foundHelper.call(depth0, "logos/logo-stitch.png", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "logos/logo-stitch.png", {hash:{}});
-  buffer += escapeExpression(stack1) + "\" class=\"shield\"><span>Recommended</span>\n        </div>\n      </a>\n      <a href=\"#\" class=\"customization-option\" data-option=\"true\">\n        <h5>Yes</h5>\n        <img src=\"";
+  buffer += escapeExpression(stack1) + "\" class=\"shield\"><span>Recommended</span>\n        </div>\n      </a>\n      <a href=\"#\" class=\"customization-option\" data-option=\"true\">\n        <h5>Yes (+$";
+  foundHelper = helpers.pickStitchingPrice;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.pickStitchingPrice; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + ")</h5>\n        <img src=\"";
   foundHelper = helpers.imgSrc;
   stack1 = foundHelper ? foundHelper.call(depth0, "customizations/suits/pick-stitching-yes.png", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "customizations/suits/pick-stitching-yes.png", {hash:{}});
   buffer += escapeExpression(stack1) + "\" class=\"pick-stitching ";
