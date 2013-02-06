@@ -525,8 +525,14 @@ input[type=submit] {
 
 fieldset {
   border: 1px solid #aaa;
+  background-color: #fff;
 
   legend {
     background: inherit;
+    border-top: 1px solid #aaa;
+    border-left: 1px solid #aaa;
+    border-right: 1px solid #aaa;
+    margin-left: -13px;
+    padding: 10px;
   }
 }

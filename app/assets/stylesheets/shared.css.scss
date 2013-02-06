@@ -7,7 +7,7 @@
 }
 
 body.gift_cards, body.pages, body.measurements, body.shop, body.thank_you, #top-picks, body.carts, body.sessions,
-body.registrations, body.passwords {
+body.registrations, body.passwords, body.orders {
   background-image: url(textures/roughcloth.png); zoom: 1; background-repeat: repeat repeat;
 }
 
@@ -263,6 +263,7 @@ p.error {
     border-top: 1px solid $border-color;
     border-bottom: 1px solid $border-color;
     border-left: 1px solid $border-color;
+    background-color: #fff;
 
     &:first-child {
       border-left: none;
