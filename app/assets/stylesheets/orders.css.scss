@@ -48,9 +48,9 @@
   &.index {
 
    .order-list-item {
-      border-bottom: 1px dashed #aaa;
+      border: 1px dashed #aaa;
       @include clearfix;
-      padding: 10px 5px;
+      margin-bottom: 16px;
     }
 
     h5 {
@@ -130,5 +130,10 @@
 
   .view-cart {
     margin-top: 10px;
+    margin-bottom: 0;
+  }
+
+  .cart-summary-wrapper {
+    margin-bottom: 16px;
   }
 }
