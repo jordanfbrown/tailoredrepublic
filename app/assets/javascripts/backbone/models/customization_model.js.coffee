@@ -14,7 +14,6 @@ class TR.Models.Customization extends TR.Models.Base
           fit: 'tailored'
           lining: 0
           monogram: ''
-          bouttoniere: true
           pick_stitching: false
           vest: 0
           product_category: @productCategory

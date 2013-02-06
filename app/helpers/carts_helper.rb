@@ -10,7 +10,6 @@ module CartsHelper
         { option: "Fit", type: customization.fit.capitalize },
         { option: "Lining", type: customization.lining },
         { option: "Monogram", type: customization.monogram.length == 0 ? "None" : customization.monogram },
-        { option: "Bouttoniere", type: wordify(customization.bouttoniere) },
         { option: "Pick Stitching", type: wordify(customization.pick_stitching) },
         { option: "Vest", type:
           (customization.has_vest? ? "#{customization.vest} Button Vest (+$#{Product.vest_price})" : "No") }
@@ -30,11 +29,7 @@ module CartsHelper
   end
 
   def customization_to_key(customization)
-    if customization == "Pick Stitching" || customization == "Bouttoniere"
-      "advanced"
-    else
-      customization.downcase.tr(" ", "_")
-    end
+    customization.downcase.tr(" ", "_")
   end
 
   def wordify(number)

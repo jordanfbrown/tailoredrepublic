@@ -16,7 +16,6 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
       'click a.label': 'clickedLabelOnCheckout'
       'click a.advance-slide': 'next'
       'submit #monogram-form': 'submitMonogram'
-      'click .advanced-checkbox': 'setAdvancedOption'
 
   initialize: (options) ->
     super()
@@ -143,12 +142,6 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     @clearChecked()
     $img.addClass 'checked'
     @slider.goToNextSlide()
-
-  setAdvancedOption: (e) ->
-    $checkbox = $(e.currentTarget)
-    option = $checkbox.attr 'name'
-    value = $checkbox.is ':checked'
-    @customization.setByName option, value
 
   addToCart: (e) ->
     e.preventDefault()

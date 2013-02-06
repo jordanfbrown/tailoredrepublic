@@ -15,7 +15,7 @@
     <li data-type="fit">{{{progressBarImage customization}}}</li>
     <li data-type="lining">{{{progressBarImage customization}}}</li>
     <li data-type="monogram">{{{progressBarImage customization}}}</li>
-    <li data-type="advanced">{{{progressBarImage customization}}}</li>
+    <li data-type="pick_stitching">{{{progressBarImage customization}}}</li>
     <li data-type="vest">{{{progressBarImage customization}}}</li>
     <li data-type="checkout"><img src="{{imgSrc 'icons/star-no-stroke.png'}}"></li>
   </ul>
@@ -219,19 +219,23 @@
         whatever you want here, just keep in mind that people will see it when you are showing off your envy-inducing
         lining.</p>
     </li>
-    <li class="customization-wrapper advanced" data-type="advanced">
-      <h3>Advanced</h3>
-      <div class="twelve columns">
-        <ul>
-          <li><label><input type="checkbox" class="advanced-checkbox" name="bouttoniere" {{#if bouttoniere}}checked{{/if}}>Functional Bouttoniere</label></li>
-          <li><label><input type="checkbox" class="advanced-checkbox" name="pick_stitching" {{#if pick_stitching}}checked{{/if}}>Pick Stitching</label></li>
-        </ul>
-        <a href="#" class="advance-slide button">Ok</a>
-      </div>
+    <li class="customization-wrapper two-item" data-type="pick_stitching">
+      <h3>Pick Stitching</h3>
+      <a href="#" class="customization-option" data-option="false">
+        <h5>No</h5>
+        <img src="{{imgSrc 'customizations/suits/pick-stitching-no.png'}}" class="pick-stitching {{#ifeq pick_stitching false}}checked{{/ifeq}}">
+        <div class="recommended">
+          <img src="{{imgSrc 'logos/logo-stitch.png'}}" class="shield"><span>Recommended</span>
+        </div>
+      </a>
+      <a href="#" class="customization-option" data-option="true">
+        <h5>Yes</h5>
+        <img src="{{imgSrc 'customizations/suits/pick-stitching-yes.png'}}" class="pick-stitching {{#ifeq pick_stitching true}}checked{{/ifeq}}">
+      </a>
       <p>Pick stitching really emphasizes the stitching on your suit making it clear that you went with a tailored
         option. This is a fairly bold look, so we recommend opting out unless you are familiar with the look and know
-        you want it. The functional boutonniere is simply a sleeve that can be unbuttoned—it doesn’t make a huge
-        difference what you choose here.</p>
+        you want it.
+      </p>
     </li>
     <li class="customization-wrapper" data-type="vest">
       <h3>Vest</h3>

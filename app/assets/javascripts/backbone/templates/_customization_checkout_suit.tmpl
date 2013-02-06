@@ -7,13 +7,12 @@
   <li><a href="#" class="label" data-type="vents">Vents:</a> {{numberToString vents}}</li>
   <li><a href="#" class="label" data-type="pleats">Pleats:</a> {{numberToString pleats}}</li>
   <li><a href="#" class="label" data-type="pant_cuffs">Cuffs:</a> {{#if pant_cuffs}}Yes{{else}}No{{/if}}</li>
-  <li><a href="#" class="label" data-type="fit">Fit:</a> {{uppercaseFirst fit}}</li>
 </ul>
 <ul class="four columns">
+  <li><a href="#" class="label" data-type="fit">Fit:</a> {{uppercaseFirst fit}}</li>
   <li><a href="#" class="label" data-type="lining">Lining:</a> {{lining}}</li>
   <li><a href="#" class="label" data-type="monogram">Monogram:</a> {{monogram}}</li>
-  <li><a href="#" class="label" data-type="advanced">Bouttoniere:</a> {{#if bouttoniere}}Yes{{else}}No{{/if}}</li>
-  <li><a href="#" class="label" data-type="advanced">Pick Stitching:</a> {{#if pick_stitching}}Yes{{else}}No{{/if}}</li>
+  <li><a href="#" class="label" data-type="pick_stitching">Pick Stitching:</a> {{#if pick_stitching}}Yes{{else}}No{{/if}}</li>
   <li><a href="#" class="label" data-type="vest">Vest:</a> {{#ifGreaterThan vest 0}} {{vest}} Buttons (+${{vestPrice}}){{else}}No{{/ifGreaterThan}}</li>
 </ul>
 <div class="four columns">
