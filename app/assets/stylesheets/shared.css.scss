@@ -323,8 +323,16 @@ a.next, a.accept {
   background-color: #fff;
   border: 1px solid #aaa;
   padding: 15px;
+  margin-bottom: 16px;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
 }
 
+.bold {
+  font-weight: bold;
+}
 
 //h2.outlined, h3.outlined {
 //  text-align: center;

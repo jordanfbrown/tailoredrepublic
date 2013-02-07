@@ -1,10 +1,12 @@
 <div class="row">
   <div class="six columns centered">
     <h2>Get a Free Measuring Tape</h2>
-    <p>Input your name and address and we will send you a free Tailored Republic measuring tape.</p>
-    <% unless user_signed_in? %>
-      <p>If you have an account with a shipping address, <%= link_to 'sign in', new_user_session_path %> to autofill your address.</p>
-    <% end %>
+    <div class="outlined">
+      <p class="bold">Input your name and address and we will send you a free Tailored Republic measuring tape.</p>
+      <% unless user_signed_in? %>
+        <p class="bold">If you have an account with a shipping address, <%= link_to 'sign in to autofill your address.', new_user_session_path %> </p>
+      <% end %>
+    </div>
   </div>
 </div>
 <div class="row">
