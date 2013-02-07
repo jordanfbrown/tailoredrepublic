@@ -168,6 +168,8 @@ input[type=submit] {
 
   .product-wrapper {
     float: left !important;
+    padding: 0;
+    padding-right: 15px;
 
     @include font("italic");
     text-align: center;
