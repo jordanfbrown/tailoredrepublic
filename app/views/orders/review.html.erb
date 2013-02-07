@@ -7,7 +7,7 @@
     </div>
     <h3>Review Order</h3>
     <%= form_for @order, url: '/orders' do |f| %>
-      <div class="order-box">
+      <div class="outlined">
         <p>Please review your shipping address and payment information. If everything looks good, click "Submit Order". Once
         your order is submitted, your credit card will be charged.</p>
         <%= f.submit 'Submit Order', class: 'button full-width large' %>
