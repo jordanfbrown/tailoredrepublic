@@ -37,6 +37,7 @@ class TR.Views.Measurements extends TR.Views.Base
       controls: off
       infiniteLoop: off
       onSlideBefore: @onSlideBefore
+      onSlideAfter: @onSlideAfter
       adaptiveHeight: on
       touchEnabled: off
       video: on
@@ -74,6 +75,9 @@ class TR.Views.Measurements extends TR.Views.Base
       inches = @roundToNearestQuarter inches
       @updateMeasuringTape inches, true
       $input.val inches
+      _.delay =>
+        @slider.goToNextSlide()
+      , 1200
 
   resize: =>
     @updateMeasuringTape @currentTapeValue, false
@@ -146,6 +150,8 @@ class TR.Views.Measurements extends TR.Views.Base
     @$('.measurement-list-item').eq(@slider.getCurrentSlide() - 1).data 'measurement'
 
   onSlideBefore: ($el, oldIndex, newIndex) =>
+    # jQuery eq function wraps around if you enter a negative value: eq(-1) will return eq(15) for an array of length
+    # 16. To prevent this, I'm just setting the index to a very large value so that the wrapping doesn't occur
     adjustedIndex = if oldIndex - 1 < 0 then 1000 else oldIndex - 1
     oldMeasurement = @$('.measurement-list-item').eq(adjustedIndex).data 'measurement'
     inches = parseFloat @$('input.measurement-input').eq(adjustedIndex).val()
@@ -163,6 +169,11 @@ class TR.Views.Measurements extends TR.Views.Base
     @currentTapeValue = @model.get @getCurrentMeasurement() || @model.defaults[@getCurrentMeasurement()]
     @updateInputWithInches @currentTapeValue
     @resize()
+
+  onSlideAfter: ($el, oldIndex, newIndex) =>
+    _.delay ->
+      $el.find('input').focus().select()
+    , 200
 
   acceptMeasurements: (e) ->
     e.preventDefault()
