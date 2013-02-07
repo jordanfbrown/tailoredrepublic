@@ -5,7 +5,7 @@
     <div id="stripe_error" class="error">
       <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
     </div>
-    <h3 class="outlined">Your Information</h3>
+    <h3>Your Information</h3>
     <%= form_for @order, url: { action: 'review' } do |f| %>
       <%= render 'shared/form_errors', resource: @order %>
       <% unless user_signed_in? %>
