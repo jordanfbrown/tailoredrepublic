@@ -80,6 +80,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
       price: price
       vestPrice: TR.VEST_PRICE
       pickStitchingPrice: TR.PICK_STITCHING_PRICE
+      shirtMonogramPrice: TR.SHIRT_MONOGRAM_PRICE
       isNew: @customization.isNew()
       chooseFabric: @product.customFabric()
     , @customization.toJSON()
@@ -88,6 +89,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     adders = 0
     adders += TR.VEST_PRICE if @customization.get 'vest'
     adders += TR.PICK_STITCHING_PRICE if @customization.get 'pick_stitching'
+    adders += TR.SHIRT_MONOGRAM_PRICE if @customization.hasShirtMonogram()
     parseFloat(@product.get 'price') + adders
 
   updateCheckoutSlide: =>

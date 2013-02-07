@@ -13,7 +13,7 @@ templates['_add_success_modal.tmpl'] = template(function (Handlebars,depth0,help
   return buffer;});
 templates['_customization_checkout_shirt.tmpl'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
-  var buffer = "", stack1, foundHelper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this, functionType="function";
+  var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, self=this;
 
 function program1(depth0,data) {
   
@@ -28,13 +28,35 @@ function program3(depth0,data) {
 function program5(depth0,data) {
   
   var buffer = "", stack1, foundHelper;
+  foundHelper = helpers.monogram;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.monogram; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + " (";
+  foundHelper = helpers.monogram_color;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.monogram_color; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + ") (+$";
+  foundHelper = helpers.shirtMonogramPrice;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.shirtMonogramPrice; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + ")";
+  return buffer;}
+
+function program7(depth0,data) {
+  
+  
+  return "None";}
+
+function program9(depth0,data) {
+  
+  var buffer = "", stack1, foundHelper;
   buffer += "\n    <a href=\"#\" class=\"add-to-cart\"><img src=\"";
   foundHelper = helpers.imgSrc;
   stack1 = foundHelper ? foundHelper.call(depth0, "icons/shopping-cart-black.png", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "icons/shopping-cart-black.png", {hash:{}});
   buffer += escapeExpression(stack1) + "\"></a>\n    <a href=\"#\" class=\"button add-to-cart\">Add To Cart</a>\n  ";
   return buffer;}
 
-function program7(depth0,data) {
+function program11(depth0,data) {
   
   
   return "\n    <a href=\"#\" class=\"button save-changes\">Save Changes</a>\n  ";}
@@ -51,21 +73,19 @@ function program7(depth0,data) {
   stack1 = depth0.pocket;
   stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "</li>\n  <li><a href=\"#\" class=\"label\" data-type=\"monogram\">Monogram:</a>";
-  foundHelper = helpers.monogram;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.monogram; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + " (";
-  foundHelper = helpers.monogram_color;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.monogram_color; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + ")</li>\n</ul>\n<div class=\"six columns\">\n  <ul>\n    <li><span class=\"label\">Total cost:</span> $";
+  buffer += "</li>\n  <li><a href=\"#\" class=\"label\" data-type=\"monogram\">Monogram:</a> ";
+  stack1 = depth0.monogram;
+  stack1 = stack1 == null || stack1 === false ? stack1 : stack1.length;
+  foundHelper = helpers.ifGreaterThan;
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 0, {hash:{},inverse:self.program(7, program7, data),fn:self.program(5, program5, data)}) : helperMissing.call(depth0, "ifGreaterThan", stack1, 0, {hash:{},inverse:self.program(7, program7, data),fn:self.program(5, program5, data)});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "</li>\n</ul>\n<div class=\"six columns\">\n  <ul>\n    <li><span class=\"label\">Total cost:</span> $";
   stack1 = depth0.price;
   foundHelper = helpers.decimalToInteger;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "decimalToInteger", stack1, {hash:{}});
   buffer += escapeExpression(stack1) + "</li>\n  </ul>\n  ";
   stack1 = depth0.isNew;
-  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(7, program7, data),fn:self.program(5, program5, data)});
+  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(11, program11, data),fn:self.program(9, program9, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n</div>";
   return buffer;});
@@ -95,6 +115,19 @@ function program5(depth0,data) {
 
 function program7(depth0,data) {
   
+  var stack1, foundHelper;
+  foundHelper = helpers.monogram;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.monogram; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  return escapeExpression(stack1);}
+
+function program9(depth0,data) {
+  
+  
+  return "None";}
+
+function program11(depth0,data) {
+  
   var buffer = "", stack1, foundHelper;
   buffer += "Yes (+$";
   foundHelper = helpers.pickStitchingPrice;
@@ -103,12 +136,12 @@ function program7(depth0,data) {
   buffer += escapeExpression(stack1) + ") ";
   return buffer;}
 
-function program9(depth0,data) {
+function program13(depth0,data) {
   
   
   return "No";}
 
-function program11(depth0,data) {
+function program15(depth0,data) {
   
   var buffer = "", stack1, foundHelper;
   buffer += " ";
@@ -122,12 +155,12 @@ function program11(depth0,data) {
   buffer += escapeExpression(stack1) + ")";
   return buffer;}
 
-function program13(depth0,data) {
+function program17(depth0,data) {
   
   
   return "No";}
 
-function program15(depth0,data) {
+function program19(depth0,data) {
   
   var buffer = "", stack1, foundHelper;
   buffer += "\n    <a href=\"#\" class=\"add-to-cart\"><img src=\"";
@@ -136,7 +169,7 @@ function program15(depth0,data) {
   buffer += escapeExpression(stack1) + "\"></a>\n    <a href=\"#\" class=\"button add-to-cart\">Add To Cart</a>\n  ";
   return buffer;}
 
-function program17(depth0,data) {
+function program21(depth0,data) {
   
   
   return "\n    <a href=\"#\" class=\"button save-changes\">Save Changes</a>\n  ";}
@@ -174,17 +207,19 @@ function program17(depth0,data) {
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.lining; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
   buffer += escapeExpression(stack1) + "</li>\n  <li><a href=\"#\" class=\"label\" data-type=\"monogram\">Monogram:</a> ";
-  foundHelper = helpers.monogram;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.monogram; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "</li>\n  <li><a href=\"#\" class=\"label\" data-type=\"pick_stitching\">Pick Stitching:</a> ";
+  stack1 = depth0.monogram;
+  stack1 = stack1 == null || stack1 === false ? stack1 : stack1.length;
+  foundHelper = helpers.ifGreaterThan;
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 0, {hash:{},inverse:self.program(9, program9, data),fn:self.program(7, program7, data)}) : helperMissing.call(depth0, "ifGreaterThan", stack1, 0, {hash:{},inverse:self.program(9, program9, data),fn:self.program(7, program7, data)});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "</li>\n  <li><a href=\"#\" class=\"label\" data-type=\"pick_stitching\">Pick Stitching:</a> ";
   stack1 = depth0.pick_stitching;
-  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(9, program9, data),fn:self.program(7, program7, data)});
+  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(13, program13, data),fn:self.program(11, program11, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "</li>\n  <li><a href=\"#\" class=\"label\" data-type=\"vest\">Vest:</a> ";
   stack1 = depth0.vest;
   foundHelper = helpers.ifGreaterThan;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 0, {hash:{},inverse:self.program(13, program13, data),fn:self.program(11, program11, data)}) : helperMissing.call(depth0, "ifGreaterThan", stack1, 0, {hash:{},inverse:self.program(13, program13, data),fn:self.program(11, program11, data)});
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 0, {hash:{},inverse:self.program(17, program17, data),fn:self.program(15, program15, data)}) : helperMissing.call(depth0, "ifGreaterThan", stack1, 0, {hash:{},inverse:self.program(17, program17, data),fn:self.program(15, program15, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "</li>\n</ul>\n<div class=\"four columns\">\n  <ul>\n    <li><span class=\"label\">Total cost:</span> $";
   stack1 = depth0.price;
@@ -192,7 +227,7 @@ function program17(depth0,data) {
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "decimalToInteger", stack1, {hash:{}});
   buffer += escapeExpression(stack1) + "</li>\n  </ul>\n  ";
   stack1 = depth0.isNew;
-  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(17, program17, data),fn:self.program(15, program15, data)});
+  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(21, program21, data),fn:self.program(19, program19, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n</div>";
   return buffer;});
@@ -344,7 +379,11 @@ function program15(depth0,data) {
   buffer += " src=\"";
   foundHelper = helpers.imgSrc;
   stack1 = foundHelper ? foundHelper.call(depth0, "customizations/shirts/pocket-yes.png", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "customizations/shirts/pocket-yes.png", {hash:{}});
-  buffer += escapeExpression(stack1) + "\">\n      </a>\n      <p>So the argument for pockets is that they are functional, but we say ditch the pocket and give your shirt that\n        clean look. This is especially true if you are rocking a skinny tie; a bulky pocket can really throw off the\n        whole balance of the look.</p>\n    </li>\n    <li class=\"customization-wrapper two-item\" data-type=\"monogram\">\n      <h3>Monogram</h3>\n      <div href=\"#\" class=\"customization-option\">\n        <img src=\"";
+  buffer += escapeExpression(stack1) + "\">\n      </a>\n      <p>So the argument for pockets is that they are functional, but we say ditch the pocket and give your shirt that\n        clean look. This is especially true if you are rocking a skinny tie; a bulky pocket can really throw off the\n        whole balance of the look.</p>\n    </li>\n    <li class=\"customization-wrapper two-item\" data-type=\"monogram\">\n      <h3>Monogram (+$";
+  foundHelper = helpers.shirtMonogramPrice;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.shirtMonogramPrice; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + ")</h3>\n      <div href=\"#\" class=\"customization-option\">\n        <img src=\"";
   foundHelper = helpers.imgSrc;
   stack1 = foundHelper ? foundHelper.call(depth0, "customizations/suits/monogram.png", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "customizations/suits/monogram.png", {hash:{}});
   buffer += escapeExpression(stack1) + "\" class=\"monogram\">\n      </div>\n      <div class=\"customization-option\">\n        <form id=\"monogram-form\">\n          <label>Monogram (3 character max)</label>\n          <input type=\"text\" name=\"monogram\" maxlength=\"3\" value=\"";

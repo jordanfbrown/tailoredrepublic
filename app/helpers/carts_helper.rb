@@ -24,7 +24,7 @@ module CartsHelper
         { option: "Collar", type: customization.collar.capitalize },
         { option: "Fit", type: customization.fit.capitalize },
         { option: "Pocket", type: wordify(customization.pant_cuffs) },
-        { option: "Monogram", type: customization.monogram.length == 0 ? "None" : customization.monogram },
+        { option: "Monogram", type: customization.monogram.length == 0 ? "None" : "#{customization.monogram} (#{customization.monogram_color}) (+$#{Product.shirt_monogram_price})" }
       ]
     end
   end

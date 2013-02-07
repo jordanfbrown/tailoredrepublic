@@ -16,6 +16,10 @@ class Product < ActiveRecord::Base
     10
   end
 
+  def self.shirt_monogram_price
+    5
+  end
+
   def self.num_measurements(shirt_only)
     shirt_only ? 12: 15
   end

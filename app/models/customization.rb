@@ -10,4 +10,8 @@ class Customization < ActiveRecord::Base
   def has_vest?
     vest > 0
   end
+
+  def shirt_monogram?
+    monogram.length > 0 && product_category == 'shirt'
+  end
 end

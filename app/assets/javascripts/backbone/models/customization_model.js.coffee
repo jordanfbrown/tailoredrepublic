@@ -32,3 +32,6 @@ class TR.Models.Customization extends TR.Models.Base
 
   url: ->
     super('/customizations')
+
+  hasShirtMonogram: ->
+    @get('monogram').length > 0 && @get('product_category') == 'shirt'
