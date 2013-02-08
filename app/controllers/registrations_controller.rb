@@ -9,25 +9,17 @@ class RegistrationsController < Devise::RegistrationsController
     params[:user] ||= {}
     @user = User.find(current_user.id)
 
-    if @user.update_attributes(params[:user])
+    if (params[:user][:current_password] ? @user.update_with_password(params[:user]) : @user.update_attributes(params[:user]))
       unless params[:stripe_card_token].blank?
         @user.stripe_customer_id? ? @user.update_stripe_customer(params[:stripe_card_token]) :
-          @user.create_stripe_customer(params[:stripe_card_token])
+            @user.create_stripe_customer(params[:stripe_card_token])
       end
       set_flash_message :notice, :updated
       sign_in @user, :bypass => true
-      if request.xhr?
-        render json: {}
-      else
-        redirect_to edit_user_registration_path
-      end
+      redirect_to edit_user_registration_path
     else
-      if request.xhr?
-        render json: @user.errors, status: :unprocessable_entity
-      else
-        build_addresses
-        render "edit"
-      end
+      build_addresses
+      render "edit"
     end
   end
 

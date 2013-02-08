@@ -27,3 +27,12 @@ window.TR =
   uppercaseFirst: (str) ->
     str.substr(0,1).toUpperCase() + str.substr 1, str.length
 
+  # Takes a string in the form "an-example-string" or "an_example_string" and returns "An Example String"
+  titleize: (str) ->
+    (_.map str.split(/[-_]/), TR.uppercaseFirst).join ' '
+    
+  convertFromUnderscored: (str) ->
+    (_.map str.split(/[-_]/), (word, index) ->
+      if index == 0 then TR.uppercaseFirst(word) else word
+    ).join ' '
+

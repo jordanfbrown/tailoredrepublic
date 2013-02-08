@@ -52,5 +52,5 @@ class TR.Views.Modal extends TR.Views.Base
     $errorList = @$('ul.error')
     _.each errors, (messages, field) ->
       _.each messages, (message) ->
-        $errorList.append("<li>#{field.capitalize()} #{message}</li>")
+        $errorList.append("<li>#{TR.convertFromUnderscored(field)} #{message}</li>")
 

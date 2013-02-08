@@ -9,8 +9,19 @@
           <%= f.text_field :name %>
           <%= f.label :email %>
           <%= f.email_field :email %>
-          <p><%= link_to 'Update Password', '#', class: 'edit-password' %></p>
           <%= f.submit "Save", class: "button full-width large submit" %>
+      </fieldset>
+    <% end %>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :id => 'password_form' }) do |f| %>
+      <fieldset>
+        <legend>Change Password</legend>
+        <%= f.label :current_password %>
+        <%= f.password_field :current_password, :autocomplete => "off" %>
+        <%= f.label :password %>
+        <%= f.password_field :password, :autocomplete => "off" %>
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation %>
+        <%= f.submit "Save", class: "button full-width large submit" %>
       </fieldset>
     <% end %>
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :id => 'shipping_address_form'}) do |f| %>

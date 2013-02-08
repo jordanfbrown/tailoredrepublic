@@ -24,9 +24,7 @@ Handlebars.registerHelper 'ifeq', (a, b, options) ->
   if a == b
     options.fn @
 
-# Takes a string in the form "an-example-string" and returns "An Example String"
-Handlebars.registerHelper 'titleize', (str) ->
-  (_.map str.split('-'), TR.uppercaseFirst).join ' '
+Handlebars.registerHelper 'titleize', TR.titleize
 
 Handlebars.registerHelper 'progressBarImage', (customization, lapel) ->
   if lapel == true && customization

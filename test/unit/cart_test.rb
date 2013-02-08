@@ -3,7 +3,7 @@ require 'test_helper'
 class CartTest < ActiveSupport::TestCase
   test "total_price" do
     cart = carts(:one_shirt_one_suit)
-    assert_equal cart.total_price, 629
+    assert_equal cart.total_price, 633
   end
 
   test "shirt_only? should be false if there is a suit in the cart and no shirts" do

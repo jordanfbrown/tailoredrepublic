@@ -947,12 +947,6 @@ function program3(depth0,data) {
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n";
   return buffer;});
-templates['_edit_password_modal.tmpl'] = template(function (Handlebars,depth0,helpers,partials,data) {
-  helpers = helpers || Handlebars.helpers;
-  
-
-
-  return "<div class=\"row\">\n  <div class=\"twelve columns\">\n    <h2>Update Password</h2>\n    <p class=\"error\" style=\"display: none;\">There were some problems updating your password:</p>\n    <ul class=\"error\" style=\"display: none;\"></ul>\n    <form accept-charset=\"UTF-8\" action=\"/users\" class=\"edit_user\" id=\"edit_user\" method=\"put\">\n      <label for=\"user_password\">Password</label>\n      <input autocomplete=\"off\" id=\"user_password\" name=\"user[password]\" size=\"30\" type=\"password\" />\n      <label for=\"user_password_confirmation\">Password confirmation</label>\n      <input id=\"user_password_confirmation\" name=\"user[password_confirmation]\" size=\"30\" type=\"password\" />\n      <div class=\"row\">\n        <div class=\"six columns\">\n          <input class=\"button full-width\" name=\"commit\" type=\"submit\" value=\"Update\" />\n        </div>\n        <div class=\"six columns\">\n          <a href=\"#\" class=\"button full-width cancel\">Cancel</a>\n        </div>\n      </div>\n    </form>\n  </div>\n</div>";});
 templates['_measurement_summary.tmpl'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression, self=this;
