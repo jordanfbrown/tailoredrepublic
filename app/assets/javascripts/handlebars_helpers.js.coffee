@@ -39,7 +39,7 @@ Handlebars.registerHelper 'progressBarImage', (customization, lapel) ->
     '<img src="' + TR.ASSET_HOST + '/assets/icons/star-no-stroke.png">'
 
 Handlebars.registerHelper 'imgSrc', (path) ->
-  TR.ASSET_HOST + '/assets/' + path
+  TR.ASSET_HOST + '/assets/' + (if TR.ENVIRONMENT == 'production' || TR.ENVIRONMENT == 'staging' then TR.ASSET_DIGESTS[path] else path)
 
 Handlebars.registerPartial 'customizationCheckoutSuit', Handlebars.templates['_customization_checkout_suit.tmpl']
 Handlebars.registerPartial 'customizationCheckoutShirt', Handlebars.templates['_customization_checkout_shirt.tmpl']
