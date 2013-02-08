@@ -50,10 +50,10 @@ function program7(depth0,data) {
 function program9(depth0,data) {
   
   var buffer = "", stack1, foundHelper;
-  buffer += "\n    <a href=\"#\" class=\"add-to-cart\"><img src=\"";
+  buffer += "\n    <a href=\"#\" class=\"button add-to-cart\"><img src=\"";
   foundHelper = helpers.imgSrc;
-  stack1 = foundHelper ? foundHelper.call(depth0, "icons/shopping-cart-black.png", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "icons/shopping-cart-black.png", {hash:{}});
-  buffer += escapeExpression(stack1) + "\"></a>\n    <a href=\"#\" class=\"button add-to-cart\">Add To Cart</a>\n  ";
+  stack1 = foundHelper ? foundHelper.call(depth0, "icons/shopping-cart.png", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "icons/shopping-cart.png", {hash:{}});
+  buffer += escapeExpression(stack1) + "\"> Add To Cart</a>\n  ";
   return buffer;}
 
 function program11(depth0,data) {
@@ -163,10 +163,10 @@ function program17(depth0,data) {
 function program19(depth0,data) {
   
   var buffer = "", stack1, foundHelper;
-  buffer += "\n    <a href=\"#\" class=\"add-to-cart\"><img src=\"";
+  buffer += "\n    <a href=\"#\" class=\"button add-to-cart\"><img src=\"";
   foundHelper = helpers.imgSrc;
-  stack1 = foundHelper ? foundHelper.call(depth0, "icons/shopping-cart-black.png", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "icons/shopping-cart-black.png", {hash:{}});
-  buffer += escapeExpression(stack1) + "\"></a>\n    <a href=\"#\" class=\"button add-to-cart\">Add To Cart</a>\n  ";
+  stack1 = foundHelper ? foundHelper.call(depth0, "icons/shopping-cart.png", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "icons/shopping-cart.png", {hash:{}});
+  buffer += escapeExpression(stack1) + "\"> Add To Cart</a>\n  ";
   return buffer;}
 
 function program21(depth0,data) {

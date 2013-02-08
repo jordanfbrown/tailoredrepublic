@@ -340,8 +340,10 @@
     margin-left: 0;
   }
   .button {
-    vertical-align: 11px;
-    margin-left: 10px;
+    vertical-align: top;
+    img {
+      margin-right: 5px;
+    }
   }
 }
 
@@ -367,5 +369,4 @@
 .small {
   display: block;
 }
-
 

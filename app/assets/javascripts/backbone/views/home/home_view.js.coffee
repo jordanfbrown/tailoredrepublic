@@ -68,7 +68,6 @@ class TR.Views.Home extends TR.Views.Base
       about: $('#about')
       aboutImage: $('#about img')
       lookbook: $('#lookbook')
-      sidebar: $('#sidebar')
       home: $('#home')
       nav: $('nav')
 
@@ -116,8 +115,6 @@ class TR.Views.Home extends TR.Views.Base
       @els.constitutionImage.css 'top': 0, right: 0
 
   scroll: =>
-    @els.sidebar.removeClass('bottom').find('li').removeClass('selected')
-
     # Need to recalculate these every time just in case the browser width has changed
     pageTop = $(window).scrollTop()
     bossesPosition = @els.bosses.offset().top
@@ -128,8 +125,8 @@ class TR.Views.Home extends TR.Views.Base
       bossImgTop = (bossesPosition - pageTop - $(window).height()) / 3
       if @els.bossesImage.height() + bossImgTop + 34 > 400
         @els.bossesImage.css 'top', bossImgTop
-      manImgTop = -(aboutPosition - pageTop - $(window).height() + 600) / 5
-      @els.aboutImage.css 'right': manImgTop, top: '0px'
+      manImgRight = -(aboutPosition - pageTop - $(window).height() + 600) / 5
+      @els.aboutImage.css 'right': manImgRight, top: '0px'
     else
       @els.bossesImage.css 'top', 0
       @els.aboutImage.css 'top': '30px', right: '0px'

@@ -7,6 +7,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     _.extend super,
       'click a.customization-option': 'setCustomization'
       'click a.add-to-cart': 'addToCart'
+      'click a.accept': 'addToCart'
       'click a.save-changes': 'saveChanges'
       'click ul.progress-bar li': 'goToSlide'
       'click a.previous': 'previous'
@@ -67,8 +68,8 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     slideCount = @slider.getSlideCount()
     @$('.previous').show() if newIndex > 0
     @$('.previous').hide() if newIndex == 0
-    @$('.next').show() if newIndex < slideCount
-    @$('.next').hide() if newIndex == slideCount - 1
+    @$('.next, .accept').text('Add To Cart').removeClass('next').addClass('accept') if newIndex + 1 == slideCount
+    @$('.next, .accept').text('Next').removeClass('accept').addClass('next') if newIndex + 1 < slideCount
 
     @setProgressBar oldIndex, @PROGRESS.COMPLETED
     @setProgressBar newIndex, @PROGRESS.CURRENT
