@@ -138,6 +138,19 @@ body.pages {
     }
   }
 
+  #process {
+    background-color: inherit;
+
+    h2, h4, p {
+      color: #000;
+    }
+
+    a {
+      color: darken($brown, 20%);
+    }
+  }
+
+
 }
 
 body.weddings {
