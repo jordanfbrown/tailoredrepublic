@@ -1,12 +1,13 @@
 class TR.Views.EditUser extends TR.Views.Base
-  el: '#billing_information_form'
+  el: '#edit-user'
 
   initialize: ->
     TR.setStripeKey()
 
   events:
     'submit': 'submitForm'
-    
+    'click a.edit-password': 'renderEditPasswordModal'
+
   submitForm: =>
     @$('.submit').attr 'disabled', 'disabled'
 
@@ -33,5 +34,9 @@ class TR.Views.EditUser extends TR.Views.Base
     else
       @$('#stripe_card_token').val response.id
       @el.submit()
+
+  renderEditPasswordModal: (e) =>
+    e.preventDefault()
+    new TR.Views.EditPasswordModal()
 
 

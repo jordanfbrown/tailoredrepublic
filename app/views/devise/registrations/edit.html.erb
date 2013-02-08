@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" id="edit-user">
   <div class="six columns centered">
     <h2>Account Settings</h2>
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :id => 'user_form' }) do |f| %>
@@ -9,10 +9,7 @@
           <%= f.text_field :name %>
           <%= f.label :email %>
           <%= f.email_field :email %>
-          <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
-          <%= f.password_field :password, :autocomplete => "off" %>
-          <%= f.label :password_confirmation %>
-          <%= f.password_field :password_confirmation %>
+          <p><%= link_to 'Update Password', '#', class: 'edit-password' %></p>
           <%= f.submit "Save", class: "button full-width large submit" %>
       </fieldset>
     <% end %>

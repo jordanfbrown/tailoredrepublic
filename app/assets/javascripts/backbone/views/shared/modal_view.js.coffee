@@ -21,6 +21,12 @@ class TR.Views.Modal extends TR.Views.Base
     else
       $('body').removeClass 'modal-open'
 
+  updateWidth: =>
+    if $(window).width() < 768
+      @$el.removeClass('medium').addClass('expand')
+    else
+      @$el.removeClass('expand').addClass('medium')
+
   reveal: ->
     @$el.reveal
       closeOnBackgroundClick: false
@@ -39,3 +45,12 @@ class TR.Views.Modal extends TR.Views.Base
   close: ->
     @$el.trigger 'reveal:close'
     @destroy()
+
+  handleErrors: (response) =>
+    errors = JSON.parse response.responseText
+    @$('.error').show()
+    $errorList = @$('ul.error')
+    _.each errors, (messages, field) ->
+      _.each messages, (message) ->
+        $errorList.append("<li>#{field.capitalize()} #{message}</li>")
+

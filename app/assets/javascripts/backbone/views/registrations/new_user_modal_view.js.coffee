@@ -20,11 +20,7 @@ class TR.Views.NewUserModal extends TR.Views.Modal
     @resize()
 
   resize: =>
-    if $(window).width() < 768
-      @$el.removeClass('medium').addClass('expand')
-    else
-      @$el.removeClass('expand').addClass('medium')
-
+    @updateWidth()
     @checkModalHeight()
 
   destroy: ->
@@ -37,8 +33,7 @@ class TR.Views.NewUserModal extends TR.Views.Modal
     @$('ul.error').empty()
     $f = $(e.currentTarget)
     params = $f.serialize() + '&' + $.param(measurement_id: @measurements.get('id'))
-    console.log params
-    $.post($f.attr('action'), params).then(@newUserSuccess, @newUserFailure)
+    $.post($f.attr('action'), params).then(@newUserSuccess, @handleErrors)
     false
 
   newUserSuccess: =>
@@ -49,13 +44,6 @@ class TR.Views.NewUserModal extends TR.Views.Modal
       action: =>
         window.location.href = '/shop/suits'
     @close()
-
-  newUserFailure: (response) =>
-    errors = JSON.parse response.responseText
-    @$('.error').show()
-    $errorList = @$('ul.error')
-    _.each errors, (message, field) ->
-      $errorList.append("<li>#{field.capitalize()} #{message}</li>")
 
   cancel: (e) ->
     e.preventDefault()

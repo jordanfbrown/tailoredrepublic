@@ -7,11 +7,6 @@ class RegistrationsController < Devise::RegistrationsController
 
   def update
     params[:user] ||= {}
-    if params[:user][:password].blank?
-      params[:user].delete("password")
-      params[:user].delete("password_confirmation")
-    end
-
     @user = User.find(current_user.id)
 
     if @user.update_attributes(params[:user])
@@ -21,10 +16,18 @@ class RegistrationsController < Devise::RegistrationsController
       end
       set_flash_message :notice, :updated
       sign_in @user, :bypass => true
-      redirect_to edit_user_registration_path
+      if request.xhr?
+        render json: {}
+      else
+        redirect_to edit_user_registration_path
+      end
     else
-      build_addresses
-      render "edit"
+      if request.xhr?
+        render json: @user.errors, status: :unprocessable_entity
+      else
+        build_addresses
+        render "edit"
+      end
     end
   end
 
