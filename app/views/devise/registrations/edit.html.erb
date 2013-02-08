@@ -15,11 +15,11 @@
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :id => 'password_form' }) do |f| %>
       <fieldset>
         <legend>Change Password</legend>
-        <%= f.label :current_password %>
+        <%= f.label :current_password, 'Current password' %>
         <%= f.password_field :current_password, :autocomplete => "off" %>
-        <%= f.label :password %>
+        <%= f.label :password, 'New password' %>
         <%= f.password_field :password, :autocomplete => "off" %>
-        <%= f.label :password_confirmation %>
+        <%= f.label :password_confirmation, 'Re-type new password' %>
         <%= f.password_field :password_confirmation %>
         <%= f.submit "Save", class: "button full-width large submit" %>
       </fieldset>
