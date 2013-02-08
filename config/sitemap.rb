@@ -30,7 +30,6 @@ SitemapGenerator::Sitemap.create do
      add top_picks_path, :priority => 0.7, :changefreq => 'weekly'
      add about_path, :priority => 0.7, :changefreq => 'weekly'
      add lookbook_path, :priority => 0.7, :changefreq => 'weekly'
-     add weddings_path, :priority => 0.7, :changefreq => 'weekly'
      add '/shop/suits', :priority => 0.7, :changefreq => 'weekly'
      add '/shop/shirts', :priority => 0.7, :changefreq => 'weekly'
      add '/shop/accessories', :priority => 0.7, :changefreq => 'weekly'
