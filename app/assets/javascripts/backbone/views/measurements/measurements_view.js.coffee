@@ -171,9 +171,10 @@ class TR.Views.Measurements extends TR.Views.Base
     @resize()
 
   onSlideAfter: ($el, oldIndex, newIndex) =>
-    _.delay ->
-      $el.find('input').focus().select()
-    , 200
+    if newIndex > 0
+      _.delay ->
+        $el.find('input').focus().select()
+      , 200
 
   acceptMeasurements: (e) ->
     e.preventDefault()

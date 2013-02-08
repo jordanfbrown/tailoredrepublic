@@ -8,7 +8,7 @@
 .measurements {
 
   .measurement-overview {
-    @media only screen and (max-width: 861px) and (min-width: 767px) {
+    @media only screen and (max-width: 886px) and (min-width: 767px) {
       label {
         height: 47px;
       }
@@ -64,6 +64,15 @@
   .bx-viewport {
     border: 1px solid #aaa;
     background-color: #fff;
+  }
+
+  .quick-measurement-form {
+    .four {
+      padding-left: 0;
+      @media only screen and (max-width: 767px) {
+        padding: 0;
+      }
+    }
   }
 
   .measuring-tape {

@@ -27,50 +27,68 @@
               <p>Already know your measurements? Enter them below and click "Accept" to skip over our
               step-by-step measurement guide.</p>
               <%= form_for @measurement, url: '', html: { class: 'quick-measurement-form' } do |f| %>
-                <div class="row">
-                  <div class="four columns">
-                    <%= f.label :neck %>
-                    <%= f.text_field :neck %>
-                    <%= f.label :waist %>
-                    <%= f.text_field :waist %>
-                    <%= f.label :arm_length %>
-                    <%= f.text_field :arm_length %>
-                    <%= f.label :stomach %>
-                    <%= f.text_field :stomach %>
-                    <% unless @shirt_only %>
-                      <%= f.label :crotch %>
-                      <%= f.text_field :crotch %>
-                    <% end %>
-                  </div>
-                  <div class="four columns">
-                    <%= f.label :chest %>
-                    <%= f.text_field :chest %>
-                    <%= f.label :hips %>
-                    <%= f.text_field :hips %>
-                    <%= f.label :bicep %>
-                    <%= f.text_field :bicep %>
-                    <%= f.label :back %>
-                    <%= f.text_field :back %>
-                    <% unless @shirt_only %>
-                      <%= f.label :thigh %>
-                      <%= f.text_field :thigh %>
-                    <% end %>
-                  </div>
-                  <div class="four columns">
-                    <%= f.label :front %>
-                    <%= f.text_field :front %>
-                    <%= f.label :full_shoulders %>
-                    <%= f.text_field :full_shoulders %>
-                    <%= f.label :wrist %>
-                    <%= f.text_field :wrist %>
-                    <%= f.label :jacket_length %>
-                    <%= f.text_field :jacket_length %>
-                    <% unless @shirt_only %>
-                      <%= f.label :pant_length %>
-                      <%= f.text_field :pant_length %>
-                    <% end %>
-                  </div>
+                <div class="four columns">
+                  <%= f.label :neck %>
+                  <%= f.text_field :neck %>
                 </div>
+                <div class="four columns">
+                  <%= f.label :waist %>
+                  <%= f.text_field :waist %>
+                </div>
+                <div class="four columns">
+                  <%= f.label :arm_length %>
+                  <%= f.text_field :arm_length %>
+                </div>
+                <div class="four columns">
+                  <%= f.label :stomach %>
+                  <%= f.text_field :stomach %>
+                </div>
+                <div class="four columns">
+                  <%= f.label :chest %>
+                  <%= f.text_field :chest %>
+                </div>
+                <div class="four columns">
+                  <%= f.label :hips %>
+                  <%= f.text_field :hips %>
+                </div>
+                <div class="four columns">
+                  <%= f.label :bicep %>
+                  <%= f.text_field :bicep %>
+                </div>
+                <div class="four columns">
+                  <%= f.label :back %>
+                  <%= f.text_field :back %>
+                </div>
+                <div class="four columns">
+                  <%= f.label :front %>
+                  <%= f.text_field :front %>
+                </div>
+                <div class="four columns">
+                  <%= f.label :full_shoulders %>
+                  <%= f.text_field :full_shoulders %>
+                </div>
+                <div class="four columns">
+                  <%= f.label :wrist %>
+                  <%= f.text_field :wrist %>
+                </div>
+                <div class="four columns">
+                  <%= f.label :jacket_length %>
+                  <%= f.text_field :jacket_length %>
+                </div>
+                <% unless @shirt_only %>
+                  <div class="four columns">
+                    <%= f.label :pant_length %>
+                    <%= f.text_field :pant_length %>
+                  </div>
+                  <div class="four columns">
+                    <%= f.label :crotch %>
+                    <%= f.text_field :crotch %>
+                  </div>
+                  <div class="four columns">
+                    <%= f.label :thigh %>
+                    <%= f.text_field :thigh %>
+                  </div>
+                <% end %>
                 <p class="error quick-fill-error" style="display: none;">Measurements must be a number in inches between 0 and 90.</p>
                 <%= link_to 'Accept', '#', class: 'button full-width large accept-quick' %>
               <% end %>
