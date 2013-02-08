@@ -8,7 +8,7 @@ class TR.Views.Home extends TR.Views.Base
   initialize: (options) ->
     @cacheSelectors()
     @products = new TR.Collections.Products options.products
-    @createSlideshow()
+    TR.createSlideshow()
     $(document).foundationMagellan
       threshold: 100
     $(window).scroll @scroll
@@ -142,17 +142,3 @@ class TR.Views.Home extends TR.Views.Base
       @els.pageDown.hide();
 
     @els.home.find('.parallax').css 'top', homeTop + 'px'
-
-  createSlideshow: ->
-    @$('#slideshow').orbit
-      afterSlideChange: (previous, current) =>
-        @updateCaption $(current).data()
-      resetTimerOnClick: on
-
-  updateCaption: (data) ->
-    $caption = $('#lookbook-info')
-    $caption.fadeOut(->
-      _.each data, (value, attribute) ->
-        $caption.find('.' + attribute).text value
-      $caption.fadeIn()
-    )

@@ -34,6 +34,7 @@ TailoredRepublic::Application.routes.draw do
   match '/process' => 'pages#process'
   match '/top_picks' => 'pages#top_picks'
   match '/about' => 'pages#about'
+  match '/lookbook' => 'pages#lookbook'
   match '/get_tailored' => 'pages#get_tailored'
   match '/authenticate_access_code' => 'pages#authenticate_access_code'
   match '/request_access_code' => 'pages#request_access_code'

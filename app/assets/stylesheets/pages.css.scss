@@ -161,6 +161,16 @@ body.pages {
       background-color: inherit;
     }
   }
+
+  &.lookbook {
+    #lookbook {
+      position: relative;
+    }
+
+    #main {
+      padding-top: 0;
+    }
+  }
 }
 
 body.weddings {

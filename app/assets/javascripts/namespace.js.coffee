@@ -24,6 +24,18 @@ window.TR =
       confirmText: 'Ok'
       confirmOnly: true
 
+  createSlideshow: ->
+    $('#slideshow').orbit
+      afterSlideChange: (previous, current) =>
+        data = $(current).data()
+        $caption = $('#lookbook-info')
+        $caption.fadeOut(->
+          _.each data, (value, attribute) ->
+            $caption.find('.' + attribute).text value
+          $caption.fadeIn()
+        )
+      resetTimerOnClick: on
+
   uppercaseFirst: (str) ->
     str.substr(0,1).toUpperCase() + str.substr 1, str.length
 

@@ -45,30 +45,8 @@
   </div>
 </article>
 
-<article id="lookbook" data-magellan-destination="lookbook">
-  <h2><span class="article-title">LOOKBOOK</span></h2>
-  <div id="lookbook-info" class="orbit-caption">
-    <span class="suit">Navy Blue Suit</span>
-    <span class="divider">//</span>
-    <span class="location">Los Angeles, CA</span>
-  </div>
-  <div id="slideshow">
-    <%= image_tag "lookbook/lookbook-1.jpg", data: {
-      suit: "Navy Blue Suit", location: "Los Angeles, CA"
-    } %>
-    <%= image_tag "lookbook/lookbook-2.jpg", data: {
-      suit: "Navy Blue Suit", location: "Los Angeles, CA"
-    } %>
-    <%= image_tag "lookbook/lookbook-3.jpg", data: {
-      suit: "Navy Blue Suit", location: "Los Angeles, CA"
-    } %>
-    <%= image_tag "lookbook/lookbook-4.jpg", data: {
-      suit: "Navy Blue Suit", location: "Los Angeles, CA"
-    } %>
-  </div>
-</article>
-
-<%= render "layouts/footer" %>
+<%= render 'shared/lookbook' %>
+<%= render 'layouts/footer' %>
 
 <script>
   $(function() {
