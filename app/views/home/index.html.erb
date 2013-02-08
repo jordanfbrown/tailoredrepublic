@@ -10,22 +10,7 @@
 </article>
 
 <%= render 'shared/process' %>
-
-<article id="top-picks" class="content-wrapper" data-magellan-destination="top-picks">
-  <h2>
-    <span class="article-title">
-      TOP PICKS
-      <span class="strikethrough"></span>
-    </span>
-  </h2>
-  <div class="products-wrapper">
-    <h4>A hand-selected showcase of our favorite suits</h4>
-    <%= render @top_picks %>
-  </div>
-  <div class="shop-now">
-    <%= link_to 'SHOP NOW', '/shop/suits' %>
-  </div>
-</article>
+<%= render 'shared/top_picks', top_picks: @top_picks %>
 
 <article id="bosses">
   <%= image_tag "bosses.jpg" %>

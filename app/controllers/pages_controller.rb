@@ -43,7 +43,10 @@ class PagesController < ApplicationController
     else
       redirect_to root_path, notice: :error
     end
+  end
 
+  def top_picks
+    @top_picks = Product.top_picks
   end
 
   private

@@ -150,7 +150,11 @@ body.pages {
     }
   }
 
-
+  #top-picks {
+    .shop-now {
+      display: none;
+    }
+  }
 }
 
 body.weddings {

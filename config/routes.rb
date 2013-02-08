@@ -32,6 +32,7 @@ TailoredRepublic::Application.routes.draw do
   match '/gift_cards' => 'shop#gift_cards'
   match '/faq' => 'pages#faq'
   match '/process' => 'pages#process'
+  match '/top_picks' => 'pages#top_picks'
   match '/get_tailored' => 'pages#get_tailored'
   match '/authenticate_access_code' => 'pages#authenticate_access_code'
   match '/request_access_code' => 'pages#request_access_code'

@@ -1,0 +1,5 @@
+<%= render 'shared/top_picks', top_picks: @top_picks %>
+
+<script>
+  new TR.Views.TopPicks({products: <%= @top_picks.to_json.html_safe %>});
+</script>
