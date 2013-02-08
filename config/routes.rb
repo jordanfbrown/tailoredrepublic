@@ -33,12 +33,12 @@ TailoredRepublic::Application.routes.draw do
   match '/faq' => 'pages#faq'
   match '/process' => 'pages#process'
   match '/top_picks' => 'pages#top_picks'
+  match '/about' => 'pages#about'
   match '/get_tailored' => 'pages#get_tailored'
   match '/authenticate_access_code' => 'pages#authenticate_access_code'
   match '/request_access_code' => 'pages#request_access_code'
   match '/coming_soon' => 'pages#coming_soon'
   match '/press' => 'pages#press'
-  match '/team' => 'pages#team'
   match '/team' => 'pages#team'
   match '/weddings' => 'pages#weddings'
   match '/measuring_tape' => 'pages#measuring_tape'
@@ -46,8 +46,4 @@ TailoredRepublic::Application.routes.draw do
   match '/schedule_tailoring' => 'pages#schedule_tailoring'
   match '/create_schedule_tailoring' => 'pages#create_schedule_tailoring'
   match '/subscribe_to_newsletter' => 'mailing_list#subscribe'
-
-  #match "/shop/shirts" => "shop#shirts"
-  #match "/shop/vests" => "shop#vests"
-  #match "/shop/pants" => "shop#pants"
 end
