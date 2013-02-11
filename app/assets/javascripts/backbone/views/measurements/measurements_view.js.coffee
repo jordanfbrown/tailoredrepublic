@@ -37,7 +37,6 @@ class TR.Views.Measurements extends TR.Views.Base
       controls: off
       infiniteLoop: off
       onSlideBefore: @onSlideBefore
-      onSlideAfter: @onSlideAfter
       adaptiveHeight: on
       touchEnabled: off
       video: on
@@ -169,12 +168,6 @@ class TR.Views.Measurements extends TR.Views.Base
     @currentTapeValue = @model.get @getCurrentMeasurement() || @model.defaults[@getCurrentMeasurement()]
     @updateInputWithInches @currentTapeValue
     @resize()
-
-  onSlideAfter: ($el, oldIndex, newIndex) =>
-    if newIndex > 0
-      _.delay ->
-        $el.find('input').focus().select()
-      , 200
 
   acceptMeasurements: (e) ->
     e.preventDefault()
