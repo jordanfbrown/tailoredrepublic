@@ -50,7 +50,7 @@ class RegistrationsController < Devise::RegistrationsController
       if request.xhr?
         render json: resource.errors, status: :unprocessable_entity
       else
-        respond_with resource
+        render 'devise/sessions/new'
       end
     end
   end

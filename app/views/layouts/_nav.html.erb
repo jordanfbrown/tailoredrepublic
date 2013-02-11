@@ -52,17 +52,15 @@
             <% end %>
           </ul>
         <% else %>
-          <a href="/users/sign_in">Login</a>
+          <a href="/users/sign_in">Login/Sign Up</a>
         <% end %>
       </li>
-      <li class="divider"></li>
-      <li class="register">
-        <% if user_signed_in?  %>
+      <% if user_signed_in?  %>
+        <li class="divider"></li>
+        <li>
           <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
-        <% else %>
-          <a href="/users/sign_up">Sign Up</a>
-        <% end %>
-      </li>
+        </li>
+      <% end %>
     </ul>
   </section>
 </nav>
