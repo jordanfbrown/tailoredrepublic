@@ -7,7 +7,7 @@
         easy measurements.</h5>
       <ul class="progress-bar <%= 'shirt-only' if @shirt_only %>">
         <li><%= progress_current %></li>
-        <% (@num_measurements + 1).times do %>
+        <% (@num_measurements + 2).times do %>
           <li><%= progress_todo_or_completed @measurement %></li>
         <% end %>
       </ul>
@@ -92,6 +92,41 @@
                 <p class="error quick-fill-error" style="display: none;">Measurements must be a number in inches between 0 and 90.</p>
                 <%= link_to 'Accept', '#', class: 'button full-width large accept-quick' %>
               <% end %>
+            </div>
+          </div>
+        </li>
+        <li class="height-age-weight">
+          <div class="row">
+            <div class="six columns">
+              <h4>Body Type</h4>
+              <p>In order to build a suit that fits you perfectly, it helps to know your body type. Add more to this copy...</p>
+            </div>
+            <div class="six columns">
+              <div class="row">
+                <div class="six columns">
+                  <a href="#" class="button previous">Previous</a>
+                </div>
+                <div class="six columns">
+                  <a href="#" class="button next">Next</a>
+                </div>
+              </div>
+              <div class="row">
+                <%= form_for @measurement, url: '', html: { class: 'height-age-weight' } do |f| %>
+                  <ul class="error" style="display: none;"></ul>
+                  <div class="four columns">
+                    <%= f.label :age %>
+                    <%= f.text_field :age %>
+                  </div>
+                  <div class="four columns">
+                    <%= f.label :height, 'Height (in.)' %>
+                    <%= f.text_field :height %>
+                  </div>
+                  <div class="four columns">
+                    <%= f.label :weight, 'Weight (lbs)' %>
+                    <%= f.text_field :weight %>
+                  </div>
+                <% end %>
+              </div>
             </div>
           </div>
         </li>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130206172857) do
+ActiveRecord::Schema.define(:version => 20130211211017) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -114,6 +114,9 @@ ActiveRecord::Schema.define(:version => 20130206172857) do
     t.integer  "user_id"
     t.decimal  "pant_length"
     t.integer  "order_id"
+    t.integer  "height"
+    t.integer  "weight"
+    t.integer  "age"
   end
 
   add_index "measurements", ["order_id"], :name => "index_measurements_on_order_id"

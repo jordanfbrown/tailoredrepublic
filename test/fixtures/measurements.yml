@@ -16,6 +16,9 @@ one:
   thigh: 24
   pant_length: 40.25
   order_id: 1
+  age: 35
+  weight: 160
+  height: 60
   user: user_with_stripe
 
 two:
@@ -35,4 +38,7 @@ two:
   thigh: 24
   pant_length: 40.25
   order_id: 1
+  age: 35
+  weight: 160
+  height: 60
   user: user_without_stripe

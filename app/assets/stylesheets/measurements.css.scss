@@ -34,17 +34,20 @@
     border-bottom: none;
     @include clearfix;
 
+    $numSlides: 18;
+    $numSlidesShirt: $numSlides - 3;
+
     &.shirt-only li {
-      width: 6.1%;
+      width: 100 / $numSlidesShirt - 1%;
       @media only screen and (max-width: 485px) {
-        width: 13.2%;
+        width: 180 / $numSlidesShirt - 1%;
       }
     }
 
     li {
       display: block;
       float: left;
-      width: 4.88%;
+      width: 100 / $numSlides - 1%;
       margin-right: 1%;
       text-align: center;
       cursor: pointer;

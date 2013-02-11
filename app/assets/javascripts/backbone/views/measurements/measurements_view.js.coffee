@@ -22,6 +22,7 @@ class TR.Views.Measurements extends TR.Views.Base
     @lineItemCount = options.lineItemCount
     @shirtOnly = options.shirtOnly
     @signedIn = options.signedIn
+    @slideOffset = 2 # Currently 2 slides exist before the measurement slides start
 
     @PROGRESS =
       COMPLETED: TR.ASSET_HOST + '/assets/icons/star-stroke.png'
@@ -114,7 +115,7 @@ class TR.Views.Measurements extends TR.Views.Base
     @getMeasuringTape()[if animate then 'animate' else 'css'] 'background-position-x': offset, 1000
 
   getMeasuringTape: ->
-    @$('.measuring-tape').eq(@slider.getCurrentSlide() - 1)
+    @$('.measuring-tape').eq(@slider.getCurrentSlide() - @slideOffset)
     
   updateInputWithPosition: (positionX) ->
     inches = @convertBackgroundPositionToInches positionX
@@ -126,7 +127,7 @@ class TR.Views.Measurements extends TR.Views.Base
     @updateInputWithInches inches
 
   updateInputWithInches: (inches) ->
-    @getCurrentInput().val inches
+    @getCurrentMeasurementInput().val inches
 
   roundToNearestQuarter: (number) ->
     parseFloat (Math.round(number * 4) / 4).toFixed(2)
@@ -146,17 +147,9 @@ class TR.Views.Measurements extends TR.Views.Base
     @slider.goToNextSlide() if @validateCurrentInput()
 
   getCurrentMeasurement: ->
-    @$('.measurement-list-item').eq(@slider.getCurrentSlide() - 1).data 'measurement'
+    @$('.measurement-list-item').eq(@slider.getCurrentSlide() - @slideOffset).data 'measurement'
 
   onSlideBefore: ($el, oldIndex, newIndex) =>
-    # jQuery eq function wraps around if you enter a negative value: eq(-1) will return eq(15) for an array of length
-    # 16. To prevent this, I'm just setting the index to a very large value so that the wrapping doesn't occur
-    adjustedIndex = if oldIndex - 1 < 0 then 1000 else oldIndex - 1
-    oldMeasurement = @$('.measurement-list-item').eq(adjustedIndex).data 'measurement'
-    inches = parseFloat @$('input.measurement-input').eq(adjustedIndex).val()
-    unless _.isNaN inches
-      @model.setByName oldMeasurement, parseFloat inches
-
     @$('.previous').show() if newIndex > 0
     @$('.previous').hide() if newIndex == 0
     @$('.next, .accept').text('Accept').removeClass('next').addClass('accept') if newIndex == @slideCount
@@ -164,6 +157,21 @@ class TR.Views.Measurements extends TR.Views.Base
 
     @setProgressBar oldIndex, @PROGRESS.COMPLETED
     @setProgressBar newIndex, @PROGRESS.CURRENT
+
+    # Set height, weight, age
+    if oldIndex == 1
+      @model.set
+        age: parseInt @$('#measurement_age').val()
+        weight: parseInt @$('#measurement_weight').val()
+        height: parseInt @$('#measurement_height').val()
+    else
+      # jQuery eq function wraps around if you enter a negative value: eq(-1) will return eq(15) for an array of length
+      # 16. To prevent this, I'm just setting the index to a very large value so that the wrapping doesn't occur
+      adjustedIndex = if oldIndex - 2 < 0 then 1000 else oldIndex - 2
+      oldMeasurement = @$('.measurement-list-item').eq(adjustedIndex).data 'measurement'
+      inches = parseFloat @$('input.measurement-input').eq(adjustedIndex).val()
+      unless _.isNaN inches
+        @model.setByName oldMeasurement, parseFloat inches
 
     @currentTapeValue = @model.get @getCurrentMeasurement() || @model.defaults[@getCurrentMeasurement()]
     @updateInputWithInches @currentTapeValue
@@ -205,8 +213,10 @@ class TR.Views.Measurements extends TR.Views.Base
     e.preventDefault()
     @slider.goToSlide $(e.currentTarget).data 'index'
 
-  getCurrentInput: ->
-    @$('input.measurement-input').eq(@slider.getCurrentSlide() - 1)
+  getCurrentMeasurementInput: ->
+    index = @slider.getCurrentSlide() - @slideOffset
+    index = 1000 if index < 0
+    @$('input.measurement-input').eq(index)
 
   acceptQuickFill: (e) ->
     e.preventDefault()
@@ -234,17 +244,50 @@ class TR.Views.Measurements extends TR.Views.Base
       @slider.triggerResize(true)
 
   validateCurrentInput: ->
-    $currentInput = @getCurrentInput()
+    # Height, age, and weight
+    if @slider.getCurrentSlide() == 1
+      $height = @$('#measurement_height')
+      $weight = @$('#measurement_weight')
+      $age = @$('#measurement_age')
+      height = parseInt $height.val()
+      weight = parseInt $weight.val()
+      age = parseInt $age.val()
 
-    unless $currentInput.exists()
-      return true
+      $errors = @$('.height-age-weight .error')
+      $errors.empty()
+      valid = true
 
-    inches = parseFloat $currentInput.val()
-    if _.isNaN(inches) || inches < 0 || inches > 90
-      $currentInput.next('.error').fadeIn()
-      @slider.triggerResize(true)
-      false
+      if age <= 0 || age >= 110 || _.isNaN age
+        $errors.append '<li>Age must be a number between 0 and 110</li>'
+        valid = false
+      if height <= 0 || height >= 96 || _.isNaN height
+        $errors.append '<li>Height must be a number in inches between 0 and 96</li>'
+        valid = false
+      if weight <= 0 || weight >= 400 || _.isNaN weight
+        $errors.append '<li>Weight must be a number in pounds between 0 and 400</li>'
+        valid = false
+
+      if valid
+        $height.val height
+        $age.val age
+        $weight.val weight
+      else
+        $errors.fadeIn()
+
+      @slider.triggerResize true
+      valid
     else
-      $currentInput.next('.error').fadeOut()
-      @slider.triggerResize(true)
-      true
+      $currentInput = @getCurrentMeasurementInput()
+
+      unless $currentInput.exists()
+        return true
+
+      inches = parseFloat $currentInput.val()
+      if _.isNaN(inches) || inches <= 0 || inches >= 90
+        $currentInput.next('.error').fadeIn()
+        @slider.triggerResize true
+        false
+      else
+        $currentInput.next('.error').fadeOut()
+        @slider.triggerResize true
+        true
