@@ -59,6 +59,7 @@ class OrdersController < ApplicationController
       @user = User.new_from_params_and_measurement(params, @measurement)
       unless @user.valid?
         @order = Order.new(params[:order])
+        @order.copy_line_items_from_cart(@cart)
         render action: "new" and return
       end
     else

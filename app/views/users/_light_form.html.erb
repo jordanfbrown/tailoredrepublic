@@ -5,7 +5,7 @@
   <%= u.label :email %>
   <%= u.text_field :email %>
   <%= u.label :password %>
-  <%= u.password_field :password, value: @password ? @password : '' %>
+  <%= u.password_field :password, value: password ? password : '' %>
   <%= u.label :password_confirmation, 'Confirm Password' %>
-  <%= u.password_field :password_confirmation, value: @password ? @password : '' %>
+  <%= u.password_field :password_confirmation, value: password ? password : '' %>
 <% end %>
