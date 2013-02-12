@@ -47,4 +47,5 @@ class TR.Views.NewUserModal extends TR.Views.Modal
 
   cancel: (e) ->
     e.preventDefault()
+    window.location.href = '/shop/suits'
     @close()
