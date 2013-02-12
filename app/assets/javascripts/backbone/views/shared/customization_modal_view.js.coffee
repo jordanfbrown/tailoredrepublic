@@ -20,6 +20,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
 
   initialize: (options) ->
     super()
+    @errorMessage = "We're sorry, but there was a problem adding the product to your cart. Please try again, and if the problem persists, shoot as an e-mail at help@tailoredrepublic.com."
     @product = options.product
     @customization = options.customization || new TR.Models.Customization({}, {
       category: @product.get('category')
@@ -169,18 +170,20 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     e.preventDefault()
     @customization.save(null, {silent: true}).then(=>
       window.location.href = '/cart'
+    , =>
+      TR.renderSimpleModal "We're sorry, but there was a problem updating the customizations. Please try again, and if the problem persists, shoot as an e-mail at help@tailoredrepublic.com."
     )
-    
+
   addSuccess: (response) =>
     TR.Events.trigger 'addedLineItem', product: @product
     new TR.Views.AddSuccessModal({model: @product})
     @destroy()
 
   addLineItemFailure: (error) =>
-    console.log(error, 'failure');
+    TR.renderSimpleModal @errorMessage
 
   addCustomizationFailure: (error) =>
-    console.log(error, 'failure');
+    TR.renderSimpleModal @errorMessage
 
   clearChecked: =>
     @$('.customization-wrapper').eq(@slider.getCurrentSlide()).find('img').removeClass 'checked'
