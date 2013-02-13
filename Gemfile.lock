@@ -82,9 +82,9 @@ GEM
       rack
     formatador (0.2.4)
     fssm (0.2.10)
-    gibbon (0.4.2)
+    gibbon (0.4.3)
       httparty
-      json
+      multi_json
     hike (1.2.1)
     httparty (0.10.2)
       multi_json (~> 1.0)
@@ -105,7 +105,7 @@ GEM
       compass (>= 0.12.1)
       sass (>= 3.2.0)
       sassy-math (>= 1.5)
-    multi_json (1.5.1)
+    multi_json (1.6.0)
     multi_xml (0.5.3)
     net-scp (1.0.6)
       net-ssh (>= 2.6.5)
