@@ -12,7 +12,7 @@ class TR.Models.Customization extends TR.Models.Base
           pleats: 0
           pant_cuffs: false
           fit: 'tailored'
-          lining: 0
+          lining: 'black'
           monogram: ''
           pick_stitching: false
           vest: 0

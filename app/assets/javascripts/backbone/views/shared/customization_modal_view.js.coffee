@@ -18,6 +18,8 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
       'click a.advance-slide': 'next'
       'submit #monogram-form': 'submitMonogram'
 
+  hideScrollbar: false
+
   initialize: (options) ->
     super()
     @errorMessage = "We're sorry, but there was a problem adding the product to your cart. Please try again, and if the problem persists, shoot as an e-mail at help@tailoredrepublic.com."
@@ -40,7 +42,6 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
       controls: off
       infiniteLoop: off
       onSlideBefore: @onSlideBefore
-      onSlideAfter: @onSlideAfter
       adaptiveHeight: on
       touchEnabled: off
 
@@ -74,6 +75,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
 
     @setProgressBar oldIndex, @PROGRESS.COMPLETED
     @setProgressBar newIndex, @PROGRESS.CURRENT
+    _.delay @checkModalHeight, 100
 
   getTemplateData: ->
     price = @calculatePrice()

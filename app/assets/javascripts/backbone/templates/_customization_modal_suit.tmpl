@@ -169,31 +169,68 @@
         any weight changes in the future. TR tip: Regardless of the fit option, our suits are tailored to your
         measurements, so slim or full-figured, your suit will look and feel great.</p>
     </li>
-    <li class="customization-wrapper two-item" data-type="lining">
+    <li class="customization-wrapper linings" data-type="lining">
       <h3>Lining</h3>
-      <div class="customization-option lining">
-        <img src="{{imgSrc 'customizations/suits/lining.png'}}" class="lining">
+      <div class="row">
+        <div class="three columns">
+          <a href="#" class="lining-option {{#ifeq lining 'black'}}selected{{/ifeq}}" data-id="black">
+            <img src="{{imgSrc 'customizations/suits/linings/black.jpg'}}">
+            <span class="label">Black</span>
+          </a>
+          <a href="#" class="lining-option {{#ifeq lining 'burgundy'}}selected{{/ifeq}}" data-id="burgundy">
+            <img src="{{imgSrc 'customizations/suits/linings/burgundy.jpg'}}">
+            <span class="label">Burgundy</span>
+          </a>
+          <a href="#" class="lining-option {{#ifeq lining 'forest-green'}}selected{{/ifeq}}" data-id="forest-green">
+            <img src="{{imgSrc 'customizations/suits/linings/forest-green.jpg'}}">
+            <span class="label">Forest Green</span>
+          </a>
+        </div>
+        <div class="three columns">
+          <a href="#" class="lining-option {{#ifeq lining 'gray'}}selected{{/ifeq}}" data-id="gray">
+            <img src="{{imgSrc 'customizations/suits/linings/gray.jpg'}}">
+            <span class="label">Gray</span>
+          </a>
+          <a href="#" class="lining-option {{#ifeq lining 'ivory'}}selected{{/ifeq}}" data-id="ivory">
+            <img src="{{imgSrc 'customizations/suits/linings/ivory.jpg'}}">
+            <span class="label">Ivory</span>
+          </a>
+          <a href="#" class="lining-option {{#ifeq lining 'light-brown'}}selected{{/ifeq}}" data-id="light-brown">
+            <img src="{{imgSrc 'customizations/suits/linings/light-brown.jpg'}}">
+            <span class="label">Light Brown</span>
+          </a>
+        </div>
+        <div class="three columns">
+          <a href="#" class="lining-option {{#ifeq lining 'marine'}}selected{{/ifeq}}" data-id="marine">
+            <img src="{{imgSrc 'customizations/suits/linings/marine.jpg'}}">
+            <span class="label">Marine</span>
+          </a>
+          <a href="#" class="lining-option {{#ifeq lining 'navy'}}selected{{/ifeq}}" data-id="navy">
+            <img src="{{imgSrc 'customizations/suits/linings/navy.jpg'}}"}>
+            <span class="label">Navy</span>
+          </a>
+          <a href="#" class="lining-option {{#ifeq lining 'purple'}}selected{{/ifeq}}" data-id="purple">
+            <img src="{{imgSrc 'customizations/suits/linings/phos-purple.jpg'}}">
+            <span class="label">Purple</span>
+          </a>
+        </div>
+        <div class="three columns">
+          <a href="#" class="lining-option {{#ifeq lining 'salmon-aqua'}}selected{{/ifeq}}" data-id="salmon-aqua">
+            <img src="{{imgSrc 'customizations/suits/linings/phos-salmon-aqua.jpg'}}">
+            <span class="label">Salmon Aqua</span>
+          </a>
+          <a href="#" class="lining-option {{#ifeq lining 'powder-blue'}}selected{{/ifeq}}" data-id="powder-blue">
+            <img src="{{imgSrc 'customizations/suits/linings/powder-blue.jpg'}}">
+            <span class="label">Powder Blue</span>
+          </a>
+          <a href="#" class="lining-option {{#ifeq lining 'salmon'}}selected{{/ifeq}}" data-id="salmon">
+            <img src="{{imgSrc 'customizations/suits/linings/salmon.jpg'}}">
+            <span class="label">Salmon</span>
+          </a>
+        </div>
       </div>
-      <div class="customization-option linings">
-        <div class="four columns">
-          <a href="#" class="lining-option" data-id="12345"></a>
-          <a href="#" class="lining-option" data-id="2312"></a>
-          <a href="#" class="lining-option" data-id="23523"></a>
-          <a href="#" class="lining-option" data-id="123213"></a>
-        </div>
-        <div class="four columns">
-          <a href="#" class="lining-option" data-id="461"></a>
-          <a href="#" class="lining-option" data-id="346"></a>
-          <a href="#" class="lining-option" data-id="345"></a>
-          <a href="#" class="lining-option" data-id="123531"></a>
-        </div>
-        <div class="four columns">
-          <a href="#" class="lining-option" data-id="967"></a>
-          <a href="#" class="lining-option" data-id="3463"></a>
-          <a href="#" class="lining-option" data-id="1245745345"></a>
-          <a href="#" class="lining-option" data-id="345342"></a>
-        </div>
-        <div class="twelve columns">
+      <div class="row">
+        <div class="twelve columns button-row">
           <a href="#" class="button advance-slide">Select</a>
         </div>
       </div>
