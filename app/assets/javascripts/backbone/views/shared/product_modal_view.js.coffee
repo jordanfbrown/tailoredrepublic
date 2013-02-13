@@ -23,6 +23,8 @@ class TR.Views.ProductModal extends TR.Views.Modal
     @enableMagnifier();
     super()
 
+  hideScrollbar: false
+
   resize: =>
     if $(window).width() < 1024
       @$el.removeClass('xlarge').addClass('expand')

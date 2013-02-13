@@ -12,14 +12,17 @@ class TR.Views.Modal extends TR.Views.Base
   render: ->
     $('body').append @$el
     @reveal()
-    _.delay @checkModalHeight
+    _.delay @checkModalHeight, 500
+
+  hideScrollbar: true
 
   checkModalHeight: =>
-    if @$el.height() < $(window).height() - 70
-      unless $(window).scrollTop() > parseFloat @$el.css 'top'
-        $('body').addClass 'modal-open'
-    else
-      $('body').removeClass 'modal-open'
+    if @hideScrollbar
+      if @$el.height() < $(window).height() - 140
+        unless $(window).scrollTop() > parseFloat @$el.css 'top'
+          $('body').addClass 'modal-open'
+      else
+        $('body').removeClass 'modal-open'
 
   updateWidth: =>
     if $(window).width() < 768
