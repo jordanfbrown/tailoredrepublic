@@ -199,9 +199,23 @@ class TR.Views.Measurements extends TR.Views.Base
     else if @lineItemCount == 0 && !@signedIn
       @newUserModal = new TR.Views.NewUserModal(measurements: @model)
 
-  saveError: =>
-    TR.renderSimpleModal "We're sorry, but there was a problem saving your measurements. Please try again, and if the " +
-     "problem persists, shoot us an e-mail at help@tailoredrepublic.com."
+  saveError: (e) =>
+    try
+      error = JSON.parse e.responseText
+      if _.has(error, 'age') || _.has(error, 'weight') || _.has(error, 'height')
+        new TR.Views.DialogModal
+          text: "We're sorry, but there was a problem saving your measurements. It looks you entered an invalid value " +
+                "for age, weight, or height. Please click OK to return to the age, height, and weight slide."
+          confirmText: 'Ok'
+          confirmOnly: true
+          action: =>
+            @slider.goToSlide 1
+      else
+        TR.renderSimpleModal "We're sorry, but there was a problem saving your measurements. Please try again, and if the " +
+        "problem persists, shoot us an e-mail at help@tailoredrepublic.com."
+    catch parseError
+      TR.renderSimpleModal "We're sorry, but there was a problem saving your measurements. Please try again, and if the " +
+       "problem persists, shoot us an e-mail at help@tailoredrepublic.com."
 
   setProgressBar: (index, progress) ->
     @$('.progress-bar img').eq(index).attr 'src', progress
