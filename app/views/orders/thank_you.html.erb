@@ -4,7 +4,7 @@
     <h4>Thank you for your order, <%= @order.user.name %>!</h4>
     <p>Your order information has been turned into a series of digital 1s and 0s and is already in the hands of our
       tailors. Your custom suit will be delivered in 3-4 weeks.</p>
-    <p>Your order number is: <strong><%= @order.stripe_charge_id %>.</strong></p>
+    <p>Your order number is: <strong><%= @order.order_id %>.</strong></p>
     <% unless @order.generated_coupons.blank? %>
       <p>The following coupon codes have been generated for your gift card(s):</p>
       <% @order.generated_coupons.each do |coupon| %>

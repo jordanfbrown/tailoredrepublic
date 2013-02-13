@@ -9,6 +9,8 @@ class Payments
         description: 'Single token charge'
       )
       charge[:id]
+    else
+      Order.generate_id
     end
   rescue Stripe::StripeError => e
     { error: true, message: e.message }
@@ -24,6 +26,8 @@ class Payments
           description: 'Customer charge'
       )
       charge[:id]
+    else
+      Order.generate_id
     end
   rescue Stripe::StripeError => e
     { error: true, message: e.message }

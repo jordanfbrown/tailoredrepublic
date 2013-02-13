@@ -7,7 +7,7 @@
           <%= number_to_currency line_item.total_price %></li>
       <% end %>
       <% unless order.coupon.nil? %>
-        <li class="total"><span class="label"><%= order.coupon_description %>:</span> -<%= number_to_currency order.coupon.calculate_discount(order.cost_before_tax) %></li>
+        <li class="total"><span class="label"><%= order.coupon_description %>:</span> -<%= number_to_currency order.coupon.calculate_discount(order.line_item_total) %></li>
       <% end %>
       <li class="total"><span class="label">Shipping:</span> $0.00</li>
       <li><span class="label">Tax <%= '(9%)' if order.tax? %>:</span> <%= order.tax? ? number_to_currency(order.tax) : '$0.00' %></li>

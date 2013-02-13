@@ -6,6 +6,6 @@ class OrderMailer < ActionMailer::Base
   def order_confirmation_email(order)
     @order = order
     @user = order.user
-    mail(to: @user.email, bcc: 'orders@tailoredrepublic.com', subject: "Tailored Republic Order Confirmation (#{order.stripe_charge_id})")
+    mail(to: @user.email, bcc: 'orders@tailoredrepublic.com', subject: "Tailored Republic Order Confirmation (#{order.order_id})")
   end
 end

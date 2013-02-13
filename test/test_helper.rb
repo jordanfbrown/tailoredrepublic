@@ -13,6 +13,10 @@ class ActiveSupport::TestCase
     @request.cookie_jar.signed[:cart_id] = ActiveRecord::Fixtures.identify(:empty)
   end
 
+  def set_one_suit_cart_cookie
+    @request.cookie_jar.signed[:cart_id] = ActiveRecord::Fixtures.identify(:one_suit)
+  end
+
 end
 
 class ActionController::TestCase

@@ -8,7 +8,7 @@
       <div class="four columns">
         <ul>
           <h4><strong><%= order.created_at.to_date.to_formatted_s(:long_ordinal) %></strong></h4>
-          <li><h5>Order: <%= order.stripe_charge_id %></h5></li>
+          <li><h5>Order: <%= order.order_id %></h5></li>
         </ul>
       </div>
       <div class="four columns">

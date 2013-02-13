@@ -127,17 +127,17 @@ class OrdersController < ApplicationController
 
       # Attempt to charge the credit card
       if @user.stripe_customer_id? && params[:card_radio] == 'use_saved_card'
-        stripe_charge_id = @user.charge_card(@order.final_cost)
+        order_id = @user.charge_card(@order.final_cost)
       else
-        stripe_charge_id = create_customer_or_charge_card(@user, @card_token, @order.final_cost)
+        order_id = create_customer_or_charge_card(@user, @card_token, @order.final_cost)
       end
 
-      if stripe_charge_id.is_a?(Hash)
+      if order_id.is_a?(Hash)
         set_stripe_customer
-        @order.errors[:base] << stripe_charge_id[:message]
+        @order.errors[:base] << order_id[:message]
         render action: "new" and return
       else
-        @order.stripe_charge_id = stripe_charge_id
+        @order.order_id = order_id
       end
 
       if @order.has_gift_cards?

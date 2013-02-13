@@ -28,6 +28,10 @@ class Order < ActiveRecord::Base
          .paginate(page: page).order('created_at DESC')
   end
 
+  def self.generate_id
+    'or_' + ('a'..'z').to_a.concat((0..9).to_a).concat(('A'..'Z').to_a).shuffle[0,14].join
+  end
+
   def copy_line_items_from_cart(cart)
     cart.line_items.each do |line_item|
       line_item.cart_id = nil
@@ -81,8 +85,8 @@ class Order < ActiveRecord::Base
   end
 
   after_rollback do |order|
-    if order.stripe_charge_id?
-      charge = Stripe::Charge.retrieve(order.stripe_charge_id)
+    if order.order_id?
+      charge = Stripe::Charge.retrieve(order.order_id)
       charge.refund
     end
   end
