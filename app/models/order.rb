@@ -59,7 +59,7 @@ class Order < ActiveRecord::Base
     total = line_item_total
 
     unless coupon.nil?
-      discount = coupon.calculate_discount(total)
+      discount = calculate_discount
       total -= discount
     end
 
@@ -76,12 +76,24 @@ class Order < ActiveRecord::Base
 
   def apply_coupon(coupon)
     self.coupon = coupon
-    self.discount = coupon.calculate_discount(line_item_total)
+    self.discount = calculate_discount
   end
 
   def apply_tax
     self.tax = ((shipping_address.state == 'CA' ? 0.09 : 0) * cost_before_tax).round(2)
     self.final_cost = self.tax + cost_before_tax
+  end
+
+  def update_coupon_amount
+    coupon.update_amount!(self)
+  end
+
+  def calculate_discount
+    if coupon.nil?
+      0
+    else
+      coupon.calculate_discount(line_item_total)
+    end
   end
 
   after_rollback do |order|
