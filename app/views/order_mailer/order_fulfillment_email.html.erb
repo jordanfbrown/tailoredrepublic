@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+</head>
+<body style="color: #000000;font-size: 14px;font-family: Verdana,Helvetica,Arial,sans-serif;">
+<h3>User</h3>
+<p>User name: <%= @order.user.name %></p>
+<p>User email: <%= @order.user.email %></p>
+
+<h3>Shipping Address</h3>
+<p><%= @order.shipping_address.name %></p>
+<p><%= @order.shipping_address.line1 %></p>
+<p><%= @order.shipping_address.line2 %></p>
+<p><%= @order.shipping_address.city %>, <%= @order.shipping_address.state %>, <%= @order.shipping_address.zip %></p>
+
+<h3>Measurements</h3>
+<% @order.measurement.attributes.except('id', 'created_at', 'updated_at', 'user_id', 'order_id').each do |key, value| %>
+  <p><%= key.titleize %>: <%= value %></p>
+<% end %>
+
+<h3>Items Purchased</h3>
+<% @order.line_items.each do |line_item|  %>
+  <p><%= line_item.name %></p>
+  <% if line_item.category == :suit || line_item.category == :shirt %>
+    <p>Customizations:</p>
+    <ul style="list-style-type: none;padding-left: 5px;list-style: none;margin: 0;">
+      <% customization_list(line_item.customization).each do |customization| %>
+        <li style="margin-left: 0;"><%= customization[:option] %>: <%= customization[:type] %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <br/>
+<% end %>
+</body>
+</html>
