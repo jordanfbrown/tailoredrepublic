@@ -17,6 +17,7 @@ class TR.Views.NewUserModal extends TR.Views.Modal
   render: ->
     @$el.html @template()
     super()
+    @$('#user_password').showPassword()
     @resize()
 
   resize: =>

@@ -62,25 +62,6 @@ class OrdersControllerTest < ActionController::TestCase
     assert_template :review
   end
 
-  test "New customer, bad user data posted to review" do
-    set_full_cart_cookie
-    bad_user_params = user_params
-    bad_user_params[:password_confirmation] = 'foo'
-    post :review, {
-        user: bad_user_params,
-        order: order_params,
-        stripe_card_token: 'tok_17p90hyqwrWF2b',
-        card_last4: '1117',
-        card_exp_month: '1',
-        card_exp_year: '2020',
-        save_card_for_later: 'on'
-    }, { measurement_id: 1 }
-    assert_response :success
-    assert_template :new
-    assert assigns(:user).errors.any?
-    assert assigns(:user).errors.messages.has_key?(:password)
-  end
-
   test "Existing customer, successfully posted to review" do
     set_full_cart_cookie
     user = users(:user_without_stripe)
@@ -162,7 +143,7 @@ class OrdersControllerTest < ActionController::TestCase
   end
 
   def user_params
-    { name: 'Jordan', email: 'test500@test.com', password: 'abc123', password_confirmation: 'abc123' }
+    { name: 'Jordan', email: 'test500@test.com', password: 'abc123' }
   end
 
   def order_params

@@ -6,8 +6,6 @@
   <%= f.text_field :email %>
   <%= f.label :password %>
   <%= f.password_field :password, value: @password ? @password : '' %>
-  <%= f.label :password_confirmation, 'Confirm Password' %>
-  <%= f.password_field :password_confirmation, value: @password ? @password : '' %>
   <%= f.label :role %>
   <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
   <%= f.submit 'Update User', class: 'button full-width large' %>

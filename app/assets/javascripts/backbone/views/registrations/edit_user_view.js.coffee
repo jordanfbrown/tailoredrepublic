@@ -3,6 +3,7 @@ class TR.Views.EditUser extends TR.Views.Base
 
   initialize: ->
     TR.setStripeKey()
+    @$('#user_password').showPassword()
 
   events:
     'submit': 'submitForm'

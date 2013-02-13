@@ -19,7 +19,6 @@ class UsersController < ApplicationController
 
     if params[:user][:password].blank?
       params[:user].delete("password")
-      params[:user].delete("password_confirmation")
     end
 
     @user = User.find(params[:id])

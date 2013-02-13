@@ -16,19 +16,18 @@
       <fieldset>
         <legend>Change Password</legend>
         <%= f.label :current_password, 'Current password' %>
-        <%= f.password_field :current_password, :autocomplete => "off" %>
+        <%= f.password_field :current_password, autocomplete: 'off' %>
         <%= f.label :password, 'New password' %>
-        <%= f.password_field :password, :autocomplete => "off" %>
-        <%= f.label :password_confirmation, 'Re-type new password' %>
-        <%= f.password_field :password_confirmation %>
-        <%= f.submit "Save", class: "button full-width large submit" %>
+        <%= f.password_field :password, autocomplete: 'off', data: { typetoggle: '#show_password' } %>
+        <label><input type="checkbox" id="show_password">Show password</label>
+        <%= f.submit 'Save', class: 'button full-width large submit' %>
       </fieldset>
     <% end %>
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :id => 'shipping_address_form'}) do |f| %>
       <fieldset>
         <legend>Shipping Address</legend>
         <%= render 'addresses/nested_form', parent_form: f, address_type: :shipping_address %>
-        <%= f.submit "Save", class: "button full-width large submit" %>
+        <%= f.submit 'Save', class: 'button full-width large submit' %>
       </fieldset>
     <% end %>
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :id => 'billing_information_form' }) do |f| %>
@@ -40,7 +39,7 @@
         <%= render 'users/credit_card_form', stripe_customer: @stripe_customer %>
         <%= render 'addresses/nested_form', parent_form: f, address_type: :billing_address %>
         <%= hidden_field_tag :stripe_card_token %>
-        <%= f.submit "Save", class: "button full-width large submit" %>
+        <%= f.submit 'Save', class: 'button full-width large submit' %>
       </fieldset>
     <% end %>
   </div>

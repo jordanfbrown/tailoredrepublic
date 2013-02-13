@@ -11,6 +11,7 @@ class TR.Views.Order extends TR.Views.Base
   initialize: (options) ->
     @cardInfo = options.cardInfo || false
     TR.setStripeKey()
+    @$('#user_password').showPassword()
 
   submitOrder: (e) ->
     if @validateForm()
