@@ -32,7 +32,7 @@ $maple: #D0A66E;
 
 @mixin font($type) {
   @if $type == body {
-    font-family: "United Sans Reg", sans-serif;
+    font-family: "Clarendon Lt", sans-serif;
     font-weight: 200;
   } @else if $type == header {
     font-family: "United Serif SemiCond", serif;

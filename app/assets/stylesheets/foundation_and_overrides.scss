@@ -27,13 +27,13 @@ $rowWidth: 1920px;
 // Font Settings
 
 // $fontSmoothing: antialiased;
-$headerFontFamily: "United Serif SemiCond", "Helvetica", Helvetica, Arial, sans-serif;
-$headerFontWeight: 200;
+$headerFontFamily: "United Italic Cond", 'Georgia', serif;
+$headerFontWeight: bold;
 // $headerFontStyle: normal;
 // $headerFontColor: #222;
-$bodyFontFamily: "United Sans Reg", serif;
-// $bodyFontWeight: normal;
-// $bodyFontStyle: normal;
+$bodyFontFamily: "Clarendon Lt", serif;
+$bodyFontWeight: 400;
+//$bodyFontStyle: normal;
 // $bodyFontColor: $txtColor;
 
 // Text Direction Settings
@@ -236,7 +236,7 @@ $topBarBreakPoint: 865px; // Change to 9999px for always mobile layout
 // Modular Scale Settings
 
 // $ratio: $golden; // THIS IS DEFAULT IN MODULAR-SCALE
-$baseFontSize: 16px;
+$baseFontSize: 15px;
 // $importantModNum: 44px;
 // $base-size: $baseFontSize $importantModNum;
 //@import 'foundation';

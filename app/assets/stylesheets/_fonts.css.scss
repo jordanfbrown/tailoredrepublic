@@ -1,4 +1,23 @@
 @font-face {
+  font-family: 'Clarendon Lt';
+  src: url(ClarendonLTStd-Light.otf);
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: 'Clarendon Lt';
+  src: url(ClarendonLTStd.otf);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Clarendon Lt';
+  src: url(ClarendonLTStd-Bold.otf);
+  font-weight: 700;
+}
+
+
+@font-face {
   font-family: 'United Italic Cond';
   src: url(UnitedItalicCdLt.eot);
   src: url(UnitedItalicCdLt.eot?#iefix) format("embedded-opentype")
