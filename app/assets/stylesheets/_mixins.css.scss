@@ -40,8 +40,6 @@ $maple: #D0A66E;
     font-family: "United Italic Cond", sans-serif;
   } @else if $type == clean {
     font-family: "United Sans Cond", sans-serif;
-  } @else if $type == fancy {
-    font-family: "United Serif SemiCond", serif;
   }
 }
 
