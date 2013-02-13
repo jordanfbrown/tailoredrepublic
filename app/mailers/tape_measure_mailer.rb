@@ -3,6 +3,6 @@ class TapeMeasureMailer < ActionMailer::Base
 
   def tape_measure_email(address)
     @address = address
-    mail(to: 'jordan@tailoredrepublic.com', subject: 'New Tape Measure Request')
+    mail(to: 'jordan@tailoredrepublic.com, brian@tailoredrepublic.com, jeff@tailoredrepublic.com', subject: 'New Tape Measure Request')
   end
 end

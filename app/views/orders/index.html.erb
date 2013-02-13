@@ -16,6 +16,19 @@
           <li><h5>Purchase Summary</h5></li>
           <% order.line_items.each do |line_item|  %>
             <li><span class="item-description"><%= line_item.name %>:</span> <%= number_to_currency line_item.total_price %></li>
+            <% unless line_item.customization.nil? %>
+              <li class="customization-toggle">
+                <a href="#" class="view-customizations">
+                  <span class="arrow-right"></span>
+                  <span class="text">View Customizations</span>
+                </a>
+                <ul class="customization-list-wrapper" style="display: none;">
+                  <% customization_list(line_item.customization).each do |customization| %>
+                    <li><span class="label"><%= customization[:option] %></span>: <%= customization[:type] %></li>
+                  <% end %>
+                </ul>
+              </li>
+            <% end %>
           <% end %>
           <% unless order.coupon.blank? %>
             <li><span class="item-description"><%= order.coupon_description %> (Discount):</span> -<%= number_to_currency order.discount %></li>
@@ -53,3 +66,7 @@
 <div class="content-wrapper twelve columns">
   <%= will_paginate @orders %>
 </div>
+
+<script>
+  new TR.Views.OrderIndex()
+</script>
