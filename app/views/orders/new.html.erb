@@ -42,7 +42,7 @@
           <%= hidden_field_tag :card_last4, (@card_last4 if @card_last4) %>
           <%= hidden_field_tag :card_exp_month, (@card_exp_month if @card_exp_month) %>
           <%= hidden_field_tag :card_exp_year, (@card_exp_year if @card_exp_year) %>
-          <label><%= check_box_tag :save_card_for_later, 'on', @save_card_for_later ? @save_card_for_later == 'on' : false %>Save this credit card for purchases in the future</label>
+          <label><%= check_box_tag :save_card_for_later, 'on', @save_card_for_later ? @save_card_for_later == 'on' : false %>Save this credit card securely for future purchases</label>
       </fieldset>
 
       <fieldset>
