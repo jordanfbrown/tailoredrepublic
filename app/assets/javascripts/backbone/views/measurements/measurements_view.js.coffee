@@ -58,6 +58,8 @@ class TR.Views.Measurements extends TR.Views.Base
       @slider.goToSlide @slideCount
       _.delay @loadVideos, 500
 
+  numberRegex: /^[0-9]+$/
+
   loadVideos: ->
     @$('iframe').each (index, el) ->
       $(el).attr 'src', $(el).data 'src'
@@ -271,13 +273,13 @@ class TR.Views.Measurements extends TR.Views.Base
       $errors.empty()
       valid = true
 
-      if age <= 0 || age >= 110 || _.isNaN age
+      if age <= 0 || age >= 110 || _.isNaN(age) || !@numberRegex.test($age.val())
         $errors.append '<li>Age must be a number between 0 and 110</li>'
         valid = false
-      if height <= 0 || height >= 96 || _.isNaN height
+      if height <= 0 || height >= 96 || _.isNaN(height) || !@numberRegex.test($height.val())
         $errors.append '<li>Height must be a number in inches between 0 and 96</li>'
         valid = false
-      if weight <= 0 || weight >= 400 || _.isNaN weight
+      if weight <= 0 || weight >= 400 || _.isNaN(weight) || !@numberRegex.test($weight.val())
         $errors.append '<li>Weight must be a number in pounds between 0 and 400</li>'
         valid = false
 
