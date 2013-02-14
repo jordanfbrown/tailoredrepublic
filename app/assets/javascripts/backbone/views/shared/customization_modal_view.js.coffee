@@ -70,11 +70,11 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     slideCount = @slider.getSlideCount()
     @$('.previous').show() if newIndex > 0
     @$('.previous').hide() if newIndex == 0
-    @$('.next, .accept').text('Add To Cart').removeClass('next').addClass('accept') if newIndex + 1 == slideCount
+    @$('.next, .accept').text(if @customization.isNew() then 'Add To Cart' else 'Save Changes').removeClass('next').addClass('accept') if newIndex + 1 == slideCount
     @$('.next, .accept').text('Next').removeClass('accept').addClass('next') if newIndex + 1 < slideCount
 
-    @setProgressBar oldIndex, @PROGRESS.COMPLETED
-    @setProgressBar newIndex, @PROGRESS.CURRENT
+    @setProgressBar newIndex
+    @updateCurrentCustomization newIndex
     _.delay @checkModalHeight, 100
 
   getTemplateData: ->
@@ -190,5 +190,9 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
   clearChecked: =>
     @$('.customization-wrapper').eq(@slider.getCurrentSlide()).find('img').removeClass 'checked'
 
-  setProgressBar: (index, progress) ->
-    @$('.progress-bar img').eq(index).attr 'src', progress
+  setProgressBar: (index) ->
+    @$('.progress-bar li').removeClass 'selected'
+    @$('.progress-bar li').eq(index).addClass 'selected'
+
+  updateCurrentCustomization: (index) ->
+    @$('.current-customization').text TR.titleize(@$('.progress-bar li').eq(index).data('type'))

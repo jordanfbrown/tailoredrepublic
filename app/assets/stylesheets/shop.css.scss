@@ -55,13 +55,9 @@
 }
 
 .customizations {
-  background-color: #ccc;
   clear: both;
   @include clearfix;
   font-weight: 200;
-  margin-bottom: 15px;
-  border-left: 10px solid #ccc;
-  border-right: 10px solid #ccc;
 
   .label {
     font-weight: bold;
@@ -76,7 +72,7 @@
   p {
     color: #000;
     clear: left;
-    padding: 0 15px;
+    padding: 10px 15px;
     font-weight: 200;
   }
 
@@ -121,38 +117,20 @@
   .progress-bar {
     padding: 10px 0;
     @include clearfix;
-
-    $suitSteps: 11;
-    $buildSuitSteps: $suitSteps + 1;
-    $shirtSteps: 5;
-
-    &.suit li {
-      width: (100 / $suitSteps) - 2%;
-    }
-
-    &.suit-swatch li {
-      width: (100 / $buildSuitSteps) - 2%;
-    }
-
-    &.shirt li {
-      width: (100 / $shirtSteps) - 2%;
-      text-align: center;
-    }
+    border-bottom: 1px dashed #ccc;
+    text-align: center;
 
     li {
       cursor: pointer;
-      &:first-child {
-        margin-left: 1%;
+      width: 30px;
+      height: 30px;
+      border: 1px solid #aaa;
+      display: inline-block;
+      margin-right: 5px;
+
+      &.selected {
+        background-color: #ccc;
       }
-
-      &:last-child {
-        margin-right: 1%;
-      }
-
-      float: left;
-      display: block;
-
-      margin-right: 2%;
     }
   }
 
@@ -160,6 +138,7 @@
     img {
       width: 150px;
       padding: 5px;
+      border: 1px solid transparent;
     }
     
     .three {
@@ -195,7 +174,6 @@
     display: block;
     float: left;
     background-color: #fff;
-    padding: 5px 10px 10px 10px;
 
     &.shirt {
       height: 190px;
@@ -341,6 +319,24 @@
 .modal-suit-preview {
   img {
     border: 1px solid #ccc;
+  }
+}
+
+.previous-col {
+  margin-left: -25px;
+  text-align: left;
+  
+  @media only screen and (max-width: 767px) {
+    margin-left: 0;
+  }
+}
+
+.next-col {
+  margin-right: -25px;
+  text-align: right;
+  
+  @media only screen and (max-width: 767px) {
+    margin-right: 0;
   }
 }
 

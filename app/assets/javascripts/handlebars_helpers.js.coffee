@@ -26,16 +26,6 @@ Handlebars.registerHelper 'ifeq', (a, b, options) ->
 
 Handlebars.registerHelper 'titleize', TR.titleize
 
-Handlebars.registerHelper 'progressBarImage', (customization, lapel) ->
-  if lapel == true && customization
-    '<img class="selected completed" src="' + TR.ASSET_HOST + '/assets/icons/star-filled.png">'
-  else if lapel == true
-    '<img class="selected" src="' + TR.ASSET_HOST + '/assets/icons/star-filled.png">'
-  else if customization
-    '<img class="completed" src="' + TR.ASSET_HOST + '/assets/icons/star-stroke.png">'
-  else
-    '<img src="' + TR.ASSET_HOST + '/assets/icons/star-no-stroke.png">'
-
 Handlebars.registerHelper 'imgSrc', (path) ->
   TR.ASSET_HOST + '/assets/' + (if TR.ENVIRONMENT == 'production' || TR.ENVIRONMENT == 'staging' then TR.ASSET_DIGESTS[path] else path)
 
