@@ -1,12 +1,104 @@
 <%= render 'shared/form_errors', resource: user %>
 <%= form_for user do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-  <%= f.label :password %>
-  <%= f.password_field :password, value: @password ? @password : '' %>
-  <%= f.label :role %>
-  <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
-  <%= f.submit 'Update User', class: 'button full-width large' %>
+  <fieldset>
+    <legend>User Info</legend>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+    <%= f.label :password %>
+    <%= f.password_field :password, value: @password ? @password : '' %>
+    <%= f.label :role %>
+    <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
+    <%= f.submit 'Update', class: 'button full-width large' %>
+  </fieldset>
 <% end %>
+
+<%= form_for user do |f| %>
+  <fieldset>
+    <legend>Measurements</legend>
+    <%= f.fields_for :measurement do |measurement_form| %>
+      <div class="row">
+        <div class="four columns">
+          <%= measurement_form.label :neck %>
+          <%= measurement_form.text_field :neck %>
+        </div>
+        <div class="four columns">
+          <%= measurement_form.label :waist %>
+          <%= measurement_form.text_field :waist %>
+        </div>
+        <div class="four columns">
+          <%= measurement_form.label :arm_length %>
+          <%= measurement_form.text_field :arm_length %>
+        </div>
+        <div class="four columns">
+          <%= measurement_form.label :stomach %>
+          <%= measurement_form.text_field :stomach %>
+        </div>
+        <div class="four columns">
+          <%= measurement_form.label :chest %>
+          <%= measurement_form.text_field :chest %>
+        </div>
+        <div class="four columns">
+          <%= measurement_form.label :hips %>
+          <%= measurement_form.text_field :hips %>
+        </div>
+        <div class="four columns">
+          <%= measurement_form.label :bicep %>
+          <%= measurement_form.text_field :bicep %>
+        </div>
+        <div class="four columns">
+          <%= measurement_form.label :back %>
+          <%= measurement_form.text_field :back %>
+        </div>
+        <div class="four columns">
+          <%= measurement_form.label :front %>
+          <%= measurement_form.text_field :front %>
+        </div>
+        <div class="four columns">
+          <%= measurement_form.label :full_shoulders %>
+          <%= measurement_form.text_field :full_shoulders %>
+        </div>
+        <div class="four columns">
+          <%= measurement_form.label :wrist %>
+          <%= measurement_form.text_field :wrist %>
+        </div>
+        <div class="four columns">
+          <%= measurement_form.label :jacket_length %>
+          <%= measurement_form.text_field :jacket_length %>
+        </div>
+        <div class="four columns">
+          <%= measurement_form.label :pant_length %>
+          <%= measurement_form.text_field :pant_length %>
+        </div>
+        <div class="four columns">
+          <%= measurement_form.label :crotch %>
+          <%= measurement_form.text_field :crotch %>
+        </div>
+        <div class="four columns">
+          <%= measurement_form.label :thigh %>
+          <%= measurement_form.text_field :thigh %>
+        </div>
+      </div>
+      <%= f.submit 'Update', class: 'button full-width large' %>
+      </fieldset>
+  <% end %>
+<% end %>
+
+<%= form_for user do |f| %>
+  <fieldset>
+    <legend>Shipping Address</legend>
+    <%= render 'addresses/nested_form', parent_form: f, address_type: :shipping_address %>
+
+    <%= f.submit 'Update', class: 'button full-width large' %>
+  </fieldset>
+<% end %>
+
+<%= form_for user do |f| %>
+  <fieldset>
+    <legend>Billing Address</legend>
+    <%= render 'addresses/nested_form', parent_form: f, address_type: :billing_address %>
+    <%= f.submit 'Update', class: 'button full-width large' %>
+  </fieldset>
+<% end %>
+

@@ -17,7 +17,7 @@
       <tr>
         <td><%= order.order_id %></td>
         <td><%= order.created_at_pacific %></td>
-        <td><%= order.user.email %></td>
+        <td><%= link_to order.user.email, user_path(order.user) %></td>
         <td><%= order.coupon.code unless order.coupon.blank?%></td>
         <td><%= number_to_currency order.discount %></td>
         <td><%= number_to_currency order.final_cost %></td>

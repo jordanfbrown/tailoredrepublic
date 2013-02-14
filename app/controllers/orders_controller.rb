@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_filter :ensure_cart_not_empty, :ensure_measurement_not_nil, except: [:thank_you, :index, :show]
+  before_filter :ensure_cart_not_empty, :ensure_measurement_not_nil, except: [:thank_you, :index, :show, :admin]
 
   def new
     set_stripe_customer
@@ -37,13 +37,15 @@ class OrdersController < ApplicationController
 
   def index
     if user_signed_in?
-      params[:page] ||= 1
-      if current_user.role == 'admin'
-        @orders = Order.order('created_at DESC').paginate(page: (params[:page]), per_page: 20)
-        render 'admin' and return
-      else
-        @orders = current_user.paginated_orders(params[:page])
-      end
+      @orders = current_user.paginated_orders(params[:page] ||= 1)
+    else
+      redirect_to root_path
+    end
+  end
+
+  def admin
+    if user_signed_in? && current_user.role == 'admin'
+      @orders = Order.order('created_at DESC').paginate(page: (params[:page] ||= 1), per_page: 20)
     else
       redirect_to root_path
     end

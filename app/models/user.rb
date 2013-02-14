@@ -10,12 +10,14 @@ class User < ActiveRecord::Base
   has_one :billing_address, as: :addressable, validate: true
   has_many :orders
 
-  attr_accessible :name, :email, :password, :remember_me, :shipping_address, :billing_address
+  attr_accessible :name, :email, :password, :remember_me
+  attr_accessible :name, :email, :password, :remember_me, :shipping_address_attributes, :billing_address_attributes,
+                  :measurement_attributes, as: :admin
   attr_protected :stripe_customer_id
 
   validates_presence_of :name
 
-  accepts_nested_attributes_for :shipping_address, :billing_address
+  accepts_nested_attributes_for :shipping_address, :billing_address, :measurement
 
   ROLES = %w(user admin)
 

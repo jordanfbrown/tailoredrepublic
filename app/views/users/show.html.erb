@@ -1,7 +1,36 @@
 <div class="row">
   <div class="twelve columns">
-    <h2>User</h2>
-    <p>Name: <%= @user.name %></p>
-    <p>Email: <%= @user.email if @user.email %></p>
+    <h3>User</h3>
+    <ul>
+      <li>Name: <%= @user.name %></li>
+      <li>Email: <%= @user.email if @user.email %></li>
+    </ul>
+    <h3>Shipping Address</h3>
+    <% unless @user.shipping_address.nil? %>
+      <ul>
+        <li><%= @user.shipping_address.name %></li>
+        <li><%= @user.shipping_address.line1 %></li>
+        <li><%= @user.shipping_address.line2 %></li>
+        <li><%= @user.shipping_address.city %>, <%= @user.shipping_address.state %>, <%= @user.shipping_address.zip %></li>
+      </ul>
+    <% end %>
+    <h3>Billing Address</h3>
+    <% unless @user.billing_address.nil? %>
+      <ul>
+        <li><%= @user.billing_address.name %></li>
+        <li><%= @user.billing_address.line1 %></li>
+        <li><%= @user.billing_address.line2 %></li>
+        <li><%= @user.billing_address.city %>, <%= @user.billing_address.state %>, <%= @user.billing_address.zip %></li>
+      </ul>
+    <% end %>
+    <h3>Measurements</h3>
+    <% unless @user.measurement.nil? %>
+      <ul>
+        <% @user.measurement.display_attributes.each do |key, value| %>
+          <li><%= key.titleize %>: <%= value %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <%= link_to 'Back to users', users_path, class: 'button margin-bottom' %>
   </div>
 </div>
