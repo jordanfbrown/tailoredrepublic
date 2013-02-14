@@ -97,7 +97,11 @@ class Order < ActiveRecord::Base
   end
 
   def friendly_created_date
-    created_at.to_date.to_formatted_s(:long_ordinal)
+    created_at_pacific.to_date.to_formatted_s(:long_ordinal)
+  end
+
+  def created_at_pacific
+    created_at.in_time_zone('Pacific Time (US & Canada)')
   end
 
   after_rollback do |order|
