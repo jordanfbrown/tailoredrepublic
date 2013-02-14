@@ -10,4 +10,8 @@ class Measurement < ActiveRecord::Base
   validates :age, numericality: { greater_than: 0, less_than: 110, message: 'must be a number between 0 and 110'}
   validates :weight, numericality: { greater_than: 0, less_than: 400, message: 'must be a number between 0 and 400'}
   validates :height, numericality: { greater_than: 0, less_than: 96, message: 'must be a number between 0 and 96'}
+
+  def display_attributes
+    attributes.except('id', 'created_at', 'updated_at', 'user_id', 'order_id')
+  end
 end

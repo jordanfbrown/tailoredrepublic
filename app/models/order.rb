@@ -96,6 +96,10 @@ class Order < ActiveRecord::Base
     end
   end
 
+  def friendly_created_date
+    created_at.to_date.to_formatted_s(:long_ordinal)
+  end
+
   after_rollback do |order|
     if order.order_id?
       charge = Stripe::Charge.retrieve(order.order_id)

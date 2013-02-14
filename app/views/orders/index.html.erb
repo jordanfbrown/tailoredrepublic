@@ -7,7 +7,7 @@
     <div class="order-list-item outlined">
       <div class="four columns">
         <ul>
-          <h4><strong><%= order.created_at.to_date.to_formatted_s(:long_ordinal) %></strong></h4>
+          <h4><strong><%= order.friendly_created_date %></strong></h4>
           <li><h5>Order: <%= order.order_id %></h5></li>
         </ul>
       </div>

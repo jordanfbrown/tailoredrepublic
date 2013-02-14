@@ -16,7 +16,7 @@
 <p><%= @order.shipping_address.city %>, <%= @order.shipping_address.state %>, <%= @order.shipping_address.zip %></p>
 
 <h3>Measurements</h3>
-<% @order.measurement.attributes.except('id', 'created_at', 'updated_at', 'user_id', 'order_id').each do |key, value| %>
+<% @order.measurement.display_attributes.each do |key, value| %>
   <p><%= key.titleize %>: <%= value %></p>
 <% end %>
 
