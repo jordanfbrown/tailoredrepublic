@@ -125,11 +125,11 @@ class TR.Views.Home extends TR.Views.Base
       bossImgTop = (bossesPosition - pageTop - $(window).height()) / 3
       if @els.bossesImage.height() + bossImgTop + 34 > 400
         @els.bossesImage.css 'top', bossImgTop
-      manImgRight = -(aboutPosition - pageTop - $(window).height() + 600) / 5
-      @els.aboutImage.css 'right': manImgRight, top: '0px'
+      aboutImgRight = -(aboutPosition - pageTop - $(window).height() + 600) / 5
+      @els.aboutImage.css 'right': aboutImgRight, top: '-60px'
     else
       @els.bossesImage.css 'top', 0
-      @els.aboutImage.css 'top': '30px', right: '0px'
+      @els.aboutImage.css 'top': '-30px', right: '0px'
 
     # Check if background image is in view
     $backgroundImg = @els.home.find '.background'
