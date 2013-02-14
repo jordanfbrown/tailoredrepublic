@@ -17,7 +17,7 @@ class TR.Views.Nav extends TR.Views.Base
     super()
 
   resize: =>
-    if $(window).width() > 865
+    if $(window).width() > 903
       $('ul.dropdown').css 'height', 'inherit'
 
 #  toggleDropdown: (e) ->

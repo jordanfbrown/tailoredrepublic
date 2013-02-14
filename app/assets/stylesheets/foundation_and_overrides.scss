@@ -111,7 +111,7 @@ $topBarDropBgColor: #000;
 // $topBarDropToggleColor: #fff;
 // $topBarDropToggleAlpha: 0.5;
 // $topBarSearchWidth: 200px;
-$topBarBreakPoint: 865px; // Change to 9999px for always mobile layout
+$topBarBreakPoint: 903px; // Change to 9999px for always mobile layout
 // $topBarNavToggleSize: 8px;
 
 // UI Settings
@@ -470,6 +470,10 @@ legend {
     text-overflow: ellipsis;
   }
 
+  ul > li.login {
+    padding: 0;
+  }
+
   img {
     vertical-align: middle;
     padding-right: 5px;
@@ -504,14 +508,13 @@ legend {
 }
 
 .top-bar > ul .name img {
-  margin-top: 0;
   width: 180px;
   padding-right: 0;
-  vertical-align: auto;
 }
 
 .top-bar ul > li.divider {
   @include box-shadow(1px 0 0 rgba(255, 255, 255, 0.2));
+  height: 45px;
 }
 
 .row .row {
