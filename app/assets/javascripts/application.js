@@ -24,7 +24,7 @@
 //= require underscore
 //= require backbone
 //= require handlebars
-//= require namespace
+//= require util
 //= require templates
 //= require_tree ./backbone/models
 //= require_tree ./backbone/collections

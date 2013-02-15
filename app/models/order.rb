@@ -104,6 +104,20 @@ class Order < ActiveRecord::Base
     created_at.in_time_zone('Pacific Time (US & Canada)')
   end
 
+  def to_json_for_tracking
+    to_json(only: [:order_id, :final_cost, :tax]).html_safe
+  end
+
+  def line_items_to_json_for_tracking
+    line_items.includes(:product).map do |l|
+      { id: l.product.id, name: l.product.name, category: l.product.category, total_price: l.total_price }
+    end.to_json.html_safe
+  end
+
+  def billing_address_to_json_for_tracking
+    billing_address.to_json(only: [:city, :state]).html_safe
+  end
+
   after_rollback do |order|
     if order.order_id?
       charge = Stripe::Charge.retrieve(order.order_id)
