@@ -114,26 +114,6 @@
     }
   }
 
-  .progress-bar {
-    padding: 10px 0;
-    @include clearfix;
-    border-bottom: 1px dashed #ccc;
-    text-align: center;
-
-    li {
-      cursor: pointer;
-      width: 30px;
-      height: 30px;
-      border: 1px solid #aaa;
-      display: inline-block;
-      margin-right: 5px;
-
-      &.selected {
-        background-color: #ccc;
-      }
-    }
-  }
-
   .linings {
     img {
       width: 150px;
@@ -327,7 +307,7 @@
   text-align: left;
   
   @media only screen and (max-width: 767px) {
-    margin-left: 0;
+    margin-left: 0 !important;
   }
 }
 
@@ -336,7 +316,7 @@
   text-align: right;
   
   @media only screen and (max-width: 767px) {
-    margin-right: 0;
+    margin-right: 0 !important;
   }
 }
 

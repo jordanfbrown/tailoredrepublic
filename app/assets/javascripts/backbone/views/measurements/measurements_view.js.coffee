@@ -24,11 +24,6 @@ class TR.Views.Measurements extends TR.Views.Base
     @signedIn = options.signedIn
     @slideOffset = 2 # Currently 2 slides exist before the measurement slides start
 
-    @PROGRESS =
-      COMPLETED: TR.ASSET_HOST + '/assets/icons/star-stroke.png'
-      TODO: TR.ASSET_HOST + '/assets/icons/star-no-stroke.png'
-      CURRENT: TR.ASSET_HOST + '/assets/icons/star-filled.png'
-
     measuringTapePixels = 4521
     measuringTapeInches = 90
     @pixelsPerInch = measuringTapePixels / measuringTapeInches
@@ -41,6 +36,7 @@ class TR.Views.Measurements extends TR.Views.Base
       adaptiveHeight: on
       touchEnabled: off
       video: on
+      heightFix: on
 
     @slideCount = @slider.getSlideCount() - 1
 
@@ -152,13 +148,17 @@ class TR.Views.Measurements extends TR.Views.Base
     @$('.measurement-list-item').eq(@slider.getCurrentSlide() - @slideOffset).data 'measurement'
 
   onSlideBefore: ($el, oldIndex, newIndex) =>
-    @$('.previous').show() if newIndex > 0
-    @$('.previous').hide() if newIndex == 0
     @$('.next, .accept').text('Accept').removeClass('next').addClass('accept') if newIndex == @slideCount
     @$('.next, .accept').text('Next').removeClass('accept').addClass('next') if newIndex < @slideCount
 
-    @setProgressBar oldIndex, @PROGRESS.COMPLETED
-    @setProgressBar newIndex, @PROGRESS.CURRENT
+    if newIndex > 0
+      @$('.previous').show()
+      @$('.next, .accept').show()
+    else
+      @$('.previous').hide()
+      @$('.next, .accept').hide()
+
+    @setProgressBar newIndex
 
     # Set height, weight, age
     if oldIndex == 1
@@ -219,8 +219,9 @@ class TR.Views.Measurements extends TR.Views.Base
       TR.renderSimpleModal "We're sorry, but there was a problem saving your measurements. Please try again, and if the " +
        "problem persists, shoot us an e-mail at help@tailoredrepublic.com."
 
-  setProgressBar: (index, progress) ->
-    @$('.progress-bar img').eq(index).attr 'src', progress
+  setProgressBar: (index) ->
+    @$('.progress-bar li').removeClass 'selected'
+    @$('.progress-bar li').eq(index).addClass 'selected'
 
   validateAndGoToSlide: (e) ->
     @slider.goToSlide $(e.currentTarget).index() if @validateCurrentInput()

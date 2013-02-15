@@ -336,3 +336,24 @@ a.next, a.accept {
 .margin-bottom {
   margin-bottom: 20px;
 }
+
+.progress-bar {
+  padding: 10px 0;
+  @include clearfix;
+  border-bottom: 1px dashed #ccc;
+  text-align: center;
+
+  li {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #aaa;
+    display: inline-block;
+    margin-right: 5px;
+
+    &.selected {
+      background-color: #ccc;
+    }
+  }
+}
+

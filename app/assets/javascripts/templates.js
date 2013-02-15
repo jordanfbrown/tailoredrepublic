@@ -1034,7 +1034,7 @@ function program1(depth0,data) {
   buffer += escapeExpression(stack1) + "\"</li>\n    ";
   return buffer;}
 
-  buffer += "<div class=\"row\">\n  <div class=\"six columns\">\n    <p>Please read over your measurements one last time and ensure that they are correct. If they look good, click\n      \"Accept\" to continue.</p>\n  </div>\n  <div class=\"three columns\">\n    <a href=\"#\" class=\"button previous\" style=\"display: none;\">Previous</a>\n  </div>\n  <div class=\"three columns\">\n    <a href=\"#\" class=\"button next\">Next</a>\n  </div>\n</div>\n\n<div class=\"three columns\">\n  <ul class=\"measurement-summary-list\">\n    <li data-measurement=\"age\"><a href=\"#\" class=\"label\" data-index=\"1\">Age:</a> ";
+  buffer += "<div class=\"row\">\n  <div class=\"twelve columns\">\n    <p class=\"accept-text\">Please read over your measurements one last time and ensure that they are correct. If they\n      look good, click \"Accept\" to continue.</p>\n  </div>\n</div>\n\n<div class=\"three columns\">\n  <ul class=\"measurement-summary-list\">\n    <li data-measurement=\"age\"><a href=\"#\" class=\"label\" data-index=\"1\">Age:</a> ";
   foundHelper = helpers.age;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.age; stack1 = typeof stack1 === functionType ? stack1() : stack1; }

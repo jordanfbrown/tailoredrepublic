@@ -291,8 +291,7 @@
 					return $(this).outerHeight(false);
 				}).get());
 			}
-      //TODO: JB -- figure out a better way than hard coding a value here
-			return height;
+			return height + (slider.settings.heightFix ? 10 : 0);
 		}
 		
 		/**
