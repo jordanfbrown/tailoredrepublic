@@ -7,7 +7,8 @@ class TR.Views.ProductModal extends TR.Views.Modal
 
   events: ->
     _.extend super,
-      'mousemove': 'mousemove'
+      'mousemove img.magnify-small': 'magnify'
+      'mouseleave img.magnify-small': 'stopMagnify'
       'click a.customize': 'openCustomizationModal'
       'click a.add-to-cart': 'addToCart'
 
@@ -23,8 +24,8 @@ class TR.Views.ProductModal extends TR.Views.Modal
     @$el.html @template _.extend
       customizable: @model.isCustomizable()
     , @model.toJSON()
-    @enableMagnifier();
     super()
+    _.delay @setMagnifierMaxHeight, 500
 
   hideScrollbar: false
 
@@ -34,20 +35,34 @@ class TR.Views.ProductModal extends TR.Views.Modal
     else
       @$el.removeClass('expand').addClass('xlarge')
 
-  # This ensures that the magnifier is hidden when the mouse is no longer over the image
-  mousemove: (e) ->
-    $small = $('.magnify-small')
-    offsetLeft = $small.offset().left
-    offsetTop = $small.offset().top
+    @setMagnifierMaxHeight()
 
-    if (e.pageX < offsetLeft || e.pageX > offsetLeft + $small.width() ||
-       e.pageY < offsetTop || e.pageY > offsetTop + $small.height()) && @magnifierVisible()
-      @hideMagnifier()
+  setMagnifierMaxHeight: =>
+    height = @$el.height() - 100 + 'px'
+    @$('.product-magnified').css('max-height': height, 'height': height)
+
+  magnify: (e) ->
+    @$('.product-summary').hide()
+
+    $productMagnified = @$('.product-magnified')
+    $productMagnified.show()
+
+    $largeImg = $productMagnified.find('img')
+    minLeft = -($largeImg.width() - $productMagnified.width())
+    minTop = -($largeImg.height() - $productMagnified.height())
+    $target = $(e.currentTarget)
+    leftPercentage = e.offsetX / $target.width()
+    topPercentage = e.offsetY / $target.height()
+    @$('.product-magnified img').css(left: (minLeft * leftPercentage) + 'px', top: (minTop * topPercentage) + 'px')
+
+  stopMagnify: (e) ->
+    @$('.product-magnified').hide()
+    @$('.product-summary').show()
 
   openCustomizationModal: (e) ->
     e.preventDefault()
     @destroy()
-    @customizationView = new TR.Views.CustomizationModal product: @model
+    @customizationView = new TR.Views.CustomizationModal(product: @model)
 
   addToCart: (e) =>
     e.preventDefault()
@@ -56,15 +71,6 @@ class TR.Views.ProductModal extends TR.Views.Modal
       _.bind(TR.Views.CustomizationModal.prototype.addSuccess, @),
       _.bind(TR.Views.CustomizationModal.prototype.addLineItemFailure, @)
     )
-
-  enableMagnifier: ->
-    @$('.magnify').magnifier()
-
-  magnifierVisible: ->
-    @$('.magnify-large').is ':visible'
-
-  hideMagnifier: ->
-    @$('.magnify-large').hide()
 
   destroy: ->
     $(window).off 'resize.product'

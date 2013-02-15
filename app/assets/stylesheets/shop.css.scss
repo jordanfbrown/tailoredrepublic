@@ -34,8 +34,26 @@
 }
 
 #product-modal {
-  img.main {
+
+  .magnify-small {
     max-height: 500px;
+    cursor: crosshair;
+  }
+
+  .magnify {
+    text-align: center;
+  }
+  .product-magnified {
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      max-width: none;
+      top: 0;
+      left: 0;
+    }
   }
 
   @media only screen and (max-width: 767px) {
@@ -320,20 +338,5 @@
   }
 }
 
-//Magnifier
-.magnify .large {
-  width: 200px;
-  height: 200px;
-  position: absolute;
 
-  box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.85),
-  0 0 7px 7px rgba(0, 0, 0, 0.25),
-  inset 0 0 40px 2px rgba(0, 0, 0, 0.25);
-
-  display: none;
-}
-
-.small {
-  display: block;
-}
 
