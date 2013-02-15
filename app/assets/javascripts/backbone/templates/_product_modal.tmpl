@@ -18,6 +18,10 @@
   <div class="seven columns">
     <h4>{{summary}}</h4>
     <p class="blurb">{{description}}</p>
-    <a href="#" class="customize button large full-width">Click To Customize</a>
+    {{#if customizable}}
+      <a href="#" class="customize button large full-width">Click To Customize</a>
+    {{else}}
+      <a href="#" class="add-to-cart button large full-width">Add to Cart</a>
+    {{/if}}
   </div>
 </div>

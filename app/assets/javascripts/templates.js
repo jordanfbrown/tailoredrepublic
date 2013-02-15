@@ -1127,8 +1127,17 @@ templates['_product.tmpl'] = template(function (Handlebars,depth0,helpers,partia
   return buffer;});
 templates['_product_modal.tmpl'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
-  var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing;
+  var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, self=this;
 
+function program1(depth0,data) {
+  
+  
+  return "\n      <a href=\"#\" class=\"customize button large full-width\">Click To Customize</a>\n    ";}
+
+function program3(depth0,data) {
+  
+  
+  return "\n      <a href=\"#\" class=\"add-to-cart button large full-width\">Add to Cart</a>\n    ";}
 
   buffer += "<a class=\"close-reveal-modal\">&#215;</a>\n<div class=\"row\">\n  <h2 class=\"eight columns\">";
   foundHelper = helpers.name;
@@ -1166,6 +1175,10 @@ templates['_product_modal.tmpl'] = template(function (Handlebars,depth0,helpers,
   foundHelper = helpers.description;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.description; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "</p>\n    <a href=\"#\" class=\"customize button large full-width\">Click To Customize</a>\n  </div>\n</div>\n";
+  buffer += escapeExpression(stack1) + "</p>\n    ";
+  stack1 = depth0.customizable;
+  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data)});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n  </div>\n</div>\n";
   return buffer;});
 })();

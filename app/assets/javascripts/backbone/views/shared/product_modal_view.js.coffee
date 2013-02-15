@@ -9,6 +9,7 @@ class TR.Views.ProductModal extends TR.Views.Modal
     _.extend super,
       'mousemove': 'mousemove'
       'click a.customize': 'openCustomizationModal'
+      'click a.add-to-cart': 'addToCart'
 
   initialize: (options) ->
     super()
@@ -19,7 +20,9 @@ class TR.Views.ProductModal extends TR.Views.Modal
     @render()
 
   render: ->
-    @$el.html @template @model.toJSON()
+    @$el.html @template _.extend
+      customizable: @model.isCustomizable()
+    , @model.toJSON()
     @enableMagnifier();
     super()
 
@@ -45,6 +48,14 @@ class TR.Views.ProductModal extends TR.Views.Modal
     e.preventDefault()
     @destroy()
     @customizationView = new TR.Views.CustomizationModal product: @model
+
+  addToCart: (e) =>
+    e.preventDefault()
+    @product = @model
+    $.post('/line_items', { product_id: @model.get('id') }).then(
+      _.bind(TR.Views.CustomizationModal.prototype.addSuccess, @),
+      _.bind(TR.Views.CustomizationModal.prototype.addLineItemFailure, @)
+    )
 
   enableMagnifier: ->
     @$('.magnify').magnifier()

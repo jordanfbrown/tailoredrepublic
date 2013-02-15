@@ -143,6 +143,22 @@ Blue shirt description
   image_small_4_url: 'products/suits/modal-suit-preview.png'
 )
 
+Product.create!(
+  category: 'accessory',
+  name: 'The Gray Tie',
+  summary: 'Gray tie summary',
+  description: <<-EOT.gsub(/\n$/, '').gsub(/\n/, ' '),
+Gray tie description
+  EOT
+  price: 49,
+  quantity: 10,
+  image_large_url: 'products/accessories/gray-tie.png',
+  image_small_1_url: 'products/suits/modal-suit-preview.png',
+  image_small_2_url: 'products/suits/modal-suit-preview.png',
+  image_small_3_url: 'products/suits/modal-suit-preview.png',
+  image_small_4_url: 'products/suits/modal-suit-preview.png'
+)
+
 [25, 50, 100, 349, 469, 629].each do |price|
   Product.create!(
     category: 'gift_card',

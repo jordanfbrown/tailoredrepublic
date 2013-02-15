@@ -4,3 +4,6 @@ class TR.Models.Product extends TR.Models.Base
 
   customFabric: ->
     @get('category') == 'suit' && @get('name') == 'Build Your Own Suit'
+
+  isCustomizable: ->
+    @get('category') == 'suit' || @get('category') == 'shirt'
