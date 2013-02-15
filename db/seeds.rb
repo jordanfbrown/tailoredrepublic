@@ -1,10 +1,3 @@
-puts 'CREATING ROLES'
-Role.create([
-  { :name => 'admin' },
-  { :name => 'user' }
-], :without_protection => true)
+require 'active_record/fixtures'
 
-puts 'SETTING UP DEFAULT USER LOGIN'
-user = User.create! :name => 'First User', :email => 'user@example.com', :password => 'please', :password_confirmation => 'please'
-puts 'New user created: ' << user.name
-user.add_role :admin
+Fixtures.create_fixtures("#{Rails.root}/test/fixtures", "products")
