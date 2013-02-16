@@ -8,9 +8,6 @@ class TR.Views.Nav extends TR.Views.Base
     $(document).foundationTopBar();
     $(window).resize @resize
 
-#  events:
-#    'click .has-dropdown': 'toggleDropdown'
-
   destroy: ->
     TR.Events.off 'removedLineItem'
     TR.Events.off 'addedLineItem'
@@ -19,10 +16,6 @@ class TR.Views.Nav extends TR.Views.Base
   resize: =>
     if $(window).width() > 903
       $('ul.dropdown').css 'height', 'inherit'
-
-#  toggleDropdown: (e) ->
-#    e.preventDefault()
-#    $(e.currentTarget).find('.dropdown').toggle()
 
   decrementItemCount: =>
     @$('.num-items').text @getItemCount() - 1

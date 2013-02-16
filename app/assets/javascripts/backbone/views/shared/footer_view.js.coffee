@@ -23,6 +23,7 @@ class TR.Views.Footer extends TR.Views.Base
         $target.find('span').text '-'
 
   subscribeToNewsletter: (e) ->
+    TR.Analytics.trackEvent 'Newsletter', 'Subscribe'
     $form = $(e.currentTarget)
     $.post($form.attr('action'), $form.serialize()).then(@subscribeSuccess, @subscribeFailure)
     false

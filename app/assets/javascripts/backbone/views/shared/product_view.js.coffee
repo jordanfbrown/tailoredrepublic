@@ -13,4 +13,5 @@ class TR.Views.Product extends TR.Views.Base
 
   renderProductModal: (e) ->
     e.preventDefault()
+    TR.Analytics.trackEvent 'Products', 'Open From Recommended', @model.get('name')
     @productModal = new TR.Views.ProductModal({model: @model})

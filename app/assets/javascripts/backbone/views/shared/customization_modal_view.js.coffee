@@ -36,6 +36,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     $(document).on 'keydown.customization', @keydown
     $(window).on 'resize.customization', @resize
     @resize()
+    TR.Analytics.trackEvent 'Customizations', 'View', @product.get('name')
 
     @slider = @$('.customization-list').bxSlider
       pager: off
@@ -118,12 +119,14 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     @$('.lining-option').removeClass 'selected'
     $lining = $(e.currentTarget).addClass 'selected'
     @customization.set 'lining', $lining.data 'id'
+    TR.Analytics.trackEvent 'Customizations', 'Choose', 'lining', $lining.data 'id'
 
   selectFabric: (e) ->
     e.preventDefault()
     @$('.fabric-option').removeClass 'selected'
     $fabric = $(e.currentTarget).addClass 'selected'
     @customization.set 'fabric', $fabric.data 'id'
+    TR.Analytics.trackEvent 'Customizations', 'Choose', 'fabric', $fabric.data 'id'
     @slider.goToNextSlide()
 
   goToSlide: (e) ->
@@ -155,6 +158,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     @clearChecked()
     $img.addClass 'checked'
     @slider.goToNextSlide()
+    TR.Analytics.trackEvent 'Customizations', 'Choose', type, option
 
   addToCart: (e) ->
     e.preventDefault()
@@ -170,6 +174,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
 
   saveChanges: (e) ->
     e.preventDefault()
+    TR.Analytics.trackEvent 'LineItems', 'Save Changes', @product.get('name')
     @customization.save(null, {silent: true}).then(=>
       window.location.href = '/cart'
     , =>
@@ -177,6 +182,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     )
 
   addSuccess: (response) =>
+    TR.Analytics.trackEvent 'LineItems', 'Add', @product.get('name')
     TR.Events.trigger 'addedLineItem', product: @product
     new TR.Views.AddSuccessModal({model: @product})
     @destroy()
@@ -196,3 +202,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
 
   updateCurrentCustomization: (index) ->
     @$('.current-customization').text TR.titleize(@$('.progress-bar li').eq(index).data('type'))
+
+  close: ->
+    TR.Analytics.trackEvent 'Customizations', 'Close', @product.get('name')
+    super()

@@ -19,6 +19,7 @@ class TR.Views.ProductModal extends TR.Views.Modal
     $(window).on 'resize.product', @resize
     @resize()
     @render()
+    TR.Analytics.trackEvent 'Products', 'View', @model.get('name')
 
   render: ->
     @$el.html @template _.extend
@@ -71,6 +72,10 @@ class TR.Views.ProductModal extends TR.Views.Modal
       _.bind(TR.Views.CustomizationModal.prototype.addSuccess, @),
       _.bind(TR.Views.CustomizationModal.prototype.addLineItemFailure, @)
     )
+
+  close: ->
+    TR.Analytics.trackEvent 'Products', 'Close', @model.get('name')
+    super()
 
   destroy: ->
     $(window).off 'resize.product'

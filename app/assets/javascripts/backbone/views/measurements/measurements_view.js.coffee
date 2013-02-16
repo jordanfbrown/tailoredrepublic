@@ -181,6 +181,7 @@ class TR.Views.Measurements extends TR.Views.Base
 
   acceptMeasurements: (e) ->
     e.preventDefault()
+    TR.Analytics.trackEvent 'Measurements', 'Accept', 'Normal Fill'
     if @model.hasDefaultAttributes()
       @confirmDialog = new TR.Views.DialogModal
         text: 'It looks like your measurements are the same as our defaults. Are you sure that your measurements were entered correctly?',
@@ -255,6 +256,7 @@ class TR.Views.Measurements extends TR.Views.Base
     if valid
       @$('.quick-fill-error').fadeOut()
       @slider.triggerResize(true)
+      TR.Analytics.trackEvent 'Measurements', 'Accept', 'Quick Fill'
       @saveMeasurements()
     else
       @$('.quick-fill-error').fadeIn()

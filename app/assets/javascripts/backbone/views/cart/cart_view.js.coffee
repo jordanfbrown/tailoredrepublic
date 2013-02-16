@@ -41,10 +41,11 @@ class TR.Views.Cart extends TR.Views.Base
     customization = new TR.Models.Customization id: customizationId
     product = new TR.Models.Product id: productId
     $.when(customization.fetch(), product.fetch()).then(->
+      TR.Analytics.trackEvent 'Customizations', 'Edit', product.get('name')
       @customizationView = new TR.Views.CustomizationModal product: product, customization: customization
       @customizationView.$el.find(".progress-bar li[data-type=#{customizationType}]").click() if customizationType
     )
-    
+
   removeLineItem: (e) ->
     e.preventDefault()
     @confirmDialog = new TR.Views.DialogModal
@@ -56,6 +57,7 @@ class TR.Views.Cart extends TR.Views.Base
         lineItemId = $lineItem.data('line-item-id')
         lineItem = @lineItems.get lineItemId
         $.ajax({url: "/line_items/#{lineItemId}", type: 'DELETE'}).then(=>
+          TR.Analytics.trackEvent 'LineItems', 'Remove', $lineItem.data 'product-name'
           $lineItem.fadeOut(=>
             $lineItem.remove()
             @lineItems.remove lineItem
