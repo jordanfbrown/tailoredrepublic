@@ -4,7 +4,7 @@ class TR.Models.Measurement extends TR.Models.Base
   initialize: (attributes) ->
     _.each attributes, (value, name) =>
       unless name == 'id'
-        @attributes[name] = parseFloat value
+        @attributes[name] = parseFloat value unless _.isNull value
 
   defaults:
     neck: 15.5

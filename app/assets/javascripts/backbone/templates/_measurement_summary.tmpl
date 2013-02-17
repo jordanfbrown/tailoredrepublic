@@ -7,9 +7,9 @@
 
 <div class="three columns">
   <ul class="measurement-summary-list">
-    <li data-measurement="age"><a href="#" class="label" data-index="1">Age:</a> {{age}}</li>
-    <li data-measurement="height"><a href="#" class="label" data-index="1">Weight:</a> {{weight}} lbs</li>
-    <li data-measurement="weight"><a href="#" class="label" data-index="1">Height:</a> {{height}}"</li>
+    <li data-measurement="age"><a href="#" class="label" data-index="1">Age:</a> {{#if age}} {{age}} {{else}} N/A {{/if}}</li>
+    <li data-measurement="height"><a href="#" class="label" data-index="1">Weight:</a> {{#if weight}} {{weight}} lbs {{else}} N/A {{/if}} </li>
+    <li data-measurement="weight"><a href="#" class="label" data-index="1">Height:</a> {{#if height}} {{height}}" {{else}} N/A {{/if}}</li>
   </ul>
 </div>
   
