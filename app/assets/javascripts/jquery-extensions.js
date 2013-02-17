@@ -11,8 +11,20 @@ $.fn.tap = function(callback) {
   return this;
 };
 
-String.prototype.capitalize = function() {
-  return this.charAt(0).toUpperCase() + this.slice(1);
+$.fn.addPlaceholders = function() {
+  $('[placeholder]').focus(function() {
+    var input = $(this);
+    if (input.val() == input.attr('placeholder')) {
+      input.val('');
+      input.removeClass('placeholder');
+    }
+  }).blur(function() {
+      var input = $(this);
+      if (input.val() == '' || input.val() == input.attr('placeholder')) {
+        input.addClass('placeholder');
+        input.val(input.attr('placeholder'));
+      }
+  }).blur();
 };
 
 $.fn.showPassword = function (c) {

@@ -6,6 +6,7 @@ class TR.Views.Footer extends TR.Views.Base
     'submit form': 'subscribeToNewsletter'
 
   initialize: ->
+    $(document).addPlaceholders();
     $(window).resize =>
       if $(window).width() >= 768
         @$('ul').css('display', '')
