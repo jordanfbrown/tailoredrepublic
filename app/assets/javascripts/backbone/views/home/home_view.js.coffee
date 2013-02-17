@@ -61,7 +61,6 @@ class TR.Views.Home extends TR.Views.Base
   cacheSelectors: ->
     @els =
       pageDown: $('.page-down')
-      shopSchedule: $('.shop-schedule')
       constitution: $('#constitution')
       constitutionImage: $('#constitution img')
       constitutionParent: $('#constitution .four')
@@ -86,7 +85,6 @@ class TR.Views.Home extends TR.Views.Base
 
     @animatePageDown(shouldAnimate, pageDownOffset)
     @adjustProcess(backgroundHeight)
-    @adjustShopSchedule(windowWidth, pageDownOffset)
     @adjustConstitutionImage(windowWidth)
 
   adjustProcess: (backgroundHeight) ->
@@ -105,10 +103,6 @@ class TR.Views.Home extends TR.Views.Base
                     @els.pageDown.animate 'top': pageDownOffset - restingPosition, 100, =>
     else
       @els.pageDown.css 'top', pageDownOffset - restingPosition + 'px'
-
-  adjustShopSchedule: (windowWidth, pageDownOffset) ->
-    shopOffset = if windowWidth > 600 then 150 else 50
-    @els.shopSchedule.css top: pageDownOffset - shopOffset + 'px'
 
   adjustConstitutionImage: (windowWidth) ->
     if windowWidth > 768
