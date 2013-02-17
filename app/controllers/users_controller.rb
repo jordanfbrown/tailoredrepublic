@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
 
   def index
-    authorize! :index, @user, :message => 'Not authorized as an administrator.'
     @users = User.all
   end
 
@@ -18,8 +18,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    authorize! :update, @user, :message => 'Not authorized as an administrator.'
-
     if params[:user][:password].blank?
       params[:user].delete("password")
     end
@@ -33,7 +31,6 @@ class UsersController < ApplicationController
   end
     
   def destroy
-    authorize! :destroy, @user, :message => 'Not authorized as an administrator.'
     user = User.find(params[:id])
     unless user == current_user
       user.destroy
