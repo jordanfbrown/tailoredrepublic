@@ -4,7 +4,7 @@ class ShopController < ApplicationController
     if category == :error
       redirect_to shop_path
     end
-    @products = Product.where(category: category)
+    @products = Product.where(category: category).includes(:product_images)
     @display_category = params[:category].blank? ? 'Suits' : params[:category].capitalize
   end
 

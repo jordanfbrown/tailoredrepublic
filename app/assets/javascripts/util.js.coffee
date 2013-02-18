@@ -84,3 +84,6 @@ window.TR =
       if index == 0 then TR.uppercaseFirst(word) else word
     ).join ' '
 
+  imgSrc: (path) ->
+    TR.ASSET_HOST + '/assets/' + (if TR.ENVIRONMENT == 'production' || TR.ENVIRONMENT == 'staging' then TR.ASSET_DIGESTS[path] else path)
+

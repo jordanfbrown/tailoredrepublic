@@ -26,8 +26,7 @@ Handlebars.registerHelper 'ifeq', (a, b, options) ->
 
 Handlebars.registerHelper 'titleize', TR.titleize
 
-Handlebars.registerHelper 'imgSrc', (path) ->
-  TR.ASSET_HOST + '/assets/' + (if TR.ENVIRONMENT == 'production' || TR.ENVIRONMENT == 'staging' then TR.ASSET_DIGESTS[path] else path)
+Handlebars.registerHelper 'imgSrc', TR.imgSrc
 
 Handlebars.registerPartial 'customizationCheckoutSuit', Handlebars.templates['_customization_checkout_suit.tmpl']
 Handlebars.registerPartial 'customizationCheckoutShirt', Handlebars.templates['_customization_checkout_shirt.tmpl']

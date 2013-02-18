@@ -2,10 +2,10 @@ require 'enumerated_attribute'
 
 class Product < ActiveRecord::Base
   enum_attr :category, %w(suit shirt accessory gift_card)
-  attr_accessible :description, :image_large_url, :image_small_1_url, :image_small_2_url, :image_small_3_url,
-                  :image_small_4_url, :name, :price, :quantity, :category, :summary
+  attr_accessible :description, :name, :price, :quantity, :category, :summary
   has_many :line_items
   has_many :customizations
+  has_many :product_images
   before_destroy :ensure_not_referenced_by_line_item
 
   def self.vest_price
@@ -55,6 +55,10 @@ class Product < ActiveRecord::Base
 
   def display_price
     price.to_i
+  end
+
+  def default_photo
+    product_images.find_by_default(true)
   end
 
   private

@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+tuxedo_front:
+  product: tuxedo
+  thumbnail: products/suits/tuxedo/front-thumbnail.png
+  regular: products/suits/tuxedo/front-regular.png
+  large: products/suits/tuxedo/front-large.png
+  default: true
+
+tuxedo_back:
+  product: tuxedo
+  thumbnail: products/suits/tuxedo/back-thumbnail.png
+  regular: products/suits/tuxedo/back-regular.png
+  large: products/suits/tuxedo/back-large.png
+  default: false
+
+tuxedo_side:
+  product: tuxedo
+  thumbnail: products/suits/tuxedo/side-thumbnail.png
+  regular: products/suits/tuxedo/side-regular.png
+  large: products/suits/tuxedo/side-large.png
+  default: false
+
+tuxedo_detail:
+  product: tuxedo
+  thumbnail: products/suits/tuxedo/detail-thumbnail.png
+  regular: products/suits/tuxedo/detail-regular.png
+  large: products/suits/tuxedo/detail-large.png
+  default: false

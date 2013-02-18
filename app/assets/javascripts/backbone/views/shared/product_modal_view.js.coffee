@@ -11,6 +11,7 @@ class TR.Views.ProductModal extends TR.Views.Modal
       'mouseleave img.magnify-small': 'stopMagnify'
       'click a.customize': 'openCustomizationModal'
       'click a.add-to-cart': 'addToCart'
+      'click a.switch-image': 'switchImage'
 
   initialize: (options) ->
     super()
@@ -24,6 +25,7 @@ class TR.Views.ProductModal extends TR.Views.Modal
   render: ->
     @$el.html @template _.extend
       customizable: @model.isCustomizable()
+      defaultProductImage: @model.defaultProductImage()
     , @model.toJSON()
     super()
     _.delay @setMagnifierMaxHeight, 500
@@ -72,6 +74,13 @@ class TR.Views.ProductModal extends TR.Views.Modal
       _.bind(TR.Views.CustomizationModal.prototype.addSuccess, @),
       _.bind(TR.Views.CustomizationModal.prototype.addLineItemFailure, @)
     )
+
+  switchImage: (e) ->
+    e.preventDefault()
+    $target = $(e.currentTarget)
+    newImage = @model.getProductImageById $target.data('id')
+    @$('.magnify-small').attr 'src', TR.imgSrc(newImage.regular)
+    @$('.magnify-large').attr 'src', TR.imgSrc(newImage.large)
 
   close: ->
     TR.Analytics.trackEvent 'Products', 'Close', @model.get('name')
