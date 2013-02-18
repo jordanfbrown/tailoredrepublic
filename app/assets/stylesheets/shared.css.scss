@@ -129,6 +129,8 @@ input[type=submit] {
 .button {
   background-color: $brown;
   padding: 7px 10px 5px 10px;
+  text-decoration-color: #fff;
+  -moz-text-decoration-color: #fff;
   @include font("header");
   font-weight: bold;
   color: #fff;
@@ -140,6 +142,8 @@ input[type=submit] {
   -webkit-transition: background-color 250ms;
 
   &:hover {
+    text-decoration-color: #fff;
+    -moz-text-decoration-color: #fff;
     color: #fff;
     background-color: darken($brown, 10%);
     text-decoration: none;

@@ -386,8 +386,11 @@ p a, a.colored {
 
 a {
   color: #000;
+  text-decoration-color: #000;
+
   &:hover {
     color: #000;
+    text-decoration-color: #000;
     text-decoration: underline;
   }
 }

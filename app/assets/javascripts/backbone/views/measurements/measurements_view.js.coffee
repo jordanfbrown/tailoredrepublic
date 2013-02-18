@@ -37,6 +37,7 @@ class TR.Views.Measurements extends TR.Views.Base
       touchEnabled: off
       video: on
       heightFix: on
+      useCSS: off
 
     @slideCount = @slider.getSlideCount() - 1
 
@@ -83,14 +84,15 @@ class TR.Views.Measurements extends TR.Views.Base
   beginTapeDrag: (e) ->
     e.preventDefault()
     @dragging = true
-    touch = e.originalEvent.touches && (e.originalEvent.touches[0] || e.originalEvent.changedTouches[0])
-    @initialDragPosition = e.offsetX || touch.pageX
-    @initialBackgroundPosition = parseFloat @getMeasuringTape().css 'background-position-x'
- 
+    touch = e.originalEvent && e.originalEvent.touches && (e.originalEvent.touches[0] || e.originalEvent.changedTouches[0])
+    e.offsetX = e.pageX - $(e.currentTarget).offset().left if e.offsetX == undefined && !touch
+    @initialDragPosition = e.offsetX || touch.pageX - $(e.currentTarget).offset().left
+    @initialBackgroundPosition = parseFloat @getMeasuringTape().css 'background-position'
+
   endTapeDrag: (e) ->
     e.preventDefault() if e
     @dragging = false
-    finalBackgroundPosition = parseFloat @getMeasuringTape().css 'background-position-x'
+    finalBackgroundPosition = parseFloat @getMeasuringTape().css 'background-position'
     inches = @convertBackgroundPositionToInches finalBackgroundPosition
     @updateMeasuringTape inches, false
 
@@ -100,17 +102,21 @@ class TR.Views.Measurements extends TR.Views.Base
       touch = e.originalEvent.touches && (e.originalEvent.touches[0] || e.originalEvent.changedTouches[0])
       offset = (e.pageX || touch.pageX) - @getMeasuringTape().offset().left
       positionX = @initialBackgroundPosition - (@initialDragPosition - offset)
-      @getMeasuringTape().css 'background-position-x', positionX
+      @getMeasuringTape().css 'background-position', "#{positionX}px 0px"
       @updateInputWithPosition positionX
       
   mouseOutMeasuringTape: (e) ->
-    unless e.toElement.className == 'pointer' || e.toElement.className == 'measuring-tape'
-      @endTapeDrag()
+    if element = e.toElement || e.relatedTarget
+      unless element.className == 'pointer' || element.className == 'measuring-tape'
+        @endTapeDrag()
 
   updateMeasuringTape: (inches, animate) ->
     @currentTapeValue = inches
     offset = @convertInchesToBackgroundPosition inches
-    @getMeasuringTape()[if animate then 'animate' else 'css'] 'background-position-x': offset, 1000
+    if animate
+      @getMeasuringTape().animate 'background-position': "#{offset}px", 1000
+    else
+      @getMeasuringTape().css 'background-position', "#{offset}px"
 
   getMeasuringTape: ->
     @$('.measuring-tape').eq(@slider.getCurrentSlide() - @slideOffset)
