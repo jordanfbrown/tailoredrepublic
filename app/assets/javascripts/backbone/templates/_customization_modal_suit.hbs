@@ -1,5 +1,5 @@
 <a class="close-reveal-modal">&#215;</a>
-<h3>{{product.name}} <span class="divider">//</span> <span class="current-customization">Lapel</span></h3>
+<h3>{{product.name}} <span class="divider">//</span> <span class="current-customization">{{#if chooseFabric}}Fabric{{else}}Lapel{{/if}}</span></h3>
 <div class="customizations">
   <ul class="progress-bar {{product.category}} {{#if chooseFabric}} suit-swatch {{/if}}">
     {{#if chooseFabric}}
@@ -60,7 +60,7 @@
             <div class="image-magnified">
               <img src="{{imgSrc "customizations/suits/fabrics/charcoal-with-pinstripe-large.jpg"}}"></a>
             </div>
-            <p class="centered fabric-label"></p>
+            <p class="centered fabric-label">Dark Charcoal w/ Wide Pinstripes</p>
           </div>
         </div>
       </li>
