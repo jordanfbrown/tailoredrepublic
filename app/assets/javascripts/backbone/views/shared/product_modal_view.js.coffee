@@ -84,7 +84,7 @@ class TR.Views.ProductModal extends TR.Views.Modal
     @$('.magnify-small').attr 'src', TR.imgSrc(newImage.regular)
     @$('.magnify-large').attr 'src', TR.imgSrc(newImage.large)
 
-  close: ->
+  close: =>
     TR.Analytics.trackEvent 'Products', 'Close', @model.get('name')
     super()
 

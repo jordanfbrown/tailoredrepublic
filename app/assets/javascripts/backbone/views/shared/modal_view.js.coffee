@@ -8,6 +8,7 @@ class TR.Views.Modal extends TR.Views.Base
     
   initialize: ->
     $(window).on 'resize.modal', @checkModalHeight
+    TR.Events.on 'closeModal', @close
 
   render: ->
     $('body').append @$el
@@ -43,9 +44,10 @@ class TR.Views.Modal extends TR.Views.Base
   destroy: ->
     $('body').removeClass 'modal-open'
     $(window).off 'resize.modal'
+    TR.Events.off 'closeModal'
     super()
 
-  close: ->
+  close: =>
     @$el.trigger 'reveal:close'
     @destroy()
 

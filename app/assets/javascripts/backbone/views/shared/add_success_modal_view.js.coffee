@@ -23,7 +23,7 @@ class TR.Views.AddSuccessModal extends TR.Views.Modal
     @suggestedProducts.each @renderProductView
     super()
     
-  close: (e) ->
+  close: (e) =>
     e.preventDefault()
     subview.destroy() for subview in @subviews
     super()

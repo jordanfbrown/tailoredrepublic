@@ -224,6 +224,6 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
 
     TR.Views.ProductModal.prototype.magnify.call @, e
 
-  close: ->
+  close: =>
     TR.Analytics.trackEvent 'Customizations', 'Close', @product.get('name')
     super()

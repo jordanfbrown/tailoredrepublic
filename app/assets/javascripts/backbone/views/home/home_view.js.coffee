@@ -39,6 +39,7 @@ class TR.Views.Home extends TR.Views.Base
       return true
 
     e.preventDefault()
+    TR.Events.trigger 'closeModal'
 
     $home = $('#home');
     homeHeight = $home.height()
