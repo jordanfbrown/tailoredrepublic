@@ -2,6 +2,11 @@
 @import "compass";
 
 .shop {
+
+  footer .strikethrough {
+    top: 16px;
+  }
+
   h5 a.selected {
     font-weight: bold;
   }

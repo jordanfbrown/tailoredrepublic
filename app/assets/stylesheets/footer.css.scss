@@ -15,9 +15,10 @@ footer {
     color: #999;
     border: none;
     outline: none;
-    color: #fff;
+    color: #ccc;
     font-weight: lighter;
     max-width: 210px;
+    padding-top: 10px;
 
     &:focus {
       background: rgba(255, 255, 255, 0.2);
@@ -29,7 +30,7 @@ footer {
     border: none;
     font-weight: bold;
     display: inline-block;
-    color: #fff;
+    color: #ccc;
     padding: 8px 10px 5px 10px;
     font-size: 13px;
     cursor: pointer;
