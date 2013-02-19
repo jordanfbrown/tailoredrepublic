@@ -395,39 +395,42 @@ function program5(depth0,data) {
 function program7(depth0,data) {
   
   var buffer = "", stack1, foundHelper;
-  buffer += "\n      <li class=\"customization-wrapper fabric\" data-type=\"fabric\">\n        <p>For the bold suit connoisseur we have the option to build your own suit; including selecting a unique fabric\n          that is not available in our permanent collection. Start by choosing one of our 100% wool premium fabrics\n          below.\n        </p>\n        <div class=\"row\">\n          <div class=\"three columns\">\n            <a href=\"#\" class=\"fabric-option ";
+  buffer += "\n      <li class=\"customization-wrapper fabric\" data-type=\"fabric\">\n        <p>For the bold suit connoisseur we have the option to build your own suit; including selecting a unique fabric\n          that is not available in our permanent collection. Start by choosing one of our 100% wool premium fabrics\n          below.\n        </p>\n        <div class=\"row\">\n          <div class=\"six columns\">\n            <div class=\"three columns\">\n              <a href=\"#\" class=\"fabric-option ";
   stack1 = depth0.fabric;
   foundHelper = helpers.ifeq;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, "charcoal-pinstripe", {hash:{},inverse:self.noop,fn:self.program(8, program8, data)}) : helperMissing.call(depth0, "ifeq", stack1, "charcoal-pinstripe", {hash:{},inverse:self.noop,fn:self.program(8, program8, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\" data-id=\"charcoal-pinstripe\"><img src=\"";
+  buffer += "\"\n                 data-id=\"charcoal-pinstripe\" data-label=\"Dark Charcoal w/ Wide Pinstripes\"\n                 data-large=\"customizations/suits/fabrics/charcoal-with-pinstripe-large.jpg\">\n                <img src=\"";
   foundHelper = helpers.imgSrc;
-  stack1 = foundHelper ? foundHelper.call(depth0, "swatches/charcoal-with-pinstripe.jpg", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "swatches/charcoal-with-pinstripe.jpg", {hash:{}});
-  buffer += escapeExpression(stack1) + "\"></a>\n            <p>Dark Charcoal w/ Wide Pinstripes</p>\n          </div>\n          <div class=\"three columns\">\n            <a href=\"#\" class=\"fabric-option ";
+  stack1 = foundHelper ? foundHelper.call(depth0, "customizations/suits/fabrics/charcoal-with-pinstripe-small.jpg", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "customizations/suits/fabrics/charcoal-with-pinstripe-small.jpg", {hash:{}});
+  buffer += escapeExpression(stack1) + "\">\n              </a>\n            </div>\n            <div class=\"three columns\">\n              <a href=\"#\" class=\"fabric-option ";
   stack1 = depth0.fabric;
   foundHelper = helpers.ifeq;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, "granite-red", {hash:{},inverse:self.noop,fn:self.program(10, program10, data)}) : helperMissing.call(depth0, "ifeq", stack1, "granite-red", {hash:{},inverse:self.noop,fn:self.program(10, program10, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\" data-id=\"granite-red\"><img src=\"";
+  buffer += "\" data-id=\"granite-red\"\n                 data-label=\"Granite w/ Red Crosschecks\"\n                 data-large=\"customizations/suits/fabrics/granite-with-red-large.jpg\">\n                <img src=\"";
   foundHelper = helpers.imgSrc;
-  stack1 = foundHelper ? foundHelper.call(depth0, "swatches/granite-with-red.jpg", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "swatches/granite-with-red.jpg", {hash:{}});
-  buffer += escapeExpression(stack1) + "\"></a>\n            <p>Granite w/ Red Crosschecks</p>\n          </div>\n          <div class=\"three columns\">\n            <a href=\"#\" class=\"fabric-option ";
+  stack1 = foundHelper ? foundHelper.call(depth0, "customizations/suits/fabrics/granite-with-red-small.jpg", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "customizations/suits/fabrics/granite-with-red-small.jpg", {hash:{}});
+  buffer += escapeExpression(stack1) + "\">\n              </a>\n            </div>\n            <div class=\"three columns\">\n              <a href=\"#\" class=\"fabric-option ";
   stack1 = depth0.fabric;
   foundHelper = helpers.ifeq;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, "heathered-light-gray", {hash:{},inverse:self.noop,fn:self.program(12, program12, data)}) : helperMissing.call(depth0, "ifeq", stack1, "heathered-light-gray", {hash:{},inverse:self.noop,fn:self.program(12, program12, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\" data-id=\"heathered-light-gray\"><img src=\"";
+  buffer += "\"\n                 data-id=\"heathered-light-gray\" data-label=\"Heathered Light Gray\"\n                 data-large=\"customizations/suits/fabrics/heathered-light-gray-large.jpg\">\n                <img src=\"";
   foundHelper = helpers.imgSrc;
-  stack1 = foundHelper ? foundHelper.call(depth0, "swatches/heathered-light-gray.jpg", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "swatches/heathered-light-gray.jpg", {hash:{}});
-  buffer += escapeExpression(stack1) + "\"></a>\n            <p>Heathered Light Gray</p>\n          </div>\n          <div class=\"three columns\">\n            <a href=\"#\" class=\"fabric-option ";
+  stack1 = foundHelper ? foundHelper.call(depth0, "customizations/suits/fabrics/heathered-light-gray-small.jpg", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "customizations/suits/fabrics/heathered-light-gray-small.jpg", {hash:{}});
+  buffer += escapeExpression(stack1) + "\"></a>\n            </div>\n            <div class=\"three columns\">\n              <a href=\"#\" class=\"fabric-option ";
   stack1 = depth0.fabric;
   foundHelper = helpers.ifeq;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, "stone-gray-with-blue", {hash:{},inverse:self.noop,fn:self.program(14, program14, data)}) : helperMissing.call(depth0, "ifeq", stack1, "stone-gray-with-blue", {hash:{},inverse:self.noop,fn:self.program(14, program14, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\" data-id=\"stone-gray-with-blue\"><img src=\"";
+  buffer += "\"\n                 data-id=\"stone-gray-with-blue\" data-label=\"Stone Gray w/ Blue Crosschecks\"\n                 data-large=\"customizations/suits/fabrics/stone-gray-with-blue-large.jpg\">\n                <img src=\"";
   foundHelper = helpers.imgSrc;
-  stack1 = foundHelper ? foundHelper.call(depth0, "swatches/stone-gray-with-blue.jpg", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "swatches/stone-gray-with-blue.jpg", {hash:{}});
-  buffer += escapeExpression(stack1) + "\"></a>\n            <p>Stone Gray w/ Blue Crosschecks</p>\n          </div>\n        </div>\n      </li>\n    ";
+  stack1 = foundHelper ? foundHelper.call(depth0, "customizations/suits/fabrics/stone-gray-with-blue-small.jpg", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "customizations/suits/fabrics/stone-gray-with-blue-small.jpg", {hash:{}});
+  buffer += escapeExpression(stack1) + "\"></a>\n            </div>\n            <p class=\"centered\">Hover to magnify</p>\n          </div>\n          <div class=\"six columns\">\n            <div class=\"image-magnified\">\n              <img src=\"";
+  foundHelper = helpers.imgSrc;
+  stack1 = foundHelper ? foundHelper.call(depth0, "customizations/suits/fabrics/charcoal-with-pinstripe-large.jpg", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "customizations/suits/fabrics/charcoal-with-pinstripe-large.jpg", {hash:{}});
+  buffer += escapeExpression(stack1) + "\"></a>\n            </div>\n            <p class=\"centered fabric-label\"></p>\n          </div>\n        </div>\n      </li>\n    ";
   return buffer;}
 function program8(depth0,data) {
   
@@ -1215,7 +1218,7 @@ function program5(depth0,data) {
   stack1 = stack1 == null || stack1 === false ? stack1 : stack1.regular;
   foundHelper = helpers.imgSrc;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "imgSrc", stack1, {hash:{}});
-  buffer += escapeExpression(stack1) + "\">\n      <p>Hover to magnify</p>\n    </div>\n  </div>\n  <div class=\"seven columns\">\n    <div class=\"product-magnified\" style=\"display: none;\">\n      <img class=\"magnify-large\" src=\"";
+  buffer += escapeExpression(stack1) + "\">\n      <p>Hover to magnify</p>\n    </div>\n  </div>\n  <div class=\"seven columns\">\n    <div class=\"image-magnified\" style=\"display: none;\">\n      <img class=\"magnify-large\" src=\"";
   stack1 = depth0.defaultProductImage;
   stack1 = stack1 == null || stack1 === false ? stack1 : stack1.large;
   foundHelper = helpers.imgSrc;

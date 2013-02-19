@@ -42,26 +42,26 @@ class TR.Views.ProductModal extends TR.Views.Modal
 
   setMagnifierMaxHeight: =>
     height = @$el.height() - 100 + 'px'
-    @$('.product-magnified').css('max-height': height, 'height': height)
+    @$('.image-magnified').css('max-height': height, 'height': height)
 
   magnify: (e) ->
     @$('.product-summary').hide()
 
-    $productMagnified = @$('.product-magnified')
-    $productMagnified.show()
+    $imageMagnified = @$('.image-magnified')
+    $imageMagnified.show()
 
-    $largeImg = $productMagnified.find('img')
-    minLeft = -($largeImg.width() - $productMagnified.width())
-    minTop = -($largeImg.height() - $productMagnified.height())
+    $largeImg = $imageMagnified.find('img')
+    minLeft = -($largeImg.width() - $imageMagnified.width())
+    minTop = -($largeImg.height() - $imageMagnified.height())
     $target = $(e.currentTarget)
     e.offsetX = e.pageX - $(e.currentTarget).offset().left if e.offsetX == undefined
     e.offsetY = e.pageY - $(e.currentTarget).offset().top if e.offsetY == undefined
     leftPercentage = e.offsetX / $target.width()
     topPercentage = e.offsetY / $target.height()
-    @$('.product-magnified img').css(left: (minLeft * leftPercentage) + 'px', top: (minTop * topPercentage) + 'px')
+    @$('.image-magnified img').css(left: (minLeft * leftPercentage) + 'px', top: (minTop * topPercentage) + 'px')
 
   stopMagnify: (e) ->
-    @$('.product-magnified').hide()
+    @$('.image-magnified').hide()
     @$('.product-summary').show()
 
   openCustomizationModal: (e) ->

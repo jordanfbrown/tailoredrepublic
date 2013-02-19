@@ -7,6 +7,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     _.extend super,
       'click a.customization-option': 'setCustomization'
       'click a.add-to-cart': 'addToCart'
+      'mousemove a.fabric-option': 'magnify'
       'click a.accept': 'addToCart'
       'click a.save-changes': 'saveChanges'
       'click ul.progress-bar li': 'goToSlide'
@@ -54,6 +55,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
   render: =>
     @$el.html @template @getTemplateData()
     super()
+    @setMagnifierMaxHeight()
 
   keydown: (e) =>
     if e.which == 37 # Left arrow
@@ -62,6 +64,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
       @slider.goToNextSlide()
 
   resize: =>
+    @setMagnifierMaxHeight()
     if $(window).width() < 1024
       @$el.removeClass('xlarge').addClass('expand')
     else
@@ -204,6 +207,28 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
 
   updateCurrentCustomization: (index) ->
     @$('.current-customization').text TR.titleize(@$('.progress-bar li').eq(index).data('type'))
+
+  setMagnifierMaxHeight: =>
+    @$('.image-magnified').css('max-height': 250, 'height': 250)
+
+  magnify: (e) ->
+    $target = $(e.currentTarget)
+    $imageMagnified = @$('.image-magnified')
+    $largeImg = $imageMagnified.find('img')
+
+    unless $target.hasClass 'current'
+      @$('.fabric-option').removeClass 'current'
+      $target.addClass 'current'
+      $largeImg.attr 'src', TR.imgSrc $target.data 'large'
+      @$('.fabric-label').text $target.data 'label'
+
+    minLeft = -($largeImg.width() - $imageMagnified.width())
+    minTop = -($largeImg.height() - $imageMagnified.height())
+    e.offsetX = e.pageX - $target.offset().left if e.offsetX == undefined
+    e.offsetY = e.pageY - $target.offset().top if e.offsetY == undefined
+    leftPercentage = e.offsetX / $target.width()
+    topPercentage = e.offsetY / $target.height()
+    @$('.image-magnified img').css(left: (minLeft * leftPercentage) + 'px', top: (minTop * topPercentage) + 'px')
 
   close: ->
     TR.Analytics.trackEvent 'Customizations', 'Close', @product.get('name')
