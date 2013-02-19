@@ -103,10 +103,12 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
   previous: (e) ->
     e.preventDefault()
     @slider.goToPrevSlide()
+    TR.Analytics.trackEvent 'Customizations', 'Click', 'Previous'
 
   next: (e) ->
     e.preventDefault()
     @slider.goToNextSlide()
+    TR.Analytics.trackEvent 'Customizations', 'Click', 'Next'
 
   clickedLabelOnCheckout: (e) ->
     e.preventDefault()
@@ -119,14 +121,15 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     @$('.lining-option').removeClass 'selected'
     $lining = $(e.currentTarget).addClass 'selected'
     @customization.set 'lining', $lining.data 'id'
-    TR.Analytics.trackEvent 'Customizations', 'Choose', 'lining', $lining.data 'id'
+    @slider.goToNextSlide()
+    TR.Analytics.trackEvent 'Customizations', 'Choose Lining', $lining.data 'id'
 
   selectFabric: (e) ->
     e.preventDefault()
     @$('.fabric-option').removeClass 'selected'
     $fabric = $(e.currentTarget).addClass 'selected'
     @customization.set 'fabric', $fabric.data 'id'
-    TR.Analytics.trackEvent 'Customizations', 'Choose', 'fabric', $fabric.data 'id'
+    TR.Analytics.trackEvent 'Customizations', 'Choose Fabric', $fabric.data 'id'
     @slider.goToNextSlide()
 
   goToSlide: (e) ->
@@ -157,7 +160,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     @clearSelected()
     $target.addClass 'selected'
     @slider.goToNextSlide()
-    TR.Analytics.trackEvent 'Customizations', 'Choose', type, option
+    TR.Analytics.trackEvent 'Customizations', "Choose #{type}", option
 
   addToCart: (e) ->
     e.preventDefault()

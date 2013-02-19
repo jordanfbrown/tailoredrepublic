@@ -28,7 +28,7 @@ class TR.Views.Home extends TR.Views.Base
     e.preventDefault()
     id = $(e.currentTarget).parents('.product-wrapper').data 'id'
     product = @products.get id
-    TR.Analytics.trackEvent 'Top Picks', 'Click', product.get('name')
+    TR.Analytics.trackEvent 'Top Picks', 'View', product.get('name')
     @productModal = new TR.Views.ProductModal({model: product})
 
   scrollToSection: (e) =>

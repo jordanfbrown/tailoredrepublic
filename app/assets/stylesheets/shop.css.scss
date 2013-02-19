@@ -297,16 +297,11 @@
     &.fabric {
 
       .selected img {
-        background-color: #ccc;
+        border: 1px dashed #aaa;
       }
 
       img {
-        border: 1px dashed #ccc;
         padding: 5px;
-
-        &:hover {
-          background-color: #ccc;
-        }
       }
 
       .three {
