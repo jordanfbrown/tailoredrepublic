@@ -54,7 +54,7 @@ class TR.Views.Cart extends TR.Views.Base
     lineItem = @lineItems.get $lineItem.data('line-item-id')
     lineItem.set 'quantity', parseInt($target.val())
     lineItem.save()
-    TR.Analytics.trackEvent 'LineItems', 'Update Quantity', $lineItem.data 'product-name'
+    TR.Analytics.trackEvent 'LineItems', 'Update Quantity', $lineItem.data 'product-name', parseInt($target.val())
 
   removeLineItem: (e) ->
     e.preventDefault()
