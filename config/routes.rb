@@ -23,6 +23,7 @@ TailoredRepublic::Application.routes.draw do
     end
   end
 
+  match '/measurements/:initial_slide' => 'measurements#show'
   match '/shop/:category' => 'shop#index'
   match '/shop' => 'shop#index'
   match '/home' => 'home#index'

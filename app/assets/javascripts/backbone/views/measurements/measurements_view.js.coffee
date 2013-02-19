@@ -22,6 +22,7 @@ class TR.Views.Measurements extends TR.Views.Base
     @lineItemCount = options.lineItemCount
     @shirtOnly = options.shirtOnly
     @signedIn = options.signedIn
+    @initialSlide = options.initialSlide
     @slideOffset = 2 # Currently 2 slides exist before the measurement slides start
 
     measuringTapePixels = 4521
@@ -39,6 +40,9 @@ class TR.Views.Measurements extends TR.Views.Base
       heightFix: on
       useCSS: off
 
+    window.onpopstate = (e) =>
+      @slider.goToSlide(e.state.index) if e.state && (e.state.index || e.state.index == 0)
+
     @slideCount = @slider.getSlideCount() - 1
 
     @currentTapeValue = @model.get 'neck' || @model.defaults.neck
@@ -50,16 +54,25 @@ class TR.Views.Measurements extends TR.Views.Base
     @model.on 'change', @updateSummaryPage
     @updateSummaryPage()
 
-    unless @model.isNew()
-      @$('iframe').attr 'src', ''
-      @slider.goToSlide @slideCount
-      _.delay @loadVideos, 500
+    if @initialSlide
+      @goToInitialSlide()
+    else
+      if @model.isNew()
+        history.replaceState {index: 0}, 'Tailored Republic - Measurements - Overview', '/measurements/overview'
+      else
+        @$('iframe').attr 'src', ''
+        @slider.goToSlide @slideCount
+        _.delay @loadVideos, 500
 
   numberRegex: /^[0-9]+$/
 
   loadVideos: ->
     @$('iframe').each (index, el) ->
       $(el).attr 'src', $(el).data 'src'
+
+  goToInitialSlide: ->
+    index = @$(".measurements-list li[data-measurement=#{@initialSlide}]").index()
+    @slider.goToSlide index
 
   updateSummaryPage: =>
     templateData = _.extend {shirtOnly: @shirtOnly}, @model.toJSON()
@@ -154,6 +167,9 @@ class TR.Views.Measurements extends TR.Views.Base
     @$('.measurement-list-item').eq(@slider.getCurrentSlide() - @slideOffset).data 'measurement'
 
   onSlideBefore: ($el, oldIndex, newIndex) =>
+    currentSlideName = $el.data 'measurement'
+    unless history.state && history.state.index == newIndex
+      history.pushState {index: newIndex}, TR.titleize(currentSlideName), "/measurements/#{currentSlideName}"
     @$('.next, .accept').text('Accept').removeClass('next').addClass('accept') if newIndex == @slideCount
     @$('.next, .accept').text('Next').removeClass('accept').addClass('next') if newIndex < @slideCount
 

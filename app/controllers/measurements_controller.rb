@@ -14,6 +14,7 @@ class MeasurementsController < ApplicationController
     @num_measurements = Product.num_measurements(@shirt_only)
     @signed_in = user_signed_in?
     @is_https = request.ssl?
+    @initial_slide = params[:initial_slide]
   end
 
   def create
