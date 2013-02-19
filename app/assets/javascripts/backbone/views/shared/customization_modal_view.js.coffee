@@ -222,13 +222,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
       $largeImg.attr 'src', TR.imgSrc $target.data 'large'
       @$('.fabric-label').text $target.data 'label'
 
-    minLeft = -($largeImg.width() - $imageMagnified.width())
-    minTop = -($largeImg.height() - $imageMagnified.height())
-    e.offsetX = e.pageX - $target.offset().left if e.offsetX == undefined
-    e.offsetY = e.pageY - $target.offset().top if e.offsetY == undefined
-    leftPercentage = e.offsetX / $target.width()
-    topPercentage = e.offsetY / $target.height()
-    @$('.image-magnified img').css(left: (minLeft * leftPercentage) + 'px', top: (minTop * topPercentage) + 'px')
+    TR.Views.ProductModal.prototype.magnify.call @, e
 
   close: ->
     TR.Analytics.trackEvent 'Customizations', 'Close', @product.get('name')
