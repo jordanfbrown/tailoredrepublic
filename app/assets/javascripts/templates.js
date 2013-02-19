@@ -395,7 +395,7 @@ function program5(depth0,data) {
 function program7(depth0,data) {
   
   var buffer = "", stack1, foundHelper;
-  buffer += "\n      <li class=\"customization-wrapper fabric\" data-type=\"fabric\">\n        <p>For the bold suit connoisseur we have the option to build your own suit; including selecting a unique fabric\n          that is not available in our permanent collection. Start by choosing one of our 100% wool premium fabrics\n          above.\n        </p>\n        <div class=\"row\">\n          <div class=\"three columns\">\n            <a href=\"#\" class=\"fabric-option ";
+  buffer += "\n      <li class=\"customization-wrapper fabric\" data-type=\"fabric\">\n        <p>For the bold suit connoisseur we have the option to build your own suit; including selecting a unique fabric\n          that is not available in our permanent collection. Start by choosing one of our 100% wool premium fabrics\n          below.\n        </p>\n        <div class=\"row\">\n          <div class=\"three columns\">\n            <a href=\"#\" class=\"fabric-option ";
   stack1 = depth0.fabric;
   foundHelper = helpers.ifeq;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, "charcoal-pinstripe", {hash:{},inverse:self.noop,fn:self.program(8, program8, data)}) : helperMissing.call(depth0, "ifeq", stack1, "charcoal-pinstripe", {hash:{},inverse:self.noop,fn:self.program(8, program8, data)});

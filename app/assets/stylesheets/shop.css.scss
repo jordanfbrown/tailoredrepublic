@@ -184,10 +184,13 @@
     background-color: #fff;
     text-align: center;
 
+    h5 {
+      padding: 3px 20px;
+    }
+
     &.selected h5 {
       display: inline-block;
       background-color: $brown;
-      padding: 3px 20px;
       color: #fff;
 
       &:after {
@@ -295,13 +298,13 @@
     }
 
     &.fabric {
-
       .selected img {
         border: 1px dashed #aaa;
       }
 
       img {
         padding: 5px;
+        border: 1px solid transparent;
       }
 
       .three {
