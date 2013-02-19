@@ -150,13 +150,12 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     e.preventDefault()
 
     $target = $(e.currentTarget)
-    $img = $target.find 'img:not(.shield)'
     option = $target.data 'option'
     type = $target.parents('.customization-wrapper').data 'type'
 
     @customization.setByName type, option
-    @clearChecked()
-    $img.addClass 'checked'
+    @clearSelected()
+    $target.addClass 'selected'
     @slider.goToNextSlide()
     TR.Analytics.trackEvent 'Customizations', 'Choose', type, option
 
@@ -193,8 +192,8 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
   addCustomizationFailure: (error) =>
     TR.renderSimpleModal @errorMessage
 
-  clearChecked: =>
-    @$('.customization-wrapper').eq(@slider.getCurrentSlide()).find('img').removeClass 'checked'
+  clearSelected: =>
+    @$('.customization-wrapper').eq(@slider.getCurrentSlide()).find('.customization-option').removeClass 'selected'
 
   setProgressBar: (index) ->
     @$('.progress-bar li').removeClass 'selected'

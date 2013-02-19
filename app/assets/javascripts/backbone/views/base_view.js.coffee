@@ -7,4 +7,4 @@ class TR.Views.Base extends Backbone.View
     Backbone.View.prototype.remove.call @
 
   getTemplate: (name) ->
-    Handlebars.templates["_#{name}.tmpl"]
+    Handlebars.templates["_#{name}.hbs"]

@@ -28,19 +28,19 @@
         </p>
         <div class="row">
           <div class="three columns">
-            <a href="#" class="fabric-option {{#ifeq fabric 'charcoal-pinstripe'}}selected{{/ifeq}}" data-id="charcoal-pinstripe"><img src="{{imgSrc 'swatches/charcoal-with-pinstripe.jpg'}}"></a>
+            <a href="#" class="fabric-option {{#ifeq fabric "charcoal-pinstripe"}}selected{{/ifeq}}" data-id="charcoal-pinstripe"><img src="{{imgSrc "swatches/charcoal-with-pinstripe.jpg"}}"></a>
             <p>Dark Charcoal w/ Wide Pinstripes</p>
           </div>
           <div class="three columns">
-            <a href="#" class="fabric-option {{#ifeq fabric 'granite-red'}}selected{{/ifeq}}" data-id="granite-red"><img src="{{imgSrc 'swatches/granite-with-red.jpg'}}"></a>
+            <a href="#" class="fabric-option {{#ifeq fabric "granite-red"}}selected{{/ifeq}}" data-id="granite-red"><img src="{{imgSrc "swatches/granite-with-red.jpg"}}"></a>
             <p>Granite w/ Red Crosschecks</p>
           </div>
           <div class="three columns">
-            <a href="#" class="fabric-option {{#ifeq fabric 'heathered-light-gray'}}selected{{/ifeq}}" data-id="heathered-light-gray"><img src="{{imgSrc 'swatches/heathered-light-gray.jpg'}}"></a>
+            <a href="#" class="fabric-option {{#ifeq fabric "heathered-light-gray"}}selected{{/ifeq}}" data-id="heathered-light-gray"><img src="{{imgSrc "swatches/heathered-light-gray.jpg"}}"></a>
             <p>Heathered Light Gray</p>
           </div>
           <div class="three columns">
-            <a href="#" class="fabric-option {{#ifeq fabric 'stone-gray-with-blue'}}selected{{/ifeq}}" data-id="stone-gray-with-blue"><img src="{{imgSrc 'swatches/stone-gray-with-blue.jpg'}}"></a>
+            <a href="#" class="fabric-option {{#ifeq fabric "stone-gray-with-blue"}}selected{{/ifeq}}" data-id="stone-gray-with-blue"><img src="{{imgSrc "swatches/stone-gray-with-blue.jpg"}}"></a>
             <p>Stone Gray w/ Blue Crosschecks</p>
           </div>
         </div>
@@ -50,95 +50,95 @@
       <p>Notch lapels are the most widely used lapels and are a safe and stylish choice for any suit. Peak lapels add a
         little pizazz for those who want to stand out. TR tip: If you are unsure, go with the notch lapel, you don’t
         necessarily want anything to distract from the perfect fit of your tailored suit.</p>
-      <a href="#" class="customization-option four" data-option="notch">
+      <a href="#" class="customization-option four {{#ifeq lapel "notch"}}selected{{/ifeq}}" data-option="notch">
         <h5>Notch</h5>
-        <img {{#ifeq lapel "notch"}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/lapel-notch.png'}}">
+        <img src="{{imgSrc "customizations/suits/lapel-notch.png"}}">
         <div class="recommended">
-          <img src="{{imgSrc 'logos/logo-stitch.png'}}" class="shield"><span>Recommended</span>
+          <img src="{{imgSrc "logos/logo-stitch.png"}}" class="shield"><span>Recommended</span>
         </div>
       </a>
-      <a href="#" class="customization-option four" data-option="peak">
+      <a href="#" class="customization-option four {{#ifeq lapel "peak"}}selected{{/ifeq}}" data-option="peak">
         <h5>Peak</h5>
-        <img {{#ifeq lapel "peak"}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/lapel-peak.png'}}">
+        <img src="{{imgSrc "customizations/suits/lapel-peak.png"}}">
       </a>
-      <a href="#" class="customization-option four" data-option="narrow">
+      <a href="#" class="customization-option four {{#ifeq lapel "narrow"}}selected{{/ifeq}}" data-option="narrow">
         <h5>Narrow</h5>
-        <img {{#ifeq lapel "narrow"}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/lapel-narrow.png'}}">
+        <img src="{{imgSrc "customizations/suits/lapel-narrow.png"}}">
       </a>
     </li>
     <li class="customization-wrapper" data-type="buttons">
       <p>The modern standard and a fashionable choice is the two button suit. Two button suits fit more of a classic
         style and look great on taller guys. A one button suit is a very stylish option for those who want to be
         adventurous. TR tip: If you are going to add a vest, stick with the two button jacket.</p>
-      <a href="#" class="customization-option four" data-option="1">
+      <a href="#" class="customization-option four {{#ifeq buttons 1}}selected{{/ifeq}}" data-option="1">
         <h5>One</h5>
-        <img {{#ifeq buttons 1}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/buttons-one.png'}}">
+        <img src="{{imgSrc "customizations/suits/buttons-one.png"}}">
       </a>
-      <a href="#" class="customization-option four" data-option="2">
+      <a href="#" class="customization-option four {{#ifeq buttons 2}}selected{{/ifeq}}" data-option="2">
         <h5>Two</h5>
-        <img {{#ifeq buttons 2}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/buttons-two.png'}}">
+        <img src="{{imgSrc "customizations/suits/buttons-two.png"}}">
         <div class="recommended">
-          <img src="{{imgSrc 'logos/logo-stitch.png'}}" class="shield"><span>Recommended</span>
+          <img src="{{imgSrc "logos/logo-stitch.png"}}" class="shield"><span>Recommended</span>
         </div>
       </a>
-      <a href="#" class="customization-option four" data-option="3">
+      <a href="#" class="customization-option four {{#ifeq buttons 3}}selected{{/ifeq}}" data-option="3">
         <h5>Three</h5>
-        <img {{#ifeq buttons 3}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/buttons-three.png'}}">
+        <img src="{{imgSrc "customizations/suits/buttons-three.png"}}">
       </a>
     </li>
     <li class="customization-wrapper" data-type="vents">
       <p>Having two vents is the traditional, safe and stylish choice. One vent is a way to make your suit modern and
         sleek without distracting from the excellent fit (we love the single vent). TR tip: If you are a shorter guy,
         go ahead and get the double vent, the vertical vents help to draw the eye upward and elongate the body.</p>
-      <a href="#" class="customization-option four" data-option="0">
+      <a href="#" class="customization-option four {{#ifeq vents 0}}selected{{/ifeq}}" data-option="0">
         <h5>None</h5>
-        <img {{#ifeq vents 0}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/vents-none.png'}}">
+        <img src="{{imgSrc "customizations/suits/vents-none.png"}}">
       </a>
-      <a href="#" class="customization-option four" data-option="1">
+      <a href="#" class="customization-option four {{#ifeq vents 1}}selected{{/ifeq}}" data-option="1">
         <h5>One</h5>
-        <img {{#ifeq vents 1}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/vents-one.png'}}">
+        <img src="{{imgSrc "customizations/suits/vents-one.png"}}">
       </a>
-      <a href="#" class="customization-option four" data-option="2">
+      <a href="#" class="customization-option four {{#ifeq vents 2}}selected{{/ifeq}}" data-option="2">
         <h5>Two</h5>
-        <img {{#ifeq vents 2}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/vents-two.png'}}">
+        <img src="{{imgSrc "customizations/suits/vents-two.png"}}">
         <div class="recommended">
-          <img src="{{imgSrc 'logos/logo-stitch.png'}}" class="shield"><span>Recommended</span>
+          <img src="{{imgSrc "logos/logo-stitch.png"}}" class="shield"><span>Recommended</span>
         </div>
       </a>
     </li>
     <li class="customization-wrapper" data-type="pleats">
       <p>Pleats are typically associated with old-fashioned suits. If you are looking for a modern, trendier look, we
         recommend going with no pleats and no cuffs on the pants.</p>
-      <a href="#" class="customization-option four" data-option="0">
+      <a href="#" class="customization-option four {{#ifeq pleats 0}}selected{{/ifeq}}" data-option="0">
         <h5>None</h5>
-        <img {{#ifeq pleats 0}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/pleats-none.png'}}">
+        <img src="{{imgSrc "customizations/suits/pleats-none.png"}}">
         <div class="recommended">
-          <img src="{{imgSrc 'logos/logo-stitch.png'}}" class="shield"><span>Recommended</span>
+          <img src="{{imgSrc "logos/logo-stitch.png"}}" class="shield"><span>Recommended</span>
         </div>
       </a>
-      <a href="#" class="customization-option four" data-option="1">
+      <a href="#" class="customization-option four {{#ifeq pleats 1}}selected{{/ifeq}}" data-option="1">
         <h5>One</h5>
-        <img {{#ifeq pleats 1}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/pleats-one.png'}}">
+        <img src="{{imgSrc "customizations/suits/pleats-one.png"}}">
       </a>
-      <a href="#" class="customization-option four" data-option="2">
+      <a href="#" class="customization-option four {{#ifeq pleats 2}}selected{{/ifeq}}" data-option="2">
         <h5>Two</h5>
-        <img {{#ifeq pleats 2}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/pleats-two.png'}}">
+        <img src="{{imgSrc "customizations/suits/pleats-two.png"}}">
       </a>
     </li>
     <li class="customization-wrapper two-item" data-type="pant_cuffs">
       <p>Pant cuffs were a suit staple in previous decades, but unless you are going for an older, more classic look,
         we recommend sticking with no pant cuffs. It keeps the suit lines clean and sharp, keeping those heads on a
         swivel.</p>
-      <a href="#" class="customization-option" data-option="false">
+      <a href="#" class="customization-option {{#ifeq pant_cuffs false}}selected{{/ifeq}}" data-option="false">
         <h5>None</h5>
-        <img src="{{imgSrc 'customizations/suits/cuffs-no.png'}}" class="cuffs {{#ifeq pant_cuffs false}}checked{{/ifeq}}">
+        <img src="{{imgSrc "customizations/suits/cuffs-no.png"}}" class="cuffs">
         <div class="recommended">
-          <img src="{{imgSrc 'logos/logo-stitch.png'}}" class="shield"><span>Recommended</span>
+          <img src="{{imgSrc "logos/logo-stitch.png"}}" class="shield"><span>Recommended</span>
         </div>
       </a>
-      <a href="#" class="customization-option" data-option="true">
+      <a href="#" class="customization-option {{#ifeq pant_cuffs true}}selected{{/ifeq}}" data-option="true">
         <h5>Cuffs</h5>
-        <img src="{{imgSrc 'customizations/suits/cuffs-yes.png'}}" class="cuffs {{#ifeq pant_cuffs true}}checked{{/ifeq}}">
+        <img src="{{imgSrc "customizations/suits/cuffs-yes.png"}}" class="cuffs">
       </a>
     </li>
     <li class="customization-wrapper" data-type="fit">
@@ -146,20 +146,20 @@
         figure. And the slim fit is great for lean guys who want a very tight fitting suit and know they will not have
         any weight changes in the future. TR tip: Regardless of the fit option, our suits are tailored to your
         measurements, so slim or full-figured, your suit will look and feel great.</p>
-      <a href="#" class="customization-option four" data-option="slim">
+      <a href="#" class="customization-option four {{#ifeq fit "slim"}}selected{{/ifeq}}" data-option="slim">
         <h5>Slim</h5>
-        <img {{#ifeq fit "slim"}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/fit-slim.png'}}">
+        <img src="{{imgSrc "customizations/suits/fit-slim.png"}}">
       </a>
-      <a href="#" class="customization-option four" data-option="tailored">
+      <a href="#" class="customization-option four {{#ifeq fit "tailored"}}selected{{/ifeq}}" data-option="tailored">
         <h5>Tailored</h5>
-        <img {{#ifeq fit "tailored"}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/fit-tailored.png'}}">
+        <img src="{{imgSrc "customizations/suits/fit-tailored.png"}}">
         <div class="recommended">
-          <img src="{{imgSrc 'logos/logo-stitch.png'}}" class="shield"><span>Recommended</span>
+          <img src="{{imgSrc "logos/logo-stitch.png"}}" class="shield"><span>Recommended</span>
         </div>
       </a>
-      <a href="#" class="customization-option four" data-option="normal">
+      <a href="#" class="customization-option four {{#ifeq fit "normal"}}selected{{/ifeq}}" data-option="normal">
         <h5>Normal</h5>
-        <img {{#ifeq fit "normal"}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/fit-normal.png'}}">
+        <img src="{{imgSrc "customizations/suits/fit-normal.png"}}">
       </a>
     </li>
     <li class="customization-wrapper linings" data-type="lining">
@@ -169,58 +169,58 @@
         suit from the off-the-rack crowd; we recommend being bold.</p>
       <div class="row">
         <div class="three columns">
-          <a href="#" class="lining-option {{#ifeq lining 'black'}}selected{{/ifeq}}" data-id="black">
-            <img src="{{imgSrc 'customizations/suits/linings/black.jpg'}}">
+          <a href="#" class="lining-option {{#ifeq lining "black"}}selected{{/ifeq}}" data-id="black">
+            <img src="{{imgSrc "customizations/suits/linings/black.jpg"}}">
             <span class="label">Black</span>
           </a>
-          <a href="#" class="lining-option {{#ifeq lining 'burgundy'}}selected{{/ifeq}}" data-id="burgundy">
-            <img src="{{imgSrc 'customizations/suits/linings/burgundy.jpg'}}">
+          <a href="#" class="lining-option {{#ifeq lining "burgundy"}}selected{{/ifeq}}" data-id="burgundy">
+            <img src="{{imgSrc "customizations/suits/linings/burgundy.jpg"}}">
             <span class="label">Burgundy</span>
           </a>
-          <a href="#" class="lining-option {{#ifeq lining 'forest-green'}}selected{{/ifeq}}" data-id="forest-green">
-            <img src="{{imgSrc 'customizations/suits/linings/forest-green.jpg'}}">
+          <a href="#" class="lining-option {{#ifeq lining "forest-green"}}selected{{/ifeq}}" data-id="forest-green">
+            <img src="{{imgSrc "customizations/suits/linings/forest-green.jpg"}}">
             <span class="label">Forest Green</span>
           </a>
         </div>
         <div class="three columns">
-          <a href="#" class="lining-option {{#ifeq lining 'gray'}}selected{{/ifeq}}" data-id="gray">
-            <img src="{{imgSrc 'customizations/suits/linings/gray.jpg'}}">
+          <a href="#" class="lining-option {{#ifeq lining "gray"}}selected{{/ifeq}}" data-id="gray">
+            <img src="{{imgSrc "customizations/suits/linings/gray.jpg"}}">
             <span class="label">Gray</span>
           </a>
-          <a href="#" class="lining-option {{#ifeq lining 'ivory'}}selected{{/ifeq}}" data-id="ivory">
-            <img src="{{imgSrc 'customizations/suits/linings/ivory.jpg'}}">
+          <a href="#" class="lining-option {{#ifeq lining "ivory"}}selected{{/ifeq}}" data-id="ivory">
+            <img src="{{imgSrc "customizations/suits/linings/ivory.jpg"}}">
             <span class="label">Ivory</span>
           </a>
-          <a href="#" class="lining-option {{#ifeq lining 'light-brown'}}selected{{/ifeq}}" data-id="light-brown">
-            <img src="{{imgSrc 'customizations/suits/linings/light-brown.jpg'}}">
+          <a href="#" class="lining-option {{#ifeq lining "light-brown"}}selected{{/ifeq}}" data-id="light-brown">
+            <img src="{{imgSrc "customizations/suits/linings/light-brown.jpg"}}">
             <span class="label">Light Brown</span>
           </a>
         </div>
         <div class="three columns">
-          <a href="#" class="lining-option {{#ifeq lining 'marine'}}selected{{/ifeq}}" data-id="marine">
-            <img src="{{imgSrc 'customizations/suits/linings/marine.jpg'}}">
+          <a href="#" class="lining-option {{#ifeq lining "marine"}}selected{{/ifeq}}" data-id="marine">
+            <img src="{{imgSrc "customizations/suits/linings/marine.jpg"}}">
             <span class="label">Marine</span>
           </a>
-          <a href="#" class="lining-option {{#ifeq lining 'navy'}}selected{{/ifeq}}" data-id="navy">
-            <img src="{{imgSrc 'customizations/suits/linings/navy.jpg'}}"}>
+          <a href="#" class="lining-option {{#ifeq lining "navy"}}selected{{/ifeq}}" data-id="navy">
+            <img src="{{imgSrc "customizations/suits/linings/navy.jpg"}}">
             <span class="label">Navy</span>
           </a>
-          <a href="#" class="lining-option {{#ifeq lining 'purple'}}selected{{/ifeq}}" data-id="purple">
-            <img src="{{imgSrc 'customizations/suits/linings/phos-purple.jpg'}}">
+          <a href="#" class="lining-option {{#ifeq lining "purple"}}selected{{/ifeq}}" data-id="purple">
+            <img src="{{imgSrc "customizations/suits/linings/phos-purple.jpg"}}">
             <span class="label">Purple</span>
           </a>
         </div>
         <div class="three columns">
-          <a href="#" class="lining-option {{#ifeq lining 'salmon-aqua'}}selected{{/ifeq}}" data-id="salmon-aqua">
-            <img src="{{imgSrc 'customizations/suits/linings/phos-salmon-aqua.jpg'}}">
+          <a href="#" class="lining-option {{#ifeq lining "salmon-aqua"}}selected{{/ifeq}}" data-id="salmon-aqua">
+            <img src="{{imgSrc "customizations/suits/linings/phos-salmon-aqua.jpg"}}">
             <span class="label">Salmon Aqua</span>
           </a>
-          <a href="#" class="lining-option {{#ifeq lining 'powder-blue'}}selected{{/ifeq}}" data-id="powder-blue">
-            <img src="{{imgSrc 'customizations/suits/linings/powder-blue.jpg'}}">
+          <a href="#" class="lining-option {{#ifeq lining "powder-blue"}}selected{{/ifeq}}" data-id="powder-blue">
+            <img src="{{imgSrc "customizations/suits/linings/powder-blue.jpg"}}">
             <span class="label">Powder Blue</span>
           </a>
-          <a href="#" class="lining-option {{#ifeq lining 'salmon'}}selected{{/ifeq}}" data-id="salmon">
-            <img src="{{imgSrc 'customizations/suits/linings/salmon.jpg'}}">
+          <a href="#" class="lining-option {{#ifeq lining "salmon"}}selected{{/ifeq}}" data-id="salmon">
+            <img src="{{imgSrc "customizations/suits/linings/salmon.jpg"}}">
             <span class="label">Salmon</span>
           </a>
         </div>
@@ -232,12 +232,12 @@
       </div>
     </li>
     <li class="customization-wrapper two-item" data-type="monogram">
-      <p>Monogramming can be up to 15 characters, usually used for your name (i.e. 'Richard Feynman' or 'R.P.F.' or
-        'R. Feynman'). It will show up on the inside of your jacket above the left breast pocket. Feel free to put
+      <p>Monogramming can be up to 15 characters, usually used for your name (i.e. "Richard Feynman" or "R.P.F." or
+        "R. Feynman"). It will show up on the inside of your jacket above the left breast pocket. Feel free to put
         whatever you want here, just keep in mind that people will see it when you are showing off your envy-inducing
         lining.</p>
       <div href="#" class="customization-option">
-        <img src="{{imgSrc 'customizations/suits/monogram.png'}}" class="monogram">
+        <img src="{{imgSrc "customizations/suits/monogram.png"}}" class="monogram">
       </div>
       <div class="customization-option">
         <form id="monogram-form">
@@ -252,36 +252,36 @@
         option. This is a fairly bold look, so we recommend opting out unless you are familiar with the look and know
         you want it.
       </p>
-      <a href="#" class="customization-option" data-option="false">
+      <a href="#" class="customization-option {{#ifeq pick_stitching false}}selected{{/ifeq}}" data-option="false">
         <h5>No</h5>
-        <img src="{{imgSrc 'customizations/suits/pick-stitching-no.png'}}" class="pick-stitching {{#ifeq pick_stitching false}}checked{{/ifeq}}">
+        <img src="{{imgSrc "customizations/suits/pick-stitching-no.png"}}" class="pick-stitching">
         <div class="recommended">
-          <img src="{{imgSrc 'logos/logo-stitch.png'}}" class="shield"><span>Recommended</span>
+          <img src="{{imgSrc "logos/logo-stitch.png"}}" class="shield"><span>Recommended</span>
         </div>
       </a>
-      <a href="#" class="customization-option" data-option="true">
+      <a href="#" class="customization-option {{#ifeq pick_stitching true}}selected{{/ifeq}}" data-option="true">
         <h5>Yes (+${{pickStitchingPrice}})</h5>
-        <img src="{{imgSrc 'customizations/suits/pick-stitching-yes.png'}}" class="pick-stitching {{#ifeq pick_stitching true}}checked{{/ifeq}}">
+        <img src="{{imgSrc "customizations/suits/pick-stitching-yes.png"}}" class="pick-stitching">
       </a>
     </li>
     <li class="customization-wrapper" data-type="vest">
       <p>Do you want to make your suit a three-piece? You can add a matching vest to your suit order for $79. A
         three-piece suit is sure to draw looks and makes a bold statement that you are serious about your style game.</p>
-      <a href="#" class="customization-option three vest" data-option="0">
+      <a href="#" class="customization-option three vest {{#ifeq vest 0}}selected{{/ifeq}}" data-option="0">
         <h5>No Vest (+$0)</h5>
-        <img {{#ifeq vest 0}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/vest-no.png'}}">
+        <img src="{{imgSrc "customizations/suits/vest-no.png"}}">
       </a>
-      <a href="#" class="customization-option three vest" data-option="3">
+      <a href="#" class="customization-option three vest {{#ifeq vest 3}}selected{{/ifeq}}" data-option="3">
         <h5>3 Buttons (+${{vestPrice}})</h5>
-        <img {{#ifeq vest 3}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/vest-three.png'}}">
+        <img src="{{imgSrc "customizations/suits/vest-three.png"}}">
       </a>
-      <a href="#" class="customization-option three vest" data-option="4">
+      <a href="#" class="customization-option three vest {{#ifeq vest 4}}selected{{/ifeq}}" data-option="4">
         <h5>4 Buttons (+${{vestPrice}})</h5>
-        <img {{#ifeq vest 4}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/vest-four.png'}}">
+        <img src="{{imgSrc "customizations/suits/vest-four.png"}}">
       </a>
-      <a href="#" class="customization-option three vest" data-option="5">
+      <a href="#" class="customization-option three vest {{#ifeq vest 5}}selected{{/ifeq}}" data-option="5">
         <h5>5 Buttons (+${{vestPrice}})</h5>
-        <img {{#ifeq vest 5}}class="checked"{{/ifeq}} src="{{imgSrc 'customizations/suits/vest-five.png'}}">
+        <img src="{{imgSrc "customizations/suits/vest-five.png"}}">
       </a>
     </li>
     <li class="customization-wrapper" data-type="checkout">
