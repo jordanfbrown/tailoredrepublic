@@ -35,7 +35,13 @@
           <% end %>
           <li><span class="item-description">Shipping:</span> $0.00</li>
           <li><span class="item-description">Tax:</span> <%= order.tax? ? number_to_currency(order.tax) : '$0.00' %></li>
-          <li><span class="item-description">Total cost:</span> <%= number_to_currency order.final_cost %></li>
+          <li class="total-cost"><span class="item-description">Total cost:</span> <%= number_to_currency order.final_cost %></li>
+          <% unless order.generated_coupons.blank? %>
+            <li><h5>Coupon Codes</h5></li>
+            <% order.generated_coupons.each do |coupon| %>
+              <li><span class="item-description"><%= coupon.description %>:</span> <%= coupon.code %></li>
+            <% end %>
+          <% end %>
         </ul>
       </div>
       <div class="four columns">
