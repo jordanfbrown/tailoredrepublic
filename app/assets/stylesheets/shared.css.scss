@@ -141,6 +141,10 @@ input[type=submit] {
   text-align: center;
   -webkit-transition: background-color 250ms;
 
+  &:focus {
+    color: #fff;
+  }
+
   &:hover {
     text-decoration-color: #fff;
     -moz-text-decoration-color: #fff;
