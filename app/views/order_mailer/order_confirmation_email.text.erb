@@ -1,10 +1,59 @@
-Thank you for order, <%= @user.name %>!
-=========================================
+Thanks for your order <%= @user.name %>!
+----------------------------------------
 
-Order Summary
--------------
+Order ID: <%= @order.order_id %>
+
+Shipping Address:
+----------------------------------
+<%= @order.shipping_address.name %>
+<%= @order.shipping_address.line1 %>
+<%= @order.shipping_address.line2 if @order.shipping_address.line2? %>
+<%= @order.shipping_address.city %>, <%= @order.shipping_address.state %>, <%= @order.shipping_address.zip %>
+
+Billing Address:
+---------------------------------
+<%= @order.billing_address.name %>
+<%= @order.billing_address.line1 %>
+<%= @order.billing_address.line2 if @order.billing_address.line2? %>
+<%= @order.billing_address.city %>, <%= @order.billing_address.state %>, <%= @order.billing_address.zip %>
+
+Order Summary:
+-------------------------------
 <% @order.line_items.each do |line_item|  %>
-  <%= line_item.name %>
+<%= line_item.quantity %> x <%= line_item.name %>: <%= number_to_currency line_item.total_price %>
+<% if line_item.category == :suit || line_item.category == :shirt %>
+Customizations:
+<% customization_list(line_item.customization).each do |customization| %>
+  <%= customization[:option] %>: <%= customization[:type] %>
+<% end %>
+<% end %>
 <% end %>
 
-Thanks again!
+<% unless @order.coupon.nil? %>
+Discounts:
+<%= @order.coupon_description %>: -<%= number_to_currency @order.discount %>
+<% end %>
+
+Shipping: $0.00
+Tax: <%= @order.tax? ? number_to_currency(@order.tax) : '$0.00' %>
+------------------------------------
+Total price: <%= number_to_currency @order.final_cost %>
+
+<% unless @order.generated_coupons.blank? %>
+Gift Card Coupon Codes:
+<% @order.generated_coupons.each do |coupon| %>
+<%= coupon.description %>: <%= coupon.code %>
+<% end %>
+<% end %>
+
+Your Tailored Republic garments should arrive at your doorstep within 3-4 weeks. If there are any problems,
+feel free to give us a call at 218-3-Tailor (218-382-4567). Thanks again from the Tailored Republic Team!
+
+Alterations/Return Policy:
+We want to ensure that your suit/shirt fits you as it should and makes you look like the man you want to be.
+Therefore we will give you up to $75 of alteration credit* or a full remake if the fit is irreparable. The
+alteration credit will be reimbursed to your credit card after you send a scanned copy of the receipt to
+support@tailoredrepublic.com. The remake credit will be reimbursed to your credit card upon receipt of the
+returned suit/shirt*.
+
+* You must contact us to notify us of the problem within 2 weeks of suit delivery for these offers to be valid.
