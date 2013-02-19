@@ -141,12 +141,4 @@ module MeasurementsHelper
 
     metadata
   end
-
-  def progress_todo_or_completed(measurement)
-    image_tag measurement.new_record? ? 'icons/star-no-stroke.png' : 'icons/star-stroke.png'
-  end
-
-  def progress_current
-    image_tag 'icons/star-filled.png'
-  end
 end

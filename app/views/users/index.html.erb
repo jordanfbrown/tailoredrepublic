@@ -18,7 +18,7 @@
           <td><%= link_to user.name, user %></td>
           <td><%= user.email %></td>
           <td><%= user.created_at.to_date %></td>
-          <td><%= user.role.titleize unless user.role.blank? %></td>
+          <td><%= user.role.titleize if user.role? %></td>
           <td>
             <%= link_to 'Edit', edit_user_path(user) %>
           </td>
