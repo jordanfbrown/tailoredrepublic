@@ -244,9 +244,11 @@ class TR.Views.Measurements extends TR.Views.Base
 
   acceptQuickFill: (e) ->
     e.preventDefault()
-    valid = true
 
-    @$('.quick-measurement-form input[type=text]').each (index, el) =>
+    $form = @$('.quick-measurement-form')
+    valid = @validateAgeHeightWeight($form)
+
+    $form.find('.quick-measurement-input').each (index, el) =>
       $el = $(el)
       # ID is in the form measurement_attr_name -- this split returns attr_name
       name = $el.attr('id').split('measurement_')[1]
@@ -254,53 +256,26 @@ class TR.Views.Measurements extends TR.Views.Base
       if _.isNaN(inches) || inches < 0 || inches > 90
         valid = false
         $el.addClass 'error'
+        unless $form.find('.quick-measurement-error').exists()
+          $form.find('.error-list').append('<li class="quick-measurement-error">Measurements must be a number in inches between 0 and 90.</li>')
       else
         $el.removeClass 'error'
         @model.setByName name, inches
       true
 
     if valid
-      @$('.quick-fill-error').fadeOut()
+      $form.find('.error-list').empty()
       @slider.triggerResize(true)
       TR.Analytics.trackEvent 'Measurements', 'Accept', 'Quick Fill'
       @saveMeasurements()
     else
-      @$('.quick-fill-error').fadeIn()
       @slider.triggerResize(true)
 
   validateCurrentInput: ->
     # Height, age, and weight
     if @slider.getCurrentSlide() == 1
-      $height = @$('#measurement_height')
-      $weight = @$('#measurement_weight')
-      $age = @$('#measurement_age')
-      height = parseInt $height.val()
-      weight = parseInt $weight.val()
-      age = parseInt $age.val()
-
-      $errors = @$('.height-age-weight .error')
-      $errors.empty()
-      valid = true
-
-      if age <= 0 || age >= 110 || _.isNaN(age) || !@numberRegex.test($age.val())
-        $errors.append '<li>Age must be a number between 0 and 110</li>'
-        valid = false
-      if height <= 0 || height >= 96 || _.isNaN(height) || !@numberRegex.test($height.val())
-        $errors.append '<li>Height must be a number in inches between 0 and 96</li>'
-        valid = false
-      if weight <= 0 || weight >= 400 || _.isNaN(weight) || !@numberRegex.test($weight.val())
-        $errors.append '<li>Weight must be a number in pounds between 0 and 400</li>'
-        valid = false
-
-      if valid
-        $height.val height
-        $age.val age
-        $weight.val weight
-      else
-        $errors.fadeIn()
-
-      @slider.triggerResize true
-      valid
+      $form = @$('.height-age-weight')
+      @validateAgeHeightWeight($form)
     else
       $currentInput = @getCurrentMeasurementInput()
 
@@ -316,3 +291,49 @@ class TR.Views.Measurements extends TR.Views.Base
         $currentInput.next('.error').fadeOut()
         @slider.triggerResize true
         true
+
+  validateAgeHeightWeight: ($form) ->
+    $height = $form.find('#measurement_height')
+    $weight = $form.find('#measurement_weight')
+    $age = $form.find('#measurement_age')
+    height = parseInt $height.val()
+    weight = parseInt $weight.val()
+    age = parseInt $age.val()
+
+    $errors = $form.find('.error-list')
+    $errors.empty()
+    valid = true
+
+    if age <= 0 || age >= 110 || _.isNaN(age) || !@numberRegex.test($age.val())
+      $errors.append '<li>Age must be a number between 0 and 110</li>'
+      $age.addClass 'error'
+      valid = false
+    else
+      $age.removeClass 'error'
+
+    if height <= 0 || height >= 96 || _.isNaN(height) || !@numberRegex.test($height.val())
+      $errors.append '<li>Height must be a number in inches between 0 and 96</li>'
+      $height.addClass 'error'
+      valid = false
+    else
+      $height.removeClass 'error'
+
+    if weight <= 0 || weight >= 400 || _.isNaN(weight) || !@numberRegex.test($weight.val())
+      $errors.append '<li>Weight must be a number in pounds between 0 and 400</li>'
+      $weight.addClass 'error'
+      valid = false
+    else
+      $weight.removeClass 'error'
+
+    if valid
+      $height.val height
+      $age.val age
+      $weight.val weight
+      @model.set 'height', height
+      @model.set 'weight', weight
+      @model.set 'age', age
+    else
+      $errors.fadeIn()
+
+    @slider.triggerResize true
+    valid

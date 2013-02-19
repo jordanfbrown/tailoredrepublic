@@ -38,67 +38,79 @@
                 <%= form_for @measurement, url: '', html: { class: 'quick-measurement-form' } do |f| %>
                   <div class="four columns">
                     <%= f.label :neck %>
-                    <%= f.text_field :neck %>
+                    <%= f.text_field :neck, class: 'quick-measurement-input' %>
                   </div>
                   <div class="four columns">
                     <%= f.label :waist %>
-                    <%= f.text_field :waist %>
+                    <%= f.text_field :waist, class: 'quick-measurement-input' %>
                   </div>
                   <div class="four columns">
                     <%= f.label :arm_length %>
-                    <%= f.text_field :arm_length %>
+                    <%= f.text_field :arm_length, class: 'quick-measurement-input' %>
                   </div>
                   <div class="four columns">
                     <%= f.label :stomach %>
-                    <%= f.text_field :stomach %>
+                    <%= f.text_field :stomach, class: 'quick-measurement-input' %>
                   </div>
                   <div class="four columns">
                     <%= f.label :chest %>
-                    <%= f.text_field :chest %>
+                    <%= f.text_field :chest, class: 'quick-measurement-input' %>
                   </div>
                   <div class="four columns">
                     <%= f.label :hips %>
-                    <%= f.text_field :hips %>
+                    <%= f.text_field :hips, class: 'quick-measurement-input' %>
                   </div>
                   <div class="four columns">
                     <%= f.label :bicep %>
-                    <%= f.text_field :bicep %>
+                    <%= f.text_field :bicep, class: 'quick-measurement-input' %>
                   </div>
                   <div class="four columns">
                     <%= f.label :back %>
-                    <%= f.text_field :back %>
+                    <%= f.text_field :back, class: 'quick-measurement-input' %>
                   </div>
                   <div class="four columns">
                     <%= f.label :front %>
-                    <%= f.text_field :front %>
+                    <%= f.text_field :front, class: 'quick-measurement-input' %>
                   </div>
                   <div class="four columns">
                     <%= f.label :full_shoulders %>
-                    <%= f.text_field :full_shoulders %>
+                    <%= f.text_field :full_shoulders, class: 'quick-measurement-input' %>
                   </div>
                   <div class="four columns">
                     <%= f.label :wrist %>
-                    <%= f.text_field :wrist %>
+                    <%= f.text_field :wrist, class: 'quick-measurement-input' %>
                   </div>
                   <div class="four columns">
                     <%= f.label :jacket_length %>
-                    <%= f.text_field :jacket_length %>
+                    <%= f.text_field :jacket_length, class: 'quick-measurement-input' %>
+                  </div>
+                  <div class="four columns">
+                    <%= f.label :age %>
+                    <%= f.text_field :age %>
+                  </div>
+                  <div class="four columns">
+                    <%= f.label :height, 'Height (in.)' %>
+                    <%= f.text_field :height %>
+                  </div>
+                  <div class="four columns">
+                    <%= f.label :weight, 'Weight (lbs)' %>
+                    <%= f.text_field :weight %>
                   </div>
                   <% unless @shirt_only %>
                     <div class="four columns">
                       <%= f.label :pant_length %>
-                      <%= f.text_field :pant_length %>
+                      <%= f.text_field :pant_length, class: 'quick-measurement-input' %>
                     </div>
                     <div class="four columns">
                       <%= f.label :crotch %>
-                      <%= f.text_field :crotch %>
+                      <%= f.text_field :crotch, class: 'quick-measurement-input' %>
                     </div>
                     <div class="four columns">
                       <%= f.label :thigh %>
-                      <%= f.text_field :thigh %>
+                      <%= f.text_field :thigh, class: 'quick-measurement-input' %>
                     </div>
                   <% end %>
-                  <p class="error quick-fill-error" style="display: none;">Measurements must be a number in inches between 0 and 90.</p>
+                  <ul class="error error-list"></ul>
                   <%= link_to 'Accept', '#', class: 'button full-width large accept-quick' %>
                 <% end %>
               </div>
@@ -113,7 +125,7 @@
               <div class="six columns">
                 <div class="row">
                   <%= form_for @measurement, url: '', html: { class: 'height-age-weight' } do |f| %>
-                    <ul class="error" style="display: none;"></ul>
+                    <ul class="error error-list"></ul>
                     <div class="four columns">
                       <%= f.label :age %>
                       <%= f.text_field :age %>
