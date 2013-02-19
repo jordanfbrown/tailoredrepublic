@@ -6,6 +6,13 @@ class LineItemTest < ActiveSupport::TestCase
     assert_equal line_item.total_price, line_item.product.price
   end
 
+  test "total_price should be doubled if quantity is 2" do
+    line_item = line_items(:one)
+    original_price = line_item.total_price
+    line_item.quantity = 2
+    assert_equal original_price * 2, line_item.total_price
+  end
+
   test "total_price should be Product.vest_price more if there is a vest" do
     line_item = line_items(:one)
     line_item.customization.vest = true

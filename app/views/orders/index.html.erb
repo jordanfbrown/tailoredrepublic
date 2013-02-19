@@ -17,7 +17,7 @@
         <ul class="items-purchased">
           <li><h5>Purchase Summary</h5></li>
           <% order.line_items.each do |line_item|  %>
-            <li><span class="item-description"><%= line_item.name %>:</span> <%= number_to_currency line_item.total_price %></li>
+            <li><span class="item-description"><%= line_item.quantity %> x <%= line_item.name %>:</span> <%= number_to_currency line_item.total_price %></li>
             <% unless line_item.customization.nil? %>
               <li class="customization-toggle">
                 <a href="#" class="view-customizations">

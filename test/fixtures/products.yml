@@ -9,11 +9,6 @@ executive:
     bread and butter.
   price: 329
   quantity: 10
-  image_large_url: products/suits/black-3-piece.png
-  image_small_1_url: products/suits/modal-suit-preview.png
-  image_small_2_url: products/suits/modal-suit-preview.png
-  image_small_3_url: products/suits/modal-suit-preview.png
-  image_small_4_url: products/suits/modal-suit-preview.png
 
 entrepreneur:
   category: suit
@@ -25,11 +20,6 @@ entrepreneur:
     take on the nightlife. Two suits in one.
   price: 429
   quantity: 10
-  image_large_url: products/suits/blue-suit.png
-  image_small_1_url: products/suits/modal-suit-preview.png
-  image_small_2_url: products/suits/modal-suit-preview.png
-  image_small_3_url: products/suits/modal-suit-preview.png
-  image_small_4_url: products/suits/modal-suit-preview.png
 
 hustler:
   category: suit
@@ -40,11 +30,6 @@ hustler:
     tradition without drawing a disapproving look from you stodgy old boss. Stay fly.
   price: 429
   quantity: 10
-  image_large_url: products/suits/charcoal-3-piece.png
-  image_small_1_url: products/suits/modal-suit-preview.png
-  image_small_2_url: products/suits/modal-suit-preview.png
-  image_small_3_url: products/suits/modal-suit-preview.png
-  image_small_4_url: products/suits/modal-suit-preview.png
 
 jetsetter:
   category: suit
@@ -57,11 +42,6 @@ jetsetter:
     glass when you flew through that patch of turbulence.
   price: 529
   quantity: 10
-  image_large_url: products/suits/grey-3-piece.png
-  image_small_1_url: products/suits/modal-suit-preview.png
-  image_small_2_url: products/suits/modal-suit-preview.png
-  image_small_3_url: products/suits/modal-suit-preview.png
-  image_small_4_url: products/suits/modal-suit-preview.png
 
 tuxedo:
   category: suit
@@ -73,11 +53,6 @@ tuxedo:
     jostle for a spot next to it.
   price: 529
   quantity: 10
-  image_large_url: products/suits/black-tuxedo.png
-  image_small_1_url: products/suits/modal-suit-preview.png
-  image_small_2_url: products/suits/modal-suit-preview.png
-  image_small_3_url: products/suits/modal-suit-preview.png
-  image_small_4_url: products/suits/modal-suit-preview.png
 
 build_own:
   category: suit
@@ -89,50 +64,36 @@ build_own:
     to treat the whiplash of envious onlookers will be sold separately.
   price: 529
   quantity: 10
-  image_large_url: products/suits/black-striped-suit.png
-  image_small_1_url: products/suits/modal-suit-preview.png
-  image_small_2_url: products/suits/modal-suit-preview.png
-  image_small_3_url: products/suits/modal-suit-preview.png
-  image_small_4_url: products/suits/modal-suit-preview.png
 
 gift_card_25:
   category: gift_card
   name: $25 Gift Card
   price: 25
-  image_large_url: gift_cards/gift-card-25.jpg
 
 gift_card_50:
   category: gift_card
   name: $50 Gift Card
   price: 50
-  image_large_url: gift_cards/gift-card-50.jpg
-
 
 gift_card_100:
   category: gift_card
   name: $100 Gift Card
   price: 100
-  image_large_url: gift_cards/gift-card-100.jpg
 
 gift_card_349:
   category: gift_card
   name: $349 Gift Card
   price: 349
-  image_large_url: gift_cards/gift-card-349.jpg
-
 
 gift_card_469:
   category: gift_card
   name: $469 Gift Card
   price: 469
-  image_large_url: gift_cards/gift-card-469.jpg
-
 
 gift_card_629:
   category: gift_card
   name: $629 Gift Card
   price: 629
-  image_large_url: gift_cards/gift-card-629.jpg
 
 white_shirt:
   category: shirt
@@ -140,11 +101,6 @@ white_shirt:
   description: White shirt
   price: 99
   quantity: 10
-  image_large_url: products/shirts/white-shirt.png
-  image_small_1_url: products/suits/modal-suit-preview.png
-  image_small_2_url: products/suits/modal-suit-preview.png
-  image_small_3_url: products/suits/modal-suit-preview.png
-  image_small_4_url: products/suits/modal-suit-preview.png
 
 blue_shirt:
   category: shirt
@@ -152,8 +108,3 @@ blue_shirt:
   description: Blue shirt
   price: 99
   quantity: 10
-  image_large_url: products/shirts/blue-shirt.png
-  image_small_1_url: products/suits/modal-suit-preview.png
-  image_small_2_url: products/suits/modal-suit-preview.png
-  image_small_3_url: products/suits/modal-suit-preview.png
-  image_small_4_url: products/suits/modal-suit-preview.png

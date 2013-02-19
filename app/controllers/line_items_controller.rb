@@ -4,15 +4,25 @@ class LineItemsController < ApplicationController
 
     if params[:customization_id]
       customization = Customization.find(params[:customization_id])
-      line_item = @cart.line_items.build(product: product, customization: customization)
+      line_item = @cart.line_items.build(product: product, customization: customization, quantity: 1)
     else
-      line_item = @cart.line_items.build(product: product)
+      line_item = @cart.line_items.build(product: product, quantity: 1)
     end
 
     if line_item.save
       render json: line_item
     else
       render json: line_item.errors
+    end
+  end
+
+  def update
+    @line_item = @cart.line_items.find(params[:id])
+
+    if @line_item.update_attributes(params[:line_item])
+      head :no_content
+    else
+      render json: @line_item.errors, status: :unprocessable_entity
     end
   end
 

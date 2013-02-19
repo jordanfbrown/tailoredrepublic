@@ -4,11 +4,13 @@ class TR.Views.Cart extends TR.Views.Base
   events:
     'click a.view-customizations': 'toggleCustomizations'
     'click a.edit-customizations': 'editCustomizations'
-    'click a.remove': 'removeLineItem'
     'click a.edit-customization-option': 'editCustomizationOption'
+    'click a.remove': 'removeLineItem'
+    'change #line_item_quantity': 'updateLineItemQuantity'
 
   initialize: (options) ->
     @lineItems = new TR.Collections.LineItems options.lineItems
+    @lineItems.on 'change remove', @updatePrices
 
   toggleCustomizations: (e) ->
     e.preventDefault()
@@ -46,6 +48,14 @@ class TR.Views.Cart extends TR.Views.Base
       @customizationView.$el.find(".progress-bar li[data-type=#{customizationType}]").click() if customizationType
     )
 
+  updateLineItemQuantity: (e) ->
+    $target = $(e.currentTarget)
+    $lineItem = $target.parents('.line-item')
+    lineItem = @lineItems.get $lineItem.data('line-item-id')
+    lineItem.set 'quantity', parseInt($target.val())
+    lineItem.save()
+    TR.Analytics.trackEvent 'LineItems', 'Update Quantity', $lineItem.data 'product-name'
+
   removeLineItem: (e) ->
     e.preventDefault()
     @confirmDialog = new TR.Views.DialogModal
@@ -56,15 +66,18 @@ class TR.Views.Cart extends TR.Views.Base
         $lineItem = $(e.currentTarget).parents('.line-item')
         lineItemId = $lineItem.data('line-item-id')
         lineItem = @lineItems.get lineItemId
-        $.ajax({url: "/line_items/#{lineItemId}", type: 'DELETE'}).then(=>
+        lineItem.destroy().then(=>
           TR.Analytics.trackEvent 'LineItems', 'Remove', $lineItem.data 'product-name'
           $lineItem.fadeOut(=>
             $lineItem.remove()
             @lineItems.remove lineItem
             TR.Events.trigger 'removedLineItem'
-            @$('.cart-total .price').text('$' + @lineItems.totalPrice())
             unless @$('.line-item').exists()
               @$('.empty-cart').show()
               @$('.cart-total').hide()
           )
         )
+
+  updatePrices: (lineItem) =>
+    @$(".line-item[data-line-item-id=#{lineItem.id}] .line-item-price").text lineItem.totalPrice()
+    @$('.cart-total .price').text '$' + @lineItems.totalPrice()

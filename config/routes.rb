@@ -15,7 +15,7 @@ TailoredRepublic::Application.routes.draw do
   resource  :measurements, only: [:show, :create, :update]
   resources :products
   resources :coupons, except: [:show]
-  resources :line_items, only: [:create, :destroy]
+  resources :line_items, only: [:create, :destroy, :update]
   resources :orders, only: [:show, :new, :create, :index] do
     collection do
       post 'review'

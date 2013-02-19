@@ -36,6 +36,18 @@
       border-bottom: 1px solid #333;
       padding-bottom: 5px;
     }
+
+    select {
+      display: inline-block;
+      width: 50px;
+      margin-left: 5px;
+      margin-bottom: 0;
+    }
+
+    label {
+      display: inline;
+      color: #000;
+    }
   }
   
   .cart-total {
