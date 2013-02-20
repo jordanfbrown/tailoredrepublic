@@ -53,3 +53,87 @@ navy_detail:
   regular: products/suits/navy/detail-regular.png
   large: products/suits/navy/detail-large.png
   default: false
+
+gray_front:
+  product: jetsetter
+  thumbnail: products/suits/gray/front-thumbnail.png
+  regular: products/suits/gray/front-regular.png
+  large: products/suits/gray/front-large.png
+  default: true
+
+gray_back:
+  product: jetsetter
+  thumbnail: products/suits/gray/back-thumbnail.png
+  regular: products/suits/gray/back-regular.png
+  large: products/suits/gray/back-large.png
+  default: false
+
+gray_side:
+  product: jetsetter
+  thumbnail: products/suits/gray/side-thumbnail.png
+  regular: products/suits/gray/side-regular.png
+  large: products/suits/gray/side-large.png
+  default: false
+
+gray_detail:
+  product: jetsetter
+  thumbnail: products/suits/gray/detail-thumbnail.png
+  regular: products/suits/gray/detail-regular.png
+  large: products/suits/gray/detail-large.png
+  default: false
+  
+charcoal_front:
+  product: hustler
+  thumbnail: products/suits/charcoal/front-thumbnail.png
+  regular: products/suits/charcoal/front-regular.png
+  large: products/suits/charcoal/front-large.png
+  default: true
+
+charcoal_back:
+  product: hustler
+  thumbnail: products/suits/charcoal/back-thumbnail.png
+  regular: products/suits/charcoal/back-regular.png
+  large: products/suits/charcoal/back-large.png
+  default: false
+
+#charcoal_side:
+#  product: hustler
+#  thumbnail: products/suits/charcoal/side-thumbnail.png
+#  regular: products/suits/charcoal/side-regular.png
+#  large: products/suits/charcoal/side-large.png
+#  default: false
+
+charcoal_detail:
+  product: hustler
+  thumbnail: products/suits/charcoal/detail-thumbnail.png
+  regular: products/suits/charcoal/detail-regular.png
+  large: products/suits/charcoal/detail-large.png
+  default: false
+  
+black_front:
+  product: executive
+  thumbnail: products/suits/black/front-thumbnail.png
+  regular: products/suits/black/front-regular.png
+  large: products/suits/black/front-large.png
+  default: true
+
+black_back:
+  product: executive
+  thumbnail: products/suits/black/back-thumbnail.png
+  regular: products/suits/black/back-regular.png
+  large: products/suits/black/back-large.png
+  default: false
+
+black_side:
+  product: executive
+  thumbnail: products/suits/black/side-thumbnail.png
+  regular: products/suits/black/side-regular.png
+  large: products/suits/black/side-large.png
+  default: false
+
+black_detail:
+  product: executive
+  thumbnail: products/suits/black/detail-thumbnail.png
+  regular: products/suits/black/detail-regular.png
+  large: products/suits/black/detail-large.png
+  default: false
