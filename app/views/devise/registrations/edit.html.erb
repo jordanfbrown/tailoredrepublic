@@ -11,7 +11,7 @@
           <%= f.text_field :name %>
           <%= f.label :email %>
           <%= f.email_field :email %>
-          <%= f.submit "Save", class: "button full-width large submit" %>
+          <%= f.submit "Update", class: "button full-width large submit" %>
       </fieldset>
     <% end %>
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :id => 'password_form' }) do |f| %>
@@ -22,14 +22,14 @@
         <%= f.label :password, 'New password' %>
         <%= f.password_field :password, autocomplete: 'off', data: { typetoggle: '#show_password' } %>
         <label><input type="checkbox" id="show_password">Show password</label>
-        <%= f.submit 'Save', class: 'button full-width large submit' %>
+        <%= f.submit 'Update', class: 'button full-width large submit' %>
       </fieldset>
     <% end %>
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :id => 'shipping_address_form'}) do |f| %>
       <fieldset>
         <legend>Shipping Address</legend>
         <%= render 'addresses/nested_form', parent_form: f, address_type: :shipping_address %>
-        <%= f.submit 'Save', class: 'button full-width large submit' %>
+        <%= f.submit 'Update', class: 'button full-width large submit' %>
       </fieldset>
     <% end %>
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :id => 'billing_information_form' }) do |f| %>
@@ -41,7 +41,7 @@
         <%= render 'users/credit_card_form', stripe_customer: @stripe_customer %>
         <%= render 'addresses/nested_form', parent_form: f, address_type: :billing_address %>
         <%= hidden_field_tag :stripe_card_token %>
-        <%= f.submit 'Save', class: 'button full-width large submit' %>
+        <%= f.submit 'Update', class: 'button full-width large submit' %>
       </fieldset>
     <% end %>
   </div>
