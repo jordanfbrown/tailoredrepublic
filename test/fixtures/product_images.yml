@@ -144,3 +144,33 @@ build_front:
   regular: products/suits/build/front-regular.png
   large: products/suits/build/front-large.png
   default: true
+  
+gift_card_25_image:
+  product: gift_card_25
+  regular: gift_cards/gift-card-25.jpg
+  default: true
+  
+gift_card_50_image:
+  product: gift_card_50
+  regular: gift_cards/gift-card-50.jpg
+  default: true
+  
+gift_card_100_image:
+  product: gift_card_100
+  regular: gift_cards/gift-card-100.jpg
+  default: true
+  
+gift_card_349_image:
+  product: gift_card_349
+  regular: gift_cards/gift-card-349.jpg
+  default: true
+  
+gift_card_469_image:
+  product: gift_card_469
+  regular: gift_cards/gift-card-469.jpg
+  default: true
+  
+gift_card_629_image:
+  product: gift_card_629
+  regular: gift_cards/gift-card-629.jpg
+  default: true
