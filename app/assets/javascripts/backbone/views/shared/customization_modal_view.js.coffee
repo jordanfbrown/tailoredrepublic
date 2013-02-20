@@ -48,11 +48,6 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
       touchEnabled: off
       useCSS: off
 
-    @PROGRESS =
-      COMPLETED: TR.ASSET_HOST + '/assets/icons/star-stroke.png'
-      TODO: TR.ASSET_HOST + '/assets/icons/star-no-stroke.png'
-      CURRENT: TR.ASSET_HOST + '/assets/icons/star-filled.png'
-
   render: =>
     @$el.html @template @getTemplateData()
     super()
