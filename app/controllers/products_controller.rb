@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     if params[:suggested]
-      @products = Product.suggested(params[:product_id])
+      @products = Product.suggested(params[:product_id]).to_json(include: [:product_images])
     else
       @products = Product.all
     end

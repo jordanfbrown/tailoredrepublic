@@ -1174,7 +1174,8 @@ templates['_product.hbs'] = template(function (Handlebars,depth0,helpers,partial
 
 
   buffer += "<a href=\"#\"><img src=\"";
-  stack1 = depth0.image_large_url;
+  stack1 = depth0.defaultProductImage;
+  stack1 = stack1 == null || stack1 === false ? stack1 : stack1.regular;
   foundHelper = helpers.imgSrc;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "imgSrc", stack1, {hash:{}});
   buffer += escapeExpression(stack1) + "\"></a>\n<div class=\"product-info-wrapper\">\n  <div class=\"product-info\">\n    <div class=\"product-name\">\n      <a href=\"#\">";

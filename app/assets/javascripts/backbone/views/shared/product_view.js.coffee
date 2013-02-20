@@ -8,7 +8,10 @@ class TR.Views.Product extends TR.Views.Base
     @template = @getTemplate 'product'
 
   render: ->
-    @$el.html @template @model.toJSON()
+    templateData = _.extend
+      defaultProductImage: @model.defaultProductImage()
+    , @model.toJSON()
+    @$el.html @template templateData
     @
 
   renderProductModal: (e) ->

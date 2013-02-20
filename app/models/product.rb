@@ -50,7 +50,7 @@ class Product < ActiveRecord::Base
 
   def self.suggested(product_id)
     # TODO: come up with real suggested products instead of first 4 products
-    self.all(limit: 4)
+    self.includes(:product_images).all(limit: 4)
   end
 
   def display_price
