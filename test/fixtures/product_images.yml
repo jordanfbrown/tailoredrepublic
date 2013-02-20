@@ -137,3 +137,10 @@ black_detail:
   regular: products/suits/black/detail-regular.png
   large: products/suits/black/detail-large.png
   default: false
+  
+build_front:
+  product: build_own
+  thumbnail: products/suits/build/front-thumbnail.png
+  regular: products/suits/build/front-regular.png
+  large: products/suits/build/front-large.png
+  default: true
