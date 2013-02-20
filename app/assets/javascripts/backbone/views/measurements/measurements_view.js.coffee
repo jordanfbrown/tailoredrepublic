@@ -182,13 +182,8 @@ class TR.Views.Measurements extends TR.Views.Base
 
     @setProgressBar newIndex
 
-    # Set height, weight, age
-    if oldIndex == 1
-      @model.set
-        age: parseInt @$('#measurement_age').val()
-        weight: parseInt @$('#measurement_weight').val()
-        height: parseInt @$('#measurement_height').val()
-    else
+    # Only set measurement values for measurement slides
+    if oldIndex > 1
       # jQuery eq function wraps around if you enter a negative value: eq(-1) will return eq(15) for an array of length
       # 16. To prevent this, I'm just setting the index to a very large value so that the wrapping doesn't occur
       adjustedIndex = if oldIndex - 2 < 0 then 1000 else oldIndex - 2
@@ -345,9 +340,10 @@ class TR.Views.Measurements extends TR.Views.Base
       $height.val height
       $age.val age
       $weight.val weight
-      @model.set 'height', height
-      @model.set 'weight', weight
-      @model.set 'age', age
+      @model.set
+        height: height
+        weight: weight
+        age: age
     else
       $errors.fadeIn()
 
