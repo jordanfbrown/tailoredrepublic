@@ -372,3 +372,14 @@ table a {
 p.centered {
   text-align: center;
 }
+
+.customSelect {
+  cursor: pointer;
+  padding: 3px 15px 0px 9px;
+  border: 2px solid $brown;
+  background: url(select-box-down.png) 40px 5px no-repeat;
+  width: 70px;
+  font-size: 17px;
+  background-color: $brown;
+  color: #fff;
+}

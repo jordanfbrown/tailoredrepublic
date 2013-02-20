@@ -18,6 +18,7 @@
 //= require jquery.orbit
 //= require jquery.bxslider
 //= require jquery.fitvid
+//= require jquery.customSelect
 //= require modernizr.foundation
 //= require jquery.foundation.topbar
 //= require jquery.foundation.magellan

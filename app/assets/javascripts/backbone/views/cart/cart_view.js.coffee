@@ -11,6 +11,7 @@ class TR.Views.Cart extends TR.Views.Base
   initialize: (options) ->
     @lineItems = new TR.Collections.LineItems options.lineItems
     @lineItems.on 'change remove', @updatePrices
+    @$('select').customSelect()
 
   toggleCustomizations: (e) ->
     e.preventDefault()
