@@ -31,7 +31,7 @@ window.TR =
           lineItem.name # Product name
           lineItem.category # Category
           lineItem.total_price # Unit price
-          1 # Quantity
+          lineItem.quantity
         ]
 
       _gaq.push ['_trackTrans']

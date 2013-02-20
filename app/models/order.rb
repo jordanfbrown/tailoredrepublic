@@ -110,7 +110,13 @@ class Order < ActiveRecord::Base
 
   def line_items_to_json_for_tracking
     line_items.includes(:product).map do |l|
-      { id: l.product.id, name: l.product.name, category: l.product.category, total_price: l.total_price }
+      {
+        id: l.product.id,
+        name: l.product.name,
+        category: l.product.category,
+        total_price: l.total_price,
+        quantity: l.quantity
+      }
     end.to_json.html_safe
   end
 
