@@ -46,6 +46,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
       onSlideBefore: @onSlideBefore
       adaptiveHeight: on
       touchEnabled: off
+      useCSS: off
 
     @PROGRESS =
       COMPLETED: TR.ASSET_HOST + '/assets/icons/star-stroke.png'
