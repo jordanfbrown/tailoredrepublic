@@ -1096,7 +1096,7 @@ function program13(depth0,data) {
   buffer += escapeExpression(stack1) + "\"</li>\n    ";
   return buffer;}
 
-  buffer += "<div class=\"row\">\n  <div class=\"twelve columns\">\n    <p class=\"accept-text\">Please read over your measurements one last time and ensure that they are correct. If they\n      look good, click \"Accept\" to continue. If you need to change any measurement, click on any of the categories below\n      to input your corrected measurements before clicking “Accept” to continue.\n    </p>\n  </div>\n</div>\n\n<div class=\"three columns\">\n  <ul class=\"measurement-summary-list\">\n    <li data-measurement=\"age\"><a href=\"#\" class=\"label\" data-index=\"1\">Age:</a> ";
+  buffer += "<div class=\"row\">\n  <div class=\"twelve columns\">\n    <p class=\"accept-text\">Please read over your measurements one last time and ensure that they are correct. If they\n      look good, click \"Accept\" to continue. If you need to change a measurement, click on any of the categories below\n      to correct the value.\n    </p>\n  </div>\n</div>\n\n<div class=\"three columns\">\n  <ul class=\"measurement-summary-list\">\n    <li data-measurement=\"age\"><a href=\"#\" class=\"label\" data-index=\"1\">Age:</a> ";
   stack1 = depth0.age;
   stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
