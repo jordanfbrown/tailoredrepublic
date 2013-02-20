@@ -11,39 +11,41 @@ window.TR =
 
   Analytics:
     trackTransaction: (order, lineItems, address) ->
-      _gaq.push [
-        '_addTrans'
-        order.order_id # Transaction ID
-        'Tailored Republic' # Affiliation
-        order.final_cost # Total, including tax and shipping
-        order.tax # Tax
-        0 # Shipping
-        address.city # City
-        address.state # State
-        'USA' # Country
-      ]
-
-      for lineItem in lineItems
+      if TR.ENVIRONMENT == 'production'
         _gaq.push [
-          '_addItem'
+          '_addTrans'
           order.order_id # Transaction ID
-          lineItem.id # SKU/Code
-          lineItem.name # Product name
-          lineItem.category # Category
-          lineItem.total_price # Unit price
-          lineItem.quantity
+          'Tailored Republic' # Affiliation
+          order.final_cost # Total, including tax and shipping
+          order.tax # Tax
+          0 # Shipping
+          address.city # City
+          address.state # State
+          'USA' # Country
         ]
 
-      _gaq.push ['_trackTrans']
+        for lineItem in lineItems
+          _gaq.push [
+            '_addItem'
+            order.order_id # Transaction ID
+            lineItem.id # SKU/Code
+            lineItem.name # Product name
+            lineItem.category # Category
+            lineItem.total_price # Unit price
+            lineItem.quantity
+          ]
+
+        _gaq.push ['_trackTrans']
 
     trackEvent: (category, action, label = '', value = '') ->
-      _gaq.push [
-        '_trackEvent'
-        category
-        action
-        label
-        value
-      ]
+      if TR.ENVIRONMENT == 'production'
+        _gaq.push [
+          '_trackEvent'
+          category
+          action
+          label
+          value
+        ]
 
   setStripeKey: ->
     Stripe.setPublishableKey $('meta[name=stripe-key]').attr 'content'
