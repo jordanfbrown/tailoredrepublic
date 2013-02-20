@@ -3,7 +3,12 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "Tailored Republic" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Tailored Republic" %>">
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Tailored Republic lets you customize and build high quality made-to-measure suits, with a 100% satisfaction guarantee." %>">
+    <meta name="keywords" content="Custom, suits, made-to-measure, menswear, clothing, fashion, tuxedos, ties, pocket squares, style, tailored">
+    <meta name="og:title" content="Tailored Republic">
+    <meta name="og:image" content="http://d195zx82sfk1xc.cloudfront.net/assets/logos/logo-shield.png">
+    <meta name="og:url" content="https://www.tailoredrepublic.com">
+    <meta name="og:description" content="Tailored Republic lets you customize and build high quality made-to-measure suits, with a 100% satisfaction guarantee.">
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= javascript_include_tag "https://js.stripe.com/v1/", "application" %>

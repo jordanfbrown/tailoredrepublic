@@ -10,7 +10,7 @@
   </div>
   <div class="row">
     <div class="three columns">
-      <%= image_tag 'foo', class: "product-image"%>
+      <%= image_tag line_item.default_photo.regular, class: "product-image"%>
     </div>
     <div class="nine columns">
       <h3><%= line_item.name %><span class="divider"> // </span>$<span class="line-item-price"><%= line_item.total_price %></span></h3>
