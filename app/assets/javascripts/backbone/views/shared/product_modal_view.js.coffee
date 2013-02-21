@@ -51,10 +51,14 @@ class TR.Views.ProductModal extends TR.Views.Modal
 
     minLeft = -($largeImg.width() - $imageMagnified.width())
     minTop = -($largeImg.height() - $imageMagnified.height())
-    e.offsetX = e.pageX - $(e.currentTarget).offset().left if e.offsetX == undefined
-    e.offsetY = e.pageY - $(e.currentTarget).offset().top if e.offsetY == undefined
-    leftPercentage = e.offsetX / $target.width()
-    topPercentage = e.offsetY / $target.height()
+    e.offsetX = e.pageX - $target.offset().left if e.offsetX == undefined
+    e.offsetY = e.pageY - $target.offset().top if e.offsetY == undefined
+    leftPercentage = e.offsetX / $target.width() * 1.25 - 0.125
+    topPercentage = e.offsetY / $target.height() * 1.25 - 0.125
+    topPercentage = 0 if topPercentage < 0
+    topPercentage = 1 if topPercentage > 1
+    leftPercentage = 0 if leftPercentage < 0
+    leftPercentage = 1 if leftPercentage > 1
     @$('.image-magnified img').css(left: (minLeft * leftPercentage) + 'px', top: (minTop * topPercentage) + 'px')
 
     $imageMagnified.show()
