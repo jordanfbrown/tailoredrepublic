@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130219231042) do
+ActiveRecord::Schema.define(:version => 20130221231720) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -98,7 +98,6 @@ ActiveRecord::Schema.define(:version => 20130219231042) do
   create_table "measurements", :force => true do |t|
     t.decimal  "neck"
     t.decimal  "full_shoulders"
-    t.decimal  "front"
     t.decimal  "back"
     t.decimal  "chest"
     t.decimal  "stomach"

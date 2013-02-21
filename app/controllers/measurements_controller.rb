@@ -11,7 +11,7 @@ class MeasurementsController < ApplicationController
     end
 
     @shirt_only = @cart.shirt_only?
-    @num_measurements = Product.num_measurements(@shirt_only)
+    @num_measurements = Measurement.num_measurements(@shirt_only)
     @signed_in = user_signed_in?
     @is_https = request.ssl?
     @initial_slide = params[:initial_slide]

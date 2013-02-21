@@ -9,7 +9,6 @@ class TR.Models.Measurement extends TR.Models.Base
   defaults:
     neck: 15.5
     chest: 38.25
-    front: 17.5
     stomach: 34.5
     waist: 34
     hips: 40.5

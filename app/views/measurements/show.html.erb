@@ -39,6 +39,18 @@
                   step-by-step measurement guide.</p>
                 <%= form_for @measurement, url: '', html: { class: 'quick-measurement-form' } do |f| %>
                   <div class="four columns">
+                    <%= f.label :age %>
+                    <%= f.text_field :age %>
+                  </div>
+                  <div class="four columns">
+                    <%= f.label :height, 'Height (in.)' %>
+                    <%= f.text_field :height %>
+                  </div>
+                  <div class="four columns">
+                    <%= f.label :weight, 'Weight (lbs)' %>
+                    <%= f.text_field :weight %>
+                  </div>
+                  <div class="four columns">
                     <%= f.label :neck %>
                     <%= f.text_field :neck, class: 'quick-measurement-input' %>
                   </div>
@@ -71,10 +83,6 @@
                     <%= f.text_field :back, class: 'quick-measurement-input' %>
                   </div>
                   <div class="four columns">
-                    <%= f.label :front %>
-                    <%= f.text_field :front, class: 'quick-measurement-input' %>
-                  </div>
-                  <div class="four columns">
                     <%= f.label :full_shoulders %>
                     <%= f.text_field :full_shoulders, class: 'quick-measurement-input' %>
                   </div>
@@ -85,18 +93,6 @@
                   <div class="four columns">
                     <%= f.label :jacket_length %>
                     <%= f.text_field :jacket_length, class: 'quick-measurement-input' %>
-                  </div>
-                  <div class="four columns">
-                    <%= f.label :age %>
-                    <%= f.text_field :age %>
-                  </div>
-                  <div class="four columns">
-                    <%= f.label :height, 'Height (in.)' %>
-                    <%= f.text_field :height %>
-                  </div>
-                  <div class="four columns">
-                    <%= f.label :weight, 'Weight (lbs)' %>
-                    <%= f.text_field :weight %>
                   </div>
                   <% unless @shirt_only %>
                     <div class="four columns">

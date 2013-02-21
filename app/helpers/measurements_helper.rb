@@ -21,15 +21,6 @@ module MeasurementsHelper
           'End the measurement on the sternum making sure the tape doesn\'t feel too tight and there are two fingers of space between tape and chest'
         ]
       },
-      front: {
-        url: 'NE3XAplw24A',
-        steps: [
-          'Stand straight with your arms comfortably at your side',
-          'Place tape measurer on the front of the right armpit where the bicep and torso meet',
-          'Measure across the chest running measuring tape across the nipples',
-          'End measurement on the front of the left armpit where the bicep and torso meet',
-        ]
-      },
       stomach: {
         url: 'IdB7iRAIyc0',
         steps: [
