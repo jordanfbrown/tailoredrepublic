@@ -40,7 +40,7 @@ TailoredRepublic::Application.routes.draw do
   match '/authenticate_access_code' => 'pages#authenticate_access_code'
   match '/request_access_code' => 'pages#request_access_code'
   match '/coming_soon' => 'pages#coming_soon'
-  match '/press' => 'pages#press'
+  match '/partners' => 'pages#partners'
   match '/team' => 'pages#team'
   match '/weddings' => 'pages#weddings'
   match '/measuring_tape' => 'pages#measuring_tape'
