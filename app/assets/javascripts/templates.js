@@ -61,7 +61,7 @@ function program11(depth0,data) {
   
   return "\n    <a href=\"#\" class=\"button save-changes\">Save Changes</a>\n  ";}
 
-  buffer += "<p>Please read over your customizations one last time and ensure that they are correct. If you need to change any customizations, click on any of the categories below\n  to input your new customization.\n</p>\n<ul class=\"six columns\">\n  <li><a href=\"#\" class=\"label\" data-type=\"collar\">Collar:</a> ";
+  buffer += "<p>Please read over your customizations one last time and ensure that they are correct. If you need to change any customizations, click on any of the categories below\n  to enter your new customization.\n</p>\n<ul class=\"six columns\">\n  <li><a href=\"#\" class=\"label\" data-type=\"collar\">Collar:</a> ";
   stack1 = depth0.collar;
   foundHelper = helpers.uppercaseFirst;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "uppercaseFirst", stack1, {hash:{}});
@@ -174,7 +174,7 @@ function program21(depth0,data) {
   
   return "\n    <a href=\"#\" class=\"button save-changes\">Save Changes</a>\n  ";}
 
-  buffer += "<p>Please read over your customizations one last time and ensure that they are correct. If you need to change any customizations, click on any of the categories below\n  to input your new customization.\n</p>\n<ul class=\"four columns\">\n  ";
+  buffer += "<p>Please read over your customizations one last time and ensure that they are correct. If you need to change any customizations, click on any of the categories below\n  to enter your new customization.\n</p>\n<ul class=\"four columns\">\n  ";
   stack1 = depth0.chooseFabric;
   stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(1, program1, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
