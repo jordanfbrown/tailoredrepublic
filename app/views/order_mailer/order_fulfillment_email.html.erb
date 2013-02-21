@@ -5,20 +5,14 @@
 
 </head>
 <body style="color: #000000;font-size: 14px;font-family: Verdana,Helvetica,Arial,sans-serif;">
-<h3>User</h3>
-<p>User name: <%= @order.user.name %></p>
-<p>User email: <%= @order.user.email %></p>
-
-<h3>Shipping Address</h3>
-<p><%= @order.shipping_address.name %></p>
-<p><%= @order.shipping_address.line1 %></p>
-<p><%= @order.shipping_address.line2 %></p>
-<p><%= @order.shipping_address.city %>, <%= @order.shipping_address.state %>, <%= @order.shipping_address.zip %></p>
+<p>Order ID: <%= @order.order_id %></p>
 
 <h3>Measurements</h3>
+<ul style="list-style-type: none;padding-left:5px;list-style: none;margin: 0;">
 <% @order.measurement.display_attributes.each do |key, value| %>
-  <p><%= key.titleize %>: <%= value %></p>
+  <li style="margin-left: 0;"><%= key.titleize %>: <%= value %></li>
 <% end %>
+</ul>
 
 <h3>Items Purchased</h3>
 <% @order.line_items.each do |line_item|  %>
