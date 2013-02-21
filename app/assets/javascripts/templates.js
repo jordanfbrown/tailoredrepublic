@@ -363,7 +363,7 @@ function program15(depth0,data) {
   buffer += escapeExpression(stack1) + ".</p>\n      <div href=\"#\" class=\"customization-option\">\n        <img src=\"";
   foundHelper = helpers.imgSrc;
   stack1 = foundHelper ? foundHelper.call(depth0, "customizations/suits/monogram.png", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "customizations/suits/monogram.png", {hash:{}});
-  buffer += escapeExpression(stack1) + "\" class=\"monogram\">\n      </div>\n      <div class=\"customization-option\">\n        <form id=\"monogram-form\">\n          <label>Monogram (3 character max)</label>\n          <input type=\"text\" name=\"monogram\" maxlength=\"3\" value=\"";
+  buffer += escapeExpression(stack1) + "\" class=\"monogram\">\n      </div>\n      <div class=\"customization-option\">\n        <form id=\"monogram-form\">\n          <label>Monogram (+$5) (3 character max) </label>\n          <input type=\"text\" name=\"monogram\" maxlength=\"3\" value=\"";
   foundHelper = helpers.monogram;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.monogram; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
