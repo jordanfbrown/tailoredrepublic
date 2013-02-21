@@ -13,7 +13,7 @@ module CartsHelper
         { option: "Pick Stitching", type:
           (customization.pick_stitching? ? "Yes (+$#{Product.pick_stitching_price})" : 'No' ) },
         { option: "Vest", type:
-          (customization.has_vest? ? "#{customization.vest} Button Vest (+$#{Product.vest_price})" : "No") }
+          (customization.has_vest? ? "Yes, #{customization.vest} Button Vest (+$#{Product.vest_price})" : "No") }
       ]
       if customization.fabric?
         customizations.unshift({ option: "Fabric", type: customization.fabric.titleize })

@@ -144,7 +144,7 @@ function program13(depth0,data) {
 function program15(depth0,data) {
   
   var buffer = "", stack1, foundHelper;
-  buffer += " ";
+  buffer += " Yes, ";
   foundHelper = helpers.vest;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.vest; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
