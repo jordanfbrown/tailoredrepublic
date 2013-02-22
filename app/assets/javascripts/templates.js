@@ -115,19 +115,6 @@ function program5(depth0,data) {
 
 function program7(depth0,data) {
   
-  var stack1, foundHelper;
-  foundHelper = helpers.monogram;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.monogram; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  return escapeExpression(stack1);}
-
-function program9(depth0,data) {
-  
-  
-  return "None";}
-
-function program11(depth0,data) {
-  
   var buffer = "", stack1, foundHelper;
   buffer += "Yes (+$";
   foundHelper = helpers.pickStitchingPrice;
@@ -136,12 +123,12 @@ function program11(depth0,data) {
   buffer += escapeExpression(stack1) + ") ";
   return buffer;}
 
-function program13(depth0,data) {
+function program9(depth0,data) {
   
   
   return "No";}
 
-function program15(depth0,data) {
+function program11(depth0,data) {
   
   var buffer = "", stack1, foundHelper;
   buffer += " Yes, ";
@@ -155,12 +142,12 @@ function program15(depth0,data) {
   buffer += escapeExpression(stack1) + ")";
   return buffer;}
 
-function program17(depth0,data) {
+function program13(depth0,data) {
   
   
   return "No";}
 
-function program19(depth0,data) {
+function program15(depth0,data) {
   
   var buffer = "", stack1, foundHelper;
   buffer += "\n    <a href=\"#\" class=\"button add-to-cart\"><img src=\"";
@@ -169,7 +156,7 @@ function program19(depth0,data) {
   buffer += escapeExpression(stack1) + "\"> Add To Cart</a>\n  ";
   return buffer;}
 
-function program21(depth0,data) {
+function program17(depth0,data) {
   
   
   return "\n    <a href=\"#\" class=\"button save-changes\">Save Changes</a>\n  ";}
@@ -206,20 +193,14 @@ function program21(depth0,data) {
   stack1 = depth0.lining;
   foundHelper = helpers.titleize;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "titleize", stack1, {hash:{}});
-  buffer += escapeExpression(stack1) + "</li>\n  <li><a href=\"#\" class=\"label\" data-type=\"monogram\">Monogram:</a> ";
-  stack1 = depth0.monogram;
-  stack1 = stack1 == null || stack1 === false ? stack1 : stack1.length;
-  foundHelper = helpers.ifGreaterThan;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 0, {hash:{},inverse:self.program(9, program9, data),fn:self.program(7, program7, data)}) : helperMissing.call(depth0, "ifGreaterThan", stack1, 0, {hash:{},inverse:self.program(9, program9, data),fn:self.program(7, program7, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "</li>\n  <li><a href=\"#\" class=\"label\" data-type=\"pick_stitching\">Pick Stitching:</a> ";
+  buffer += escapeExpression(stack1) + "</li>\n  <li><a href=\"#\" class=\"label\" data-type=\"pick_stitching\">Pick Stitching:</a> ";
   stack1 = depth0.pick_stitching;
-  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(13, program13, data),fn:self.program(11, program11, data)});
+  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(9, program9, data),fn:self.program(7, program7, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "</li>\n  <li><a href=\"#\" class=\"label\" data-type=\"vest\">Vest:</a> ";
   stack1 = depth0.vest;
   foundHelper = helpers.ifGreaterThan;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 0, {hash:{},inverse:self.program(17, program17, data),fn:self.program(15, program15, data)}) : helperMissing.call(depth0, "ifGreaterThan", stack1, 0, {hash:{},inverse:self.program(17, program17, data),fn:self.program(15, program15, data)});
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 0, {hash:{},inverse:self.program(13, program13, data),fn:self.program(11, program11, data)}) : helperMissing.call(depth0, "ifGreaterThan", stack1, 0, {hash:{},inverse:self.program(13, program13, data),fn:self.program(11, program11, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "</li>\n</ul>\n<div class=\"four columns\">\n  <ul>\n    <li><span class=\"label\">Total cost:</span> $";
   stack1 = depth0.price;
@@ -227,7 +208,7 @@ function program21(depth0,data) {
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "decimalToInteger", stack1, {hash:{}});
   buffer += escapeExpression(stack1) + "</li>\n  </ul>\n  ";
   stack1 = depth0.isNew;
-  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(21, program21, data),fn:self.program(19, program19, data)});
+  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(17, program17, data),fn:self.program(15, program15, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n</div>";
   return buffer;});
@@ -657,7 +638,7 @@ function program88(depth0,data) {
   stack1 = depth0.chooseFabric;
   stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(9, program9, data),fn:self.program(7, program7, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n    <li data-type=\"buttons\"></li>\n    <li data-type=\"vents\"></li>\n    <li data-type=\"pleats\"></li>\n    <li data-type=\"pant_cuffs\"></li>\n    <li data-type=\"fit\"></li>\n    <li data-type=\"lining\"></li>\n    <li data-type=\"monogram\"></li>\n    <li data-type=\"pick_stitching\"></li>\n    <li data-type=\"vest\"></li>\n    <li data-type=\"checkout\"></li>\n  </ul>\n  <ul class=\"customization-list\">\n    ";
+  buffer += "\n    <li data-type=\"buttons\"></li>\n    <li data-type=\"vents\"></li>\n    <li data-type=\"pleats\"></li>\n    <li data-type=\"pant_cuffs\"></li>\n    <li data-type=\"fit\"></li>\n    <li data-type=\"lining\"></li>\n    <li data-type=\"pick_stitching\"></li>\n    <li data-type=\"vest\"></li>\n    <li data-type=\"checkout\"></li>\n  </ul>\n  <ul class=\"customization-list\">\n    ";
   stack1 = depth0.chooseFabric;
   stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(11, program11, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
@@ -911,14 +892,7 @@ function program88(depth0,data) {
   buffer += "\" data-id=\"salmon\">\n            <img src=\"";
   foundHelper = helpers.imgSrc;
   stack1 = foundHelper ? foundHelper.call(depth0, "customizations/suits/linings/salmon.jpg", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "customizations/suits/linings/salmon.jpg", {hash:{}});
-  buffer += escapeExpression(stack1) + "\">\n            <span class=\"label\">Salmon</span>\n          </a>\n        </div>\n      </div>\n    </li>\n    <li class=\"customization-wrapper two-item\" data-type=\"monogram\">\n      <p>Monogramming can be up to 15 characters, usually used for your name (i.e. \"Richard Feynman\" or \"R.P.F.\" or\n        \"R. Feynman\"). It will show up on the inside of your jacket above the left breast pocket. Feel free to put\n        whatever you want here, just keep in mind that people will see it when you are showing off your envy-inducing\n        lining.</p>\n      <div href=\"#\" class=\"customization-option\">\n        <img src=\"";
-  foundHelper = helpers.imgSrc;
-  stack1 = foundHelper ? foundHelper.call(depth0, "customizations/suits/monogram.png", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "customizations/suits/monogram.png", {hash:{}});
-  buffer += escapeExpression(stack1) + "\" class=\"monogram\">\n      </div>\n      <div class=\"customization-option\">\n        <form id=\"monogram-form\">\n          <label>Monogram (15 character max)</label>\n          <input type=\"text\" name=\"monogram\" maxlength=\"15\" value=\"";
-  foundHelper = helpers.monogram;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.monogram; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\">\n          <input type=\"submit\" class=\"button full-width\" value=\"Ok\">\n        </form>\n      </div>\n    </li>\n    <li class=\"customization-wrapper two-item\" data-type=\"pick_stitching\">\n      <p>Pick stitching really emphasizes the stitching on your suit making it clear that you went with a tailored\n        option. This is a fairly bold look, so we recommend opting out unless you are familiar with the look and know\n        you want it.\n      </p>\n      <a href=\"#\" class=\"customization-option ";
+  buffer += escapeExpression(stack1) + "\">\n            <span class=\"label\">Salmon</span>\n          </a>\n        </div>\n      </div>\n    </li>\n    <li class=\"customization-wrapper two-item\" data-type=\"pick_stitching\">\n      <p>Pick stitching really emphasizes the stitching on your suit making it clear that you went with a tailored\n        option. This is a fairly bold look, so we recommend opting out unless you are familiar with the look and know\n        you want it.\n      </p>\n      <a href=\"#\" class=\"customization-option ";
   stack1 = depth0.pick_stitching;
   foundHelper = helpers.ifeq;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, false, {hash:{},inverse:self.noop,fn:self.program(78, program78, data)}) : helperMissing.call(depth0, "ifeq", stack1, false, {hash:{},inverse:self.noop,fn:self.program(78, program78, data)});
