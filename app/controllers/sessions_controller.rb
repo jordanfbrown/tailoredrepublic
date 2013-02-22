@@ -8,6 +8,6 @@ class SessionsController < Devise::SessionsController
 
   private
     def store_redirect_to
-      session[:redirect_to] = request.referrer
+      session[:redirect_to] = request.referrer unless request.referrer =~ /\/users/
     end
 end
