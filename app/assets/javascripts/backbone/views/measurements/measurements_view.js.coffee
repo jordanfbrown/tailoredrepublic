@@ -13,17 +13,17 @@ class TR.Views.Measurements extends TR.Views.Base
     'click a.previous': 'previous'
     'click a.next': 'next'
     'click a.begin': 'next'
-    'click a.accept-quick': 'acceptQuickFill'
     'click .progress-bar li': 'validateAndGoToSlide'
+    'click a.accept-quick': 'acceptMeasurements'
     'click a.accept': 'acceptMeasurements'
-    'click .measurement-summary-list a': 'goToSlide'
+    'click a.skip-to-end': 'goToLastSlide'
 
   initialize: (options) ->
     @lineItemCount = options.lineItemCount
     @shirtOnly = options.shirtOnly
     @signedIn = options.signedIn
     @initialSlide = options.initialSlide
-    @slideOffset = 3 # Currently 3 slides exist before the measurement slides start
+    @slideOffset = 2 # Currently 2 slides exist before the measurement slides start
 
     measuringTapePixels = 4521
     measuringTapeInches = 90
@@ -61,7 +61,7 @@ class TR.Views.Measurements extends TR.Views.Base
         history.replaceState {index: 0}, 'Measurements | Tailored Republic', '/measurements/overview'
       else
         @$('iframe').attr 'src', ''
-        @slider.goToSlide 1
+        @slider.goToSlide @slideCount
         _.delay @loadVideos, 500
 
   numberRegex: /^[0-9]+$/
@@ -196,18 +196,6 @@ class TR.Views.Measurements extends TR.Views.Base
     @updateInputWithInches @currentTapeValue
     @resize()
 
-  acceptMeasurements: (e) ->
-    e.preventDefault()
-    TR.Analytics.trackEvent 'Measurements', 'Accept', 'Normal Fill'
-    if @model.hasDefaultAttributes()
-      @confirmDialog = new TR.Views.DialogModal
-        text: 'It looks like your measurements are the same as our defaults. Are you sure that your measurements were entered correctly?',
-        confirmText: 'Yes'
-        cancelText: 'No'
-        action: @saveMeasurements
-    else
-      @saveMeasurements()
-
   saveMeasurements: =>
     @model.save({}, {silent: true}).then(@saveSuccess, @saveError)
 
@@ -244,41 +232,34 @@ class TR.Views.Measurements extends TR.Views.Base
   validateAndGoToSlide: (e) ->
     @slider.goToSlide $(e.currentTarget).index() if @validateCurrentInput()
 
-  goToSlide: (e) ->
+  goToLastSlide: (e) ->
     e.preventDefault()
-    @slider.goToSlide $(e.currentTarget).data 'index'
+    @slider.goToSlide @slideCount
 
   getCurrentMeasurementInput: ->
     index = @slider.getCurrentSlide() - @slideOffset
     index = 1000 if index < 0
     @$('input.measurement-input').eq(index)
 
-  acceptQuickFill: (e) ->
+  acceptMeasurements: (e) ->
     e.preventDefault()
 
     $form = @$('.quick-measurement-form')
-    valid = @validateAgeHeightWeight($form)
-
-    $form.find('.quick-measurement-input').each (index, el) =>
-      $el = $(el)
-      # ID is in the form measurement_attr_name -- this split returns attr_name
-      name = $el.attr('id').split('measurement_')[1]
-      inches = parseFloat $el.val()
-      if _.isNaN(inches) || inches < 0 || inches > 90
-        valid = false
-        $el.addClass 'error'
-        unless $form.find('.quick-measurement-error').exists()
-          $form.find('.error-list').append('<li class="quick-measurement-error">Measurements must be a number in inches between 0 and 90.</li>')
-      else
-        $el.removeClass 'error'
-        @model.setByName name, inches
-      true
+    valid = @validateAgeHeightWeight($form, true)
+    valid = @validateMeasurements($form)
 
     if valid
+      TR.Analytics.trackEvent 'Measurements', 'Accept'
       $form.find('.error-list').empty()
       @slider.triggerResize(true)
-      TR.Analytics.trackEvent 'Measurements', 'Accept', 'Quick Fill'
-      @saveMeasurements()
+      if @model.hasDefaultAttributes()
+        @confirmDialog = new TR.Views.DialogModal
+          text: 'It looks like your measurements are the same as our defaults. Are you sure that your measurements were entered correctly?',
+          confirmText: 'Yes'
+          cancelText: 'No'
+          action: @saveMeasurements
+      else
+        @saveMeasurements()
     else
       @slider.triggerResize(true)
 
@@ -303,7 +284,27 @@ class TR.Views.Measurements extends TR.Views.Base
         @slider.triggerResize true
         true
 
-  validateAgeHeightWeight: ($form) ->
+  validateMeasurements: ($form) ->
+    valid = true
+
+    $form.find('.quick-measurement-input').each (index, el) =>
+      $el = $(el)
+      # ID is in the form measurement_attr_name -- this split returns attr_name
+      name = $el.attr('id').split('measurement_')[1]
+      inches = parseFloat $el.val()
+      if _.isNaN(inches) || inches < 0 || inches > 90
+        valid = false
+        $el.addClass 'error'
+        unless $form.find('.quick-measurement-error').exists()
+          $form.find('.error-list').append('<li class="quick-measurement-error">Measurements must be a number in inches between 0 and 90.</li>')
+      else
+        $el.removeClass 'error'
+        @model.setByName name, inches, { silent: true }
+      true
+
+    valid
+
+  validateAgeHeightWeight: ($form, silent = false) ->
     $height = $form.find('#measurement_height')
     $weight = $form.find('#measurement_weight')
     $age = $form.find('#measurement_age')
@@ -344,6 +345,7 @@ class TR.Views.Measurements extends TR.Views.Base
         height: height
         weight: weight
         age: age
+      , { silent: silent }
     else
       $errors.fadeIn()
 

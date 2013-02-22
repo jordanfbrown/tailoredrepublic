@@ -1031,132 +1031,78 @@ function program3(depth0,data) {
   return buffer;});
 templates['_measurement_summary.hbs'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
-  var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression, self=this;
+  var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression;
 
-function program1(depth0,data) {
-  
-  var buffer = "", stack1, foundHelper;
-  buffer += " ";
+
+  buffer += "<div class=\"row\">\n  <div class=\"twelve columns\">\n    <p class=\"accept-text\">Please read over your measurements and verify that they are correct. If they\n      look good, click \"Accept\" to continue. If you need to change a measurement, click on any of the categories below\n      to correct the value.\n    </p>\n  </div>\n</div>\n\n<div class=\"twelve columns\">\n  <form accept-charset=\"UTF-8\" action=\"\" class=\"quick-measurement-form\" method=\"post\">\n    <div class=\"two columns\">\n      <label for=\"measurement_age\">Age</label>\n      <input id=\"measurement_age\" name=\"measurement[age]\" size=\"30\" type=\"text\" value=\"";
   foundHelper = helpers.age;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.age; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + " ";
-  return buffer;}
-
-function program3(depth0,data) {
-  
-  
-  return " N/A ";}
-
-function program5(depth0,data) {
-  
-  var buffer = "", stack1, foundHelper;
-  buffer += " ";
-  foundHelper = helpers.weight;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.weight; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + " lbs ";
-  return buffer;}
-
-function program7(depth0,data) {
-  
-  
-  return " N/A ";}
-
-function program9(depth0,data) {
-  
-  var buffer = "", stack1, foundHelper;
-  buffer += " ";
+  buffer += escapeExpression(stack1) + "\"/>\n    </div>\n    <div class=\"two columns\">\n      <label for=\"measurement_height\">Height (in.)</label>\n      <input id=\"measurement_height\" name=\"measurement[height]\" size=\"30\" type=\"text\" value=\"";
   foundHelper = helpers.height;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.height; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\" ";
-  return buffer;}
-
-function program11(depth0,data) {
-  
-  
-  return " N/A ";}
-
-function program13(depth0,data) {
-  
-  var buffer = "", stack1, foundHelper;
-  buffer += "\n      <li data-measurement=\"crotch\"><a href=\"#\" class=\"label\" data-index=\"14\">Crotch:</a> ";
-  foundHelper = helpers.crotch;
+  buffer += escapeExpression(stack1) + "\"/>\n    </div>\n    <div class=\"two columns\">\n      <label for=\"measurement_weight\">Weight (lbs)</label>\n      <input id=\"measurement_weight\" name=\"measurement[weight]\" size=\"30\" type=\"text\" value=\"";
+  foundHelper = helpers.weight;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.crotch; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"</li>\n      <li data-measurement=\"thigh\"><a href=\"#\" class=\"label\" data-index=\"15\">Thigh:</a> ";
-  foundHelper = helpers.thigh;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.thigh; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"</li>\n      <li data-measurement=\"pant_length\"><a href=\"#\" class=\"label\" data-index=\"16\">Pant Length:</a> ";
-  foundHelper = helpers.pant_length;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.pant_length; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"</li>\n    ";
-  return buffer;}
-
-  buffer += "<div class=\"row\">\n  <div class=\"twelve columns\">\n    <p class=\"accept-text\">Please read over your measurements one last time and ensure that they are correct. If they\n      look good, click \"Accept\" to continue. If you need to change a measurement, click on any of the categories below\n      to correct the value.\n    </p>\n  </div>\n</div>\n\n<div class=\"three columns\">\n  <ul class=\"measurement-summary-list\">\n    <li data-measurement=\"age\"><a href=\"#\" class=\"label\" data-index=\"2\">Age:</a> ";
-  stack1 = depth0.age;
-  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "</li>\n    <li data-measurement=\"height\"><a href=\"#\" class=\"label\" data-index=\"2\">Weight:</a> ";
-  stack1 = depth0.weight;
-  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(7, program7, data),fn:self.program(5, program5, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += " </li>\n    <li data-measurement=\"weight\"><a href=\"#\" class=\"label\" data-index=\"2\">Height:</a> ";
-  stack1 = depth0.height;
-  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(11, program11, data),fn:self.program(9, program9, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "</li>\n  </ul>\n</div>\n  \n<div class=\"three columns\">\n  <ul class=\"measurement-summary-list\">\n    <li data-measurement=\"neck\"><a href=\"#\" class=\"label\" data-index=\"3\">Neck:</a> ";
+  else { stack1 = depth0.weight; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"/>\n    </div>\n    <div class=\"two columns\">\n      <label for=\"measurement_neck\">Neck</label>\n      <input class=\"quick-measurement-input\" id=\"measurement_neck\" name=\"measurement[neck]\" size=\"30\" type=\"text\"\n             value=\"";
   foundHelper = helpers.neck;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.neck; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"chest\"><a href=\"#\" class=\"label\" data-index=\"4\">Chest:</a> ";
-  foundHelper = helpers.chest;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.chest; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"stomach\"><a href=\"#\" class=\"label\" data-index=\"5\">Stomach:</a> ";
-  foundHelper = helpers.stomach;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.stomach; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"waist\"><a href=\"#\" class=\"label\" data-index=\"6\">Waist:</a> ";
+  buffer += escapeExpression(stack1) + "\"/>\n    </div>\n    <div class=\"two columns\">\n      <label for=\"measurement_waist\">Waist</label>\n      <input class=\"quick-measurement-input\" id=\"measurement_waist\" name=\"measurement[waist]\" size=\"30\" type=\"text\"\n             value=\"";
   foundHelper = helpers.waist;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.waist; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"</li>\n  </ul>\n</div>\n\n<div class=\"three columns\">\n  <ul class=\"measurement-summary-list\">\n    <li data-measurement=\"hips\"><a href=\"#\" class=\"label\" data-index=\"7\">Hips:</a> ";
-  foundHelper = helpers.hips;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.hips; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"full_shoulders\"><a href=\"#\" class=\"label\" data-index=\"8\">Full Shoulders:</a> ";
-  foundHelper = helpers.full_shoulders;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.full_shoulders; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"back\"><a href=\"#\" class=\"label\" data-index=\"9\">Back:</a> ";
-  foundHelper = helpers.back;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.back; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"arm_length\"><a href=\"#\" class=\"label\" data-index=\"10\">Arm Length:</a> ";
+  buffer += escapeExpression(stack1) + "\"/>\n    </div>\n    <div class=\"two columns\">\n      <label for=\"measurement_arm_length\">Arm length</label>\n      <input class=\"quick-measurement-input\" id=\"measurement_arm_length\" name=\"measurement[arm_length]\" size=\"30\"\n             type=\"text\" value=\"";
   foundHelper = helpers.arm_length;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.arm_length; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"bicep\"><a href=\"#\" class=\"label\" data-index=\"11\">Bicep:</a> ";
+  buffer += escapeExpression(stack1) + "\"/>\n    </div>\n    <div class=\"two columns\">\n      <label for=\"measurement_stomach\">Stomach</label>\n      <input class=\"quick-measurement-input\" id=\"measurement_stomach\" name=\"measurement[stomach]\" size=\"30\" type=\"text\"\n             value=\"";
+  foundHelper = helpers.stomach;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.stomach; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"/>\n    </div>\n    <div class=\"two columns\">\n      <label for=\"measurement_chest\">Chest</label>\n      <input class=\"quick-measurement-input\" id=\"measurement_chest\" name=\"measurement[chest]\" size=\"30\" type=\"text\"\n             value=\"";
+  foundHelper = helpers.chest;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.chest; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"/>\n    </div>\n    <div class=\"two columns\">\n      <label for=\"measurement_hips\">Hips</label>\n      <input class=\"quick-measurement-input\" id=\"measurement_hips\" name=\"measurement[hips]\" size=\"30\" type=\"text\"\n             value=\"";
+  foundHelper = helpers.hips;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.hips; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"/>\n    </div>\n    <div class=\"two columns\">\n      <label for=\"measurement_bicep\">Bicep</label>\n      <input class=\"quick-measurement-input\" id=\"measurement_bicep\" name=\"measurement[bicep]\" size=\"30\" type=\"text\"\n             value=\"";
   foundHelper = helpers.bicep;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.bicep; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"</li>\n  </ul>\n</div>\n\n<div class=\"three columns\">\n  <ul class=\"measurement-summary-list\">\n    <li data-measurement=\"wrist\"><a href=\"#\" class=\"label\" data-index=\"12\">Wrist:</a> ";
+  buffer += escapeExpression(stack1) + "\"/>\n    </div>\n    <div class=\"two columns\">\n      <label for=\"measurement_back\">Back</label>\n      <input class=\"quick-measurement-input\" id=\"measurement_back\" name=\"measurement[back]\" size=\"30\" type=\"text\"\n             value=\"";
+  foundHelper = helpers.back;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.back; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"/>\n    </div>\n    <div class=\"two columns\">\n      <label for=\"measurement_full_shoulders\">Full shoulders</label>\n      <input class=\"quick-measurement-input\" id=\"measurement_full_shoulders\" name=\"measurement[full_shoulders]\" size=\"30\"\n             type=\"text\" value=\"";
+  foundHelper = helpers.full_shoulders;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.full_shoulders; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"/>\n    </div>\n    <div class=\"two columns\">\n      <label for=\"measurement_wrist\">Wrist</label>\n      <input class=\"quick-measurement-input\" id=\"measurement_wrist\" name=\"measurement[wrist]\" size=\"30\" type=\"text\"\n             value=\"";
   foundHelper = helpers.wrist;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.wrist; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"jacket_length\"><a href=\"#\" class=\"label\" data-index=\"13\">Jacket Length:</a> ";
+  buffer += escapeExpression(stack1) + "\"/>\n    </div>\n    <div class=\"two columns\">\n      <label for=\"measurement_jacket_length\">Jacket length</label>\n      <input class=\"quick-measurement-input\" id=\"measurement_jacket_length\" name=\"measurement[jacket_length]\" size=\"30\"\n             type=\"text\" value=\"";
   foundHelper = helpers.jacket_length;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.jacket_length; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"</li>\n    ";
-  stack1 = depth0.shirtOnly;
-  stack1 = helpers.unless.call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(13, program13, data)});
-  if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n  </ul>\n</div>";
+  buffer += escapeExpression(stack1) + "\"/>\n    </div>\n    <div class=\"two columns\">\n      <label for=\"measurement_pant_length\">Pant length</label>\n      <input class=\"quick-measurement-input\" id=\"measurement_pant_length\" name=\"measurement[pant_length]\" size=\"30\"\n             type=\"text\" value=\"";
+  foundHelper = helpers.pant_length;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.pant_length; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"/>\n    </div>\n    <div class=\"two columns\">\n      <label for=\"measurement_crotch\">Crotch</label>\n      <input class=\"quick-measurement-input\" id=\"measurement_crotch\" name=\"measurement[crotch]\" size=\"30\" type=\"text\"\n             value=\"";
+  foundHelper = helpers.crotch;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.crotch; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"/>\n    </div>\n    <div class=\"two columns\">\n      <label for=\"measurement_thigh\">Thigh</label>\n      <input class=\"quick-measurement-input\" id=\"measurement_thigh\" name=\"measurement[thigh]\" size=\"30\" type=\"text\"\n             value=\"";
+  foundHelper = helpers.thigh;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.thigh; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"/>\n    </div>\n    <div class=\"twelve columns\">\n      <ul class=\"error error-list\"></ul>\n    </div>\n    <a href=\"#\" class=\"button full-width large accept-quick\">Accept</a>\n  </form>\n</div>\n";
   return buffer;});
 templates['_new_user_modal.hbs'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
