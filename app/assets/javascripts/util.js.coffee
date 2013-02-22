@@ -9,6 +9,18 @@ window.TR =
 
   Events: _.extend {}, Backbone.Events
 
+  UI:
+    setError: ($input, message) ->
+      $input.addClass 'error'
+
+      if $input.next('.error').exists()
+        $input.next('.error').text message
+      else
+        $('<small class="error">' + message + '</small>').insertAfter $input
+
+    removeError: ($input) ->
+      $input.removeClass('error').next('.error').fadeOut()
+
   Analytics:
     trackTransaction: (order, lineItems, address) ->
       if TR.ENVIRONMENT == 'production'

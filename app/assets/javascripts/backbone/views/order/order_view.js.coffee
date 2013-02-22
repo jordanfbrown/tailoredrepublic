@@ -42,7 +42,7 @@ class TR.Views.Order extends TR.Views.Base
     if response.error
       @$('.payment-errors').show().find('p').text response.error.message
       @$('.submit-button').removeAttr 'disabled'
-      $('html, body').animate { scrollTop: @$('.payment-errors').offset().top }, 200
+      @$('.payment-errors').smoothScroll -30, 500
     else
       @$('#stripe_card_token').val response.id
       @$('#card_last4').val response.card.last4
@@ -53,17 +53,6 @@ class TR.Views.Order extends TR.Views.Base
   copyShippingToBilling: ->
     for field in ['name', 'line1', 'line2', 'city', 'state', 'zip']
       @$("#order_billing_address_attributes_#{field}").val @$("#order_shipping_address_attributes_#{field}").val()
-
-  setError: ($input, message) ->
-    $input.addClass 'error'
-
-    if $input.next('.error').exists()
-      $input.next('.error').text message
-    else
-      $('<small class="error">' + message + '</small>').insertAfter $input
-
-  removeError: ($input) ->
-    $input.removeClass('error').next('.error').fadeOut()
 
   copyUserNameToShippingName: (e) ->
     @$('#order_shipping_address_attributes_name').val $(e.currentTarget).val()
@@ -88,16 +77,17 @@ class TR.Views.Order extends TR.Views.Base
   validateForm: ->
     valid = true
 
+    # TODO: uncomment these once we go live
 #    if Stripe.validateCardNumber @$('#card-number').val()
-#      @removeError @$('#card-number')
+#      TR.UI.removeError @$('#card-number')
 #    else
-#      @setError @$('#card_number'), 'Invalid credit card number.'
+#      TR.UI.setError @$('#card_number'), 'Invalid credit card number.'
 #      valid = false
 #
 #    if Stripe.validateCVC @$('#card_code').val()
-#      @removeError @$('#card_code')
+#      TR.UI.removeError @$('#card_code')
 #    else
-#      @setError @$('#card_code'), 'Invalid security code.'
+#      TR.UI.setError @$('#card_code'), 'Invalid security code.'
 #      valid = false
 
     nonEmptyFields = [
@@ -111,14 +101,18 @@ class TR.Views.Order extends TR.Views.Base
       '#order_billing_address_attributes_zip'
     ]
 
+    $first = false
     @$(nonEmptyFields.join(', ')).each (index, el) =>
-      if $(el).val().trim() == ''
-        @setError $(el), 'This field cannot be left blank.'
+      $el = $(el)
+      if $el.val().trim() == ''
+        $first = $el unless $first
+        TR.UI.setError $el, 'This field cannot be left blank.'
         valid = false
         null
       else
-        @removeError $(el)
+        TR.UI.removeError $el
 
+    $first.smoothScroll(-30, 500) if $first.exists()
     valid
 
 

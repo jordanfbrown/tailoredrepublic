@@ -11,6 +11,12 @@ $.fn.tap = function(callback) {
   return this;
 };
 
+$.fn.smoothScroll = function(offset, speed, callback) {
+  $('html, body').stop().animate({
+    scrollTop: $(this).offset().top + offset
+  }, speed, callback);
+};
+
 $.fn.addPlaceholders = function() {
   $('[placeholder]').focus(function() {
     var input = $(this);
