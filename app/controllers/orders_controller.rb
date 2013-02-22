@@ -45,7 +45,12 @@ class OrdersController < ApplicationController
 
   def admin
     if user_signed_in? && current_user.role == 'admin'
-      @orders = Order.order('created_at DESC').paginate(page: (params[:page] ||= 1), per_page: 20)
+      params[:page] ||= 1
+      if params[:search].blank?
+        @orders = Order.paginated(params[:page])
+      else
+        @orders = Order.search(params[:search], params[:page])
+      end
     else
       redirect_to root_path
     end

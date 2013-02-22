@@ -1,6 +1,13 @@
 <div class="twelve columns">
   <h2>Orders</h2>
 
+  <div class="six columns no-padding">
+    <%= form_tag admin_orders_path, method: 'get' do %>
+      <%= text_field_tag :search, '', placeholder: 'enter order ID or email...' %>
+      <%= submit_tag 'Search', name: nil, class: 'button' %>
+    <% end %>
+  </div>
+
   <table>
     <tr>
       <th>Order ID</th>

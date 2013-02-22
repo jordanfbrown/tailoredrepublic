@@ -32,6 +32,18 @@ class Order < ActiveRecord::Base
     'or_' + ('a'..'z').to_a.concat((0..9).to_a).concat(('A'..'Z').to_a).shuffle[0,14].join
   end
 
+  def self.paginated(page)
+    paginate(page: page, per_page: 20, order: 'created_at DESC')
+  end
+
+  def self.search(search, page)
+    paginate(page: page,
+             per_page: 20,
+             order: 'created_at DESC',
+             joins: 'INNER JOIN users u on user_id = u.id',
+             conditions: ['order_id like ? OR u.email like ?', "%#{search}", "%#{search}%"])
+  end
+
   def copy_line_items_from_cart(cart)
     cart.line_items.each do |line_item|
       line_item.cart_id = nil
