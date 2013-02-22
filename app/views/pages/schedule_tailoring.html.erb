@@ -4,7 +4,8 @@
   <div class="six columns centered">
     <h2>Schedule A Tailoring</h2>
     <div class="outlined">
-      <p class="bold">Enter your name, address, and phone number and we will contact you about scheduling a tailoring.</p>
+      <p class="bold">Enter your name, address, and phone number or e-mail address and we will contact you about
+        scheduling a tailoring.</p>
       <% unless user_signed_in? %>
         <p class="bold">If you have an account with a shipping address, <%= link_to 'sign in to autofill your address.', new_user_session_path %> </p>
       <% end %>
@@ -14,6 +15,6 @@
 <div class="row">
   <div class="six columns centered">
     <%= render 'shared/form_errors', resource: @address %>
-    <%= render 'addresses/form', address: @address, action: 'create_schedule_tailoring', phone: true %>
+    <%= render 'addresses/form', address: @address, action: 'create_schedule_tailoring', phone_or_email: true %>
   </div>
 </div>

@@ -19,9 +19,17 @@
       <%= f.text_field :zip %>
     </div>
   </div>
-  <% if phone %>
-    <%= f.label 'Phone Number' %>
-    <%= f.text_field :phone_number %>
+  <% if phone_or_email %>
+    <div class="row">
+      <div class="six columns">
+        <%= f.label 'Email address' %>
+        <%= text_field_tag :email %>
+      </div>
+      <div class="six columns">
+        <%= f.label 'Phone Number (optional)' %>
+        <%= f.text_field :phone_number %>
+      </div>
+    </div>
   <% end %>
   <%= f.submit 'Submit', class: 'button large full-width' %>
 <% end %>
