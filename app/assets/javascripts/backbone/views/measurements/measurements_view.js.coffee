@@ -275,13 +275,15 @@ class TR.Views.Measurements extends TR.Views.Base
         return true
 
       inches = parseFloat $currentInput.val()
-      if _.isNaN(inches) || inches <= 0 || inches >= 90
+      if @inchesInvalid(inches)
         $currentInput.next('.error').fadeIn()
         @slider.triggerResize true
         false
       else
         $currentInput.next('.error').fadeOut()
         @slider.triggerResize true
+        inches = @roundToNearestQuarter(inches)
+        $currentInput.val inches
         true
 
   validateMeasurements: ($form) ->
@@ -292,17 +294,21 @@ class TR.Views.Measurements extends TR.Views.Base
       # ID is in the form measurement_attr_name -- this split returns attr_name
       name = $el.attr('id').split('measurement_')[1]
       inches = parseFloat $el.val()
-      if _.isNaN(inches) || inches < 0 || inches > 90
+      if @inchesInvalid(inches)
         valid = false
         $el.addClass 'error'
         unless $form.find('.quick-measurement-error').exists()
           $form.find('.error-list').append('<li class="quick-measurement-error">Measurements must be a number in inches between 0 and 90.</li>')
       else
         $el.removeClass 'error'
+        inches = @roundToNearestQuarter inches
         @model.setByName name, inches, { silent: true }
       true
 
     valid
+
+  inchesInvalid: (inches) ->
+    _.isNaN(inches) || inches <= 0 || inches >= 90
 
   validateAgeHeightWeight: ($form, silent = false) ->
     $height = $form.find('#measurement_height')
