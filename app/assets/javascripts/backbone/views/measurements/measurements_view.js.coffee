@@ -245,10 +245,10 @@ class TR.Views.Measurements extends TR.Views.Base
     e.preventDefault()
 
     $form = @$('.quick-measurement-form')
-    valid = @validateAgeHeightWeight($form, true)
-    valid = @validateMeasurements($form)
+    ageWeightHeightValid = @validateAgeHeightWeight($form, true)
+    measurementsValid = @validateMeasurements($form)
 
-    if valid
+    if ageWeightHeightValid && measurementsValid
       TR.Analytics.trackEvent 'Measurements', 'Accept'
       $form.find('.error-list').empty()
       @slider.triggerResize(true)
