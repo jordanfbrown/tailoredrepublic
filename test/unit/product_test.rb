@@ -21,4 +21,34 @@ class ProductTest < ActiveSupport::TestCase
     product.destroy
     assert !product.errors.any?
   end
+
+  test "suggested products for a suit should return 2 accessories and 2 shirts" do
+    product = products(:executive)
+    suggested_products = Product.suggested(product.id)
+    assert_equal suggested_products.length, 4
+    accessory_count = suggested_products.select { |p| p.category == :accessory }.length
+    assert_equal accessory_count, 2
+    shirt_count = suggested_products.select { |p| p.category == :shirt }.length
+    assert_equal shirt_count, 2
+  end
+
+  test "suggested products for a shirt should return 2 accessories and 2 suits" do
+    product = products(:blue_shirt)
+    suggested_products = Product.suggested(product.id)
+    assert_equal suggested_products.length, 4
+    accessory_count = suggested_products.select { |p| p.category == :accessory }.length
+    assert_equal accessory_count, 2
+    suit_count = suggested_products.select { |p| p.category == :suit }.length
+    assert_equal suit_count, 2
+  end
+
+  test "suggested products for an accessory should return 2 suits and 2 shirts" do
+    product = products(:coral_pocket_square)
+    suggested_products = Product.suggested(product.id)
+    assert_equal suggested_products.length, 4
+    shirt_count = suggested_products.select { |p| p.category == :shirt }.length
+    assert_equal shirt_count, 2
+    suit_count = suggested_products.select { |p| p.category == :suit }.length
+    assert_equal suit_count, 2
+  end
 end

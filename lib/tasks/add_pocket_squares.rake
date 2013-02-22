@@ -4,7 +4,7 @@ namespace :db do
       ashworth = Product.create!(
         category: 'accessory',
         name: 'The Ashworth',
-        summary: 'The Ashworth, 100% Cotton',
+        summary: '100% Cotton',
         description: "A light gray pocket square can keep things subtle, while the floral pattern keeps it fun.",
         price: 20,
         quantity: 10
@@ -19,7 +19,7 @@ namespace :db do
       cameoflage = Product.create!(
         category: 'accessory',
         name: 'Cameoflage',
-        summary: 'Cameoflage, 100% Cotton',
+        summary: '100% Cotton',
         description: "Use this square wisely and you will be the envy of the party. Add flare to a black, gray, or brown suit with this guy.",
         price: 20,
         quantity: 10
@@ -34,7 +34,7 @@ namespace :db do
       carolina = Product.create!(
         category: 'accessory',
         name: 'Carolina Blue',
-        summary: 'Carolina Blue, 100% Cotton',
+        summary: '100% Cotton',
         description: "Blues and grays play nicely. Without patterns to distract, our solid squares are all about the bold colors.",
         price: 20,
         quantity: 10
@@ -49,7 +49,7 @@ namespace :db do
       coral_floral = Product.create!(
         category: 'accessory',
         name: 'Coral Floral',
-        summary: 'Coral Floral, 100% Cotton',
+        summary: '100% Cotton',
         description: "Your pockets shall be bold the boldest in the room with this coral square.",
         price: 20,
         quantity: 10
@@ -64,7 +64,7 @@ namespace :db do
       coral_linen = Product.create!(
         category: 'accessory',
         name: 'Coral Linen',
-        summary: 'Coral Linen, 100% Linen',
+        summary: '100% Linen',
         description: "Tis' the spring season and this square is sure to turn heads at the Easter service. Gray and charcoal lend themselves exceptionally to these pinker shades.",
         price: 20,
         quantity: 10
@@ -79,7 +79,7 @@ namespace :db do
       icy_white = Product.create!(
         category: 'accessory',
         name: 'Icy White',
-        summary: 'Icy White, 100% Cotton',
+        summary: '100% Cotton',
         description: "Sometimes keeping it simple is the way to go. Throw this on a tuxedo or 3 piece black suit to dress your pocket up without distracting from the main attraction.",
         price: 20,
         quantity: 10
@@ -94,7 +94,7 @@ namespace :db do
       mint_chocolate_chip = Product.create!(
         category: 'accessory',
         name: 'Mint Chocolate Chip',
-        summary: 'Mint Chocolate Chip, 100% Cotton',
+        summary: '100% Cotton',
         description: "Turquoise and brown will need to be paired wisely, but this square is a beauty.",
         price: 20,
         quantity: 10
@@ -109,7 +109,7 @@ namespace :db do
       olive_floral = Product.create!(
         category: 'accessory',
         name: 'Olive To See Tomorrow',
-        summary: 'Olive To See Tomorrow, 100% Cotton',
+        summary: '100% Cotton',
         description: "Keep it earthy with this floral patterned olive pocket square. Pair with other earth tones; browns, grays, and muted blues.",
         price: 20,
         quantity: 10
@@ -124,7 +124,7 @@ namespace :db do
       pastel_pink = Product.create!(
         category: 'accessory',
         name: 'Pastel Pink',
-        summary: 'Pastel Pink, 100% Cotton',
+        summary: '100% Cotton',
         description: 'As our style guru likes to say, "there is nothing more masculine than a man that can pull off a touch of pink".',
         price: 20,
         quantity: 10
@@ -139,7 +139,7 @@ namespace :db do
       pastellion = Product.create!(
         category: 'accessory',
         name: 'Pastellion',
-        summary: 'Pastellion, 100% Cotton',
+        summary: '100% Cotton',
         description: "Pastel pink and a floral pattern, two ways to show that you are completely confident in your style game. And don't worry; we got your back on this choice.",
         price: 20,
         quantity: 10
@@ -154,7 +154,7 @@ namespace :db do
       spring_fling = Product.create!(
         category: 'accessory',
         name: 'Spring Fling',
-        summary: 'Spring Fling, 100% Cotton',
+        summary: '100% Cotton',
         description: "A bold pocket square if there ever was one. Pull this beast out of your pocket a little further than normal and watch people's pupils dilate.",
         price: 20,
         quantity: 10
@@ -169,7 +169,7 @@ namespace :db do
       sunburst = Product.create!(
         category: 'accessory',
         name: 'Sunburst Yellow',
-        summary: 'Sunburst Yellow, 100% Cotton',
+        summary: '100% Cotton',
         description: "Bold, solid colors can kill the game. Use this to bring out some yellows in the tie you are wearing. A navy suit will really pop if paired with this square.",
         price: 20,
         quantity: 10
