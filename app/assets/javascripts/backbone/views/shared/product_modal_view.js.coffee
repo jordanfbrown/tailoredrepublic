@@ -41,7 +41,7 @@ class TR.Views.ProductModal extends TR.Views.Modal
     @setMagnifierMaxHeight()
 
   setMagnifierMaxHeight: =>
-    height = @$el.height() - 100 + 'px'
+    height = if $(window).width() < 768 then 250 else @$el.height() - 100 + 'px'
     @$('.image-magnified').css('max-height': height, 'height': height)
 
   magnify: (e) ->
