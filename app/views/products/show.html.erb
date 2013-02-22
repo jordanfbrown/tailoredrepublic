@@ -1,0 +1,37 @@
+<div class="content-wrapper">
+  <div class="twelve columns">
+    <h2><%= @product.name %><span class="divider">&nbsp;//&nbsp;</span>$<%= @product.display_price %></h2>
+  </div>
+  <div class="row">
+    <div class="five columns preview-wrapper">
+      <ul class="modal-suit-preview three columns">
+        <% @product.product_images.reverse.each do |image| %>
+          <li><%= link_to image_tag(image.thumbnail), '#', data: { id: image.id }, class: 'switch-image' %></li>
+        <% end %>
+      </ul>
+      <div class="magnify nine columns">
+        <%= image_tag @product.default_photo.regular, class: 'magnify-small' %>
+        <p>Hover to magnify</p>
+      </div>
+    </div>
+    <div class="seven columns outlined">
+      <div class="image-magnified" style="display: none;">
+        <%= image_tag @product.default_photo.large, class: 'magnify-large' %>
+      </div>
+      <div class="product-summary">
+        <h4><%= @product.summary %></h4>
+        <p class="blurb"><%= @product.description %></p>
+        <% if @product.customizable? %>
+          <%= link_to 'Click to Customize', '#', class: 'customize button large full-width' %>
+        <% else %>
+          <%= link_to 'Add to Cart', '#', class: 'add-to-cart-no-customization button large full-width' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var product = new TR.Models.Product(<%= @product.to_json(include: [:product_images]).html_safe %>);
+  new TR.Views.ShowProduct({model: product});
+</script>

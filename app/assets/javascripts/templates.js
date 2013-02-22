@@ -1013,7 +1013,7 @@ function program3(depth0,data) {
 function program5(depth0,data) {
   
   
-  return "\n        <a href=\"#\" class=\"add-to-cart button large full-width\">Add to Cart</a>\n      ";}
+  return "\n        <a href=\"#\" class=\"add-to-cart-no-customization button large full-width\">Add to Cart</a>\n      ";}
 
   buffer += "<a class=\"close-reveal-modal\">&#215;</a>\n<div class=\"row\">\n  <h2 class=\"eight columns\">";
   foundHelper = helpers.name;

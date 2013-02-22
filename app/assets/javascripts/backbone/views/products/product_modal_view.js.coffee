@@ -1,4 +1,4 @@
-#= require ./modal_view
+#= require ../shared/modal_view
 
 class TR.Views.ProductModal extends TR.Views.Modal
   id: 'product-modal'
@@ -10,12 +10,11 @@ class TR.Views.ProductModal extends TR.Views.Modal
       'mousemove img.magnify-small': 'magnify'
       'mouseleave img.magnify-small': 'stopMagnify'
       'click a.customize': 'openCustomizationModal'
-      'click a.add-to-cart': 'addToCart'
+      'click a.add-to-cart-no-customization': 'addToCartWithoutCustomization'
       'click a.switch-image': 'switchImage'
 
-  initialize: (options) ->
+  initialize: ->
     super()
-    @customization = options.customization
     @template = @getTemplate 'product_modal'
     $(window).on 'resize.product', @resize
     @resize()
@@ -73,7 +72,7 @@ class TR.Views.ProductModal extends TR.Views.Modal
     @destroy()
     @customizationView = new TR.Views.CustomizationModal(product: @model)
 
-  addToCart: (e) =>
+  addToCartWithoutCustomization: (e) =>
     e.preventDefault()
     @product = @model
     $.post('/line_items', { product_id: @model.get('id') }).then(

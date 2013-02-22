@@ -57,6 +57,10 @@ class Product < ActiveRecord::Base
     product_images.find_by_default(true)
   end
 
+  def customizable?
+    category == :suit || category == :shirt
+  end
+
   private
     def ensure_not_referenced_by_line_item
       if line_items.empty?
