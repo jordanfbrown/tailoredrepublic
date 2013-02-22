@@ -10,7 +10,7 @@
       <div class="outlined">
         <ul class="progress-bar">
           <li class="selected"></li>
-          <% (@num_measurements + 2).times do %>
+          <% (@num_measurements + 3).times do %>
             <li></li>
           <% end %>
         </ul>
@@ -26,92 +26,99 @@
           <li class="measurement-overview" data-measurement="overview">
             <div class="row">
               <div class="six columns">
-                <h4>How to Measure</h4>
-                <p>There are two ways that you can measure yourself. You can either follow along with our step-by-step
-                  measurement guide, or <%= link_to 'schedule a tailoring', schedule_tailoring_path %> and we will reimburse
-                  you for the cost.</p>
-                <p>If you don't know your measurements already, click "Begin" to proceed with our step-by-step guide.</p>
+                <h4>Measure Yourself</h4>
+                <p>Follow along with our step-by-step measurement guide to measure yourself. All you need is a tape
+                measure and a friend to help you out.</p>
                 <%= link_to 'Begin', '#', class: 'button full-width large begin' %>
               </div>
               <div class="six columns">
-                <h4>Quick Fill</h4>
-                <p>Already know your measurements? Enter them below and click "Accept" to skip over our
-                  step-by-step measurement guide.</p>
-                <%= form_for @measurement, url: '', html: { class: 'quick-measurement-form' } do |f| %>
-                  <div class="four columns">
-                    <%= f.label :age %>
-                    <%= f.text_field :age %>
-                  </div>
-                  <div class="four columns">
-                    <%= f.label :height, 'Height (in.)' %>
-                    <%= f.text_field :height %>
-                  </div>
-                  <div class="four columns">
-                    <%= f.label :weight, 'Weight (lbs)' %>
-                    <%= f.text_field :weight %>
-                  </div>
-                  <div class="four columns">
-                    <%= f.label :neck %>
-                    <%= f.text_field :neck, class: 'quick-measurement-input' %>
-                  </div>
-                  <div class="four columns">
-                    <%= f.label :waist %>
-                    <%= f.text_field :waist, class: 'quick-measurement-input' %>
-                  </div>
-                  <div class="four columns">
-                    <%= f.label :arm_length %>
-                    <%= f.text_field :arm_length, class: 'quick-measurement-input' %>
-                  </div>
-                  <div class="four columns">
-                    <%= f.label :stomach %>
-                    <%= f.text_field :stomach, class: 'quick-measurement-input' %>
-                  </div>
-                  <div class="four columns">
-                    <%= f.label :chest %>
-                    <%= f.text_field :chest, class: 'quick-measurement-input' %>
-                  </div>
-                  <div class="four columns">
-                    <%= f.label :hips %>
-                    <%= f.text_field :hips, class: 'quick-measurement-input' %>
-                  </div>
-                  <div class="four columns">
-                    <%= f.label :bicep %>
-                    <%= f.text_field :bicep, class: 'quick-measurement-input' %>
-                  </div>
-                  <div class="four columns">
-                    <%= f.label :back %>
-                    <%= f.text_field :back, class: 'quick-measurement-input' %>
-                  </div>
-                  <div class="four columns">
-                    <%= f.label :full_shoulders %>
-                    <%= f.text_field :full_shoulders, class: 'quick-measurement-input' %>
-                  </div>
-                  <div class="four columns">
-                    <%= f.label :wrist %>
-                    <%= f.text_field :wrist, class: 'quick-measurement-input' %>
-                  </div>
-                  <div class="four columns">
-                    <%= f.label :jacket_length %>
-                    <%= f.text_field :jacket_length, class: 'quick-measurement-input' %>
-                  </div>
-                  <% unless @shirt_only %>
-                    <div class="four columns">
-                      <%= f.label :pant_length %>
-                      <%= f.text_field :pant_length, class: 'quick-measurement-input' %>
-                    </div>
-                    <div class="four columns">
-                      <%= f.label :crotch %>
-                      <%= f.text_field :crotch, class: 'quick-measurement-input' %>
-                    </div>
-                    <div class="four columns">
-                      <%= f.label :thigh %>
-                      <%= f.text_field :thigh, class: 'quick-measurement-input' %>
-                    </div>
-                  <% end %>
-                  <ul class="error error-list"></ul>
-                  <%= link_to 'Accept', '#', class: 'button full-width large accept-quick' %>
-                <% end %>
+                <h4>Schedule a Tailoring</h4>
+                <p>If you're uncomfortable measuring yourself, schedule a tailoring to have one of our Tailored Republic
+                  approved tailors take your measurements.</p>
+                  <%= link_to 'Schedule a Tailoring', schedule_tailoring_path, class: 'button full-width large begin' %>
               </div>
+            </div>
+          </li>
+          <li data-measurement="quick_fill">
+            <div class="twelve columns">
+              <h4>Quick Fill</h4>
+              <p>Already know your measurements? Enter them below and click "Accept" to skip over our
+                step-by-step measurement guide. If you don't know your measurements, click "Next" to continue with our
+                measurement guide.</p>
+              <%= form_for @measurement, url: '', html: { class: 'quick-measurement-form' } do |f| %>
+                <div class="two columns">
+                  <%= f.label :age %>
+                  <%= f.text_field :age %>
+                </div>
+                <div class="two columns">
+                  <%= f.label :height, 'Height (in.)' %>
+                  <%= f.text_field :height %>
+                </div>
+                <div class="two columns">
+                  <%= f.label :weight, 'Weight (lbs)' %>
+                  <%= f.text_field :weight %>
+                </div>
+                <div class="two columns">
+                  <%= f.label :neck %>
+                  <%= f.text_field :neck, class: 'quick-measurement-input' %>
+                </div>
+                <div class="two columns">
+                  <%= f.label :waist %>
+                  <%= f.text_field :waist, class: 'quick-measurement-input' %>
+                </div>
+                <div class="two columns">
+                  <%= f.label :arm_length %>
+                  <%= f.text_field :arm_length, class: 'quick-measurement-input' %>
+                </div>
+                <div class="two columns">
+                  <%= f.label :stomach %>
+                  <%= f.text_field :stomach, class: 'quick-measurement-input' %>
+                </div>
+                <div class="two columns">
+                  <%= f.label :chest %>
+                  <%= f.text_field :chest, class: 'quick-measurement-input' %>
+                </div>
+                <div class="two columns">
+                  <%= f.label :hips %>
+                  <%= f.text_field :hips, class: 'quick-measurement-input' %>
+                </div>
+                <div class="two columns">
+                  <%= f.label :bicep %>
+                  <%= f.text_field :bicep, class: 'quick-measurement-input' %>
+                </div>
+                <div class="two columns">
+                  <%= f.label :back %>
+                  <%= f.text_field :back, class: 'quick-measurement-input' %>
+                </div>
+                <div class="two columns">
+                  <%= f.label :full_shoulders %>
+                  <%= f.text_field :full_shoulders, class: 'quick-measurement-input' %>
+                </div>
+                <div class="two columns">
+                  <%= f.label :wrist %>
+                  <%= f.text_field :wrist, class: 'quick-measurement-input' %>
+                </div>
+                <div class="two columns">
+                  <%= f.label :jacket_length %>
+                  <%= f.text_field :jacket_length, class: 'quick-measurement-input' %>
+                </div>
+                <% unless @shirt_only %>
+                  <div class="two columns">
+                    <%= f.label :pant_length %>
+                    <%= f.text_field :pant_length, class: 'quick-measurement-input' %>
+                  </div>
+                  <div class="two columns">
+                    <%= f.label :crotch %>
+                    <%= f.text_field :crotch, class: 'quick-measurement-input' %>
+                  </div>
+                  <div class="two columns">
+                    <%= f.label :thigh %>
+                    <%= f.text_field :thigh, class: 'quick-measurement-input' %>
+                  </div>
+                <% end %>
+                <ul class="error error-list"></ul>
+                <%= link_to 'Accept', '#', class: 'button full-width large accept-quick' %>
+              <% end %>
             </div>
           </li>
           <li class="height-age-weight" data-measurement="body_type">

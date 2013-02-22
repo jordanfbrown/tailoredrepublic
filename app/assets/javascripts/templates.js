@@ -1081,74 +1081,74 @@ function program11(depth0,data) {
 function program13(depth0,data) {
   
   var buffer = "", stack1, foundHelper;
-  buffer += "\n      <li data-measurement=\"crotch\"><a href=\"#\" class=\"label\" data-index=\"13\">Crotch:</a> ";
+  buffer += "\n      <li data-measurement=\"crotch\"><a href=\"#\" class=\"label\" data-index=\"14\">Crotch:</a> ";
   foundHelper = helpers.crotch;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.crotch; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"</li>\n      <li data-measurement=\"thigh\"><a href=\"#\" class=\"label\" data-index=\"14\">Thigh:</a> ";
+  buffer += escapeExpression(stack1) + "\"</li>\n      <li data-measurement=\"thigh\"><a href=\"#\" class=\"label\" data-index=\"15\">Thigh:</a> ";
   foundHelper = helpers.thigh;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.thigh; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"</li>\n      <li data-measurement=\"pant_length\"><a href=\"#\" class=\"label\" data-index=\"15\">Pant Length:</a> ";
+  buffer += escapeExpression(stack1) + "\"</li>\n      <li data-measurement=\"pant_length\"><a href=\"#\" class=\"label\" data-index=\"16\">Pant Length:</a> ";
   foundHelper = helpers.pant_length;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.pant_length; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
   buffer += escapeExpression(stack1) + "\"</li>\n    ";
   return buffer;}
 
-  buffer += "<div class=\"row\">\n  <div class=\"twelve columns\">\n    <p class=\"accept-text\">Please read over your measurements one last time and ensure that they are correct. If they\n      look good, click \"Accept\" to continue. If you need to change a measurement, click on any of the categories below\n      to correct the value.\n    </p>\n  </div>\n</div>\n\n<div class=\"three columns\">\n  <ul class=\"measurement-summary-list\">\n    <li data-measurement=\"age\"><a href=\"#\" class=\"label\" data-index=\"1\">Age:</a> ";
+  buffer += "<div class=\"row\">\n  <div class=\"twelve columns\">\n    <p class=\"accept-text\">Please read over your measurements one last time and ensure that they are correct. If they\n      look good, click \"Accept\" to continue. If you need to change a measurement, click on any of the categories below\n      to correct the value.\n    </p>\n  </div>\n</div>\n\n<div class=\"three columns\">\n  <ul class=\"measurement-summary-list\">\n    <li data-measurement=\"age\"><a href=\"#\" class=\"label\" data-index=\"2\">Age:</a> ";
   stack1 = depth0.age;
   stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "</li>\n    <li data-measurement=\"height\"><a href=\"#\" class=\"label\" data-index=\"1\">Weight:</a> ";
+  buffer += "</li>\n    <li data-measurement=\"height\"><a href=\"#\" class=\"label\" data-index=\"2\">Weight:</a> ";
   stack1 = depth0.weight;
   stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(7, program7, data),fn:self.program(5, program5, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += " </li>\n    <li data-measurement=\"weight\"><a href=\"#\" class=\"label\" data-index=\"1\">Height:</a> ";
+  buffer += " </li>\n    <li data-measurement=\"weight\"><a href=\"#\" class=\"label\" data-index=\"2\">Height:</a> ";
   stack1 = depth0.height;
   stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(11, program11, data),fn:self.program(9, program9, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "</li>\n  </ul>\n</div>\n  \n<div class=\"three columns\">\n  <ul class=\"measurement-summary-list\">\n    <li data-measurement=\"neck\"><a href=\"#\" class=\"label\" data-index=\"2\">Neck:</a> ";
+  buffer += "</li>\n  </ul>\n</div>\n  \n<div class=\"three columns\">\n  <ul class=\"measurement-summary-list\">\n    <li data-measurement=\"neck\"><a href=\"#\" class=\"label\" data-index=\"3\">Neck:</a> ";
   foundHelper = helpers.neck;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.neck; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"chest\"><a href=\"#\" class=\"label\" data-index=\"3\">Chest:</a> ";
+  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"chest\"><a href=\"#\" class=\"label\" data-index=\"4\">Chest:</a> ";
   foundHelper = helpers.chest;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.chest; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"stomach\"><a href=\"#\" class=\"label\" data-index=\"4\">Stomach:</a> ";
+  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"stomach\"><a href=\"#\" class=\"label\" data-index=\"5\">Stomach:</a> ";
   foundHelper = helpers.stomach;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.stomach; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"waist\"><a href=\"#\" class=\"label\" data-index=\"5\">Waist:</a> ";
+  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"waist\"><a href=\"#\" class=\"label\" data-index=\"6\">Waist:</a> ";
   foundHelper = helpers.waist;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.waist; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"</li>\n  </ul>\n</div>\n\n<div class=\"three columns\">\n  <ul class=\"measurement-summary-list\">\n    <li data-measurement=\"hips\"><a href=\"#\" class=\"label\" data-index=\"6\">Hips:</a> ";
+  buffer += escapeExpression(stack1) + "\"</li>\n  </ul>\n</div>\n\n<div class=\"three columns\">\n  <ul class=\"measurement-summary-list\">\n    <li data-measurement=\"hips\"><a href=\"#\" class=\"label\" data-index=\"7\">Hips:</a> ";
   foundHelper = helpers.hips;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.hips; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"full_shoulders\"><a href=\"#\" class=\"label\" data-index=\"7\">Full Shoulders:</a> ";
+  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"full_shoulders\"><a href=\"#\" class=\"label\" data-index=\"8\">Full Shoulders:</a> ";
   foundHelper = helpers.full_shoulders;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.full_shoulders; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"back\"><a href=\"#\" class=\"label\" data-index=\"8\">Back:</a> ";
+  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"back\"><a href=\"#\" class=\"label\" data-index=\"9\">Back:</a> ";
   foundHelper = helpers.back;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.back; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"arm_length\"><a href=\"#\" class=\"label\" data-index=\"9\">Arm Length:</a> ";
+  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"arm_length\"><a href=\"#\" class=\"label\" data-index=\"10\">Arm Length:</a> ";
   foundHelper = helpers.arm_length;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.arm_length; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"bicep\"><a href=\"#\" class=\"label\" data-index=\"10\">Bicep:</a> ";
+  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"bicep\"><a href=\"#\" class=\"label\" data-index=\"11\">Bicep:</a> ";
   foundHelper = helpers.bicep;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.bicep; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"</li>\n  </ul>\n</div>\n\n<div class=\"three columns\">\n  <ul class=\"measurement-summary-list\">\n    <li data-measurement=\"wrist\"><a href=\"#\" class=\"label\" data-index=\"11\">Wrist:</a> ";
+  buffer += escapeExpression(stack1) + "\"</li>\n  </ul>\n</div>\n\n<div class=\"three columns\">\n  <ul class=\"measurement-summary-list\">\n    <li data-measurement=\"wrist\"><a href=\"#\" class=\"label\" data-index=\"12\">Wrist:</a> ";
   foundHelper = helpers.wrist;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.wrist; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"jacket_length\"><a href=\"#\" class=\"label\" data-index=\"12\">Jacket Length:</a> ";
+  buffer += escapeExpression(stack1) + "\"</li>\n    <li data-measurement=\"jacket_length\"><a href=\"#\" class=\"label\" data-index=\"13\">Jacket Length:</a> ";
   foundHelper = helpers.jacket_length;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.jacket_length; stack1 = typeof stack1 === functionType ? stack1() : stack1; }

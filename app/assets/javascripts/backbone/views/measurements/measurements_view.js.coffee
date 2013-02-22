@@ -23,7 +23,7 @@ class TR.Views.Measurements extends TR.Views.Base
     @shirtOnly = options.shirtOnly
     @signedIn = options.signedIn
     @initialSlide = options.initialSlide
-    @slideOffset = 2 # Currently 2 slides exist before the measurement slides start
+    @slideOffset = 3 # Currently 3 slides exist before the measurement slides start
 
     measuringTapePixels = 4521
     measuringTapeInches = 90
@@ -58,10 +58,10 @@ class TR.Views.Measurements extends TR.Views.Base
       @goToInitialSlide()
     else
       if @model.isNew()
-        history.replaceState {index: 0}, 'Tailored Republic - Measurements - Overview', '/measurements/overview'
+        history.replaceState {index: 0}, 'Measurements | Tailored Republic', '/measurements/overview'
       else
         @$('iframe').attr 'src', ''
-        @slider.goToSlide @slideCount
+        @slider.goToSlide 1
         _.delay @loadVideos, 500
 
   numberRegex: /^[0-9]+$/
@@ -183,10 +183,10 @@ class TR.Views.Measurements extends TR.Views.Base
     @setProgressBar newIndex
 
     # Only set measurement values for measurement slides
-    if oldIndex > 1
+    if oldIndex >= @slideOffset
       # jQuery eq function wraps around if you enter a negative value: eq(-1) will return eq(15) for an array of length
       # 16. To prevent this, I'm just setting the index to a very large value so that the wrapping doesn't occur
-      adjustedIndex = if oldIndex - 2 < 0 then 1000 else oldIndex - 2
+      adjustedIndex = if oldIndex - @slideOffset < 0 then 1000 else oldIndex - @slideOffset
       oldMeasurement = @$('.measurement-list-item').eq(adjustedIndex).data 'measurement'
       inches = parseFloat @$('input.measurement-input').eq(adjustedIndex).val()
       unless _.isNaN inches
@@ -284,7 +284,7 @@ class TR.Views.Measurements extends TR.Views.Base
 
   validateCurrentInput: ->
     # Height, age, and weight
-    if @slider.getCurrentSlide() == 1
+    if @slider.getCurrentSlide() == @slideOffset - 1
       $form = @$('.height-age-weight')
       @validateAgeHeightWeight($form)
     else
