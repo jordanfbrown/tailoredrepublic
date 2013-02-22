@@ -74,14 +74,13 @@ puts 'Creating product images'
 %w(black navy charcoal gray tuxedo build).each do |product_string|
   product = eval(product_string)
   %w(front back side detail).each do |image|
-    product.product_images.create!(
-      thumbnail: "products/suits/#{product_string}/#{image}-thumbnail.png",
-      regular: "products/suits/#{product_string}/#{image}-regular.png",
-      large: "products/suits/#{product_string}/#{image}-large.png",
-      default: image == 'front'
-    )
+    unless product_string == 'build' && (image == 'back' || image == 'side' || image == 'detail')
+      product.product_images.create!(
+        thumbnail: "products/suits/#{product_string}/#{image}-thumbnail.png",
+        regular: "products/suits/#{product_string}/#{image}-regular.png",
+        large: "products/suits/#{product_string}/#{image}-large.png",
+        default: image == 'front'
+      )
+    end
   end
 end
-
-
-
