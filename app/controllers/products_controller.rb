@@ -21,14 +21,25 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    @product = Product.find(params[:id])
+    if params[:id].is_a? Integer
+      @product = Product.find(params[:id])
 
-    respond_to do |format|
-      format.html do
-        authorize! :show, @products
+      respond_to do |format|
+        format.html do
+          authorize! :show, @products
+        end
+        format.json { render json: @product }
       end
-      format.json { render json: @product }
+    else
+      name = params[:id].titleize
+      @product = Product.find_by_name(name) || not_found
+
+      respond_to do |format|
+        format.html
+        format.json { render json: @product }
+      end
     end
+
   end
 
   # GET /products/new

@@ -37,7 +37,7 @@ class TR.Views.Order extends TR.Views.Base
         false
     else
       false
-  
+
   stripeResponseHandler: (status, response) =>
     if response.error
       @$('.payment-errors').show().find('p').text response.error.message
@@ -101,11 +101,11 @@ class TR.Views.Order extends TR.Views.Base
       '#order_billing_address_attributes_zip'
     ]
 
-    $first = false
+    $first = $()
     @$(nonEmptyFields.join(', ')).each (index, el) =>
       $el = $(el)
       if $el.val().trim() == ''
-        $first = $el unless $first
+        $first = $el unless $first.exists()
         TR.UI.setError $el, 'This field cannot be left blank.'
         valid = false
         null

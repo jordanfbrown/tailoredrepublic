@@ -9,7 +9,6 @@ module CartsHelper
         { option: "Pant Cuffs", type: wordify(customization.pant_cuffs) },
         { option: "Fit", type: customization.fit.capitalize },
         { option: "Lining", type: customization.lining.titleize },
-        { option: "Monogram", type: customization.monogram.length == 0 ? "None" : customization.monogram },
         { option: "Pick Stitching", type:
           (customization.pick_stitching? ? "Yes (+$#{Product.pick_stitching_price})" : 'No' ) },
         { option: "Vest", type:

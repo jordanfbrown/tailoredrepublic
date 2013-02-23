@@ -45,8 +45,28 @@ class Product < ActiveRecord::Base
   end
 
   def self.suggested(product_id)
-    # TODO: come up with real suggested products instead of first 4 products
-    self.includes(:product_images).all(limit: 4)
+    product = Product.find(product_id)
+    suggested = []
+    case product.category
+      when :suit
+        suggested << Product.random_by_category(:accessory)
+        suggested << Product.random_by_category(:shirt)
+      when :shirt
+        suggested << Product.random_by_category(:accessory)
+        suggested << Product.random_by_category(:suit)
+      when :accessory
+        suggested << Product.random_by_category(:suit)
+        suggested << Product.random_by_category(:shirt)
+      else
+        suggested << Product.random_by_category(:shirt)
+        suggested << Product.random_by_category(:suit)
+    end
+    suggested.flatten
+  end
+
+  def self.random_by_category(category)
+    # Exclude Build Your Own Suit as a suggested product
+    Product.where('category = ? AND name != ?', category, 'Build Your Own Suit').shuffle[0,2]
   end
 
   def display_price
@@ -55,6 +75,10 @@ class Product < ActiveRecord::Base
 
   def default_photo
     product_images.find_by_default(true)
+  end
+
+  def customizable?
+    category == :suit || category == :shirt
   end
 
   private

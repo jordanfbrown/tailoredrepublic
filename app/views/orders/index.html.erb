@@ -4,77 +4,84 @@
   <h2>Order History</h2>
 </div>
 
-<div class="content-wrapper">
-  <% @orders.each do |order| %>
-    <div class="order-list-item outlined">
-      <div class="four columns">
-        <ul>
-          <h4><strong><%= order.friendly_created_date %></strong></h4>
-          <li><h5>Order: <%= order.order_id %></h5></li>
-        </ul>
-      </div>
-      <div class="four columns">
-        <ul class="items-purchased">
-          <li><h5>Purchase Summary</h5></li>
-          <% order.line_items.each do |line_item|  %>
-            <li><span class="item-description"><%= line_item.quantity %> x <%= line_item.name %>:</span> <%= number_to_currency line_item.total_price %></li>
-            <% unless line_item.customization.nil? %>
-              <li class="customization-toggle">
-                <a href="#" class="view-customizations">
-                  <span class="arrow-right"></span>
-                  <span class="text">View Customizations</span>
-                </a>
-                <ul class="customization-list-wrapper" style="display: none;">
-                  <% customization_list(line_item.customization).each do |customization| %>
-                    <li><span class="label"><%= customization[:option] %></span>: <%= customization[:type] %></li>
-                  <% end %>
-                </ul>
-              </li>
-            <% end %>
-          <% end %>
-          <% unless order.coupon.blank? %>
-            <li><span class="item-description"><%= order.coupon_description %> (Discount):</span> -<%= number_to_currency order.discount %></li>
-          <% end %>
-          <li><span class="item-description">Shipping:</span> $0.00</li>
-          <li><span class="item-description">Tax:</span> <%= order.tax? ? number_to_currency(order.tax) : '$0.00' %></li>
-          <li class="total-cost"><span class="item-description">Total cost:</span> <%= number_to_currency order.final_cost %></li>
-          <% unless order.generated_coupons.blank? %>
-            <li><h5>Coupon Codes</h5></li>
-            <% order.generated_coupons.each do |coupon| %>
-              <li><span class="item-description"><%= coupon.description %>:</span> <%= coupon.code %></li>
-            <% end %>
-          <% end %>
-        </ul>
-      </div>
-      <div class="four columns">
-        <div class="row">
+<% if @orders.length > 0 %>
+  <div class="content-wrapper">
+    <% @orders.each do |order| %>
+      <div class="order-list-item outlined">
+        <div class="four columns">
           <ul>
-            <li><h5>Sent To</h5></li>
-            <li><%= order.shipping_address.name %></li>
-            <li><%= order.shipping_address.line1 %></li>
-            <li><%= order.shipping_address.line2 %></li>
-            <li><%= order.shipping_address.city %>, <%= order.shipping_address.state %>, <%= order.shipping_address.zip %></li>
+            <h4><strong><%= order.friendly_created_date %></strong></h4>
+            <li><h5>Order: <%= order.order_id %></h5></li>
           </ul>
         </div>
-        <div class="row">
-          <ul>
-            <li><h5>Billed To</h5></li>
-            <li><%= order.billing_address.name %></li>
-            <li><%= order.billing_address.line1 %></li>
-            <li><%= order.billing_address.line2 %></li>
-            <li><%= order.billing_address.city %>, <%= order.billing_address.state %>, <%= order.billing_address.zip %></li>
+        <div class="four columns">
+          <ul class="items-purchased">
+            <li><h5>Purchase Summary</h5></li>
+            <% order.line_items.each do |line_item|  %>
+              <li><span class="item-description"><%= line_item.quantity %> x <%= line_item.name %>:</span> <%= number_to_currency line_item.total_price %></li>
+              <% unless line_item.customization.nil? %>
+                <li class="customization-toggle">
+                  <a href="#" class="view-customizations">
+                    <span class="arrow-right"></span>
+                    <span class="text">View Customizations</span>
+                  </a>
+                  <ul class="customization-list-wrapper" style="display: none;">
+                    <% customization_list(line_item.customization).each do |customization| %>
+                      <li><span class="label"><%= customization[:option] %></span>: <%= customization[:type] %></li>
+                    <% end %>
+                  </ul>
+                </li>
+              <% end %>
+            <% end %>
+            <% unless order.coupon.blank? %>
+              <li><span class="item-description"><%= order.coupon_description %> (Discount):</span> -<%= number_to_currency order.discount %></li>
+            <% end %>
+            <li><span class="item-description">Shipping:</span> $0.00</li>
+            <li><span class="item-description">Tax:</span> <%= order.tax? ? number_to_currency(order.tax) : '$0.00' %></li>
+            <li class="total-cost"><span class="item-description">Total cost:</span> <%= number_to_currency order.final_cost %></li>
+            <% unless order.generated_coupons.blank? %>
+              <li><h5>Coupon Codes</h5></li>
+              <% order.generated_coupons.each do |coupon| %>
+                <li><span class="item-description"><%= coupon.description %>:</span> <%= coupon.code %></li>
+              <% end %>
+            <% end %>
           </ul>
         </div>
+        <div class="four columns">
+          <div class="row">
+            <ul>
+              <li><h5>Sent To</h5></li>
+              <li><%= order.shipping_address.name %></li>
+              <li><%= order.shipping_address.line1 %></li>
+              <li><%= order.shipping_address.line2 %></li>
+              <li><%= order.shipping_address.city %>, <%= order.shipping_address.state %>, <%= order.shipping_address.zip %></li>
+            </ul>
+          </div>
+          <div class="row">
+            <ul>
+              <li><h5>Billed To</h5></li>
+              <li><%= order.billing_address.name %></li>
+              <li><%= order.billing_address.line1 %></li>
+              <li><%= order.billing_address.line2 %></li>
+              <li><%= order.billing_address.city %>, <%= order.billing_address.state %>, <%= order.billing_address.zip %></li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
+  <div class="content-wrapper twelve columns">
+    <%= will_paginate @orders %>
+  </div>
 
-<div class="content-wrapper twelve columns">
-  <%= will_paginate @orders %>
-</div>
+  <script>
+    new TR.Views.OrderIndex();
+  </script>
+<% else %>
+  <div class="content-wrapper">
+    <p>You haven't ordered anything yet.</p>
+    <%= link_to 'Go To Shop', '/shop/suits', class: 'button' %>
+  </div>
+<% end %>
 
-<script>
-  new TR.Views.OrderIndex()
-</script>

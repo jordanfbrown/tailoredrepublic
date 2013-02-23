@@ -108,3 +108,17 @@ blue_shirt:
   description: Blue shirt
   price: 99
   quantity: 10
+
+coral_pocket_square:
+  category: accessory
+  name: Coral Pocket Square
+  description: Coral Square
+  price: 20
+  quantity: 10
+
+green_pocket_square:
+  category: accessory
+  name: Green Pocket Square
+  description: Green Square
+  price: 20
+  quantity: 10

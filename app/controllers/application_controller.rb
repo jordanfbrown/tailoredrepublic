@@ -26,6 +26,10 @@ class ApplicationController < ActionController::Base
       redirect_path || edit_user_registration_path
     end
 
+    def not_found
+      raise ActionController::RoutingError.new('Not Found')
+    end
+
     def get_measurement_from_session
       Measurement.find(session[:measurement_id])
     rescue ActiveRecord::RecordNotFound
