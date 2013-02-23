@@ -65,7 +65,8 @@ class Product < ActiveRecord::Base
   end
 
   def self.random_by_category(category)
-    Product.where(category: category).shuffle[0,2]
+    # Exclude Build Your Own Suit as a suggested product
+    Product.where('category = ? AND name != ?', category, 'Build Your Own Suit').shuffle[0,2]
   end
 
   def display_price
