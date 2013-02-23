@@ -9,8 +9,8 @@ class PagesController < ApplicationController
 
   def create_schedule_tailoring
     @address = Address.new(params[:address])
-    if @address.valid_with_phone?
-      ScheduleTailoringMailer.schedule_tailoring_email(@address).deliver
+    if @address.validate_phone_or_email(params[:email])
+      ScheduleTailoringMailer.schedule_tailoring_email(@address, params[:email]).deliver
       redirect_to :schedule_tailoring, notice: 'We have received your request to schedule a tailoring. A Tailored Republic representative will call you with details in the next 24 hours.'
     else
       render :schedule_tailoring

@@ -173,6 +173,13 @@ body.pages {
   }
 }
 
+.create_schedule_tailoring, .schedule_tailoring {
+  form p {
+    margin: 10px 0;
+    color: #4d4d4d;
+  }
+}
+
 body.weddings {
   background: url(pages/wedding.jpg) no-repeat top center !important;
 

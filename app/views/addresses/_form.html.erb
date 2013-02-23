@@ -20,16 +20,11 @@
     </div>
   </div>
   <% if phone_or_email %>
-    <div class="row">
-      <div class="six columns">
-        <%= f.label 'Email address' %>
-        <%= text_field_tag :email %>
-      </div>
-      <div class="six columns">
-        <%= f.label 'Phone Number (optional)' %>
-        <%= f.text_field :phone_number %>
-      </div>
-    </div>
+      <%= f.label 'Email address' %>
+      <%= text_field_tag :email, '', class: 'inline' %>
+      <p>OR</p>
+      <%= f.label 'Phone Number' %>
+      <%= f.text_field :phone_number %>
   <% end %>
   <%= f.submit 'Submit', class: 'button large full-width' %>
 <% end %>
