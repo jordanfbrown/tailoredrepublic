@@ -985,7 +985,7 @@ templates['_product.hbs'] = template(function (Handlebars,depth0,helpers,partial
   stack1 = depth0.price;
   foundHelper = helpers.decimalToInteger;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "decimalToInteger", stack1, {hash:{}});
-  buffer += escapeExpression(stack1) + "</a>\n    </div>\n    <a href=\"#\" class=\"customize\">Click To View</a>\n  </div>\n</div>\n";
+  buffer += escapeExpression(stack1) + "</a>\n    </div>\n    <a href=\"#\" class=\"customize\">View</a>\n  </div>\n</div>\n";
   return buffer;});
 templates['_product_modal.hbs'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
@@ -1008,7 +1008,7 @@ function program1(depth0,data) {
 function program3(depth0,data) {
   
   
-  return "\n        <a href=\"#\" class=\"customize button large full-width\">Click To Customize</a>\n      ";}
+  return "\n        <a href=\"#\" class=\"customize button large full-width\">Customize</a>\n      ";}
 
 function program5(depth0,data) {
   
