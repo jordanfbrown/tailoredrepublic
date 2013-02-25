@@ -220,10 +220,10 @@ class TR.Views.Measurements extends TR.Views.Base
             @slider.goToSlide 1
       else
         TR.renderSimpleModal "We're sorry, but there was a problem saving your measurements. Please try again, and if the " +
-        "problem persists, shoot us an e-mail at help@tailoredrepublic.com."
+        "problem persists, shoot us an email at help@tailoredrepublic.com."
     catch parseError
       TR.renderSimpleModal "We're sorry, but there was a problem saving your measurements. Please try again, and if the " +
-       "problem persists, shoot us an e-mail at help@tailoredrepublic.com."
+       "problem persists, shoot us an email at help@tailoredrepublic.com."
 
   setProgressBar: (index) ->
     @$('.progress-bar li').removeClass 'selected'

@@ -23,7 +23,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
 
   initialize: (options) ->
     super()
-    @errorMessage = "We're sorry, but there was a problem adding the product to your cart. Please try again, and if the problem persists, shoot as an e-mail at help@tailoredrepublic.com."
+    @errorMessage = "We're sorry, but there was a problem adding the product to your cart. Please try again, and if the problem persists, shoot as an email at help@tailoredrepublic.com."
     @product = options.product
     @customization = options.customization || new TR.Models.Customization({}, {
       category: @product.get('category')
@@ -179,7 +179,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     @customization.save(null, {silent: true}).then(=>
       window.location.href = '/cart'
     , =>
-      TR.renderSimpleModal "We're sorry, but there was a problem updating the customizations. Please try again, and if the problem persists, shoot as an e-mail at help@tailoredrepublic.com."
+      TR.renderSimpleModal "We're sorry, but there was a problem updating the customizations. Please try again, and if the problem persists, shoot as an email at help@tailoredrepublic.com."
     )
 
   addSuccess: (response) =>

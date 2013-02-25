@@ -31,7 +31,7 @@ class TR.Views.GiftCard extends TR.Views.Base
 
   addFailure: ->
     @failureDialog = new TR.Views.DialogModal
-      text: "We're sorry, but there was a problem adding the gift card to your cart. Please try again, and if the problem persists, shoot as an e-mail at help@tailoredrepublic.com"
+      text: "We're sorry, but there was a problem adding the gift card to your cart. Please try again, and if the problem persists, shoot as an email at help@tailoredrepublic.com"
       confirmOnly: true
       confirmText: 'Ok'
 
