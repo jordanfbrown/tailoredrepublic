@@ -21,7 +21,8 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    if params[:id].is_a? Integer
+    # "1".to_i == 1, "2".to_i == 2, "foo".to_i = 0 -- this determines if an integer or string has been passed in
+    if params[:id].to_i > 0
       @product = Product.find(params[:id])
 
       respond_to do |format|
