@@ -40,8 +40,9 @@ class TR.Views.Measurements extends TR.Views.Base
       heightFix: on
       useCSS: off
 
-    window.onpopstate = (e) =>
-      @slider.goToSlide(e.state.index) if e.state && (e.state.index || e.state.index == 0)
+    History.Adapter.bind window, 'statechange', =>
+      state = History.getState()
+      @slider.goToSlide(state.data.index) if state.data && (state.data.index || state.data.index == 0)
 
     @slideCount = @slider.getSlideCount() - 1
 
@@ -58,7 +59,7 @@ class TR.Views.Measurements extends TR.Views.Base
       @goToInitialSlide()
     else
       if @model.isNew()
-        history.replaceState {index: 0}, 'Measurements | Tailored Republic', '/measurements/overview'
+        History.replaceState {index: 0}, 'Measurements - Overview | Tailored Republic', '/measurements/overview'
       else
         @$('iframe').attr 'src', ''
         @slider.goToSlide @slideCount
@@ -168,8 +169,10 @@ class TR.Views.Measurements extends TR.Views.Base
 
   onSlideBefore: ($el, oldIndex, newIndex) =>
     currentSlideName = $el.data 'measurement'
-    unless history.state && history.state.index == newIndex
-      history.pushState {index: newIndex}, TR.titleize(currentSlideName), "/measurements/#{currentSlideName}"
+    lastState = History.getLastSavedState()
+    unless lastState.data.index == newIndex
+      History.pushState {index: newIndex}, "Measurements - #{TR.titleize(currentSlideName)} | Tailored Republic",
+      "/measurements/#{currentSlideName}"
     @$('.next, .accept').text('Accept').removeClass('next').addClass('accept') if newIndex == @slideCount
     @$('.next, .accept').text('Next').removeClass('accept').addClass('next') if newIndex < @slideCount
 

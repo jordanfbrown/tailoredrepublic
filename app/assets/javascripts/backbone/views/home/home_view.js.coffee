@@ -50,11 +50,11 @@ class TR.Views.Home extends TR.Views.Base
     if href == '#home'
       $('.parallax').css 'top', 0
       $('body').smoothScroll 0, 1500
-      history.pushState {href: href}, 'Custom Tailored Suits | Tailored Republic', '/'
+      History.pushState {href: href}, 'Custom Tailored Suits | Tailored Republic', '/'
     else
       # Lookbook has no padding on top so that the above texture extends to the very top of the lookbook
       offset = if href == '#lookbook' then -34 else 0
-      history.pushState {href: href}, 'Custom Tailored Suits | Tailored Republic', href
+      History.pushState {href: href}, 'Custom Tailored Suits | Tailored Republic', href
       $(href).smoothScroll offset, 1500
 
   cacheSelectors: ->
