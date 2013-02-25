@@ -49,4 +49,6 @@ TailoredRepublic::Application.routes.draw do
   match '/create_schedule_tailoring' => 'pages#create_schedule_tailoring'
   match '/subscribe_to_newsletter' => 'mailing_list#subscribe'
   match '/admin/orders' => 'orders#admin'
+  match '/terms-of-service' => 'pages#terms_of_service'
+  match '/privacy-policy' => 'pages#privacy_policy'
 end

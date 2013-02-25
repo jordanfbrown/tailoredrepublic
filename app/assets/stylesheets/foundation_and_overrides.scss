@@ -295,6 +295,10 @@ body:not(.home) {
 ul {
   list-style-type: none;
   margin-bottom: 0;
+
+  &.with-bullets {
+    list-style-type: circle;
+  }
 }
 
 h1 {

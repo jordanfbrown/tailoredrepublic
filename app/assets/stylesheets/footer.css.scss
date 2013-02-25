@@ -7,7 +7,8 @@ footer {
   @include white-anchor;
   @include clearfix;
   padding-bottom: 10px;
-  height: 215px;
+  position: relative;
+  z-index: 1;
 
   input[type=text] {
     @include border-radius(0);
@@ -104,8 +105,11 @@ footer {
     color: #fff;
     @include font("clean");
     font-size: 19px;
-  }
 
+    &.copyright {
+      font-size: 16px;
+    }
+  }
 
   .social {
     margin-top: 5px;
