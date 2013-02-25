@@ -10,15 +10,22 @@ class Coupon < ActiveRecord::Base
 
   def self.create_coupons_from_order(order)
     order.gift_cards.each do |gift_card|
-      coupon = Coupon.create!(coupon_type: 'gift_card', description: "$#{gift_card.product.display_price} Gift Card",
-                             discount_type: 'fixed', amount: gift_card.product.price, quantity: 1,
-                             code: Coupon.generate_code)
-      order.generated_coupons << coupon
+      gift_card.quantity.times do
+        coupon = Coupon.create!(coupon_type: 'gift_card', description: "$#{gift_card.product.display_price} Gift Card",
+                               discount_type: 'fixed', amount: gift_card.product.price, quantity: 1,
+                               code: Coupon.generate_code)
+        order.generated_coupons << coupon
+      end
     end
   end
 
   def self.generate_code
-    ('A'..'Z').to_a.shuffle[0,8].join
+    code = ('A'..'Z').to_a.shuffle[0,8].join
+    if self.find_by_code(code).nil?
+      code
+    else
+      self.generate_code
+    end
   end
 
   def invalid?

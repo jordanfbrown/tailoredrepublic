@@ -83,7 +83,7 @@ class Order < ActiveRecord::Base
   end
 
   def gift_cards
-    line_items.select { |l| l.product.category == :gift_card }
+    line_items.select { |l| l.category == :gift_card }
   end
 
   def apply_coupon(coupon)

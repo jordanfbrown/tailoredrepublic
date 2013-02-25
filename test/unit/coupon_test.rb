@@ -34,7 +34,7 @@ class CouponTest < ActiveSupport::TestCase
     assert_equal coupon.calculate_discount(1000), 100
   end
 
-  test "create_coupons_from_order" do
+  test "create_coupons_from_order with quantity 1" do
     order = orders(:gift_card_order)
     coupon_count = Coupon.count
     Coupon.create_coupons_from_order(order)
@@ -49,6 +49,18 @@ class CouponTest < ActiveSupport::TestCase
     assert_equal generated_coupon.coupon_type, 'gift_card'
     assert_equal generated_coupon.discount_type, 'fixed'
     assert_not_nil generated_coupon.code
+  end
+
+  test "create_coupons_from_order with quantity greater than 1" do
+    order = orders(:gift_card_order)
+    coupon_count = Coupon.count
+
+    gift_cards = order.line_items.first
+    gift_cards.update_attributes!(quantity: 4)
+    Coupon.create_coupons_from_order(order)
+
+    assert_equal order.generated_coupons.length, 4
+    assert_equal Coupon.count, coupon_count + 4
   end
 
   test "update_amount! should reduce quantity by 1 if full value has been used for a fixed coupon and subtract discount" do
@@ -78,5 +90,10 @@ class CouponTest < ActiveSupport::TestCase
     coupon.update_amount!(order)
     assert_equal coupon.quantity, coupon_quantity_before - 1
     assert_equal coupon.amount, coupon_amount_before
+  end
+
+  test "generate_code should return an eight character string only containing capital letters" do
+    code = Coupon.generate_code
+    assert_match /^[A-Z]{8}$/, code
   end
 end
