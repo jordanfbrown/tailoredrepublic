@@ -26,7 +26,7 @@
                     <span class="text">View Customizations</span>
                   </a>
                   <ul class="customization-list-wrapper" style="display: none;">
-                    <% customization_list(line_item.customization).each do |customization| %>
+                    <% customization_list(line_item).each do |customization| %>
                       <li><span class="label"><%= customization[:option] %></span>: <%= customization[:type] %></li>
                     <% end %>
                   </ul>

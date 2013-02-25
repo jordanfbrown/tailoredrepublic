@@ -29,7 +29,6 @@ class TR.Models.Customization extends TR.Models.Base
           product_category: @productCategory
         }, attributes
 
-
   url: ->
     super('/customizations')
 

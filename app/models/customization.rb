@@ -7,6 +7,32 @@ class Customization < ActiveRecord::Base
                   :vents, :vest, :collar, :pocket, :monogram_color, :fabric, :product_category
   has_many :line_items
 
+
+  def self.fabric_id(fabric)
+    case fabric
+      when 'The Executive'
+        'Filarte 10184.001/4'
+      when 'The Entrepreneur'
+        '10006.001/101'
+      when 'The Hustler'
+        '10005.001/30'
+      when 'The Jetsetter'
+        '10005.169/1'
+      when 'The Tuxedo'
+        'N/A'
+      when 'charcoal-pinstripe'
+        '10005.202/1'
+      when 'granite-red'
+        '10005.170/1'
+      when 'stone-gray-with-blue'
+        '10005.170/2'
+      when 'heathered-light-gray'
+        '10005.169/1'
+      else
+        'Unknown fabric'
+    end
+  end
+
   def has_vest?
     vest > 0
   end

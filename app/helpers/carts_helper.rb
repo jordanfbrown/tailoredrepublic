@@ -1,5 +1,6 @@
 module CartsHelper
-  def customization_list(customization)
+  def customization_list(line_item, show_fabric_ids = false)
+    customization = line_item.customization
     if customization.product_category == 'suit'
       customizations = [
         { option: "Lapel", type: customization.lapel.capitalize },
@@ -14,8 +15,13 @@ module CartsHelper
         { option: "Vest", type:
           (customization.has_vest? ? "Yes, #{customization.vest} Button Vest (+$#{Product.vest_price})" : "No") }
       ]
-      if customization.fabric?
-        customizations.unshift({ option: "Fabric", type: customization.fabric.titleize })
+      if show_fabric_ids
+        fabric_key = line_item.name == 'Build Your Own Suit' ? customization.fabric : line_item.name
+        customizations.unshift({ option: "Fabric", type: Customization.fabric_id(fabric_key) })
+      else
+        if customization.fabric?
+          customizations.unshift({ option: "Fabric", type: customization.fabric.titleize })
+        end
       end
       customizations
     elsif customization.product_category == 'shirt'
