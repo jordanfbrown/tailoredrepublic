@@ -23,6 +23,8 @@ Handlebars.registerHelper 'decimalToInteger', (decimal) ->
 Handlebars.registerHelper 'ifeq', (a, b, options) ->
   if a == b
     options.fn @
+  else
+    options.inverse @
 
 Handlebars.registerHelper 'titleize', TR.titleize
 

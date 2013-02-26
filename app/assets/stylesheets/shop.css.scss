@@ -214,7 +214,11 @@
       height: 190px;
     }
 
-    &.vest, &.shirt {
+    &.tuxedo {
+      height: 217px;
+    }
+
+    &.vest, &.shirt, &.tuxedo {
       @media only screen and (max-width: 767px) {
         width: 50%;
       }
