@@ -5,7 +5,7 @@ namespace :db do
          presidential redondo rio rosemead).each do |shirt_name|
         Product.create!(
           category: 'shirt',
-          name: "The Malibu",
+          name: "The #{shirt_name.capitalize}",
           summary: 'Summary',
           description: "Description",
           price: 99,
