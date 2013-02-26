@@ -4,17 +4,21 @@
   <div class="six columns centered">
     <h2>Schedule A Tailoring</h2>
     <div class="outlined">
-      <p class="bold">Enter your name, address, and phone number or email address and we will contact you about
-        scheduling a tailoring.</p>
-      <% unless user_signed_in? %>
-        <p class="bold">If you have an account with a shipping address, <%= link_to 'sign in to autofill your address.', new_user_session_path %> </p>
-      <% end %>
+      <p class="bold">Enter your name, email, and zip code and we will contact you about scheduling a tailoring.</p>
     </div>
   </div>
 </div>
 <div class="row">
   <div class="six columns centered">
-    <%= render 'shared/form_errors', resource: @address %>
-    <%= render 'addresses/form', address: @address, action: 'create_schedule_tailoring', phone_or_email: true %>
+    <%= form_for @scheduling_info, url: { action: :create_schedule_tailoring }, html: { class: 'outlined' } do |f| %>
+      <%= render 'shared/form_errors', resource: @scheduling_info %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+      <%= f.label :zip_code %>
+      <%= f.text_field :zip_code %>
+      <%= f.submit 'Submit', class: 'button large full-width' %>
+    <% end %>
   </div>
 </div>
