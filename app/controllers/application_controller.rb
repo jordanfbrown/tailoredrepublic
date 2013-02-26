@@ -1,15 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :authenticate, :precompile_templates, :current_cart
+  before_filter :precompile_templates, :current_cart
 
   protected
-    def authenticate
-      unless cookies[:access_code] == ENV['ACCESS_CODE'] || request.path == '/request_access_code' ||
-          request.path == '/authenticate_access_code'
-        redirect_to root_path unless request.path == '/'
-      end
-    end
-
     def precompile_templates
       if Rails.env.development?
         `handlebars app/assets/javascripts/backbone/templates/* -f app/assets/javascripts/templates.js`

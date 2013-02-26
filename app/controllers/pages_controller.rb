@@ -28,24 +28,6 @@ class PagesController < ApplicationController
     end
   end
 
-  def coming_soon
-    render layout: false
-  end
-
-  def request_access_code
-    PotentialUser.create(email: params[:email])
-    redirect_to root_path, notice: :new_user
-  end
-
-  def authenticate_access_code
-    if params[:access_code] == ENV['ACCESS_CODE']
-      cookies[:access_code] = params[:access_code]
-      redirect_to root_path
-    else
-      redirect_to root_path, notice: :error
-    end
-  end
-
   def top_picks
     @top_picks = Product.top_picks
   end
