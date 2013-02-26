@@ -28,7 +28,7 @@
       <td><%= number_to_currency product.price %></td>
       <td><%= product.quantity %></td>
       <td><%= product.display_order %></td>
-      <td><%= product.top_pick %></td>
+      <td><%= product.top_pick ? 'Yes' : 'No' %></td>
       <td><%= link_to 'Edit', edit_product_path(product) %></td>
       <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
