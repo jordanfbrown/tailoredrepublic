@@ -50,6 +50,8 @@ class TR.Views.Measurements extends TR.Views.Base
     $(window).resize @resize
     @resize()
     @updateInputWithInches @currentTapeValue
+    
+    $(document).on 'keydown', @preventTab
 
     @template = @getTemplate 'measurement_summary'
     @model.on 'change', @updateSummaryPage
@@ -70,6 +72,11 @@ class TR.Views.Measurements extends TR.Views.Base
   loadVideos: ->
     @$('iframe').each (index, el) ->
       $(el).attr 'src', $(el).data 'src'
+      
+  preventTab: (e) =>
+    currentSlide = @slider.getCurrentSlide()
+    if e.which == 9 && (1 < currentSlide < @slideCount)
+      e.preventDefault()
 
   goToInitialSlide: ->
     index = @$(".measurements-list li[data-measurement=#{@initialSlide}]").index()
