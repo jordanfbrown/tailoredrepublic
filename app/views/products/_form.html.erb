@@ -14,5 +14,9 @@
   <%= f.text_field :quantity %>
   <%= f.label :display_order %>
   <%= f.text_field :display_order %>
+  <%= f.radio_button :top_pick, "true" %>
+  <%= f.label 'Top Pick (yes)' %>
+  <%= f.radio_button :top_pick, "false" %>
+  <%= f.label 'Top Pick (no)' %>
   <%= f.submit class: "button" %>
 <% end %>

@@ -2,7 +2,7 @@ require 'enumerated_attribute'
 
 class Product < ActiveRecord::Base
   enum_attr :category, %w(suit shirt accessory gift_card)
-  attr_accessible :description, :name, :price, :quantity, :category, :summary, :display_order
+  attr_accessible :description, :name, :price, :quantity, :category, :summary, :display_order, :top_pick
   has_many :line_items
   has_many :customizations
   has_many :product_images, order: '"default" DESC, created_at ASC'
@@ -40,8 +40,7 @@ class Product < ActiveRecord::Base
   end
 
   def self.top_picks
-    # TODO: come up with real top picks instead of first 4 products
-    self.all(limit: 4)
+    self.where(top_pick: true).order('display_order ASC').limit(4)
   end
 
   def self.suggested(product_id)
