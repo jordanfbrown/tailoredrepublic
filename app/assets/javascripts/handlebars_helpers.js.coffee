@@ -26,6 +26,12 @@ Handlebars.registerHelper 'ifeq', (a, b, options) ->
   else
     options.inverse @
 
+Handlebars.registerHelper 'ifNotEq', (a, b, options) ->
+  if a == b
+    options.inverse @
+  else
+    options.fn @
+
 Handlebars.registerHelper 'titleize', TR.titleize
 
 Handlebars.registerHelper 'imgSrc', TR.imgSrc

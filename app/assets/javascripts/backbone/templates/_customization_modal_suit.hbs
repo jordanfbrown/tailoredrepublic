@@ -68,12 +68,23 @@
       <p>Notch lapels are the most widely used lapels and are a safe and stylish choice for any suit. Peak lapels add a
         little pizazz for those who want to stand out. TR tip: If you are unsure, go with the notch lapel, you don’t
         necessarily want anything to distract from the perfect fit of your tailored suit.</p>
+      {{#ifeq product.name "The Tuxedo"}}
+        <a href="#" class="customization-option {{#ifeq product.name "The Tuxedo"}}three tuxedo{{else}}four{{/ifeq}} {{#ifeq lapel "shawl"}}selected{{/ifeq}}" data-option="shawl">
+          <h5>Shawl</h5>
+          <img src="{{imgSrc "customizations/suits/lapel-narrow.png"}}">
+          <div class="recommended">
+            <img src="{{imgSrc "logos/logo-stitch.png"}}" class="shield"><span>Recommended</span>
+          </div>
+        </a>
+      {{/ifeq}}
       <a href="#" class="customization-option {{#ifeq product.name "The Tuxedo"}}three tuxedo{{else}}four{{/ifeq}} {{#ifeq lapel "notch"}}selected{{/ifeq}}" data-option="notch">
         <h5>Notch</h5>
         <img src="{{imgSrc "customizations/suits/lapel-notch.png"}}">
-        <div class="recommended">
-          <img src="{{imgSrc "logos/logo-stitch.png"}}" class="shield"><span>Recommended</span>
-        </div>
+        {{#ifNotEq product.name "The Tuxedo"}}
+          <div class="recommended">
+            <img src="{{imgSrc "logos/logo-stitch.png"}}" class="shield"><span>Recommended</span>
+          </div>
+        {{/ifNotEq}}
       </a>
       <a href="#" class="customization-option {{#ifeq product.name "The Tuxedo"}}three tuxedo{{else}}four{{/ifeq}} {{#ifeq lapel "peak"}}selected{{/ifeq}}" data-option="peak">
         <h5>Peak</h5>
@@ -83,12 +94,6 @@
         <h5>Narrow</h5>
         <img src="{{imgSrc "customizations/suits/lapel-narrow.png"}}">
       </a>
-      {{#ifeq product.name "The Tuxedo"}}
-        <a href="#" class="customization-option {{#ifeq product.name "The Tuxedo"}}three tuxedo{{else}}four{{/ifeq}} {{#ifeq lapel "shawl"}}selected{{/ifeq}}" data-option="shawl">
-          <h5>Shawl</h5>
-          <img src="{{imgSrc "customizations/suits/lapel-narrow.png"}}">
-        </a>
-      {{/ifeq}}
     </li>
     <li class="customization-wrapper" data-type="buttons">
       <p>The modern standard and a fashionable choice is the two button suit. Two button suits fit more of a classic

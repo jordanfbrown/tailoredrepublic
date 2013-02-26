@@ -2,11 +2,12 @@ class TR.Models.Customization extends TR.Models.Base
   initialize: (attributes, options) ->
     @productCategory = options.category if options
     customFabric = options.customFabric if options
+    productName = options.productName if options
 
     if @productCategory
       if @productCategory == 'suit'
         @attributes = _.extend {}, {
-          lapel: 'notch'
+          lapel: if productName == 'The Tuxedo' then 'shawl' else 'notch'
           buttons: 2
           vents: 2
           pleats: 0
