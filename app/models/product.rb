@@ -2,7 +2,7 @@ require 'enumerated_attribute'
 
 class Product < ActiveRecord::Base
   enum_attr :category, %w(suit shirt accessory gift_card)
-  attr_accessible :description, :name, :price, :quantity, :category, :summary, :display_order, :top_pick
+  attr_accessible :description, :name, :price, :quantity, :category, :summary, :display_order, :top_pick, :subcategory
   has_many :line_items
   has_many :customizations
   has_many :product_images, order: '"default" DESC, created_at ASC'
@@ -66,6 +66,10 @@ class Product < ActiveRecord::Base
   def self.random_by_category(category)
     # Exclude Build Your Own Suit as a suggested product
     Product.where('category = ? AND name != ?', category, 'Build Your Own Suit').shuffle[0,2]
+  end
+
+  def self.by_category(category)
+    where(category: category).order('subcategory ASC, display_order ASC, name ASC').includes(:product_images).to_a
   end
 
   def display_price
