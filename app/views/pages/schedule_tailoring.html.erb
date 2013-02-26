@@ -18,6 +18,9 @@
       <%= f.text_field :email %>
       <%= f.label :zip_code %>
       <%= f.text_field :zip_code %>
+      <%= f.label :phone_number, 'Phone number (optional)' %>
+      <%= f.text_field :phone_number %>
+      <label><%= f.check_box :subscribe_to_mailing_list %> Subscribe me to the Tailored Republic mailing list</label>
       <%= f.submit 'Submit', class: 'button large full-width' %>
     <% end %>
   </div>
