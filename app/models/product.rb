@@ -5,7 +5,7 @@ class Product < ActiveRecord::Base
   attr_accessible :description, :name, :price, :quantity, :category, :summary
   has_many :line_items
   has_many :customizations
-  has_many :product_images, order: '"default" DESC'
+  has_many :product_images, order: '"default" DESC, created_at ASC'
   before_destroy :ensure_not_referenced_by_line_item
 
   def self.vest_price

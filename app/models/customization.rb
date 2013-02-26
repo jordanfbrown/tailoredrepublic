@@ -26,8 +26,8 @@ class Customization < ActiveRecord::Base
         '10005.170/1'
       when 'stone-gray-with-blue'
         '10005.170/2'
-      when 'heathered-light-gray'
-        '10005.169/1'
+      when 'powder-blue-pinstripe'
+        '10005.005/2'
       else
         'Unknown fabric'
     end

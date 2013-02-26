@@ -402,11 +402,11 @@ function program11(depth0,data) {
   buffer += escapeExpression(stack1) + "\">\n              </a>\n            </div>\n            <div class=\"three columns\">\n              <a href=\"#\" class=\"fabric-option ";
   stack1 = depth0.fabric;
   foundHelper = helpers.ifeq;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, "heathered-light-gray", {hash:{},inverse:self.noop,fn:self.program(16, program16, data)}) : helperMissing.call(depth0, "ifeq", stack1, "heathered-light-gray", {hash:{},inverse:self.noop,fn:self.program(16, program16, data)});
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, "powder-blue-pinstripe", {hash:{},inverse:self.noop,fn:self.program(16, program16, data)}) : helperMissing.call(depth0, "ifeq", stack1, "powder-blue-pinstripe", {hash:{},inverse:self.noop,fn:self.program(16, program16, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\"\n                 data-id=\"heathered-light-gray\" data-label=\"Heathered Light Gray\"\n                 data-large=\"customizations/suits/fabrics/heathered-light-gray-large.jpg\">\n                <img src=\"";
+  buffer += "\"\n                 data-id=\"powder-blue-pinstripe\" data-label=\"Powder Blue Pinstripe\"\n                 data-large=\"customizations/suits/fabrics/powder-blue-pinstripe-large.jpg\">\n                <img src=\"";
   foundHelper = helpers.imgSrc;
-  stack1 = foundHelper ? foundHelper.call(depth0, "customizations/suits/fabrics/heathered-light-gray-small.jpg", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "customizations/suits/fabrics/heathered-light-gray-small.jpg", {hash:{}});
+  stack1 = foundHelper ? foundHelper.call(depth0, "customizations/suits/fabrics/powder-blue-pinstripe-small.jpg", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "customizations/suits/fabrics/powder-blue-pinstripe-small.jpg", {hash:{}});
   buffer += escapeExpression(stack1) + "\"></a>\n            </div>\n            <div class=\"three columns\">\n              <a href=\"#\" class=\"fabric-option ";
   stack1 = depth0.fabric;
   foundHelper = helpers.ifeq;
