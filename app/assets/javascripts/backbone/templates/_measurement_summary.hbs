@@ -78,11 +78,6 @@
     </div>
     {{#unless shirtOnly}}
       <div class="three columns">
-        <label for="measurement_pant_length">Pant length</label>
-        <input class="quick-measurement-input" id="measurement_pant_length" name="measurement[pant_length]" size="30"
-               type="text" value="{{pant_length}}"/>
-      </div>
-      <div class="three columns">
         <label for="measurement_crotch">Crotch</label>
         <input class="quick-measurement-input" id="measurement_crotch" name="measurement[crotch]" size="30" type="text"
                value="{{crotch}}"/>
@@ -91,6 +86,11 @@
         <label for="measurement_thigh">Thigh</label>
         <input class="quick-measurement-input" id="measurement_thigh" name="measurement[thigh]" size="30" type="text"
                value="{{thigh}}"/>
+      </div>
+      <div class="three columns">
+        <label for="measurement_pant_length">Pant length</label>
+        <input class="quick-measurement-input" id="measurement_pant_length" name="measurement[pant_length]" size="30"
+               type="text" value="{{pant_length}}"/>
       </div>
     {{/unless}}
     <div class="twelve columns">

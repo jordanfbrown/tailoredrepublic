@@ -993,11 +993,7 @@ templates['_measurement_summary.hbs'] = template(function (Handlebars,depth0,hel
 function program1(depth0,data) {
   
   var buffer = "", stack1, foundHelper;
-  buffer += "\n      <div class=\"three columns\">\n        <label for=\"measurement_pant_length\">Pant length</label>\n        <input class=\"quick-measurement-input\" id=\"measurement_pant_length\" name=\"measurement[pant_length]\" size=\"30\"\n               type=\"text\" value=\"";
-  foundHelper = helpers.pant_length;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.pant_length; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\"/>\n      </div>\n      <div class=\"three columns\">\n        <label for=\"measurement_crotch\">Crotch</label>\n        <input class=\"quick-measurement-input\" id=\"measurement_crotch\" name=\"measurement[crotch]\" size=\"30\" type=\"text\"\n               value=\"";
+  buffer += "\n      <div class=\"three columns\">\n        <label for=\"measurement_crotch\">Crotch</label>\n        <input class=\"quick-measurement-input\" id=\"measurement_crotch\" name=\"measurement[crotch]\" size=\"30\" type=\"text\"\n               value=\"";
   foundHelper = helpers.crotch;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.crotch; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
@@ -1005,6 +1001,10 @@ function program1(depth0,data) {
   foundHelper = helpers.thigh;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.thigh; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\"/>\n      </div>\n      <div class=\"three columns\">\n        <label for=\"measurement_pant_length\">Pant length</label>\n        <input class=\"quick-measurement-input\" id=\"measurement_pant_length\" name=\"measurement[pant_length]\" size=\"30\"\n               type=\"text\" value=\"";
+  foundHelper = helpers.pant_length;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.pant_length; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
   buffer += escapeExpression(stack1) + "\"/>\n      </div>\n    ";
   return buffer;}
 
