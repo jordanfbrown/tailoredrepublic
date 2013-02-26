@@ -18,7 +18,6 @@ footer {
     outline: none;
     color: #ccc;
     font-weight: lighter;
-    max-width: 210px;
     padding-top: 10px;
 
     &:focus {
@@ -108,6 +107,12 @@ footer {
 
     &.copyright {
       font-size: 16px;
+      color: #777;
+      text-align: right;
+
+      a {
+        color: #777;
+      }
     }
   }
 
