@@ -333,14 +333,15 @@ function program15(depth0,data) {
   buffer += "\" data-option=\"true\">\n        <h5>Pocket</h5>\n        <img src=\"";
   foundHelper = helpers.imgSrc;
   stack1 = foundHelper ? foundHelper.call(depth0, "customizations/shirts/pocket-yes.png", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "customizations/shirts/pocket-yes.png", {hash:{}});
-  buffer += escapeExpression(stack1) + "\">\n      </a>\n    </li>\n    <li class=\"customization-wrapper two-item\" data-type=\"monogram\">\n      <p>Shirt monogramming can be up to 3 characters, and is almost exclusively used to sport some initials. The\n        monogram will show up on the sleeve cuff that will poke out the bottom of your suit sleeve. TR tip: keep the\n        shirt monogram subtle and make it the same color of the shirt. It is still noticeable without being obnoxious.\n        Black on black, white on white, pink on pink, you get the idea.\n      </p>\n      <p class=\"label\">Note: Monograms cost an extra $";
+  buffer += escapeExpression(stack1) + "\">\n      </a>\n    </li>\n    <li class=\"customization-wrapper\" data-type=\"monogram\">\n      <p>Shirt monogramming can be up to 3 characters, and is almost exclusively used to sport some initials. The\n        monogram will show up on the sleeve cuff that will poke out the bottom of your suit sleeve. TR tip: keep the\n        shirt monogram subtle and make it the same color of the shirt. It is still noticeable without being obnoxious.\n        Black on black, white on white, pink on pink, you get the idea.\n      </p>\n      <p class=\"label\">Note: Monograms cost an extra $";
   foundHelper = helpers.shirtMonogramPrice;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.shirtMonogramPrice; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + ".</p>\n      <div href=\"#\" class=\"customization-option\">\n        <img src=\"";
-  foundHelper = helpers.imgSrc;
-  stack1 = foundHelper ? foundHelper.call(depth0, "customizations/suits/monogram.png", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "customizations/suits/monogram.png", {hash:{}});
-  buffer += escapeExpression(stack1) + "\" class=\"monogram\">\n      </div>\n      <div class=\"customization-option\">\n        <form id=\"monogram-form\">\n          <label>Monogram (+$5) (3 character max) </label>\n          <input type=\"text\" name=\"monogram\" maxlength=\"3\" value=\"";
+  buffer += escapeExpression(stack1) + ".</p>\n      <div class=\"customization-option six columns\">\n        <form id=\"monogram-form\">\n          <label>Monogram (+$";
+  foundHelper = helpers.shirtMonogramPrice;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.shirtMonogramPrice; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + ") (3 character max) </label>\n          <input type=\"text\" name=\"monogram\" maxlength=\"3\" value=\"";
   foundHelper = helpers.monogram;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.monogram; stack1 = typeof stack1 === functionType ? stack1() : stack1; }

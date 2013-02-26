@@ -65,19 +65,16 @@
         <img src="{{imgSrc "customizations/shirts/pocket-yes.png"}}">
       </a>
     </li>
-    <li class="customization-wrapper two-item" data-type="monogram">
+    <li class="customization-wrapper" data-type="monogram">
       <p>Shirt monogramming can be up to 3 characters, and is almost exclusively used to sport some initials. The
         monogram will show up on the sleeve cuff that will poke out the bottom of your suit sleeve. TR tip: keep the
         shirt monogram subtle and make it the same color of the shirt. It is still noticeable without being obnoxious.
         Black on black, white on white, pink on pink, you get the idea.
       </p>
       <p class="label">Note: Monograms cost an extra ${{shirtMonogramPrice}}.</p>
-      <div href="#" class="customization-option">
-        <img src="{{imgSrc "customizations/suits/monogram.png"}}" class="monogram">
-      </div>
-      <div class="customization-option">
+      <div class="customization-option six columns">
         <form id="monogram-form">
-          <label>Monogram (+$5) (3 character max) </label>
+          <label>Monogram (+${{shirtMonogramPrice}}) (3 character max) </label>
           <input type="text" name="monogram" maxlength="3" value="{{monogram}}">
           <input type="submit" class="button full-width" value="Ok">
         </form>
