@@ -5,7 +5,7 @@
     <h2>Shop <span class="divider">//</span> <%= @display_category %></h2>
     <h5><%= link_to 'Suits', '/shop/suits', class: ('selected' if @display_category == 'Suits') %> <span class="divider">//</span> <%= link_to 'Shirts', '/shop/shirts', class: ('selected' if @display_category == 'Shirts') %> <span class="divider">//</span> <%= link_to 'Accessories', '/shop/accessories', class: ('selected' if @display_category == 'Accessories') %></h5>
   </div>
-  <%= render 'products/products', products: @products, category: @category%>
+  <%= render 'products/products', products: @products %>
 </div>
 
 <script>
