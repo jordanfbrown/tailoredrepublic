@@ -13,6 +13,7 @@
       <th>Price</th>
       <th>Quantity</th>
       <th>Display Order</th>
+      <th>Fabric ID</th>
       <th>Top Pick?</th>
       <th></th>
       <th></th>
@@ -28,6 +29,7 @@
       <td><%= number_to_currency product.price %></td>
       <td><%= product.quantity %></td>
       <td><%= product.display_order %></td>
+      <td><%= product.fabric_id %></td>
       <td><%= product.top_pick ? 'Yes' : 'No' %></td>
       <td><%= link_to 'Edit', edit_product_path(product) %></td>
       <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>

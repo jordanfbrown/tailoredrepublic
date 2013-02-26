@@ -16,8 +16,8 @@ module CartsHelper
           (customization.has_vest? ? "Yes, #{customization.vest} Button Vest (+$#{Product.vest_price})" : "No") }
       ]
       if show_fabric_ids
-        fabric_key = line_item.name == 'Build Your Own Suit' ? customization.fabric : line_item.name
-        customizations.unshift({ option: "Fabric", type: Customization.fabric_id(fabric_key) })
+        fabric = line_item.subcategory == 'custom-fabric' ? Customization.fabric_id(customization.fabric) : line_item.fabric_id
+        customizations.unshift({ option: "Fabric", type: fabric })
       else
         if customization.fabric?
           customizations.unshift({ option: "Fabric", type: customization.fabric.titleize })
@@ -25,12 +25,16 @@ module CartsHelper
       end
       customizations
     elsif customization.product_category == 'shirt'
-      [
+      customizations = [
         { option: "Collar", type: customization.collar.capitalize },
         { option: "Fit", type: customization.fit.capitalize },
         { option: "Pocket", type: wordify(customization.pant_cuffs) },
         { option: "Monogram", type: customization.monogram.length == 0 ? "None" : "#{customization.monogram} (+$#{Product.shirt_monogram_price})" }
       ]
+      if show_fabric_ids
+        customizations.unshift({ option: "Fabric", type: line_item.fabric_id })
+      end
+      customizations
     end
   end
 

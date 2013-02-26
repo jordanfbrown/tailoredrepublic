@@ -10,16 +10,6 @@ class Customization < ActiveRecord::Base
 
   def self.fabric_id(fabric)
     case fabric
-      when 'The Executive'
-        'Filarte 10184.001/4'
-      when 'The Entrepreneur'
-        '10006.001/101'
-      when 'The Hustler'
-        '10005.001/30'
-      when 'The Jetsetter'
-        '10005.169/1'
-      when 'The Tuxedo'
-        'N/A'
       when 'charcoal-pinstripe'
         '10005.202/1'
       when 'granite-red'

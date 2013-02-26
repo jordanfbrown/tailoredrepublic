@@ -5,7 +5,7 @@ class LineItem < ActiveRecord::Base
   belongs_to :customization, dependent: :destroy
   belongs_to :order
 
-  delegate :name, :summary, :category, :default_photo, to: :product
+  delegate :name, :summary, :category, :default_photo, :subcategory, :fabric_id, to: :product
 
   def total_price
     calculate_price(true)
