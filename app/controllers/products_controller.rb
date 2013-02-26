@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
     if params[:suggested]
       @products = Product.suggested(params[:product_id]).to_json(include: [:product_images])
     else
-      @products = Product.all
+      @products = Product.order('category ASC, name ASC').all
     end
 
     respond_to do |format|
