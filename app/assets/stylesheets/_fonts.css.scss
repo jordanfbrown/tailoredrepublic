@@ -1,150 +1,21 @@
-@font-face {
-  font-family: 'Clarendon Lt';
-  src: url(ClarendonLTStd-Light.eot);
-  src: url(ClarendonLTStd-Light.eot?#iefix) format("embedded-opentype"),
-       url(ClarendonLTStd-Light.woff) format('woff'),
-       url(ClarendonLTStd-Light.ttf) format('truetype'),
-       url(ClarendonLTStd-Light.svg) format('svg');
-  font-weight: 100;
-}
+@import "_mixins";
 
-@font-face {
-  font-family: 'Clarendon Lt';
-  src: url(ClarendonLTStd.eot);
-  src: url(ClarendonLTStd.eot?#iefix) format("embedded-opentype"),
-       url(ClarendonLTStd.woff) format('woff'),
-       url(ClarendonLTStd.ttf) format('truetype'),
-       url(ClarendonLTStd.svg) format('svg');
-  font-weight: 400;
-}
+@include font-declaration('Clarendon Lt', 'ClarendonLTStd-Light', 100);
+@include font-declaration('Clarendon Lt', 'ClarendonLTStd', 400);
+@include font-declaration('Clarendon Lt', 'ClarendonLTStd-Bold', 700);
 
-@font-face {
-  font-family: 'Clarendon Lt';
-  src: url(ClarendonLTStd-Bold.eot);
-  src: url(ClarendonLTStd-Bold.eot?#iefix) format("embedded-opentype"),
-       url(ClarendonLTStd-Bold.woff) format('woff'),
-       url(ClarendonLTStd-Bold.ttf) format('truetype'),
-       url(ClarendonLTStd-Bold.svg) format('svg');
-  font-weight: 700;
-}
+@include font-declaration('United Italic Cond', 'UnitedItalicCdLt', 100);
+@include font-declaration('United Italic Cond', 'UnitedItalicCdMd', 400);
+@include font-declaration('United Italic Cond', 'UnitedItalicCdBd', 700);
 
+@include font-declaration('United Sans Cond', 'UnitedSansCdLt', 100);
+@include font-declaration('United Sans Cond', 'UnitedSansCdMd', 400);
+@include font-declaration('United Sans Cond', 'UnitedSansCdBd', 700);
 
-@font-face {
-  font-family: 'United Italic Cond';
-  src: url(UnitedItalicCdLt.eot);
-  src: url(UnitedItalicCdLt.eot?#iefix) format("embedded-opentype")
-       url(UnitedItalicCdLt.woff) format('woff'),
-       url(UnitedItalicCdLt.ttf) format('truetype'),
-       url(UnitedItalicCdLt.svg#UnitedItalicCond-Light) format('svg');
-  font-weight: 100;
-}
+@include font-declaration('United Sans Reg', 'UnitedSansRgLt', 100);
+@include font-declaration('United Sans Reg', 'UnitedSansRgMd', 400);
+@include font-declaration('United Sans Reg', 'UnitedSansRgBd', 700);
 
-@font-face {
-  font-family: 'United Italic Cond';
-  src: url(UnitedItalicCdMd.eot);
-  src: url(UnitedItalicCdMd.eot?#iefix) format("embedded-opentype"),
-       url(UnitedItalicCdMd.woff) format('woff'),
-       url(UnitedItalicCdMd.ttf) format('truetype'),
-       url(UnitedItalicCdMd.svg#UnitedItalicCond-Medium) format('svg');
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: 'United Italic Cond';
-  src: url(UnitedItalicCdBd.eot);
-  src: url(UnitedItalicCdBd.eot?#iefix) format("embedded-opentype"),
-       url(UnitedItalicCdBd.woff) format('woff'),
-       url(UnitedItalicCdBd.ttf) format('truetype'),
-       url(UnitedItalicCdBd.svg#UnitedItalicCond-Bold) format('svg');
-  font-weight: 700;
-}
-
-@font-face {
-  font-family: 'United Sans Cond';
-  src: url(UnitedSansCdLt.eot);
-  src: url(UnitedSansCdLt.eot?#iefix) format("embedded-opentype"),
-       url(UnitedSansCdLt.woff) format('woff'),
-       url(UnitedSansCdLt.ttf) format('truetype'),
-       url(UnitedSansCdLt.svg#UnitedSansCond-Light) format('svg');
-  font-weight: 100;
-}
-
-@font-face {
-  font-family: 'United Sans Cond';
-  src: url(UnitedSansCdMd.eot);
-  src: url(UnitedSansCdMd.eot?#iefix) format("embedded-opentype"),
-       url(UnitedSansCdMd.woff) format('woff'),
-       url(UnitedSansCdMd.ttf) format('truetype'),
-       url(UnitedSansCdMd.svg#UnitedSansCond-Medium) format('svg');
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: 'United Sans Cond';
-  src: url(UnitedSansCdBd.eot);
-  src: url(UnitedSansCdBd.eot?#iefix) format("embedded-opentype"),
-       url(UnitedSansCdBd.woff) format('woff'),
-       url(UnitedSansCdBd.ttf) format('truetype'),
-       url(UnitedSansCdBd.svg#UnitedSansCond-Bold) format('svg');
-  font-weight: 700;
-}
-
-@font-face {
-  font-family: 'United Sans Reg';
-  src: url(UnitedSansRgLt.eot);
-  src: url(UnitedSansRgLt.eot?#iefix) format("embedded-opentype"),
-       url(UnitedSansRgLt.woff) format('woff'),
-       url(UnitedSansRgLt.ttf) format('truetype'),
-       url(UnitedSansRgLt.svg#UnitedSansReg-Light) format('svg');
-  font-weight: 100;
-}
-
-@font-face {
-  font-family: 'United Sans Reg';
-  src: url(UnitedSansRgMd.eot);
-  src: url(UnitedSansRgMd.eot?#iefix) format("embedded-opentype"),
-       url(UnitedSansRgMd.woff) format('woff'),
-       url(UnitedSansRgMd.ttf) format('truetype'),
-       url(UnitedSansRgMd.svg#UnitedSansReg-Medium) format('svg');
-font-weight: 400;
-}
-
-@font-face {
-  font-family: 'United Sans Reg';
-  src: url(UnitedSansRgBd.eot);
-  src: url(UnitedSansRgBd.eot?#iefix) format("embedded-opentype"),
-       url(UnitedSansRgBd.woff) format('woff'),
-       url(UnitedSansRgBd.ttf) format('truetype'),
-       url(UnitedSansRgBd.svg#UnitedSansReg-Bold) format('svg');
-  font-weight: 700;
-}
-
-@font-face {
-  font-family: 'United Serif SemiCond';
-  src: url(UnitedSerifSmCdLt.eot);
-  src: url(UnitedSerifSmCdLt.eot?#iefix) format("embedded-opentype"),
-       url(UnitedSerifSmCdLt.woff) format('woff'),
-       url(UnitedSerifSmCdLt.ttf) format('truetype'),
-       url(UnitedSerifSmCdLt.svg#UnitedSerifSemiCond-Light) format('svg');
-  font-weight: 100;
-}
-
-@font-face {
-  font-family: 'United Serif SemiCond';
-  src: url(UnitedSerifSmCdMd.eot);
-  src: url(UnitedSerifSmCdMd.eot?#iefix) format("embedded-opentype"),
-       url(UnitedSerifSmCdMd.woff) format('woff'),
-       url(UnitedSerifSmCdMd.ttf) format('truetype'),
-       url(UnitedSerifSmCdMd.svg#UnitedSerifSemiCond-Medium) format('svg');
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: 'United Serif SemiCond';
-  src: url(UnitedSerifSmCdBd.eot);
-  src: url(UnitedSerifSmCdBd.eot?#iefix) format("embedded-opentype"),
-       url(UnitedSerifSmCdBd.woff) format('woff'),
-       url(UnitedSerifSmCdBd.ttf) format('truetype'),
-       url(UnitedSerifSmCdBd.svg#UnitedSerifSemiCond-Bold) format('svg');
-  font-weight: 700;
-}
+@include font-declaration('United Serif SemiCond', 'UnitedSerifSmCdLt', 100);
+@include font-declaration('United Serif SemiCond', 'UnitedSerifSmCdMd', 400);
+@include font-declaration('United Serif SemiCond', 'UnitedSerifSmCdBd', 700);

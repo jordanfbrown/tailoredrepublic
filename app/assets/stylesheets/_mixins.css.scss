@@ -43,6 +43,18 @@ $maple: #D0A66E;
   }
 }
 
+@mixin font-declaration($family, $file, $weight) {
+  @font-face {
+    font-family: $family;
+    src: url(#{$file}.eot);
+    src: url(#{$file}.eot?#iefix) format("embedded-opentype"),
+    url(#{$file}.woff) format('woff'),
+    url(#{$file}.ttf) format('truetype'),
+    url(#{$file}.svg) format('svg');
+    font-weight: $weight;
+  }
+}
+
 @mixin white-anchor {
   a {
     color: #fff;
