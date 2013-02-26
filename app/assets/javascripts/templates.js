@@ -456,7 +456,7 @@ function program20(depth0,data) {
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\" data-option=\"shawl\">\n          <h5>Shawl</h5>\n          <img src=\"";
   foundHelper = helpers.imgSrc;
-  stack1 = foundHelper ? foundHelper.call(depth0, "customizations/suits/lapel-narrow.png", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "customizations/suits/lapel-narrow.png", {hash:{}});
+  stack1 = foundHelper ? foundHelper.call(depth0, "customizations/suits/lapel-shawl.png", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "customizations/suits/lapel-shawl.png", {hash:{}});
   buffer += escapeExpression(stack1) + "\">\n          <div class=\"recommended\">\n            <img src=\"";
   foundHelper = helpers.imgSrc;
   stack1 = foundHelper ? foundHelper.call(depth0, "logos/logo-stitch.png", {hash:{}}) : helperMissing.call(depth0, "imgSrc", "logos/logo-stitch.png", {hash:{}});
