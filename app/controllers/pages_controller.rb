@@ -12,7 +12,7 @@ class PagesController < ApplicationController
     @scheduling_info = SchedulingInfo.new(info[:name], info[:email], info[:zip_code])
     if @scheduling_info.valid?
       ScheduleTailoringMailer.schedule_tailoring_email(info[:name], info[:email], info[:zip_code]).deliver
-      redirect_to :schedule_tailoring, notice: 'We have received your request to schedule a tailoring. A Tailored Republic representative will contact you with details in the next 24 hours.'
+      redirect_to '/shop/suits', notice: 'We have received your request to schedule a tailoring. A Tailored Republic representative will contact you with details in the next 24 hours.'
     else
       render :schedule_tailoring
     end
