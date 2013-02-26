@@ -2,7 +2,7 @@ require 'enumerated_attribute'
 
 class Product < ActiveRecord::Base
   enum_attr :category, %w(suit shirt accessory gift_card)
-  attr_accessible :description, :name, :price, :quantity, :category, :summary
+  attr_accessible :description, :name, :price, :quantity, :category, :summary, :display_order
   has_many :line_items
   has_many :customizations
   has_many :product_images, order: '"default" DESC, created_at ASC'

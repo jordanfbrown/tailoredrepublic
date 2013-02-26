@@ -11,6 +11,7 @@
       <th>Summary</th>
       <th>Price</th>
       <th>Quantity</th>
+      <th>Display Order</th>
       <th></th>
       <th></th>
     </tr>
@@ -23,6 +24,7 @@
       <td><%= product.summary %></td>
       <td><%= number_to_currency product.price %></td>
       <td><%= product.quantity %></td>
+      <td><%= product.display_order %></td>
       <td><%= link_to 'Edit', edit_product_path(product) %></td>
       <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
