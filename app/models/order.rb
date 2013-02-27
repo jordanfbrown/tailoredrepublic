@@ -8,7 +8,7 @@ class Order < ActiveRecord::Base
   has_many :generated_coupons, foreign_key: 'generated_by_order_id', class_name: 'Coupon'
 
   attr_accessible :shipping_address_attributes, :billing_address_attributes
-  validates_presence_of :shipping_address, :billing_address, :user, :line_items, :measurement
+  validates_presence_of :shipping_address, :billing_address, :user, :line_items
   delegate :description, :amount, to: :coupon, prefix: true
 
   accepts_nested_attributes_for :shipping_address, :billing_address

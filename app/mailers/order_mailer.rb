@@ -17,7 +17,7 @@ class OrderMailer < ActionMailer::Base
     @order = order
     mail(
       to: 'jordan@tailoredrepublic.com, jeff@tailoredrepublic.com, brian@tailoredrepublic.com',
-      subject: "New Order (#{order.order_id})"
+      subject: "New Order (#{order.order_id}) (#{Rails.env})"
     )
   end
 end

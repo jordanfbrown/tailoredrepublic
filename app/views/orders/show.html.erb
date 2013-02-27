@@ -29,15 +29,20 @@
     </ul>
 
     <h3>Measurements</h3>
+    <% if @order.measurement.nil? %>
     <ul>
-      <% @order.measurement.display_attributes.each do |key, value| %>
-        <li><%= key.titleize %>: <%= value %></li>
-      <% end %>
+      <li>None</li>
     </ul>
+    <% else %>
+      <ul>
+        <% @order.measurement.display_attributes.each do |key, value| %>
+          <li><%= key.titleize %>: <%= value %></li>
+        <% end %>
+      </ul>
+    <% end %>
   </div>
 
   <div class="six columns">
-
     <h3>Items Purchased</h3>
     <% @order.line_items.each do |line_item|  %>
       <div class="line-item-wrapper margin-bottom">

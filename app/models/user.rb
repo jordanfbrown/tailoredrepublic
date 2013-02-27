@@ -74,9 +74,11 @@ class User < ActiveRecord::Base
   end
 
   def duplicate_measurement
-    duplicated_measurement = measurement.dup
-    duplicated_measurement.user_id = nil
-    duplicated_measurement
+    unless measurement.nil?
+      duplicated_measurement = measurement.dup
+      duplicated_measurement.user_id = nil
+      duplicated_measurement
+    end
   end
 
   def paginated_orders(page)
