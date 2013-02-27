@@ -52,8 +52,8 @@ window.TR =
     trackEvent: (category, action, label, value) ->
       if TR.ENVIRONMENT == 'production'
         event = ['_trackEvent', category, action]
-        event.push(label) if label
-        event.push(value) if value
+        event.push(label) if label || label == 0
+        event.push(value) if value || value == 0
         _gaq.push event
 
   setStripeKey: ->
