@@ -210,15 +210,15 @@
       text-decoration: underline;
     }
 
-    &.shirt {
-      height: 190px;
+    &.collar {
+      height: 200px;
     }
 
     &.tuxedo {
       height: 217px;
     }
 
-    &.vest, &.shirt, &.tuxedo {
+    &.three {
       @media only screen and (max-width: 767px) {
         width: 50%;
       }

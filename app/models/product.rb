@@ -70,7 +70,7 @@ class Product < ActiveRecord::Base
   end
 
   def self.by_category(category)
-    where(category: category).order('subcategory ASC, display_order ASC, name ASC').includes(:product_images).to_a
+    where(category: category).order('display_order ASC, subcategory ASC, name ASC').includes(:product_images).to_a
   end
 
   def display_price

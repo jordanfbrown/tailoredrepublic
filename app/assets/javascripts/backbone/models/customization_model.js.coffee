@@ -1,7 +1,7 @@
 class TR.Models.Customization extends TR.Models.Base
   initialize: (attributes, options) ->
     @productCategory = options.category if options
-    customFabric = options.customFabric if options
+    customFabric = options.isCustomFabric if options
     productName = options.productName if options
 
     if @productCategory

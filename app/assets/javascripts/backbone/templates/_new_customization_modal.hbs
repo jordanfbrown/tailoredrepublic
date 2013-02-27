@@ -1,0 +1,80 @@
+<a class="close-reveal-modal">&#215;</a>
+<h3>{{product.name}} <span class="divider">//</span> <span class="current-customization">{{#if chooseFabric}}Fabric{{else}}Lapel{{/if}}</span></h3>
+<div class="customizations">
+  <ul class="progress-bar {{product.category}} {{#if chooseFabric}} suit-swatch {{/if}}">
+    {{#each customizationOptions}}
+      <li data-type="{{this.category}}" {{#ifeq @index 0}}class="selected"{{/ifeq}}></li>
+    {{/each}}
+    <li data-type="checkout"></li>
+  </ul>
+  <ul class="customization-list">
+    {{#each customizationOptions}}
+      <li class="customization-wrapper" data-type="{{this.category}}">
+        <p>{{{this.description}}}</p>
+        {{#if this.custom}}
+          {{#if this.monogram}}
+            <div class="customization-option six columns">
+              <form id="monogram-form">
+                <label>Monogram (+${{this.extra_cost}}) ({{this.max_length}} character max) </label>
+                <input type="text" name="monogram" maxlength="{{this.max_length}}" value="{{monogram}}">
+                <input type="submit" class="button full-width" value="Ok">
+              </form>
+            </div>
+          {{/if}}
+          {{#if this.fabric}}
+            <div class="six columns">
+              {{#eachProperty this.options}}
+                <div class="three columns">
+                  <a href="#" class="fabric-option {{#ifeq fabric property}}selected{{/ifeq}}"
+                     data-id="{{property}}" data-label="{{value.label}}}}"
+                     data-large="{{value.large_image}}">
+                    <img src="{{imgSrc value.small_image}}}">
+                  </a>
+                </div>
+              {{/eachProperty}}
+              <p class="centered">Hover to magnify</p>
+            </div>
+            <div class="six columns">
+              <div class="image-magnified">
+                <img src="{{imgSrc "customizations/suits/fabrics/charcoal-with-pinstripe-large.jpg"}}"></a>
+              </div>
+              <p class="centered fabric-label">Dark Charcoal w/ Wide Pinstripes</p>
+            </div>
+          {{/if}}
+        {{else}}
+          {{#eachProperty this.options}}
+            <a href="#" class="customization-option {{numColumns ../this.options}} {{#if value.default}}selected{{/if}} {{../property}}" data-option="{{property}}">
+              <h5>{{#if value.label}} {{value.label}} {{else}} {{titleizeWithNumbers property}} {{/if}}</h5>
+              <img src="{{imgSrc value.image}}">
+              {{#ifNotEq ../this.category "lining"}}
+                {{#if value.default}}
+                  <div class="recommended">
+                    <img src="{{imgSrc "logos/logo-stitch.png"}}" class="shield"><span>Recommended</span>
+                  </div>
+                {{/if}}
+              {{/ifNotEq}}
+            </a>
+          {{/eachProperty}}
+        {{/if}}
+      </li>
+    {{/each}}
+    <li class="customization-wrapper" data-type="checkout">
+      <div class="customization-summary row">
+        {{#ifeq product.category "suit"}}
+          {{> customizationCheckoutSuit}}
+        {{else}}
+          {{> customizationCheckoutShirt}}
+        {{/ifeq}}
+      </div>
+    </li>
+    <li data-type="checkout"></li>
+  </ul>
+</div>
+<div class="row prev-next-row">
+  <div class="six columns previous-col">
+    <a href="#" class="button previous" style="display: none;">Previous</a>
+  </div>
+  <div class="six columns next-col">
+    <a href="#" class="button next">Next</a>
+  </div>
+</div>

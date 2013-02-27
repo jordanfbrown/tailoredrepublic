@@ -65,6 +65,7 @@
         TR.SHIRT_MONOGRAM_PRICE = <%= Product.shirt_monogram_price %>;
         TR.ASSET_DIGESTS = <%= AssetDigestCache.get_digest_hash.to_json.html_safe %>;
         TR.ENVIRONMENT = '<%= Rails.env %>';
+        TR.CUSTOMIZATIONS = <%= CUSTOMIZATIONS.to_json.html_safe %>
         new TR.Views.Nav({user: <%= @user_data.to_json.html_safe %>});
         new TR.Views.Footer();
       });

@@ -27,11 +27,11 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     @product = options.product
     @customization = options.customization || new TR.Models.Customization({}, {
       category: @product.get('category')
-      customFabric: @product.customFabric()
+      isCustomFabric: @product.isCustomFabric()
       productName: @product.get('name')
     })
     @customization.on 'change', @updateCheckoutSlide
-    @template = @getTemplate "customization_modal_#{@product.get('category')}"
+    @template = @getTemplate 'new_customization_modal'
     @checkoutTemplate = @getTemplate "customization_checkout_#{@product.get('category')}"
     @render()
 
@@ -87,7 +87,8 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
       pickStitchingPrice: TR.PICK_STITCHING_PRICE
       shirtMonogramPrice: TR.SHIRT_MONOGRAM_PRICE
       isNew: @customization.isNew()
-      chooseFabric: @product.customFabric()
+      chooseFabric: @product.isCustomFabric()
+      customizationOptions: @product.getCustomizationOptions()
     , @customization.toJSON()
 
   calculatePrice: ->
