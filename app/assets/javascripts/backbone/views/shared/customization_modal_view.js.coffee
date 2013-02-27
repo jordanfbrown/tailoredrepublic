@@ -122,14 +122,14 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     $lining = $(e.currentTarget).addClass 'selected'
     @customization.set 'lining', $lining.data 'id'
     @slider.goToNextSlide()
-    TR.Analytics.trackEvent 'Customizations', 'Choose Lining', $lining.data 'id'
+    TR.Analytics.trackEvent 'Customizations', 'Choose Lining', $lining.data('id')
 
   selectFabric: (e) ->
     e.preventDefault()
     @$('.fabric-option').removeClass 'selected'
     $fabric = $(e.currentTarget).addClass 'selected'
     @customization.set 'fabric', $fabric.data 'id'
-    TR.Analytics.trackEvent 'Customizations', 'Choose Fabric', $fabric.data 'id'
+    TR.Analytics.trackEvent 'Customizations', 'Choose Fabric', $fabric.data('id')
     @slider.goToNextSlide()
 
   goToSlide: (e) ->

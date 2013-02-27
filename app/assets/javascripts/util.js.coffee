@@ -49,15 +49,12 @@ window.TR =
 
         _gaq.push ['_trackTrans']
 
-    trackEvent: (category, action, label = '', value = '') ->
+    trackEvent: (category, action, label, value) ->
       if TR.ENVIRONMENT == 'production'
-        _gaq.push [
-          '_trackEvent'
-          category
-          action
-          label
-          value
-        ]
+        event = ['_trackEvent', category, action]
+        event.push(label) if label
+        event.push(value) if value
+        _gaq.push event
 
   setStripeKey: ->
     Stripe.setPublishableKey $('meta[name=stripe-key]').attr 'content'
