@@ -28,7 +28,7 @@ ten_percent_off:
   coupon_type: promotion
   discount_type: percentage
   begin_date: 2013-01-23
-  end_date: 2013-02-23
+  end_date: 2050-02-23
 
 expired_end_date:
   code: BQTHRSCA
