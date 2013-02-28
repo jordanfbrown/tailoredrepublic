@@ -8,7 +8,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
       'click a.customization-option': 'setCustomization'
       'click a.add-to-cart': 'addToCart'
       'mousemove a.fabric': 'magnify'
-      'click a.accept': 'addToCart'
+      'click a.accept': 'acceptCustomizations'
       'click a.save-changes': 'saveChanges'
       'click ul.progress-bar li': 'goToSlide'
       'click a.previous': 'previous'
@@ -151,26 +151,41 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     @slider.goToNextSlide()
     TR.Analytics.trackEvent 'Customizations', "Choose #{type}", option
 
+  acceptCustomizations: (e) ->
+    e.preventDefault()
+    if @checkButtonState $(e.currentTarget)
+      if @customization.isNew() then @saveCustomization() else @updateCustomization()
+
+  checkButtonState: ($button) ->
+    if $button.hasClass 'disabled'
+      false
+    else
+      $button.addClass 'disabled'
+      true
+
   addToCart: (e) ->
     e.preventDefault()
-    $button = $(e.currentTarget)
-    unless $button.hasClass 'disabled'
-      $button.addClass 'disabled'
-      @customization.save(null, {silent: true}).then(@addLineItem, @addCustomizationFailure)
+    @saveCustomization() if @checkButtonState $(e.currentTarget)
 
   addLineItem: =>
     $.post('/line_items', {product_id: @product.get('id'), customization_id: @customization.get('id')}).then(
       @addSuccess, @addLineItemFailure
     )
 
-  saveChanges: (e) ->
-    e.preventDefault()
+  saveCustomization: ->
+    @customization.save(null, {silent: true}).then(@addLineItem, @addCustomizationFailure)
+
+  updateCustomization: ->
     TR.Analytics.trackEvent 'LineItems', 'Save Changes', @product.get('name')
     @customization.save(null, {silent: true}).then(=>
       window.location.href = '/cart'
     , =>
       TR.renderSimpleModal "We're sorry, but there was a problem updating the customizations. Please try again, and if the problem persists, shoot as an email at help@tailoredrepublic.com."
     )
+
+  saveChanges: (e) ->
+    e.preventDefault()
+    @updateCustomization() if @checkButtonState $(e.currentTarget)
 
   addSuccess: (response) =>
     TR.Analytics.trackEvent 'LineItems', 'Add', @product.get('name')
