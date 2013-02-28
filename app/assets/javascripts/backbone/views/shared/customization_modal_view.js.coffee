@@ -7,15 +7,16 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     _.extend super,
       'click a.customization-option': 'setCustomization'
       'click a.add-to-cart': 'addToCart'
-      'mousemove a.fabric': 'magnify'
       'click a.accept': 'acceptCustomizations'
       'click a.save-changes': 'saveChanges'
       'click ul.progress-bar li': 'goToSlide'
       'click a.previous': 'previous'
+      'click input.skip': 'next'
       'click a.next': 'next'
+      'click a.advance-slide': 'next'
       'click a.lining-option': 'selectLining'
       'click a.label': 'clickedLabelOnCheckout'
-      'click a.advance-slide': 'next'
+      'mousemove a.fabric': 'magnify'
       'submit #monogram-form': 'submitMonogram'
 
   hideScrollbar: false

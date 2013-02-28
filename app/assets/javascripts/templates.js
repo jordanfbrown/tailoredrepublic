@@ -278,20 +278,20 @@ function program5(depth0,data,depth2) {
 function program6(depth0,data,depth3) {
   
   var buffer = "", stack1;
-  buffer += "\n            <div class=\"customization-option six columns\">\n              <form id=\"monogram-form\">\n                <label>Monogram (+$";
+  buffer += "\n            <div class=\"row\">\n              <div class=\"customization-option six columns\">\n                <form id=\"monogram-form\">\n                  <label>Monogram (+$";
   stack1 = depth0.extra_cost;
   stack1 = typeof stack1 === functionType ? stack1() : stack1;
   buffer += escapeExpression(stack1) + ") (";
   stack1 = depth0.max_length;
   stack1 = typeof stack1 === functionType ? stack1() : stack1;
-  buffer += escapeExpression(stack1) + " character max) </label>\n                <input type=\"text\" name=\"monogram\" maxlength=\"";
+  buffer += escapeExpression(stack1) + " character max) </label>\n                  <input type=\"text\" name=\"monogram\" maxlength=\"";
   stack1 = depth0.max_length;
   stack1 = typeof stack1 === functionType ? stack1() : stack1;
   buffer += escapeExpression(stack1) + "\" value=\"";
   stack1 = depth3.customization;
   stack1 = stack1 == null || stack1 === false ? stack1 : stack1.monogram;
   stack1 = typeof stack1 === functionType ? stack1() : stack1;
-  buffer += escapeExpression(stack1) + "\">\n                <input type=\"submit\" class=\"button full-width\" value=\"Ok\">\n              </form>\n            </div>\n          ";
+  buffer += escapeExpression(stack1) + "\">\n                  <div class=\"row\">\n                    <div class=\"six columns\">\n                      <input type=\"submit\" class=\"button full-width\" value=\"Save\">\n                    </div>\n                    <div class=\"six columns\">\n                      <input type=\"button\" class=\"button full-width skip\" value=\"Skip\">\n                    </div>\n                  </div>\n                </form>\n              </div>\n            </div>\n          ";
   return buffer;}
 
 function program8(depth0,data) {

@@ -13,12 +13,21 @@
         <p>{{{this.description}}}</p>
         {{#if this.custom}}
           {{#if this.monogram}}
-            <div class="customization-option six columns">
-              <form id="monogram-form">
-                <label>Monogram (+${{this.extra_cost}}) ({{this.max_length}} character max) </label>
-                <input type="text" name="monogram" maxlength="{{this.max_length}}" value="{{../../../customization.monogram}}">
-                <input type="submit" class="button full-width" value="Ok">
-              </form>
+            <div class="row">
+              <div class="customization-option six columns">
+                <form id="monogram-form">
+                  <label>Monogram (+${{this.extra_cost}}) ({{this.max_length}} character max) </label>
+                  <input type="text" name="monogram" maxlength="{{this.max_length}}" value="{{../../../customization.monogram}}">
+                  <div class="row">
+                    <div class="six columns">
+                      <input type="submit" class="button full-width" value="Save">
+                    </div>
+                    <div class="six columns">
+                      <input type="button" class="button full-width skip" value="Skip">
+                    </div>
+                  </div>
+                </form>
+              </div>
             </div>
           {{/if}}
           {{#if this.fabric}}
