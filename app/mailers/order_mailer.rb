@@ -15,8 +15,10 @@ class OrderMailer < ActionMailer::Base
 
   def order_fulfillment_email(order)
     @order = order
+    to = Rails.env == 'development' ? 'jordan@tailoredrepublic.com' :
+      'jordan@tailoredrepublic.com, jeff@tailoredrepublic.com, brian@tailoredrepublic.com'
     mail(
-      to: 'jordan@tailoredrepublic.com, jeff@tailoredrepublic.com, brian@tailoredrepublic.com',
+      to: to,
       subject: "New Order (#{order.order_id}) (#{Rails.env})"
     )
   end
