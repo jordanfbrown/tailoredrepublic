@@ -15,6 +15,7 @@ TailoredRepublic::Application.routes.draw do
   resources :products
   resources :coupons, except: [:show]
   resources :line_items, only: [:create, :destroy, :update]
+  resources :tape_measure_requests, only: [:index, :new, :create, :update]
   resources :orders, only: [:show, :new, :create, :index] do
     collection do
       post 'review'

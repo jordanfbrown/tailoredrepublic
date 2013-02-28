@@ -28,3 +28,12 @@ order_billing_address:
   addressable: shirt_order (Order)
   type: BillingAddress
 
+tape_measure_request_address:
+  name: Jordan
+  line1: MyString
+  line2: MyString
+  city: MyString
+  state: MyString
+  zip: 94117
+  addressable: jordan (TapeMeasureRequest)
+  type: ShippingAddress

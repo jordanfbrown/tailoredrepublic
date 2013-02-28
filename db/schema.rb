@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130226222654) do
+ActiveRecord::Schema.define(:version => 20130228171600) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -167,6 +167,14 @@ ActiveRecord::Schema.define(:version => 20130226222654) do
     t.boolean  "top_pick"
     t.string   "subcategory"
     t.string   "fabric_id"
+  end
+
+  create_table "tape_measure_requests", :force => true do |t|
+    t.string   "email"
+    t.string   "ip_address"
+    t.boolean  "sent"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

@@ -1,0 +1,51 @@
+<div class="twelve columns">
+  <h2>Tape Measure Requests</h2>
+
+  <div class="six columns no-padding">
+    <%= form_tag tape_measure_requests_path, method: 'get' do %>
+      <%= label_tag :filter, 'Filter By Status' %>
+      <%= select_tag :filter, options_for_select(['all', 'sent', 'unsent'], @filter) %>
+    <% end %>
+  </div>
+
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Line 1</th>
+      <th>Line 2</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Email</th>
+      <th>IP Address</th>
+      <th>Sent?</th>
+      <th>Created At</th>
+    </tr>
+
+    <% @tape_measure_requests.each do |tape_measure_request| %>
+      <tr>
+        <td><%= tape_measure_request.shipping_address.name %></td>
+        <td><%= tape_measure_request.shipping_address.line1 %></td>
+        <td><%= tape_measure_request.shipping_address.line2 %></td>
+        <td><%= tape_measure_request.shipping_address.city %></td>
+        <td><%= tape_measure_request.shipping_address.state %></td>
+        <td><%= tape_measure_request.shipping_address.zip %></td>
+        <td><%= tape_measure_request.email %></td>
+        <td><%= tape_measure_request.ip_address %></td>
+        <td><%= select_tag :sent, options_for_select(['Yes', 'No'], tape_measure_request.sent ? 'Yes' : 'No'), class: 'sent-select', id: "sent_#{tape_measure_request.id}", data: { id: tape_measure_request.id } %></td>
+        <td><%= tape_measure_request.created_at.in_time_zone('Pacific Time (US & Canada)') %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<div class="twelve columns">
+  <%= will_paginate @tape_measure_requests %>
+</div>
+
+<script>
+  new TR.Views.TapeMeasureRequests();
+</script>
+
+
+
