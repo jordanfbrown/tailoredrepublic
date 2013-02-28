@@ -28,7 +28,7 @@ module CartsHelper
       customizations = [
         { option: "Collar", type: customization.collar.capitalize },
         { option: "Fit", type: customization.fit.capitalize },
-        { option: "Pocket", type: wordify(customization.pant_cuffs) },
+        { option: "Pocket", type: wordify(customization.pocket) },
         { option: "Monogram", type: customization.monogram.length == 0 ? "None" : "#{customization.monogram} (+$#{Product.shirt_monogram_price})" }
       ]
       if show_fabric_ids
