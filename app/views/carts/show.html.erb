@@ -2,13 +2,13 @@
 
 <div class="content-wrapper">
   <h1>Shopping Cart</h1>
-  <%= render 'checkout', cart: @cart, skip_measurements: @skip_measurements if @cart.num_items > 1 %>
+  <%= render('checkout', cart: @cart, skip_measurements: @skip_measurements, top_row: true) if @cart.num_items > 1 %>
   <%= render @cart.line_items %>
   <div class="empty-cart" <% unless @cart.empty? %> style="display: none;" <% end %>>
     <p>You haven't added anything to your cart yet.</p>
     <a href="/shop" class="button">Go To Shop</a>
   </div>
-  <%= render 'checkout', cart: @cart, skip_measurements: @skip_measurements %>
+  <%= render 'checkout', cart: @cart, skip_measurements: @skip_measurements, top_row: false %>
 </div>
 
 <script>

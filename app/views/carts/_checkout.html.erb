@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row <%= 'top-row' if top_row %>">
   <div class="three columns pull-right">
     <div class="cart-total" <% if cart.empty? %> style="display: none;" <% end %>>
       <h5>Total: <span class="price">$<%= cart.total_price %></span></h5>

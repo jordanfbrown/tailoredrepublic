@@ -85,6 +85,8 @@ class TR.Views.Cart extends TR.Views.Base
             $lineItem.remove()
             @lineItems.remove lineItem
             TR.Events.trigger 'removedLineItem'
+            @$('.top-row').remove() if @lineItems.length == 1
+            @$('.cart-total .button').attr('href', '/orders/new') if @lineItems.canSkipMeasurements()
             unless @$('.line-item').exists()
               @$('.empty-cart').show()
               @$('.cart-total').hide()

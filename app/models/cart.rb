@@ -23,12 +23,12 @@ class Cart < ActiveRecord::Base
 
   def line_items_light
     line_items.map do |l|
-      { id: l.id, total_price: l.total_price, quantity: l.quantity, unit_price: l.unit_price }
+      { id: l.id, total_price: l.total_price, quantity: l.quantity, unit_price: l.unit_price, category: l.category }
     end
   end
 
   # Can skip measurements if there are no suits or shirts in the cart
   def skip_measurements?
-    !line_items.any? { |l| l.product.category == :suit } && !line_items.any? { |l| l.product.category == :shirt }
+    !line_items.any? { |l| l.product.category == :suit || l.product.category == :shirt }
   end
 end
