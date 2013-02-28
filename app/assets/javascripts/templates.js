@@ -246,7 +246,7 @@ function program2(depth0,data) {
   
   return "class=\"selected\"";}
 
-function program4(depth0,data) {
+function program4(depth0,data,depth1) {
   
   var buffer = "", stack1;
   buffer += "\n      <li class=\"customization-wrapper\" data-type=\"";
@@ -258,16 +258,16 @@ function program4(depth0,data) {
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "</p>\n        ";
   stack1 = depth0.custom;
-  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(12, program12, data),fn:self.program(5, program5, data),data:data});
+  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(12, program12, data),fn:self.programWithDepth(program5, data, depth1),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n      </li>\n    ";
   return buffer;}
-function program5(depth0,data) {
+function program5(depth0,data,depth2) {
   
   var buffer = "", stack1;
   buffer += "\n          ";
   stack1 = depth0.monogram;
-  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.programWithDepth(program6, data, depth0),data:data});
+  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.programWithDepth(program6, data, depth2),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n          ";
   stack1 = depth0.fabric;
@@ -275,7 +275,7 @@ function program5(depth0,data) {
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n        ";
   return buffer;}
-function program6(depth0,data,depth1) {
+function program6(depth0,data,depth3) {
   
   var buffer = "", stack1;
   buffer += "\n            <div class=\"customization-option six columns\">\n              <form id=\"monogram-form\">\n                <label>Monogram (+$";
@@ -288,7 +288,7 @@ function program6(depth0,data,depth1) {
   stack1 = depth0.max_length;
   stack1 = typeof stack1 === functionType ? stack1() : stack1;
   buffer += escapeExpression(stack1) + "\" value=\"";
-  stack1 = depth1.customization;
+  stack1 = depth3.customization;
   stack1 = stack1 == null || stack1 === false ? stack1 : stack1.monogram;
   stack1 = typeof stack1 === functionType ? stack1() : stack1;
   buffer += escapeExpression(stack1) + "\">\n                <input type=\"submit\" class=\"button full-width\" value=\"Ok\">\n              </form>\n            </div>\n          ";
@@ -464,7 +464,7 @@ function program25(depth0,data) {
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n    <li data-type=\"checkout\"></li>\n  </ul>\n  <ul class=\"customization-list\">\n    ";
   stack1 = depth0.customizationOptions;
-  stack1 = helpers.each.call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(4, program4, data),data:data});
+  stack1 = helpers.each.call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.programWithDepth(program4, data, depth0),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n    <li class=\"customization-wrapper\" data-type=\"checkout\">\n      <div class=\"customization-summary row\">\n        ";
   stack1 = depth0.product;
