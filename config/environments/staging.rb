@@ -28,7 +28,7 @@ TailoredRepublic::Application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  config.force_ssl = true
+  config.force_ssl = false
 
   # See everything in the log (default is :info)
   # config.log_level = :debug
@@ -47,7 +47,7 @@ TailoredRepublic::Application.configure do
     "#{(request && request.ssl? ? 'https' : 'http')}://d195zx82sfk1xc.cloudfront.net"
   }
 
-  config.font_assets.origin = 'https://staging.tailoredrepublic.com'
+  config.font_assets.origin = 'http://staging.tailoredrepublic.com'
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
