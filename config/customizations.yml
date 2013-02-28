@@ -71,6 +71,7 @@ suit:
           image: customizations/suits/fit-normal.png
     - category: lining
       description: "The most common selection is matching lining, which works with the suit to bring out the fabrics natural intrigue. Contrasting linings are a great choice if you want to add a little flash to your suit, making your suit stand out. TR tip: A unique lining is a great way to make your suit stand out and really separates your suit from the off-the-rack crowd; we recommend being bold."
+      no_recommendation: true
       options:
         black:
           default: true
@@ -158,6 +159,7 @@ suit:
           small_image: customizations/suits/fabrics/stone-gray-with-blue-small.jpg
           large_image: customizations/suits/fabrics/stone-gray-with-blue-large.jpg
           default: false
+
 shirt:
   default:
     - category: collar

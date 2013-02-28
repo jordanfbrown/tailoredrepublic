@@ -15,6 +15,8 @@ class TR.Models.Customization extends TR.Models.Base
   url: ->
     super('/customizations')
 
+  # Iterates through the customization options for a product and returns an object containing categories and their
+  # default values
   getDefaults: (customizationOptions) ->
     defaults = {}
     for customizationOption in customizationOptions
@@ -27,7 +29,7 @@ class TR.Models.Customization extends TR.Models.Base
   # Turns "true" or "false" into booleans, "1", "2", "3", etc. into 1, 2, 3, and leaves strings intact
   parseOption: (option) ->
     if option == 'true' || option == 'false'
-      !!option
+      option == 'true'
     else if !_.isNaN(parseInt option)
       parseInt option
     else

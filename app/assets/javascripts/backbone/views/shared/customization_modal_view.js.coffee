@@ -7,14 +7,13 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     _.extend super,
       'click a.customization-option': 'setCustomization'
       'click a.add-to-cart': 'addToCart'
-      'mousemove a.fabric-option': 'magnify'
+      'mousemove a.fabric': 'magnify'
       'click a.accept': 'addToCart'
       'click a.save-changes': 'saveChanges'
       'click ul.progress-bar li': 'goToSlide'
       'click a.previous': 'previous'
       'click a.next': 'next'
       'click a.lining-option': 'selectLining'
-      'click a.fabric-option': 'selectFabric'
       'click a.label': 'clickedLabelOnCheckout'
       'click a.advance-slide': 'next'
       'submit #monogram-form': 'submitMonogram'
@@ -27,7 +26,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     @product = options.product
     @customization = options.customization || new TR.Models.Customization {}, {product: @product}
     @customization.on 'change', @updateCheckoutSlide
-    @template = @getTemplate 'new_customization_modal'
+    @template = @getTemplate 'customization_modal'
     @checkoutTemplate = @getTemplate "customization_checkout_#{@product.get('category')}"
     @render()
 
@@ -121,14 +120,6 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     @slider.goToNextSlide()
     TR.Analytics.trackEvent 'Customizations', 'Choose Lining', $lining.data('id')
 
-  selectFabric: (e) ->
-    e.preventDefault()
-    @$('.fabric-option').removeClass 'selected'
-    $fabric = $(e.currentTarget).addClass 'selected'
-    @customization.set 'fabric', $fabric.data 'id'
-    TR.Analytics.trackEvent 'Customizations', 'Choose Fabric', $fabric.data('id')
-    @slider.goToNextSlide()
-
   goToSlide: (e) ->
     e.preventDefault()
     @slider.goToSlide $(e.currentTarget).index()
@@ -211,7 +202,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     $largeImg = $imageMagnified.find('img')
 
     unless $target.hasClass 'current'
-      @$('.fabric-option').removeClass 'current'
+      @$('.fabric').removeClass 'current'
       $target.addClass 'current'
       $largeImg.attr 'src', TR.imgSrc $target.data 'large'
       @$('.fabric-label').text $target.data 'label'

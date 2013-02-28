@@ -3,7 +3,7 @@
 </p>
 <ul class="four columns">
   {{#ifeq product.subcategory "custom-fabric"}}
-    <li><a href="#" class="label" data-type="swatch">Fabric:</a> {{titleize customization.fabric}}</li>
+    <li><a href="#" class="label" data-type="fabric">Fabric:</a> {{titleize customization.fabric}}</li>
   {{/ifeq}}
   <li><a href="#" class="label" data-type="lapel">Lapel:</a> {{uppercaseFirst customization.lapel}}</li>
   <li><a href="#" class="label" data-type="buttons">Buttons:</a> {{numberToString customization.buttons}}</li>
@@ -15,7 +15,7 @@
   <li><a href="#" class="label" data-type="fit">Fit:</a> {{uppercaseFirst customization.fit}}</li>
   <li><a href="#" class="label" data-type="lining">Lining:</a> {{titleize customization.lining}}</li>
   <li><a href="#" class="label" data-type="pick_stitching">Pick Stitching:</a> {{#if customization.pick_stitching}}Yes (+${{pickStitchingPrice}}) {{else}}No{{/if}}</li>
-  <li><a href="#" class="label" data-type="vest">Vest:</a> {{#ifGreaterThan customization.vest 0}} Yes, {{vest}} Buttons (+${{vestPrice}}){{else}}No{{/ifGreaterThan}}</li>
+  <li><a href="#" class="label" data-type="vest">Vest:</a> {{#ifGreaterThan customization.vest 0}} Yes, {{customization.vest}} Buttons (+${{vestPrice}}){{else}}No{{/ifGreaterThan}}</li>
 </ul>
 <div class="four columns">
   <ul>

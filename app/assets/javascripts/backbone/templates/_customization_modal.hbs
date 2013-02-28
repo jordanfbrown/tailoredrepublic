@@ -24,13 +24,11 @@
           {{#if this.fabric}}
             <div class="six columns">
               {{#eachProperty this.options}}
-                <div class="three columns">
-                  <a href="#" class="fabric-option {{#ifeq ../../customization.fabric property}}selected{{/ifeq}}"
-                     data-id="{{property}}" data-label="{{value.label}}"
-                     data-large="{{value.large_image}}">
-                    <img src="{{imgSrc value.small_image}}">
-                  </a>
-                </div>
+                <a href="#" class="customization-option fabric three columns {{#if value.selected}}selected{{/if}}"
+                   data-option="{{property}}" data-label="{{value.label}}"
+                   data-large="{{value.large_image}}">
+                  <img src="{{imgSrc value.small_image}}">
+                </a>
               {{/eachProperty}}
               <p class="centered">Hover to magnify</p>
             </div>
@@ -46,13 +44,13 @@
             <a href="#" class="customization-option {{numColumns ../this.options}} {{#if value.selected}}selected{{/if}} {{../this.category}}" data-option="{{property}}">
               <h5>{{#if value.label}} {{value.label}} {{else}} {{titleizeWithNumbers property}} {{/if}}</h5>
               <img src="{{imgSrc value.image}}">
-              {{#ifNotEq ../this.category "lining"}}
+              {{#unless ../this.no_recommendation}}
                 {{#if value.default}}
                   <div class="recommended">
                     <img src="{{imgSrc "logos/logo-stitch.png"}}" class="shield"><span>Recommended</span>
                   </div>
                 {{/if}}
-              {{/ifNotEq}}
+              {{/unless}}
             </a>
           {{/eachProperty}}
         {{/if}}

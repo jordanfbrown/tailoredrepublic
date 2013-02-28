@@ -188,7 +188,7 @@
     text-align: center;
 
     h5 {
-      padding: 3px 20px;
+      padding: 3px 15px;
     }
 
     &.selected h5 {
@@ -214,19 +214,25 @@
       height: 200px;
     }
 
-    &.tuxedo {
-      height: 217px;
+    &.fabric {
+      &.selected img {
+        border: 1px dashed #aaa;
+      }
+
+      img {
+        padding: 5px;
+        border: 1px solid transparent;
+        height: auto;
+      }
+    }
+
+    &.lining img, &.pant_cuffs img {
+      height: auto;
     }
 
     &.three {
       @media only screen and (max-width: 767px) {
-        width: 50%;
-      }
-    }
-
-    &.pant_cuffs {
-      img {
-        height: auto;
+        width: 50% !important;
       }
     }
 
@@ -293,30 +299,6 @@
 
       .button {
         width: 100px;
-      }
-    }
-
-    .fabric-option {
-      display: block;
-    }
-
-    &.fabric {
-      .selected img {
-        border: 1px dashed #aaa;
-      }
-
-      img {
-        padding: 5px;
-        border: 1px solid transparent;
-      }
-
-      .three {
-        text-align: center;
-        
-        @media only screen and (max-width: 767px) {
-          width: 50% !important;
-          float: left !important;
-        }
       }
     }
   }

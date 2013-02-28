@@ -17,9 +17,6 @@ Handlebars.registerHelper 'numberToString', (number) ->
     when 2 then 'Two'
     when 3 then 'Three'
 
-Handlebars.registerHelper 'log', (value) ->
-  console.log value
-
 Handlebars.registerHelper 'eachProperty', (context, options) ->
   count = 0
   ret = ''
@@ -36,6 +33,9 @@ Handlebars.registerHelper 'ifeq', (a, b, options) ->
     options.fn @
   else
     options.inverse @
+    
+Handlebars.registerHelper 'get', (obj, prop) ->
+  console.log obj, prop
     
 Handlebars.registerHelper 'numColumns', (context) ->
   length = _.keys(context).length
