@@ -90,6 +90,7 @@ suit:
         true:
           default: false
           image: customizations/suits/pick-stitching-yes.png
+          label: Yes (+$10)
     - category: vest
       description: "Do you want to make your suit a three-piece? You can add a matching vest to your suit order for $79. A three-piece suit is sure to draw looks and makes a bold statement that you are serious about your style game."
       options:
@@ -138,22 +139,25 @@ suit:
           label: Dark Charcoal w/ Wide Pinstripes
           small_image: customizations/suits/fabrics/charcoal-with-pinstripe-small.jpg
           large_image: customizations/suits/fabrics/charcoal-with-pinstripe-large.jpg
+          default: true
         granite-red:
           id: 10005.170/1
           label: Granite w/ Red Crosschecks
           small_image: customizations/suits/fabrics/granite-with-red-small.jpg
           large_image: customizations/suits/fabrics/granite-with-red-large.jpg
+          default: false
         powder-blue-pinstripe:
           id: 10005.005/2
           label: Powder Blue w/ Pinstripe
           small_image: customizations/suits/fabrics/powder-blue-pinstripe-small.jpg
           large_image: customizations/suits/fabrics/powder-blue-pinstripe-large.jpg
+          default: false
         stone-gray-with-blue:
           id: 10005.170/2
           label: Stone Gray w/ Blue Crosschecks
           small_image: customizations/suits/fabrics/stone-gray-with-blue-small.jpg
           large_image: customizations/suits/fabrics/stone-gray-with-blue-large.jpg
-
+          default: false
 shirt:
   default:
     - category: collar
@@ -192,7 +196,7 @@ shirt:
           image: customizations/shirts/pocket-yes.png
           label: Pocket
     - category: monogram
-      description: "Shirt monogramming can be up to 3 characters, and is almost exclusively used to sport some initials. The monogram will show up on the sleeve cuff that will poke out the bottom of your suit sleeve. TR tip: keep the shirt monogram subtle and make it the same color of the shirt. It is still noticeable without being obnoxious. Black on black, white on white, pink on pink, you get the idea. <span class=\"label\">Note: monograms cost an extra $5.</span>"
+      description: "Shirt monogramming can be up to 3 characters, and is almost exclusively used to sport some initials. The monogram will show up on the sleeve cuff that will poke out the bottom of your suit sleeve. <span class=\"label\">Note: monograms cost an extra $5.</span>"
       custom: true
       monogram: true
       max_length: 3

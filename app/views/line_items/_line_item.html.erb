@@ -2,7 +2,8 @@
      data-product-id="<%= line_item.product.id %>"
      data-customization-id="<%= line_item.customization.id if line_item.customization %>"
      data-line-item-id="<%= line_item.id %>"
-     data-product-name="<%= line_item.name %>">
+     data-product-name="<%= line_item.name %>"
+     data-product-category="<%= line_item.category.capitalize %>">
   <div class="row">
     <div class="twelve columns">
       <a href="#" class="remove">Remove</a>

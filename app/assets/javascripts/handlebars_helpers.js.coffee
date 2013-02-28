@@ -17,6 +17,9 @@ Handlebars.registerHelper 'numberToString', (number) ->
     when 2 then 'Two'
     when 3 then 'Three'
 
+Handlebars.registerHelper 'log', (value) ->
+  console.log value
+
 Handlebars.registerHelper 'eachProperty', (context, options) ->
   count = 0
   ret = ''

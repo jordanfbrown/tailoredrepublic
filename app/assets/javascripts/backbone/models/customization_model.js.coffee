@@ -1,37 +1,44 @@
 class TR.Models.Customization extends TR.Models.Base
-  initialize: (attributes, options) ->
-    @productCategory = options.category if options
-    customFabric = options.isCustomFabric if options
-    productName = options.productName if options
 
-    if @productCategory
-      if @productCategory == 'suit'
-        @attributes = _.extend {}, {
-          lapel: if productName == 'The Tuxedo' then 'shawl' else 'notch'
-          buttons: 2
-          vents: 2
-          pleats: 0
-          pant_cuffs: false
-          fit: 'tailored'
-          lining: 'black'
-          monogram: ''
-          pick_stitching: false
-          vest: 0
-          product_category: @productCategory
-          fabric: 'charcoal-pinstripe' if customFabric
-        }, attributes
-      else if @productCategory == 'shirt'
-        @attributes = _.extend {}, {
-          collar: 'standard'
-          fit: 'slim'
-          pocket: false
-          monogram: ''
-          monogram_color: 'white'
-          product_category: @productCategory
-        }, attributes
+  initialize: (attributes, options) ->
+    @product = options.product if options
+
+    if @product
+      customizationOptions = @product.getCustomizationOptions()
+      defaults = @getDefaults customizationOptions
+      @attributes = _.extend {
+        product_category: @product.get('category'),
+        monogram: ''
+      }, defaults, attributes
 
   url: ->
     super('/customizations')
+
+  getDefaults: (customizationOptions) ->
+    defaults = {}
+    for customizationOption in customizationOptions
+      category = customizationOption.category
+      for option, value of customizationOption.options
+        option = @parseOption option
+        defaults[category] = option if value.default
+    defaults
+
+  setDefaults: (customizationOptions) ->
+    newOptions = _.clone customizationOptions
+    for customizationOption in newOptions
+      category = customizationOption.category
+      for option, value of customizationOption.options
+        value.default = @attributes[category].toString() == option.toString()
+    newOptions
+
+  # Turns "true" or "false" into booleans, "1", "2", "3", etc. into 1, 2, 3, and leaves strings intact
+  parseOption: (option) ->
+    if option == 'true' || option == 'false'
+      !!option
+    else if !_.isNaN(parseInt option)
+      parseInt option
+    else
+      option
 
   hasShirtMonogram: ->
     @get('monogram').length > 0 && @get('product_category') == 'shirt'

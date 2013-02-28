@@ -25,11 +25,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     super()
     @errorMessage = "We're sorry, but there was a problem adding the product to your cart. Please try again, and if the problem persists, shoot as an email at help@tailoredrepublic.com."
     @product = options.product
-    @customization = options.customization || new TR.Models.Customization({}, {
-      category: @product.get('category')
-      isCustomFabric: @product.isCustomFabric()
-      productName: @product.get('name')
-    })
+    @customization = options.customization || new TR.Models.Customization {}, {product: @product}
     @customization.on 'change', @updateCheckoutSlide
     @template = @getTemplate 'new_customization_modal'
     @checkoutTemplate = @getTemplate "customization_checkout_#{@product.get('category')}"
@@ -80,16 +76,17 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
 
   getTemplateData: ->
     price = @calculatePrice()
-    _.extend
+    @customization.setDefaults @product.getCustomizationOptions()
+    {
       product: @product.toJSON()
       price: price
       vestPrice: TR.VEST_PRICE
       pickStitchingPrice: TR.PICK_STITCHING_PRICE
       shirtMonogramPrice: TR.SHIRT_MONOGRAM_PRICE
       isNew: @customization.isNew()
-      chooseFabric: @product.isCustomFabric()
       customizationOptions: @product.getCustomizationOptions()
-    , @customization.toJSON()
+      customization: @customization.toJSON()
+    }
 
   calculatePrice: ->
     adders = 0

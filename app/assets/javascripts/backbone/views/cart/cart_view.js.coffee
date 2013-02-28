@@ -41,6 +41,7 @@ class TR.Views.Cart extends TR.Views.Base
     $lineItem = $target.parents '.line-item'
     customizationId = $lineItem.data 'customization-id'
     productId = $lineItem.data 'product-id'
+    productCategory = $lineItem.data 'product-category'
     customization = new TR.Models.Customization id: customizationId
     product = new TR.Models.Product id: productId
     $.when(customization.fetch(), product.fetch()).then(->

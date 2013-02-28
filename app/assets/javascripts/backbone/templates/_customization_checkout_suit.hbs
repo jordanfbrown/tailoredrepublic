@@ -2,20 +2,20 @@
   to enter your new customization.
 </p>
 <ul class="four columns">
-  {{#if chooseFabric}}
-    <li><a href="#" class="label" data-type="swatch">Fabric:</a> {{titleize fabric}}</li>
-  {{/if}}
-  <li><a href="#" class="label" data-type="lapel">Lapel:</a> {{uppercaseFirst lapel}}</li>
-  <li><a href="#" class="label" data-type="buttons">Buttons:</a> {{numberToString buttons}}</li>
-  <li><a href="#" class="label" data-type="vents">Vents:</a> {{numberToString vents}}</li>
-  <li><a href="#" class="label" data-type="pleats">Pleats:</a> {{numberToString pleats}}</li>
-  <li><a href="#" class="label" data-type="pant_cuffs">Cuffs:</a> {{#if pant_cuffs}}Yes{{else}}No{{/if}}</li>
+  {{#ifeq product.subcategory "custom-fabric"}}
+    <li><a href="#" class="label" data-type="swatch">Fabric:</a> {{titleize customization.fabric}}</li>
+  {{/ifeq}}
+  <li><a href="#" class="label" data-type="lapel">Lapel:</a> {{uppercaseFirst customization.lapel}}</li>
+  <li><a href="#" class="label" data-type="buttons">Buttons:</a> {{numberToString customization.buttons}}</li>
+  <li><a href="#" class="label" data-type="vents">Vents:</a> {{numberToString customization.vents}}</li>
+  <li><a href="#" class="label" data-type="pleats">Pleats:</a> {{numberToString customization.pleats}}</li>
+  <li><a href="#" class="label" data-type="pant_cuffs">Cuffs:</a> {{#if customization.pant_cuffs}}Yes{{else}}No{{/if}}</li>
 </ul>
 <ul class="four columns">
-  <li><a href="#" class="label" data-type="fit">Fit:</a> {{uppercaseFirst fit}}</li>
-  <li><a href="#" class="label" data-type="lining">Lining:</a> {{titleize lining}}</li>
-  <li><a href="#" class="label" data-type="pick_stitching">Pick Stitching:</a> {{#if pick_stitching}}Yes (+${{pickStitchingPrice}}) {{else}}No{{/if}}</li>
-  <li><a href="#" class="label" data-type="vest">Vest:</a> {{#ifGreaterThan vest 0}} Yes, {{vest}} Buttons (+${{vestPrice}}){{else}}No{{/ifGreaterThan}}</li>
+  <li><a href="#" class="label" data-type="fit">Fit:</a> {{uppercaseFirst customization.fit}}</li>
+  <li><a href="#" class="label" data-type="lining">Lining:</a> {{titleize customization.lining}}</li>
+  <li><a href="#" class="label" data-type="pick_stitching">Pick Stitching:</a> {{#if customization.pick_stitching}}Yes (+${{pickStitchingPrice}}) {{else}}No{{/if}}</li>
+  <li><a href="#" class="label" data-type="vest">Vest:</a> {{#ifGreaterThan customization.vest 0}} Yes, {{vest}} Buttons (+${{vestPrice}}){{else}}No{{/ifGreaterThan}}</li>
 </ul>
 <div class="four columns">
   <ul>

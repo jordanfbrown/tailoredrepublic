@@ -2,10 +2,10 @@
   to enter your new customization.
 </p>
 <ul class="six columns">
-  <li><a href="#" class="label" data-type="collar">Collar:</a> {{uppercaseFirst collar}}</li>
-  <li><a href="#" class="label" data-type="fit">Fit:</a> {{uppercaseFirst fit}}</li>
-  <li><a href="#" class="label" data-type="pocket">Pocket:</a> {{#if pocket}}Yes{{else}}No{{/if}}</li>
-  <li><a href="#" class="label" data-type="monogram">Monogram:</a> {{#ifGreaterThan monogram.length 0}}{{monogram}} (+${{shirtMonogramPrice}}){{else}}None{{/ifGreaterThan}}</li>
+  <li><a href="#" class="label" data-type="collar">Collar:</a> {{uppercaseFirst customization.collar}}</li>
+  <li><a href="#" class="label" data-type="fit">Fit:</a> {{uppercaseFirst customization.fit}}</li>
+  <li><a href="#" class="label" data-type="pocket">Pocket:</a> {{#if customization.pocket}}Yes{{else}}No{{/if}}</li>
+  <li><a href="#" class="label" data-type="monogram">Monogram:</a> {{#ifGreaterThan customization.monogram.length 0}}{{customization.monogram}} (+${{shirtMonogramPrice}}){{else}}None{{/ifGreaterThan}}</li>
 </ul>
 <div class="six columns">
   <ul>
