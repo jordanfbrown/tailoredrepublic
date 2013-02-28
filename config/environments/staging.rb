@@ -28,7 +28,7 @@ TailoredRepublic::Application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  config.force_ssl = false
+  config.force_ssl = true
 
   # See everything in the log (default is :info)
   # config.log_level = :debug
@@ -47,7 +47,7 @@ TailoredRepublic::Application.configure do
     "#{(request && request.ssl? ? 'https' : 'http')}://d195zx82sfk1xc.cloudfront.net"
   }
 
-  config.font_assets.origin = 'http://staging.tailoredrepublic.com'
+  config.font_assets.origin = 'https://staging.tailoredrepublic.com'
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
@@ -57,13 +57,13 @@ TailoredRepublic::Application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: 'tailoredrepublic.com' }
   config.action_mailer.smtp_settings = {
-      address:              'smtp.gmail.com',
-      port:                 587,
-      domain:               'tailoredrepublic.com',
-      user_name:            ENV['GMAIL_USER'],
-      password:             ENV['GMAIL_PASSWORD'],
-      authentication:       'plain',
-      enable_starttls_auto: true
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'tailoredrepublic.com',
+    user_name:            ENV['GMAIL_USER'],
+    password:             ENV['GMAIL_PASSWORD'],
+    authentication:       'plain',
+    enable_starttls_auto: true
   }
 
   # Enable threaded mode
