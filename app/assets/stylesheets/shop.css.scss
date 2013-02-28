@@ -226,7 +226,15 @@
       }
     }
 
-    &.lining img, &.pant_cuffs img {
+    &.lining img {
+      width: 200px;
+    }
+
+    &.pick_stitching img {
+      height: 170px;
+    }
+
+    &.pant_cuffs img {
       height: auto;
     }
 
