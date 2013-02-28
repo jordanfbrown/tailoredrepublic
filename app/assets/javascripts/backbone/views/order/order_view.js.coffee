@@ -77,18 +77,18 @@ class TR.Views.Order extends TR.Views.Base
   validateForm: ->
     valid = true
 
-    # TODO: uncomment these once we go live
-#    if Stripe.validateCardNumber @$('#card-number').val()
-#      TR.UI.removeError @$('#card-number')
-#    else
-#      TR.UI.setError @$('#card_number'), 'Invalid credit card number.'
-#      valid = false
-#
-#    if Stripe.validateCVC @$('#card_code').val()
-#      TR.UI.removeError @$('#card_code')
-#    else
-#      TR.UI.setError @$('#card_code'), 'Invalid security code.'
-#      valid = false
+    if TR.ENVIRONMENT == 'production'
+      if Stripe.validateCardNumber @$('#card-number').val()
+        TR.UI.removeError @$('#card-number')
+      else
+        TR.UI.setError @$('#card_number'), 'Invalid credit card number.'
+        valid = false
+
+      if Stripe.validateCVC @$('#card_code').val()
+        TR.UI.removeError @$('#card_code')
+      else
+        TR.UI.setError @$('#card_code'), 'Invalid security code.'
+        valid = false
 
     nonEmptyFields = [
       '#order_shipping_address_attributes_name'

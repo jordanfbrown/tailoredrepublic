@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
     def precompile_templates
       if Rails.env.development?
         `handlebars app/assets/javascripts/backbone/templates/* -f app/assets/javascripts/templates.js`
-        CUSTOMIZATIONS.replace YAML.load_file("#{Rails.root}/config/customizations.yml")
       end
     end
 
