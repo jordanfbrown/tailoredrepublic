@@ -7,6 +7,6 @@ class ScheduleTailoringMailer < ActionMailer::Base
     @zip_code = zip_code
     @phone_number = phone_number
     mail(to: 'jordan@tailoredrepublic.com, jeff@tailoredrepublic.com, brian@tailoredrepublic.com',
-         subject: 'Schedule Tailoring Request')
+         subject: "Schedule Tailoring Request (#{Rails.env})")
   end
 end

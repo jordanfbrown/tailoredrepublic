@@ -8,18 +8,12 @@ class Customization < ActiveRecord::Base
   has_many :line_items
 
 
-  def self.fabric_id(fabric)
-    case fabric
-      when 'charcoal-pinstripe'
-        '10005.202/1'
-      when 'granite-red'
-        '10005.170/1'
-      when 'stone-gray-with-blue'
-        '10005.170/2'
-      when 'powder-blue-pinstripe'
-        '10005.005/2'
-      else
-        'Unknown fabric'
+  def self.fabric_id(fabric_slug)
+    fabric = CUSTOMIZATIONS['suit']['custom-fabric'][0]['options'][fabric_slug]
+    if fabric.nil?
+      'Unknown fabric'
+    else
+      fabric['id']
     end
   end
 
