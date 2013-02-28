@@ -76,7 +76,6 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
 
   getTemplateData: ->
     price = @calculatePrice()
-    @customization.setDefaults @product.getCustomizationOptions()
     {
       product: @product.toJSON()
       price: price
@@ -84,7 +83,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
       pickStitchingPrice: TR.PICK_STITCHING_PRICE
       shirtMonogramPrice: TR.SHIRT_MONOGRAM_PRICE
       isNew: @customization.isNew()
-      customizationOptions: @product.getCustomizationOptions()
+      customizationOptions: @product.getCustomizationOptions @customization
       customization: @customization.toJSON()
     }
 

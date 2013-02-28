@@ -3,6 +3,7 @@ class TR.Models.Customization extends TR.Models.Base
   initialize: (attributes, options) ->
     @product = options.product if options
 
+    # Only gets called when instantiating a new instance
     if @product
       customizationOptions = @product.getCustomizationOptions()
       defaults = @getDefaults customizationOptions
@@ -22,14 +23,6 @@ class TR.Models.Customization extends TR.Models.Base
         option = @parseOption option
         defaults[category] = option if value.default
     defaults
-
-  setDefaults: (customizationOptions) ->
-    newOptions = _.clone customizationOptions
-    for customizationOption in newOptions
-      category = customizationOption.category
-      for option, value of customizationOption.options
-        value.default = @attributes[category].toString() == option.toString()
-    newOptions
 
   # Turns "true" or "false" into booleans, "1", "2", "3", etc. into 1, 2, 3, and leaves strings intact
   parseOption: (option) ->
