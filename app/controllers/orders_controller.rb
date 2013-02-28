@@ -164,11 +164,6 @@ class OrdersController < ApplicationController
     render 'thank_you'
   end
 
-  # TODO: delete this before going live
-  def thank_you
-    @order = Order.last
-  end
-
   private
     def create_customer_or_charge_card(user, token, final_cost)
       if params[:save_card_for_later] == 'on'
