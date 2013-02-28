@@ -8,9 +8,12 @@ class TR.Views.Cart extends TR.Views.Base
     'click a.remove': 'removeLineItem'
     'change #line_item_quantity': 'updateLineItemQuantity'
 
+  modalOpen: false
+
   initialize: (options) ->
     @lineItems = new TR.Collections.LineItems options.lineItems
     @lineItems.on 'change remove', @updatePrices
+    TR.Events.on 'closeCustomizationModal', @setModalOpen
     @$('select').customSelect()
 
   toggleCustomizations: (e) ->
@@ -27,15 +30,22 @@ class TR.Views.Cart extends TR.Views.Base
       $('body').animate
         scrollTop: $a.offset().top - 200, 1000
 
+  setModalOpen: =>
+    @modalOpen = false
+
   editCustomizations: (e) ->
     e.preventDefault()
-    @openCustomizationModal $(e.currentTarget)
+    unless @modalOpen
+      @modalOpen = true
+      @openCustomizationModal $(e.currentTarget)
 
   editCustomizationOption: (e) ->
     e.preventDefault()
-    $target = $(e.currentTarget)
-    customizationType = $target.data 'type'
-    @openCustomizationModal $target, customizationType
+    unless @modalOpen
+      @modalOpen = true
+      $target = $(e.currentTarget)
+      customizationType = $target.data 'type'
+      @openCustomizationModal $target, customizationType
 
   openCustomizationModal: ($target, customizationType) ->
     $lineItem = $target.parents '.line-item'

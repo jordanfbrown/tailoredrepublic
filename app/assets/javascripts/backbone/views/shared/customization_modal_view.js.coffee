@@ -130,6 +130,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     @slider.goToNextSlide()
 
   destroy: ->
+    TR.Events.trigger 'closeCustomizationModal'
     $(document).off 'keydown.customization'
     $(document).off 'resize.customization'
     super()
