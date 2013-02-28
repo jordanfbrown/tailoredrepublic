@@ -131,7 +131,7 @@ suit:
 
   custom-fabric:
     - category: fabric
-      description: "For the bold suit connoisseur we have the option to build your own suit; including selecting a unique fabric that is not available in our permanent collection. Start by choosing one of our 100% wool premium fabrics below."
+      description: "For the bold suit connoisseur we have the option to build your own suit; including selecting a unique fabric that is not available in our permanent collection. Start by choosing one of our 100% wool premium fabrics. Hover over a fabric to magnify, and click on it to select."
       custom: true
       fabric: true
       options:

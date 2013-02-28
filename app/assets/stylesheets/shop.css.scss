@@ -215,13 +215,7 @@
     }
 
     &.fabric {
-      &.selected img {
-        border: 1px dashed #aaa;
-      }
-
       img {
-        padding: 5px;
-        border: 1px solid transparent;
         height: auto;
       }
     }

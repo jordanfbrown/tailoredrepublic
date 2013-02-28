@@ -28,6 +28,14 @@ Handlebars.registerHelper 'eachProperty', (context, options) ->
 Handlebars.registerHelper 'decimalToInteger', (decimal) ->
   parseInt decimal
 
+Handlebars.registerHelper 'magnifiedFabricImg', (fabrics) ->
+  selected = _.find fabrics, (fabric) -> fabric.selected
+  TR.imgSrc selected.large_image
+
+Handlebars.registerHelper 'magnifiedFabricLabel', (fabrics) ->
+  selected = _.find fabrics, (fabric) -> fabric.selected
+  selected.label
+
 Handlebars.registerHelper 'ifeq', (a, b, options) ->
   if a == b
     options.fn @

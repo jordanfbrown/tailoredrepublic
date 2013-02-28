@@ -36,6 +36,7 @@
                 <a href="#" class="customization-option fabric three columns {{#if value.selected}}selected{{/if}}"
                    data-option="{{property}}" data-label="{{value.label}}"
                    data-large="{{value.large_image}}">
+                  <h5>&nbsp;</h5>
                   <img src="{{imgSrc value.small_image}}">
                 </a>
               {{/eachProperty}}
@@ -43,9 +44,9 @@
             </div>
             <div class="six columns">
               <div class="image-magnified">
-                <img src="{{imgSrc "customizations/suits/fabrics/charcoal-with-pinstripe-large.jpg"}}"></a>
+                <img src="{{magnifiedFabricImg this.options}}"></a>
               </div>
-              <p class="centered fabric-label">Dark Charcoal w/ Wide Pinstripes</p>
+              <p class="centered fabric-label">{{magnifiedFabricLabel this.options}}</p>
             </div>
           {{/if}}
         {{else}}

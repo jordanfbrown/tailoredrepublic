@@ -303,9 +303,14 @@ function program8(depth0,data) {
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(9, program9, data),data:data}) : helperMissing.call(depth0, "eachProperty", stack1, {hash:{},inverse:self.noop,fn:self.program(9, program9, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n              <p class=\"centered\">Hover to magnify</p>\n            </div>\n            <div class=\"six columns\">\n              <div class=\"image-magnified\">\n                <img src=\"";
-  foundHelper = helpers.imgSrc;
-  stack1 = foundHelper ? foundHelper.call(depth0, "customizations/suits/fabrics/charcoal-with-pinstripe-large.jpg", {hash:{},data:data}) : helperMissing.call(depth0, "imgSrc", "customizations/suits/fabrics/charcoal-with-pinstripe-large.jpg", {hash:{},data:data});
-  buffer += escapeExpression(stack1) + "\"></a>\n              </div>\n              <p class=\"centered fabric-label\">Dark Charcoal w/ Wide Pinstripes</p>\n            </div>\n          ";
+  stack1 = depth0.options;
+  foundHelper = helpers.magnifiedFabricImg;
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{},data:data}) : helperMissing.call(depth0, "magnifiedFabricImg", stack1, {hash:{},data:data});
+  buffer += escapeExpression(stack1) + "\"></a>\n              </div>\n              <p class=\"centered fabric-label\">";
+  stack1 = depth0.options;
+  foundHelper = helpers.magnifiedFabricLabel;
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{},data:data}) : helperMissing.call(depth0, "magnifiedFabricLabel", stack1, {hash:{},data:data});
+  buffer += escapeExpression(stack1) + "</p>\n            </div>\n          ";
   return buffer;}
 function program9(depth0,data) {
   
@@ -327,7 +332,7 @@ function program9(depth0,data) {
   stack1 = depth0.value;
   stack1 = stack1 == null || stack1 === false ? stack1 : stack1.large_image;
   stack1 = typeof stack1 === functionType ? stack1() : stack1;
-  buffer += escapeExpression(stack1) + "\">\n                  <img src=\"";
+  buffer += escapeExpression(stack1) + "\">\n                  <h5>&nbsp;</h5>\n                  <img src=\"";
   stack1 = depth0.value;
   stack1 = stack1 == null || stack1 === false ? stack1 : stack1.small_image;
   foundHelper = helpers.imgSrc;
