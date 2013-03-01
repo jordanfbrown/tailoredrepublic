@@ -18,6 +18,7 @@
       <%= render 'addresses/nested_form', parent_form: f, address_type: :shipping_address %>
       <%= f.label :email %>
       <%= f.text_field :email %>
+      <label><%= check_box_tag :subscribe_to_mailing_list, '1', true %> Subscribe me to the Tailored Republic mailing list</label>
       <%= f.submit 'Submit', class: 'button large full-width' %>
   <% end %>
   </div>

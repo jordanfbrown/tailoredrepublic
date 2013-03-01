@@ -24,6 +24,14 @@ class TapeMeasureRequestsController < ApplicationController
     @tape_measure_request.ip_address = request.remote_ip
 
     if @tape_measure_request.save
+      if params[:subscribe_to_mailing_list] == "1"
+        gibbon = Gibbon.new
+        begin
+          gibbon.list_subscribe(id: GIBBON_LIST_ID, email_address: params[:tape_measure_request][:email])
+        rescue
+          puts 'Ignoring error'
+        end
+      end
       redirect_to '/shop/suits', notice: 'Your tape measure request has been received. You can expect a tape measure in the mail in a couple of days.'
     else
       render :new
