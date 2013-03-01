@@ -33,6 +33,15 @@
     margin-left: -30px;
   }
 
+  .measurement-list-item {
+    @media only screen and (max-width: 850px) {
+      .six {
+        width: auto !important;
+        float: none;
+      }
+    }
+  }
+
   .measurement-overview {
     @media only screen and (max-width: 886px) and (min-width: 767px) {
       label {
