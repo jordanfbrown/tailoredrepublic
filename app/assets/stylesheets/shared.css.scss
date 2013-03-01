@@ -12,18 +12,36 @@ body.registrations, body.passwords, body.orders, body.users, body.products, body
 }
 
 .content-wrapper {
-  padding: 0 60px;
-
-  @media only screen and (min-width: 1400px) {
-    padding: 0 120px;
+  @media only screen and (min-width: 1920px) {
+    padding: 0 350px;
   }
 
-  @media only screen and (min-width: 1200px) {
-    padding: 0 90px;
+  @media only screen and (max-width: 1920px) {
+    padding: 0 300px;
   }
 
-  @media only screen and (max-width: 900px) {
-    padding: 0 15px;
+  @media only screen and (max-width: 1600px) {
+    padding: 0 250px;
+  }
+
+  @media only screen and (max-width: 1400px) {
+    padding: 0 200px;
+  }
+
+  @media only screen and (max-width: 1200px) {
+    padding: 0 150px;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    padding: 0 70px;
+  }
+
+  @media only screen and (max-width: 800px) {
+    padding: 0 30px;
+  }
+
+  @media only screen and (max-width: 768px) {
+    padding: 0 13px;
   }
 
   @media only screen and (max-width: 450px) {

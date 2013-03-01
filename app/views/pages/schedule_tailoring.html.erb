@@ -1,15 +1,15 @@
 <% title_helper('Schedule A Tailoring') %>
 
-<div class="row">
-  <div class="six columns centered">
+<div class="row content-wrapper">
+  <div class="twelve columns">
     <h2>Schedule A Tailoring</h2>
     <div class="outlined">
       <p class="bold">Enter your name, email, and zip code and we will contact you about scheduling a tailoring.</p>
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="six columns centered">
+<div class="row content-wrapper">
+  <div class="twelve columns">
     <%= form_for @scheduling_info, url: { action: :create_schedule_tailoring }, html: { class: 'outlined' } do |f| %>
       <%= render 'shared/form_errors', resource: @scheduling_info %>
       <%= f.label :name %>

@@ -1,7 +1,7 @@
 <% title_helper('Account Settings') %>
 
-<div class="row" id="edit-user">
-  <div class="six columns centered">
+<div class="row content-wrapper" id="edit-user">
+  <div class="twelve columns">
     <h2>Account Settings</h2>
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :id => 'user_form' }) do |f| %>
       <%= devise_error_messages! %>
