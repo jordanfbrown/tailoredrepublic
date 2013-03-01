@@ -1,0 +1,27 @@
+<% title_helper('Schedule A Tailoring') %>
+
+<div class="row">
+  <div class="six columns centered">
+    <h2>Schedule A Tailoring</h2>
+    <div class="outlined">
+      <p class="bold">Enter your name, email, and zip code and we will contact you about scheduling a tailoring.</p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="six columns centered">
+    <%= form_for @scheduling_info, url: { action: :create_schedule_tailoring }, html: { class: 'outlined' } do |f| %>
+      <%= render 'shared/form_errors', resource: @scheduling_info %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+      <%= f.label :zip_code %>
+      <%= f.text_field :zip_code %>
+      <%= f.label :phone_number, 'Phone number (optional)' %>
+      <%= f.text_field :phone_number %>
+      <label><%= f.check_box :subscribe_to_mailing_list %> Subscribe me to the Tailored Republic mailing list</label>
+      <%= f.submit 'Submit', class: 'button large full-width' %>
+    <% end %>
+  </div>
+</div>
