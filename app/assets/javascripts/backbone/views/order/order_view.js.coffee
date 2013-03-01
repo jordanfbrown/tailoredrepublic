@@ -78,8 +78,8 @@ class TR.Views.Order extends TR.Views.Base
     valid = true
 
     if TR.ENVIRONMENT == 'production'
-      if Stripe.validateCardNumber @$('#card-number').val()
-        TR.UI.removeError @$('#card-number')
+      if Stripe.validateCardNumber @$('#card_number').val()
+        TR.UI.removeError @$('#card_number')
       else
         TR.UI.setError @$('#card_number'), 'Invalid credit card number.'
         valid = false
