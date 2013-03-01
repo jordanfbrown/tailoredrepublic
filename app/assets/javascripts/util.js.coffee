@@ -98,3 +98,6 @@ window.TR =
   imgSrc: (path) ->
     TR.ASSET_HOST + '/assets/' + (if TR.ENVIRONMENT == 'production' || TR.ENVIRONMENT == 'staging' then TR.ASSET_DIGESTS[path] else path)
 
+  isIpad: ->
+    navigator.userAgent.match(/iPad/i) != null
+

@@ -12,9 +12,14 @@ class TR.Views.Home extends TR.Views.Base
     $(document).foundationMagellan
       threshold: 100
     $(window).scroll @scroll
+    $(document).on 'touchmove', @scroll
     $(window).resize @resize
     @resize true
     $('nav a').on 'click.home', @scrollToSection
+
+    if TR.isIpad()
+      @els.home.addClass 'ios'
+      @els.home.find('.parallax').addClass 'ios'
 
     if window.location.hash == '#lookbook'
       _.delay ->
@@ -118,7 +123,7 @@ class TR.Views.Home extends TR.Views.Base
     aboutPosition = @els.about.offset().top
 
     # Parallax effect for transition image
-    if $(window).width() > 767
+    if $(window).width() > 768
       bossImgTop = (bossesPosition - pageTop - $(window).height()) / 3
       if @els.bossesImage.height() + bossImgTop + 34 > 400
         @els.bossesImage.css 'top', bossImgTop
@@ -133,9 +138,9 @@ class TR.Views.Home extends TR.Views.Base
 
     if $backgroundImg.inView().exists()
       homeTop = 0
-      @els.pageDown.show();
+      @els.pageDown.show()
     else
       homeTop = -$backgroundImg.height()
-      @els.pageDown.hide();
-
+      @els.pageDown.hide()
+      
     @els.home.find('.parallax').css 'top', homeTop + 'px'

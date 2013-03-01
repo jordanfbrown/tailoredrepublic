@@ -46,6 +46,10 @@
       left: 34%;
     }
 
+    @media only screen and (max-width: 340px) {
+      left: 38%;
+    }
+
     a {
       display: inline-block;
       padding: 9px 7px 7px 7px;
@@ -79,10 +83,20 @@
     top: 0;
     left: 0;
     right: 0;
+    z-index: 0;
+    -webkit-transform: translateZ(0);
+
+    &.ios {
+      position: absolute;
+    }
 
     img {
       padding-top: 30px;
     }
+  }
+
+  .ios {
+    position: static;
   }
 }
 

@@ -7,13 +7,16 @@ class TR.Views.Footer extends TR.Views.Base
 
   initialize: ->
     $(document).addPlaceholders();
-    $(window).resize =>
-      if $(window).width() >= 768
-        @$('ul').css('display', '')
-        @$('h5 span').text '+'
+    $(window).resize @resize
+    @resize()
+
+  resize: ->
+    if $(window).width() >= 768
+      @$('ul').css('display', '')
+      @$('h5 span').text '+'
 
   expandSection: (e) ->
-    if $(window).width() < 768
+    if $(window).width() <= 768
       $target = $(e.currentTarget)
       $ul = $target.next 'ul:not(.always-show)'
       if $ul.is ':visible'
