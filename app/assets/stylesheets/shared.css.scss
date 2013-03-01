@@ -14,12 +14,16 @@ body.registrations, body.passwords, body.orders, body.users, body.products, body
 .content-wrapper {
   padding: 0 60px;
 
+  @media only screen and (min-width: 1400px) {
+    padding: 0 120px;
+  }
+
   @media only screen and (min-width: 1200px) {
     padding: 0 90px;
   }
 
-  @media only screen and (max-width: 767px) {
-    padding: 0 30px;
+  @media only screen and (max-width: 900px) {
+    padding: 0 15px;
   }
 
   @media only screen and (max-width: 450px) {

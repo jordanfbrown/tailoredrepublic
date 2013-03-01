@@ -10,7 +10,7 @@ class TR.Views.Footer extends TR.Views.Base
     $(window).resize @resize
     @resize()
 
-  resize: ->
+  resize: =>
     if $(window).width() >= 768
       @$('ul').css('display', '')
       @$('h5 span').text '+'
