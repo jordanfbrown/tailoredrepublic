@@ -79,9 +79,9 @@ class TR.Views.Cart extends TR.Views.Base
         $lineItem = $(e.currentTarget).parents('.line-item')
         lineItemId = $lineItem.data('line-item-id')
         lineItem = @lineItems.get lineItemId
-        lineItem.destroy().then(=>
+        lineItem.destroy().then =>
           TR.Analytics.trackEvent 'LineItems', 'Remove', $lineItem.data 'product-name'
-          $lineItem.fadeOut(=>
+          $lineItem.fadeOut =>
             $lineItem.remove()
             @lineItems.remove lineItem
             TR.Events.trigger 'removedLineItem'
@@ -90,8 +90,10 @@ class TR.Views.Cart extends TR.Views.Base
             unless @$('.line-item').exists()
               @$('.empty-cart').show()
               @$('.cart-total').hide()
-          )
-        )
+        , @removeLineItemFailure
+
+  removeLineItemFailure: =>
+    TR.renderSimpleModal "We're sorry, but there was a problem removing the item from your cart. Please try again, and if the problem persists, shoot as an email at help@tailoredrepublic.com."
 
   updatePrices: (lineItem) =>
     @$(".line-item[data-line-item-id=#{lineItem.id}] .line-item-price").text lineItem.totalPrice()
