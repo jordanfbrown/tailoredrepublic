@@ -214,6 +214,12 @@
       height: 200px;
     }
 
+    @media only screen and (max-width: 767px) {
+      &.lapel {
+        height: 222px;
+      }
+    }
+
     &.fabric {
       img {
         height: auto;
