@@ -53,19 +53,12 @@
               <div class="six columns">
                 <div class="row">
                   <%= form_for @measurement, url: '', html: { class: 'height-age-weight' } do |f| %>
-                    <ul class="error error-list"></ul>
-                    <div class="four columns">
-                      <%= f.label :age %>
-                      <%= f.text_field :age %>
-                    </div>
-                    <div class="four columns">
-                      <%= f.label :height, 'Height (in.)' %>
-                      <%= f.text_field :height %>
-                    </div>
-                    <div class="four columns">
-                      <%= f.label :weight, 'Weight (lbs)' %>
-                      <%= f.text_field :weight %>
-                    </div>
+                    <%= f.label :age %>
+                    <%= f.text_field :age %>
+                    <%= f.label :height, 'Height (in.)' %>
+                    <%= f.text_field :height %>
+                    <%= f.label :weight, 'Weight (lbs)' %>
+                    <%= f.text_field :weight %>
                   <% end %>
                 </div>
               </div>
