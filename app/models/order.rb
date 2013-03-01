@@ -136,6 +136,23 @@ class Order < ActiveRecord::Base
     billing_address.to_json(only: [:city, :state]).html_safe
   end
 
+  def to_csv
+    CSV.generate do |csv|
+      csv << %w(Neck Chest Stomach Waist Hips Full\ Shoulder Back Sleeve Bicep Wrist Jacket\ Length Crotch
+                Thigh Pant\ Length Height Weight Age Fabric Lapel Buttons Vents Pleats Cuffs Fit Lining Pick\ Stitching
+                Vest\ Buttons Monogram)
+      line_items.each do |l|
+        unless l.customization.nil?
+          m = measurement
+          measurements = [m.neck, m.chest, m.stomach, m.waist, m.hips, m.full_shoulders, m.back, m.arm_length, m.bicep,
+                          m.wrist, m.jacket_length, m.crotch, m.thigh, m.pant_length, m.height, m.weight, m.age]
+          customizations = l.customization_array(true).map { |c| c[:type] }
+          csv << measurements.concat(customizations)
+        end
+      end
+    end
+  end
+
   after_rollback do |order|
     if order.order_id?
       charge = Stripe::Charge.retrieve(order.order_id)

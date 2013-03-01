@@ -31,6 +31,10 @@ class LineItem < ActiveRecord::Base
     customization.monogram.length > 0 && category == 'shirt'
   end
 
+  def final_fabric
+    subcategory == 'custom-fabric' ? Customization.fabric_id(customization.fabric) : fabric_id
+  end
+
   def customization_array(show_fabric_ids = false)
     if category == :suit
       array = [
@@ -47,8 +51,7 @@ class LineItem < ActiveRecord::Base
           (customization.has_vest? ? "Yes, #{customization.vest} Button Vest (+$#{Product.vest_price})" : "No") }
       ]
       if show_fabric_ids
-        fabric = subcategory == 'custom-fabric' ? Customization.fabric_id(customization.fabric) : fabric_id
-        array.unshift({ option: "Fabric", type: fabric })
+        array.unshift({ option: "Fabric", type: final_fabric })
       else
         if customization.fabric?
           array.unshift({ option: "Fabric", type: customization.fabric.titleize })

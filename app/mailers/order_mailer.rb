@@ -17,6 +17,7 @@ class OrderMailer < ActionMailer::Base
     @order = order
     to = Rails.env == 'development' ? 'jordan@tailoredrepublic.com' :
       'jordan@tailoredrepublic.com, jeff@tailoredrepublic.com, brian@tailoredrepublic.com'
+    attachments["order_#{order.order_id}.csv"] = order.to_csv
     mail(
       to: to,
       subject: "New Order (#{order.order_id}) (#{Rails.env})"
