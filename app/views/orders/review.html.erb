@@ -2,74 +2,76 @@
 
 <div id="review-order" class="row">
   <%= render 'shared/checkout_progress', current: :review_order %>
-  <%= render 'order_summary', order: @order %>
-  <div class="six columns pull-six content-wrapper">
-    <div id="stripe_error" class="error">
-      <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
-    </div>
-    <h3>Review Order</h3>
-    <%= form_for @order, url: '/orders' do |f| %>
-      <div class="outlined">
-        <p>Please review your shipping address and payment information. If everything looks good, click "Submit Order". Once
-        your order is submitted, your credit card will be charged.</p>
-        <%= f.submit 'Submit Order', class: 'button full-width large' %>
+  <div class="content-wrapper">
+    <%= render 'order_summary', order: @order %>
+    <div class="six columns pull-six">
+      <div id="stripe_error" class="error">
+        <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
       </div>
-      <% unless user_signed_in? %>
+      <h3>Review Order</h3>
+      <%= form_for @order, url: '/orders' do |f| %>
+        <div class="outlined">
+          <p>Please review your shipping address and payment information. If everything looks good, click "Submit Order". Once
+            your order is submitted, your credit card will be charged.</p>
+          <%= f.submit 'Submit Order', class: 'button full-width large' %>
+        </div>
+        <% unless user_signed_in? %>
+          <fieldset>
+            <legend>Account</legend>
+            <ul>
+              <li><span class="label">Name:</span> <%= @user.name %></li>
+              <li><span class="label">Email:</span> <%= @user.email %></li>
+            </ul>
+            <a href="#" class="edit-information">Edit User Information</a>
+            <%= fields_for @user do |user_fields| %>
+              <%= user_fields.hidden_field :name  %>
+              <%= user_fields.hidden_field :email  %>
+              <%= user_fields.hidden_field :password  %>
+            <% end %>
+          </fieldset>
+        <% end %>
+
         <fieldset>
-          <legend>Account</legend>
-          <ul>
-            <li><span class="label">Name:</span> <%= @user.name %></li>
-            <li><span class="label">Email:</span> <%= @user.email %></li>
-          </ul>
-          <a href="#" class="edit-information">Edit User Information</a>
-          <%= fields_for @user do |user_fields| %>
-            <%= user_fields.hidden_field :name  %>
-            <%= user_fields.hidden_field :email  %>
-            <%= user_fields.hidden_field :password  %>
-          <% end %>
+          <legend>Shipping Address</legend>
+          <%= render 'addresses/non_editable', parent_form: f, address_type: :shipping_address %>
+          <a href="#" class="edit-information">Edit Shipping Address</a>
         </fieldset>
-      <% end %>
 
-      <fieldset>
-        <legend>Shipping Address</legend>
-        <%= render 'addresses/non_editable', parent_form: f, address_type: :shipping_address %>
-        <a href="#" class="edit-information">Edit Shipping Address</a>
-      </fieldset>
-
-      <fieldset>
-        <legend>Payment Information</legend>
-        <ul>
-          <li><span class="label">Card Number:</span> <%= censored_card(@card_last4) %></li>
-          <li><span class="label">Security Code:</span> ***</li>
-          <li><span class="label">Card Expiration:</span> <%= @card_exp_month + '/' + @card_exp_year %></li>
-        </ul>
-        <a href="#" class="edit-information">Edit Payment Information</a>
-        <%= hidden_field_tag :stripe_card_token, @card_token %>
-        <%= hidden_field_tag :card_last4, @card_last4 %>
-        <%= hidden_field_tag :card_exp_month, @card_exp_month %>
-        <%= hidden_field_tag :card_exp_year, @card_exp_year %>
-        <%= hidden_field_tag :save_card_for_later, @save_card_for_later %>
-        <%= hidden_field_tag :card_radio, @card_radio %>
-      </fieldset>
-
-      <fieldset>
-        <legend>Billing Address</legend>
-        <%= render 'addresses/non_editable', parent_form: f, address_type: :billing_address %>
-        <a href="#" class="edit-information">Edit Billing Address</a>
-      </fieldset>
-
-      <% unless @coupon_code.blank? %>
         <fieldset>
+          <legend>Payment Information</legend>
           <ul>
-            <li><span class="label">Coupon Code:</span> <%= @coupon_code %></li>
+            <li><span class="label">Card Number:</span> <%= censored_card(@card_last4) %></li>
+            <li><span class="label">Security Code:</span> ***</li>
+            <li><span class="label">Card Expiration:</span> <%= @card_exp_month + '/' + @card_exp_year %></li>
           </ul>
-          <%= hidden_field_tag :coupon_code, @coupon_code %>
-          <a href="#" class="edit-information">Edit Code</a>
+          <a href="#" class="edit-information">Edit Payment Information</a>
+          <%= hidden_field_tag :stripe_card_token, @card_token %>
+          <%= hidden_field_tag :card_last4, @card_last4 %>
+          <%= hidden_field_tag :card_exp_month, @card_exp_month %>
+          <%= hidden_field_tag :card_exp_year, @card_exp_year %>
+          <%= hidden_field_tag :save_card_for_later, @save_card_for_later %>
+          <%= hidden_field_tag :card_radio, @card_radio %>
         </fieldset>
-      <% end %>
 
-      <%= f.submit 'Submit Order', class: 'button full-width large' %>
-    <% end %>
+        <fieldset>
+          <legend>Billing Address</legend>
+          <%= render 'addresses/non_editable', parent_form: f, address_type: :billing_address %>
+          <a href="#" class="edit-information">Edit Billing Address</a>
+        </fieldset>
+
+        <% unless @coupon_code.blank? %>
+          <fieldset>
+            <ul>
+              <li><span class="label">Coupon Code:</span> <%= @coupon_code %></li>
+            </ul>
+            <%= hidden_field_tag :coupon_code, @coupon_code %>
+            <a href="#" class="edit-information">Edit Code</a>
+          </fieldset>
+        <% end %>
+
+        <%= f.submit 'Submit Order', class: 'button full-width large' %>
+      <% end %>
+    </div>
   </div>
 </div>
 
