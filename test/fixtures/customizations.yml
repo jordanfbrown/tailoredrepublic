@@ -9,11 +9,9 @@ suit:
   monogram: JB
   pick_stitching: false
   vest: false
-  product_category: suit
 
 shirt:
   collar: standard
   fit: slim
   pocket: false
   monogram: JBizz
-  product_category: shirt

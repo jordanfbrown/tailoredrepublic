@@ -2,29 +2,30 @@
 
 <div id="new-order" class="row">
   <%= render 'shared/checkout_progress', current: :customer_information %>
-  <%= render 'order_summary', order: @order %>
-  <div class="six columns pull-six content-wrapper">
-    <div id="stripe_error" class="error">
-      <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
-    </div>
-    <h3>Your Information</h3>
-    <%= form_for @order, url: { action: 'review' } do |f| %>
-      <%= render 'shared/form_errors', resource: @order %>
-      <% unless user_signed_in? %>
+  <div class="content-wrapper">
+    <%= render 'order_summary', order: @order %>
+    <div class="six columns pull-six">
+      <div id="stripe_error" class="error">
+        <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+      </div>
+      <h3>Your Information</h3>
+      <%= form_for @order, url: { action: 'review' } do |f| %>
+        <%= render 'shared/form_errors', resource: @order %>
+        <% unless user_signed_in? %>
+          <fieldset>
+            <legend>Create an Account</legend>
+            <p><%= link_to 'Already have an account? Click here to login.', new_user_session_path %></p>
+            <%= render 'users/light_form', user: @user, password: @password %>
+          </fieldset>
+        <% end %>
+
         <fieldset>
-          <legend>Create an Account</legend>
-          <p><%= link_to 'Already have an account? Click here to login.', new_user_session_path %></p>
-          <%= render 'users/light_form', user: @user, password: @password %>
+          <legend>Shipping Address</legend>
+          <%= render 'addresses/nested_form', parent_form: f, address_type: :shipping_address %>
         </fieldset>
-      <% end %>
 
-      <fieldset>
-        <legend>Shipping Address</legend>
-        <%= render 'addresses/nested_form', parent_form: f, address_type: :shipping_address %>
-      </fieldset>
-
-      <fieldset id="payment-information">
-        <legend>Payment Information</legend>
+        <fieldset id="payment-information">
+          <legend>Payment Information</legend>
           <div class="payment-errors error" style="display: none;">
             <p></p>
           </div>
@@ -45,23 +46,24 @@
           <%= hidden_field_tag :card_exp_month, (@card_exp_month if @card_exp_month) %>
           <%= hidden_field_tag :card_exp_year, (@card_exp_year if @card_exp_year) %>
           <label><%= check_box_tag :save_card_for_later, 'on', @save_card_for_later ? @save_card_for_later == 'on' : false %>Save this credit card securely for future purchases</label>
-      </fieldset>
+        </fieldset>
 
-      <fieldset>
-        <legend>Billing Address</legend>
-        <label><input type="checkbox" name="billing-same-as-shipping" class="billing-shipping-label"> Billing address is the same as the shipping address.</label>
-        <%= render 'addresses/nested_form', parent_form: f, address_type: :billing_address %>
-      </fieldset>
+        <fieldset>
+          <legend>Billing Address</legend>
+          <label><input type="checkbox" name="billing-same-as-shipping" class="billing-shipping-label"> Billing address is the same as the shipping address.</label>
+          <%= render 'addresses/nested_form', parent_form: f, address_type: :billing_address %>
+        </fieldset>
 
-      <fieldset>
-        <legend>Coupon/Gift Card</legend>
-        <p>If you have a coupon or a gift card, enter the code here.</p>
-        <%= label_tag :coupon_code, 'Code' %>
-        <%= text_field_tag :coupon_code, @coupon_code %>
-      </fieldset>
+        <fieldset>
+          <legend>Coupon/Gift Card</legend>
+          <p>If you have a coupon or a gift card, enter the code here.</p>
+          <%= label_tag :coupon_code, 'Code' %>
+          <%= text_field_tag :coupon_code, @coupon_code %>
+        </fieldset>
 
-      <%= f.submit 'Review Order', class: 'button full-width large' %>
-    <% end %>
+        <%= f.submit 'Review Order', class: 'button full-width large' %>
+      <% end %>
+    </div>
   </div>
 </div>
 

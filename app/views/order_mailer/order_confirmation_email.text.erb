@@ -23,7 +23,7 @@ Order Summary:
 <%= line_item.quantity %> x <%= line_item.name %>: <%= number_to_currency line_item.total_price %>
 <% if line_item.category == :suit || line_item.category == :shirt %>
 Customizations:
-<% customization_list(line_item).each do |customization| %>
+<% line_item.customization_array.each do |customization| %>
   <%= customization[:option] %>: <%= customization[:type] %>
 <% end %>
 <% end %>

@@ -28,12 +28,12 @@
           <span class="text">View Customizations</span>
         </a>
         <div class="customization-list-wrapper" style="display: none;">
-          <% if line_item.customization.product_category == 'suit' %>
-            <%= render "carts/customization_list", customizations: customization_list(line_item)[0..3] %>
-            <%= render "carts/customization_list", customizations: customization_list(line_item)[4..7] %>
-            <%= render "carts/customization_list", customizations: customization_list(line_item)[8..12] %>
-          <% elsif line_item.customization.product_category == 'shirt' %>
-            <%= render "carts/customization_list", customizations: customization_list(line_item)[0..4] %>
+          <% if line_item.category == :suit %>
+            <%= render "carts/customization_list", customizations: line_item.customization_array[0..3] %>
+            <%= render "carts/customization_list", customizations: line_item.customization_array[4..7] %>
+            <%= render "carts/customization_list", customizations: line_item.customization_array[8..12] %>
+          <% elsif line_item.category == :shirt %>
+            <%= render "carts/customization_list", customizations: line_item.customization_array[0..4] %>
           <% end %>
           <div class="twelve columns">
             <a href="#" class="button edit-customizations">Edit Customizations</a>

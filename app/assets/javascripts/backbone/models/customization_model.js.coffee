@@ -8,7 +8,6 @@ class TR.Models.Customization extends TR.Models.Base
       customizationOptions = @product.getCustomizationOptions()
       defaults = @getDefaults customizationOptions
       @attributes = _.extend {
-        product_category: @product.get('category'),
         monogram: ''
       }, defaults, attributes
 
@@ -36,4 +35,4 @@ class TR.Models.Customization extends TR.Models.Base
       option
 
   hasShirtMonogram: ->
-    @get('monogram').length > 0 && @get('product_category') == 'shirt'
+    @get('monogram').length > 0 && @product.get('category') == 'shirt'
