@@ -20,8 +20,8 @@ class ApplicationController < ActionController::Base
       redirect_path || edit_user_registration_path
     end
 
-    def not_found
-      raise ActionController::RoutingError.new('Not Found')
+    def render_404
+      render file: "#{Rails.root}/public/404.html", status: 404, layout: false
     end
 
     def get_measurement_from_session

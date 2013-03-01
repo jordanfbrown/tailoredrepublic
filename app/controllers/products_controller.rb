@@ -23,7 +23,7 @@ class ProductsController < ApplicationController
   def show
     # "1".to_i == 1, "2".to_i == 2, "foo".to_i = 0 -- this determines if an integer or string has been passed in
     if params[:id].to_i > 0
-      @product = Product.find(params[:id]) || not_found
+      @product = Product.find(params[:id]) || (render_404 and return)
 
       respond_to do |format|
         format.html do
@@ -33,7 +33,7 @@ class ProductsController < ApplicationController
       end
     else
       name = params[:id].titleize
-      @product = Product.find_by_name(name) || not_found
+      @product = Product.find_by_name(name) || (render_404 and return)
 
       respond_to do |format|
         format.html

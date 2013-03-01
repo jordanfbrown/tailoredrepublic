@@ -96,6 +96,10 @@ class OrdersController < ApplicationController
     @order.apply_tax
   end
 
+  def thank_you
+    render_404
+  end
+
   def create
     @card_token = params[:stripe_card_token]
     @coupon_code = params[:coupon_code]
