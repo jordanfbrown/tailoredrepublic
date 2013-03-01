@@ -32,7 +32,7 @@ class TapeMeasureRequestsController < ApplicationController
           puts 'Ignoring error'
         end
       end
-      redirect_to '/shop/suits', notice: 'Your tape measure request has been received. You can expect a tape measure in the mail in a couple of days.'
+      redirect_to '/shop/suits', notice: 'Your tape measure request has been received. You can expect a tape measure in the mail in a few days.'
     else
       render :new
     end
