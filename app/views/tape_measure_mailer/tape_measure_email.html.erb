@@ -5,13 +5,6 @@
 </head>
 <body>
 <p>Somebody wants a tape measure mailed to them.</p>
-<p>Name: <%= @tape_measure_request.shipping_address.name %></p>
-<p>Email: <%= @tape_measure_request.email %></p>
-<p>IP Address: <%= @tape_measure_request.ip_address %></p>
-<p>Line 1: <%= @tape_measure_request.shipping_address.line1 %></p>
-<p>Line 2: <%= @tape_measure_request.shipping_address.line2 %></p>
-<p>City: <%= @tape_measure_request.shipping_address.city %></p>
-<p>State: <%= @tape_measure_request.shipping_address.state %></p>
-<p>Zip: <%= @tape_measure_request.shipping_address.zip %></p>
+<%= render 'shared/request_email', resource: @tape_measure_request %>
 </body>
 </html>

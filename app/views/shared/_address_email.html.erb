@@ -1,0 +1,27 @@
+<% title_helper title %>
+
+<div class="content-wrapper">
+  <div class="row">
+    <div class="twelve columns">
+      <h2><%= title %></h2>
+      <div class="outlined">
+        <p class="bold"><%= blurb %></p>
+        <% unless user_signed_in? %>
+          <p class="bold">If you have an account with a shipping address, <%= link_to 'sign in to autofill your address.', new_user_session_path %> </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="twelve columns">
+      <%= form_for resource, html: { class: 'outlined' } do |f| %>
+        <%= render 'shared/form_errors', resource: resource %>
+        <%= render 'addresses/nested_form', parent_form: f, address_type: :shipping_address %>
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+        <label><%= check_box_tag :subscribe_to_mailing_list, '1', true %> Subscribe me to the Tailored Republic mailing list</label>
+        <%= f.submit 'Submit', class: 'button large full-width' %>
+      <% end %>
+    </div>
+  </div>
+</div>
