@@ -16,6 +16,7 @@ TailoredRepublic::Application.routes.draw do
   resources :coupons, except: [:show]
   resources :line_items, only: [:create, :destroy, :update]
   resources :tape_measure_requests, only: [:index, :new, :create, :update]
+  resources :schedule_tailor_requests, path: 'tailorings', only: [:index, :new, :create, :update]
   resources :orders, only: [:show, :new, :create, :index] do
     collection do
       post 'review'
@@ -23,31 +24,25 @@ TailoredRepublic::Application.routes.draw do
     end
   end
 
-  match '/measurements/:initial_slide' => 'measurements#show'
   match '/shop/:category' => 'shop#index'
+  match '/gift_cards' => 'shop#gift_cards'
   match '/shop' => 'shop#index'
   match '/home' => 'home#index'
-  match '/template' => 'template#index'
+  match '/measurements/:initial_slide' => 'measurements#show'
   match '/checkout' => 'carts#checkout'
-  match '/thank_you' => 'orders#thank_you'
-  match '/gift_cards' => 'shop#gift_cards'
-  match '/faq' => 'pages#faq'
-  match '/process' => 'pages#process'
-  match '/top_picks' => 'pages#top_picks'
-  match '/about' => 'pages#about'
-  match '/lookbook' => 'pages#lookbook'
-  match '/get_tailored' => 'pages#get_tailored'
-  match '/authenticate_access_code' => 'pages#authenticate_access_code'
-  match '/request_access_code' => 'pages#request_access_code'
-  match '/partners' => 'pages#partners'
-  match '/team' => 'pages#team'
-  match '/weddings' => 'pages#weddings'
-  match '/measuring_tape' => 'pages#measuring_tape'
-  match '/new_tape_address' => 'pages#new_tape_address'
-  match '/schedule_tailoring' => 'pages#schedule_tailoring'
-  match '/create_schedule_tailoring' => 'pages#create_schedule_tailoring'
-  match '/subscribe_to_newsletter' => 'mailing_list#subscribe'
   match '/admin/orders' => 'orders#admin'
-  match '/terms-of-service' => 'pages#terms_of_service'
+  match '/thank_you' => 'orders#thank_you'
+  match '/subscribe_to_newsletter' => 'mailing_list#subscribe'
+  match '/about' => 'pages#about'
+  match '/faq' => 'pages#faq'
+  match '/get_tailored' => 'pages#get_tailored'
+  match '/lookbook' => 'pages#lookbook'
+  match '/partners' => 'pages#partners'
   match '/privacy-policy' => 'pages#privacy_policy'
+  match '/process' => 'pages#process'
+  match '/team' => 'pages#team'
+  match '/terms-of-service' => 'pages#terms_of_service'
+  match '/weddings' => 'pages#weddings'
+  match '/top_picks' => 'pages#top_picks'
+
 end

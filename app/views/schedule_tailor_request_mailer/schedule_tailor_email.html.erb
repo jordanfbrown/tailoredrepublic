@@ -5,9 +5,6 @@
 </head>
 <body>
 <p>Somebody has submitted a request to schedule a tailoring.</p>
-<p>Name: <%= @name %></p>
-<p>Email: <%= @email %></p>
-<p>Zip: <%= @zip_code %></p>
-<p>Phone: <%= @phone_number %></p>
+<%= render 'shared/request_email', resource: @schedule_tailor_request %>
 </body>
 </html>
