@@ -9,6 +9,6 @@ class ShopController < ApplicationController
   end
 
   def gift_cards
-    @gift_cards = Product.where(category: :gift_card)
+    @gift_cards = Product.order('price ASC').where(category: :gift_card)
   end
 end

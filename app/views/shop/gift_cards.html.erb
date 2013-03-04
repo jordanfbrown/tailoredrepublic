@@ -15,7 +15,7 @@
 <div class="row content-wrapper gift-card-row">
   <% @gift_cards[0..2].each do |gift_card| %>
     <div class="four columns">
-      <a href="#" data-price="<%= gift_card.price.to_i %>" data-id="<%= gift_card.id %>"><%= image_tag gift_card.default_photo.regular %></a>
+      <a href="#" data-price="<%= gift_card.price.to_i %>" data-id="<%= gift_card.id %>"><%= image_tag gift_card.default_photo.photo.url(:original) %></a>
     </div>
   <% end %>
 </div>
@@ -23,7 +23,7 @@
 <div class="row content-wrapper gift-card-row">
   <% @gift_cards[3..5].each do |gift_card| %>
     <div class="four columns">
-      <a href="#" data-price="<%= gift_card.price.to_i %>" data-id="<%= gift_card.id %>"><%= image_tag gift_card.default_photo.regular %></a>
+      <a href="#" data-price="<%= gift_card.price.to_i %>" data-id="<%= gift_card.id %>"><%= image_tag gift_card.default_photo.photo.url(:original) %></a>
     </div>
   <% end %>
 </div>
