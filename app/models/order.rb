@@ -138,16 +138,25 @@ class Order < ActiveRecord::Base
 
   def to_csv
     CSV.generate do |csv|
-      csv << %w(Neck Chest Stomach Waist Hips Full\ Shoulder Back Sleeve Bicep Wrist Jacket\ Length Crotch
-                Thigh Pant\ Length Height Weight Age Fabric Lapel Buttons Vents Pleats Cuffs Fit Lining Pick\ Stitching
-                Vest\ Buttons Monogram)
+      csv << %w(Order\ Number Order\ ID Date Greeting Full\ Name Email Phone Name Ship\ To: Street\ Address\ Line\ 1
+                Street\ Address\ Line\ 2 City State Zip Bill\ To: Street\ Address\ Line\ 1 Street\ Address\ Line\ 2
+                City State Zip Suiting\ Type Neck Chest Front Stomach Waist Hips Full\ Shoulder Back Sleeve Bicep Wrist
+                Jacket\ Length Crotch Thigh Pant\ Length Height Weight Age Fabric Lapel Buttons Vents Pleats Cuffs Fit
+                Lining Pick\ Stitching Vest\ Buttons Monogram)
       line_items.each do |l|
         unless l.customization.nil?
           m = measurement
-          measurements = [m.neck, m.chest, m.stomach, m.waist, m.hips, m.full_shoulders, m.back, m.arm_length, m.bicep,
-                          m.wrist, m.jacket_length, m.crotch, m.thigh, m.pant_length, m.height, m.weight, m.age]
-          customizations = l.customization_array(true).map { |c| c[:type] }
-          csv << measurements.concat(customizations)
+          measurements = ['', order_id, created_at.strftime('%m/%d/%Y'), user.first_name, user.name, user.email,
+                          '', user.first_name, shipping_address.name, shipping_address.line1, shipping_address.line2,
+                          shipping_address.city, shipping_address.state, shipping_address.zip, billing_address.name,
+                          billing_address.line1, billing_address.line2, billing_address.city, billing_address.state,
+                          billing_address.zip, '', m.neck, m.chest, '', m.stomach, m.waist, m.hips, m.full_shoulders,
+                          m.back, m.arm_length, m.bicep, m.wrist, m.jacket_length, m.crotch, m.thigh, m.pant_length,
+                          m.height, m.weight, m.age]
+          if l.category == :suit
+            customizations = l.customization_array(true).map { |c| c[:type] }
+            csv << measurements.concat(customizations)
+          end
         end
       end
     end

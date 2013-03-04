@@ -86,6 +86,10 @@ class User < ActiveRecord::Base
                                       :measurement).paginate(page: page).order('created_at DESC')
   end
 
+  def first_name
+    name.split(' ')[0]
+  end
+
   def update_with_password(params, *options)
     current_password = params.delete(:current_password)
 
