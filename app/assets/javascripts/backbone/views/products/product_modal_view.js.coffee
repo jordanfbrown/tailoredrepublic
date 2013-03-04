@@ -84,8 +84,8 @@ class TR.Views.ProductModal extends TR.Views.Modal
     e.preventDefault()
     $target = $(e.currentTarget)
     newImage = @model.getProductImageById $target.data('id')
-    @$('.magnify-small').attr 'src', TR.imgSrc(newImage.regular)
-    @$('.magnify-large').attr 'src', TR.imgSrc(newImage.large)
+    @$('.magnify-small').attr 'src', newImage.medium
+    @$('.magnify-large').attr 'src', newImage.original
 
   close: =>
     TR.Analytics.trackEvent 'Products', 'Close', @model.get('name')

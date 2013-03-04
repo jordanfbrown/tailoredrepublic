@@ -5,18 +5,18 @@
 <div class="row">
   <div class="five columns preview-wrapper">
     <ul class="modal-suit-preview three columns">
-      {{#each product_images}}
-        <li><a href="#" class="switch-image" data-id="{{id}}"><img src="{{imgSrc thumbnail}}"></a></li>
+      {{#each product_photos}}
+        <li><a href="#" class="switch-image" data-id="{{id}}"><img src="{{small}}"></a></li>
       {{/each}}
     </ul>
     <div class="magnify nine columns">
-      <img class="magnify-small" src="{{imgSrc defaultProductImage.regular}}">
+      <img class="magnify-small" src="{{defaultProductImage.medium}}">
       <p>Hover to magnify</p>
     </div>
   </div>
   <div class="seven columns">
     <div class="image-magnified" style="display: none;">
-      <img class="magnify-large" src="{{imgSrc defaultProductImage.large}}">
+      <img class="magnify-large" src="{{defaultProductImage.original}}">
     </div>
     <div class="product-summary">
       <h4>{{summary}}</h4>

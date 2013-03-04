@@ -22,5 +22,35 @@
   <%= f.label 'Top Pick (yes)' %>
   <%= f.radio_button :top_pick, "false" %>
   <%= f.label 'Top Pick (no)' %>
+  <%= f.label 'New Photos' %>
+  <%= f.fields_for :product_photos do |photo| %>
+    <div>
+      <% if photo.object.new_record? %>
+        <%= photo.file_field :photo %>
+      <% end %>
+    </div>
+  <% end %>
+  <%= f.label 'Existing Photos' %>
+  <ul>
+    <%= f.fields_for :product_photos do |photo| %>
+      <% unless photo.object.new_record? %>
+        <li class="thumbnail outlined">
+          <p><%= photo.object.photo_file_name %></p>
+          <%= link_to(image_tag(photo.object.photo.url(:small)), photo.object.photo.url(:original)) %>
+          <label>Default photo <%= photo.check_box :default_photo, class: 'default-photo-checkbox' %></label>
+          <label>Delete? <%= photo.check_box :_destroy %></label>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
   <%= f.submit class: "button" %>
 <% end %>
+
+<script>
+  $(function() {
+    $('.default-photo-checkbox').on('click', function(e) {
+      $('.default-photo-checkbox:checked').removeAttr('checked');
+      $(this).prop('checked', true)
+    });
+  });
+</script>

@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     if params[:suggested]
-      @products = Product.suggested(params[:product_id]).to_json(include: [:product_images])
+      @products = Product.suggested(params[:product_id]).to_json(include: [:product_photos])
     else
       @products = Product.order('category ASC, name ASC').all
     end
@@ -47,6 +47,7 @@ class ProductsController < ApplicationController
   # GET /products/new.json
   def new
     @product = Product.new
+    5.times { @product.product_photos.build }
 
     respond_to do |format|
       format.html # new.html.erb
@@ -57,6 +58,7 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
+    5.times { @product.product_photos.build }
   end
 
   # POST /products
@@ -82,7 +84,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.update_attributes(params[:product])
-        format.html { redirect_to action: "index", notice: 'Product was successfully updated.' }
+        format.html { redirect_to edit_product_path(@product), notice: 'Product was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

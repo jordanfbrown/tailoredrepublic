@@ -639,9 +639,9 @@ function program1(depth0,data) {
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
   buffer += escapeExpression(stack1) + "\"><img src=\"";
-  stack1 = depth0.thumbnail;
-  foundHelper = helpers.imgSrc;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "imgSrc", stack1, {hash:{}});
+  foundHelper = helpers.small;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.small; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
   buffer += escapeExpression(stack1) + "\"></a></li>\n      ";
   return buffer;}
 
@@ -664,19 +664,17 @@ function program5(depth0,data) {
   foundHelper = helpers.decimalToInteger;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "decimalToInteger", stack1, {hash:{}});
   buffer += escapeExpression(stack1) + "</h2>\n</div>\n<div class=\"row\">\n  <div class=\"five columns preview-wrapper\">\n    <ul class=\"modal-suit-preview three columns\">\n      ";
-  stack1 = depth0.product_images;
+  stack1 = depth0.product_photos;
   stack1 = helpers.each.call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(1, program1, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n    </ul>\n    <div class=\"magnify nine columns\">\n      <img class=\"magnify-small\" src=\"";
   stack1 = depth0.defaultProductImage;
-  stack1 = stack1 == null || stack1 === false ? stack1 : stack1.regular;
-  foundHelper = helpers.imgSrc;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "imgSrc", stack1, {hash:{}});
+  stack1 = stack1 == null || stack1 === false ? stack1 : stack1.medium;
+  stack1 = typeof stack1 === functionType ? stack1() : stack1;
   buffer += escapeExpression(stack1) + "\">\n      <p>Hover to magnify</p>\n    </div>\n  </div>\n  <div class=\"seven columns\">\n    <div class=\"image-magnified\" style=\"display: none;\">\n      <img class=\"magnify-large\" src=\"";
   stack1 = depth0.defaultProductImage;
-  stack1 = stack1 == null || stack1 === false ? stack1 : stack1.large;
-  foundHelper = helpers.imgSrc;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "imgSrc", stack1, {hash:{}});
+  stack1 = stack1 == null || stack1 === false ? stack1 : stack1.original;
+  stack1 = typeof stack1 === functionType ? stack1() : stack1;
   buffer += escapeExpression(stack1) + "\">\n    </div>\n    <div class=\"product-summary\">\n      <h4>";
   foundHelper = helpers.summary;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }

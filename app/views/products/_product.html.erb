@@ -1,5 +1,5 @@
 <div class="product-wrapper three columns" data-id="<%= product.id %>">
-  <a href="#"><%= image_tag product.default_photo.regular if product.default_photo %></a>
+  <a href="#"><%= image_tag product.default_photo.photo.url(:medium) if product.default_photo %></a>
   <div class="product-info-wrapper">
     <div class="product-info">
       <div class="product-name">

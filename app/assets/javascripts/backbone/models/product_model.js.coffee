@@ -9,11 +9,11 @@ class TR.Models.Product extends TR.Models.Base
     @get('category') == 'suit' || @get('category') == 'shirt'
     
   defaultProductImage: ->
-    _.find @get('product_images'), (image) ->
-      image.default
+    _.find @get('product_photos'), (image) ->
+      image.default_photo
 
   getProductImageById: (id) ->
-    _.find @get('product_images'), (image) ->
+    _.find @get('product_photos'), (image) ->
       image.id == id
 
   # Returns the customization options for the category of the product as an array of objects

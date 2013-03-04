@@ -3,11 +3,13 @@ require 'enumerated_attribute'
 class Product < ActiveRecord::Base
   enum_attr :category, %w(suit shirt accessory gift_card)
   attr_accessible :description, :name, :price, :quantity, :category, :summary, :display_order, :top_pick, :subcategory,
-                  :fabric_id
+                  :fabric_id, :product_photos_attributes
   has_many :line_items
   has_many :customizations
-  has_many :product_images, order: '"default" DESC, created_at ASC'
+  has_many :product_photos, order: 'default_photo DESC, created_at ASC', dependent: :destroy
   before_destroy :ensure_not_referenced_by_line_item
+
+  accepts_nested_attributes_for :product_photos, allow_destroy: true
 
   def self.vest_price
     79
@@ -69,8 +71,22 @@ class Product < ActiveRecord::Base
     Product.where('category = ? AND name != ?', category, 'Build Your Own Suit').shuffle[0,2]
   end
 
+  def as_json(options = {})
+    json = super(options)
+    json[:product_photos] = product_photos.map do |photo|
+      {
+        id: photo.id,
+        original: photo.photo.url(:original),
+        medium: photo.photo.url(:medium),
+        small: photo.photo.url(:small),
+        default_photo: photo.default_photo
+      }
+    end
+    json
+  end
+
   def self.by_category(category)
-    where(category: category).order('display_order ASC, subcategory ASC, name ASC').includes(:product_images).to_a
+    where(category: category).order('display_order ASC, subcategory ASC, name ASC').includes(:product_photos).to_a
   end
 
   def display_price
@@ -78,7 +94,7 @@ class Product < ActiveRecord::Base
   end
 
   def default_photo
-    product_images.find_by_default(true)
+    product_photos.find_by_default_photo(true)
   end
 
   def customizable?

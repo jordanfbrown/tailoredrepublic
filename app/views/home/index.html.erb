@@ -57,6 +57,6 @@
 
 <script>
   $(function() {
-    new TR.Views.Home({products: <%= @top_picks.to_json(include: [:product_images]).html_safe %>});
+    new TR.Views.Home({products: <%= @top_picks.to_json.html_safe %>});
   });
 </script>

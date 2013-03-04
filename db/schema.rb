@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130301233953) do
+ActiveRecord::Schema.define(:version => 20130304215053) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -141,17 +141,18 @@ ActiveRecord::Schema.define(:version => 20130301233953) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "product_images", :force => true do |t|
+  create_table "product_photos", :force => true do |t|
     t.integer  "product_id"
-    t.string   "thumbnail"
-    t.string   "regular"
-    t.string   "large"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.boolean  "default"
+    t.boolean  "default_photo"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
-  add_index "product_images", ["product_id"], :name => "index_product_images_on_product_id"
+  add_index "product_photos", ["product_id"], :name => "index_product_photos_on_product_id"
 
   create_table "products", :force => true do |t|
     t.string   "category"
