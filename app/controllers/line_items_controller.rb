@@ -6,6 +6,7 @@ class LineItemsController < ApplicationController
       customization = Customization.find(params[:customization_id])
       line_item = @cart.line_items.build(product: product, customization: customization, quantity: 1)
     else
+      # TODO: only allow accessories to be created without customizations
       line_item = @cart.line_items.build(product: product, quantity: 1)
     end
 
@@ -27,13 +28,10 @@ class LineItemsController < ApplicationController
   end
 
   def destroy
-    line_item = LineItem.find(params[:id])
-
-    if line_item.cart == @cart
-      line_item.destroy
-      render json: {success: true}
-    else
-      render json: {error: 'Unauthorized'}, status: 403
-    end
+    line_item = @cart.line_items.find(params[:id])
+    line_item.destroy
+    render json: {success: true}
+  rescue ActiveRecord::RecordNotFound
+    render json: {error: 'Not found'}, status: 404
   end
 end
