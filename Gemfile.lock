@@ -115,7 +115,10 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     meta_programming (0.2.2)
+    metaclass (0.0.1)
     mime-types (1.21)
+    mocha (0.13.2)
+      metaclass (~> 0.0.1)
     modular-scale (1.0.6)
       compass (>= 0.12.1)
       sass (>= 3.2.0)
@@ -227,6 +230,7 @@ DEPENDENCIES
   gibbon
   jasminerice!
   jquery-rails
+  mocha
   newrelic_rpm
   numbers_and_words
   paperclip (~> 3.0)

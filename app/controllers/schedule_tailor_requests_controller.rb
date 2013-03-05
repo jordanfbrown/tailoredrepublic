@@ -23,9 +23,8 @@ class ScheduleTailorRequestsController < ApplicationController
 
     if @schedule_tailor_request.save
       if params[:subscribe_to_mailing_list] == "1"
-        gibbon = Gibbon.new
         begin
-          gibbon.list_subscribe(id: GIBBON_LIST_ID, email_address: params[:schedule_tailor_request][:email])
+          Gibbon.list_subscribe(id: GIBBON_LIST_ID, email_address: params[:schedule_tailor_request][:email])
         rescue
           puts 'Ignoring error'
         end
