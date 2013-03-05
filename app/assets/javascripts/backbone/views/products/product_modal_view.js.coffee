@@ -75,7 +75,7 @@ class TR.Views.ProductModal extends TR.Views.Modal
   addToCartWithoutCustomization: (e) =>
     e.preventDefault()
     @product = @model
-    $.post('/line_items', { product_id: @model.get('id') }).then(
+    $.post('/line-items', { product_id: @model.get('id') }).then(
       _.bind(TR.Views.CustomizationModal.prototype.addSuccess, @),
       _.bind(TR.Views.CustomizationModal.prototype.addLineItemFailure, @)
     )

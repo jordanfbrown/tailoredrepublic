@@ -54,7 +54,7 @@
             <% end %>
           </ul>
         <% else %>
-          <a href="/users/sign_in">Login/Sign Up</a>
+          <%= link_to 'Login/Signup', new_user_session_path %>
         <% end %>
       </li>
       <% if user_signed_in?  %>

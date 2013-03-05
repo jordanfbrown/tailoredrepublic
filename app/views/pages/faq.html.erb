@@ -31,7 +31,7 @@
 
       <h5>I don’t have a tape measure, what can I do?</h5>
       <p>Fill out your information on our <%= link_to 'tape measure request form', new_tape_measure_request_path %> and we
-        will send you a measuring tape immediately. Unfortunately we can only send measuring tapes within the United
+        will send you a measuring tape. Unfortunately we can only send measuring tapes within the United
         States at this time.</p>
 
       <h5>What can I do to prevent people from irresistibly pouncing on me out of lust? I am tired of all of the attention.</h5>
@@ -115,7 +115,7 @@
       <h5>How can I get measured for a Tailored Republic suit?</h5>
       <p>You have two options: You can either have a friend or family member measure you by following our step by step
         <%= link_to 'measurement tutorials', measurements_path %> or you
-        can <%= link_to 'schedule a tailor', schedule_tailoring_path %> through our preferred tailor network. Simply input
+        can <%= link_to 'schedule a tailor', new_schedule_tailor_request_path %> through our preferred tailor network. Simply input
         your address and we will send you the information of the nearest Tailored Republic preferred tailor, where you
         can get measured at no cost. If you are having problems measuring yourself feel free to call us and we can walk
         you through the process or set up a Skype meeting.</p>
@@ -124,9 +124,9 @@
 
       <h5>How can I measure myself?</h5>
       <p>We offer measurement video tutorials during our checkout process. In the videos we walk you through the process
-        of getting measured, with simple easy to follow instructions. If you do not have a tape measure you can email us
-        at <%= link_to 'tapemeasure@tailoredrepublic.com', 'mailto:tapemeasure@tailoredrepublic.com' %> with your name
-        and mailing address and we will send you one.</p>
+        of getting measured, with simple easy to follow instructions. If you do not have a tape measure you can fill out
+        your information on our <%= link_to 'tape measure request form', new_tape_measure_request_path %> and we
+        will send you a measuring tape.
 
       <h5>What should I do before going to my local tailor to get measured?</h5>
       <p>You should print out the <%= link_to 'Tailored Republic measurement card', '/measurement_card.pdf' %>, which

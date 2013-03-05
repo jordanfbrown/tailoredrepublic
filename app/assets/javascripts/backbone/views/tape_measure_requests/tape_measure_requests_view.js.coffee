@@ -7,7 +7,7 @@ class TR.Views.TapeMeasureRequests extends TR.Views.Base
 
   filterTapeMeasureRequests: (e) ->
     value = $(e.currentTarget).val()
-    window.location.href = "/tape_measure_requests?filter=#{value}"
+    window.location.href = "/tape-measure-requests?filter=#{value}"
 
   updateSent: (e) ->
     $target = $(e.currentTarget)
@@ -15,6 +15,6 @@ class TR.Views.TapeMeasureRequests extends TR.Views.Base
     value = $target.val()
     $.ajax
       type: 'PUT'
-      url: "/tape_measure_requests/#{id}"
+      url: "/tape-measure-requests/#{id}"
       data: { tape_measure_request: { sent: value == 'Yes' } }
 

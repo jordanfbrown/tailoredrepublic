@@ -169,7 +169,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     @saveCustomization() if @checkButtonState $(e.currentTarget)
 
   addLineItem: =>
-    $.post('/line_items', {product_id: @product.get('id'), customization_id: @customization.get('id')}).then(
+    $.post('/line-items', {product_id: @product.get('id'), customization_id: @customization.get('id')}).then(
       @addSuccess, @addLineItemFailure
     )
 

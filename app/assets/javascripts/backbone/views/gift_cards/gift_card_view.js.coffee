@@ -16,7 +16,7 @@ class TR.Views.GiftCard extends TR.Views.Base
         @addGiftCardToCart id
         
   addGiftCardToCart: (id) ->
-    $.post('/line_items', {product_id: id}).then(@addSuccess, @addFailure)
+    $.post('/line-items', {product_id: id}).then(@addSuccess, @addFailure)
 
   addSuccess: =>
     @confirmDialog.close()
