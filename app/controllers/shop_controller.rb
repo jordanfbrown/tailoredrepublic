@@ -2,10 +2,10 @@ class ShopController < ApplicationController
   def index
     @category = Product.depluralize_category(params[:category])
     if @category == :error
-      redirect_to shop_path
+      redirect_to '/shop/suits' and return
     end
     @products = Product.by_category(@category)
-    @display_category = params[:category].blank? ? 'Suits' : params[:category].capitalize
+    @display_category = params[:category].capitalize
   end
 
   def gift_cards
