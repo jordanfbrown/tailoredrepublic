@@ -12,3 +12,8 @@ user_with_stripe:
 user_without_stripe:
   name: Jordan
   email: jordan@tailoredrepublic.com
+
+admin:
+  name: Bob
+  email: bob@bob.com
+  role: admin
