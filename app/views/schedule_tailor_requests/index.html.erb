@@ -11,12 +11,9 @@
   <table>
     <tr>
       <th>Name</th>
-      <th>Line 1</th>
-      <th>Line 2</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Zip</th>
       <th>Email</th>
+      <th>Zip</th>
+      <th>Phone</th>
       <th>IP Address</th>
       <th>Status</th>
       <th>Created At</th>
@@ -24,13 +21,10 @@
 
     <% @schedule_tailor_requests.each do |schedule_tailor_request| %>
       <tr>
-        <td><%= schedule_tailor_request.shipping_address.name %></td>
-        <td><%= schedule_tailor_request.shipping_address.line1 %></td>
-        <td><%= schedule_tailor_request.shipping_address.line2 %></td>
-        <td><%= schedule_tailor_request.shipping_address.city %></td>
-        <td><%= schedule_tailor_request.shipping_address.state %></td>
-        <td><%= schedule_tailor_request.shipping_address.zip %></td>
+        <td><%= schedule_tailor_request.name %></td>
         <td><%= schedule_tailor_request.email %></td>
+        <td><%= schedule_tailor_request.zip %></td>
+        <td><%= schedule_tailor_request.phone %></td>
         <td><%= schedule_tailor_request.ip_address %></td>
         <td><%= select_tag :status, options_for_select(['new', 'scheduled'], schedule_tailor_request.status), class: 'status-select', id: "status_#{schedule_tailor_request.id}", data: { id: schedule_tailor_request.id } %></td>
         <td><%= schedule_tailor_request.created_at.in_time_zone('Pacific Time (US & Canada)') %></td>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130304215053) do
+ActiveRecord::Schema.define(:version => 20130305031405) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -175,6 +175,9 @@ ActiveRecord::Schema.define(:version => 20130304215053) do
     t.string   "status"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "zip"
+    t.string   "name"
+    t.string   "phone"
   end
 
   create_table "tape_measure_requests", :force => true do |t|

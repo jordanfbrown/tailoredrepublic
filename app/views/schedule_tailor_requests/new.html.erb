@@ -1,4 +1,32 @@
-<%= render 'shared/address_email', title: 'Schedule A Tailoring',
-           blurb: 'Enter your name, address, and email and we will contact you about scheduling a tailoring.',
-           resource: @schedule_tailor_request
-%>
+<% title_helper 'Schedule A Tailoring' %>
+
+<div class="content-wrapper">
+  <div class="row">
+    <div class="twelve columns">
+      <h2>Schedule a Tailoring</h2>
+      <div class="outlined">
+        <p class="bold">Enter your name, email, and zip code and we will contact you about scheduling a tailoring.</p>
+        <% unless user_signed_in? %>
+          <p class="bold">If you have an account with a shipping address, <%= link_to 'sign in to autofill your information.', new_user_session_path %> </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="twelve columns">
+      <%= form_for @schedule_tailor_request, html: { class: 'outlined' } do |f| %>
+        <%= render 'shared/form_errors', resource: @schedule_tailor_request %>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+        <%= f.label :zip %>
+        <%= f.text_field :zip %>
+        <%= f.label :phone, 'Phone (optional)' %>
+        <%= f.text_field :phone %>
+        <label><%= check_box_tag :subscribe_to_mailing_list, '1', true %> Subscribe me to the Tailored Republic mailing list</label>
+        <%= f.submit 'Submit', class: 'button large full-width' %>
+      <% end %>
+    </div>
+  </div>
+</div>

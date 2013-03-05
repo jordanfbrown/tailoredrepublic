@@ -11,10 +11,9 @@ class ScheduleTailorRequestsController < ApplicationController
   def new
     @schedule_tailor_request = ScheduleTailorRequest.new
     if user_signed_in?
-      @schedule_tailor_request.shipping_address = current_user.shipping_address.dup unless current_user.shipping_address.blank?
       @schedule_tailor_request.email = current_user.email unless current_user.email.blank?
-    else
-      @schedule_tailor_request.build_shipping_address
+      @schedule_tailor_request.name = current_user.name unless current_user.name.blank?
+      @schedule_tailor_request.zip = current_user.shipping_address.zip unless current_user.shipping_address.blank?
     end
   end
 

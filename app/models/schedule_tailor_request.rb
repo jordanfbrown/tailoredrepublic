@@ -1,13 +1,8 @@
 class ScheduleTailorRequest < ActiveRecord::Base
   before_create :set_status
 
-  has_one :shipping_address, as: :addressable, validate: true
-
-  attr_accessible :email, :ip_address, :status, :shipping_address_attributes
-
-  accepts_nested_attributes_for :shipping_address
-
-  validates_presence_of :email
+  attr_accessible :email, :ip_address, :name, :zip, :phone, :status
+  validates_presence_of :email, :name, :zip
 
   def self.filter_by_status(status, page)
     if status == 'all'
