@@ -1,7 +1,11 @@
 class CustomizationsController < ApplicationController
   def create
-    customization = Customization.create!(params[:customization])
-    render json: customization
+    customization = Customization.new(params[:customization])
+    if customization.save
+      render json: customization
+    else
+      render json: customizations.errors, status: :unprocessable_entity
+    end
   end
 
   def update

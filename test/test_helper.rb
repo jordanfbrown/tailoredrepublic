@@ -17,6 +17,9 @@ class ActiveSupport::TestCase
     @request.cookie_jar.signed[:cart_id] = ActiveRecord::Fixtures.identify(:one_suit)
   end
 
+  def json_response
+    ActiveSupport::JSON.decode @response.body
+  end
 end
 
 class ActionController::TestCase
