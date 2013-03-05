@@ -29,7 +29,7 @@ class ScheduleTailorRequestsController < ApplicationController
           puts 'Ignoring error'
         end
       end
-      redirect_to '/shop/suits', notice: 'We have received your request to schedule a tailoring. A Tailored Republic representative will contact you with details in the next 24 hours.'
+      redirect_to '/shop/suits', notice: SCHEDULE_TAILOR_NOTICE
     else
       render :new
     end
