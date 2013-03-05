@@ -15,20 +15,20 @@ class CouponsControllerTest < ActionController::TestCase
 
   test 'should be able to get index' do
     get :index
-    assert :success
+    assert_response :success
     assert_template :index
   end
 
   test 'should be able to get new' do
     get :new
-    assert :success
+    assert_response :success
     assert_template :new
   end
 
   test 'should be able to edit' do
     coupon = coupons(:hundred_gift_card)
     get :edit, id: coupon.id
-    assert :success
+    assert_response :success
     assert_template :edit
     assert_equal assigns(:coupon), coupon
   end
@@ -37,13 +37,13 @@ class CouponsControllerTest < ActionController::TestCase
     count = Coupon.count
     post :create, coupon: @coupon_params
     assert_equal Coupon.count, count + 1
-    assert :success
+    assert_response :redirect
   end
 
   test 'should be able to update a coupon' do
     coupon = coupons(:hundred_gift_card)
     put :update, id: coupon.id, coupon: @coupon_params
-    assert :success
+    assert_response :redirect
     coupon.reload
     assert_equal coupon.code, @coupon_params[:code]
   end
@@ -51,7 +51,7 @@ class CouponsControllerTest < ActionController::TestCase
   test 'should be able to delete a coupon' do
     coupon = coupons(:hundred_gift_card)
     delete :destroy, id: coupon.id
-    assert :success
+    assert_response :redirect
     assert_raise(ActiveRecord::RecordNotFound) { coupon.reload }
   end
 
