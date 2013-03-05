@@ -1,5 +1,5 @@
 class TapeMeasureMailer < ActionMailer::Base
-  default from: "no-reply@tailoredrepublic.com"
+  default from: "tapemeasure@tailoredrepublic.com"
 
   def tape_measure_email(tape_measure_request)
     @tape_measure_request = tape_measure_request
