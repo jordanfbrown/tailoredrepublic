@@ -9,6 +9,7 @@ executive:
     bread and butter.
   price: 329
   quantity: 10
+  top_pick: true
 
 entrepreneur:
   category: suit
@@ -20,6 +21,7 @@ entrepreneur:
     take on the nightlife. Two suits in one.
   price: 429
   quantity: 10
+  top_pick: true
 
 hustler:
   category: suit
@@ -30,6 +32,7 @@ hustler:
     tradition without drawing a disapproving look from you stodgy old boss. Stay fly.
   price: 429
   quantity: 10
+  top_pick: true
 
 jetsetter:
   category: suit
@@ -42,6 +45,7 @@ jetsetter:
     glass when you flew through that patch of turbulence.
   price: 529
   quantity: 10
+  top_pick: true
 
 tuxedo:
   category: suit
