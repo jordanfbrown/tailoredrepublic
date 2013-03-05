@@ -20,7 +20,7 @@ TailoredRepublic::Application.routes.draw do
   resources :users, only: [:show, :update, :destroy, :index, :edit]
   resources :customizations, only: [:show, :create, :update]
   resources :customers
-  resource  :cart, only: [:show, :create, :update, :destroy]
+  resource  :cart, only: [:show]
   resource  :measurements, only: [:show, :create, :update]
   resources :products
   resources :coupons, except: [:show]
