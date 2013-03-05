@@ -36,11 +36,13 @@ class MeasurementsController < ApplicationController
     elsif session[:measurement_id]
       measurement = get_measurement_from_session
       if measurement.nil?
-        render json: 'Unable to find measurement', status: 500
+        render json: 'Unable to find measurement', status: 500 and return
       end
+    else
+      render json: 'Unable to find measurement', status: 500 and return
     end
 
-    if measurement.update_attributes params[:measurement]
+    if measurement.update_attributes(params[:measurement])
       render json: measurement
     else
       render json: measurement.errors, status: :unprocessable_entity
