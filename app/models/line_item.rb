@@ -28,7 +28,7 @@ class LineItem < ActiveRecord::Base
   end
 
   def shirt_monogram?
-    customization.monogram.length > 0 && category == 'shirt'
+    customization.monogram.length > 0 && category == :shirt
   end
 
   def final_fabric
