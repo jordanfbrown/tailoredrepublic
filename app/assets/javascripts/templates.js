@@ -609,14 +609,13 @@ templates['_new_user_modal.hbs'] = template(function (Handlebars,depth0,helpers,
   return "<div class=\"row\">\n  <div class=\"twelve columns\">\n    <h2>Create Account</h2>\n    <p>We noticed that you don't have an account. If you'd like your measurements to be saved, please create an account.\n      If you don't want to create an account at the moment, click \"Cancel\". Although doing this will not save your\n      measurements for later use once you leave the site.</p>\n    <p class=\"error\" style=\"display: none;\">There were some problems creating your account:</p>\n    <ul class=\"error\" style=\"display: none;\"></ul>\n    <form accept-charset=\"UTF-8\" action=\"/users\" class=\"new_user\" id=\"new_user\" method=\"post\">\n      <label for=\"user_name\">Name</label>\n      <input id=\"user_name\" name=\"user[name]\" size=\"30\" type=\"text\"/>\n      <label for=\"user_email\">Email</label>\n      <input id=\"user_email\" name=\"user[email]\" size=\"30\" type=\"email\"/>\n      <label for=\"user_password\">Password</label>\n      <input id=\"user_password\" name=\"user[password]\" size=\"30\" type=\"password\" data-typetoggle=\"#show_password\"/>\n      <label><input type=\"checkbox\" id=\"show_password\">Show password</label>\n      <input id=\"measurement_id\" name=\"measurement_id\" type=\"hidden\" value=\"52\">\n      <div class=\"row\">\n        <div class=\"six columns\">\n          <input class=\"button full-width\" name=\"commit\" type=\"submit\" value=\"Sign Up\" />\n        </div>\n        <div class=\"six columns\">\n          <a href=\"#\" class=\"button full-width cancel\">Cancel</a>\n        </div>\n      </div>\n    </form>\n  </div>\n</div>";});
 templates['_product.hbs'] = template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
-  var buffer = "", stack1, foundHelper, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, functionType="function";
+  var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing;
 
 
   buffer += "<a href=\"#\"><img src=\"";
   stack1 = depth0.defaultProductImage;
-  stack1 = stack1 == null || stack1 === false ? stack1 : stack1.regular;
-  foundHelper = helpers.imgSrc;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "imgSrc", stack1, {hash:{}});
+  stack1 = stack1 == null || stack1 === false ? stack1 : stack1.medium;
+  stack1 = typeof stack1 === functionType ? stack1() : stack1;
   buffer += escapeExpression(stack1) + "\"></a>\n<div class=\"product-info-wrapper\">\n  <div class=\"product-info\">\n    <div class=\"product-name\">\n      <a href=\"#\">";
   foundHelper = helpers.name;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
