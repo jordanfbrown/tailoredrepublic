@@ -123,6 +123,11 @@
 
   h5 {
     color: #999;
+    height: 38px;
+    
+    @media only screen and (max-width: 767px) {
+      height: auto;
+    }
   }
 
   a {
