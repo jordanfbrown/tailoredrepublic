@@ -167,6 +167,7 @@ class OrdersController < ApplicationController
     @cart.reload
     render 'thank_you'
   rescue Stripe::StripeError => e
+    set_stripe_customer
     @order.errors[:base] << e.message
     render :new
   end
