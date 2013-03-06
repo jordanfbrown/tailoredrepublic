@@ -44,15 +44,13 @@ body.pages {
   }
 
   #process {
-    background-color: inherit;
-
-    h2, h4, p {
-      color: #000;
-    }
-
     a {
       color: darken($brown, 20%);
     }
+  }
+
+  #process h2, #top-picks h2, #about h2, #lookbook h2 {
+    @include landing-page-h2;
   }
 
   #top-picks {

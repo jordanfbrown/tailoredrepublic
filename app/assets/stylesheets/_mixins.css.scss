@@ -66,6 +66,16 @@ $maple: #D0A66E;
   }
 }
 
+@mixin landing-page-h2 {
+  padding-left: 20px;
+  display: inline-block;
+  background: rgba(0,0,0,0.3);
+  padding-right: 20px;
+  padding-top: 10px;
+  margin-bottom: 40px;
+  color: #fff;
+}
+
 @mixin shop-texture($repeat: no-repeat) {
   //background: url(textures/top-picks-texture.jpg) $repeat top center;
   //@if $repeat == 'no-repeat' {

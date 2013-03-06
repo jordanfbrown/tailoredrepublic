@@ -379,13 +379,7 @@
     padding-top: 34px;
 
     h2 {
-      padding-left: 20px;
-      display: inline-block;
-      background: rgba(0,0,0,0.3);
-      padding-right: 20px;
-      padding-top: 10px;
-      margin-bottom: 40px;
-      color: #fff;
+      @include landing-page-h2;
     }
   }
 }
