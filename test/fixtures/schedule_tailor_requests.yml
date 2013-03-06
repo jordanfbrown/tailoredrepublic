@@ -1,11 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  email: MyString
-  ip_address: MyString
-  status: MyString
-
-two:
-  email: MyString
-  ip_address: MyString
-  status: MyString
+schedule_tailor_request_one:
+  name: Jordan
+  zip: 94041
+  email: jordan@tailoredrepublic.com
+  ip_address: 127.0.0.1
+  status: new

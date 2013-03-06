@@ -8,6 +8,15 @@ user_address:
   zip: MyString
   addressable: user_with_stripe (User)
 
+admin_address:
+  line1: MyString
+  line2: MyString
+  city: MyString
+  state: MyString
+  zip: 94041
+  addressable: admin (User)
+  type: ShippingAddress
+
 order_shipping_address:
   name: Jordan
   line1: MyString
