@@ -6,9 +6,9 @@ class TR.Views.EditUser extends TR.Views.Base
     @$('#user_password').showPassword()
 
   events:
-    'submit': 'submitForm'
+    'submit #billing_information_form': 'submitBillingInformation'
 
-  submitForm: =>
+  submitBillingInformation: =>
     @$('.submit').attr 'disabled', 'disabled'
 
     cardNumber = @$('#card_number').val()
@@ -31,8 +31,9 @@ class TR.Views.EditUser extends TR.Views.Base
     if response.error
       @$('.payment-errors').show().find('p').text response.error.message
       @$('.submit').removeAttr 'disabled'
+      @$('.payment-errors').smoothScroll -30, 500
     else
       @$('#stripe_card_token').val response.id
-      @el.submit()
+      @$('#billing_information_form')[0].submit()
 
 
