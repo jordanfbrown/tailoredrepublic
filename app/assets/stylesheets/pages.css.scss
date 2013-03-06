@@ -12,6 +12,7 @@ body.pages {
     h4, h5 {
       font-weight: bold;
     }
+
   }
 
   p {
@@ -21,25 +22,24 @@ body.pages {
   .sub-nav dd {
     display: inline-block;
     font-weight: bold;
-    @include font("header");
-    font-size: 20px;
-
     a {
-      display: inline-block;
-      margin-right: 10px;
+      color: #333;
     }
 
     .divider {
       margin-right: 5px;
       display: inline-block;
+
+      &.first {
+        @media only screen and (min-width: 768px) {
+          display: none;
+        }
+      }
     }
-    
+
+
     @media only screen and (max-width: 767px) {
       display: block;
-
-      .divider {
-        display: none;
-      }
     }
   }
 

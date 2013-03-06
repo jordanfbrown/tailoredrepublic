@@ -6,10 +6,10 @@
   font-weight: bold;
 }
 
-body.gift_cards, body.pages, body.measurements, body.shop, body.thank_you, #top-picks, body.carts, body.sessions,
-body.registrations, body.passwords, body.orders, body.users, body.products, body.tape_measure_requests,
-body.schedule_tailor_requests {
-  background-image: url(textures/roughcloth.png); zoom: 1; background-repeat: repeat repeat;
+body:not(.home), #top-picks {
+  background-image: url(textures/roughcloth.png);
+  zoom: 1;
+  background-repeat: repeat repeat;
 }
 
 .content-wrapper {
@@ -138,11 +138,11 @@ input[type=submit], input[type=button] {
 }
 
 .pull-right {
-  float: right;
+  float: right !important;
 }
 
 .pull-left {
-  float: left;
+  float: left !important;
 }
 
 .error {
@@ -410,4 +410,3 @@ p.centered {
 .no-padding {
   padding: 0;
 }
-

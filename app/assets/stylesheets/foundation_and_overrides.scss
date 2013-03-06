@@ -302,53 +302,33 @@ ul {
 }
 
 h1 {
-  font-size: 4em;
+  font-size: 3.5em;
 }
 
 h2 {
-  font-size: 3.75em;
+  font-size: 3em;
 }
 
 h3 {
-  font-size: 2.8em;
+  font-size: 2.5em;
 }
 
 h4 {
-  font-size: 2.2em;
+  font-size: 1.3em;
 }
 
 h5 {
-  font-size: 1.8em;
+  font-size: 1.2em;
 }
 
 h6 {
-  font-size: 1.4em;
+  font-size: 1.1em;
 }
 
-@media only screen and (max-width: 420px) {
-  h1 {
-    font-size: 3.5em;
-  }
-
-  h2 {
-    font-size: 3em;
-  }
-
-  h3 {
-    font-size: 2.5em;
-  }
-
-  h4 {
-    font-size: 1.85em;
-  }
-
-  h5 {
-    font-size: 1.4em;
-  }
-
-  h6 {
-    font-size: 1em;
-  }
+h4, h5, h6 {
+  @include font("body");
+  font-weight: 400;
+  color: #333;
 }
 
 table {
@@ -357,6 +337,7 @@ table {
   background-color: transparent;
   border-collapse: collapse;
   border-spacing: 0;
+  margin-bottom: 10px;
 
   tr {
     text-align: left;
@@ -374,8 +355,6 @@ table {
   td {
     border-top: 1px solid #ddd;
   }
-
-
 }
 
 p a, a.colored, .privacy_policy .outlined a {
@@ -553,6 +532,16 @@ fieldset {
   }
 }
 
+p {
+  line-height: 1.48;
+}
+
 small.error {
   background: #b94a48;
+}
+
+.columns {
+  @media only screen and (max-width: 767px) {
+    width: 100% !important;
+  }
 }

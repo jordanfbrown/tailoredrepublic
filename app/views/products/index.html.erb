@@ -1,42 +1,44 @@
 <div class="twelve columns">
   <h2>Products</h2>
+  <div class="outlined">
 
-  <p id="notice"><%= notice %></p>
+    <p id="notice"><%= notice %></p>
 
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Category</th>
-      <th>Subcategory</th>
-      <th>Description</th>
-      <th>Summary</th>
-      <th>Price</th>
-      <th>Quantity</th>
-      <th>Display Order</th>
-      <th>Fabric ID</th>
-      <th>Top Pick?</th>
-      <th></th>
-      <th></th>
-    </tr>
+    <%= link_to 'New Product', new_product_path, class: "button" %>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Subcategory</th>
+        <th>Description</th>
+        <th>Summary</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Display Order</th>
+        <th>Fabric ID</th>
+        <th>Top Pick?</th>
+        <th></th>
+        <th></th>
+      </tr>
 
-  <% @products.each do |product| %>
-    <tr>
-      <td><%= product.name %></td>
-      <td><%= product.category %></td>
-      <td><%= product.subcategory %></td>
-      <td><%= product.description %></td>
-      <td><%= product.summary %></td>
-      <td><%= number_to_currency product.price %></td>
-      <td><%= product.quantity %></td>
-      <td><%= product.display_order %></td>
-      <td><%= product.fabric_id %></td>
-      <td><%= product.top_pick ? 'Yes' : 'No' %></td>
-      <td><%= link_to 'Edit', edit_product_path(product) %></td>
-      <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-  </table>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.name %></td>
+          <td><%= product.category %></td>
+          <td><%= product.subcategory %></td>
+          <td><%= product.description %></td>
+          <td><%= product.summary %></td>
+          <td><%= number_to_currency product.price %></td>
+          <td><%= product.quantity %></td>
+          <td><%= product.display_order %></td>
+          <td><%= product.fabric_id %></td>
+          <td><%= product.top_pick ? 'Yes' : 'No' %></td>
+          <td><%= link_to 'Edit', edit_product_path(product) %></td>
+          <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </table>
 
-  <%= link_to 'New Product', new_product_path, class: "button" %>
-  <br />
+  </div>
+
 </div>

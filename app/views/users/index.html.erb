@@ -1,31 +1,33 @@
 <div class="row">
   <div class="twelve columns">
     <h2>Users</h2>
-    <table>
-      <thead>
-      <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Registered</th>
-        <th>Role</th>
-        <th></th>
-        <th></th>
-      </tr>
-      </thead>
-      <tbody>
-      <% @users.each do |user| %>
+    <div class="outlined">
+      <table>
+        <thead>
         <tr>
-          <td><%= link_to user.name, user %></td>
-          <td><%= user.email %></td>
-          <td><%= user.created_at.to_date %></td>
-          <td><%= user.role.titleize if user.role? %></td>
-          <td>
-            <%= link_to 'Edit', edit_user_path(user) %>
-          </td>
-          <td><%= link_to("Delete", user_path(user), :data => {:confirm => "Are you sure?"}, :method => :delete) unless user == current_user %></td>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Registered</th>
+          <th>Role</th>
+          <th></th>
+          <th></th>
         </tr>
-      <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= link_to user.name, user %></td>
+            <td><%= user.email %></td>
+            <td><%= user.created_at.to_date %></td>
+            <td><%= user.role.titleize if user.role? %></td>
+            <td>
+              <%= link_to 'Edit', edit_user_path(user) %>
+            </td>
+            <td><%= link_to("Delete", user_path(user), :data => {:confirm => "Are you sure?"}, :method => :delete) unless user == current_user %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

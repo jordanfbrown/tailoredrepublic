@@ -1,40 +1,39 @@
 <div class="twelve columns">
   <h2>Schedule Tailoring Requests</h2>
+  <div class="outlined">
+    <div class="six columns no-padding">
+      <%= form_tag schedule_tailor_requests_path, method: 'get' do %>
+        <%= label_tag :filter, 'Filter By Status' %>
+        <%= select_tag :filter, options_for_select(['all', 'new', 'scheduled'], @filter) %>
+      <% end %>
+    </div>
 
-  <div class="six columns no-padding">
-    <%= form_tag schedule_tailor_requests_path, method: 'get' do %>
-      <%= label_tag :filter, 'Filter By Status' %>
-      <%= select_tag :filter, options_for_select(['all', 'new', 'scheduled'], @filter) %>
-    <% end %>
-  </div>
-
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Zip</th>
-      <th>Phone</th>
-      <th>IP Address</th>
-      <th>Status</th>
-      <th>Created At</th>
-    </tr>
-
-    <% @schedule_tailor_requests.each do |schedule_tailor_request| %>
+    <table>
       <tr>
-        <td><%= schedule_tailor_request.name %></td>
-        <td><%= schedule_tailor_request.email %></td>
-        <td><%= schedule_tailor_request.zip %></td>
-        <td><%= schedule_tailor_request.phone %></td>
-        <td><%= schedule_tailor_request.ip_address %></td>
-        <td><%= select_tag :status, options_for_select(['new', 'scheduled'], schedule_tailor_request.status), class: 'status-select', id: "status_#{schedule_tailor_request.id}", data: { id: schedule_tailor_request.id } %></td>
-        <td><%= schedule_tailor_request.created_at.in_time_zone('Pacific Time (US & Canada)') %></td>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Zip</th>
+        <th>Phone</th>
+        <th>IP Address</th>
+        <th>Status</th>
+        <th>Created At</th>
       </tr>
-    <% end %>
-  </table>
-</div>
 
-<div class="twelve columns">
-  <%= will_paginate @schedule_tailor_requests %>
+      <% @schedule_tailor_requests.each do |schedule_tailor_request| %>
+        <tr>
+          <td><%= schedule_tailor_request.name %></td>
+          <td><%= schedule_tailor_request.email %></td>
+          <td><%= schedule_tailor_request.zip %></td>
+          <td><%= schedule_tailor_request.phone %></td>
+          <td><%= schedule_tailor_request.ip_address %></td>
+          <td><%= select_tag :status, options_for_select(['new', 'scheduled'], schedule_tailor_request.status), class: 'status-select', id: "status_#{schedule_tailor_request.id}", data: { id: schedule_tailor_request.id } %></td>
+          <td><%= schedule_tailor_request.created_at.in_time_zone('Pacific Time (US & Canada)') %></td>
+        </tr>
+      <% end %>
+    </table>
+
+    <%= will_paginate @schedule_tailor_requests %>
+  </div>
 </div>
 
 <script>

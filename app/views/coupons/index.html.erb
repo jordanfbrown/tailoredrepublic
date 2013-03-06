@@ -1,42 +1,40 @@
 <div class="row">
   <div class="twelve columns">
     <h2>Coupons</h2>
-
-    <table>
-      <tr>
-        <th>Code</th>
-        <th>Description</th>
-        <th>Quantity</th>
-        <th>Coupon Type</th>
-        <th>Discount Type</th>
-        <th>Amount</th>
-        <th>Generating Order</th>
-        <th>Begin Date</th>
-        <th>End Date</th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-
-      <% @coupons.each do |coupon| %>
+    <div class="outlined">
+      <%= link_to 'New Coupon', new_coupon_path, class: 'button' %>
+      <table>
         <tr>
-          <td><%= coupon.code %></td>
-          <td><%= coupon.description %></td>
-          <td><%= coupon.quantity %></td>
-          <td><%= coupon.coupon_type %></td>
-          <td><%= coupon.discount_type %></td>
-          <td><%= coupon.discount_type == 'fixed' ? number_to_currency(coupon.amount) : "#{coupon.amount.to_i}%" %></td>
-          <td><%= link_to "Order #{coupon.generating_order.id}", order_path(coupon.generating_order) unless coupon.generating_order.nil? %></td>
-          <td><%= coupon.begin_date %></td>
-          <td><%= coupon.end_date %></td>
-          <td><%= link_to 'Edit', edit_coupon_path(coupon) %></td>
-          <td><%= link_to 'Destroy', coupon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <th>Code</th>
+          <th>Description</th>
+          <th>Quantity</th>
+          <th>Coupon Type</th>
+          <th>Discount Type</th>
+          <th>Amount</th>
+          <th>Generating Order</th>
+          <th>Begin Date</th>
+          <th>End Date</th>
+          <th></th>
+          <th></th>
+          <th></th>
         </tr>
-      <% end %>
-    </table>
 
-    <br />
-
-    <%= link_to 'New Coupon', new_coupon_path, class: 'button' %>
+        <% @coupons.each do |coupon| %>
+          <tr>
+            <td><%= coupon.code %></td>
+            <td><%= coupon.description %></td>
+            <td><%= coupon.quantity %></td>
+            <td><%= coupon.coupon_type %></td>
+            <td><%= coupon.discount_type %></td>
+            <td><%= coupon.discount_type == 'fixed' ? number_to_currency(coupon.amount) : "#{coupon.amount.to_i}%" %></td>
+            <td><%= link_to "Order #{coupon.generating_order.id}", order_path(coupon.generating_order) unless coupon.generating_order.nil? %></td>
+            <td><%= coupon.begin_date %></td>
+            <td><%= coupon.end_date %></td>
+            <td><%= link_to 'Edit', edit_coupon_path(coupon) %></td>
+            <td><%= link_to 'Destroy', coupon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
 </div>

@@ -1,31 +1,26 @@
-<article id="process" class="content-wrapper" data-magellan-destination="process">
-  <h2 class="twelve columns">
-    <span class="article-title">
-      THE PROCESS
-      <span class="strikethrough"></span>
-    </span>
-  </h2>
-  <div class="row">
+<article id="process" data-magellan-destination="process">
+  <h2>THE PROCESS</h2>
+  <div class="row content-wrapper">
     <div class="four columns">
-      <h4>Choose your suit</h4>
       <div class="image-wrapper">
         <a href="/shop/suits"><%= image_tag "process/choose-suit.png" %></a>
       </div>
-      <p>Getting a tailored suit will change your suit game completely. <%= link_to 'Choose your suit', '/shop/suits' %>
-        fabric/pattern and get started.</p>
+      <h5>Choose your suit</h5>
+      <p>Getting a tailored suit will change your suit game completely. <%= link_to 'Choose your suit,', '/shop/suits' %>
+      fabric, or pattern and get started.</p>
     </div>
     <div class="four columns">
-      <h4>Customize your suit</h4>
       <div class="image-wrapper">
         <a href="/shop/suits"><%= image_tag "process/customize-suit.png" %></a>
       </div>
+      <h5>Customize your suit</h5>
       <p>Make your suit yours. Customize your button options, vents, lapels, and personalize it with a custom lining.</p>
     </div>
     <div class="four columns">
-      <h4>Enter your measurements</h4>
       <div class="image-wrapper">
         <a href="/measurements"><%= image_tag "process/input-measurements.png" %></a>
       </div>
+      <h5>Enter your measurements</h5>
       <p><%= link_to 'Schedule a tailor', new_schedule_tailor_request_path %> with a TR-preferred tailor or use our
         <%= link_to 'simple videos', measurements_path %> to measure yourself in 10 quick minutes.</p>
     </div>

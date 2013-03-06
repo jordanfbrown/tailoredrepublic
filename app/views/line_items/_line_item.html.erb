@@ -15,7 +15,7 @@
     </div>
     <div class="nine columns">
       <h3><%= line_item.name %><span class="divider"> // </span>$<span class="line-item-price"><%= line_item.total_price %></span></h3>
-      <h4><%= line_item.summary %></h4>
+      <h5><%= line_item.summary %></h5>
       <%= form_for line_item do |f| %>
         <div>
           <%= f.label :quantity, 'Quantity:' %>

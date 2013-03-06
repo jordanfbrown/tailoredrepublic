@@ -1,40 +1,40 @@
 <div class="twelve columns">
   <h2>Orders</h2>
 
-  <div class="six columns no-padding">
-    <%= form_tag admin_orders_path, method: 'get' do %>
-      <%= text_field_tag :search, '', placeholder: 'enter order ID or email...' %>
-      <%= submit_tag 'Search', name: nil, class: 'button' %>
-    <% end %>
-  </div>
+  <div class="outlined">
+    <div class="six columns no-padding">
+      <%= form_tag admin_orders_path, method: 'get' do %>
+        <%= text_field_tag :search, '', placeholder: 'enter order ID or email...' %>
+        <%= submit_tag 'Search', name: nil, class: 'button' %>
+      <% end %>
+    </div>
 
-  <table>
-    <tr>
-      <th>Order ID</th>
-      <th>Date</th>
-      <th>User</th>
-      <th>Coupon</th>
-      <th>Discount</th>
-      <th>Final Cost</th>
-      <th>Tax</th>
-      <th></th>
-    </tr>
-
-    <% @orders.each do |order| %>
+    <table>
       <tr>
-        <td><%= order.order_id %></td>
-        <td><%= order.created_at_pacific %></td>
-        <td><%= link_to order.user.email, user_path(order.user) %></td>
-        <td><%= order.coupon.code unless order.coupon.blank?%></td>
-        <td><%= number_to_currency order.discount %></td>
-        <td><%= number_to_currency order.final_cost %></td>
-        <td><%= number_to_currency order.tax %></td>
-        <td><%= link_to 'View', order_path(order) %></td>
+        <th>Order ID</th>
+        <th>Date</th>
+        <th>User</th>
+        <th>Coupon</th>
+        <th>Discount</th>
+        <th>Final Cost</th>
+        <th>Tax</th>
+        <th></th>
       </tr>
-    <% end %>
-  </table>
+
+      <% @orders.each do |order| %>
+        <tr>
+          <td><%= order.order_id %></td>
+          <td><%= order.created_at_pacific %></td>
+          <td><%= link_to order.user.email, user_path(order.user) %></td>
+          <td><%= order.coupon.code unless order.coupon.blank?%></td>
+          <td><%= number_to_currency order.discount %></td>
+          <td><%= number_to_currency order.final_cost %></td>
+          <td><%= number_to_currency order.tax %></td>
+          <td><%= link_to 'View', order_path(order) %></td>
+        </tr>
+      <% end %>
+    </table>
+    <%= will_paginate @orders %>
+  </div>
 </div>
 
-<div class="twelve columns">
-  <%= will_paginate @orders %>
-</div>

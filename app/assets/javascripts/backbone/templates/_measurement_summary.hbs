@@ -9,90 +9,93 @@
 
 <div class="twelve columns">
   <form accept-charset="UTF-8" action="" class="quick-measurement-form" method="post">
-    <div class="three columns">
-      <label for="measurement_age">Age</label>
-      <input id="measurement_age" name="measurement[age]" size="30" type="text" value="{{age}}"/>
-    </div>
-    <div class="three columns">
-      <label for="measurement_height">Height (in.)</label>
-      <input id="measurement_height" name="measurement[height]" size="30" type="text" value="{{height}}"/>
-    </div>
-    <div class="three columns">
-      <label for="measurement_weight">Weight (lbs)</label>
-      <input id="measurement_weight" name="measurement[weight]" size="30" type="text" value="{{weight}}"/>
-    </div>
-    <div class="three columns">
-      <label for="measurement_neck">Neck</label>
-      <input class="quick-measurement-input" id="measurement_neck" name="measurement[neck]" size="30" type="text"
-             value="{{neck}}"/>
-    </div>
-    <div class="three columns">
-      <label for="measurement_chest">Chest</label>
-      <input class="quick-measurement-input" id="measurement_chest" name="measurement[chest]" size="30" type="text"
-      value="{{chest}}"/>
-    </div>
-    <div class="three columns">
-      <label for="measurement_stomach">Stomach</label>
-      <input class="quick-measurement-input" id="measurement_stomach" name="measurement[stomach]" size="30" type="text"
-      value="{{stomach}}"/>
-    </div>
-    <div class="three columns">
-      <label for="measurement_waist">Waist</label>
-      <input class="quick-measurement-input" id="measurement_waist" name="measurement[waist]" size="30" type="text"
-             value="{{waist}}"/>
-    </div>
-    <div class="three columns">
-      <label for="measurement_hips">Hips</label>
-      <input class="quick-measurement-input" id="measurement_hips" name="measurement[hips]" size="30" type="text"
-             value="{{hips}}"/>
-    </div>
-    <div class="three columns">
-      <label for="measurement_full_shoulders">Full shoulders</label>
-      <input class="quick-measurement-input" id="measurement_full_shoulders" name="measurement[full_shoulders]" size="30"
-             type="text" value="{{full_shoulders}}"/>
-    </div>
-    <div class="three columns">
-      <label for="measurement_back">Back</label>
-      <input class="quick-measurement-input" id="measurement_back" name="measurement[back]" size="30" type="text"
-             value="{{back}}"/>
-    </div>
-    <div class="three columns">
-      <label for="measurement_arm_length">Arm length</label>
-      <input class="quick-measurement-input" id="measurement_arm_length" name="measurement[arm_length]" size="30"
-             type="text" value="{{arm_length}}}"/>
-    </div>
-    <div class="three columns">
-      <label for="measurement_bicep">Bicep</label>
-      <input class="quick-measurement-input" id="measurement_bicep" name="measurement[bicep]" size="30" type="text"
-             value="{{bicep}}"/>
-    </div>
-    <div class="three columns">
-      <label for="measurement_wrist">Wrist</label>
-      <input class="quick-measurement-input" id="measurement_wrist" name="measurement[wrist]" size="30" type="text"
-             value="{{wrist}}"/>
-    </div>
-    <div class="three columns">
-      <label for="measurement_jacket_length">Jacket length</label>
-      <input class="quick-measurement-input" id="measurement_jacket_length" name="measurement[jacket_length]" size="30"
-             type="text" value="{{jacket_length}}"/>
-    </div>
-    {{#unless shirtOnly}}
+    <div class="row">
+
       <div class="three columns">
-        <label for="measurement_crotch">Crotch</label>
-        <input class="quick-measurement-input" id="measurement_crotch" name="measurement[crotch]" size="30" type="text"
-               value="{{crotch}}"/>
+        <label for="measurement_age">Age</label>
+        <input id="measurement_age" name="measurement[age]" size="30" type="text" value="{{age}}"/>
       </div>
       <div class="three columns">
-        <label for="measurement_thigh">Thigh</label>
-        <input class="quick-measurement-input" id="measurement_thigh" name="measurement[thigh]" size="30" type="text"
-               value="{{thigh}}"/>
+        <label for="measurement_height">Height (in.)</label>
+        <input id="measurement_height" name="measurement[height]" size="30" type="text" value="{{height}}"/>
       </div>
       <div class="three columns">
-        <label for="measurement_pant_length">Pant length</label>
-        <input class="quick-measurement-input" id="measurement_pant_length" name="measurement[pant_length]" size="30"
-               type="text" value="{{pant_length}}"/>
+        <label for="measurement_weight">Weight (lbs)</label>
+        <input id="measurement_weight" name="measurement[weight]" size="30" type="text" value="{{weight}}"/>
       </div>
-    {{/unless}}
+      <div class="three columns">
+        <label for="measurement_neck">Neck</label>
+        <input class="quick-measurement-input" id="measurement_neck" name="measurement[neck]" size="30" type="text"
+               value="{{neck}}"/>
+      </div>
+      <div class="three columns">
+        <label for="measurement_chest">Chest</label>
+        <input class="quick-measurement-input" id="measurement_chest" name="measurement[chest]" size="30" type="text"
+               value="{{chest}}"/>
+      </div>
+      <div class="three columns">
+        <label for="measurement_stomach">Stomach</label>
+        <input class="quick-measurement-input" id="measurement_stomach" name="measurement[stomach]" size="30" type="text"
+               value="{{stomach}}"/>
+      </div>
+      <div class="three columns">
+        <label for="measurement_waist">Waist</label>
+        <input class="quick-measurement-input" id="measurement_waist" name="measurement[waist]" size="30" type="text"
+               value="{{waist}}"/>
+      </div>
+      <div class="three columns">
+        <label for="measurement_hips">Hips</label>
+        <input class="quick-measurement-input" id="measurement_hips" name="measurement[hips]" size="30" type="text"
+               value="{{hips}}"/>
+      </div>
+      <div class="three columns">
+        <label for="measurement_full_shoulders">Full shoulders</label>
+        <input class="quick-measurement-input" id="measurement_full_shoulders" name="measurement[full_shoulders]" size="30"
+               type="text" value="{{full_shoulders}}"/>
+      </div>
+      <div class="three columns">
+        <label for="measurement_back">Back</label>
+        <input class="quick-measurement-input" id="measurement_back" name="measurement[back]" size="30" type="text"
+               value="{{back}}"/>
+      </div>
+      <div class="three columns">
+        <label for="measurement_arm_length">Arm length</label>
+        <input class="quick-measurement-input" id="measurement_arm_length" name="measurement[arm_length]" size="30"
+               type="text" value="{{arm_length}}}"/>
+      </div>
+      <div class="three columns">
+        <label for="measurement_bicep">Bicep</label>
+        <input class="quick-measurement-input" id="measurement_bicep" name="measurement[bicep]" size="30" type="text"
+               value="{{bicep}}"/>
+      </div>
+      <div class="three columns">
+        <label for="measurement_wrist">Wrist</label>
+        <input class="quick-measurement-input" id="measurement_wrist" name="measurement[wrist]" size="30" type="text"
+               value="{{wrist}}"/>
+      </div>
+      <div class="three columns">
+        <label for="measurement_jacket_length">Jacket length</label>
+        <input class="quick-measurement-input" id="measurement_jacket_length" name="measurement[jacket_length]" size="30"
+               type="text" value="{{jacket_length}}"/>
+      </div>
+      {{#unless shirtOnly}}
+        <div class="three columns">
+          <label for="measurement_crotch">Crotch</label>
+          <input class="quick-measurement-input" id="measurement_crotch" name="measurement[crotch]" size="30" type="text"
+                 value="{{crotch}}"/>
+        </div>
+        <div class="three columns">
+          <label for="measurement_thigh">Thigh</label>
+          <input class="quick-measurement-input" id="measurement_thigh" name="measurement[thigh]" size="30" type="text"
+                 value="{{thigh}}"/>
+        </div>
+        <div class="three columns pull-left">
+          <label for="measurement_pant_length">Pant length</label>
+          <input class="quick-measurement-input" id="measurement_pant_length" name="measurement[pant_length]" size="30"
+                 type="text" value="{{pant_length}}"/>
+        </div>
+      {{/unless}}
+    </div>
     <div class="twelve columns">
       <ul class="error error-list"></ul>
     </div>
