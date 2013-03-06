@@ -77,17 +77,24 @@ class TR.Views.Order extends TR.Views.Base
   validateForm: ->
     valid = true
 
-    if Stripe.validateCardNumber @$('#card_number').val()
-      TR.UI.removeError @$('#card_number')
-    else
-      TR.UI.setError @$('#card_number'), 'Invalid credit card number.'
-      valid = false
+    $first = $()
+    $useNewCardRadio = @$('#card_radio_use_new_card')
+    if ($useNewCardRadio.exists() && $useNewCardRadio.is(':checked')) || !$useNewCardRadio.exists()
+      $cardNumber = @$('#card_number')
+      if Stripe.validateCardNumber $cardNumber.val()
+        TR.UI.removeError $cardNumber
+      else
+        TR.UI.setError $cardNumber, 'Invalid credit card number.'
+        $first = $cardNumber unless $first.exists()
+        valid = false
 
-    if Stripe.validateCVC @$('#card_code').val()
-      TR.UI.removeError @$('#card_code')
-    else
-      TR.UI.setError @$('#card_code'), 'Invalid security code.'
-      valid = false
+      $cardCode = @$('#card_code')
+      if Stripe.validateCVC $cardCode.val()
+        TR.UI.removeError $cardCode
+      else
+        TR.UI.setError $cardCode, 'Invalid security code.'
+        $first = $cardCode unless $first.exists()
+        valid = false
 
     nonEmptyFields = [
       '#order_shipping_address_attributes_name'
@@ -100,7 +107,6 @@ class TR.Views.Order extends TR.Views.Base
       '#order_billing_address_attributes_zip'
     ]
 
-    $first = $()
     @$(nonEmptyFields.join(', ')).each (index, el) =>
       $el = $(el)
       if $el.val().trim() == ''
