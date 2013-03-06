@@ -19,8 +19,11 @@ class RegistrationsController < Devise::RegistrationsController
       redirect_to edit_user_registration_path
     else
       build_addresses
-      render "edit"
+      render :edit
     end
+  rescue Stripe::StripeError => e
+    @user.errors[:base] << e.message
+    render :edit
   end
 
   def create
