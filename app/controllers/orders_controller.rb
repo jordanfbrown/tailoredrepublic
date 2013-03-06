@@ -166,6 +166,9 @@ class OrdersController < ApplicationController
     # Need to reload the cart because its line items have been copied to the order
     @cart.reload
     render 'thank_you'
+  rescue Stripe::StripeError => e
+    @order.errors[:base] << e.message
+    render :new
   end
 
   private
