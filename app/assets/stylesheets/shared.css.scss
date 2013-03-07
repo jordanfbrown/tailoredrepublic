@@ -6,7 +6,7 @@
   font-weight: bold;
 }
 
-body:not(.home), #top-picks {
+body:not(.home, .process), #top-picks {
   background-image: url(textures/roughcloth.png);
   zoom: 1;
   background-repeat: repeat repeat;

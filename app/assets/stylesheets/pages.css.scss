@@ -43,12 +43,6 @@ body.pages {
     }
   }
 
-  #process {
-    a {
-      color: darken($brown, 20%);
-    }
-  }
-
   #process h2, #top-picks h2, #about h2, #lookbook h2 {
     @include landing-page-h2;
   }
