@@ -128,7 +128,7 @@ class TR.Views.Home extends TR.Views.Base
       if @els.bossesImage.height() + bossImgTop + 34 > 400
         @els.bossesImage.css 'top', bossImgTop
       aboutImgRight = -(aboutPosition - pageTop - $(window).height() + 600) / 5
-      @els.aboutImage.css 'right': aboutImgRight, top: '40px'
+      @els.aboutImage.css 'right': aboutImgRight, top: '-110px'
     else
       @els.bossesImage.css 'top', 0
       @els.aboutImage.css 'top': '0px', right: '0px'
