@@ -104,7 +104,7 @@ $topBarBgColor: #000;
 // $topBarTitleSize: 17px;
 // $topBarLinkColor: #fff;
 // $topBarLinkWeight: bold;
-$topBarLinkSize: 15px;
+$topBarLinkSize: 17px;
 $topBarDropBgColor: #000;
 // $topBarDropLinkColor: #fff;
 // $topBarDropToggleSize: 5px;
@@ -451,8 +451,9 @@ legend {
 }
 
 .top-bar {
-  @include font("header");
+  @include font("clean");
   @include box-shadow(0px 2px 7px #666);
+  text-transform: uppercase;
 
   .username {
     max-width: 108px;
