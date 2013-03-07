@@ -5,12 +5,4 @@ class Address < ActiveRecord::Base
 
   validates_presence_of :name, :city, :line1, :state, :zip
   validates :zip, format: { with: /^\d{5}(-\d{4})?$/, message: 'should be in the form 12345 or 12345-1234' }
-
-  def validate_phone_or_email(email)
-    valid?
-    if phone_number.blank? && email.blank?
-      errors.add(:base, 'At least one form of contact must be entered: email or phone number')
-    end
-    errors.count == 0
-  end
 end
