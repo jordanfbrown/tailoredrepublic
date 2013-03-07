@@ -30,7 +30,7 @@ class ScheduleTailorRequestsControllerTest < ActionController::TestCase
     assert_equal assigns(:schedule_tailor_request).zip, user.shipping_address.zip
   end
 
-  test "should be a create a new schedule tailor request" do
+  test "should be able to create a new schedule tailor request" do
     ip_address = '127.0.0.1'
     @request.env['REMOTE_ADDR'] = ip_address
     request_params = {
@@ -40,7 +40,8 @@ class ScheduleTailorRequestsControllerTest < ActionController::TestCase
     }
     post :create, schedule_tailor_request: request_params, subscribe_to_mailing_list: '0'
     assert_response :redirect
-    assert_redirected_to '/shop/suits'
+    assert session[:requested_tailor] = true
+    assert_redirected_to :thank_you_schedule_tailor_requests
     assert_equal assigns(:schedule_tailor_request).ip_address, ip_address
     assert_equal assigns(:schedule_tailor_request).name, request_params[:name]
   end
@@ -57,6 +58,18 @@ class ScheduleTailorRequestsControllerTest < ActionController::TestCase
     assert_response :success
     assert_template :new
     assert assigns(:schedule_tailor_request).errors.any?
+  end
+
+  test "thank you page should redirect if session doesn't have correct key" do
+    get :thank_you
+    assert_response :redirect
+    assert_redirected_to :new_schedule_tailor_request
+  end
+
+  test "thank you page should render correctly if session has correct key" do
+    get :thank_you, {}, { requested_tailor: true }
+    assert_response :success
+    assert_template :thank_you
   end
 
   #test "should be able to update a schedule tailor request's status" do
