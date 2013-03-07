@@ -8,7 +8,7 @@ suit:
   lining: black
   monogram: JB
   pick_stitching: false
-  vest: false
+  vest: 0
 
 shirt:
   collar: standard

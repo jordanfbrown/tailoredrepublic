@@ -10,11 +10,7 @@ class Customization < ActiveRecord::Base
 
   def self.fabric_id(fabric_slug)
     fabric = CUSTOMIZATIONS['suit']['custom-fabric'][0]['options'][fabric_slug]
-    if fabric.nil?
-      'Unknown fabric'
-    else
-      fabric['id']
-    end
+    fabric.nil? ? 'Unknown fabric' : fabric['id']
   end
 
   def has_vest?
