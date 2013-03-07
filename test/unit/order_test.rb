@@ -1,13 +1,32 @@
 require 'test_helper'
 
 class OrderTest < ActiveSupport::TestCase
+
+  test "new_order should create order, set user, copy measurements from user, and copy line items from cart" do
+    order_params = {
+      shipping_address_attributes: {
+        name: 'Jordan Brown', line1: '11 Downey St.', city: 'San Francisco', state: 'CA', zip: 94041
+      },
+      billing_address_attributes: {
+        name: 'Jordan Brown', line1: '11 Downey St.', city: 'San Francisco', state: 'CA', zip: 94041
+      },
+    }
+
+    user = users(:user_with_stripe)
+    cart = carts(:two_suits)
+    order = Order.new_order(order_params, user, cart)
+    assert_equal order.user, user
+    assert_equal order.measurement.neck, user.measurement.neck
+    assert_equal order.line_items.size, cart.line_items.size
+  end
+
   test "copy_line_items_from_cart" do
     cart = carts(:empty)
     assert cart.empty?
     cart.line_items << line_items(:one)
     assert !cart.empty?
     order = orders(:empty_order)
-    order.copy_line_items_from_cart cart
+    order.copy_line_items_from_cart(cart)
     cart.reload
     assert_equal cart.line_items.length, 0
     assert_equal order.line_items.length, 1
