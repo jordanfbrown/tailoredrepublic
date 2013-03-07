@@ -1,1 +1,0 @@
-SCHEDULE_TAILOR_NOTICE = 'We have received your request to schedule a tailor. A Tailored Republic representative will contact you with details in the next 24 hours.'
