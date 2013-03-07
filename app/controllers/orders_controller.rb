@@ -187,9 +187,7 @@ class OrdersController < ApplicationController
     end
 
     def ensure_cart_not_empty
-      if @cart.empty?
-        redirect_to shop_url
-      end
+      redirect_to '/shop/suits' if @cart.empty?
     end
 
     def ensure_measurement_not_nil
