@@ -43,6 +43,24 @@ body.pages {
     }
   }
 
+  #process {
+    color: #000;
+    background-color: #fff;
+
+    a {
+      color: $darker-brown;
+    }
+
+    .image-wrapper img {
+      background-color: #fff;
+    }
+
+    h5 {
+      color: #999;
+    }
+
+  }
+
   #process h2, #top-picks h2, #about h2, #lookbook h2 {
     @include landing-page-h2;
   }

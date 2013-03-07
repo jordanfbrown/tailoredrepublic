@@ -120,6 +120,12 @@
   @include clearfix;
   z-index: 4;
   padding-bottom: 60px;
+  background-color: #000;
+  color: #fff;
+
+  a {
+    color: #BFA36D;
+  }
 
   .dashed-left, .dashed-right {
     width: 100%;
@@ -144,11 +150,15 @@
     }
   }
 
+  h2 {
+    background: rgba(255,255,255,0.1);
+  }
+
   h5 {
-    color: #999;
+    color: #ddd;
     height: 38px;
     margin-bottom: 30px;
-    
+
     @media only screen and (max-width: 767px) {
       height: auto;
     }
@@ -168,7 +178,7 @@
 
     img {
       padding: 15px;
-      background-color: #fff;
+      background-color: #000;
     }
   }
 }
