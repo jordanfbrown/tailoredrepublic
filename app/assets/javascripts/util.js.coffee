@@ -23,38 +23,36 @@ window.TR =
 
   Analytics:
     trackTransaction: (order, lineItems, address) ->
-      if TR.ENVIRONMENT == 'production'
+      _gaq.push [
+        '_addTrans'
+        order.order_id # Transaction ID
+        'Tailored Republic' # Affiliation
+        order.final_cost # Total, including tax and shipping
+        order.tax # Tax
+        0 # Shipping
+        address.city # City
+        address.state # State
+        'USA' # Country
+      ]
+
+      for lineItem in lineItems
         _gaq.push [
-          '_addTrans'
+          '_addItem'
           order.order_id # Transaction ID
-          'Tailored Republic' # Affiliation
-          order.final_cost # Total, including tax and shipping
-          order.tax # Tax
-          0 # Shipping
-          address.city # City
-          address.state # State
-          'USA' # Country
+          lineItem.id # SKU/Code
+          lineItem.name # Product name
+          lineItem.category # Category
+          lineItem.total_price # Unit price
+          lineItem.quantity
         ]
 
-        for lineItem in lineItems
-          _gaq.push [
-            '_addItem'
-            order.order_id # Transaction ID
-            lineItem.id # SKU/Code
-            lineItem.name # Product name
-            lineItem.category # Category
-            lineItem.total_price # Unit price
-            lineItem.quantity
-          ]
-
-        _gaq.push ['_trackTrans']
+      _gaq.push ['_trackTrans']
 
     trackEvent: (category, action, label, value) ->
-      if TR.ENVIRONMENT == 'production'
-        event = ['_trackEvent', category, action]
-        event.push(label) if label || label == 0
-        event.push(value) if value || value == 0
-        _gaq.push event
+      event = ['_trackEvent', category, action]
+      event.push(label) if label || label == 0
+      event.push(value) if value || value == 0
+      _gaq.push event
 
   setStripeKey: ->
     Stripe.setPublishableKey $('meta[name=stripe-key]').attr 'content'
