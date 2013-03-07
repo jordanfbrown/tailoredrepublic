@@ -1,9 +1,9 @@
-<% title_helper('Thank You') %>
+<% title_helper('Orders - Thank You') %>
 
 <%= render 'shared/checkout_progress', current: :order_complete %>
 <div class="row content-wrapper thank-you-row">
+  <h4>Thanks for your order, <%= @order.user.name %>!</h4>
   <div class="twelve columns outlined">
-    <h4>Thank you for your order, <%= @order.user.name %>!</h4>
     <p>Your order information has been turned into a series of digital 1s and 0s and is already in the hands of our
       tailors. Your custom clothing will be delivered in 3-4 weeks.</p>
     <p>Your order number is: <strong><%= @order.order_id %>.</strong></p>
@@ -16,24 +16,7 @@
       <% end %>
     <% end %>
     <p>An order confirmation email is being sent to <strong><%= @order.user.email %></strong> right now.</p>
-    <p>Like us, follow us, tweet us, share us, greet us, meet us, or just wear us:</p>
-    <ul class="social-media-dock">
-      <a href="http://www.facebook.com/TailoredRepublic" target="_blank">
-        <li><%= image_tag 'icons/social/facebook-icon-black.png' %></li>
-      </a>
-      <a href="https://twitter.com/T_Republic" target="_blank">
-        <li><%= image_tag 'icons/social/twitter-icon-black.png' %></li>
-      </a>
-      <a href="mailto:info@tailoredrepublic.com">
-        <li><%= image_tag 'icons/social/email-icon-black.png' %></li>
-      </a>
-      <a href="http://instagram.com/tailoredrepublic" target="_blank">
-        <li><%= image_tag 'icons/social/instagram-icon-black.png' %></li>
-      </a>
-      <a href="http://blog.tailoredrepublic.com" target="_blank">
-        <li><%= image_tag 'icons/social/tumblr-icon-black.png' %></li>
-      </a>
-    </ul>
+    <%= render 'shared/social_media_dock' %>
   </div>
 </div>
 

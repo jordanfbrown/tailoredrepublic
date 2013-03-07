@@ -24,26 +24,6 @@
     }
   }
 
-  .social-media-dock {
-    a:hover {
-      text-decoration: none;
-    }
-    max-width: 650px;
-
-    img {
-      width: 50px;
-    }
-
-    li {
-      width: 19%;
-      display: inline-block;
-
-      @media only screen and (max-width: 450px) {
-        width: 18%;
-      }
-    }
-  }
-
   &.index {
 
    .order-list-item {

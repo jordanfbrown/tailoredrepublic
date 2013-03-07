@@ -24,12 +24,21 @@ TailoredRepublic::Application.routes.draw do
   resources :products
   resources :coupons, except: [:show]
   resources :line_items, path: '/line-items', only: [:create, :destroy, :update]
-  resources :tape_measure_requests, path: '/tape-measure-requests', only: [:index, :new, :create, :update]
-  resources :schedule_tailor_requests, path: '/tailorings', only: [:index, :new, :create, :update]
+  resources :tape_measure_requests, path: '/tape-measure-requests', only: [:index, :new, :create, :update] do
+    collection do
+      get 'thank_you', path: 'thank-you'
+    end
+  end
+  resources :schedule_tailor_requests, path: '/tailor-requests', only: [:index, :new, :create, :update] do
+    collection do
+      get 'thank_you', path: 'thank-you'
+    end
+  end
   resources :orders, only: [:show, :new, :create, :index] do
     collection do
       post 'review'
       post 'new', path: 'new'
+      get 'thank_you', path: 'thank-you'
     end
   end
 
@@ -40,7 +49,6 @@ TailoredRepublic::Application.routes.draw do
   match '/measurements/:initial_slide' => 'measurements#show'
   match '/checkout' => 'carts#checkout'
   match '/admin/orders' => 'orders#admin'
-  match '/thank-you' => 'orders#thank_you', :as => 'thank_you'
   match '/subscribe-to-newsletter' => 'mailing_list#subscribe', :as => 'subscribe_to_newsletter'
   match '/about' => 'pages#about'
   match '/faq' => 'pages#faq'

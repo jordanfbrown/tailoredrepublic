@@ -1,5 +1,5 @@
 class ScheduleTailorRequestsController < ApplicationController
-  load_and_authorize_resource except: [:new, :create]
+  load_and_authorize_resource except: [:new, :create, :thank_you]
 
   def index
     params[:filter] ||= 'all'
@@ -29,7 +29,8 @@ class ScheduleTailorRequestsController < ApplicationController
           puts 'Ignoring error'
         end
       end
-      redirect_to '/shop/suits', notice: SCHEDULE_TAILOR_NOTICE
+      session[:requested_tailor] = true
+      redirect_to :thank_you_schedule_tailor_requests
     else
       render :new
     end
@@ -42,6 +43,12 @@ class ScheduleTailorRequestsController < ApplicationController
       head :no_content
     else
       render json: @schedule_tailor_request.errors, status: :unprocessable_entity
+    end
+  end
+
+  def thank_you
+    unless session.has_key?('requested_tailor')
+      redirect_to :new_schedule_tailor_request
     end
   end
 end
