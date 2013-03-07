@@ -166,4 +166,16 @@ class OrdersControllerTest < ActionController::TestCase
     assert_not_nil assigns(:order).order_id
     assert_equal assigns(:order).order_id[0, 2], 'or'
   end
+
+  test "an admin should be able to get admin route" do
+    sign_in :user, users(:admin)
+    get :admin
+    assert_response :success
+    assert_template :admin
+  end
+
+  test "a regular user should not be able to get admin route" do
+    get :admin
+    assert_response :redirect
+  end
 end

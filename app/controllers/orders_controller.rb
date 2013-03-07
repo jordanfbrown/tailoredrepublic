@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_filter :ensure_cart_not_empty, :ensure_measurement_not_nil, except: [:thank_you, :index, :show, :admin]
+  load_and_authorize_resource only: [:admin]
 
   def new
     set_stripe_customer
@@ -44,16 +45,11 @@ class OrdersController < ApplicationController
   end
 
   def admin
-    # TODO: use cancan filter to check role
-    if user_signed_in? && current_user.role == 'admin'
-      params[:page] ||= 1
-      if params[:search].blank?
-        @orders = Order.paginated(params[:page])
-      else
-        @orders = Order.search(params[:search], params[:page])
-      end
+    params[:page] ||= 1
+    if params[:search].blank?
+      @orders = Order.paginated(params[:page])
     else
-      redirect_to root_path
+      @orders = Order.search(params[:search], params[:page])
     end
   end
 
