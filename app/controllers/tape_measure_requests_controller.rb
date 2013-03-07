@@ -1,5 +1,5 @@
 class TapeMeasureRequestsController < ApplicationController
-  load_and_authorize_resource except: [:new, :create, :thank_you]
+  load_and_authorize_resource only: [:index, :update]
 
   def index
     params[:filter] ||= 'all'
