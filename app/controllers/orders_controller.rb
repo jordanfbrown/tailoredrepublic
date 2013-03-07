@@ -96,10 +96,6 @@ class OrdersController < ApplicationController
     @order.apply_tax
   end
 
-  def thank_you
-    render_404
-  end
-
   def create
     @card_token = params[:stripe_card_token]
     @coupon_code = params[:coupon_code]
@@ -163,13 +159,20 @@ class OrdersController < ApplicationController
       @order.save!
     end
 
-    # Need to reload the cart because its line items have been copied to the order
-    @cart.reload
-    render 'thank_you'
+    session[:order_id] = @order.id
+    redirect_to :thank_you_orders
   rescue Stripe::StripeError => e
     set_stripe_customer
     @order.errors[:base] << e.message
     render :new
+  end
+
+  def thank_you
+    if session.has_key?('order_id')
+      @order = Order.find(session[:order_id])
+    else
+      redirect_to '/shop/suits'
+    end
   end
 
   private

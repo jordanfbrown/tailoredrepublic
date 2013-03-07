@@ -30,6 +30,7 @@ TailoredRepublic::Application.routes.draw do
     collection do
       post 'review'
       post 'new', path: 'new'
+      get 'thank_you', path: 'thank-you'
     end
   end
 
@@ -40,7 +41,6 @@ TailoredRepublic::Application.routes.draw do
   match '/measurements/:initial_slide' => 'measurements#show'
   match '/checkout' => 'carts#checkout'
   match '/admin/orders' => 'orders#admin'
-  match '/thank-you' => 'orders#thank_you', :as => 'thank_you'
   match '/subscribe-to-newsletter' => 'mailing_list#subscribe', :as => 'subscribe_to_newsletter'
   match '/about' => 'pages#about'
   match '/faq' => 'pages#faq'
