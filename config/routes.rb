@@ -29,7 +29,11 @@ TailoredRepublic::Application.routes.draw do
       get 'thank_you', path: 'thank-you'
     end
   end
-  resources :schedule_tailor_requests, path: '/tailorings', only: [:index, :new, :create, :update]
+  resources :schedule_tailor_requests, path: '/tailor-requests', only: [:index, :new, :create, :update] do
+    collection do
+      get 'thank_you', path: 'thank-you'
+    end
+  end
   resources :orders, only: [:show, :new, :create, :index] do
     collection do
       post 'review'
