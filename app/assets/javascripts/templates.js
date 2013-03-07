@@ -453,7 +453,7 @@ function program25(depth0,data) {
   buffer += "\n        ";
   return buffer;}
 
-  buffer += "<a class=\"close-reveal-modal\">&#215;</a>\n<h3>";
+  buffer += "<a class=\"close-reveal-modal\">&#215;</a>\n<h2>";
   stack1 = depth0.product;
   stack1 = stack1 == null || stack1 === false ? stack1 : stack1.name;
   stack1 = typeof stack1 === functionType ? stack1() : stack1;
@@ -463,7 +463,7 @@ function program25(depth0,data) {
   stack1 = stack1 == null || stack1 === false ? stack1 : stack1.category;
   foundHelper = helpers.titleize;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{},data:data}) : helperMissing.call(depth0, "titleize", stack1, {hash:{},data:data});
-  buffer += escapeExpression(stack1) + "</span></h3>\n<div class=\"customizations\">\n  <ul class=\"progress-bar\">\n    ";
+  buffer += escapeExpression(stack1) + "</span></h2>\n<div class=\"customizations\">\n  <ul class=\"progress-bar\">\n    ";
   stack1 = depth0.customizationOptions;
   stack1 = helpers.each.call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
