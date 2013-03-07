@@ -8,22 +8,24 @@ class LineItem < ActiveRecord::Base
   delegate :name, :summary, :category, :default_photo, :subcategory, :fabric_id, to: :product
 
   def total_price
+    # Include quantity
     calculate_price(true)
   end
 
   def unit_price
+    # Don't include quantity
     calculate_price(false)
   end
 
-  def calculate_price(total)
+  def calculate_price(include_quantity)
     if customization.nil?
-      product.price.to_i * (total ? quantity : 1)
+      product.price.to_i * (include_quantity ? quantity : 1)
     else
       adders = 0
       adders += Product.vest_price if customization.vest?
       adders += Product.pick_stitching_price if customization.pick_stitching?
       adders += Product.shirt_monogram_price if shirt_monogram?
-      (product.price + adders).to_i * (total ? quantity : 1)
+      (product.price + adders).to_i * (include_quantity ? quantity : 1)
     end
   end
 
