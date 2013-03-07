@@ -24,7 +24,11 @@ TailoredRepublic::Application.routes.draw do
   resources :products
   resources :coupons, except: [:show]
   resources :line_items, path: '/line-items', only: [:create, :destroy, :update]
-  resources :tape_measure_requests, path: '/tape-measure-requests', only: [:index, :new, :create, :update]
+  resources :tape_measure_requests, path: '/tape-measure-requests', only: [:index, :new, :create, :update] do
+    collection do
+      get 'thank_you', path: 'thank-you'
+    end
+  end
   resources :schedule_tailor_requests, path: '/tailorings', only: [:index, :new, :create, :update]
   resources :orders, only: [:show, :new, :create, :index] do
     collection do

@@ -44,6 +44,7 @@ class OrdersController < ApplicationController
   end
 
   def admin
+    # TODO: use cancan filter to check role
     if user_signed_in? && current_user.role == 'admin'
       params[:page] ||= 1
       if params[:search].blank?

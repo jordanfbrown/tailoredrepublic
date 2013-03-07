@@ -1,5 +1,5 @@
 class TapeMeasureRequestsController < ApplicationController
-  load_and_authorize_resource except: [:new, :create]
+  load_and_authorize_resource except: [:new, :create, :thank_you]
 
   def index
     params[:filter] ||= 'all'
@@ -31,7 +31,8 @@ class TapeMeasureRequestsController < ApplicationController
           puts 'Ignoring error'
         end
       end
-      redirect_to '/shop/suits', notice: 'Your tape measure request has been received. You can expect a tape measure in the mail in a few days.'
+      session[:requested_tape_measure] = true
+      redirect_to :thank_you_tape_measure_requests
     else
       render :new
     end
@@ -44,6 +45,12 @@ class TapeMeasureRequestsController < ApplicationController
       head :no_content
     else
       render json: @tape_measure_request.errors, status: :unprocessable_entity
+    end
+  end
+
+  def thank_you
+    unless session.has_key?('requested_tape_measure')
+      redirect_to :new_tape_measure_request
     end
   end
 end
