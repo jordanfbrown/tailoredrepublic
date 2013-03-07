@@ -1,9 +1,14 @@
 require 'test_helper'
 
 class CartTest < ActiveSupport::TestCase
-  test "total_price" do
+  test "total_price should be equal to sum of line item prices" do
     cart = carts(:one_shirt_one_suit)
     assert_equal cart.total_price, 633
+  end
+
+  test "total_price should be 0 for an empty cart" do
+    cart = carts(:empty)
+    assert_equal cart.total_price, 0
   end
 
   test "shirt_only? should be false if there is a suit in the cart and no shirts" do

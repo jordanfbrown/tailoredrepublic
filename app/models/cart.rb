@@ -1,9 +1,6 @@
 class Cart < ActiveRecord::Base
   has_many :line_items, dependent: :destroy
-
-  def empty?
-    line_items.empty?
-  end
+  delegate :empty?, to: :line_items
 
   def num_items
     line_items.length
