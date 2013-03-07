@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_filter :ensure_cart_not_empty, :ensure_measurement_not_nil, except: [:thank_you, :index, :show, :admin]
+  before_filter :ensure_cart_not_empty, :ensure_measurement_not_nil, only: [:new, :review, :create]
   load_and_authorize_resource only: [:admin]
 
   def new
