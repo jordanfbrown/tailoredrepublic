@@ -3,10 +3,12 @@
 class TR.Views.AddSuccessModal extends TR.Views.Modal
   id: 'add-success-modal'
 
+  hideScrollbar: false
+
   events: ->
     _.extend super,
       'click a.keep-shopping': 'close'
-    
+
   initialize: ->
     super()
     @subviews = []

@@ -26,6 +26,16 @@
 }
 
 #add-success-modal {
+
+  img {
+    height: 250px;
+  }
+
+  @media only screen and (max-width: 767px) {
+    img {
+      height: auto;
+    }
+  }
   h3, h4 {
     text-align: center;
   }
