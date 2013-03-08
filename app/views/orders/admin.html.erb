@@ -6,6 +6,7 @@
       <%= form_tag admin_orders_path, method: 'get' do %>
         <%= text_field_tag :search, '', placeholder: 'enter order ID or email...' %>
         <%= submit_tag 'Search', name: nil, class: 'button' %>
+        <%= link_to 'Clear', admin_orders_path, class: 'button' %>
       <% end %>
     </div>
 
