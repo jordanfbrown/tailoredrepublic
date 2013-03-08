@@ -147,48 +147,7 @@ input[type=submit], input[type=button] {
 }
 
 .button {
-  background-color: $brown;
-  padding: 7px 10px 5px 10px;
-  text-decoration-color: #fff;
-  -moz-text-decoration-color: #fff;
-  @include font("header");
-  font-weight: bold;
-  color: #fff;
-  display: inline-block;
-  font-size: 18px;
-  border: none;
-  cursor: pointer;
-  text-align: center;
-  -webkit-transition: background-color 250ms;
-
-  &:focus {
-    color: #fff;
-  }
-
-  &:hover {
-    text-decoration-color: #fff;
-    -moz-text-decoration-color: #fff;
-    color: #fff;
-    background-color: darken($brown, 10%);
-    text-decoration: none;
-    -webkit-transition: all 250ms;
-  }
-
-  &:active {
-    @include box-shadow(inset 0px 2px 7px 1px #666);
-  }
-  
-  &.full-width {
-    width: 100%;
-  }
-
-  &.large {
-    font-size: 24px;
-  }
-
-  &.disabled {
-    color: lighten($brown, 10%);
-  }
+  @include button;
 }
 
 .products-wrapper {
@@ -426,4 +385,16 @@ p.centered {
       width: 18%;
     }
   }
+}
+
+.ui-datepicker {
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #999;
+}
+
+.ui-datepicker-prev, .ui-datepicker-next {
+  margin-bottom: 10px;
+  margin-right: 5px;
+  @include button;
 }

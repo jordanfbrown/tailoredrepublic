@@ -1,20 +1,32 @@
-<%= form_for(coupon) do |f| %>
+<%= form_for coupon, html: { class: 'outlined' } do |f| %>
   <%= render 'shared/form_errors', resource: coupon %>
-  <%= f.label 'Description' %>
+  <%= f.label 'Description (this will appear on the order)' %>
   <%= f.text_field :description %>
+  <%= f.label 'Discount Type' %>
+  <%= f.select :discount_type, { 'Fixed' => :fixed, 'Percentage' => :percentage } %>
   <%= f.label 'Amount (dollar amount for fixed: 10 = $10, percent for percentage: 10 = 10%' %>
   <%= f.text_field :amount %>
-  <%= f.label 'Code' %>
+  <%= f.label 'Code (used on the order form)' %>
   <%= f.text_field :code %>
   <%= f.label 'Quantity' %>
   <%= f.text_field :quantity %>
   <%= f.label 'Coupon Type' %>
   <%= f.select :coupon_type, { 'Gift Card' => :gift_card, 'Promotion' => :promotion } %>
-  <%= f.label 'Discount Type' %>
-  <%= f.select :discount_type, { 'Fixed' => :fixed, 'Percentage' => :percentage } %>
   <%= f.label 'Begin Date (Optional)' %>
   <%= f.text_field :begin_date %>
   <%= f.label 'End Date (Optional)' %>
   <%= f.text_field :end_date %>
   <%= f.submit 'Submit', class: 'button full-width large' %>
 <% end %>
+
+<script>
+  $(function() {
+    $('#coupon_begin_date').datepicker({
+      dateFormat: 'yy-mm-dd'
+    });
+    $('#coupon_end_date').datepicker({
+      dateFormat: 'yy-mm-dd'
+    });
+  });
+</script>
+
