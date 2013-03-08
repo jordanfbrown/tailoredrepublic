@@ -30,16 +30,13 @@ body:not(.home):not(.process), #top-picks {
   }
 
   @media only screen and (max-width: 1200px) {
-    padding: 0 150px;
+    padding: 0 100px;
   }
 
   @media only screen and (max-width: 1000px) {
     padding: 0 70px;
   }
 
-  @media only screen and (max-width: 800px) {
-    padding: 0 30px;
-  }
 
   @media only screen and (max-width: 768px) {
     padding: 0 13px;

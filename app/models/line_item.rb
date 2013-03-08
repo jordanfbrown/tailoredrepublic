@@ -50,7 +50,8 @@ class LineItem < ActiveRecord::Base
         { option: "Pick Stitching", type:
           (customization.pick_stitching? ? "Yes (+$#{Product.pick_stitching_price})" : 'No' ) },
         { option: "Vest", type:
-          (customization.has_vest? ? "Yes, #{customization.vest} Button Vest (+$#{Product.vest_price})" : "No") }
+          (customization.has_vest? ? "Yes, #{customization.vest} Button Vest (+$#{Product.vest_price})" : "No") },
+        { option: "Monogram", type: customization.monogram.length == 0 ? "None" : "#{customization.monogram} (#{customization.monogram_color})" }
       ]
       if show_fabric_ids
         array.unshift({ option: "Fabric", type: final_fabric })

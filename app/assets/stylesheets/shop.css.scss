@@ -154,6 +154,58 @@
     }
   }
 
+  ul.monogram-colors {
+    li {
+      width: 40px;
+      height: 40px;
+      display: inline-block;
+      margin-right: 20px;
+      position: relative;
+      cursor: pointer;
+
+      .checkmark {
+        display: none;
+        position: absolute;
+        top: 4px;
+        left: 10px;
+        color: #000;
+        font-size: 24px;
+      }
+
+      &.selected .checkmark {
+        display: block;
+      }
+
+      &.black {
+        $color: #000;
+        background-color: #000;
+        border: 1px solid darken($color, 25%);
+
+        .checkmark {
+          color: #fff;
+        }
+      }
+
+      &.white {
+        $color: #fff;
+        background-color: #fff;
+        border: 1px solid darken($color, 25%);
+      }
+
+      &.red {
+        $color: #C94137;
+        background-color: #C94137;
+        border: 1px solid darken($color, 25%);
+      }
+
+      &.yellow {
+        $color: #FBF74D;
+        background-color: #FBF74D;
+        border: 1px solid darken($color, 25%);
+      }
+    }
+  }
+
   .linings {
     img {
       width: 150px;
@@ -193,7 +245,6 @@
   .customization-option {
     display: block;
     float: left;
-    background-color: #fff;
     text-align: center;
 
     h5 {

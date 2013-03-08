@@ -14,9 +14,19 @@
         {{#if this.custom}}
           {{#if this.monogram}}
             <div class="row">
+              {{#if this.suit_monogram}}
+                <div class="customization-option six columns">
+                  <h5>Monogram Color</h5>
+                  <ul class="monogram-colors">
+                    {{#each this.colors}}
+                      <li class="{{this}} {{#ifeq ../../../../../customization.monogram_color this}}selected{{/ifeq}}" data-color="{{this}}"><span class="checkmark">&#x2713;</span></li>
+                    {{/each}}
+                  </ul>
+                </div>
+              {{/if}}
               <div class="customization-option six columns">
                 <form id="monogram-form">
-                  <label>Monogram (+${{this.extra_cost}}) ({{this.max_length}} character max) </label>
+                  <h5>Monogram {{#ifGreaterThan this.extra_cost 0}} (+${{this.extra_cost}}) {{/ifGreaterThan}} ({{this.max_length}} character max) </h5>
                   <input type="text" name="monogram" maxlength="{{this.max_length}}" value="{{../../../customization.monogram}}">
                   <div class="row">
                     <div class="six columns">

@@ -20,7 +20,7 @@ class TR.Models.Product extends TR.Models.Base
   # If a subcategory has an option defined that exists in the default array of options, it will overwrite the default
   # If a subcategory has an option that is not defined in the default array, it will get added to the front of the array
   getCustomizationOptions: (existingCustomization) ->
-    options = TR.CUSTOMIZATIONS[@get('category')].default.slice(0)
+    options = TR.CUSTOMIZATIONS[@get('category')].default.slice(0) # Duplicate array
     categories = _.pluck options, 'category'
     if @get('subcategory') && (overrides = TR.CUSTOMIZATIONS[@get('category')][@get('subcategory')])
       for override in overrides
@@ -33,7 +33,7 @@ class TR.Models.Product extends TR.Models.Base
     @setSelected options, existingCustomization
     options
 
-  # Adds a new key, selected, to the array of customization option objects
+  # Adds a new key, "selected", to the array of customization option objects
   # For new customizations, the value of selected is the same as the default
   # For existing customizations, the value is set to whatever value was stored in the customization
   setSelected: (options, existingCustomization) ->
