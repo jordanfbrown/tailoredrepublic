@@ -7,6 +7,11 @@ class LineItem < ActiveRecord::Base
 
   delegate :name, :summary, :category, :default_photo, :subcategory, :fabric_id, to: :product
 
+
+  def self.sum_price(line_items)
+    line_items.map { |l| l.total_price }.sum.to_i
+  end
+
   def total_price
     # Include quantity
     calculate_price(true)

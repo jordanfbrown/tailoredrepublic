@@ -7,6 +7,7 @@ class Product < ActiveRecord::Base
   has_many :line_items
   has_many :customizations
   has_many :product_photos, order: 'default_photo DESC, created_at ASC', dependent: :destroy
+  has_many :coupons, foreign_key: 'apply_to_product_id', class_name: 'Coupon'
   before_destroy :ensure_not_referenced_by_line_item
 
   accepts_nested_attributes_for :product_photos, allow_destroy: true
@@ -95,6 +96,10 @@ class Product < ActiveRecord::Base
 
   def customizable?
     category == :suit || category == :shirt
+  end
+
+  def to_s
+    name
   end
 
   private

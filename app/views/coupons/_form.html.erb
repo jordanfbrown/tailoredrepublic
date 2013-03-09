@@ -1,32 +1,41 @@
 <%= form_for coupon, html: { class: 'outlined' } do |f| %>
   <%= render 'shared/form_errors', resource: coupon %>
-  <%= f.label 'Description (this will appear on the order)' %>
+  <%= f.label :description, 'Description (this will appear on the order)' %>
   <%= f.text_field :description %>
-  <%= f.label 'Discount Type' %>
+  <%= f.label :discount_type, 'Discount Type' %>
   <%= f.select :discount_type, { 'Fixed' => :fixed, 'Percentage' => :percentage } %>
-  <%= f.label 'Amount (dollar amount for fixed: 10 = $10, percent for percentage: 10 = 10%' %>
+  <%= f.label :amount, 'Amount (dollar amount for fixed: 10 = $10, percent for percentage: 10 = 10%' %>
   <%= f.text_field :amount %>
   <%= f.label 'Code (used on the order form)' %>
   <%= f.text_field :code %>
-  <%= f.label 'Quantity' %>
-  <%= f.text_field :quantity %>
-  <%= f.label 'Coupon Type' %>
+  <%= f.label :coupon_type, 'Coupon Type' %>
   <%= f.select :coupon_type, { 'Gift Card' => :gift_card, 'Promotion' => :promotion } %>
-  <%= f.label 'Begin Date (Optional)' %>
+  <div class="row">
+    <div class="six columns">
+      <%= f.label :apply_to_type, 'Apply To' %>
+      <%= f.select :apply_to_type, Coupon::APPLY_TO_OPTIONS %>
+    </div>
+    <div class="six columns">
+      <div id="apply-to-group">
+        <%= f.label :apply_to_group, 'Apply To Group', class: 'apply-to-group-label' %>
+        <%= f.text_field :apply_to_group %>
+      </div>
+      <div id="apply-to-product" style="display: none;">
+        <%= f.label 'Product' %>
+        <%= f.select :apply_to_product_id, @products.map { |p| [p.name, p.id] } %>
+      </div>
+    </div>
+  </div>
+  <%= f.label :quantity, 'Quantity' %>
+  <%= f.text_field :quantity %>
+  <%= f.label :begin_date, 'Begin Date (Optional)' %>
   <%= f.text_field :begin_date %>
-  <%= f.label 'End Date (Optional)' %>
+  <%= f.label :end_date, 'End Date (Optional)' %>
   <%= f.text_field :end_date %>
   <%= f.submit 'Submit', class: 'button full-width large' %>
 <% end %>
 
 <script>
-  $(function() {
-    $('#coupon_begin_date').datepicker({
-      dateFormat: 'yy-mm-dd'
-    });
-    $('#coupon_end_date').datepicker({
-      dateFormat: 'yy-mm-dd'
-    });
-  });
+  new TR.Views.Coupon();
 </script>
 

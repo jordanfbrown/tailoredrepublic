@@ -50,22 +50,68 @@ class CouponTest < ActiveSupport::TestCase
     assert coupon.invalid?
   end
 
-  test "calculate_discount for a fixed amount coupon should return the coupon amount if the order costs more than the coupon" do
-    coupon = coupons(:hundred_gift_card)
-    assert_equal coupon.calculate_discount(500), 100
-    assert_equal coupon.calculate_discount(1000), 100
+  test "discount_for_category when apply_to_type='category', apply_to_group='suit', and discount_type='percentage' should work correctly" do
+    coupon = coupons(:suit_category_coupon) # 50% off promotion
+    line_items = [ line_items(:one), line_items(:two) ]
+    discount = coupon.discount_for_category(line_items)
+    assert_equal discount, (line_items[0].unit_price + line_items[1].unit_price) * 0.5
   end
 
-  test "calculate_discount for a fixed amount coupon should return the order amount if the coupon is worth more than the order" do
-    coupon = coupons(:hundred_gift_card)
-    assert_equal coupon.calculate_discount(50), 50
-    assert_equal coupon.calculate_discount(25), 25
+  test "discount_for_category when apply_to_type='category', apply_to_group='suit', and discount_type='fixed' should work correctly" do
+    coupon = coupons(:suit_category_coupon) # 50% off promotion
+    coupon.discount_type = 'fixed' # now $50
+    line_items = [ line_items(:one), line_items(:two) ]
+    discount = coupon.discount_for_category(line_items)
+    assert_equal discount, 100
   end
 
-  test "calculate_discount for a percentage coupon should return a percentage of the total price" do
+  test "discount_for_category when apply_to_type='subcategory', apply_to_group='pocket_square', discount_type='percentage' should work correctly" do
+    coupon = coupons(:pocket_square_subcategory_coupon) # 50% off promotion
+    line_items = [ line_items(:pocket_square) ]
+    discount = coupon.discount_for_category(line_items)
+    assert_equal discount, (line_items[0].unit_price) * 0.5
+  end
+
+  test "discount_for_category when apply_to_type='subcategory', apply_to_group='pocket_square', discount_type='fixed' should work correctly" do
+    coupon = coupons(:pocket_square_subcategory_coupon)
+    # set up a $5 fixed coupon
+    coupon.amount = 5
+    coupon.discount_type = 'fixed'
+    line_items = [ line_items(:pocket_square) ]
+    discount = coupon.discount_for_category(line_items)
+    assert_equal discount, 5
+  end
+
+  test "discount_for_category when apply_to_type='product', apply_to_product='blue_shirt', discount_type='percentage' should work correctly" do
+    coupon = coupons(:blue_shirt_product_coupon) # 50% off promotion
+    line_items = [ line_items(:blue_shirt), line_items(:pocket_square) ]
+    discount = coupon.discount_for_category(line_items)
+    assert_equal discount, (line_items[0].unit_price) * 0.5
+  end
+
+  test "discount_for_category when apply_to_type='product', apply_to_product='blue_shirt', discount_type='fixed' should work correctly" do
+    coupon = coupons(:blue_shirt_product_coupon)
+    # set up a $5 fixed coupon
+    coupon.amount = 5
+    coupon.discount_type = 'fixed'
+    line_items = [ line_items(:blue_shirt), line_items(:pocket_square) ]
+    discount = coupon.discount_for_category(line_items)
+    assert_equal discount, 5
+  end
+
+  test "discount_for_order should return the total discount for every line item correctly for a percentage discount" do
     coupon = coupons(:ten_percent_off)
-    assert_equal coupon.calculate_discount(500), 50
-    assert_equal coupon.calculate_discount(1000), 100
+    line_items = [ line_items(:blue_shirt), line_items(:pocket_square), line_items(:one) ]
+    discount = coupon.discount_for_order(line_items)
+    assert_equal discount, ((line_items[0].unit_price + line_items[1].unit_price + line_items[2].unit_price) * 0.10).round(2)
+  end
+
+  test "discount_for_order should return the total discount for every line item correctly for a fixed discount" do
+    coupon = coupons(:ten_percent_off)
+    coupon.discount_type = 'fixed'
+    line_items = [ line_items(:blue_shirt), line_items(:pocket_square), line_items(:one) ]
+    discount = coupon.discount_for_order(line_items)
+    assert_equal discount, 10
   end
 
   test "update_amount! should reduce quantity by 1 if full value has been used for a fixed coupon and subtract discount" do

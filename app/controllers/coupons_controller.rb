@@ -16,6 +16,7 @@ class CouponsController < ApplicationController
   # GET /coupons/new.json
   def new
     @coupon = Coupon.new
+    @products = Product.order('category ASC, name ASC ')
 
     respond_to do |format|
       format.html # new.html.erb
@@ -26,6 +27,7 @@ class CouponsController < ApplicationController
   # GET /coupons/1/edit
   def edit
     @coupon = Coupon.find(params[:id])
+    @products = Product.order('category ASC, name ASC')
   end
 
   # POST /coupons
