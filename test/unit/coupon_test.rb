@@ -75,6 +75,46 @@ class CouponTest < ActiveSupport::TestCase
     assert_equal discount, 150
   end
 
+  test "discount_for_category when apply_to_type='category', apply_to_group='suit', discount_type='fixed', and max_items=2 should only apply coupon to 2 suits when quantity > 2" do
+    coupon = coupons(:suit_category_coupon) # 50% off promotion
+    coupon.discount_type = 'fixed' # now $50
+    coupon.max_items = 2
+    line_item = line_items(:one)
+    line_item.quantity = 5
+    line_items = [ line_item ]
+    discount = coupon.discount_for_category(line_items)
+    assert_equal discount, 100
+  end
+
+  test "discount_for_category when apply_to_type='category', apply_to_group='suit', discount_type='fixed', and max_items=1 should only apply coupon to 1 suit when there are 2 line items with category suit" do
+    coupon = coupons(:suit_category_coupon) # 50% off promotion
+    coupon.discount_type = 'fixed' # now $50
+    coupon.max_items = 1
+    line_items = [ line_items(:one), line_items(:two) ]
+    discount = coupon.discount_for_category(line_items)
+    assert_equal discount, 50
+  end
+
+  test "discount_for_category when apply_to_type='category', apply_to_group='suit', discount_type='percentage', and max_items=1 should only apply coupon to only the most expensive suit when there are 2 line items with category suit" do
+    coupon = coupons(:suit_category_coupon) # 50% off promotion
+    coupon.max_items = 1
+    line_items = [ line_items(:one), line_items(:two) ]
+    discount = coupon.discount_for_category(line_items)
+    most_expensive = line_items.max { |l| l.unit_price }
+    assert_equal discount, most_expensive.unit_price * 0.5
+  end
+
+  test "discount_for_category when apply_to_type='category', apply_to_group='suit', discount_type='percentage', and max_items=3 with more expensive line item of quantity 1 and less expensive with quantity 3 should only count most expensive once and 2 instances of less expensive" do
+    coupon = coupons(:suit_category_coupon) # 50% off promotion
+    coupon.max_items = 3
+    less_expensive = line_items(:one)
+    less_expensive.quantity = 3
+    more_expensive = line_items(:two)
+    line_items = [ less_expensive, more_expensive ]
+    discount = coupon.discount_for_category(line_items)
+    assert_equal discount, (more_expensive.unit_price + less_expensive.unit_price + less_expensive.unit_price) * 0.5
+  end
+
   test "discount_for_category when apply_to_type='subcategory', apply_to_group='pocket_square', discount_type='percentage' should work correctly" do
     coupon = coupons(:pocket_square_subcategory_coupon) # 50% off promotion
     line_items = [ line_items(:pocket_square) ]

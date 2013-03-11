@@ -12,6 +12,7 @@
           <th>Coupon Type</th>
           <th>Apply To</th>
           <th>Quantity</th>
+          <th>Max Items</th>
           <th>Generating Order</th>
           <th>Begin Date</th>
           <th>End Date</th>
@@ -29,6 +30,7 @@
             <td><%= coupon.coupon_type %></td>
             <td><%= apply_to_type(coupon) %></td>
             <td><%= coupon.quantity %></td>
+            <td><%= coupon.max_items.nil? ? 'Unlimited' : coupon.max_items %></td>
             <td><%= link_to "Order #{coupon.generating_order.id}", order_path(coupon.generating_order) unless coupon.generating_order.nil? %></td>
             <td><%= coupon.begin_date %></td>
             <td><%= coupon.end_date %></td>

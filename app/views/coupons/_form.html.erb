@@ -28,6 +28,8 @@
   </div>
   <%= f.label :quantity, 'Quantity' %>
   <%= f.text_field :quantity %>
+  <%= f.label :max_items, 'Max items (maximum number of matching items in cart that this coupon can be applied to, leave blank for unlimited)' %>
+  <%= f.text_field :max_items %>
   <%= f.label :begin_date, 'Begin Date (Optional)' %>
   <%= f.text_field :begin_date %>
   <%= f.label :end_date, 'End Date (Optional)' %>

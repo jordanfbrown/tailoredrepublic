@@ -1,6 +1,8 @@
 class CouponsController < ApplicationController
   load_and_authorize_resource
 
+  before_filter :load_products, only: [:new, :edit, :update, :create]
+
   # GET /coupons
   # GET /coupons.json
   def index
@@ -16,7 +18,6 @@ class CouponsController < ApplicationController
   # GET /coupons/new.json
   def new
     @coupon = Coupon.new
-    @products = Product.order('category ASC, name ASC ')
 
     respond_to do |format|
       format.html # new.html.erb
@@ -27,7 +28,6 @@ class CouponsController < ApplicationController
   # GET /coupons/1/edit
   def edit
     @coupon = Coupon.find(params[:id])
-    @products = Product.order('category ASC, name ASC')
   end
 
   # POST /coupons
@@ -73,4 +73,9 @@ class CouponsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+    def load_products
+      @products = Product.order('category ASC, name ASC')
+    end
 end

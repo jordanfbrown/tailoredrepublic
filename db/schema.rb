@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130308232053) do
+ActiveRecord::Schema.define(:version => 20130311205319) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20130308232053) do
     t.string   "apply_to_type"
     t.integer  "apply_to_product_id"
     t.string   "apply_to_group"
+    t.integer  "max_items"
   end
 
   add_index "coupons", ["apply_to_product_id"], :name => "index_coupons_on_apply_to_product_id"
