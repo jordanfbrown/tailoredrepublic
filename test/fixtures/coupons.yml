@@ -101,3 +101,15 @@ blue_shirt_product_coupon:
   discount_type: percentage
   begin_date: NULL
   end_date: NULL
+
+vest_customization_coupon:
+  code: VESTOFF
+  description: 50% off vest
+  quantity: 50
+  amount: 50
+  apply_to_type: customization
+  apply_to_group: vest
+  coupon_type: promotion
+  discount_type: percentage
+  begin_date: NULL
+  end_date: NULL

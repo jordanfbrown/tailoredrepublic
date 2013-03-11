@@ -43,11 +43,13 @@ class Coupon < ActiveRecord::Base
       when 'order'
         discount_for_order(line_items)
       when 'category'
+        discount_for_category(line_items)
       when 'subcategory'
+        discount_for_category(line_items)
       when 'product'
         discount_for_category(line_items)
       when 'customization'
-        # stuff
+        discount_for_customization(line_items)
       else
         0
       end
@@ -65,10 +67,23 @@ class Coupon < ActiveRecord::Base
   def discount_for_category(line_items)
     product_or_group = apply_to_type == 'product' ? apply_to_product.name : apply_to_group
     line_items.select { |l| l.send(apply_to_type).to_s == product_or_group }.reduce(0) do |sum, line_item|
+      total_amount = amount * line_item.quantity
       if discount_type == 'fixed'
-        sum + (amount > line_item.unit_price ? line_item.unit_price : amount)
+        sum + (total_amount > line_item.total_price ? line_item.total_price : total_amount)
       elsif discount_type == 'percentage'
-        sum + (line_item.unit_price * amount * 0.01).round(2)
+        sum + (line_item.total_price * amount * 0.01).round(2)
+      end
+    end
+  end
+
+  def discount_for_customization(line_items)
+    select_function = apply_to_group == 'vest' ? 'has_vest?' : 'pick_stitching?'
+    customization_price = apply_to_group == 'vest' ? Product.vest_price : Product.pick_stitching_price
+    line_items.select { |l| l.customization.send(select_function) }.reduce(0) do |sum, line_item|
+      if discount_type == 'fixed'
+        sum + (amount > customization_price ? customization_price : amount) * line_item.quantity
+      elsif discount_type == 'percentage'
+        sum + (customization_price * amount * 0.01).round(2) * line_item.quantity
       end
     end
   end

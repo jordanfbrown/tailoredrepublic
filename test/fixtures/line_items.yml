@@ -55,3 +55,8 @@ blue_shirt:
   product: blue_shirt
   customization: shirt
   quantity: 1
+
+suit_with_vest:
+  product: executive
+  customization: vested_suit
+  quantity: 1

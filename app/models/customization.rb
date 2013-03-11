@@ -14,6 +14,6 @@ class Customization < ActiveRecord::Base
   end
 
   def has_vest?
-    vest > 0
+    !vest.nil? && vest > 0
   end
 end

@@ -10,6 +10,18 @@ suit:
   pick_stitching: false
   vest: 0
 
+vested_suit:
+  lapel: notch
+  buttons: 2
+  vents: 1
+  pleats: 0
+  pant_cuffs: false
+  fit: tailored
+  lining: black
+  monogram: JB
+  pick_stitching: false
+  vest: 3
+
 shirt:
   collar: standard
   fit: slim

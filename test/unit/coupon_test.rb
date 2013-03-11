@@ -65,6 +65,16 @@ class CouponTest < ActiveSupport::TestCase
     assert_equal discount, 100
   end
 
+  test "discount_for_category when apply_to_type='category', apply_to_group='suit', and discount_type='fixed' should work correctly when quantity > 1" do
+    coupon = coupons(:suit_category_coupon) # 50% off promotion
+    coupon.discount_type = 'fixed' # now $50
+    line_item = line_items(:one)
+    line_item.quantity = 3
+    line_item = [ line_item ]
+    discount = coupon.discount_for_category(line_item)
+    assert_equal discount, 150
+  end
+
   test "discount_for_category when apply_to_type='subcategory', apply_to_group='pocket_square', discount_type='percentage' should work correctly" do
     coupon = coupons(:pocket_square_subcategory_coupon) # 50% off promotion
     line_items = [ line_items(:pocket_square) ]
@@ -112,6 +122,22 @@ class CouponTest < ActiveSupport::TestCase
     line_items = [ line_items(:blue_shirt), line_items(:pocket_square), line_items(:one) ]
     discount = coupon.discount_for_order(line_items)
     assert_equal discount, 10
+  end
+
+  test "discount_for_customization should work for vest with a percentage discount" do
+    coupon = coupons(:vest_customization_coupon)
+    line_items = [ line_items(:suit_with_vest) ]
+    discount = coupon.discount_for_customization(line_items)
+    assert_equal discount, Product.vest_price * 0.5
+  end
+
+  test "discount_for_customization should work for vest with a percentage discount when quantity > 1" do
+    coupon = coupons(:vest_customization_coupon)
+    line_item = line_items(:suit_with_vest)
+    line_item.quantity = 3
+    line_items = [ line_item ]
+    discount = coupon.discount_for_customization(line_items)
+    assert_equal discount, (Product.vest_price * 0.5) * 3
   end
 
   test "update_amount! should reduce quantity by 1 if full value has been used for a fixed coupon and subtract discount" do
