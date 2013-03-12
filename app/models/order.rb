@@ -41,7 +41,7 @@ class Order < ActiveRecord::Base
              per_page: 20,
              order: 'created_at DESC',
              joins: 'INNER JOIN users u on user_id = u.id',
-             conditions: ['order_id like ? OR u.email like ?', "%#{search}", "%#{search}%"])
+             conditions: ['order_id like ? OR u.email like ?', "%#{search}%", "%#{search}%"])
   end
 
   def copy_line_items_from_cart(cart)
