@@ -7,6 +7,11 @@ class LineItem < ActiveRecord::Base
 
   delegate :name, :summary, :category, :default_photo, :subcategory, :fabric_id, to: :product
 
+
+  def self.sum_price(line_items)
+    line_items.map { |l| l.total_price }.sum.to_i
+  end
+
   def total_price
     # Include quantity
     calculate_price(true)
@@ -50,7 +55,8 @@ class LineItem < ActiveRecord::Base
         { option: "Pick Stitching", type:
           (customization.pick_stitching? ? "Yes (+$#{Product.pick_stitching_price})" : 'No' ) },
         { option: "Vest", type:
-          (customization.has_vest? ? "Yes, #{customization.vest} Button Vest (+$#{Product.vest_price})" : "No") }
+          (customization.has_vest? ? "Yes, #{customization.vest} Button Vest (+$#{Product.vest_price})" : "No") },
+        { option: "Monogram", type: customization.monogram.length == 0 ? "None" : "#{customization.monogram} (#{customization.monogram_color})" }
       ]
       if show_fabric_ids
         array.unshift({ option: "Fabric", type: final_fabric })

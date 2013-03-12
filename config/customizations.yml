@@ -123,6 +123,14 @@ suit:
           default: false
           image: customizations/suits/vest-five.png
           label: 5 Buttons (+$79)
+    - category: monogram
+      description: "Monogramming can be up to 15 characters, usually used for your name (i.e. \"Richard Feynman\" or \"R.P.F.\" or \"R. Feynman\"). It will show up on the inside of your jacket above the left breast pocket. Feel free to put whatever you want here, just keep in mind that people will see it when you are showing off your envy-inducing lining."
+      custom: true
+      monogram: true
+      max_length: 15
+      extra_cost: 0
+      suit_monogram: true
+      colors: [black, white, yellow, red]
 
   tuxedo:
     - category: lapel

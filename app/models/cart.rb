@@ -10,7 +10,7 @@ class Cart < ActiveRecord::Base
     if empty?
       0
     else
-      line_items.map { |c| c.total_price }.sum.to_i
+      LineItem.sum_price(line_items)
     end
   end
 

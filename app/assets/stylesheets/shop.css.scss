@@ -21,10 +21,6 @@
   }
 }
 
-#shop {
-  @include shop-texture(repeat-y);
-}
-
 #add-success-modal {
 
   img {
@@ -154,6 +150,57 @@
     }
   }
 
+  ul.monogram-colors {
+    li {
+      width: 40px;
+      height: 40px;
+      display: inline-block;
+      margin-right: 20px;
+      position: relative;
+      cursor: pointer;
+
+      .checkmark {
+        display: none;
+        position: absolute;
+        top: 4px;
+        left: 10px;
+        color: #000;
+        font-size: 24px;
+      }
+
+      &.selected .checkmark {
+        display: block;
+      }
+
+      &.black {
+        $color: #000;
+        background-color: #000;
+        border: 1px solid darken($color, 25%);
+
+        .checkmark {
+          color: #fff;
+        }
+      }
+
+      &.white {
+        $color: #fff;
+        background-color: #fff;
+        border: 1px solid darken($color, 25%);
+      }
+
+      &.red {
+        $color: #C94137;
+        background-color: #C94137;
+        border: 1px solid darken($color, 25%);
+      }
+
+      &.yellow {
+        $color: #FBF74D;
+        background-color: #FBF74D;
+        border: 1px solid darken($color, 25%);
+      }
+    }
+  }
 
   .customization-option {
     display: block;
@@ -164,7 +211,6 @@
     h5 {
       padding: 8px 15px 3px 15px;
       color: #333;
-      white-space: nowrap;
     }
 
     &.selected h5 {
@@ -189,7 +235,7 @@
     &.collar {
       height: 200px;
     }
-    
+
     @media only screen and (max-width: 767px) {
       &.lapel {
         height: 222px;
@@ -202,11 +248,8 @@
       }
     }
 
-    &.lining {
-      margin-bottom: 15px;
-      img {
-        width: 200px;
-      }
+    &.lining img {
+      width: 200px;
     }
 
     &.pick_stitching img {

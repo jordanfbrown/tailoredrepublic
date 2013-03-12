@@ -16,6 +16,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
       'click a.advance-slide': 'next'
       'click a.lining-option': 'selectLining'
       'click a.label': 'clickedLabelOnCheckout'
+      'click .monogram-colors li': 'setMonogramColor'
       'mousemove a.fabric': 'magnify'
       'submit #monogram-form': 'submitMonogram'
 
@@ -75,10 +76,9 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     _.delay @checkModalHeight, 100
 
   getTemplateData: ->
-    price = @calculatePrice()
     {
       product: @product.toJSON()
-      price: price
+      price: @calculatePrice()
       vestPrice: TR.VEST_PRICE
       pickStitchingPrice: TR.PICK_STITCHING_PRICE
       shirtMonogramPrice: TR.SHIRT_MONOGRAM_PRICE
@@ -91,7 +91,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     adders = 0
     adders += TR.VEST_PRICE if @customization.get 'vest'
     adders += TR.PICK_STITCHING_PRICE if @customization.get 'pick_stitching'
-    adders += TR.SHIRT_MONOGRAM_PRICE if @customization.hasShirtMonogram()
+    adders += TR.SHIRT_MONOGRAM_PRICE if @customization.get('monogram').length > 0 && @product.get('category') == 'shirt'
     parseFloat(@product.get 'price') + adders
 
   updateCheckoutSlide: =>
@@ -151,6 +151,13 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     $target.addClass 'selected'
     @slider.goToNextSlide()
     TR.Analytics.trackEvent 'Customizations', "Choose #{type}", option
+
+  setMonogramColor: (e) =>
+    $target = $(e.currentTarget)
+    @$('.monogram-colors li').removeClass 'selected'
+    $target.addClass 'selected'
+    color = $target.data 'color'
+    @customization.set 'monogram_color', color
 
   acceptCustomizations: (e) ->
     e.preventDefault()

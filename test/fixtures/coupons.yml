@@ -5,6 +5,7 @@ hundred_gift_card:
   description: $100 Gift Card
   quantity: 1
   amount: 100
+  apply_to_type: order
   coupon_type: gift_card
   discount_type: fixed
   begin_date: NULL
@@ -15,6 +16,7 @@ four_hundred_gift_card:
   description: $400 Gift Card
   quantity: 1
   amount: 400
+  apply_to_type: order
   coupon_type: gift_card
   discount_type: fixed
   begin_date: NULL
@@ -24,6 +26,7 @@ ten_percent_off:
   code: BQTHRSCA
   description: 10% Off Promotion
   amount: 10
+  apply_to_type: order
   quantity: 20
   coupon_type: promotion
   discount_type: percentage
@@ -34,6 +37,7 @@ expired_end_date:
   code: BQTHRSCA
   description: 10% Off Promotion
   amount: 10
+  apply_to_type: order
   quantity: 20
   coupon_type: promotion
   discount_type: percentage
@@ -44,6 +48,7 @@ hasnt_started:
   code: BQTHRSCA
   description: 10% Off Promotion
   amount: 10
+  apply_to_type: order
   quantity: 20
   coupon_type: promotion
   discount_type: percentage
@@ -55,7 +60,56 @@ zero_quantity:
   description: $100 Gift Card
   quantity: 0
   amount: 100
+  apply_to_type: order
   coupon_type: gift_card
   discount_type: fixed
+  begin_date: NULL
+  end_date: NULL
+
+suit_category_coupon:
+  code: SUITDISC
+  description: 50% off suits
+  quantity: 50
+  amount: 50
+  apply_to_type: category
+  apply_to_group: suit
+  coupon_type: promotion
+  discount_type: percentage
+  begin_date: NULL
+  end_date: NULL
+
+pocket_square_subcategory_coupon:
+  code: POCKDISC
+  description: 50% off pocket squares
+  quantity: 50
+  amount: 50
+  apply_to_type: subcategory
+  apply_to_group: pocket_square
+  coupon_type: promotion
+  discount_type: percentage
+  begin_date: NULL
+  end_date: NULL
+
+blue_shirt_product_coupon:
+  code: BLUESHIR
+  description: 50% off blue shirt
+  quantity: 50
+  amount: 50
+  apply_to_type: product
+  apply_to_product: blue_shirt
+  coupon_type: promotion
+  discount_type: percentage
+  begin_date: NULL
+  end_date: NULL
+
+vest_customization_coupon:
+  code: VESTOFF
+  description: 50% off vest
+  quantity: 50
+  amount: 50
+  apply_to_type: customization
+  apply_to_group: vest
+  coupon_type: promotion
+  discount_type: percentage
   begin_date: NULL
   end_date: NULL

@@ -9,7 +9,8 @@ class CouponsControllerTest < ActionController::TestCase
       quantity: 1,
       amount: 200,
       coupon_type: 'promotion',
-      discount_type: 'fixed'
+      discount_type: 'fixed',
+      apply_to_type: 'order'
     }
   end
 

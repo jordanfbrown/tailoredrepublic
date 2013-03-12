@@ -1,6 +1,8 @@
 class CouponsController < ApplicationController
   load_and_authorize_resource
 
+  before_filter :load_products, only: [:new, :edit, :update, :create]
+
   # GET /coupons
   # GET /coupons.json
   def index
@@ -71,4 +73,9 @@ class CouponsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+    def load_products
+      @products = Product.order('category ASC, name ASC')
+    end
 end

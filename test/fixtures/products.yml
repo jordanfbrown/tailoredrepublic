@@ -115,6 +115,7 @@ blue_shirt:
 
 coral_pocket_square:
   category: accessory
+  subcategory: pocket_square
   name: Coral Pocket Square
   description: Coral Square
   price: 20
@@ -122,6 +123,7 @@ coral_pocket_square:
 
 green_pocket_square:
   category: accessory
+  subcategory: pocket_square
   name: Green Pocket Square
   description: Green Square
   price: 20

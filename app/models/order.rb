@@ -63,12 +63,8 @@ class Order < ActiveRecord::Base
     end
   end
 
-  def line_item_total
-    line_items.map { |c| c.total_price }.sum.to_i
-  end
-
   def cost_before_tax
-    total = line_item_total
+    total = LineItem.sum_price(line_items)
 
     unless coupon.nil?
       discount = calculate_discount
@@ -104,7 +100,7 @@ class Order < ActiveRecord::Base
     if coupon.nil?
       0
     else
-      coupon.calculate_discount(line_item_total)
+      coupon.calculate_discount(line_items)
     end
   end
 

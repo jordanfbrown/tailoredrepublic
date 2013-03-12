@@ -46,3 +46,17 @@ seven:
   order: shirt_order
   customization: shirt
   quantity: 1
+
+pocket_square:
+  product: coral_pocket_square
+  quantity: 1
+
+blue_shirt:
+  product: blue_shirt
+  customization: shirt
+  quantity: 1
+
+suit_with_vest:
+  product: executive
+  customization: vested_suit
+  quantity: 1
