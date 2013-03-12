@@ -154,9 +154,6 @@
     }
   }
 
-  .options-wrapper {
-    text-align: center;
-  }
 
   .customization-option {
     display: block;
@@ -167,6 +164,7 @@
     h5 {
       padding: 8px 15px 3px 15px;
       color: #333;
+      white-space: nowrap;
     }
 
     &.selected h5 {
@@ -205,9 +203,7 @@
     }
 
     &.lining {
-      display: inline-block;
-      float: none;
-
+      margin-bottom: 15px;
       img {
         width: 200px;
       }

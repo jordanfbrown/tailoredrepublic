@@ -347,17 +347,17 @@ function program10(depth0,data) {
 function program12(depth0,data) {
   
   var buffer = "", stack1, foundHelper;
-  buffer += "\n          <div class=\"options-wrapper\">\n            ";
+  buffer += "\n          ";
   stack1 = depth0.options;
   foundHelper = helpers.eachProperty;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.programWithDepth(program13, data, depth0),data:data}) : helperMissing.call(depth0, "eachProperty", stack1, {hash:{},inverse:self.noop,fn:self.programWithDepth(program13, data, depth0),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n          </div>\n        ";
+  buffer += "\n        ";
   return buffer;}
 function program13(depth0,data,depth1) {
   
   var buffer = "", stack1, foundHelper;
-  buffer += "\n              <a href=\"#\" class=\"customization-option ";
+  buffer += "\n            <a href=\"#\" class=\"customization-option ";
   stack1 = depth1.options;
   foundHelper = helpers.numColumns;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{},data:data}) : helperMissing.call(depth0, "numColumns", stack1, {hash:{},data:data});
@@ -373,21 +373,21 @@ function program13(depth0,data,depth1) {
   foundHelper = helpers.property;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.property; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\">\n                <h5>";
+  buffer += escapeExpression(stack1) + "\">\n              <h5>";
   stack1 = depth0.value;
   stack1 = stack1 == null || stack1 === false ? stack1 : stack1.label;
   stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(18, program18, data),fn:self.program(16, program16, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "</h5>\n                <img src=\"";
+  buffer += "</h5>\n              <img src=\"";
   stack1 = depth0.value;
   stack1 = stack1 == null || stack1 === false ? stack1 : stack1.image;
   foundHelper = helpers.imgSrc;
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{},data:data}) : helperMissing.call(depth0, "imgSrc", stack1, {hash:{},data:data});
-  buffer += escapeExpression(stack1) + "\">\n                ";
+  buffer += escapeExpression(stack1) + "\">\n              ";
   stack1 = depth1.no_recommendation;
   stack1 = helpers.unless.call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(20, program20, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n              </a>\n            ";
+  buffer += "\n            </a>\n          ";
   return buffer;}
 function program14(depth0,data) {
   
@@ -417,20 +417,20 @@ function program18(depth0,data) {
 function program20(depth0,data) {
   
   var buffer = "", stack1;
-  buffer += "\n                  ";
+  buffer += "\n                ";
   stack1 = depth0.value;
   stack1 = stack1 == null || stack1 === false ? stack1 : stack1['default'];
   stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(21, program21, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n                ";
+  buffer += "\n              ";
   return buffer;}
 function program21(depth0,data) {
   
   var buffer = "", stack1, foundHelper;
-  buffer += "\n                    <div class=\"recommended\">\n                      <img src=\"";
+  buffer += "\n                  <div class=\"recommended\">\n                    <img src=\"";
   foundHelper = helpers.imgSrc;
   stack1 = foundHelper ? foundHelper.call(depth0, "logos/logo-stitch.png", {hash:{},data:data}) : helperMissing.call(depth0, "imgSrc", "logos/logo-stitch.png", {hash:{},data:data});
-  buffer += escapeExpression(stack1) + "\" class=\"shield\"><span>Recommended</span>\n                    </div>\n                  ";
+  buffer += escapeExpression(stack1) + "\" class=\"shield\"><span>Recommended</span>\n                  </div>\n                ";
   return buffer;}
 
 function program23(depth0,data) {

@@ -52,6 +52,7 @@ Handlebars.registerHelper 'numColumns', (context) ->
     when 2 then 'six'
     when 3 then 'four'
     when 4 then 'three'
+    else 'three'
 
 Handlebars.registerHelper 'ifNotEq', (a, b, options) ->
   if a == b
