@@ -260,6 +260,7 @@ class TR.Views.Measurements extends TR.Views.Base
 
     if ageWeightHeightValid && measurementsValid
       TR.Analytics.trackEvent 'Measurements', 'Accept'
+      mixpanel.track 'Accepted Measurements'
       $form.find('.error-list').empty()
       @slider.triggerResize(true)
       if @model.hasDefaultAttributes()

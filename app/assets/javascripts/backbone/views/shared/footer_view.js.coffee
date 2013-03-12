@@ -33,6 +33,7 @@ class TR.Views.Footer extends TR.Views.Base
     false
     
   subscribeSuccess: =>
+    mixpanel.track 'Subscribed to Newsletter'
     @confirmDialog = new TR.Views.DialogModal
       text: 'A subscription request to become a Tailored Republic Affiliate has been sent to your email. Please check your email to confirm your subscription.',
       confirmText: 'Ok'

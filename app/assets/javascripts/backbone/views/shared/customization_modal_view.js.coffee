@@ -189,6 +189,12 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     @updateCustomization() if @checkButtonState $(e.currentTarget)
 
   addSuccess: (response) =>
+    mixpanel.track 'Added Product to Cart', {
+      product: @product.get('name')
+      price: @product.get('price')
+      category: @product.get('category')
+      subcategry: @product.get('subcategory')
+    }
     TR.Analytics.trackEvent 'LineItems', 'Add', @product.get('name')
     TR.Events.trigger 'addedLineItem', product: @product
     new TR.Views.AddSuccessModal({model: @product})

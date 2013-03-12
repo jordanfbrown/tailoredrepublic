@@ -23,6 +23,14 @@ window.TR =
 
   Analytics:
     trackTransaction: (order, lineItems, address) ->
+      mixpanel.track 'Completed an Order', {
+        'Number of items': lineItems.length
+        'Final cost': order.final_cost
+        'Tax': order.tax
+        'City': order.city
+        'State': order.state
+      }
+
       _gaq.push [
         '_addTrans'
         order.order_id # Transaction ID
