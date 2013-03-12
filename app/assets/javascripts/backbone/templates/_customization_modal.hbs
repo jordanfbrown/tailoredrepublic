@@ -50,19 +50,21 @@
             </div>
           {{/if}}
         {{else}}
-          {{#eachProperty this.options}}
-            <a href="#" class="customization-option {{numColumns ../this.options}} {{#if value.selected}}selected{{/if}} {{../this.category}}" data-option="{{property}}">
-              <h5>{{#if value.label}} {{value.label}} {{else}} {{titleizeWithNumbers property}} {{/if}}</h5>
-              <img src="{{imgSrc value.image}}">
-              {{#unless ../this.no_recommendation}}
-                {{#if value.default}}
-                  <div class="recommended">
-                    <img src="{{imgSrc "logos/logo-stitch.png"}}" class="shield"><span>Recommended</span>
-                  </div>
-                {{/if}}
-              {{/unless}}
-            </a>
-          {{/eachProperty}}
+          <div class="options-wrapper">
+            {{#eachProperty this.options}}
+              <a href="#" class="customization-option {{numColumns ../this.options}} {{#if value.selected}}selected{{/if}} {{../this.category}}" data-option="{{property}}">
+                <h5>{{#if value.label}} {{value.label}} {{else}} {{titleizeWithNumbers property}} {{/if}}</h5>
+                <img src="{{imgSrc value.image}}">
+                {{#unless ../this.no_recommendation}}
+                  {{#if value.default}}
+                    <div class="recommended">
+                      <img src="{{imgSrc "logos/logo-stitch.png"}}" class="shield"><span>Recommended</span>
+                    </div>
+                  {{/if}}
+                {{/unless}}
+              </a>
+            {{/eachProperty}}
+          </div>
         {{/if}}
       </li>
     {{/each}}

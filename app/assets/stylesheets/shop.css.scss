@@ -154,40 +154,8 @@
     }
   }
 
-  .linings {
-    img {
-      width: 150px;
-      padding: 5px;
-      border: 1px solid transparent;
-    }
-    
-    .three {
-      @media only screen and (max-width: 767px) {
-        width: 50% !important;
-        float: left !important;
-      }
-    }
-
-    .lining-option {
-      display: block;
-      text-align: center;
-      padding: 5px;
-
-
-      &.selected img {
-        border: 1px dashed #aaa;
-      }
-    }
-
-    .label {
-      display: block;
-      font-weight: normal;
-    }
-
-    .button-row {
-      text-align: center;
-      margin: 15px;
-    }
+  .options-wrapper {
+    text-align: center;
   }
 
   .customization-option {
@@ -223,7 +191,7 @@
     &.collar {
       height: 200px;
     }
-
+    
     @media only screen and (max-width: 767px) {
       &.lapel {
         height: 222px;
@@ -236,8 +204,13 @@
       }
     }
 
-    &.lining img {
-      width: 200px;
+    &.lining {
+      display: inline-block;
+      float: none;
+
+      img {
+        width: 200px;
+      }
     }
 
     &.pick_stitching img {

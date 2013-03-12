@@ -82,6 +82,18 @@ suit:
         navy:
           default: false
           image: customizations/suits/linings/navy.jpg
+        black-blue-paisley:
+          default: false
+          image: customizations/suits/linings/black-blue-paisley.jpg
+        black-paisley:
+          default: false
+          image: customizations/suits/linings/black-paisley.jpg
+        cream-paisley:
+          default: false
+          image: customizations/suits/linings/cream-paisley.jpg
+        purple-paisley:
+          default: false
+          image: customizations/suits/linings/purple-paisley.jpg
     - category: pick_stitching
       description: "Pick stitching really emphasizes the stitching on your suit making it clear that you went with a tailored option. This is a fairly bold look, so we recommend opting out unless you are familiar with the look and know you want it."
       options:
