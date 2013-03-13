@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130311205319) do
+ActiveRecord::Schema.define(:version => 20130312225224) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -165,6 +165,17 @@ ActiveRecord::Schema.define(:version => 20130311205319) do
     t.string   "fabric_id"
   end
 
+  create_table "referrals", :force => true do |t|
+    t.integer  "referrer_id"
+    t.integer  "referee_id"
+    t.string   "status"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "referrals", ["referee_id", "referrer_id"], :name => "index_referrals_on_referee_id_and_referrer_id"
+  add_index "referrals", ["referrer_id", "referee_id"], :name => "index_referrals_on_referrer_id_and_referee_id"
+
   create_table "schedule_tailor_requests", :force => true do |t|
     t.string   "email"
     t.string   "ip_address"
@@ -200,6 +211,7 @@ ActiveRecord::Schema.define(:version => 20130311205319) do
     t.string   "name"
     t.string   "stripe_customer_id"
     t.string   "role"
+    t.integer  "referral_credit",        :default => 0
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  referrer_id: 1
+  referee_id: 1
+  status: MyString
+
+two:
+  referrer_id: 1
+  referee_id: 1
+  status: MyString

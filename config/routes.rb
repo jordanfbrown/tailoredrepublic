@@ -41,6 +41,11 @@ TailoredRepublic::Application.routes.draw do
       get 'thank_you', path: 'thank-you'
     end
   end
+  resources :referrals, only: [:index] do
+    collection do
+      get 'invite/:referral_code', :action => 'invite'
+    end
+  end
 
   match '/shop/:category' => 'shop#index'
   match '/gift-cards' => 'shop#gift_cards', :as => 'gift_cards'

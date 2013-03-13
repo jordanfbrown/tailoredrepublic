@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   has_one :shipping_address, as: :addressable, validate: true
   has_one :billing_address, as: :addressable, validate: true
   has_many :orders
+  has_many :referrals, class_name: 'Referral', foreign_key: 'referrer_id'
+  has_one :referred_by, class_name: 'Referral', foreign_key: 'referee_id'
 
   attr_accessible :name, :email, :password, :remember_me
   attr_accessible :name, :email, :password, :remember_me, :shipping_address_attributes, :billing_address_attributes,
@@ -21,11 +23,24 @@ class User < ActiveRecord::Base
 
   ROLES = %w(user admin)
 
+  def self.find_by_referral_code(code)
+    find(code.split('_')[1])
+  end
+
   def self.new_from_params_and_measurement(params, measurement)
     params[:user].merge!(params[:order])
     user = User.new(params[:user])
     user.measurement = measurement
     user
+  end
+
+  def add_referrer(referrer_id)
+    referrer = User.find(referrer_id)
+    unless referrer.nil?
+      create_referred_by(referrer_id: referrer_id, status: 'Account Created')
+    end
+    self.referral_credit += Referral.credit_amount
+    self.save
   end
 
   def build_order(cart)
