@@ -33,7 +33,10 @@
                 </li>
               <% end %>
             <% end %>
-            <% unless order.coupon.blank? %>
+            <% unless order.referral_discount.nil? %>
+              <li><span class="item-description">Referral Credit:</span> -<%= number_to_currency order.referral_discount %></li>
+            <% end %>
+            <% unless order.coupon.nil? %>
               <li><span class="item-description"><%= order.coupon_description %> (Discount):</span> -<%= number_to_currency order.discount %></li>
             <% end %>
             <li><span class="item-description">Shipping:</span> $0.00</li>

@@ -7,4 +7,17 @@ class Referral < ActiveRecord::Base
   def self.credit_amount
     20
   end
+
+  STATUS_CREATED = 'Account Created'
+  STATUS_COMPLETED = 'Purchase Completed'
+
+  def order_completed
+    if status == STATUS_CREATED
+      self.status = STATUS_COMPLETED
+      save
+
+      referrer.referral_credit += 20
+      referrer.save
+    end
+  end
 end

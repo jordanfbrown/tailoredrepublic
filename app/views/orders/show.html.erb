@@ -66,7 +66,12 @@
     <ul>
       <li>Items: <%= number_to_currency LineItem.sum_price(@order.line_items) %></li>
       <li>Tax: <%= number_to_currency @order.tax %></li>
-      <li>Discount: <%= @order.discount.nil? ? '$0.00' : number_to_currency(@order.discount) %></li>
+      <% unless @order.discount.nil? %>
+        <li>Coupon Discount: -<%= number_to_currency(@order.discount) %></li>
+      <% end %>
+      <% unless @order.referral_discount.nil? %>
+        <li>Referral Discount: -<%= number_to_currency(@order.referral_discount) %></li>
+      <% end %>
       <li>Final cost: <%= number_to_currency @order.final_cost %></li>
     </ul>
   </div>

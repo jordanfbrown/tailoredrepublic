@@ -167,6 +167,34 @@ class OrdersControllerTest < ActionController::TestCase
     assert_equal assigns(:order).order_id[0, 2], 'or'
   end
 
+  test "A user with a referral credit should get a discount equal to their referral credit on their order. After their
+        order is complete, their referral credit should be set to 0." do
+    set_one_suit_cart_cookie
+    user = users(:user_with_referral_credit)
+    sign_in :user, user
+    post :create, {
+      order: @order_params,
+      card_radio: 'use_saved_card'
+    }
+    assert_equal user.referral_credit, assigns(:order).referral_discount
+    user.reload
+    assert_equal user.referral_credit, 0
+  end
+
+  test "When a referred user makes their first purchase, the referrer should be credited $20 and the referral status
+        should be updated" do
+    set_one_suit_cart_cookie
+    user = users(:user_with_referral_credit)
+    sign_in :user, user
+    post :create, {
+      order: @order_params,
+      card_radio: 'use_saved_card'
+    }
+    referral = user.referred_by
+    assert_equal referral.referrer.referral_credit, 20
+    assert_equal referral.status, Referral::STATUS_COMPLETED
+  end
+
   test "an admin should be able to get admin route" do
     sign_in :user, users(:admin)
     get :admin

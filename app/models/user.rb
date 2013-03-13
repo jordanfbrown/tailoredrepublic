@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
   def add_referrer(referrer_id)
     referrer = User.find(referrer_id)
     unless referrer.nil?
-      create_referred_by(referrer_id: referrer_id, status: 'Account Created')
+      create_referred_by(referrer_id: referrer_id, status: Referral::STATUS_CREATED)
     end
     self.referral_credit += Referral.credit_amount
     self.save

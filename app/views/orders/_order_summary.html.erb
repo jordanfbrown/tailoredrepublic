@@ -6,6 +6,9 @@
         <li><span class="label"><%= line_item.quantity %> x <%= line_item.name %>:</span>
           <%= number_to_currency line_item.total_price %></li>
       <% end %>
+      <% unless @user.referral_credit.nil? || @user.referral_credit == 0 %>
+        <li class="total"><span class="label">Referral Credit</span> -<%= number_to_currency @user.referral_credit %></li>
+      <% end %>
       <% unless order.coupon.nil? || order.calculate_discount == 0 %>
         <li class="total"><span class="label"><%= order.coupon_description %>:</span> -<%= number_to_currency order.calculate_discount %></li>
       <% end %>
