@@ -398,3 +398,8 @@ p.centered {
   margin-right: 5px;
   @include button;
 }
+
+#habla_window_div #habla_topbar_div {
+  background: #000000 none repeat scroll 0 0 !important;
+  border: 1px solid #fff;
+}
