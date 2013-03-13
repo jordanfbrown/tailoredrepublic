@@ -29,6 +29,8 @@ class TR.Views.Measurements extends TR.Views.Base
     measuringTapeInches = 90
     @pixelsPerInch = measuringTapePixels / measuringTapeInches
 
+    mixpanel.track 'Viewed Measurements', { 'New User': @model.isNew() }
+
     @slider = @$('.measurements-list').bxSlider
       pager: off
       controls: off
@@ -210,6 +212,9 @@ class TR.Views.Measurements extends TR.Views.Base
     @model.save({}, {silent: true}).then(@saveSuccess, @saveError)
 
   saveSuccess: =>
+    TR.Analytics.trackEvent 'Measurements', 'Accept'
+    mixpanel.track 'Accepted Measurements'
+
     if @lineItemCount > 0
       window.location.href = '/orders/new'
     else if @lineItemCount == 0 && @signedIn
@@ -259,8 +264,6 @@ class TR.Views.Measurements extends TR.Views.Base
     measurementsValid = @validateMeasurements($form)
 
     if ageWeightHeightValid && measurementsValid
-      TR.Analytics.trackEvent 'Measurements', 'Accept'
-      mixpanel.track 'Accepted Measurements'
       $form.find('.error-list').empty()
       @slider.triggerResize(true)
       if @model.hasDefaultAttributes()

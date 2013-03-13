@@ -14,6 +14,7 @@ class TR.Views.Cart extends TR.Views.Base
     @lineItems = new TR.Collections.LineItems options.lineItems
     @lineItems.on 'change remove', @updatePrices
     TR.Events.on 'closeCustomizationModal', @setModalOpen
+    mixpanel.track 'Viewed Cart'
     @$('select').customSelect()
 
   toggleCustomizations: (e) ->

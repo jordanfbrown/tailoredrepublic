@@ -35,6 +35,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     $(document).on 'keydown.customization', @keydown
     $(window).on 'resize.customization', @resize
     @resize()
+    mixpanel.track 'Clicked Customize', { product: @product.get('name') }
     TR.Analytics.trackEvent 'Customizations', 'View', @product.get('name')
 
     @slider = @$('.customization-list').bxSlider

@@ -12,6 +12,7 @@ class TR.Views.Order extends TR.Views.Base
     @cardInfo = options.cardInfo || false
     TR.setStripeKey()
     @$('#user_password').showPassword()
+    mixpanel.track 'Viewed Order Page'
 
   submitOrder: (e) ->
     if @validateForm()

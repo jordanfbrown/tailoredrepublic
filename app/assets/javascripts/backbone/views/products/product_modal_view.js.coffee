@@ -19,6 +19,7 @@ class TR.Views.ProductModal extends TR.Views.Modal
     $(window).on 'resize.product', @resize
     @resize()
     @render()
+    mixpanel.track 'Viewed Product', { product: @product.get('name') }
     TR.Analytics.trackEvent 'Products', 'View', @model.get('name')
 
   render: ->
