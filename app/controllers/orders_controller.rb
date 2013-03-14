@@ -156,6 +156,7 @@ class OrdersController < ApplicationController
       @order.save!
     end
 
+    session[:account_created] = true if params[:user]
     session[:order_id] = @order.id
     redirect_to :thank_you_orders
   rescue Stripe::StripeError => e

@@ -33,6 +33,7 @@ class RegistrationsController < Devise::RegistrationsController
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up if is_navigational_format?
         sign_in(resource_name, resource)
+        session[:account_created] = true
         if request.xhr?
           unless params[:measurement_id].blank?
             measurement = Measurement.find(params[:measurement_id])

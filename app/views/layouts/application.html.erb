@@ -76,6 +76,11 @@
         new TR.Views.Nav({user: <%= @user_data.to_json.html_safe %>});
         new TR.Views.Footer();
       });
+      <% if session.has_key?(:account_created) && session[:account_created] == true %>
+        TR.Analytics.trackEvent('Accounts', 'Created');
+        mixpanel.track('Account Created');
+        <% session.delete(:account_created) %>
+      <% end %>
     </script>
     <script type="text/javascript">
       setTimeout(function(){var a=document.createElement("script");
