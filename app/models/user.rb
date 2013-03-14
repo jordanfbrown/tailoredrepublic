@@ -1,7 +1,4 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
-  # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -36,7 +33,7 @@ class User < ActiveRecord::Base
   end
 
   def referral_code
-    name.split(' ')[0] + '_' + id.to_s
+    first_name + '_' + id.to_s
   end
 
   def referral_url
@@ -47,9 +44,9 @@ class User < ActiveRecord::Base
     referrer = User.find(referrer_id)
     unless referrer.nil?
       create_referred_by(referrer_id: referrer_id, status: Referral::STATUS_CREATED)
+      self.referral_credit += Referral.credit_amount
+      self.save
     end
-    self.referral_credit += Referral.credit_amount
-    self.save
   end
 
   def build_order(cart)

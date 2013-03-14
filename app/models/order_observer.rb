@@ -13,7 +13,7 @@ class OrderObserver < ActiveRecord::Observer
       user.save
 
       referral = user.referred_by
-      referral.order_completed
+      referral.order_completed unless referral.nil?
     end
   end
 end

@@ -71,7 +71,7 @@ class Order < ActiveRecord::Base
       total -= discount
     end
 
-    unless user.referral_credit.nil? || user.referral_credit == 0
+    unless user.nil? || user.referral_credit.nil? || user.referral_credit == 0
       total -= user.referral_credit
     end
 

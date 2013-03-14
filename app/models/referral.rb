@@ -16,7 +16,7 @@ class Referral < ActiveRecord::Base
       self.status = STATUS_COMPLETED
       save
 
-      referrer.referral_credit += 20
+      referrer.referral_credit += Referral.credit_amount
       referrer.save
     end
   end
