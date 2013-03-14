@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
     name.split(' ')[0] + '_' + id.to_s
   end
 
-  def referral_path
+  def referral_url
     "https://www.tailoredrepublic.com/referrals/invite/#{referral_code}"
   end
 

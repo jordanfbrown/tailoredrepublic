@@ -1,13 +1,18 @@
+<script src='http://connect.facebook.net/en_US/all.js'></script>
+
 <div class="content-wrapper">
   <h2>Referrals</h2>
 
   <div class="outlined">
     <h4>You have <strong><%= number_to_currency @user.referral_credit %></strong> in referral credits.</h4>
     <p>For every friend you refer who makes a purchase, we will reward you with a $20 referral credit. Your friend will
-    also receive a $20 credit just for creating an account!</p>
+    also receive a $20 credit just for creating an account.</p>
     <p>To refer a friend, simply share the below link with any of your friends:</p>
-    <textarea readonly><%= @user.referral_path %></textarea>
-    <p>Share on Facebook or Twitter</p>
+    <textarea rows="1" readonly><%= @user.referral_url %></textarea>
+    <p><a href="#" class="facebook"><%= image_tag 'icons/social/facebook-share.jpg' %></a> or
+        <a href="https://twitter.com/share?url=<%= @user.referral_url %>&text=Check out Tailored Republic!&related=t_republic" class="twitter">
+          <i></i><span>Tweet</span>
+        </a>
   </div>
 
   <div class="outlined">
@@ -49,9 +54,5 @@
 </div>
 
 <script>
-  $(function() {
-    $('form').on('submit', function() {
-      mixpanel.track('Referral Email Sent');
-    });
-  });
+  new TR.Views.Referrals({referralUrl: '<%= @user.referral_url %>'});
 </script>

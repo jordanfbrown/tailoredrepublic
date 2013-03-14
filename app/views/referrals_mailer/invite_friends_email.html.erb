@@ -17,7 +17,7 @@
         <td colspan="2" style="color: #000000;font-size: 14px;font-family: Verdana,Helvetica,Arial,sans-serif;">
           <p>Your friend <%= @user.name %> thinks that you should check out Tailored Republic. If you sign up for an
           account using the link below, we will hook you up with a $20 credit good for any purchase!</p>
-          <p><%= link_to @user.referral_path, @user.referral_path %></p>
+          <p><%= link_to @user.referral_url, @user.referral_url %></p>
           <% unless message.blank? %>
             <p>
               Your friend included a message:</br>
