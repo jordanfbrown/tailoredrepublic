@@ -7,8 +7,8 @@ class User < ActiveRecord::Base
   has_one :billing_address, as: :addressable, validate: true
   has_many :referral_emails
   has_many :orders
-  has_many :referrals, class_name: 'Referral', foreign_key: 'referrer_id'
-  has_one :referred_by, class_name: 'Referral', foreign_key: 'referee_id'
+  has_many :referrals, class_name: 'Referral', foreign_key: 'referrer_id', dependent: :delete_all
+  has_one :referred_by, class_name: 'Referral', foreign_key: 'referee_id', dependent: :delete
 
   attr_accessible :name, :email, :password, :remember_me
   attr_accessible :name, :email, :password, :remember_me, :shipping_address_attributes, :billing_address_attributes,
@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   ROLES = %w(user admin)
 
   def self.find_by_referral_code(code)
-    find(code.split('_')[1])
+    find(code.split('-')[1])
   end
 
   def self.new_from_params_and_measurement(params, measurement)
@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
   end
 
   def referral_code
-    first_name + '_' + id.to_s
+    first_name + '-' + id.to_s
   end
 
   def referral_url

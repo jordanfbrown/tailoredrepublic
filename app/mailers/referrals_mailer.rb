@@ -7,4 +7,20 @@ class ReferralsMailer < ActionMailer::Base
     mail bcc: recipients, subject: 'Invitation to check out Tailored Republic'
   end
 
+  def purchase_completed_email(referral)
+    @referrer = referral.referrer
+    @referee = referral.referee
+    # TODO: switch email
+    mail to: 'jordan@tailoredrepublic.com', subject: "You've Earned Tailored Republic Referral Credit"
+    #mail to: @referrer.email, subject: "You've Earned Tailored Republic Referral Credit"
+  end
+
+  def account_created_email(referral)
+    @referrer = referral.referrer
+    @referee = referral.referee
+    # TODO: switch email
+    mail to: 'jordan@tailoredrepublic.com', subject: "You've Earned Tailored Republic Referral Credit"
+    #mail to: @referee.email, subject: "You've Earned Tailored Republic Referral Credit"
+  end
+
 end

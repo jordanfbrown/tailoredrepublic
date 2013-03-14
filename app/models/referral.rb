@@ -13,11 +13,11 @@ class Referral < ActiveRecord::Base
 
   def order_completed
     if status == STATUS_CREATED
-      self.status = STATUS_COMPLETED
-      save
-
       referrer.referral_credit += Referral.credit_amount
       referrer.save
+
+      self.status = STATUS_COMPLETED
+      save
     end
   end
 end

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html">
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <head>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
@@ -15,17 +15,18 @@
       </tr>
       <tr>
         <td colspan="2" style="color: #000000;font-size: 14px;font-family: Verdana,Helvetica,Arial,sans-serif;">
-          <p>Your friend <%= @user.name %> thinks that you would look sharp sporting a Tailored Republic custom,
-            tailored suit. If you sign up for an account using the link below, we will hook you up with a $20 credit
-            good towards your first suit!</p>
-          <p><%= link_to @user.referral_url, @user.referral_url %></p>
-          <% unless @message.blank? %>
-            <p>
-              Your friend included a message:</br>
-              <%= @message %>
-            </p>
-          <% end %>
-          <p>Feel free to check out Tailored Republic via any of the social media outlets below:</p>
+          <p>Hey <%= @referrer.first_name %>,</p>
+          <p>Your friend <%= @referee.name %> has just made his first Tailored Republic purchase. As a thanks for
+            helping your friend look almost as good as you, we have credited you with $<%= Referral.credit_amount %>
+            that will automatically be applied as a discount on your next suit purchase. You now have a total
+            of $<%= @referrer.referral_credit %> in referral credit. Keep the referrals coming and we will keep hooking
+            you up.</p>
+          <p>Start customizing your next suit here:
+            <%= link_to 'https://www.tailoredrepublic.com/shop/suits', 'https://www.tailoredrepublic.com/shop/suits' %>
+          </p>
+          <p>Stay dapper,<br/>
+            The Tailored Republic Team
+          </p>
         </td>
       </tr>
       <%= render 'shared/email_social_media_dock' %>
