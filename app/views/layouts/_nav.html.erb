@@ -39,6 +39,7 @@
             <li><%= link_to 'Settings', edit_user_registration_path %></li>
             <li><%= link_to 'Measurements', measurements_path %></li>
             <li><%= link_to 'Order History', '/orders' %></li>
+            <li><%= link_to 'Referrals', referrals_path %></li>
             <% if current_user.role == 'admin' %>
               <li class="has-dropdown"><a href="#">Admin</a>
                 <ul class="dropdown">

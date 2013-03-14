@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_one :measurement
   has_one :shipping_address, as: :addressable, validate: true
   has_one :billing_address, as: :addressable, validate: true
+  has_many :referral_emails
   has_many :orders
   has_many :referrals, class_name: 'Referral', foreign_key: 'referrer_id'
   has_one :referred_by, class_name: 'Referral', foreign_key: 'referee_id'
@@ -32,6 +33,14 @@ class User < ActiveRecord::Base
     user = User.new(params[:user])
     user.measurement = measurement
     user
+  end
+
+  def referral_code
+    name.split(' ')[0] + '_' + id.to_s
+  end
+
+  def referral_path
+    "https://www.tailoredrepublic.com/referrals/invite/#{referral_code}"
   end
 
   def add_referrer(referrer_id)

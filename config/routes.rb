@@ -44,6 +44,7 @@ TailoredRepublic::Application.routes.draw do
   resources :referrals, only: [:index] do
     collection do
       get 'invite/:referral_code', :action => 'invite'
+      post 'email-friends', :action => 'email_friends'
     end
   end
 

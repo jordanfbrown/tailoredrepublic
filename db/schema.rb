@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130313180607) do
+ActiveRecord::Schema.define(:version => 20130313230428) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -165,6 +165,16 @@ ActiveRecord::Schema.define(:version => 20130313180607) do
     t.string   "subcategory"
     t.string   "fabric_id"
   end
+
+  create_table "referral_emails", :force => true do |t|
+    t.string   "email_addresses"
+    t.string   "message",         :limit => 500
+    t.integer  "user_id"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  add_index "referral_emails", ["user_id"], :name => "index_referral_emails_on_user_id"
 
   create_table "referrals", :force => true do |t|
     t.integer  "referrer_id"

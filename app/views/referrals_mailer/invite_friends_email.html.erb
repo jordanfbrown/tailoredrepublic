@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+</head>
+<body style="color: #000000;font-size: 14px;font-family: Verdana,Helvetica,Arial,sans-serif;">
+<table width="100%" id="background" border="0" cellpadding="0" cellspacing="0">
+  <tr><td align="center" valign="top" style="color: #000000;font-size: 14px;font-family: Verdana,Helvetica,Arial,sans-serif;">
+    <table width="650" id="main" border="0" cellpadding="0" cellspacing="20">
+      <tr>
+        <td id="header" colspan="2" style="color: #000000;font-size: 14px;font-family: Verdana,Helvetica,Arial,sans-serif;">
+          <a href="https://www.tailoredrepublic.com"><img src="https://d195zx82sfk1xc.cloudfront.net/assets/logos/logo-shield.png" width="443" height="66" alt="Tailored Republic"></a>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" style="color: #000000;font-size: 14px;font-family: Verdana,Helvetica,Arial,sans-serif;">
+          <p>Your friend <%= @user.name %> thinks that you should check out Tailored Republic. If you sign up for an
+          account using the link below, we will hook you up with a $20 credit good for any purchase!</p>
+          <p><%= link_to @user.referral_path, @user.referral_path %></p>
+          <% unless message.blank? %>
+            <p>
+              Your friend included a message:</br>
+              <%= @message %>
+            </p>
+          <% end %>
+          <p>Feel free to check out Tailored Republic via any of the icons below:</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" style="color: #000000;font-size: 14px;font-family: Verdana,Helvetica,Arial,sans-serif;">
+          <ul style="list-style-type: none; list-style: none;margin: 0;padding:0; text-align: center;">
+            <a href="http://www.facebook.com/TailoredRepublic" target="_blank" style="text-decoration: none;">
+              <li style="display: inline-block;"><img src="https://d195zx82sfk1xc.cloudfront.net/assets/icons/social/facebook-icon-black.png" width="60" height="60" alt="Facebook"></li>
+            </a>
+            <a href="https://twitter.com/T_Republic" target="_blank" style="text-decoration: none;">
+              <li style="display: inline-block;"><img src="https://d195zx82sfk1xc.cloudfront.net/assets/icons/social/twitter-icon-black.png" width="60" height="60" alt="Twitter"></li>
+            </a>
+            <a href="mailto:info@tailoredrepublic.com" style="text-decoration: none;">
+              <li style="display: inline-block;"><img src="https://d195zx82sfk1xc.cloudfront.net/assets/icons/social/email-icon-black.png" width="60" height="60" alt="Email"></li>
+            </a>
+            <a href="http://instagram.com/tailoredrepublic" target="_blank" style="text-decoration: none;">
+              <li style="display: inline-block;"><img src="https://d195zx82sfk1xc.cloudfront.net/assets/icons/social/instagram-icon-black.png" width="60" height="60" alt="Instagram"></li>
+            </a>
+            <a href="http://blog.tailoredrepublic.com" target="_blank" style="text-decoration: none;">
+              <li style="display: inline-block;"><img src="https://d195zx82sfk1xc.cloudfront.net/assets/icons/social/tumblr-icon-black.png" width="60" height="60" alt="Blog"></li>
+            </a>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td id="footer" colspan="2" align="center" style="color: #555555;font-size: 11px;font-family: Verdana,Helvetica,Arial,sans-serif;">
+          <p>&copy;2013 Tailored Republic // <%= link_to 'www.tailoredrepublic.com', 'https://www.tailoredrepublic.com' %></p>
+        </td>
+      </tr>
+    </table>
+  </td></tr>
+</table>
+</body>
+</html>

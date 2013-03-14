@@ -398,3 +398,7 @@ p.centered {
   margin-right: 5px;
   @include button;
 }
+
+textarea {
+  resize: none;
+}
