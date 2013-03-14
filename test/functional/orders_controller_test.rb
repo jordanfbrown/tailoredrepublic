@@ -55,7 +55,7 @@ class OrdersControllerTest < ActionController::TestCase
     assert_redirected_to '/measurements'
   end
 
-  test "New customer, successfully posted to review" do
+  test "New customer, successfully posted to review, should create a new user" do
     set_full_cart_cookie
     post :review, {
       user: { name: 'Jordan', email: 'test500@test.com', password: 'abc123' },
@@ -68,6 +68,26 @@ class OrdersControllerTest < ActionController::TestCase
     }, { measurement_id: 1 }
     assert_response :success
     assert_template :review
+    new_user = User.last
+    assert_equal new_user.name, 'Jordan'
+    assert_equal new_user.email, 'test500@test.com'
+  end
+
+  test "New customer, unsuccessfully posted to review, should throw correct error" do
+    set_full_cart_cookie
+    post :review, {
+      user: { name: 'Jordan', email: '', password: 'abc123' },
+      order: @order_params,
+      stripe_card_token: 'tok_17p90hyqwrWF2b',
+      card_last4: '1117',
+      card_exp_month: '1',
+      card_exp_year: '2020',
+      save_card_for_later: 'on'
+    }, { measurement_id: 1 }
+    assert_response :success
+    assert_template :new
+    assert assigns(:user).errors.any?
+    assert assigns(:user).errors.has_key?(:email)
   end
 
   test "Existing customer, successfully posted to review" do

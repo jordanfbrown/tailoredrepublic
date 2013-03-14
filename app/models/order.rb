@@ -91,7 +91,7 @@ class Order < ActiveRecord::Base
     self.discount = calculate_discount
   end
 
-  def apply_tax
+  def calculate_final_cost!
     self.referral_discount = user.referral_credit if user.referral_credit > 0
     self.tax = ((shipping_address.state == 'CA' ? 0.09 : 0) * cost_before_tax).round(2)
     self.final_cost = self.tax + cost_before_tax

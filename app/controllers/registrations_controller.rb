@@ -31,10 +31,7 @@ class RegistrationsController < Devise::RegistrationsController
 
     if resource.save
       if resource.active_for_authentication?
-        if session.has_key?(:referred_by)
-          resource.add_referrer(session[:referred_by])
-          session.delete(:referred_by)
-        end
+        add_referrer_if_referred_by(resource)
         set_flash_message :notice, :signed_up if is_navigational_format?
         sign_in(resource_name, resource)
         if request.xhr?

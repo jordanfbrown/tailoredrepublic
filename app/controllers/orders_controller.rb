@@ -5,13 +5,12 @@ class OrdersController < ApplicationController
   def new
     set_stripe_customer
     if request.post?
-      @user = user_signed_in? ? current_user : User.new_from_params_and_measurement(params, @measurement)
+      @user = current_user
       @order = Order.new_order(params[:order], @user, @cart)
       @card_token = params[:stripe_card_token]
       @card_last4 = params[:card_last4]
       @card_exp_month = params[:card_exp_month]
       @card_exp_year = params[:card_exp_year]
-      @password = params[:user][:password] if params[:user]
       @save_card_for_later = params[:save_card_for_later]
       @card_radio = params[:card_radio]
       @coupon_code = params[:coupon_code]
@@ -83,35 +82,35 @@ class OrdersController < ApplicationController
     unless @coupon_code.blank?
       @coupon = Coupon.find_by_code(@coupon_code)
       if @coupon.nil? || @coupon.invalid?
-        @order.errors.add(:coupon, 'code invalid.')
+        @order.errors.add(:coupon, 'code invalid')
         render action: "new" and return
       else
         @order.coupon = @coupon
       end
     end
 
-    @order.apply_tax
+    if @user.new_record?
+      @user.save
+      add_referrer_if_referred_by(@user)
+      sign_in :user, @user
+    end
+
+    @order.calculate_final_cost!
   end
 
   def create
+    unless user_signed_in?
+      redirect_to '/orders/new' and return
+    end
+
     @card_token = params[:stripe_card_token]
     @coupon_code = params[:coupon_code]
+    @user = current_user
 
     ActiveRecord::Base.transaction do
-      # Create a new user and sign them in, or get the current_user if already signed in
-      if params[:user]
-        @user = User.new_from_params_and_measurement(params, @measurement)
-        unless @user.save
-          render action: "new"
-          raise ActiveRecord::Rollback and return
-        end
-        sign_in :user, @user
-      else
-        @user = current_user
-        unless @user.save_address_if_address_nil(params[:order])
-          render action: "new"
-          raise ActiveRecord::Rollback and return
-        end
+      unless @user.save_address_if_address_nil(params[:order])
+        render action: "new"
+        raise ActiveRecord::Rollback and return
       end
 
       # Create the order, copy user, user's measurements, and line items from cart, check for validity but don't save
@@ -132,7 +131,7 @@ class OrdersController < ApplicationController
         end
       end
 
-      @order.apply_tax
+      @order.calculate_final_cost!
 
       # Attempt to charge the credit card
       if @user.stripe_customer_id? && params[:card_radio] == 'use_saved_card'
