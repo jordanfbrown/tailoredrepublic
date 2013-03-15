@@ -14,6 +14,7 @@ class OrdersController < ApplicationController
       @save_card_for_later = params[:save_card_for_later]
       @card_radio = params[:card_radio]
       @coupon_code = params[:coupon_code]
+      @can_edit_account_info = params.has_key?(:user)
     else
       if user_signed_in?
         @user = current_user
@@ -64,11 +65,22 @@ class OrdersController < ApplicationController
     @coupon_code = params[:coupon_code]
 
     if params[:user]
-      @user = User.new_from_params_and_measurement(params, @measurement)
-      unless @user.valid?
-        @order = Order.new(params[:order])
-        @order.copy_line_items_from_cart(@cart)
-        render action: "new" and return
+      if user_signed_in?
+        @user = current_user
+        unless @user.update_attributes(params[:user])
+          @can_edit_account_info = true
+          @order = Order.new(params[:order])
+          @order.copy_line_items_from_cart(@cart)
+          render action: "new" and return
+        end
+        sign_in @user, bypass: true
+      else
+        @user = User.new_from_params_and_measurement(params, @measurement)
+        unless @user.valid?
+          @order = Order.new(params[:order])
+          @order.copy_line_items_from_cart(@cart)
+          render action: "new" and return
+        end
       end
     else
       @user = current_user
@@ -95,6 +107,7 @@ class OrdersController < ApplicationController
       sign_in :user, @user
     end
 
+    @can_edit_account_info = 1.hour.ago < @user.created_at
     @order.calculate_final_cost!
   end
 

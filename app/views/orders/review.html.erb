@@ -16,6 +16,21 @@
           <%= f.submit 'Submit Order', class: 'button full-width large' %>
         </div>
 
+        <% if @can_edit_account_info %>
+          <fieldset>
+            <legend>Account</legend>
+            <ul>
+              <li><span class="label">Name:</span> <%= @user.name %></li>
+              <li><span class="label">Email:</span> <%= @user.email %></li>
+            </ul>
+            <a href="#" class="edit-information">Edit Account Information</a>
+            <%= fields_for @user do |user_fields| %>
+              <%= user_fields.hidden_field :name  %>
+              <%= user_fields.hidden_field :email  %>
+            <% end %>
+          </fieldset>
+        <% end %>
+
         <fieldset>
           <legend>Shipping Address</legend>
           <%= render 'addresses/non_editable', parent_form: f, address_type: :shipping_address %>

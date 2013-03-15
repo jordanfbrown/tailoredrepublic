@@ -12,11 +12,13 @@
       <h3>Your Information</h3>
       <%= form_for @order, url: { action: 'review' } do |f| %>
         <%= render 'shared/form_errors', resource: @order %>
-        <% unless user_signed_in? %>
+        <% if !user_signed_in? || @can_edit_account_info %>
           <fieldset>
-            <legend>Create an Account</legend>
-            <p><%= link_to 'Already have an account? Click here to login.', new_user_session_path %></p>
-            <%= render 'users/light_form', user: @user, password: @password %>
+            <legend><%= @can_edit_account_info ? 'Account Information' : 'Create an Account' %></legend>
+            <% unless @can_edit_account_info %>
+              <p><%= link_to 'Already have an account? Click here to login.', new_user_session_path %></p>
+            <% end %>
+            <%= render 'users/light_form', user: @user %>
           </fieldset>
         <% end %>
 
