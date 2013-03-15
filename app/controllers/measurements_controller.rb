@@ -3,8 +3,8 @@ class MeasurementsController < ApplicationController
     if user_signed_in?
       @measurement = current_user.measurement || current_user.build_measurement
     else
-      if session[:measurement_id]
-        @measurement = get_measurement_from_session || Measurement.new
+      if cookies.signed[:measurement_id]
+        @measurement = get_measurement_from_cookie || Measurement.new
       else
         @measurement = Measurement.new
       end
@@ -22,7 +22,7 @@ class MeasurementsController < ApplicationController
     measurement.user = current_user if user_signed_in?
 
     if measurement.save
-      session[:measurement_id] = measurement.id
+      cookies.permanent.signed[:measurement_id] = measurement.id
       render json: measurement
     else
       render json: measurement.errors, status: :unprocessable_entity
@@ -33,8 +33,8 @@ class MeasurementsController < ApplicationController
   def update
     if user_signed_in?
       measurement = current_user.measurement
-    elsif session[:measurement_id]
-      measurement = get_measurement_from_session
+    elsif cookies.signed[:measurement_id]
+      measurement = get_measurement_from_cookie
       if measurement.nil?
         render json: 'Unable to find measurement', status: 500 and return
       end

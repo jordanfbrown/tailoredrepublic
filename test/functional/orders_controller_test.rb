@@ -56,6 +56,7 @@ class OrdersControllerTest < ActionController::TestCase
   end
 
   test "New customer, successfully posted to review, should create a new user" do
+    @request.cookie_jar.signed[:measurement_id] = 1
     set_full_cart_cookie
     post :review, {
       user: { name: 'Jordan', email: 'test500@test.com', password: 'abc123' },
@@ -74,6 +75,7 @@ class OrdersControllerTest < ActionController::TestCase
   end
 
   test "New customer, unsuccessfully posted to review, should throw correct error" do
+    @request.cookie_jar.signed[:measurement_id] = 1
     set_full_cart_cookie
     post :review, {
       user: { name: 'Jordan', email: '', password: 'abc123' },
@@ -83,7 +85,7 @@ class OrdersControllerTest < ActionController::TestCase
       card_exp_month: '1',
       card_exp_year: '2020',
       save_card_for_later: 'on'
-    }, { measurement_id: 1 }
+    }
     assert_response :success
     assert_template :new
     assert assigns(:user).errors.any?
