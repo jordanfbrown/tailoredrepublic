@@ -1,9 +1,14 @@
 class TapeMeasureMailer < ActionMailer::Base
   default from: "tapemeasure@tailoredrepublic.com"
 
-  def tape_measure_email(tape_measure_request)
+  def tape_measure_admin_email(tape_measure_request)
     @tape_measure_request = tape_measure_request
-    mail(to: 'jordan@tailoredrepublic.com, brian@tailoredrepublic.com, jeff@tailoredrepublic.com',
-         subject: "New Tape Measure Request (#{Rails.env})")
+    mail(to: 'tapemeasure@tailoredrepublic.com', subject: "New Tape Measure Request (#{Rails.env})")
+  end
+
+  def tape_measure_user_email(tape_measure_request)
+    @tape_measure_request = tape_measure_request
+    mail(to: @tape_measure_request.email, from: 'brian@tailoredrepublic.com',
+         subject: "Tailored Republic Tape Measure Request Received")
   end
 end
