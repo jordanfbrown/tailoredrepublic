@@ -55,7 +55,7 @@
             <% end %>
           </ul>
         <% else %>
-          <%= link_to 'Login/Signup', new_user_session_path %>
+          <%= link_to @user_referred ? 'Create an account to redeem your $20' : 'Login/Signup', new_user_session_path %>
         <% end %>
       </li>
       <% if user_signed_in?  %>

@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :precompile_templates, :current_cart
+  before_filter :precompile_templates, :current_cart, :check_for_referral
 
   protected
 
@@ -48,6 +48,10 @@ class ApplicationController < ActionController::Base
     @cart = Cart.create!
     cookies.permanent.signed[:cart_id] = @cart.id
     @cart
+  end
+
+  def check_for_referral
+    @user_referred = session.has_key?(:referred_by)
   end
 
   rescue_from CanCan::AccessDenied do |exception|
