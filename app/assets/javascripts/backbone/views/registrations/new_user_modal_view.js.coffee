@@ -10,12 +10,13 @@ class TR.Views.NewUserModal extends TR.Views.Modal
       
   initialize: (options) ->
     @measurements = options.measurements
+    @signUpMethod = options.signUpMethod
     $(window).on 'resize.newuser', @resize
     @template = @getTemplate 'new_user_modal'
     @render()
 
   render: ->
-    @$el.html @template()
+    @$el.html @template signUpMethod: @signUpMethod
     super()
     @$('#user_password').showPassword()
     @resize()

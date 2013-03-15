@@ -82,7 +82,8 @@
       lineItemCount: <%= @cart.num_items %>,
       shirtOnly: <%= @shirt_only %>,
       signedIn: <%= @signed_in %>,
-      initialSlide: '<%= @initial_slide %>'
+      initialSlide: '<%= @initial_slide %>',
+      signUpMethod: '<%= User::SIGN_UP_METHOD_MEASUREMENTS %>'
     });
   });
 </script>

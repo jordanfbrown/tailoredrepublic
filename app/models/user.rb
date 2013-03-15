@@ -10,16 +10,21 @@ class User < ActiveRecord::Base
   has_many :referrals, class_name: 'Referral', foreign_key: 'referrer_id', dependent: :delete_all
   has_one :referred_by, class_name: 'Referral', foreign_key: 'referee_id', dependent: :delete
 
-  attr_accessible :name, :email, :password, :remember_me
+  attr_accessible :name, :email, :password, :remember_me, :sign_up_method
   attr_accessible :name, :email, :password, :remember_me, :shipping_address_attributes, :billing_address_attributes,
-                  :measurement_attributes, as: :admin
+                  :measurement_attributes, :sign_up_method, as: :admin
   attr_protected :stripe_customer_id
 
   validates_presence_of :name
 
   accepts_nested_attributes_for :shipping_address, :billing_address, :measurement
 
+  before_create :set_initial_role
+
   ROLES = %w(user admin)
+  SIGN_UP_METHOD_ORDER = 'Order Page'
+  SIGN_UP_METHOD_MEASUREMENTS = 'Measurements Page'
+  SIGN_UP_METHOD_REGISTRATION = 'Registration Page'
 
   def self.find_by_referral_code(code)
     find(code.split('-')[1])
@@ -125,5 +130,9 @@ class User < ActiveRecord::Base
 
     clean_up_passwords
     result
+  end
+
+  def set_initial_role
+    self.role = 'user'
   end
 end

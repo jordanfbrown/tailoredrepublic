@@ -29,6 +29,7 @@
       <%= f.email_field :email %>
       <%= f.label :password %>
       <%= f.password_field :password, data: { typetoggle: '#show_password' } %>
+      <%= f.hidden_field :sign_up_method, value: User::SIGN_UP_METHOD_REGISTRATION %>
       <label><input type="checkbox" id="show_password">Show password</label>
       <div><%= f.submit "Sign Up", class: "button full-width" %></div>
     <% end %>

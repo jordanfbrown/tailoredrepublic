@@ -23,6 +23,7 @@ class TR.Views.Measurements extends TR.Views.Base
     @shirtOnly = options.shirtOnly
     @signedIn = options.signedIn
     @initialSlide = options.initialSlide
+    @signUpMethod = options.signUpMethod
     @slideOffset = 2 # Currently 2 slides exist before the measurement slides start
 
     measuringTapePixels = 4521
@@ -215,7 +216,7 @@ class TR.Views.Measurements extends TR.Views.Base
     else if @lineItemCount == 0 && @signedIn
       window.location.href = '/shop/suits'
     else if @lineItemCount == 0 && !@signedIn
-      @newUserModal = new TR.Views.NewUserModal(measurements: @model)
+      @newUserModal = new TR.Views.NewUserModal(measurements: @model, signUpMethod: @signUpMethod)
 
   saveError: (e) =>
     try

@@ -2,18 +2,22 @@ user_with_stripe:
   name: Jordan
   email: jordanfbrown@gmail.com
   stripe_customer_id: cus_16A19ol7XcLHqx
+  sign_up_method: Registration Page
 
 user_with_referral_credit:
   name: Jordan
   email: jordanfbrown2@gmail.com
   stripe_customer_id: cus_1PhXx4L4oQdaig
   referral_credit: 50
+  sign_up_method: Registration Page
 
 user_without_stripe:
   name: Jordan
   email: jordan@tailoredrepublic.com
+  sign_up_method: Registration Page
 
 admin:
   name: Bob
   email: bob@bob.com
   role: admin
+  sign_up_method: Registration Page
