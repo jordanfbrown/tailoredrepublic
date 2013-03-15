@@ -35,9 +35,7 @@ class MeasurementsController < ApplicationController
       measurement = current_user.measurement
     elsif cookies.signed[:measurement_id]
       measurement = get_measurement_from_cookie
-      if measurement.nil?
-        render json: 'Unable to find measurement', status: 500 and return
-      end
+      render json: 'Unable to find measurement', status: 500 and return if measurement.nil?
     else
       render json: 'Unable to find measurement', status: 500 and return
     end

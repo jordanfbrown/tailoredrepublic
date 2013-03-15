@@ -21,7 +21,7 @@
           <p><%= link_to @user.referral_url, @user.referral_url %></p>
           <% unless @message.blank? %>
             <p>
-              Your friend included a message:</br>
+              Your friend included a message:<br/>
               <%= @message %>
             </p>
           <% end %>
@@ -31,7 +31,7 @@
       <%= render 'shared/email_social_media_dock' %>
       <tr>
         <td id="footer" colspan="2" align="center" style="color: #555555;font-size: 11px;font-family: Verdana,Helvetica,Arial,sans-serif;">
-          <p>&copy;2013 Tailored Republic // <%= link_to 'www.tailoredrepublic.com', 'https://www.tailoredrepublic.com' %></p>
+          <p>&copy;2013 Tailored Republic // <%= link_to 'https://www.tailoredrepublic.com', 'https://www.tailoredrepublic.com' %></p>
         </td>
       </tr>
     </table>
