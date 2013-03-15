@@ -76,9 +76,9 @@
         new TR.Views.Nav({user: <%= @user_data.to_json.html_safe %>});
         new TR.Views.Footer();
       });
-      <% if session.has_key?(:account_created) && session[:account_created] == true %>
-        TR.Analytics.trackEvent('Accounts', 'Created');
-        mixpanel.track('Account Created');
+      <% if session.has_key?(:account_created) && session[:account_created] == true && user_signed_in? %>
+        TR.Analytics.trackEvent('Accounts', 'Created', '<%= current_user.sign_up_method %>');
+        mixpanel.track('Account Created', { 'Sign Up Method': '<%= current_user.sign_up_method %>' });
         <% session.delete(:account_created) %>
       <% end %>
     </script>
