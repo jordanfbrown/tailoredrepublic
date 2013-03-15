@@ -5,5 +5,5 @@ referral_created:
 
 referral_completed:
   referrer: user_without_stripe
-  referee: user_with_stripe
+  referee: admin
   status: Purchase Completed

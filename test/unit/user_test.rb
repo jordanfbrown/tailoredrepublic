@@ -10,4 +10,15 @@ class UserTest < ActiveSupport::TestCase
     assert_equal Referral.last.referee, user
     assert_equal Referral.last.referrer, referrer
   end
+
+  test "a new user should automatically have a role equal to 'user'" do
+    user = User.create(name: 'Bob', email: 'foo@bar.com', password: 'abc123', sign_up_method: User::SIGN_UP_METHOD_REGISTRATION)
+    assert_equal user.role, 'user'
+  end
+
+  test "find_by_referral_code should return the correct user" do
+    user = users(:user_with_stripe)
+    code = user.referral_code
+    assert_equal user, User.find_by_referral_code(code)
+  end
 end
