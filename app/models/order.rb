@@ -109,14 +109,6 @@ class Order < ActiveRecord::Base
     end
   end
 
-  def friendly_created_date
-    created_at_pacific.to_date.to_formatted_s(:long_ordinal)
-  end
-
-  def created_at_pacific
-    created_at.in_time_zone('Pacific Time (US & Canada)')
-  end
-
   def to_json_for_tracking
     to_json(only: [:order_id, :final_cost, :tax]).html_safe
   end

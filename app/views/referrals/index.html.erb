@@ -42,7 +42,7 @@
           <% @referrals.each do |referral| %>
             <tr>
               <td><%= referral.referee.email %></td>
-              <td><%= referral.created_at.to_date.to_formatted_s(:long_ordinal) %></td>
+              <td><%= referral.created_at_friendly %></td>
               <td><%= referral.status %></td>
               <td><%= referral.status == Referral::STATUS_COMPLETED ? '$20.00' : '$0.00' %></td>
             </tr>
