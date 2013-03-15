@@ -243,13 +243,13 @@ class OrdersControllerTest < ActionController::TestCase
 
   test "an admin should be able to get admin route" do
     sign_in :user, users(:admin)
-    get :admin
+    get :admin_index
     assert_response :success
-    assert_template :admin
+    assert_template :admin_index
   end
 
   test "a regular user should not be able to get admin route" do
-    get :admin
+    get :admin_index
     assert_response :redirect
   end
 end

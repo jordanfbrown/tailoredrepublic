@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_filter :ensure_cart_not_empty, :ensure_measurement_not_nil, only: [:new, :review, :create]
-  load_and_authorize_resource only: [:admin]
+  load_and_authorize_resource only: [:admin_index]
 
   def new
     set_stripe_customer
@@ -44,7 +44,7 @@ class OrdersController < ApplicationController
     end
   end
 
-  def admin
+  def admin_index
     params[:page] ||= 1
     if params[:search].blank?
       @orders = Order.paginated(params[:page])

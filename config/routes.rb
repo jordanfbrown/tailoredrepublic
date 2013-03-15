@@ -17,24 +17,36 @@ TailoredRepublic::Application.routes.draw do
     get 'account' => 'registrations#edit', :as => :edit_user_registration
   end
 
-  resources :users, only: [:show, :update, :destroy, :index, :edit]
+  resources :users, only: [:show, :update, :destroy, :index, :edit], path: '/admin/users'
   resources :customizations, only: [:show, :create, :update]
   resource  :cart, only: [:show]
   resource  :measurements, only: [:show, :create, :update]
-  resources :products
-  resources :coupons, except: [:show]
+  resources :products, only: [:show, :index]
+  resources :products, only: [:new, :edit, :create, :update, :admin_index], path: '/admin/products' do
+    collection do
+      get 'index', action: 'admin_index'
+    end
+  end
+  resources :coupons, except: [:show], path: '/admin/coupons'
   resources :line_items, path: '/line-items', only: [:create, :destroy, :update]
-  resources :tape_measure_requests, path: '/tape-measure-requests', only: [:index, :new, :create, :update] do
+  resources :tape_measure_requests, only: [:index, :update], path: '/admin/tape-measure-requests'
+  resources :tape_measure_requests, only: [:new, :create], path: '/tape-measure-requests' do
     collection do
       get 'thank_you', path: 'thank-you'
     end
   end
-  resources :schedule_tailor_requests, path: '/tailor-requests', only: [:index, :new, :create, :update] do
+  resources :schedule_tailor_requests, only: [:index, :update], path: '/admin/tailor-requests'
+  resources :schedule_tailor_requests, only: [:new, :create], path: '/tailor-requests' do
     collection do
       get 'thank_you', path: 'thank-you'
     end
   end
-  resources :orders, only: [:show, :new, :create, :index] do
+  resources :orders, only: [:admin_index, :show], path: '/admin/orders' do
+    collection do
+      get 'index', action: 'admin_index'
+    end
+  end
+  resources :orders, only: [:new, :create, :index] do
     collection do
       post 'review'
       post 'new', path: 'new'
@@ -54,9 +66,9 @@ TailoredRepublic::Application.routes.draw do
   match '/home' => 'home#index'
   match '/measurements/:initial_slide' => 'measurements#show'
   match '/checkout' => 'carts#checkout'
-  match '/admin/orders' => 'orders#admin'
   match '/subscribe-to-newsletter' => 'mailing_list#subscribe', :as => 'subscribe_to_newsletter'
   match '/about' => 'pages#about'
+  match '/admin' => 'pages#admin'
   match '/faq' => 'pages#faq'
   match '/lookbook' => 'pages#lookbook'
   match '/partners' => 'pages#partners'

@@ -3,10 +3,10 @@
 
   <div class="outlined">
     <div class="six columns no-padding">
-      <%= form_tag admin_orders_path, method: 'get' do %>
+      <%= form_tag '/admin/orders', method: 'get' do %>
         <%= text_field_tag :search, '', placeholder: 'enter order ID or email...' %>
         <%= submit_tag 'Search', name: nil, class: 'button' %>
-        <%= link_to 'Clear', admin_orders_path, class: 'button' %>
+        <%= link_to 'Clear', '/admin/orders', class: 'button' %>
       <% end %>
     </div>
 
