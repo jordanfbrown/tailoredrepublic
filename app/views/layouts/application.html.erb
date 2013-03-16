@@ -101,5 +101,30 @@
       loader: "static.olark.com/jsclient/loader0.js",name:"olark",methods:["configure","extend","declare","identify"]});
       /* custom configuration goes here (www.olark.com/documentation) */
       olark.identify('3561-911-10-7623');/*]]>*/</script><noscript><a href="https://www.olark.com/site/3561-911-10-7623/contact" title="Contact us" target="_blank">Questions? Feedback?</a> powered by <a href="http://www.olark.com?welcome" title="Olark live chat software">Olark live chat software</a></noscript>
+    <% if Rails.env.production? %>
+      <script type="text/javascript">
+        var _qevents = _qevents || [];
+
+        (function() {
+          var elem = document.createElement('script');
+          elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+          elem.async = true;
+          elem.type = "text/javascript";
+          var scpt = document.getElementsByTagName('script')[0];
+          scpt.parentNode.insertBefore(elem, scpt);
+        })();
+
+        _qevents.push({
+          qacct:"p-9HXAq126Ruw0r"
+        });
+    <% end %>
+    </script>
+
+    <noscript>
+      <div style="display:none;">
+        <img src="//pixel.quantserve.com/pixel/p-9HXAq126Ruw0r.gif" border="0" height="1" width="1" alt="Quantcast"/>
+      </div>
+    </noscript>
+    <!-- End Quantcast tag -->
   </body>
 </html>
