@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :measurement
+  has_one :cart
   has_one :shipping_address, as: :addressable, validate: true
   has_one :billing_address, as: :addressable, validate: true
   has_many :referral_emails
