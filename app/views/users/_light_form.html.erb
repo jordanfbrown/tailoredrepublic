@@ -5,6 +5,7 @@
   <%= u.label :email %>
   <%= u.text_field :email %>
   <%= u.label :password %>
-  <%= u.password_field :password, value: password ? password : '', data: { typetoggle: '#show_password' } %>
+  <%= u.password_field :password, data: { typetoggle: '#show_password' } %>
+  <%= u.hidden_field :sign_up_method, value: User::SIGN_UP_METHOD_ORDER %>
   <label><input type="checkbox" id="show_password">Show password</label>
 <% end %>

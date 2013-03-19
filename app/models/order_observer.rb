@@ -6,5 +6,14 @@ class OrderObserver < ActiveRecord::Observer
     unless order.coupon.nil?
       order.update_coupon_amount
     end
+
+    unless order.referral_discount.nil?
+      user = order.user
+      user.referral_credit = 0
+      user.save
+
+      referral = user.referred_by
+      referral.order_completed unless referral.nil?
+    end
   end
 end

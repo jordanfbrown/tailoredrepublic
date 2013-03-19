@@ -11,11 +11,12 @@ class ProductsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html do
-        authorize! :index, @products
-      end
       format.json { render json: @products }
     end
+  end
+
+  def admin_index
+    @products = Product.order('category ASC, name ASC').all
   end
 
   # GET /products/1

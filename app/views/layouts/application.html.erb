@@ -65,6 +65,7 @@
         <%= render "layouts/footer" %>
       <% end %>
     </div>
+
     <script type="text/javascript">
       $(function() {
         TR.VEST_PRICE = <%= Product.vest_price %>;
@@ -76,13 +77,21 @@
         new TR.Views.Nav({user: <%= @user_data.to_json.html_safe %>});
         new TR.Views.Footer();
       });
+      <% if session.has_key?(:account_created) && session[:account_created] == true && user_signed_in? %>
+        TR.Analytics.trackEvent('Accounts', 'Created', '<%= current_user.sign_up_method %>');
+        mixpanel.track('Account Created', { 'Sign Up Method': '<%= current_user.sign_up_method %>' });
+        <% session.delete(:account_created) %>
+      <% end %>
     </script>
+
     <script type="text/javascript">
       setTimeout(function(){var a=document.createElement("script");
         var b=document.getElementsByTagName("script")[0];
         a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0014/0373.js?"+Math.floor(new Date().getTime()/3600000);
         a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
     </script>
+
+    <% unless Rails.env.development? %>
     <script data-cfasync="false" type='text/javascript'>/*<![CDATA[*/window.olark||(function(c){var f=window,d=document,l=f.location.protocol=="https:"?"https:":"http:",z=c.name,r="load";var nt=function(){
       f[z]=function(){
         (a.s=a.s||[]).push(arguments)};var a=f[z]._={
@@ -101,6 +110,8 @@
       loader: "static.olark.com/jsclient/loader0.js",name:"olark",methods:["configure","extend","declare","identify"]});
       /* custom configuration goes here (www.olark.com/documentation) */
       olark.identify('3561-911-10-7623');/*]]>*/</script><noscript><a href="https://www.olark.com/site/3561-911-10-7623/contact" title="Contact us" target="_blank">Questions? Feedback?</a> powered by <a href="http://www.olark.com?welcome" title="Olark live chat software">Olark live chat software</a></noscript>
+    <% end %>
+
     <% if Rails.env.production? %>
       <script type="text/javascript">
         var _qevents = _qevents || [];
@@ -117,14 +128,12 @@
         _qevents.push({
           qacct:"p-9HXAq126Ruw0r"
         });
-    <% end %>
     </script>
-
     <noscript>
       <div style="display:none;">
         <img src="//pixel.quantserve.com/pixel/p-9HXAq126Ruw0r.gif" border="0" height="1" width="1" alt="Quantcast"/>
       </div>
     </noscript>
-    <!-- End Quantcast tag -->
+    <% end %>
   </body>
 </html>

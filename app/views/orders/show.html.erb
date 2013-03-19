@@ -1,74 +1,82 @@
 <div class="content-wrapper">
-  <div class="six columns">
-    <h2>Order Details</h2>
-    <ul>
-      <li>Order ID: <%= @order.order_id %></li>
-      <li>Date purchased: <%= @order.friendly_created_date %></li>
-    </ul>
-
-    <h3>User</h3>
-    <ul>
-      <li>User name: <%= @order.user.name %></li>
-      <li>User email: <%= @order.user.email %></li>
-    </ul>
-
-    <h3>Shipping Address</h3>
-    <ul>
-      <li><%= @order.shipping_address.name %></li>
-      <li><%= @order.shipping_address.line1 %></li>
-      <li><%= @order.shipping_address.line2 %></li>
-      <li><%= @order.shipping_address.city %>, <%= @order.shipping_address.state %>, <%= @order.shipping_address.zip %></li>
-    </ul>
-
-    <h3>Billing Address</h3>
-    <ul>
-      <li><%= @order.billing_address.name %></li>
-      <li><%= @order.billing_address.line1 %></li>
-      <li><%= @order.billing_address.line2 %></li>
-      <li><%= @order.billing_address.city %>, <%= @order.billing_address.state %>, <%= @order.billing_address.zip %></li>
-    </ul>
-
-    <h3>Measurements</h3>
-    <% if @order.measurement.nil? %>
-    <ul>
-      <li>None</li>
-    </ul>
-    <% else %>
+  <h2>Order Details</h2>
+  <div class="outlined row">
+    <div class="six columns">
+      <h4>Order</h4>
       <ul>
-        <% @order.measurement.display_attributes.each do |key, value| %>
-          <li><%= key.titleize %>: <%= value %></li>
-        <% end %>
+        <li>Order ID: <%= @order.order_id %></li>
+        <li>Date purchased: <%= @order.created_at_friendly %></li>
       </ul>
-    <% end %>
-  </div>
 
-  <div class="six columns">
-    <h3>Items Purchased</h3>
-    <% @order.line_items.each do |line_item|  %>
-      <div class="line-item-wrapper margin-bottom">
-      <span class="label"><%= line_item.quantity %> x <%= line_item.name %>: <%= number_to_currency line_item.total_price %></span>
-      <% if line_item.category == :suit || line_item.category == :shirt %>
-        <ul style="list-style-type: none;padding-left: 5px;list-style: none;margin: 0;">
-          <% line_item.customization_array(true).each do |customization| %>
-            <li style="margin-left: 0;"><%= customization[:option] %>: <%= customization[:type] %></li>
+      <h4>User</h4>
+      <ul>
+        <li>User name: <%= @order.user.name %></li>
+        <li>User email: <%= @order.user.email %></li>
+      </ul>
+
+      <h4>Shipping Address</h4>
+      <ul>
+        <li><%= @order.shipping_address.name %></li>
+        <li><%= @order.shipping_address.line1 %></li>
+        <li><%= @order.shipping_address.line2 %></li>
+        <li><%= @order.shipping_address.city %>, <%= @order.shipping_address.state %>, <%= @order.shipping_address.zip %></li>
+      </ul>
+
+      <h4>Billing Address</h4>
+      <ul>
+        <li><%= @order.billing_address.name %></li>
+        <li><%= @order.billing_address.line1 %></li>
+        <li><%= @order.billing_address.line2 %></li>
+        <li><%= @order.billing_address.city %>, <%= @order.billing_address.state %>, <%= @order.billing_address.zip %></li>
+      </ul>
+
+      <h4>Measurements</h4>
+      <% if @order.measurement.nil? %>
+        <ul>
+          <li>None</li>
+        </ul>
+      <% else %>
+        <ul>
+          <% @order.measurement.display_attributes.each do |key, value| %>
+            <li><%= key.titleize %>: <%= value %></li>
           <% end %>
         </ul>
       <% end %>
-      </div>
-    <% end %>
+    </div>
 
-    <% unless @order.coupon.blank? %>
-      <h3>Coupons</h3>
-      <p><%= @order.coupon.description %>: <%= number_to_currency @order.discount %></p>
-    <% end %>
+    <div class="six columns">
+      <h4>Items Purchased</h4>
+      <% @order.line_items.each do |line_item|  %>
+        <div class="line-item-wrapper margin-bottom">
+          <span class="label"><%= line_item.quantity %> x <%= line_item.name %>: <%= number_to_currency line_item.total_price %></span>
+          <% if line_item.category == :suit || line_item.category == :shirt %>
+            <ul style="list-style-type: none;padding-left: 5px;list-style: none;margin: 0;">
+              <% line_item.customization_array(true).each do |customization| %>
+                <li style="margin-left: 0;"><%= customization[:option] %>: <%= customization[:type] %></li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+      <% end %>
 
-    <h3>Costs</h3>
-    <ul>
-      <li>Items: <%= number_to_currency LineItem.sum_price(@order.line_items) %></li>
-      <li>Tax: <%= number_to_currency @order.tax %></li>
-      <li>Discount: <%= @order.discount.nil? ? '$0.00' : number_to_currency(@order.discount) %></li>
-      <li>Final cost: <%= number_to_currency @order.final_cost %></li>
-    </ul>
+      <% unless @order.coupon.blank? %>
+        <h4>Coupons</h4>
+        <p><%= @order.coupon.description %>: <%= number_to_currency @order.discount %></p>
+      <% end %>
+
+      <h4>Costs</h4>
+      <ul>
+        <li>Items: <%= number_to_currency LineItem.sum_price(@order.line_items) %></li>
+        <li>Tax: <%= number_to_currency @order.tax %></li>
+        <% unless @order.discount.nil? %>
+          <li>Coupon Discount: -<%= number_to_currency(@order.discount) %></li>
+        <% end %>
+        <% unless @order.referral_discount.nil? %>
+          <li>Referral Discount: -<%= number_to_currency(@order.referral_discount) %></li>
+        <% end %>
+        <li>Final cost: <%= number_to_currency @order.final_cost %></li>
+      </ul>
+    </div>
   </div>
   <div class="twelve columns margin-bottom">
     <%= link_to 'Back to orders', '/orders', class: 'button' %>

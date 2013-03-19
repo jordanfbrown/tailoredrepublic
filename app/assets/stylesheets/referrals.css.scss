@@ -1,0 +1,57 @@
+.referrals {
+  form {
+    margin-bottom: 0;
+  }
+
+  h4 {
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #aaa;
+  }
+
+  a.facebook img {
+    vertical-align: -5px;
+  }
+
+  a.twitter {
+    display: inline-block;
+    padding: 4px;
+    position: relative;
+    background-color: #f8f8f8;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#dedede));
+    background-image: -moz-linear-gradient(top,#fff,#dedede);
+    background-image: -o-linear-gradient(top,#fff,#dedede);
+    background-image: -ms-linear-gradient(top,#fff,#dedede);
+    background-image: linear-gradient(top,#fff,#dedede);
+    border: #ccc solid 1px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    color: #333;
+    font-weight: bold;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    height: 25px;
+    max-width: 98%;
+    overflow: hidden;
+
+    i {
+      position: absolute;
+      top: 46%;
+      left: 2px;
+      margin-top: -5px;
+      width: 16px;
+      height: 13px;
+      background: url('https://twitter.com/favicons/favicon.ico') 1px center no-repeat;
+    }
+
+    span {
+      display: inline-block;
+      margin-left: 19px;
+      font-size: 14px;
+    }
+  }
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+</head>
+<body style="color: #000000;font-size: 14px;font-family: Verdana,Helvetica,Arial,sans-serif;">
+<table width="100%" id="background" border="0" cellpadding="0" cellspacing="0">
+  <tr><td align="center" valign="top" style="color: #000000;font-size: 14px;font-family: Verdana,Helvetica,Arial,sans-serif;">
+    <table width="650" id="main" border="0" cellpadding="0" cellspacing="20">
+      <tr>
+        <td id="header" colspan="2" style="color: #000000;font-size: 14px;font-family: Verdana,Helvetica,Arial,sans-serif;text-align:center;">
+          <a href="https://www.tailoredrepublic.com"><img src="https://d195zx82sfk1xc.cloudfront.net/assets/logos/logo-shield.png" width="443" height="66" alt="Tailored Republic"></a>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" style="color: #000000;font-size: 14px;font-family: Verdana,Helvetica,Arial,sans-serif;">
+          <p>Hey <%= @referrer.first_name %>,</p>
+          <p>Your friend <%= @referee.name %> has just made his first Tailored Republic purchase. As a thanks for
+            helping your friend look almost as good as you, we have credited you with $<%= Referral.credit_amount %>
+            that will automatically be applied as a discount on your next suit purchase. You now have a total
+            of $<%= @referrer.referral_credit %> in referral credit. Keep the referrals coming and we will keep hooking
+            you up.</p>
+          <p>Start customizing your next suit here:
+            <%= link_to 'https://www.tailoredrepublic.com/shop/suits', 'https://www.tailoredrepublic.com/shop/suits' %>
+          </p>
+          <p>Stay dapper,<br/>
+            The Tailored Republic Team
+          </p>
+        </td>
+      </tr>
+      <%= render 'shared/email_social_media_dock' %>
+      <tr>
+        <td id="footer" colspan="2" align="center" style="color: #555555;font-size: 11px;font-family: Verdana,Helvetica,Arial,sans-serif;">
+          <p>&copy;2013 Tailored Republic // <%= link_to 'www.tailoredrepublic.com', 'https://www.tailoredrepublic.com' %></p>
+        </td>
+      </tr>
+    </table>
+  </td></tr>
+</table>
+</body>
+</html>

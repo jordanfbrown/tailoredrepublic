@@ -7,7 +7,7 @@ class TR.Views.ScheduleTailorRequests extends TR.Views.Base
 
   filterScheduleTailorRequests: (e) ->
     value = $(e.currentTarget).val()
-    window.location.href = "/tailor-requests?filter=#{value}"
+    window.location.href = "/admin/tailor-requests?filter=#{value}"
 
   updateSent: (e) ->
     $target = $(e.currentTarget)
@@ -15,5 +15,5 @@ class TR.Views.ScheduleTailorRequests extends TR.Views.Base
     value = $target.val()
     $.ajax
       type: 'PUT'
-      url: "/tailor-requests/#{id}"
+      url: "/admin/tailor-requests/#{id}"
       data: { schedule_tailor_request: { status: value } }

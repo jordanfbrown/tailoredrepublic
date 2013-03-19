@@ -39,11 +39,12 @@
             <li><%= link_to 'Settings', edit_user_registration_path %></li>
             <li><%= link_to 'Measurements', measurements_path %></li>
             <li><%= link_to 'Order History', '/orders' %></li>
+            <li><%= link_to 'Referrals', referrals_path %></li>
             <% if current_user.role == 'admin' %>
-              <li class="has-dropdown"><a href="#">Admin</a>
+              <li class="has-dropdown"><%= link_to 'Admin', admin_path %>
                 <ul class="dropdown">
                   <li><label>Admin</label></li>
-                  <li><%= link_to 'Products', products_path %></li>
+                  <li><%= link_to 'Products', '/admin/products' %></li>
                   <li><%= link_to 'Users', users_path %></li>
                   <li><%= link_to 'Coupons', coupons_path %></li>
                   <li><%= link_to 'Orders', '/admin/orders' %></li>
@@ -54,7 +55,7 @@
             <% end %>
           </ul>
         <% else %>
-          <%= link_to 'Login/Signup', new_user_session_path %>
+          <%= link_to @user_referred ? 'Create an account to redeem your $20' : 'Login/Signup', new_user_session_path %>
         <% end %>
       </li>
       <% if user_signed_in?  %>

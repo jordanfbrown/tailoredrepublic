@@ -1,4 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
+  after_filter :set_cart, only: :create
+
   def edit
     @stripe_customer = resource.get_stripe_customer if resource.stripe_customer_id
     build_addresses
@@ -31,8 +33,10 @@ class RegistrationsController < Devise::RegistrationsController
 
     if resource.save
       if resource.active_for_authentication?
+        add_referrer_if_referred_by(resource)
         set_flash_message :notice, :signed_up if is_navigational_format?
         sign_in(resource_name, resource)
+        session[:account_created] = true
         if request.xhr?
           unless params[:measurement_id].blank?
             measurement = Measurement.find(params[:measurement_id])
@@ -63,5 +67,12 @@ class RegistrationsController < Devise::RegistrationsController
   def build_addresses
     resource.build_shipping_address if resource.shipping_address.nil?
     resource.build_billing_address if resource.billing_address.nil?
+  end
+
+  def set_cart
+    if current_user.cart.nil?
+      @cart.user = current_user
+      @cart.save
+    end
   end
 end

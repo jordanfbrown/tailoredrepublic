@@ -24,9 +24,10 @@ class MeasurementsControllerTest < ActionController::TestCase
     assert assigns(:measurement).new_record?
   end
 
-  test "if a user is not signed in, but there is a measurement in the session, it should retrieve it" do
+  test "if a user is not signed in, but there is a measurement in a cookie, it should retrieve it" do
     measurement = measurements(:one)
-    get :show, {}, { measurement_id: measurement.id }
+    @request.cookie_jar.signed[:measurement_id] = measurement.id
+    get :show
     assert_equal assigns(:measurement), measurement
   end
 
@@ -36,11 +37,11 @@ class MeasurementsControllerTest < ActionController::TestCase
     assert_nil assigns(:measurement).user_id
   end
   
-  test "should be able to create new measurements, and they should be stored in the session afterwards" do
+  test "should be able to create new measurements, and they should be stored in a cookie afterwards" do
     post :create, measurement: @measurement_params
     assert_response :success
     assert_equal json_response['neck'], @measurement_params[:neck].to_s
-    assert_equal json_response['id'], session[:measurement_id]
+    assert_not_nil @response.cookies['measurement_id']
   end
 
   test "when a logged in user creates measurements, they should be associated with that user" do
@@ -68,9 +69,10 @@ class MeasurementsControllerTest < ActionController::TestCase
     assert_equal json_response['neck'], @measurement_params[:neck].to_s
   end
 
-  test "a non-logged in user with measurements in the session should be able to update them" do
+  test "a non-logged in user with measurements in their cookie should be able to update them" do
     measurement = measurements(:two)
-    put :update, { measurement: @measurement_params }, { measurement_id: measurement.id }
+    @request.cookie_jar.signed[:measurement_id] = measurement.id
+    put :update, { measurement: @measurement_params }
     assert_response :success
     assert_not_equal json_response['neck'], measurement.neck.to_s
     assert_equal json_response['neck'], @measurement_params[:neck].to_s

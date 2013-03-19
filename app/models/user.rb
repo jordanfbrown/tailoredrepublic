@@ -1,31 +1,58 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
-  # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :measurement
+  has_one :cart
   has_one :shipping_address, as: :addressable, validate: true
   has_one :billing_address, as: :addressable, validate: true
+  has_many :referral_emails
   has_many :orders
+  has_many :referrals, class_name: 'Referral', foreign_key: 'referrer_id', dependent: :delete_all
+  has_one :referred_by, class_name: 'Referral', foreign_key: 'referee_id', dependent: :delete
 
-  attr_accessible :name, :email, :password, :remember_me
+  attr_accessible :name, :email, :password, :remember_me, :sign_up_method
   attr_accessible :name, :email, :password, :remember_me, :shipping_address_attributes, :billing_address_attributes,
-                  :measurement_attributes, as: :admin
+                  :measurement_attributes, :sign_up_method, as: :admin
   attr_protected :stripe_customer_id
 
   validates_presence_of :name
 
   accepts_nested_attributes_for :shipping_address, :billing_address, :measurement
 
+  before_create :set_initial_role
+
   ROLES = %w(user admin)
+  SIGN_UP_METHOD_ORDER = 'Order Page'
+  SIGN_UP_METHOD_MEASUREMENTS = 'Measurements Page'
+  SIGN_UP_METHOD_REGISTRATION = 'Registration Page'
+
+  def self.find_by_referral_code(code)
+    find(code.split('-')[1])
+  end
 
   def self.new_from_params_and_measurement(params, measurement)
     params[:user].merge!(params[:order])
     user = User.new(params[:user])
     user.measurement = measurement
     user
+  end
+
+  def referral_code
+    first_name + '-' + id.to_s
+  end
+
+  def referral_url
+    "https://www.tailoredrepublic.com/referrals/invite/#{referral_code}"
+  end
+
+  def add_referrer(referrer_id)
+    referrer = User.find(referrer_id)
+    unless referrer.nil?
+      create_referred_by(referrer_id: referrer_id, status: Referral::STATUS_CREATED)
+      self.referral_credit += Referral.credit_amount
+      self.save
+    end
   end
 
   def build_order(cart)
@@ -104,5 +131,9 @@ class User < ActiveRecord::Base
 
     clean_up_passwords
     result
+  end
+
+  def set_initial_role
+    self.role = 'user'
   end
 end

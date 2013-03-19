@@ -4,6 +4,11 @@
 
 
 body.pages {
+  &.admin {
+    h4 a {
+      color: $darker-brown;
+    }
+  }
   &.faq {
     h4 {
       border-bottom: 2px dotted #000;

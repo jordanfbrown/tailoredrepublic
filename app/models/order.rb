@@ -71,6 +71,10 @@ class Order < ActiveRecord::Base
       total -= discount
     end
 
+    unless user.nil? || user.referral_credit.nil? || user.referral_credit == 0
+      total -= user.referral_credit
+    end
+
     total
   end
 
@@ -87,7 +91,8 @@ class Order < ActiveRecord::Base
     self.discount = calculate_discount
   end
 
-  def apply_tax
+  def calculate_final_cost!
+    self.referral_discount = user.referral_credit if user.referral_credit > 0
     self.tax = ((shipping_address.state == 'CA' ? 0.09 : 0) * cost_before_tax).round(2)
     self.final_cost = self.tax + cost_before_tax
   end
@@ -102,14 +107,6 @@ class Order < ActiveRecord::Base
     else
       coupon.calculate_discount(line_items)
     end
-  end
-
-  def friendly_created_date
-    created_at_pacific.to_date.to_formatted_s(:long_ordinal)
-  end
-
-  def created_at_pacific
-    created_at.in_time_zone('Pacific Time (US & Canada)')
   end
 
   def to_json_for_tracking

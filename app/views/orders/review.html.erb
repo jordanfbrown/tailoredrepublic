@@ -15,18 +15,18 @@
             your order is submitted, your credit card will be charged.</p>
           <%= f.submit 'Submit Order', class: 'button full-width large' %>
         </div>
-        <% unless user_signed_in? %>
+
+        <% if @can_edit_account_info %>
           <fieldset>
             <legend>Account</legend>
             <ul>
               <li><span class="label">Name:</span> <%= @user.name %></li>
               <li><span class="label">Email:</span> <%= @user.email %></li>
             </ul>
-            <a href="#" class="edit-information">Edit User Information</a>
+            <a href="#" class="edit-information">Edit Account Information</a>
             <%= fields_for @user do |user_fields| %>
               <%= user_fields.hidden_field :name  %>
               <%= user_fields.hidden_field :email  %>
-              <%= user_fields.hidden_field :password  %>
             <% end %>
           </fieldset>
         <% end %>

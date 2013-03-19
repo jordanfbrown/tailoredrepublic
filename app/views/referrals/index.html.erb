@@ -1,0 +1,58 @@
+<script src='http://connect.facebook.net/en_US/all.js'></script>
+
+<div class="content-wrapper">
+  <h2>Referrals</h2>
+
+  <div class="outlined">
+    <h4>You have <strong><%= number_to_currency @user.referral_credit %></strong> in referral credit.</h4>
+    <p>For every friend you refer who makes a purchase, we will reward you with a $20 referral credit. Your friend will
+    also receive a $20 credit just for creating an account.</p>
+    <p>To refer a friend, simply share the below link with any of your friends:</p>
+    <textarea rows="1" readonly><%= @user.referral_url %></textarea>
+    <p><a href="#" class="facebook"><%= image_tag 'icons/social/facebook-share.jpg' %></a> or
+        <a href="https://twitter.com/share?url=<%= @user.referral_url %>&text=Get yourself in a custom suit from Tailored Republic using my referral link and you will get $20 off your first suit&related=t_republic" class="twitter">
+          <i></i><span>Tweet</span>
+        </a>
+  </div>
+
+  <div class="outlined">
+    <h5>Email your friends</h5>
+    <%= form_for @referral_email, url: '/referrals/email-friends' do |f| %>
+      <%= render 'shared/form_errors', resource: @referral_email %>
+      <%= f.label :email_addresses, "Enter your friends' email addresses, separated by commas" %>
+      <%= f.text_area :email_addresses, rows: 3 %>
+      <%= f.label :message, 'Enter a personalized message (optional)' %>
+      <%= f.text_area :message, rows: 3 %>
+      <%= f.submit 'Send', class: 'button' %>
+    <% end %>
+  </div>
+
+  <% if @referrals.length > 0 %>
+    <div class="outlined">
+      <table>
+        <thead>
+          <tr>
+            <th>Referred Friend</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Credit Earned</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @referrals.each do |referral| %>
+            <tr>
+              <td><%= referral.referee.email %></td>
+              <td><%= referral.created_at_friendly %></td>
+              <td><%= referral.status %></td>
+              <td><%= referral.status == Referral::STATUS_COMPLETED ? '$20.00' : '$0.00' %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</div>
+
+<script>
+  new TR.Views.Referrals({referralUrl: '<%= @user.referral_url %>'});
+</script>

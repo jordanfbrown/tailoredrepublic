@@ -399,6 +399,10 @@ p.centered {
   @include button;
 }
 
+textarea {
+  resize: none;
+}
+
 #habla_window_div #habla_topbar_div {
   background: #000000 none repeat scroll 0 0 !important;
   border: 1px solid #fff;

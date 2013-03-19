@@ -262,6 +262,9 @@
 
     &.three {
       @media only screen and (max-width: 767px) {
+        &.vest {
+          height: 209px;
+        }
         width: 50% !important;
       }
     }

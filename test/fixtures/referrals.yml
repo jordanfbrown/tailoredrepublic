@@ -1,0 +1,9 @@
+referral_created:
+  referrer: user_without_stripe
+  referee: user_with_referral_credit
+  status: Account Created
+
+referral_completed:
+  referrer: user_without_stripe
+  referee: admin
+  status: Purchase Completed

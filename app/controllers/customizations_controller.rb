@@ -10,7 +10,7 @@ class CustomizationsController < ApplicationController
 
   def update
     customization = Customization.find(params[:id])
-    if customization.update_attributes params[:customization]
+    if customization.update_attributes(params[:customization])
       render json: customization
     else
       render json: customization.errors, status: :unprocessable_entity

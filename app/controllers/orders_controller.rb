@@ -1,20 +1,20 @@
 class OrdersController < ApplicationController
   before_filter :ensure_cart_not_empty, :ensure_measurement_not_nil, only: [:new, :review, :create]
-  load_and_authorize_resource only: [:admin]
+  load_and_authorize_resource only: [:admin_index]
 
   def new
     set_stripe_customer
     if request.post?
-      @user = user_signed_in? ? current_user : User.new_from_params_and_measurement(params, @measurement)
+      @user = current_user
       @order = Order.new_order(params[:order], @user, @cart)
       @card_token = params[:stripe_card_token]
       @card_last4 = params[:card_last4]
       @card_exp_month = params[:card_exp_month]
       @card_exp_year = params[:card_exp_year]
-      @password = params[:user][:password] if params[:user]
       @save_card_for_later = params[:save_card_for_later]
       @card_radio = params[:card_radio]
       @coupon_code = params[:coupon_code]
+      @can_edit_account_info = params.has_key?(:user)
     else
       if user_signed_in?
         @user = current_user
@@ -44,7 +44,7 @@ class OrdersController < ApplicationController
     end
   end
 
-  def admin
+  def admin_index
     params[:page] ||= 1
     if params[:search].blank?
       @orders = Order.paginated(params[:page])
@@ -65,11 +65,22 @@ class OrdersController < ApplicationController
     @coupon_code = params[:coupon_code]
 
     if params[:user]
-      @user = User.new_from_params_and_measurement(params, @measurement)
-      unless @user.valid?
-        @order = Order.new(params[:order])
-        @order.copy_line_items_from_cart(@cart)
-        render action: "new" and return
+      if user_signed_in?
+        @user = current_user
+        unless @user.update_attributes(params[:user])
+          @can_edit_account_info = true
+          @order = Order.new(params[:order])
+          @order.copy_line_items_from_cart(@cart)
+          render action: "new" and return
+        end
+        sign_in @user, bypass: true
+      else
+        @user = User.new_from_params_and_measurement(params, @measurement)
+        unless @user.valid?
+          @order = Order.new(params[:order])
+          @order.copy_line_items_from_cart(@cart)
+          render action: "new" and return
+        end
       end
     else
       @user = current_user
@@ -83,35 +94,36 @@ class OrdersController < ApplicationController
     unless @coupon_code.blank?
       @coupon = Coupon.find_by_code(@coupon_code)
       if @coupon.nil? || @coupon.invalid?
-        @order.errors.add(:coupon, 'code invalid.')
+        @order.errors.add(:coupon, 'code invalid')
         render action: "new" and return
       else
         @order.coupon = @coupon
       end
     end
 
-    @order.apply_tax
+    if @user.new_record?
+      @user.save
+      add_referrer_if_referred_by(@user)
+      sign_in :user, @user
+    end
+
+    @can_edit_account_info = 1.hour.ago < @user.created_at
+    @order.calculate_final_cost!
   end
 
   def create
+    unless user_signed_in?
+      redirect_to '/orders/new' and return
+    end
+
     @card_token = params[:stripe_card_token]
     @coupon_code = params[:coupon_code]
+    @user = current_user
 
     ActiveRecord::Base.transaction do
-      # Create a new user and sign them in, or get the current_user if already signed in
-      if params[:user]
-        @user = User.new_from_params_and_measurement(params, @measurement)
-        unless @user.save
-          render action: "new"
-          raise ActiveRecord::Rollback and return
-        end
-        sign_in :user, @user
-      else
-        @user = current_user
-        unless @user.save_address_if_address_nil(params[:order])
-          render action: "new"
-          raise ActiveRecord::Rollback and return
-        end
+      unless @user.save_address_if_address_nil(params[:order])
+        render action: "new"
+        raise ActiveRecord::Rollback and return
       end
 
       # Create the order, copy user, user's measurements, and line items from cart, check for validity but don't save
@@ -132,7 +144,7 @@ class OrdersController < ApplicationController
         end
       end
 
-      @order.apply_tax
+      @order.calculate_final_cost!
 
       # Attempt to charge the credit card
       if @user.stripe_customer_id? && params[:card_radio] == 'use_saved_card'
@@ -156,6 +168,7 @@ class OrdersController < ApplicationController
       @order.save!
     end
 
+    session[:account_created] = true if params[:user]
     session[:order_id] = @order.id
     redirect_to :thank_you_orders
   rescue Stripe::StripeError => e
@@ -188,7 +201,7 @@ class OrdersController < ApplicationController
 
     def ensure_measurement_not_nil
       unless @cart.skip_measurements?
-        @measurement = user_signed_in? ? current_user.measurement : get_measurement_from_session
+        @measurement = user_signed_in? ? current_user.measurement : get_measurement_from_cookie
         if @measurement.nil?
           redirect_to measurements_path, notice: 'You need to enter your measurements before you can complete your order.'
         end

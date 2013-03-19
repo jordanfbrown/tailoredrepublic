@@ -1,12 +1,11 @@
 class LineItem < ActiveRecord::Base
-  attr_accessible :cart_id, :product, :customization, :cart, :order, :quantity
+  attr_accessible :product, :customization, :quantity
   belongs_to :cart
   belongs_to :product
   belongs_to :customization, dependent: :destroy
   belongs_to :order
 
   delegate :name, :summary, :category, :default_photo, :subcategory, :fabric_id, to: :product
-
 
   def self.sum_price(line_items)
     line_items.map { |l| l.total_price }.sum.to_i

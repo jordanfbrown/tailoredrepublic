@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130311205319) do
+ActiveRecord::Schema.define(:version => 20130318184956) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -34,7 +34,10 @@ ActiveRecord::Schema.define(:version => 20130311205319) do
   create_table "carts", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
   end
+
+  add_index "carts", ["user_id"], :name => "index_carts_on_user_id"
 
   create_table "coupons", :force => true do |t|
     t.string   "code"
@@ -118,14 +121,15 @@ ActiveRecord::Schema.define(:version => 20130311205319) do
   add_index "measurements", ["user_id"], :name => "index_measurements_on_user_id"
 
   create_table "orders", :force => true do |t|
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.datetime "created_at",                                       :null => false
+    t.datetime "updated_at",                                       :null => false
     t.integer  "user_id"
     t.string   "order_id"
     t.integer  "coupon_id"
-    t.decimal  "discount",   :precision => 10, :scale => 2
-    t.decimal  "final_cost", :precision => 10, :scale => 2
-    t.decimal  "tax",        :precision => 10, :scale => 2
+    t.decimal  "discount",          :precision => 10, :scale => 2
+    t.decimal  "final_cost",        :precision => 10, :scale => 2
+    t.decimal  "tax",               :precision => 10, :scale => 2
+    t.integer  "referral_discount"
   end
 
   add_index "orders", ["coupon_id"], :name => "index_orders_on_coupon_id"
@@ -165,6 +169,27 @@ ActiveRecord::Schema.define(:version => 20130311205319) do
     t.string   "fabric_id"
   end
 
+  create_table "referral_emails", :force => true do |t|
+    t.string   "email_addresses"
+    t.string   "message",         :limit => 500
+    t.integer  "user_id"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  add_index "referral_emails", ["user_id"], :name => "index_referral_emails_on_user_id"
+
+  create_table "referrals", :force => true do |t|
+    t.integer  "referrer_id"
+    t.integer  "referee_id"
+    t.string   "status"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "referrals", ["referee_id", "referrer_id"], :name => "index_referrals_on_referee_id_and_referrer_id"
+  add_index "referrals", ["referrer_id", "referee_id"], :name => "index_referrals_on_referrer_id_and_referee_id"
+
   create_table "schedule_tailor_requests", :force => true do |t|
     t.string   "email"
     t.string   "ip_address"
@@ -200,6 +225,8 @@ ActiveRecord::Schema.define(:version => 20130311205319) do
     t.string   "name"
     t.string   "stripe_customer_id"
     t.string   "role"
+    t.integer  "referral_credit",        :default => 0
+    t.string   "sign_up_method"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
