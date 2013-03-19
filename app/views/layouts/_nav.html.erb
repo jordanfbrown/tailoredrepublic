@@ -39,8 +39,9 @@
             <li><%= link_to 'Settings', edit_user_registration_path %></li>
             <li><%= link_to 'Measurements', measurements_path %></li>
             <li><%= link_to 'Order History', '/orders' %></li>
+            <li><%= link_to 'Reviews', reviews_path %></li>
             <li><%= link_to 'Referrals', referrals_path %></li>
-            <% if current_user.role == 'admin' %>
+            <% if current_user.admin? %>
               <li class="has-dropdown"><%= link_to 'Admin', admin_path %>
                 <ul class="dropdown">
                   <li><label>Admin</label></li>
@@ -48,6 +49,7 @@
                   <li><%= link_to 'Users', users_path %></li>
                   <li><%= link_to 'Coupons', coupons_path %></li>
                   <li><%= link_to 'Orders', '/admin/orders' %></li>
+                  <li><%= link_to 'Reviews', '/admin/reviews' %></li>
                   <li><%= link_to 'TM Requests', tape_measure_requests_path %></li>
                   <li><%= link_to 'Tailorings', schedule_tailor_requests_path %></li>
                 </ul>

@@ -6,6 +6,7 @@ class Product < ActiveRecord::Base
                   :fabric_id, :product_photos_attributes
   has_many :line_items
   has_many :customizations
+  has_many :reviews
   has_many :product_photos, order: 'default_photo DESC, created_at ASC', dependent: :destroy
   has_many :coupons, foreign_key: 'apply_to_product_id', class_name: 'Coupon'
   before_destroy :ensure_not_referenced_by_line_item
@@ -100,6 +101,19 @@ class Product < ActiveRecord::Base
 
   def to_s
     name
+  end
+
+  def accepted_reviews
+    reviews.select { |r| r.status == 'accepted' }
+  end
+
+  def average_rating
+    average = accepted_reviews.map { |r| r.rating }.inject(:+) / accepted_reviews.length.to_f
+    (average * 2).round / 2.0 # Round to nearest 0.5
+  end
+
+  def slug
+    name.parameterize
   end
 
   private

@@ -1,0 +1,32 @@
+<div class="twelve columns">
+  <h2>Your Reviews</h2>
+  <div class="outlined">
+    <table>
+      <tr>
+        <th>Product</th>
+        <th>Rating</th>
+        <th>Summary</th>
+        <th>Status</th>
+        <th>Created Date</th>
+        <th></th>
+      </tr>
+
+      <% @reviews.each do |review| %>
+        <tr>
+          <td><%= link_to review.product.name, "/products/#{review.product.slug}" %></td>
+          <td><%= render 'reviews/stars', num_stars: review.rating %></td>
+          <td><%= simple_format review.summary %></td>
+          <td><%= review.status.capitalize %></td>
+          <td><%= review.created_at_friendly %></td>
+          <td><%= link_to 'Edit', "/products/#{review.product.slug}/reviews/#{review.id}/edit" %></td>
+        </tr>
+      <% end %>
+    </table>
+
+    <%= will_paginate @reviews %>
+  </div>
+</div>
+
+
+
+

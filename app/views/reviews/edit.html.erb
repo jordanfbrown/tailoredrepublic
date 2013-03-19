@@ -1,0 +1,13 @@
+<% title_helper("Edit Review - #{@product.name}") %>
+
+<div class="row">
+  <div class="twelve columns content-wrapper">
+    <h1>Edit Review for <%= @product.name %></h1>
+    <h6>Note: updating your review will set its status back to "Pending".</h6>
+    <%= render 'form', review: @review %>
+    <%= link_to "Back to #{@product.name}", "/products/#{@product.slug}", class: 'button margin-bottom' %>
+  </div>
+</div>
+
+
+

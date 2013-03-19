@@ -2,7 +2,7 @@
   <div class="twelve columns">
     <h2><%= @product.name %><span class="divider">&nbsp;//&nbsp;</span>$<%= @product.display_price %></h2>
   </div>
-  <div class="row">
+  <div class="row product-row">
     <div class="five columns preview-wrapper">
       <ul class="modal-suit-preview three columns">
         <% @product.product_photos.each do |photo| %>
@@ -27,6 +27,25 @@
           <%= link_to 'Add to Cart', '#', class: 'add-to-cart-no-customization button large full-width' %>
         <% end %>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <h3>Reviews</h3>
+    <% if user_signed_in? %>
+      <%= link_to 'Add Review', "/products/#{@product.slug}/reviews/new", class: 'button margin-bottom' %>
+    <% end %>
+    <div class="twelve columns outlined">
+      <% if @product.accepted_reviews.length > 0 %>
+        <h5>Average Rating: <%= render 'reviews/stars', num_stars: @product.average_rating %></h5>
+        <ul class="reviews-list">
+          <% @product.accepted_reviews.take(5).each do |review| %>
+            <li>
+              <p class="bold"><%= review.rating %> Stars <span class="divider">//</span> <%= review.user.name %></p>
+              <p><%= simple_format review.summary %></p>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
     </div>
   </div>
 </div>

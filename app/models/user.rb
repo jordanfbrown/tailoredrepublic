@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_one :billing_address, as: :addressable, validate: true
   has_many :referral_emails
   has_many :orders
+  has_many :reviews
   has_many :referrals, class_name: 'Referral', foreign_key: 'referrer_id', dependent: :delete_all
   has_one :referred_by, class_name: 'Referral', foreign_key: 'referee_id', dependent: :delete
 
@@ -113,6 +114,10 @@ class User < ActiveRecord::Base
                                       :measurement).paginate(page: page).order('created_at DESC')
   end
 
+  def paginated_reviews(page)
+    Review.where(user_id: id).includes(:product).paginate(page: page).order('created_at DESC')
+  end
+
   def first_name
     name.split(' ')[0]
   end
@@ -131,6 +136,10 @@ class User < ActiveRecord::Base
 
     clean_up_passwords
     result
+  end
+
+  def admin?
+    role == 'admin'
   end
 
   def set_initial_role

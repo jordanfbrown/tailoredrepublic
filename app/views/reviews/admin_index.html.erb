@@ -1,0 +1,42 @@
+<div class="twelve columns">
+  <h2>Reviews</h2>
+  <div class="outlined">
+    <div class="six columns no-padding">
+      <%= form_tag reviews_path, method: 'get' do %>
+        <%= label_tag :filter, 'Filter By Status' %>
+        <%= select_tag :filter, options_for_select(['all'].concat(Review::STATUSES), @filter) %>
+      <% end %>
+    </div>
+
+    <table>
+      <tr>
+        <th>Product</th>
+        <th>User</th>
+        <th>Rating</th>
+        <th>Summary</th>
+        <th>Status</th>
+        <th>Created At</th>
+      </tr>
+
+      <% @reviews.each do |review| %>
+        <tr>
+          <td><%= link_to review.product.name, review.product %></td>
+          <td><%= link_to review.user.email, review.user %></td>
+          <td><%= render 'reviews/stars', num_stars: review.rating %></td>
+          <td><%= review.summary %></td>
+          <td><%= select_tag :status, options_for_select(Review::STATUSES, review.status), class: 'status-select', id: "status_#{review.id}", data: { id: review.id } %></td>
+          <td><%= review.created_at.in_time_zone('Pacific Time (US & Canada)') %></td>
+        </tr>
+      <% end %>
+    </table>
+
+    <%= will_paginate @reviews %>
+  </div>
+</div>
+
+<script>
+  new TR.Views.AdminReviews();
+</script>
+
+
+

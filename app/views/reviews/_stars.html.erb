@@ -1,0 +1,15 @@
+<% @selected = num_stars.is_a?(Float) ? (num_stars - 0.5).to_i : num_stars %>
+<% @half = num_stars.is_a?(Float) ? 1 : 0 %>
+<% @unselected = 5 - @selected - @half %>
+
+<ul class="stars">
+  <% @selected.times do %>
+    <li class="selected"></li>
+  <% end %>
+  <% @half.times do %>
+    <li class="half"></li>
+  <% end %>
+  <% @unselected.times do %>
+    <li class="unselected"></li>
+  <% end %>
+</ul>
