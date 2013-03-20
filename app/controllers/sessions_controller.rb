@@ -10,7 +10,7 @@ class SessionsController < Devise::SessionsController
   private
     def store_redirect_to
       unless request.referrer =~ /\/login/ || request.referrer =~ /\/logout/ || request.referrer =~ /\/account/
-        session[:redirect_to] = request.referrer
+        session[:redirect_to] = request.referrer unless request.referrer.nil?
       end
     end
 

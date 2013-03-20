@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource_or_scope)
     redirect_path = session[:redirect_to] || session[:user_return_to]
-    session.delete :redirect_to
+    session.delete(:redirect_to)
     redirect_path || edit_user_registration_path
   end
 

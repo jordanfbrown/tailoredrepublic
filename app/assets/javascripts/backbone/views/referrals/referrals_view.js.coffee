@@ -8,6 +8,7 @@ class TR.Views.Referrals extends TR.Views.Base
 
   initialize: (options) ->
     @referralUrl = options.referralUrl
+    mixpanel.track 'Went to Referrals Page'
     FB.init
       appId: '451190041628605'
       status: true
@@ -15,16 +16,19 @@ class TR.Views.Referrals extends TR.Views.Base
 
   submitForm: ->
     mixpanel.track 'Shared Referral', { 'Method': 'Email'}
+    TR.Analytics.trackEvent 'Referrals', 'Shared', 'Email'
 
   postToTwitter: (e) ->
     e.preventDefault()
     href = $(e.currentTarget).attr 'href'
     window.open href, 'Share on Twitter', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'
     mixpanel.track 'Shared Referral', { 'Method': 'Twitter'}
+    TR.Analytics.trackEvent 'Referrals', 'Shared', 'Twitter'
 
   postToFacebook: (e) ->
     e.preventDefault()
     mixpanel.track 'Shared Referral', { 'Method': 'Facebook'}
+    TR.Analytics.trackEvent 'Referrals', 'Shared', 'Facebook'
     FB.ui
       method: 'feed'
       redirect_uri: 'https://www.tailoredrepublic.com/referrals'

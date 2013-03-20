@@ -11,7 +11,8 @@ class ReferralsController < ApplicationController
       @referrals = current_user.referrals.includes(:referee)
       @referral_email = ReferralEmail.new
     else
-      redirect_to root_path
+      session[:redirect_to] = referrals_path
+      redirect_to new_user_session_path, notice: 'You must login or create an account before you can take advantage of the Tailored Republic referral program.'
     end
   end
 
