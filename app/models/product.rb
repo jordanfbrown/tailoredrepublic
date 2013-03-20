@@ -4,14 +4,19 @@ class Product < ActiveRecord::Base
   enum_attr :category, %w(suit shirt accessory gift_card)
   attr_accessible :description, :name, :price, :quantity, :category, :summary, :display_order, :top_pick, :subcategory,
                   :fabric_id, :product_photos_attributes
+
   has_many :line_items
   has_many :customizations
   has_many :reviews
   has_many :product_photos, order: 'default_photo DESC, created_at ASC', dependent: :destroy
   has_many :coupons, foreign_key: 'apply_to_product_id', class_name: 'Coupon'
-  before_destroy :ensure_not_referenced_by_line_item
 
   accepts_nested_attributes_for :product_photos, allow_destroy: true
+
+  before_destroy :ensure_not_referenced_by_line_item
+
+  extend FriendlyId
+  friendly_id :name, use: :slugged
 
   def self.vest_price
     79

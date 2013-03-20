@@ -19,30 +19,14 @@ class ProductsController < ApplicationController
     @products = Product.order('category ASC, name ASC').all
   end
 
-  # GET /products/1
-  # GET /products/1.json
   def show
-    # "1".to_i == 1, "2".to_i == 2, "foo".to_i = 0 -- this determines if an integer or string has been passed in
-    if params[:id].to_i > 0
-      @product = Product.find(params[:id]) || (render_404 and return)
+    @product = Product.find(params[:id]) || (render_404 and return)
+    @reviews = @product.reviews.accepted
 
-      respond_to do |format|
-        format.html do
-          authorize! :show, @product
-        end
-        format.json { render json: @product }
-      end
-    else
-      name = params[:id].titleize
-      @product = Product.find_by_name(name) || (render_404 and return)
-      @reviews = @product.reviews.accepted
-
-      respond_to do |format|
-        format.html
-        format.json { render json: @product }
-      end
+    respond_to do |format|
+      format.html
+      format.json { render json: @product }
     end
-
   end
 
   # GET /products/new

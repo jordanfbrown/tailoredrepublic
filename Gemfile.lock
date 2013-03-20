@@ -96,6 +96,7 @@ GEM
     font_assets (0.1.6)
       rack
     formatador (0.2.4)
+    friendly_id (4.0.9)
     fssm (0.2.10)
     gibbon (0.4.3)
       httparty
@@ -227,6 +228,7 @@ DEPENDENCIES
   devise (>= 2.1.2)
   enumerated_attribute!
   font_assets
+  friendly_id (~> 4.0.9)
   gibbon
   jasminerice!
   jquery-rails

@@ -36,6 +36,7 @@ gem 'sitemap_generator'
 gem 'active_record_query_trace'
 gem 'paperclip', '~> 3.0'
 gem 'aws-sdk'
+gem "friendly_id", "~> 4.0.9"
 
 group :development, :test do
   gem "jasminerice", :git => 'https://github.com/bradphelan/jasminerice.git'

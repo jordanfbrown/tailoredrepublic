@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130319172701) do
+ActiveRecord::Schema.define(:version => 20130320175712) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -167,7 +167,10 @@ ActiveRecord::Schema.define(:version => 20130319172701) do
     t.boolean  "top_pick"
     t.string   "subcategory"
     t.string   "fabric_id"
+    t.string   "slug"
   end
+
+  add_index "products", ["slug"], :name => "index_products_on_slug"
 
   create_table "referral_emails", :force => true do |t|
     t.string   "email_addresses"
