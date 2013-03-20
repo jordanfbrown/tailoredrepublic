@@ -12,7 +12,7 @@ class ReferralsControllerTest < ActionController::TestCase
   test 'going to index should redirect user to home page if not logged in' do
     get :index
     assert_response :redirect
-    assert_redirected_to root_path
+    assert_redirected_to new_user_session_path
   end
 
   test 'going to index should work if user is signed in' do
