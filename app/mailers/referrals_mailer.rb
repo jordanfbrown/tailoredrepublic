@@ -4,7 +4,7 @@ class ReferralsMailer < ActionMailer::Base
   def invite_friends_email(user, recipients, message)
     @user = user
     @message = message
-    mail bcc: recipients, subject: 'Invitation to check out Tailored Republic'
+    mail bcc: recipients, subject: "#{user.name} has invited you to check out Tailored Republic"
   end
 
   def purchase_completed_email(referral)
