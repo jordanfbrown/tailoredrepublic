@@ -20,6 +20,7 @@ class Order < ActiveRecord::Base
     order.user = user
     order.measurement = user.duplicate_measurement
     order.copy_line_items_from_cart(cart)
+    order.referral_discount = user.referral_credit if order.should_apply_referral_discount?
     order
   end
 
@@ -65,17 +66,14 @@ class Order < ActiveRecord::Base
 
   def cost_before_tax
     total = LineItem.sum_price(line_items)
-
-    unless coupon.nil?
-      discount = calculate_discount
-      total -= discount
-    end
-
-    unless user.nil? || user.referral_credit.nil? || user.referral_credit == 0
-      total -= user.referral_credit
-    end
-
+    total -= calculate_discount unless coupon.nil?
+    total -= user.referral_credit if should_apply_referral_discount?
     total
+  end
+
+  def should_apply_referral_discount?
+    # We don't allow use of referral credits when the order only consists of accessories
+    !user.nil? && !user.referral_credit.nil? && user.referral_credit > 0 && !LineItem.only_accessories?(line_items)
   end
 
   def has_gift_cards?
@@ -92,7 +90,7 @@ class Order < ActiveRecord::Base
   end
 
   def calculate_final_cost!
-    self.referral_discount = user.referral_credit if user.referral_credit > 0
+    self.referral_discount = user.referral_credit if should_apply_referral_discount?
     self.tax = ((shipping_address.state == 'CA' ? 0.09 : 0) * cost_before_tax).round(2)
     self.final_cost = self.tax + cost_before_tax
   end

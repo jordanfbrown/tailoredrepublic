@@ -10,8 +10,8 @@ class MeasurementsController < ApplicationController
       end
     end
 
-    @shirt_only = @cart.shirt_only?
-    @num_measurements = Measurement.num_measurements(@shirt_only)
+    @only_shirts = @cart.only_shirts?
+    @num_measurements = Measurement.num_measurements(@only_shirts)
     @signed_in = user_signed_in?
     @is_https = request.ssl?
     @initial_slide = params[:initial_slide]

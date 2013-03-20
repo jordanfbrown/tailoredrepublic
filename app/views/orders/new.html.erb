@@ -16,7 +16,7 @@
           <fieldset>
             <legend><%= @can_edit_account_info ? 'Account Information' : 'Create an Account' %></legend>
             <% unless @can_edit_account_info %>
-              <p><%= link_to 'Already have an account? Click here to login.', new_user_session_path %></p>
+              <p><%= link_to 'Already have an account? Login to populate your information.', new_user_session_path %></p>
             <% end %>
             <%= render 'users/light_form', user: @user %>
           </fieldset>

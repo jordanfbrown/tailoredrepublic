@@ -11,6 +11,14 @@ class LineItem < ActiveRecord::Base
     line_items.map { |l| l.total_price }.sum.to_i
   end
 
+  def self.only_accessories?(line_items)
+    line_items.all? { |l| l.category == :accessory }
+  end
+
+  def self.only_shirts?(line_items)
+    line_items.all? { |l| l.category == :shirt }
+  end
+
   def total_price
     # Include quantity
     calculate_price(true)

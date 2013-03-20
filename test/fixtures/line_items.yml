@@ -60,3 +60,14 @@ suit_with_vest:
   product: executive
   customization: vested_suit
   quantity: 1
+
+coral_pocket_line_item:
+  product: coral_pocket_square
+  quantity: 1
+  cart: accessory_cart
+
+green_pocket_line_item:
+  product: green_pocket_square
+  quantity: 1
+  cart: accessory_cart
+

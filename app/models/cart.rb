@@ -15,8 +15,8 @@ class Cart < ActiveRecord::Base
     end
   end
 
-  def shirt_only?
-    !line_items.any? { |l| l.product.category == :suit } && line_items.any? { |l| l.product.category == :shirt }
+  def only_shirts?
+    LineItem.only_shirts?(line_items)
   end
 
   def line_items_light

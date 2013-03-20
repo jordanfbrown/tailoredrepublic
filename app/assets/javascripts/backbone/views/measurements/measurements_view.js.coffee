@@ -20,7 +20,7 @@ class TR.Views.Measurements extends TR.Views.Base
 
   initialize: (options) ->
     @lineItemCount = options.lineItemCount
-    @shirtOnly = options.shirtOnly
+    @onlyShirts = options.onlyShirts
     @signedIn = options.signedIn
     @initialSlide = options.initialSlide
     @signUpMethod = options.signUpMethod
@@ -86,7 +86,7 @@ class TR.Views.Measurements extends TR.Views.Base
     @slider.goToSlide index
 
   updateSummaryPage: =>
-    templateData = _.extend {shirtOnly: @shirtOnly}, @model.toJSON()
+    templateData = _.extend {onlyShirts: @onlyShirts}, @model.toJSON()
     @$('.measurement-summary').html @template templateData
 
   submitMeasurement: (e) ->

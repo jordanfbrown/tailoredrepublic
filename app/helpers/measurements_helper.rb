@@ -1,7 +1,7 @@
 module MeasurementsHelper
   include ActiveSupport::Inflector
 
-  def measurement_metadata(shirt_only)
+  def measurement_metadata(only_shirts)
     metadata = {
       neck: {
         url: 'SborRZpbXs0',
@@ -124,7 +124,7 @@ module MeasurementsHelper
       }
     }
 
-    if shirt_only
+    if only_shirts
       metadata.delete(:crotch)
       metadata.delete(:thigh)
       metadata.delete(:pant_length)

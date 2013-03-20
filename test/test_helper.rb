@@ -6,17 +6,9 @@ require "mocha/setup"
 class ActiveSupport::TestCase
   fixtures :all
 
-  def set_full_cart_cookie
-    @request.cookie_jar.signed[:cart_id] = ActiveRecord::Fixtures.identify(:two_suits)
-    carts(:two_suits)
-  end
-
-  def set_empty_cart_cookie
-    @request.cookie_jar.signed[:cart_id] = ActiveRecord::Fixtures.identify(:empty)
-  end
-
-  def set_one_suit_cart_cookie
-    @request.cookie_jar.signed[:cart_id] = ActiveRecord::Fixtures.identify(:one_suit)
+  def set_cart_cookie(cart_fixture)
+    @request.cookie_jar.signed[:cart_id] = ActiveRecord::Fixtures.identify(cart_fixture)
+    carts(cart_fixture)
   end
 
   def json_response

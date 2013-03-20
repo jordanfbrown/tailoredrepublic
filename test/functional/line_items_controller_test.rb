@@ -26,7 +26,7 @@ class LineItemsControllerTest < ActionController::TestCase
   end
 
   test 'should be able to update a line item\'s quantity' do
-    cart = set_full_cart_cookie
+    cart = set_cart_cookie(:two_suits)
     line_item = cart.line_items.first
     old_quantity = line_item.quantity
     put :update, id: line_item.id, line_item: { quantity: 2 }
@@ -36,7 +36,7 @@ class LineItemsControllerTest < ActionController::TestCase
   end
 
   test 'should be able to delete a line item' do
-    cart = set_full_cart_cookie
+    cart = set_cart_cookie(:two_suits)
     line_item = cart.line_items.first
     delete :destroy, id: line_item.id
     assert_equal json_response['success'], true

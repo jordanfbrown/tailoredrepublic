@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CartsControllerTest < ActionController::TestCase
   test 'show should render correctly' do
-    set_full_cart_cookie
+    set_cart_cookie(:two_suits)
     get :show
     assert_response :success
     assert_template :show

@@ -60,6 +60,7 @@ class User < ActiveRecord::Base
     shipping_address.blank? ? order.build_shipping_address : order.build_address_from_address(shipping_address)
     billing_address.blank? ? order.build_billing_address : order.build_address_from_address(billing_address)
     order.copy_line_items_from_cart(cart)
+    order.referral_discount = referral_credit if order.should_apply_referral_discount?
     order
   end
 

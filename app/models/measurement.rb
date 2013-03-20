@@ -18,7 +18,7 @@ class Measurement < ActiveRecord::Base
     attributes.except('id', 'created_at', 'updated_at', 'user_id', 'order_id')
   end
 
-  def self.num_measurements(shirt_only)
-    shirt_only ? 11: 14
+  def self.num_measurements(only_shirts)
+    only_shirts ? 11: 14
   end
 end

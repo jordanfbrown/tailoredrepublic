@@ -11,19 +11,19 @@ class CartTest < ActiveSupport::TestCase
     assert_equal cart.total_price, 0
   end
 
-  test "shirt_only? should be false if there is a suit in the cart and no shirts" do
+  test "only_shirts? should be false if there is a suit in the cart and no shirts" do
     cart = carts(:one_suit)
-    assert !cart.shirt_only?
+    assert !cart.only_shirts?
   end
 
-  test "shirt_only? should be false if there is at least 1 shirt and at least 1 suit in the cart" do
+  test "only_shirts? should be false if there is at least 1 shirt and at least 1 suit in the cart" do
     cart = carts(:one_shirt_one_suit)
-    assert !cart.shirt_only?
+    assert !cart.only_shirts?
   end
 
-  test "shirt_only? should be true if there is at least 1 shirt and no suit in the cart" do
+  test "only_shirts? should be true if there is at least 1 shirt and no suit in the cart" do
     cart = carts(:one_shirt)
-    assert cart.shirt_only?
+    assert cart.only_shirts?
   end
 
   test "skip_measurements? should be false if there is a suit in the cart" do

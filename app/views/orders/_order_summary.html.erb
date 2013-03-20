@@ -6,8 +6,8 @@
         <li><span class="label"><%= line_item.quantity %> x <%= line_item.name %>:</span>
           <%= number_to_currency line_item.total_price %></li>
       <% end %>
-      <% unless @user.referral_credit.nil? || @user.referral_credit == 0 %>
-        <li class="total"><span class="label">Referral Credit</span> -<%= number_to_currency @user.referral_credit %></li>
+      <% unless order.referral_discount.nil? || order.referral_discount == 0 %>
+        <li class="total"><span class="label">Referral Credit</span> -<%= number_to_currency order.referral_discount %></li>
       <% end %>
       <% unless order.coupon.nil? || order.calculate_discount == 0 %>
         <li class="total"><span class="label"><%= order.coupon_description %>:</span> -<%= number_to_currency order.calculate_discount %></li>
@@ -16,7 +16,7 @@
       <li><span class="label">Tax <%= '(9%)' if order.tax? %>:</span> <%= order.tax? ? number_to_currency(order.tax) : '$0.00' %></li>
       <li class="total"><span class="label">Total:</span> <%= number_to_currency(order.final_cost? ? order.final_cost : order.cost_before_tax) %></li>
     </ul>
-    <p class="view-cart"><%= link_to 'Does something not look right? Click here to view your cart and edit any customizations.', cart_path %></p>
+    <p class="view-cart"><%= link_to 'Does something not look right? View your cart and edit any customizations.', cart_path %></p>
   </div>
   <h3>Ordering FAQ</h3>
   <div class="outlined faq">

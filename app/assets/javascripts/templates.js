@@ -663,7 +663,7 @@ function program1(depth0,data) {
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.jacket_length; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
   buffer += escapeExpression(stack1) + "\"/>\n      </div>\n      ";
-  stack1 = depth0.shirtOnly;
+  stack1 = depth0.onlyShirts;
   stack1 = helpers.unless.call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(1, program1, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n    </div>\n    <div class=\"twelve columns\">\n      <ul class=\"error error-list\"></ul>\n    </div>\n    <a href=\"#\" class=\"button full-width large accept-quick\">Accept</a>\n  </form>\n</div>\n";
