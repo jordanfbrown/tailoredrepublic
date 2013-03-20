@@ -1,7 +1,7 @@
 class OrderMailer < ActionMailer::Base
   include ActionView::Helpers::NumberHelper
   helper :carts
-  default from: "orders@tailoredrepublic.com"
+  default from: '"Tailored Republic" <orders@tailoredrepublic.com>'
 
   def order_confirmation_email(order)
     @order = order

@@ -1,5 +1,5 @@
 class ScheduleTailorRequestMailer < ActionMailer::Base
-  default from: "tailorings@tailoredrepublic.com"
+  default from: '"Tailored Republic" <tailorings@tailoredrepublic.com>'
 
   def schedule_tailor_email(schedule_tailor_request)
     @schedule_tailor_request = schedule_tailor_request

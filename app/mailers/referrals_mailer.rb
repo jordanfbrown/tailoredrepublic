@@ -1,5 +1,5 @@
 class ReferralsMailer < ActionMailer::Base
-  default from: "referrals@tailoredrepublic.com"
+  default from: '"Tailored Republic" <referrals@tailoredrepublic.com>'
 
   def invite_friends_email(user, recipients, message)
     @user = user
