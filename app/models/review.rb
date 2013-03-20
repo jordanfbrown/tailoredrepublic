@@ -8,6 +8,8 @@ class Review < ActiveRecord::Base
   validates :status, inclusion: { in: STATUSES, message: "%{value} is not a valid status" }
   validates :summary, length: { minimum: 1, maximum: 1000 }
 
+  scope :accepted, where('status = ?', 'accepted')
+
   def self.filter_by_status(status, page)
     if status == 'all'
       self.paginate(page: page, per_page: 20, order: 'created_at DESC')

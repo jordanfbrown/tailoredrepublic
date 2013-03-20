@@ -1,29 +1,33 @@
 <div class="twelve columns">
   <h2>Your Reviews</h2>
-  <div class="outlined">
-    <table>
-      <tr>
-        <th>Product</th>
-        <th>Rating</th>
-        <th>Summary</th>
-        <th>Status</th>
-        <th>Created Date</th>
-        <th></th>
-      </tr>
-
-      <% @reviews.each do |review| %>
+  <div class="outlined ">
+    <% if @reviews.length > 0 %>
+      <table>
         <tr>
-          <td><%= link_to review.product.name, "/products/#{review.product.slug}" %></td>
-          <td><%= render 'reviews/stars', num_stars: review.rating %></td>
-          <td><%= simple_format review.summary %></td>
-          <td><%= review.status.capitalize %></td>
-          <td><%= review.created_at_friendly %></td>
-          <td><%= link_to 'Edit', "/products/#{review.product.slug}/reviews/#{review.id}/edit" %></td>
+          <th>Product</th>
+          <th>Rating</th>
+          <th>Summary</th>
+          <th>Status</th>
+          <th>Created Date</th>
+          <th></th>
         </tr>
-      <% end %>
-    </table>
 
-    <%= will_paginate @reviews %>
+        <% @reviews.each do |review| %>
+          <tr>
+            <td><%= link_to review.product.name, "/products/#{review.product.slug}" %></td>
+            <td><%= render 'reviews/stars', num_stars: review.rating %></td>
+            <td><%= simple_format review.summary %></td>
+            <td><%= review.status.capitalize %></td>
+            <td><%= review.created_at_friendly %></td>
+            <td><%= link_to 'Edit', "/products/#{review.product.slug}/reviews/#{review.id}/edit" %></td>
+          </tr>
+        <% end %>
+      </table>
+
+      <%= will_paginate @reviews %>
+    <% else %>
+      <p>You haven't written any reviews yet. You can add a review by clicking the "Add Review" button any product page.</p>
+    <% end %>
   </div>
 </div>
 

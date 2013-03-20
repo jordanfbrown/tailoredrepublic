@@ -34,7 +34,8 @@ class ProductsController < ApplicationController
       end
     else
       name = params[:id].titleize
-      @product = Product.includes(:reviews).find_by_name(name) || (render_404 and return)
+      @product = Product.find_by_name(name) || (render_404 and return)
+      @reviews = @product.reviews.accepted
 
       respond_to do |format|
         format.html

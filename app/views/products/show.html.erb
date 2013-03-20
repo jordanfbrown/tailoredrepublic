@@ -31,16 +31,17 @@
   </div>
   <div class="row">
     <h3>Reviews</h3>
-    <% if user_signed_in? %>
-      <%= link_to 'Add Review', "/products/#{@product.slug}/reviews/new", class: 'button margin-bottom' %>
-    <% end %>
     <div class="twelve columns outlined">
-      <% if @product.accepted_reviews.length > 0 %>
-        <h5>Average Rating: <%= render 'reviews/stars', num_stars: @product.average_rating %></h5>
+      <% if @reviews.length > 0 %>
+        <h4>Average Rating <%= render 'reviews/stars', num_stars: @product.average_rating %></h4>
+        <% if user_signed_in? %>
+          <%= link_to 'Add Review', "/products/#{@product.slug}/reviews/new", class: 'button margin-bottom' %>
+        <% end %>
         <ul class="reviews-list">
-          <% @product.accepted_reviews.take(5).each do |review| %>
-            <li>
-              <p class="bold"><%= review.rating %> Stars <span class="divider">//</span> <%= review.user.name %></p>
+          <% @reviews.take(5).each do |review| %>
+            <li class="review-list-item">
+              <h6>Review by <%= review.user.name %></h6>
+              <%= render 'reviews/stars', num_stars: review.rating %>
               <p><%= simple_format review.summary %></p>
             </li>
           <% end %>
