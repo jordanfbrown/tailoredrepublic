@@ -1,8 +1,9 @@
 <div class="content-wrapper">
-  <div class="twelve columns">
-    <h2><%= @product.name %><span class="divider">&nbsp;//&nbsp;</span>$<%= @product.display_price %></h2>
+  <div class="dashed-bottom">
+    <%= link_to "Back To #{@category.capitalize}", "/shop/#@category", class: 'button' %>
   </div>
-  <div class="row">
+  <h2><%= @product.name %><span class="divider">&nbsp;//&nbsp;</span>$<%= @product.display_price %></h2>
+  <div class="row product-row">
     <div class="five columns preview-wrapper">
       <ul class="modal-suit-preview three columns">
         <% @product.product_photos.each do |photo| %>
@@ -10,13 +11,13 @@
         <% end %>
       </ul>
       <div class="magnify nine columns">
-        <%= image_tag @product.default_photo.photo.url(:medium), class: 'magnify-small' %>
+        <%= image_tag @product.default_photo.photo.url(:medium), class: 'magnify-small' unless @product.default_photo.nil? %>
         <p>Hover to magnify</p>
       </div>
     </div>
     <div class="seven columns outlined">
       <div class="image-magnified" style="display: none;">
-        <%= image_tag @product.default_photo.photo.url(:original), class: 'magnify-large' %>
+        <%= image_tag @product.default_photo.photo.url(:original), class: 'magnify-large' unless @product.default_photo.nil? %>
       </div>
       <div class="product-summary">
         <h4><%= @product.summary %></h4>
@@ -29,9 +30,24 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <h3>Reviews</h3>
+    <div class="twelve columns outlined">
+      <% if user_signed_in? %>
+        <%= link_to 'Add Review', new_product_review_path(@product), class: 'button margin-bottom' %>
+      <% end %>
+      <% if @reviews.length > 0 %>
+        <h4>Overall Rating <%= render 'reviews/stars', editable: false, num_stars: @product.average_rating %></h4>
+        <%= render 'reviews/review_list', reviews: @reviews %>
+      <% else %>
+        <p>No reviews have been added for this product yet.</p>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 <script>
   var product = new TR.Models.Product(<%= @product.to_json.html_safe %>);
-  new TR.Views.ShowProduct({model: product});
+  var paginatedReviewPath = '<%= paginated_product_reviews_path(@product) %>';
+  new TR.Views.Product({model: product, paginatedReviewPath: paginatedReviewPath});
 </script>

@@ -1,0 +1,35 @@
+ul.stars {
+  margin: 10px 0;
+
+  &.editable {
+    cursor: pointer;
+  }
+
+  li {
+    width: 20px;
+    height: 19px;
+    display: inline-block;
+    margin-right: 2px;
+
+    &.selected {
+      background: url(icons/star-filled.png) center center no-repeat;
+    }
+
+    &.unselected {
+      background: url(icons/star-stroke.png) center center no-repeat;
+    }
+
+    &.half {
+      background: url(icons/star-half.png) center center no-repeat;
+    }
+  }
+}
+
+.reviews-list {
+  border-top: 1px dashed #aaa;
+
+  li.review-list-item {
+    border-bottom: 1px dashed #aaa;
+    margin-bottom: 10px;
+  }
+}

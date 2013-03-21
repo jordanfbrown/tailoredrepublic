@@ -51,4 +51,14 @@ class ProductTest < ActiveSupport::TestCase
     suit_count = suggested_products.select { |p| p.category == :suit }.length
     assert_equal suit_count, 2
   end
+
+  test "average_rating should return the rounded average of all accepted reviews for a product" do
+    product = products(:executive)
+    assert_equal 4, product.average_rating
+  end
+
+  test "average_rating should return 0 if a product has no reviews" do
+    product = products(:hustler)
+    assert_equal 0, product.average_rating
+  end
 end

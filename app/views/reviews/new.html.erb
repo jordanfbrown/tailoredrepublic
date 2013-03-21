@@ -1,0 +1,12 @@
+<% title_helper("Add Review - #{@product.name}") %>
+
+<div class="row">
+  <div class="twelve columns content-wrapper">
+    <h1>Add Review for <%= @product.name %></h1>
+    <%= render 'form', review: @review %>
+    <%= link_to "Back to #{@product.name}", @product, class: 'button margin-bottom' %>
+  </div>
+</div>
+
+
+

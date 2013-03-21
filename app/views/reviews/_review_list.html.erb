@@ -1,0 +1,12 @@
+<div class="reviews-list-wrapper">
+  <ul class="reviews-list">
+    <% reviews.each do |review| %>
+      <li class="review-list-item">
+        <h6>Review by <%= review.user.name %></h6>
+        <%= render 'reviews/stars', editable: false, num_stars: review.rating %>
+        <p><%= simple_format review.summary %></p>
+      </li>
+    <% end %>
+  </ul>
+  <%= will_paginate reviews %>
+</div>

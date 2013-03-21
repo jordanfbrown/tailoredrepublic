@@ -21,8 +21,14 @@ TailoredRepublic::Application.routes.draw do
   resources :customizations, only: [:show, :create, :update]
   resource  :cart, only: [:show]
   resource  :measurements, only: [:show, :create, :update]
-  resources :products, only: [:show, :index]
-  resources :products, only: [:new, :edit, :create, :update, :admin_index], path: '/admin/products' do
+  resources :products, only: [:show, :index, :create, :update] do
+    resources :reviews, only: [:new, :edit] do
+      collection do
+        get 'paginated'
+      end
+    end
+  end
+  resources :products, only: [:new, :edit, :admin_index], path: '/admin/products' do
     collection do
       get 'index', action: 'admin_index'
     end
@@ -57,6 +63,12 @@ TailoredRepublic::Application.routes.draw do
     collection do
       get 'invite/:referral_code', :action => 'invite'
       post 'email-friends', :action => 'email_friends'
+    end
+  end
+  resources :reviews, only: [:update, :create, :index]
+  resources :reviews, only: [:admin_index], path: '/admin/reviews' do
+    collection do
+      get 'index', action: 'admin_index'
     end
   end
 

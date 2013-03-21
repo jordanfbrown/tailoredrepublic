@@ -3,7 +3,7 @@ class TR.Views.Home extends TR.Views.Base
 
   events:
     'click .page-down': 'scrollToSection'
-    'click .product-wrapper a': 'renderProductModal'
+    'click .product-wrapper a': 'trackViewedProduct'
 
   initialize: (options) ->
     @cacheSelectors()
@@ -29,12 +29,10 @@ class TR.Views.Home extends TR.Views.Base
     @els.constitutionImage.load =>
       @adjustConstitutionImage $(window).width()
 
-  renderProductModal: (e) =>
-    e.preventDefault()
+  trackViewedProduct: =>
     id = $(e.currentTarget).parents('.product-wrapper').data 'id'
     product = @products.get id
     TR.Analytics.trackEvent 'Top Picks', 'View', product.get('name')
-    @productModal = new TR.Views.ProductModal({model: product})
 
   scrollToSection: (e) =>
     href = $(e.currentTarget).attr 'href'

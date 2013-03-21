@@ -197,15 +197,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
     @updateCustomization() if @checkButtonState $(e.currentTarget)
 
   addSuccess: (response) =>
-    mixpanel.track 'Added Product to Cart', {
-      product: @product.get('name')
-      price: @product.get('price')
-      category: @product.get('category')
-      subcategry: @product.get('subcategory')
-    }
-    TR.Analytics.trackEvent 'LineItems', 'Add', @product.get('name')
-    TR.Events.trigger 'addedLineItem', product: @product
-    new TR.Views.AddSuccessModal({model: @product})
+    TR.addLineItemSuccess.call @
     @destroy()
 
   addLineItemFailure: (error) =>
@@ -238,7 +230,7 @@ class TR.Views.CustomizationModal extends TR.Views.Modal
       $largeImg.attr 'src', TR.imgSrc $target.data 'large'
       @$('.fabric-label').text $target.data 'label'
 
-    TR.Views.ProductModal.prototype.magnify.call @, e
+    TR.Views.Product.prototype.magnify.call @, e
 
   close: =>
     TR.Analytics.trackEvent 'Customizations', 'Close', @product.get('name')

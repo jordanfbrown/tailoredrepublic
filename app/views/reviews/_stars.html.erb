@@ -1,0 +1,15 @@
+<% @selected = num_stars.denominator == 2 ? (num_stars - 0.5).to_i : num_stars.to_i %>
+<% @half = num_stars.denominator == 2 ? 1 : 0 %>
+<% @unselected = 5 - @selected - @half %>
+
+<ul class="stars <%= 'editable' if editable %>">
+  <% @selected.times do %>
+    <li class="selected"></li>
+  <% end %>
+  <% @half.times do %>
+    <li class="half"></li>
+  <% end %>
+  <% @unselected.times do %>
+    <li class="unselected"></li>
+  <% end %>
+</ul>

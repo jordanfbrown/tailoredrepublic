@@ -7,9 +7,3 @@
   </div>
   <%= render 'products/products', products: @products %>
 </div>
-
-<script>
-  $(function() {
-    new TR.Views.Shop({products: <%= @products.to_json.html_safe %>});
-  });
-</script>

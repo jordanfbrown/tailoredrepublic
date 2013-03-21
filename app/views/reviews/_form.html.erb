@@ -1,0 +1,15 @@
+<%= form_for @review, html: { class: 'outlined' } do |f| %>
+  <%= render 'shared/form_errors', resource: @review %>
+  <%= f.label :rating %>
+  <%= render 'reviews/stars', editable: true, num_stars: @review.rating.nil? ? 5 : @review.rating %>
+  <%= f.label :summary %>
+  <%= f.text_area :summary %>
+  <%= f.hidden_field :product_id %>
+  <%= f.hidden_field :rating %>
+  <p>By submitting a review you give us permission to use your words on our website or for promotional materials.</p>
+  <%= f.submit class: "button" %>
+<% end %>
+
+<script>
+  new TR.Views.ReviewForm();
+</script>

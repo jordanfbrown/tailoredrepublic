@@ -4,13 +4,19 @@ class Product < ActiveRecord::Base
   enum_attr :category, %w(suit shirt accessory gift_card)
   attr_accessible :description, :name, :price, :quantity, :category, :summary, :display_order, :top_pick, :subcategory,
                   :fabric_id, :product_photos_attributes
+
   has_many :line_items
   has_many :customizations
+  has_many :reviews
   has_many :product_photos, order: 'default_photo DESC, created_at ASC', dependent: :destroy
   has_many :coupons, foreign_key: 'apply_to_product_id', class_name: 'Coupon'
-  before_destroy :ensure_not_referenced_by_line_item
 
   accepts_nested_attributes_for :product_photos, allow_destroy: true
+
+  before_destroy :ensure_not_referenced_by_line_item
+
+  extend FriendlyId
+  friendly_id :name, use: :slugged
 
   def self.vest_price
     79
@@ -100,6 +106,19 @@ class Product < ActiveRecord::Base
 
   def to_s
     name
+  end
+
+  def paginated_reviews(page = 1)
+    reviews.accepted.includes(:user).paginate(page: page, per_page: 5).order('created_at DESC')
+  end
+
+  def average_rating
+    accepted_reviews = reviews.accepted
+    if accepted_reviews.length > 0
+      (accepted_reviews.average('rating') * 2).round / 2.0 # Round to nearest 0.5
+    else
+      0
+    end
   end
 
   private
