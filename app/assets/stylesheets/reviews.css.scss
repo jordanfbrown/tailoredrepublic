@@ -12,15 +12,15 @@ ul.stars {
     margin-right: 2px;
 
     &.selected {
-      background: url(icons/star-filled.png) center center no-repeat;
+      background: image-url("icons/star-filled.png") center center no-repeat;
     }
 
     &.unselected {
-      background: url(icons/star-stroke.png) center center no-repeat;
+      background: image-url("icons/star-stroke.png") center center no-repeat;
     }
 
     &.half {
-      background: url(icons/star-half.png) center center no-repeat;
+      background: image-url("icons/star-half.png") center center no-repeat;
     }
   }
 }
