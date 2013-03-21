@@ -6,7 +6,8 @@ class Review < ActiveRecord::Base
   attr_accessible :product_id, :rating, :status, :summary
 
   validates :status, inclusion: { in: STATUSES, message: "%{value} is not a valid status" }
-  validates :summary, length: { minimum: 1, maximum: 1000 }
+  validates :summary, length: { minimum: 10, maximum: 1000 }
+  validates :rating, presence: true
 
   scope :accepted, where('status = ?', 'accepted')
 

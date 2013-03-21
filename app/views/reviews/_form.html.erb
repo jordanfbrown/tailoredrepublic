@@ -5,7 +5,7 @@
   <%= f.label :summary %>
   <%= f.text_area :summary %>
   <%= f.hidden_field :product_id %>
-  <%= f.hidden_field :rating %>
+  <%= f.hidden_field :rating, value: @review.rating.nil? ? 5 : @review.rating %>
   <p>By submitting a review you give us permission to use your words on our website or for promotional materials.</p>
   <%= f.submit class: "button" %>
 <% end %>
