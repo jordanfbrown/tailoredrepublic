@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id]) || (render_404 and return)
     @category = @product.category.to_s.pluralize
-    @reviews = @product.reviews.includes(:user).accepted
+    @reviews = @product.paginated_reviews
 
     respond_to do |format|
       format.html

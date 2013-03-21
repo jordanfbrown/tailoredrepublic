@@ -68,6 +68,14 @@ class ReviewsController < ApplicationController
     render_404 and return
   end
 
+  def paginated
+    product = Product.find(params[:product_id])
+    @reviews = product.paginated_reviews(params[:page] ||= 1)
+    render partial: 'review_list', locals: { reviews: @reviews }
+  rescue ActiveRecord::RecordNotFound
+    render_404 and return
+  end
+
   def ensure_signed_in
     redirect_to root_path unless user_signed_in?
   end

@@ -26,9 +26,10 @@ ul.stars {
 }
 
 .reviews-list {
+  border-top: 1px dashed #aaa;
 
   li.review-list-item {
-    border-top: 1px dashed #aaa;
-    padding: 15px 0 0px 0;
+    border-bottom: 1px dashed #aaa;
+    margin-bottom: 10px;
   }
 }

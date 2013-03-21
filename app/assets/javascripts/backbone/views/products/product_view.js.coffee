@@ -7,9 +7,11 @@ class TR.Views.Product extends TR.Views.Base
     'click a.customize': 'openCustomizationModal'
     'click a.add-to-cart-no-customization': 'addToCartWithoutCustomization'
     'click a.switch-image': 'switchImage'
+    'click .pagination a': 'loadReviews'
 
-  initialize: ->
+  initialize: (options) ->
     super()
+    @paginatedReviewPath = options.paginatedReviewPath
     mixpanel.track 'Viewed Product', { product: @model.get('name') }
     TR.Analytics.trackEvent 'Products', 'View', @model.get('name')
 
@@ -55,3 +57,15 @@ class TR.Views.Product extends TR.Views.Base
     newImage = @model.getProductImageById $target.data('id')
     @$('.magnify-small').attr 'src', newImage.medium
     @$('.magnify-large').attr 'src', newImage.original
+
+  loadReviews: (e) ->
+    e.preventDefault()
+    page = $(e.currentTarget).attr('href').split('=')[1]
+    $.get(@paginatedReviewPath, { page: page }).then @loadReviewsSuccess, @loadReviewsFailure
+    
+  loadReviewsSuccess: (reviewsList) =>
+    @$('.reviews-list-wrapper').replaceWith reviewsList
+  
+  loadReviewsFailure: =>
+    TR.renderSimpleModal "We're sorry, but something went wrong while trying to load the product reviews. Please try again, and if the problem persists, shoot as an email at help@tailoredrepublic.com."
+

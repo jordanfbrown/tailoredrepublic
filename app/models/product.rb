@@ -108,6 +108,10 @@ class Product < ActiveRecord::Base
     name
   end
 
+  def paginated_reviews(page = 1)
+    reviews.accepted.includes(:user).paginate(page: page, per_page: 5).order('created_at DESC')
+  end
+
   def average_rating
     accepted_reviews = reviews.accepted
     if accepted_reviews.length > 0

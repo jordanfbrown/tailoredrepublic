@@ -22,7 +22,11 @@ TailoredRepublic::Application.routes.draw do
   resource  :cart, only: [:show]
   resource  :measurements, only: [:show, :create, :update]
   resources :products, only: [:show, :index, :create, :update] do
-    resources :reviews, only: [:new, :edit]
+    resources :reviews, only: [:new, :edit] do
+      collection do
+        get 'paginated'
+      end
+    end
   end
   resources :products, only: [:new, :edit, :admin_index], path: '/admin/products' do
     collection do

@@ -38,15 +38,7 @@
       <% end %>
       <% if @reviews.length > 0 %>
         <h4>Overall Rating <%= render 'reviews/stars', editable: false, num_stars: @product.average_rating %></h4>
-        <ul class="reviews-list">
-          <% @reviews.take(5).each do |review| %>
-            <li class="review-list-item">
-              <h6>Review by <%= review.user.name %></h6>
-              <%= render 'reviews/stars', editable: false, num_stars: review.rating %>
-              <p><%= simple_format review.summary %></p>
-            </li>
-          <% end %>
-        </ul>
+        <%= render 'reviews/review_list', reviews: @reviews %>
       <% else %>
         <p>No reviews have been added for this product yet.</p>
       <% end %>
@@ -56,5 +48,6 @@
 
 <script>
   var product = new TR.Models.Product(<%= @product.to_json.html_safe %>);
-  new TR.Views.Product({model: product});
+  var paginatedReviewPath = '<%= paginated_product_reviews_path(@product) %>';
+  new TR.Views.Product({model: product, paginatedReviewPath: paginatedReviewPath});
 </script>
