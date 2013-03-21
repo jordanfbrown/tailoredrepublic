@@ -22,7 +22,7 @@ class TR.Views.AddSuccessModal extends TR.Views.Modal
   render: ->
     templateData = product: @model.toJSON(), suggestedProducts: @suggestedProducts.toJSON()
     @$el.html @template templateData
-    @suggestedProducts.each @renderProductView
+    @suggestedProducts.each @renderSuggestedProductView
     super()
     
   close: (e) =>
@@ -30,7 +30,7 @@ class TR.Views.AddSuccessModal extends TR.Views.Modal
     subview.destroy() for subview in @subviews
     super()
 
-  renderProductView: (product) =>
-    productView = new TR.Views.Product({model: product}).render()
-    @$('.products-wrapper').append productView.el
-    @subviews.push productView
+  renderSuggestedProductView: (product) =>
+    suggestedProductView = new TR.Views.SuggestedProduct({model: product}).render()
+    @$('.products-wrapper').append suggestedProductView.el
+    @subviews.push suggestedProductView

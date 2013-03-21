@@ -203,7 +203,7 @@ input[type=submit], input[type=button] {
     font-size: 18px;
   }
 
-  .customize {
+  .view {
     color: $brown;
     margin-top: 10px;
     text-align: center;
@@ -406,4 +406,9 @@ textarea {
 #habla_window_div #habla_topbar_div {
   background: #000000 none repeat scroll 0 0 !important;
   border: 1px solid #fff;
+}
+
+.dashed-bottom {
+  padding-bottom: 10px;
+  border-bottom: 1px dashed #aaa;
 }

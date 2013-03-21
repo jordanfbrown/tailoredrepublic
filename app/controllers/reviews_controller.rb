@@ -18,12 +18,12 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @product = Product.find_by_name(params[:product_id].titleize) || (render_404 and return)
+    @product = Product.find(params[:product_id]) || (render_404 and return)
     @review = @product.reviews.build
   end
 
   def edit
-    @product = Product.find_by_name(params[:product_id].titleize) || (render_404 and return)
+    @product = Product.find(params[:product_id]) || (render_404 and return)
     @review = current_user.reviews.find(params[:id]) || (render_404 and return)
   rescue ActiveRecord::RecordNotFound
     render_404 and return

@@ -1,6 +1,10 @@
 ul.stars {
   margin: 10px 0;
 
+  &.editable {
+    cursor: pointer;
+  }
+
   li {
     width: 20px;
     height: 19px;

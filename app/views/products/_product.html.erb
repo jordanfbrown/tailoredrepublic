@@ -1,11 +1,13 @@
 <div class="product-wrapper three columns" data-id="<%= product.id %>">
-  <a href="#"><%= image_tag product.default_photo.photo.url(:medium) if product.default_photo %></a>
+  <%= link_to(image_tag(product.default_photo.photo.url(:medium)), product) if product.default_photo %>
   <div class="product-info-wrapper">
     <div class="product-info">
       <div class="product-name">
-        <a href="#"><%= product.name %><span class="divider"> // </span><span class="dollar">$</span><%= product.display_price %></a>
+        <%= link_to product do %>
+          <%= product.name %> <span class="divider">//</span> <span class="dollar">$</span><%= product.display_price %>
+        <% end %>
       </div>
-      <a href="#" class="customize">View</a>
+      <%= link_to 'View', product, class: 'view' %>
     </div>
   </div>
 </div>

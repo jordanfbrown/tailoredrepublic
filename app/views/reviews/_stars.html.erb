@@ -1,8 +1,8 @@
-<% @selected = num_stars.is_a?(Float) ? (num_stars - 0.5).to_i : num_stars %>
-<% @half = num_stars.is_a?(Float) ? 1 : 0 %>
+<% @selected = num_stars.denominator == 2 ? (num_stars - 0.5).to_i : num_stars.to_i %>
+<% @half = num_stars.denominator == 2 ? 1 : 0 %>
 <% @unselected = 5 - @selected - @half %>
 
-<ul class="stars">
+<ul class="stars <%= 'editable' if editable %>">
   <% @selected.times do %>
     <li class="selected"></li>
   <% end %>

@@ -21,10 +21,10 @@ TailoredRepublic::Application.routes.draw do
   resources :customizations, only: [:show, :create, :update]
   resource  :cart, only: [:show]
   resource  :measurements, only: [:show, :create, :update]
-  resources :products, only: [:show, :index] do
+  resources :products, only: [:show, :index, :create, :update] do
     resources :reviews, only: [:new, :edit]
   end
-  resources :products, only: [:new, :edit, :create, :update, :admin_index], path: '/admin/products' do
+  resources :products, only: [:new, :edit, :admin_index], path: '/admin/products' do
     collection do
       get 'index', action: 'admin_index'
     end

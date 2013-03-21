@@ -22,7 +22,7 @@
         <tr>
           <td><%= link_to review.product.name, review.product %></td>
           <td><%= link_to review.user.email, review.user %></td>
-          <td><%= render 'reviews/stars', num_stars: review.rating %></td>
+          <td><%= render 'reviews/stars', editable: false, num_stars: review.rating %></td>
           <td><%= review.summary %></td>
           <td><%= select_tag :status, options_for_select(Review::STATUSES, review.status), class: 'status-select', id: "status_#{review.id}", data: { id: review.id } %></td>
           <td><%= review.created_at.in_time_zone('Pacific Time (US & Canada)') %></td>

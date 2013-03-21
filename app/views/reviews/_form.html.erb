@@ -1,7 +1,7 @@
 <%= form_for @review, html: { class: 'outlined' } do |f| %>
   <%= render 'shared/form_errors', resource: @review %>
   <%= f.label :rating %>
-  <%= render 'reviews/stars', num_stars: @review.rating.nil? ? 5 : @review.rating %>
+  <%= render 'reviews/stars', editable: true, num_stars: @review.rating.nil? ? 5 : @review.rating %>
   <%= f.label :summary %>
   <%= f.text_area :summary %>
   <%= f.hidden_field :product_id %>
@@ -11,20 +11,5 @@
 <% end %>
 
 <script>
-  $(function() {
-    var $stars = $('.stars li');
-    $stars.on('click', function() {
-      var index = $(this).index();
-      var value = index + 1;
-      $stars.each(function() {
-        if(index < $(this).index()) {
-          $(this).removeClass('selected').addClass('unselected');
-        }
-        else {
-          $(this).removeClass('unselected').addClass('selected');
-        }
-      });
-      $('#review_rating').val(value);
-    });
-  });
+  new TR.Views.ReviewForm();
 </script>
