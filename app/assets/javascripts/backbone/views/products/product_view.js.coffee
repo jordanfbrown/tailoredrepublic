@@ -11,9 +11,15 @@ class TR.Views.Product extends TR.Views.Base
 
   initialize: (options) ->
     super()
+    @$('img.magnify-small').on 'load', @setMagnifierHeight
+    $(window).on 'resize', @setMagnifierHeight
     @paginatedReviewPath = options.paginatedReviewPath
     mixpanel.track 'Viewed Product', { product: @model.get('name') }
     TR.Analytics.trackEvent 'Products', 'View', @model.get('name')
+    
+  setMagnifierHeight: =>
+    height = @$('img.magnify-small').height()
+    @$('.image-magnified').css 'height': height, 'max-height', height
 
   magnify: (e) ->
     $target = $(e.currentTarget)
