@@ -10,27 +10,25 @@ class ReviewsController < ApplicationController
   end
 
   def index
-    if user_signed_in?
-      @reviews = current_user.paginated_reviews(params[:page] ||= 1)
-    else
-      redirect_to root_path
-    end
+    @reviews = current_user.paginated_reviews(params[:page] ||= 1)
   end
 
   def new
-    @product = Product.find(params[:product_id]) || (render_404 and return)
+    @product = Product.find(params[:product_id])
     @review = @product.reviews.build
+  rescue ActiveRecord::RecordNotFound
+    render_404 and return
   end
 
   def edit
-    @product = Product.find(params[:product_id]) || (render_404 and return)
+    @product = Product.find(params[:product_id])
     @review = current_user.reviews.find(params[:id]) || (render_404 and return)
   rescue ActiveRecord::RecordNotFound
     render_404 and return
   end
 
   def create
-    @product = Product.find(params[:review][:product_id]) || (render_404 and return)
+    @product = Product.find(params[:review][:product_id])
     @review = Review.new(params[:review])
     @review.status = 'pending'
     @review.user = current_user
@@ -40,6 +38,8 @@ class ReviewsController < ApplicationController
     else
       render :new
     end
+  rescue ActiveRecord::RecordNotFound
+    render_404 and return
   end
 
   def update

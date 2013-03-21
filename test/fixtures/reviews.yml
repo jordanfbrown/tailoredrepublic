@@ -1,15 +1,13 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+executive_review_one:
+  user: user_with_stripe
+  product: executive
+  rating: 5
+  summary: Good suit
+  status: accepted
 
-one:
-  user_id: 1
-  product_id: 1
-  rating: 1
-  summary: MyString
-  status: MyString
-
-two:
-  user_id: 1
-  product_id: 1
-  rating: 1
-  summary: MyString
-  status: MyString
+executive_review_two:
+  user: user_with_stripe
+  product: executive
+  rating: 3
+  summary: Good suit
+  status: accepted

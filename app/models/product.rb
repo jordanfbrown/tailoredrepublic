@@ -109,7 +109,12 @@ class Product < ActiveRecord::Base
   end
 
   def average_rating
-    (reviews.accepted.average('rating') * 2).round / 2.0 # Round to nearest 0.5
+    accepted_reviews = reviews.accepted
+    if accepted_reviews.length > 0
+      (accepted_reviews.average('rating') * 2).round / 2.0 # Round to nearest 0.5
+    else
+      0
+    end
   end
 
   private
