@@ -21,4 +21,12 @@ class UserTest < ActiveSupport::TestCase
     code = user.referral_code
     assert_equal user, User.find_by_referral_code(code)
   end
+
+  test "a user should only be able to review a product once" do
+    user = users(:user_without_stripe)
+    product = products(:hustler)
+    assert user.can_review_product?(product)
+    user.reviews.create(product_id: product.id, rating: 5, summary: 'Good', status: 'accepted')
+    assert !user.can_review_product?(product)
+  end
 end

@@ -143,6 +143,11 @@ class User < ActiveRecord::Base
     role == 'admin'
   end
 
+  # A user can only review a product once
+  def can_review_product?(product)
+    !reviews.where(product_id: product.id).exists?
+  end
+
   def set_initial_role
     self.role = 'user'
   end

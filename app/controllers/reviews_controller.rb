@@ -15,6 +15,7 @@ class ReviewsController < ApplicationController
 
   def new
     @product = Product.find(params[:product_id])
+    redirect_to @product and return unless current_user.can_review_product?(@product)
     @review = @product.reviews.build
   rescue ActiveRecord::RecordNotFound
     render_404 and return
@@ -29,6 +30,7 @@ class ReviewsController < ApplicationController
 
   def create
     @product = Product.find(params[:review][:product_id])
+    redirect_to @product and return unless current_user.can_review_product?(@product)
     @review = Review.new(params[:review])
     @review.status = 'pending'
     @review.user = current_user

@@ -33,7 +33,7 @@
   <div class="row">
     <h3>Reviews</h3>
     <div class="twelve columns outlined">
-      <% if user_signed_in? %>
+      <% if user_signed_in? && current_user.can_review_product?(@product)%>
         <%= link_to 'Add Review', new_product_review_path(@product), class: 'button margin-bottom' %>
       <% end %>
       <% if @reviews.length > 0 %>
