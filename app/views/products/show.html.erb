@@ -34,7 +34,7 @@
     <h3>Reviews</h3>
     <div class="twelve columns outlined">
       <% if user_signed_in? %>
-        <%= link_to 'Add Review', "/products/#{@product.slug}/reviews/new", class: 'button margin-bottom' %>
+        <%= link_to 'Add Review', new_product_review_path(@product), class: 'button margin-bottom' %>
       <% end %>
       <% if @reviews.length > 0 %>
         <h4>Overall Rating <%= render 'reviews/stars', editable: false, num_stars: @product.average_rating %></h4>

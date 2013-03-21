@@ -36,7 +36,7 @@ class ReviewsController < ApplicationController
     @review.user = current_user
 
     if @review.save
-      redirect_to "/products/#{@review.product.slug}", notice: 'Your review has been submitted and is now pending approval.'
+      redirect_to @product, notice: 'Your review has been submitted and is now pending approval.'
     else
       render :new
     end

@@ -114,10 +114,6 @@ class Product < ActiveRecord::Base
     (average * 2).round / 2.0 # Round to nearest 0.5
   end
 
-  def slug
-    name.parameterize
-  end
-
   private
     def ensure_not_referenced_by_line_item
       if line_items.empty?

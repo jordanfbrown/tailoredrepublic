@@ -14,12 +14,12 @@
 
         <% @reviews.each do |review| %>
           <tr>
-            <td><%= link_to review.product.name, "/products/#{review.product.slug}" %></td>
+            <td><%= link_to review.product.name, review.product %></td>
             <td><%= render 'reviews/stars', editable: false, num_stars: review.rating %></td>
             <td><%= simple_format review.summary %></td>
             <td><%= review.status.capitalize %></td>
             <td><%= review.created_at_friendly %></td>
-            <td><%= link_to 'Edit', "/products/#{review.product.slug}/reviews/#{review.id}/edit" %></td>
+            <td><%= link_to 'Edit', edit_product_review_path(review.product, review) %></td>
           </tr>
         <% end %>
       </table>
