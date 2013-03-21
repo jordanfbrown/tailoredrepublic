@@ -24,6 +24,7 @@ class ReviewsController < ApplicationController
   def edit
     @product = Product.find(params[:product_id])
     @review = current_user.reviews.find(params[:id]) || (render_404 and return)
+    render_404 and return if @review.product != @product
   rescue ActiveRecord::RecordNotFound
     render_404 and return
   end

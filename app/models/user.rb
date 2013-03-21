@@ -145,7 +145,11 @@ class User < ActiveRecord::Base
 
   # A user can only review a product once
   def can_review_product?(product)
-    !reviews.where(product_id: product.id).exists?
+    find_review_by_product(product).nil?
+  end
+
+  def find_review_by_product(product)
+    reviews.find_by_product_id(product.id)
   end
 
   def set_initial_role

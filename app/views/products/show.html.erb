@@ -33,8 +33,15 @@
   <div class="row">
     <h3>Reviews</h3>
     <div class="twelve columns outlined">
-      <% if user_signed_in? && current_user.can_review_product?(@product)%>
-        <%= link_to 'Add Review', new_product_review_path(@product), class: 'button margin-bottom' %>
+      <% if user_signed_in? %>
+        <% if current_user.can_review_product?(@product) %>
+          <%= link_to 'Add Review', new_product_review_path(@product), class: 'button margin-bottom' %>
+        <% else %>
+          <p>You have already submitted a review for this product.
+            <%= link_to 'Edit your review.', edit_product_review_path(@product, current_user.find_review_by_product(@product)) %></p>
+        <% end %>
+      <% else %>
+        <p><%= link_to 'Login or sign up', new_user_session_path %> to add a new review for this product.</p>
       <% end %>
       <% if @reviews.length > 0 %>
         <h4>Overall Rating <%= render 'reviews/stars', editable: false, num_stars: @product.average_rating %></h4>

@@ -5,7 +5,7 @@ class ReviewsControllerTest < ActionController::TestCase
     sign_in :user, users(:user_with_stripe)
     @review_params = {
       product_id: ActiveRecord::Fixtures.identify(:jetsetter),
-      summary: 'Good suit',
+      summary: 'Really good suit',
       rating: 5
     }
   end
@@ -64,7 +64,8 @@ class ReviewsControllerTest < ActionController::TestCase
 
   test "create should create a new review, set its status to pending, and attach it to the signed in user" do
     product = products(:jetsetter)
-    user = users(:user_with_stripe)
+    user = users(:user_without_stripe)
+    sign_in :user, user
     post :create, review: @review_params
     assert_equal product, assigns(:review).product
     assert_equal user, assigns(:review).user

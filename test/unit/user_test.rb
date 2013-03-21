@@ -26,7 +26,7 @@ class UserTest < ActiveSupport::TestCase
     user = users(:user_without_stripe)
     product = products(:hustler)
     assert user.can_review_product?(product)
-    user.reviews.create(product_id: product.id, rating: 5, summary: 'Good', status: 'accepted')
+    user.reviews.create(product_id: product.id, rating: 5, summary: 'Really great suit', status: 'accepted')
     assert !user.can_review_product?(product)
   end
 end
