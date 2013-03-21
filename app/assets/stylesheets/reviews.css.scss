@@ -32,4 +32,17 @@ ul.stars {
     border-bottom: 1px dashed #aaa;
     margin-bottom: 10px;
   }
+
+  ul.stars li {
+    width: 15px;
+    height: 14px;
+
+    &.selected {
+      background: image-url("icons/star-brown-filled.png") center center no-repeat;
+    }
+
+    &.unselected {
+      background: image-url("icons/star-brown-stroke.png") center center no-repeat;
+    }
+  }
 }
