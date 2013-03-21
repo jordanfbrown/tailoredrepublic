@@ -109,9 +109,7 @@ class Product < ActiveRecord::Base
   end
 
   def average_rating
-    accepted_reviews = reviews.accepted
-    average = accepted_reviews.map { |r| r.rating }.inject(:+) / accepted_reviews.length.to_f
-    (average * 2).round / 2.0 # Round to nearest 0.5
+    (reviews.accepted.average('rating') * 2).round / 2.0 # Round to nearest 0.5
   end
 
   private
