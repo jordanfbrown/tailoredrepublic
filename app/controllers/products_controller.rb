@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
     if params[:suggested]
       @products = Product.suggested(params[:product_id]).to_json(include: [:product_photos])
     else
-      @products = Product.order('category ASC, name ASC').all
+      @products = Product.includes(:product_photos).order('category ASC, name ASC').all
     end
 
     respond_to do |format|
@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id]) || (render_404 and return)
     @category = @product.category.to_s.pluralize
-    @reviews = @product.reviews.accepted
+    @reviews = @product.reviews.includes(:user).accepted
 
     respond_to do |format|
       format.html
