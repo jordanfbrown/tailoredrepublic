@@ -41,6 +41,23 @@
   }
 
   .measurement-list-item {
+    .youtube-video {
+      display: block;
+      margin-top: 30px;
+      height: 270px;
+      position: relative;
+
+      img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -27.5px;
+        margin-top: -19px;
+      }
+    }
+    iframe {
+      margin-top: 30px;
+    }
     @media only screen and (max-width: 850px) {
       .six {
         width: auto !important;

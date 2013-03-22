@@ -63,6 +63,7 @@
                 </div>
               </div>
             </div>
+            <ul class="error error-list"></ul>
           </li>
           <% measurement_metadata(@only_shirts).each do |measurement, metadata| %>
             <%= render "measurement_slide", measurement: measurement, metadata: metadata, is_https: @is_https %>

@@ -1,6 +1,14 @@
 class TR.Views.Measurements extends TR.Views.Base
   el: '#measurements'
 
+  numberRegex: /^[0-9]+$/
+
+  slideOffset: 2 # Currently 2 slides exist before the measurement slides start
+
+  measuringTapePixels: 4521
+
+  measuringTapeInches: 90
+
   events: ->
     'submit form': 'submitMeasurement'
     'mousedown .measuring-tape': 'beginTapeDrag'
@@ -17,6 +25,7 @@ class TR.Views.Measurements extends TR.Views.Base
     'click a.accept-quick': 'acceptMeasurements'
     'click a.accept': 'acceptMeasurements'
     'click a.skip-to-end': 'goToLastSlide'
+    'click a.youtube-video': 'loadVideo'
 
   initialize: (options) ->
     @lineItemCount = options.lineItemCount
@@ -24,14 +33,38 @@ class TR.Views.Measurements extends TR.Views.Base
     @signedIn = options.signedIn
     @initialSlide = options.initialSlide
     @signUpMethod = options.signUpMethod
-    @slideOffset = 2 # Currently 2 slides exist before the measurement slides start
+    @currentTapeValue = @model.get 'neck' || @model.defaults.neck
+    @pixelsPerInch = @measuringTapePixels / @measuringTapeInches
+    @template = @getTemplate 'measurement_summary'
 
-    measuringTapePixels = 4521
-    measuringTapeInches = 90
-    @pixelsPerInch = measuringTapePixels / measuringTapeInches
+    @trackView()
+    @loadVideoImages()
+    @createSlider()
+    @resize()
+    @updateInputWithInches @currentTapeValue
+    @updateSummaryPage()
+    @bindEvents()
+    @configureInitialSlide()
 
-    mixpanel.track 'Viewed Measurements', { 'New User': @model.isNew() }
+  loadVideoImages: ->
+    @$('.youtube-video').each (index, el) =>
+      videoId = $(el).data 'video'
+      image = "http://img.youtube.com/vi/#{videoId}/0.jpg"
+      $(el).css background: "#fff url('#{image}') center no-repeat"
 
+  loadVideo: (e) ->
+    e.preventDefault()
+    $target = $(e.currentTarget)
+    video = $target.data 'video'
+    $iframe = $('<iframe></iframe>').attr(
+      width: $target.width()
+      height: $target.height()
+      src: "//www.youtube.com/embed/#{video}?frameborder=0&autohide=1&controls=0&rel=0&modestbranding=1&showinfo=0&autoplay=1"
+    ).on 'load', =>
+      @$('.measurement-list-item').fitVids()
+    $target.replaceWith $iframe
+
+  createSlider: ->
     @slider = @$('.measurements-list').bxSlider
       pager: off
       controls: off
@@ -43,39 +76,20 @@ class TR.Views.Measurements extends TR.Views.Base
       heightFix: on
       useCSS: off
 
+    @slideCount = @slider.getSlideCount() - 1
+
+  trackView: ->
+    mixpanel.track 'Viewed Measurements', { 'New User': @model.isNew() }
+
+  bindEvents: ->
     History.Adapter.bind window, 'statechange', =>
       state = History.getState()
       @slider.goToSlide(state.data.index) if state.data && (state.data.index || state.data.index == 0)
 
-    @slideCount = @slider.getSlideCount() - 1
-
-    @currentTapeValue = @model.get 'neck' || @model.defaults.neck
-    $(window).resize @resize
-    @resize()
-    @updateInputWithInches @currentTapeValue
-    
+    $(window).on 'resize', @resize
     $(document).on 'keydown', @preventTab
-
-    @template = @getTemplate 'measurement_summary'
     @model.on 'change', @updateSummaryPage
-    @updateSummaryPage()
 
-    if @initialSlide
-      @goToInitialSlide()
-    else
-      if @model.isNew()
-        History.replaceState {index: 0}, 'Measurements - Overview | Tailored Republic', '/measurements/overview'
-      else
-        @$('iframe').attr 'src', ''
-        @slider.goToSlide @slideCount
-        _.delay @loadVideos, 500
-
-  numberRegex: /^[0-9]+$/
-
-  loadVideos: ->
-    @$('iframe').each (index, el) ->
-      $(el).attr 'src', $(el).data 'src'
-      
   preventTab: (e) =>
     currentSlide = @slider.getCurrentSlide()
     if e.which == 9 && (1 < currentSlide < @slideCount)
@@ -104,6 +118,15 @@ class TR.Views.Measurements extends TR.Views.Base
 
   resize: =>
     @updateMeasuringTape @currentTapeValue, false
+
+  configureInitialSlide: ->
+    if @initialSlide
+      @goToInitialSlide()
+    else
+      if @model.isNew()
+        History.replaceState {index: 0}, 'Measurements - Overview | Tailored Republic', '/measurements/overview'
+      else
+        @slider.goToSlide @slideCount
     
   beginTapeDrag: (e) ->
     e.preventDefault()
