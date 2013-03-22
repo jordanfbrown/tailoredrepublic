@@ -3,13 +3,14 @@
     <a class="youtube-video"
        href="http://www.youtube.com/watch?v=<%= metadata['url'] %>"
        data-video="<%= metadata['url'] %>"
+       tabindex="-1"
        alt="Watch video">
       <%= image_tag 'measurements/button-youtube-black.png', class: 'play-button' %>
     </a>
   </div>
   <div class="six columns">
     <div class="row">
-      <h4><%= titleize metadata['measurement'] %></h4>
+      <h4><%= metadata['measurement'].titleize %></h4>
     </div>
     <ul class="disc">
       <% metadata['steps'].each do |step| %>
