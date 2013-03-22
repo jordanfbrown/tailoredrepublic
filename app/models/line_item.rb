@@ -12,11 +12,15 @@ class LineItem < ActiveRecord::Base
   end
 
   def self.only_accessories?(line_items)
-    line_items.all? { |l| l.category == :accessory }
+    LineItem.only_category?(line_items, :accessory)
   end
 
   def self.only_shirts?(line_items)
-    line_items.all? { |l| l.category == :shirt }
+    LineItem.only_category?(line_items, :shirt)
+  end
+
+  def self.only_category?(line_items, category)
+    line_items.length > 0 && line_items.all? { |l| l.category == category }
   end
 
   def total_price
