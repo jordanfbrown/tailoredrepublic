@@ -2,6 +2,7 @@ class TR.Views.Product extends TR.Views.Base
   el: '.products'
 
   events:
+    'mouseenter img.magnify-small': 'setMagnifierHeight'
     'mousemove img.magnify-small': 'magnify'
     'mouseleave img.magnify-small': 'stopMagnify'
     'click a.customize': 'openCustomizationModal'
@@ -18,7 +19,7 @@ class TR.Views.Product extends TR.Views.Base
     TR.Analytics.trackEvent 'Products', 'View', @model.get('name')
     
   setMagnifierHeight: =>
-    height = @$('img.magnify-small').height()
+    height = @$('.thumbnail-list').height() - 50
     @$('.image-magnified').css 'height': height, 'max-height', height
 
   magnify: (e) ->

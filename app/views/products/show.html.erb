@@ -3,9 +3,9 @@
     <%= link_to "Back To #{@category.capitalize}", "/shop/#@category", class: 'button' %>
   </div>
   <h2><%= @product.name %><span class="divider">&nbsp;//&nbsp;</span>$<%= @product.display_price %></h2>
-  <div class="row product-row">
+  <div class="row dashed-bottom">
     <div class="five columns preview-wrapper">
-      <ul class="modal-suit-preview three columns">
+      <ul class="thumbnail-list three columns">
         <% @product.product_photos.each do |photo| %>
           <li><%= link_to image_tag(photo.photo.url(:small)), '#', data: { id: photo.id }, class: 'switch-image' %></li>
         <% end %>
