@@ -3,7 +3,7 @@
     <%= link_to "Back To #{@category.capitalize}", "/shop/#@category", class: 'button' %>
   </div>
   <h2><%= @product.name %><span class="divider">&nbsp;//&nbsp;</span>$<%= @product.display_price %></h2>
-  <div class="row dashed-bottom">
+  <div class="row dashed-bottom product-row">
     <div class="five columns preview-wrapper">
       <ul class="thumbnail-list three columns">
         <% @product.product_photos.each do |photo| %>
