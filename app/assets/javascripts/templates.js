@@ -132,12 +132,12 @@ function program1(depth0,data,depth1) {
   stack1 = foundHelper ? foundHelper.call(depth0, stack1, {hash:{}}) : helperMissing.call(depth0, "titleize", stack1, {hash:{}});
   buffer += escapeExpression(stack1) + "</li>\n    <li><a href=\"#\" class=\"label\" data-type=\"pick_stitching\">Pick Stitching:</a> ";
   stack1 = depth0.pick_stitching;
-  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(10, program10, data),fn:self.program(8, program8, data)});
+  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(10, program10, data),fn:self.programWithDepth(program8, data, depth1)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "</li>\n    <li><a href=\"#\" class=\"label\" data-type=\"vest\">Vest:</a> ";
   stack1 = depth0.vest;
   foundHelper = helpers.ifGreaterThan;
-  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 0, {hash:{},inverse:self.program(14, program14, data),fn:self.program(12, program12, data)}) : helperMissing.call(depth0, "ifGreaterThan", stack1, 0, {hash:{},inverse:self.program(14, program14, data),fn:self.program(12, program12, data)});
+  stack1 = foundHelper ? foundHelper.call(depth0, stack1, 0, {hash:{},inverse:self.program(14, program14, data),fn:self.programWithDepth(program12, data, depth1)}) : helperMissing.call(depth0, "ifGreaterThan", stack1, 0, {hash:{},inverse:self.program(14, program14, data),fn:self.programWithDepth(program12, data, depth1)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "</li>\n    <li><a href=\"#\" class=\"label\" data-type=\"monogram\">Monogram:</a> ";
   stack1 = depth0.monogram;
@@ -167,13 +167,12 @@ function program6(depth0,data) {
   
   return "No";}
 
-function program8(depth0,data) {
+function program8(depth0,data,depth2) {
   
-  var buffer = "", stack1, foundHelper;
+  var buffer = "", stack1;
   buffer += "Yes (+$";
-  foundHelper = helpers.pickStitchingPrice;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.pickStitchingPrice; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  stack1 = depth2.pickStitchingPrice;
+  stack1 = typeof stack1 === functionType ? stack1() : stack1;
   buffer += escapeExpression(stack1) + ") ";
   return buffer;}
 
@@ -182,7 +181,7 @@ function program10(depth0,data) {
   
   return "No";}
 
-function program12(depth0,data) {
+function program12(depth0,data,depth2) {
   
   var buffer = "", stack1, foundHelper;
   buffer += " Yes, ";
@@ -190,9 +189,8 @@ function program12(depth0,data) {
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.vest; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
   buffer += escapeExpression(stack1) + " Buttons (+$";
-  foundHelper = helpers.vestPrice;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.vestPrice; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  stack1 = depth2.vestPrice;
+  stack1 = typeof stack1 === functionType ? stack1() : stack1;
   buffer += escapeExpression(stack1) + ")";
   return buffer;}
 

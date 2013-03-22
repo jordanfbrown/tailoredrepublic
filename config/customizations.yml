@@ -108,7 +108,7 @@ suit:
       description: "Do you want to make your suit a three-piece? You can add a matching vest to your suit order for $79. A three-piece suit is sure to draw looks and makes a bold statement that you are serious about your style game."
       options:
         0:
-          default: true
+          default: false
           image: customizations/suits/vest-no.png
           label: No Vest (+$0)
         3:
@@ -116,7 +116,7 @@ suit:
           image: customizations/suits/vest-three.png
           label: 3 Buttons (+$79)
         4:
-          default: false
+          default: true
           image: customizations/suits/vest-four.png
           label: 4 Buttons (+$79)
         5:
