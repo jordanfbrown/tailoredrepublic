@@ -14,7 +14,6 @@ class MeasurementsController < ApplicationController
     @measurement_metadata = Measurement.metadata(@only_shirts)
     @num_measurements = Measurement.num_measurements(@only_shirts)
     @signed_in = user_signed_in?
-    @is_https = request.ssl?
     @initial_slide = params[:initial_slide]
   end
 

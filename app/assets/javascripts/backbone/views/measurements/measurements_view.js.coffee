@@ -49,7 +49,7 @@ class TR.Views.Measurements extends TR.Views.Base
   loadVideoImages: ->
     @$('.youtube-video').each (index, el) =>
       videoId = $(el).data 'video'
-      image = "http://img.youtube.com/vi/#{videoId}/0.jpg"
+      image = "//img.youtube.com/vi/#{videoId}/0.jpg"
       $(el).css background: "#fff url('#{image}') center no-repeat"
 
   loadVideo: (e) ->

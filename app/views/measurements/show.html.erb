@@ -66,7 +66,7 @@
             <ul class="error error-list"></ul>
           </li>
           <% @measurement_metadata.each do |metadata| %>
-            <%= render "measurement_slide", metadata: metadata, is_https: @is_https %>
+            <%= render "measurement_slide", metadata: metadata %>
           <% end %>
           <li class="measurement-summary" data-measurement="review"></li>
         </ul>
