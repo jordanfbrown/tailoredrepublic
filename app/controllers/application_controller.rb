@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
     if Rails.env.development?
       `handlebars app/assets/javascripts/backbone/templates/* -f app/assets/javascripts/templates.js`
       CUSTOMIZATIONS.replace YAML.load_file("#{Rails.root}/config/customizations.yml")
+      MEASUREMENTS.replace YAML.load_file("#{Rails.root}/config/measurements.yml")
     end
   end
 

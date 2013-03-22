@@ -11,6 +11,7 @@ class MeasurementsController < ApplicationController
     end
 
     @only_shirts = @cart.only_shirts?
+    @measurement_metadata = Measurement.metadata(@only_shirts)
     @num_measurements = Measurement.num_measurements(@only_shirts)
     @signed_in = user_signed_in?
     @is_https = request.ssl?

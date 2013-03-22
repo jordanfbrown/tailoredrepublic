@@ -21,4 +21,10 @@ class Measurement < ActiveRecord::Base
   def self.num_measurements(only_shirts)
     only_shirts ? 11: 14
   end
+
+  def self.metadata(only_shirts)
+    measurements = MEASUREMENTS.dup
+    measurements.delete_if { |m| %w(crotch thigh pant_length).include?(m['measurement']) } if only_shirts
+    measurements
+  end
 end

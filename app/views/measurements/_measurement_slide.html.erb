@@ -1,18 +1,18 @@
-<li class="measurement-list-item" data-measurement="<%= measurement %>">
+<li class="measurement-list-item" data-measurement="<%= metadata['measurement'] %>">
   <div class="six columns">
-      <a class="youtube-video"
-         href="http://www.youtube.com/watch?v=<%= metadata[:url] %>"
-         data-video="<%= metadata[:url] %>"
-         alt="Watch video">
-         <%= image_tag 'measurements/button-youtube-black.png', class: 'play-button' %>
-       </a>
-    </div>
+    <a class="youtube-video"
+       href="http://www.youtube.com/watch?v=<%= metadata['url'] %>"
+       data-video="<%= metadata['url'] %>"
+       alt="Watch video">
+      <%= image_tag 'measurements/button-youtube-black.png', class: 'play-button' %>
+    </a>
+  </div>
   <div class="six columns">
     <div class="row">
-      <h4><%= titleize measurement %></h4>
+      <h4><%= titleize metadata['measurement'] %></h4>
     </div>
     <ul class="disc">
-      <% metadata[:steps].each do |step| %>
+      <% metadata['steps'].each do |step| %>
         <li><%= step %></li>
       <% end %>
     </ul>
@@ -20,7 +20,7 @@
       <div class="pointer"></div>
     </div>
     <form>
-      <input type="text" class="measurement-input" name="<%= measurement %>" tabindex="-1">
+      <input type="text" class="measurement-input" name="<%= metadata['measurement'] %>" tabindex="-1">
       <p class="error" style="display: none;">Please enter a number between 0 and 90.</p>
     </form>
     <p>Slide the measuring tape or type in your measurement in inches to the nearest 0.25" and press enter.</p>
