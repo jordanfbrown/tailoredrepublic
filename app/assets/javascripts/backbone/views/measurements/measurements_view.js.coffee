@@ -93,7 +93,7 @@ class TR.Views.Measurements extends TR.Views.Base
   preventTab: (e) =>
     currentSlide = @slider.getCurrentSlide()
     $focusedEl = @$(':focus')
-    if e.which == 9 && (1 < currentSlide < @slideCount) || $focusedEl.hasClass('jump-tab')
+    if e.which == 9 && ( (1 < currentSlide < @slideCount) || $focusedEl.hasClass('jump-tab') )
       e.preventDefault()
       @slider.goToNextSlide() if $focusedEl.hasClass('measurement-input') || $focusedEl.hasClass('jump-tab')
 
