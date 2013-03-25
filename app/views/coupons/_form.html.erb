@@ -1,3 +1,4 @@
+<p><%= link_to 'How do coupons work?', help_coupons_path, class: 'coupon-help' %></p>
 <%= form_for coupon, html: { class: 'outlined' } do |f| %>
   <%= render 'shared/form_errors', resource: coupon %>
   <%= f.label :description, 'Description (this will appear on the order)' %>

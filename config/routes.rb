@@ -33,7 +33,11 @@ TailoredRepublic::Application.routes.draw do
       get 'index', action: 'admin_index'
     end
   end
-  resources :coupons, except: [:show], path: '/admin/coupons'
+  resources :coupons, except: [:show], path: '/admin/coupons' do
+    collection do
+      get 'help'
+    end
+  end
   resources :line_items, path: '/line-items', only: [:create, :destroy, :update]
   resources :tape_measure_requests, only: [:index, :update], path: '/admin/tape-measure-requests'
   resources :tape_measure_requests, only: [:new, :create], path: '/tape-measure-requests' do
