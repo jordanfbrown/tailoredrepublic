@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130320175712) do
+ActiveRecord::Schema.define(:version => 20130325002848) do
 
   create_table "addresses", :force => true do |t|
     t.string   "line1"
@@ -197,10 +197,10 @@ ActiveRecord::Schema.define(:version => 20130320175712) do
     t.integer  "user_id"
     t.integer  "product_id"
     t.integer  "rating"
-    t.string   "summary"
+    t.string   "summary",    :limit => 1000
     t.string   "status"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   add_index "reviews", ["product_id"], :name => "index_reviews_on_product_id"
