@@ -2,7 +2,7 @@
   <%= render 'shared/form_errors', resource: @review %>
   <%= f.label :rating %>
   <%= render 'reviews/stars', editable: true, num_stars: @review.rating.nil? ? 5 : @review.rating %>
-  <%= f.label :summary %>
+  <%= f.label :summary, 'Summary (between 10 and 1000 characters)' %>
   <%= f.text_area :summary %>
   <%= f.hidden_field :product_id %>
   <%= f.hidden_field :rating, value: @review.rating.nil? ? 5 : @review.rating %>
