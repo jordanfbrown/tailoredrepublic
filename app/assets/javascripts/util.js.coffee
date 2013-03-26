@@ -62,6 +62,18 @@ window.TR =
       event.push(value) if value || value == 0
       _gaq.push event
 
+    trackFacebookEvent: (pixelId, value = '0.00') ->
+      if TR.ENVIRONMENT == 'production'
+        fb_param = {}
+        fb_param.pixel_id = pixelId
+        fb_param.value = value
+        do ->
+          fpw = document.createElement('script')
+          fpw.async = true
+          fpw.src = '//connect.facebook.net/en_US/fp.js'
+          ref = document.getElementsByTagName('script')[0]
+          ref.parentNode.insertBefore(fpw, ref)
+
   setStripeKey: ->
     Stripe.setPublishableKey $('meta[name=stripe-key]').attr 'content'
 

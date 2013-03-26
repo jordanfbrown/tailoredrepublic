@@ -5,15 +5,20 @@ class TR.Views.AddSuccessModal extends TR.Views.Modal
 
   hideScrollbar: false
 
+  subviews: []
+
   events: ->
     _.extend super,
       'click a.keep-shopping': 'close'
 
   initialize: ->
     super()
-    @subviews = []
-    productParams = data: $.param(suggested: true, product_id: @model.get 'id')
+    TR.Analytics.trackFacebookEvent '6011407244120'
+    @getSuggestedProducts()
+
+  getSuggestedProducts: ->
     @suggestedProducts = new TR.Collections.Products()
+    productParams = data: $.param(suggested: true, product_id: @model.get 'id')
     @suggestedProducts.fetch(productParams).then(=>
       @template = @getTemplate 'add_success_modal'
       @render()
