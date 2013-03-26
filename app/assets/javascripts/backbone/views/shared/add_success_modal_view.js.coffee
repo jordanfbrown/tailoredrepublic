@@ -19,10 +19,9 @@ class TR.Views.AddSuccessModal extends TR.Views.Modal
   getSuggestedProducts: ->
     @suggestedProducts = new TR.Collections.Products()
     productParams = data: $.param(suggested: true, product_id: @model.get 'id')
-    @suggestedProducts.fetch(productParams).then(=>
+    @suggestedProducts.fetch(productParams).then =>
       @template = @getTemplate 'add_success_modal'
       @render()
-    )
 
   render: ->
     templateData = product: @model.toJSON(), suggestedProducts: @suggestedProducts.toJSON()
