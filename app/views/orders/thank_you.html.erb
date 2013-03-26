@@ -26,5 +26,6 @@
     var lineItems = <%= @order.line_items_to_json_for_tracking %>;
     var billingAddress = <%= @order.billing_address_to_json_for_tracking %>
     TR.Analytics.trackTransaction(order, lineItems, billingAddress);
+    TR.Analytics.trackFacebookEvent('6011484258720');
   });
 </script>
