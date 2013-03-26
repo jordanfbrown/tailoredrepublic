@@ -75,6 +75,12 @@ TailoredRepublic::Application.routes.draw do
       get 'index', action: 'admin_index'
     end
   end
+  resources :testimonials, only: [:index, :update, :create]
+  resources :testimonials, except: [:index, :update, :create], path: '/admin/testimonials' do
+    collection do
+      get 'index', action: 'admin_index'
+    end
+  end
 
   match '/shop/:category' => 'shop#index'
   match '/gift-cards' => 'shop#gift_cards', :as => 'gift_cards'

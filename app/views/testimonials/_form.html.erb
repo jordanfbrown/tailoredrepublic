@@ -1,0 +1,15 @@
+<%= form_for @testimonial, html: { class: 'outlined' } do |f| %>
+  <%= render 'shared/form_errors', resource: @testimonial %>
+  <% if @testimonial.photo.file? %>
+    <%= image_tag @testimonial.photo.url(:medium) %>
+  <% end %>
+  <%= f.label :photo %>
+  <%= f.file_field :photo %>
+  <%= f.label :caption %>
+  <%= f.text_field :caption %>
+  <%= f.label :social_handle, 'Social media handle (Twitter, Facebook, Instagram, etc. name)' %>
+  <%= f.text_field :social_handle %>
+  <%= f.label :social_url, 'Social URL (Link to above user\'s page)' %>
+  <%= f.text_field :social_url %>
+  <%= f.submit class: "button" %>
+<% end %>

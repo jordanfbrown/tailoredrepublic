@@ -20,6 +20,7 @@
 //= require jquery.fitvid
 //= require jquery.customSelect
 //= require jquery.history
+//= require jquery.infinitescroll
 //= require modernizr.foundation
 //= require jquery.foundation.topbar
 //= require jquery.foundation.magellan

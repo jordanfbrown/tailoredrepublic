@@ -1,0 +1,33 @@
+<div class="twelve columns">
+  <h2>Testimonials</h2>
+
+  <%= link_to 'New testimonial', new_testimonial_path, class: 'button margin-bottom' %>
+  <div class="outlined">
+    <table>
+      <tr>
+        <th>Photo</th>
+        <th>Caption</th>
+        <th>Social handle</th>
+        <th>Social URL</th>
+        <th>Date Created</th>
+        <th></th>
+        <th></th>
+      </tr>
+
+      <% @testimonials.each do |testimonial| %>
+        <tr>
+          <td><%= image_tag testimonial.photo.url(:small) %></td>
+          <td><%= testimonial.caption %></td>
+          <td><%= testimonial.social_handle %></td>
+          <td><%= link_to testimonial.social_url, testimonial.social_url, target: '_blank' %></td>
+          <td><%= testimonial.created_at_friendly(pacific: true) %></td>
+          <td><%= link_to 'Edit', edit_testimonial_path(testimonial) %></td>
+          <td><%= link_to 'Destroy', testimonial, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </table>
+
+    <%= will_paginate @testimonials %>
+  </div>
+</div>
+
