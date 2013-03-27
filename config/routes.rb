@@ -87,7 +87,6 @@ TailoredRepublic::Application.routes.draw do
   match '/shop' => 'shop#index'
   match '/home' => 'home#index'
   match '/measurements/:initial_slide' => 'measurements#show'
-  match '/checkout' => 'carts#checkout'
   match '/subscribe-to-newsletter' => 'mailing_list#subscribe', :as => 'subscribe_to_newsletter'
   match '/about' => 'pages#about'
   match '/admin' => 'pages#admin'
