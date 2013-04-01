@@ -180,7 +180,7 @@ input[type=submit], input[type=button] {
   }
 
   img {
-    border: 5px solid #fff;
+    //border: 5px solid #fff;
   }
 
   .product-info {
@@ -201,19 +201,6 @@ input[type=submit], input[type=button] {
 
   .dollar {
     font-size: 18px;
-  }
-
-  .view {
-    color: $brown;
-    margin-top: 10px;
-    text-align: center;
-    display: inline-block;
-    width: 100%;
-    border: 4px solid white;
-    padding: 15px 0 10px 0;
-    margin-top: 5px;
-    font-size: 20px;
-    font-weight: bold;
   }
 }
 

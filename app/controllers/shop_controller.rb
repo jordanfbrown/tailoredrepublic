@@ -1,10 +1,11 @@
 class ShopController < ApplicationController
   def index
     @category = Product.depluralize_category(params[:category])
-    if @category == :error
-      redirect_to '/shop/suits' and return
-    end
-    @products = Product.by_category(@category)
+    redirect_to '/shop/suits' and return if @category == :error
+    @subcategory = params[:subcategory]
+    @products = Product.by_category_and_subcategory(@category, @subcategory)
+    @accessory_subcategories = Product.subcategories_for_category(:accessory)
+    @shirt_subcategories = Product.subcategories_for_category(:shirt)
     @display_category = params[:category].capitalize
   end
 

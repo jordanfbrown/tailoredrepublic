@@ -83,6 +83,7 @@ TailoredRepublic::Application.routes.draw do
   end
 
   match '/shop/:category' => 'shop#index'
+  match '/shop/:category/:subcategory' => 'shop#index'
   match '/gift-cards' => 'shop#gift_cards', :as => 'gift_cards'
   match '/shop' => 'shop#index'
   match '/home' => 'home#index'
