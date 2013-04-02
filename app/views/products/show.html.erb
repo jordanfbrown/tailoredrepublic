@@ -2,7 +2,8 @@
 
 <div class="content-wrapper">
   <div class="dashed-bottom">
-    <%= link_to "Back To #{@category.capitalize}", "/shop/#@category", class: 'button' %>
+    <%= link_to "Back To #{@category.capitalize}", "/shop/#@category", class: 'button pull-left' %>
+    <%= link_to "View Cart", "/cart", class: 'button pull-right' %>
   </div>
   <h2><%= @product.name %><span class="divider">&nbsp;//&nbsp;</span>$<%= @product.display_price %></h2>
   <div class="row dashed-bottom product-row">

@@ -396,6 +396,7 @@ textarea {
 }
 
 .dashed-bottom {
+  @include clearfix;
   padding-bottom: 10px;
   border-bottom: 1px dashed #aaa;
 }
