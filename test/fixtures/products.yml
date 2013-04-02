@@ -102,6 +102,7 @@ gift_card_629:
 white_shirt:
   category: shirt
   name: The White Shirt
+  subcategory: gingham
   description: White shirt
   price: 99
   quantity: 10
@@ -109,6 +110,7 @@ white_shirt:
 blue_shirt:
   category: shirt
   name: The Blue Shirt
+  subcategory: solids
   description: Blue shirt
   price: 99
   quantity: 10
