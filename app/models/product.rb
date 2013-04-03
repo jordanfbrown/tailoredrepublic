@@ -88,8 +88,14 @@ class Product < ActiveRecord::Base
     json
   end
 
-  def self.by_category(category)
-    where(category: category).order('display_order ASC, subcategory ASC, name ASC').includes(:product_photos).to_a
+  def self.by_category_and_subcategory(category, subcategory)
+    query = where(category: category)
+    query = query.where(subcategory: subcategory) if subcategory
+    query.order('display_order ASC, subcategory ASC, name ASC').includes(:product_photos).to_a
+  end
+
+  def self.subcategories_for_category(category)
+    Product.where(category: category).select(:subcategory).uniq.map { |p| p.subcategory }
   end
 
   def display_price

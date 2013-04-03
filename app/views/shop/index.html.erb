@@ -1,9 +1,27 @@
-<% title_helper("Shop - #@display_category") %>
+<% title_helper(@display_category + (@subcategory ? " - #{@subcategory.pluralize.titleize}" : "")) %>
 
 <div id="shop">
-  <div class="content-wrapper">
-    <h2>Shop <span class="divider">//</span> <%= @display_category %></h2>
-    <h5><%= link_to 'Suits', '/shop/suits', class: ('selected' if @display_category == 'Suits') %> <span class="divider">//</span> <%= link_to 'Shirts', '/shop/shirts', class: ('selected' if @display_category == 'Shirts') %> <span class="divider">//</span> <%= link_to 'Accessories', '/shop/accessories', class: ('selected' if @display_category == 'Accessories') %></h5>
+  <div class="row">
+    <h2 class="ten columns pull-right">Shop <span class="divider">//</span> <%= @display_category %><% if @subcategory %><span class="divider"> // </span><%= @subcategory.titleize.pluralize %><% end %></h2>
   </div>
-  <%= render 'products/products', products: @products %>
+  <div class="row">
+    <ul class="shop-submenu two columns">
+      <li class="category"><span class="divider">//</span> <%= link_to 'Suits', '/shop/suits', class: ('selected' if @display_category == 'Suits') %></li>
+      <li class="category"><span class="divider">//</span> <%= link_to 'Shirts', '/shop/shirts', class: ('selected' if @display_category == 'Shirts') %></li>
+      <ul class="subcategory">
+        <% @shirt_subcategories.each do |subcategory| %>
+          <li><%= link_to subcategory.pluralize.titleize, "/shop/shirts/#{subcategory}" %></li>
+        <% end %>
+      </ul>
+      <li class="category"><span class="divider">//</span> <%= link_to 'Accessories', '/shop/accessories', class: ('selected' if @display_category == 'Accessories') %></li>
+      <ul class="subcategory">
+        <% @accessory_subcategories.each do |subcategory| %>
+          <li><%= link_to subcategory.pluralize.titleize, "/shop/accessories/#{subcategory}" %></li>
+        <% end %>
+      </ul>
+    </ul>
+    <div class="ten columns">
+      <%= render 'products/products', products: @products %>
+    </div>
+  </div>
 </div>

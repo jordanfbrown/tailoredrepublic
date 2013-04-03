@@ -33,7 +33,11 @@ TailoredRepublic::Application.routes.draw do
       get 'index', action: 'admin_index'
     end
   end
-  resources :coupons, except: [:show], path: '/admin/coupons'
+  resources :coupons, except: [:show], path: '/admin/coupons' do
+    collection do
+      get 'help'
+    end
+  end
   resources :line_items, path: '/line-items', only: [:create, :destroy, :update]
   resources :tape_measure_requests, only: [:index, :update], path: '/admin/tape-measure-requests'
   resources :tape_measure_requests, only: [:new, :create], path: '/tape-measure-requests' do
@@ -71,13 +75,19 @@ TailoredRepublic::Application.routes.draw do
       get 'index', action: 'admin_index'
     end
   end
+  resources :testimonials, only: [:index, :update, :create]
+  resources :testimonials, except: [:index, :update, :create], path: '/admin/testimonials' do
+    collection do
+      get 'index', action: 'admin_index'
+    end
+  end
 
   match '/shop/:category' => 'shop#index'
+  match '/shop/:category/:subcategory' => 'shop#index'
   match '/gift-cards' => 'shop#gift_cards', :as => 'gift_cards'
   match '/shop' => 'shop#index'
   match '/home' => 'home#index'
   match '/measurements/:initial_slide' => 'measurements#show'
-  match '/checkout' => 'carts#checkout'
   match '/subscribe-to-newsletter' => 'mailing_list#subscribe', :as => 'subscribe_to_newsletter'
   match '/about' => 'pages#about'
   match '/admin' => 'pages#admin'

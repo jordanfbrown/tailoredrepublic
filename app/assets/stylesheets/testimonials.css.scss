@@ -1,0 +1,44 @@
+@import "compass/css3";
+
+#infscr-loading {
+  text-align: center;
+  width: 100%;
+  float: left;
+  margin: 10px 0;
+}
+
+.testimonial-wrapper {
+  float: left !important;
+}
+
+.testimonials-row .four {
+  @media only screen and (max-width: 1080px) {
+    width: 50%;
+  }
+
+  @media only screen and (max-width: 768px) and (min-width: 580px) {
+    width: 50% !important;
+    float: left !important;
+  }
+}
+
+.testimonial {
+  display: block;
+  text-align: center;
+  margin-bottom: 15px;
+  max-width: 300px;
+  @include box-shadow(0px 1px 7px #000);
+  border: 10px solid #fff;
+  background-color: #fff;
+
+
+  p {
+    padding: 10px;
+    margin-top: -5px;
+    margin-bottom: 0;
+    background-color: #fff;
+    font-size: 13px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+  }
+}

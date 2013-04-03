@@ -1,5 +1,5 @@
 <% products.each_slice(4) do |a, b, c, d| %>
-  <div class="products-wrapper content-wrapper">
+  <div class="products-wrapper">
     <%= render 'products/product', product: a if a %>
     <%= render 'products/product', product: b if b %>
     <%= render 'products/product', product: c if c %>

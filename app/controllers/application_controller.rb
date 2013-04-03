@@ -59,6 +59,10 @@ class ApplicationController < ActionController::Base
     @user_referred = session.has_key?(:referred_by)
   end
 
+  rescue_from ActiveRecord::RecordNotFound do
+    render_404
+  end
+
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_path, :alert => exception.message
   end

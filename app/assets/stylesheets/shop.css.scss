@@ -3,6 +3,30 @@
 
 .shop {
 
+  .shop-submenu {
+    background-color: #fff;
+    padding: 10px 20px;
+    position: fixed;
+    border: 1px solid #aaa;
+    min-width: 150px;
+
+    @media only screen and (max-width: 767px) {
+      position: static;
+      margin-bottom: 20px;
+    }
+
+    .category {
+      font-size: 1.1em;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .subcategory {
+      margin-left: 20px;
+    }
+
+  }
+
   footer .strikethrough {
     top: 16px;
   }
