@@ -48,6 +48,8 @@ footer {
 
   .content-wrapper {
     position: relative;
+    margin-top: 10px;
+    margin-bottom: 30px;
     @include clearfix;
   }
 
@@ -95,10 +97,6 @@ footer {
     right: 17px;
     left: 0;
     margin-left: 20px;
-  }
-
-  .content-wrapper {
-    margin-top: 10px;
   }
 
   li {
