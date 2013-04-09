@@ -15,7 +15,7 @@
   </div>
   <div class="row">
     <div class="twelve columns">
-      <%= form_for @schedule_tailor_request, html: { class: 'outlined' } do |f| %>
+      <%= form_for @schedule_tailor_request, url: '/tailor-requests', html: { class: 'outlined' } do |f| %>
         <%= render 'shared/form_errors', resource: @schedule_tailor_request %>
         <%= f.label :name %>
         <%= f.text_field :name %>

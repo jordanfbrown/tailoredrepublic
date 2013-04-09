@@ -14,7 +14,7 @@
   </div>
   <div class="row">
     <div class="twelve columns">
-      <%= form_for @tape_measure_request, html: { class: 'outlined' } do |f| %>
+      <%= form_for @tape_measure_request, url: '/tape-measure-requests', html: { class: 'outlined' } do |f| %>
         <%= render 'shared/form_errors', resource: @tape_measure_request %>
         <%= render 'addresses/nested_form', parent_form: f, address_type: :shipping_address %>
         <%= f.label :email %>
