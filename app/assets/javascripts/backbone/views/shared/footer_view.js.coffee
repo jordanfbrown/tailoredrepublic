@@ -35,13 +35,13 @@ class TR.Views.Footer extends TR.Views.Base
   subscribeSuccess: =>
     mixpanel.track 'Subscribed to Newsletter'
     @confirmDialog = new TR.Views.DialogModal
-      text: 'A subscription request to become a Tailored Republic Affiliate has been sent to your email. Please check your email to confirm your subscription.',
+      text: 'A subscription request to become a Tailored Republic Insider has been sent to your email. Please check your email to confirm your subscription.',
       confirmText: 'Ok'
       confirmOnly: true
 
   subscribeFailure: =>
     @confirmDialog = new TR.Views.DialogModal
-      text: 'We\'re sorry, but there was a problem adding your email address to the TR Affiliate mailing list. Please try again, and if the problem persists, shoot us an email at help@tailoredrepublic.com.',
+      text: 'We\'re sorry, but there was a problem adding your email address to the Tailored Republic Insider mailing list. Please try again, and if the problem persists, shoot us an email at help@tailoredrepublic.com.',
       confirmText: 'Ok'
       confirmOnly: true
 
