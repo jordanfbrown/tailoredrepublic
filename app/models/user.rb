@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
   SIGN_UP_METHOD_ORDER = 'Order Page'
   SIGN_UP_METHOD_MEASUREMENTS = 'Measurements Page'
   SIGN_UP_METHOD_REGISTRATION = 'Registration Page'
+  SIGN_UP_METHOD_SCRIPT = 'Automatic Script'
 
   def self.find_by_referral_code(code)
     find(code.split('-')[1])

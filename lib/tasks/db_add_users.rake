@@ -8,7 +8,7 @@ namespace :db do
             name: values[4],
             email: values[5],
             password: values[5],
-            sign_up_method: User::SIGN_UP_METHOD_REGISTRATION
+            sign_up_method: User::SIGN_UP_METHOD_SCRIPT
           }
           shipping_address = {
             name: values[8],
