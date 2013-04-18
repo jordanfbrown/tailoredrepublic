@@ -94,6 +94,7 @@ TailoredRepublic::Application.routes.draw do
   match '/faq' => 'pages#faq'
   match '/lookbook' => 'pages#lookbook'
   match '/partners' => 'pages#partners'
+  match '/press' => 'pages#press'
   match '/privacy-policy' => 'pages#privacy_policy'
   match '/process' => 'pages#process'
   match '/team' => 'pages#team'
