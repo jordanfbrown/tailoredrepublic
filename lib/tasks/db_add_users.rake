@@ -29,7 +29,6 @@ namespace :db do
 
           if values[36]
             split_height = values[36].split("'").map { |v| v.gsub(/\"/, '').to_i }
-            puts values[36], split_height.inspect
             height = split_height[0] * 12 + split_height[1]
           else
             height = 72
