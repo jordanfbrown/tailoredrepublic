@@ -59,7 +59,7 @@ class TR.Views.Home extends TR.Views.Base
   cacheSelectors: ->
     @els =
       pageDown: $('.page-down')
-      shopNow: $('.shop-now')
+      shopNow: $('.shop-now-splash')
       constitution: $('#constitution')
       constitutionImage: $('#constitution img')
       constitutionParent: $('#constitution .four')
