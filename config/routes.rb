@@ -45,12 +45,6 @@ TailoredRepublic::Application.routes.draw do
       get 'thank_you', path: 'thank-you'
     end
   end
-  resources :schedule_tailor_requests, only: [:index, :update], path: '/admin/tailor-requests'
-  resources :schedule_tailor_requests, only: [:new, :create], path: '/tailor-requests' do
-    collection do
-      get 'thank_you', path: 'thank-you'
-    end
-  end
   resources :orders, only: [:admin_index, :show], path: '/admin/orders' do
     collection do
       get 'index', action: 'admin_index'
