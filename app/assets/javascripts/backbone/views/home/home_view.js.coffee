@@ -44,10 +44,6 @@ class TR.Views.Home extends TR.Views.Base
     e.preventDefault()
     TR.Events.trigger 'closeModal'
 
-    $home = $('#home');
-    homeHeight = $home.height()
-    marginBottom = parseFloat($home.css 'margin-bottom')
-
     href = href.substr 1, href.length
 
     if href == '#home'
@@ -63,6 +59,7 @@ class TR.Views.Home extends TR.Views.Base
   cacheSelectors: ->
     @els =
       pageDown: $('.page-down')
+      shopNow: $('.shop-now')
       constitution: $('#constitution')
       constitutionImage: $('#constitution img')
       constitutionParent: $('#constitution .four')
@@ -88,6 +85,24 @@ class TR.Views.Home extends TR.Views.Base
     @animatePageDown(shouldAnimate, pageDownOffset)
     @adjustProcess(backgroundHeight)
     @adjustConstitutionImage(windowWidth)
+    @adjustShopNow(windowWidth)
+
+  adjustShopNow: (windowWidth) ->
+    if windowWidth > 1600
+      factor = 3.5
+    else if 1200 < windowWidth <= 1600
+      factor = 3.75
+    else if 900 < windowWidth <= 1200
+      factor = 4
+    else if 720 < windowWidth <= 900
+      factor = 4.25
+    else if 400 < windowWidth <= 720
+      factor = 4.5
+    else
+      factor = 6
+
+    marginLeft = windowWidth / factor
+    @els.shopNow.css 'margin-left', marginLeft
 
   adjustProcess: (backgroundHeight) ->
     @els.process.css 'margin-top', backgroundHeight - @els.nav.height()
