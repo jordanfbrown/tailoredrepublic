@@ -13,7 +13,6 @@ class TR.Views.AddSuccessModal extends TR.Views.Modal
 
   initialize: ->
     super()
-    TR.Analytics.trackFacebookEvent '6011407244120'
     @getSuggestedProducts()
 
   getSuggestedProducts: ->

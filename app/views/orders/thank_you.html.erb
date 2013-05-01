@@ -1,5 +1,21 @@
 <% title_helper('Orders - Thank You') %>
 
+<% content_for :head do %>
+  <script type="text/javascript">
+    var fb_param = {};
+    fb_param.pixel_id = '6011484258720';
+    fb_param.value = '0.00';
+    (function(){
+      var fpw = document.createElement('script');
+      fpw.async = true;
+      fpw.src = '//connect.facebook.net/en_US/fp.js';
+      var ref = document.getElementsByTagName('script')[0];
+      ref.parentNode.insertBefore(fpw, ref);
+    })();
+  </script>
+  <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/offsite_event.php?id=6011484258720&amp;value=0" /></noscript>
+<% end %>
+
 <%= render 'shared/checkout_progress', current: :order_complete %>
 <div class="row content-wrapper thank-you-row">
   <h3>Thanks for your order, <%= @order.user.name %>!</h3>
@@ -26,6 +42,5 @@
     var lineItems = <%= @order.line_items_to_json_for_tracking %>;
     var billingAddress = <%= @order.billing_address_to_json_for_tracking %>
     TR.Analytics.trackTransaction(order, lineItems, billingAddress);
-    TR.Analytics.trackFacebookEvent('6011484258720');
   });
 </script>
