@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+</head>
+<body>
+<p>A review is pending approval.<br/></p>
+<p>Reviewer: <%= @review.user.name %> (<%= @review.user.email %>)</p>
+<p>Product: <%= @review.product.name %></p>
+<p>Rating: <%= @review.rating %></p>
+<p>Summary: <%= @review.summary %></p>
+<p><%= link_to 'Go to reviews admin page', 'https://www.tailoredrepublic.com/admin/reviews' %></p>
+</body>
+</html>
