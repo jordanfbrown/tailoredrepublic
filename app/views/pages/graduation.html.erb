@@ -11,9 +11,9 @@
         <div class="errors" style="display: none;">
           <p>Please enter a number in dollars greater than 0.</p>
         </div>
-        <%= form_tag subscribe_to_newsletter_path, class: 'graduation-form' do %>
-          <%= label_tag :card_amount, 'Enter gift card amount:' %>
-          <%= text_field_tag :card_amount, '$449' %>
+        <%= form_tag '#', class: 'graduation-form' do %>
+          <%= label_tag :card_amount, 'Choose a gift card amount:' %>
+          <%= select_tag :card_amount, options_for_select(@gift_cards.map { |gift_card| ["$#{gift_card.display_price}", gift_card.id] }) %>
           <%= submit_tag 'Add To Cart', class: 'button large full-width graduation-button' %>
         <% end %>
         <p>*Adding to cart will purchase you a gift card that will be mailed to within 4-5 days. A digital code will

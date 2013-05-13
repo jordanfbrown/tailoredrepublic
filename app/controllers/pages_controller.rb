@@ -5,6 +5,10 @@ class PagesController < ApplicationController
 
   def graduation
     @product = Product.where(category: :suit).first
+    @gift_cards = Product.order('price ASC').where(category: :gift_card)
+    #@gift_cards = gift_cards.map do |gift_card|
+    #  { id: gift_card.id, price: "$#{gift_card.display_price}" }
+    #end
   end
 
   def admin
