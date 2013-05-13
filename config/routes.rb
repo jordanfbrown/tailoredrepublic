@@ -86,6 +86,7 @@ TailoredRepublic::Application.routes.draw do
   match '/about' => 'pages#about'
   match '/admin' => 'pages#admin'
   match '/faq' => 'pages#faq'
+  match '/graduation' => 'pages#graduation'
   match '/lookbook' => 'pages#lookbook'
   match '/partners' => 'pages#partners'
   match '/press' => 'pages#press'

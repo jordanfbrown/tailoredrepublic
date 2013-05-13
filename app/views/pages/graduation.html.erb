@@ -1,0 +1,32 @@
+<% title_helper('Gift Cards') %>
+
+<div class="row content-wrapper">
+  <div class="twelve columns">
+    <div class="transparent-box row">
+      <div class="six columns">
+        <h2>Graduation Gift Card Package</h2>
+        <p>Do you have a special someone in your life about to graduate? With the big interview or the first day at a new
+          job approaching, nothing will instill the drive for success like looking and feeling great!</p>
+        <p>The gift card that you purchase can be used by your graduate to buy anything on our site.</p>
+        <div class="errors" style="display: none;">
+          <p>Please enter a number in dollars greater than 0.</p>
+        </div>
+        <%= form_tag subscribe_to_newsletter_path, class: 'graduation-form' do %>
+          <%= label_tag :card_amount, 'Enter gift card amount:' %>
+          <%= text_field_tag :card_amount, '$449' %>
+          <%= submit_tag 'Add To Cart', class: 'button large full-width graduation-button' %>
+        <% end %>
+        <p>*Adding to cart will purchase you a gift card that will be mailed to within 4-5 days. A digital code will
+          also be sent to you immediately.</p>
+        <h4><%= link_to 'View our customer testimonials!', testimonials_path %></h4>
+      </div>
+      <div class="six columns products-wrapper">
+        <%= render 'products/product', product: @product %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  new TR.Views.Graduation();
+</script>
