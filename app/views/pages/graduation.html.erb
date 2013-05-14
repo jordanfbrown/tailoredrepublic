@@ -20,13 +20,23 @@
     </div>
     <div class="six columns products-wrapper">
       <div class="product-wrapper columns" data-id="<%= @product.id %>">
-        <%= link_to(image_tag(@product.default_photo.photo.url(:medium)), @product) if @product.default_photo %>
+        <% if @clickable %>
+          <%= link_to(image_tag(@product.default_photo.photo.url(:medium)), @product) if @product.default_photo %>
+        <% else %>
+          <%= image_tag(@product.default_photo.photo.url(:medium)) if @product.default_photo %>
+        <% end %>
         <div class="product-info-wrapper">
           <div class="product-info">
             <div class="product-name">
-              <%= link_to @product do %>
-                <%= @product.name %> <span class="divider">//</span> <span class="dollar line-through">$</span><span class="line-through">459</span> <span class="dollar new-price">$</span><span class="new-price">349</span>
-              <% end %>
+              <% if @clickable %>
+                <%= link_to @product do %>
+                  <%= @product.name %> <span class="divider">//</span> <span class="dollar line-through">$</span><span class="line-through">459</span> <span class="dollar new-price">$</span><span class="new-price">349</span>
+                <% end %>
+              <% else %>
+                <div>
+                  <%= @product.name %> <span class="divider">//</span> <span class="dollar line-through">$</span><span class="line-through">459</span> <span class="dollar new-price">$</span><span class="new-price">349</span>
+                </div>
+            <% end %>
             </div>
           </div>
         </div>

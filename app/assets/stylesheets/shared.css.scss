@@ -188,8 +188,9 @@ input[type=submit], input[type=button] {
   }
 
   .product-name {
-    a {
+    a, div {
       color: #fff;
+      font-size: 22px;
     }
 
     background-color: #000;
