@@ -1,29 +1,41 @@
-<% title_helper('Gift Cards') %>
+<% title_helper('Graduation Gift Card Package') %>
 
 <div class="row content-wrapper">
-  <div class="twelve columns">
-    <div class="transparent-box row">
-      <div class="six columns">
-        <h2>Graduation Gift Card Package</h2>
-        <p>Do you have a special someone in your life about to graduate? With the big interview or the first day at a new
-          job approaching, nothing will instill the drive for success like looking and feeling great!</p>
-        <p>The gift card that you purchase can be used by your graduate to buy anything on our site.</p>
-        <div class="errors" style="display: none;">
-          <p>Please enter a number in dollars greater than 0.</p>
-        </div>
-        <%= form_tag '#', class: 'graduation-form' do %>
-          <%= label_tag :card_amount, 'Choose a gift card amount:' %>
-          <%= select_tag :card_amount, options_for_select(@gift_cards.map { |gift_card| ["$#{gift_card.display_price}", gift_card.id] }) %>
-          <%= submit_tag 'Add To Cart', class: 'button large full-width graduation-button' %>
-        <% end %>
-        <p>*Adding to cart will purchase you a gift card that will be mailed to within 4-5 days. A digital code will
-          also be sent to you immediately.</p>
-        <h4><%= link_to 'View our customer testimonials!', testimonials_path %></h4>
+  <h2>Graduation Gift Card Package</h2>
+  <div class="outlined row">
+    <div class="six columns">
+      <p>Do you have a special someone in your life about to graduate? With the big interview or the first day at a new
+        job approaching, nothing will instill the drive for success like looking and feeling great!</p>
+      <p>The gift card that you purchase can be used by your graduate to buy anything on our site.</p>
+      <div class="errors" style="display: none;">
+        <p>Please enter a number in dollars greater than 0.</p>
       </div>
-      <div class="six columns products-wrapper">
-        <%= render 'products/product', product: @product %>
+      <%= form_tag '#', class: 'graduation-form' do %>
+        <%= label_tag :card_amount, 'Choose a gift card amount:' %>
+        <%= select_tag :card_amount, options_for_select(@gift_cards.map { |gift_card| ["$#{gift_card.display_price}", gift_card.id] }, @selected_gift_card) %>
+        <%= submit_tag 'Add To Cart', class: 'button large full-width graduation-button' %>
+      <% end %>
+      <p>*Adding to cart will purchase you a gift card that will be mailed  within 4-5 days. A digital code will
+        also be sent to you immediately.</p>
+    </div>
+    <div class="six columns products-wrapper">
+      <div class="product-wrapper columns" data-id="<%= @product.id %>">
+        <%= link_to(image_tag(@product.default_photo.photo.url(:medium)), @product) if @product.default_photo %>
+        <div class="product-info-wrapper">
+          <div class="product-info">
+            <div class="product-name">
+              <%= link_to @product do %>
+                <%= @product.name %> <span class="divider">//</span> <span class="dollar line-through">$</span><span class="line-through">459</span> <span class="dollar new-price">$</span><span class="new-price">349</span>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
+  <h3>Customer Testimonials</h3>
+  <div class="outlined clearfix margin-bottom">
+    <%= render 'testimonials/testimonials', testimonials: @testimonials, should_paginate: false %>
   </div>
 </div>
 

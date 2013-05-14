@@ -2,26 +2,7 @@
   <div class="twelve columns">
     <h2>Customer Testimonials</h2>
   </div>
-  <div class="testimonials-row">
-    <% @testimonials.even_groups_of(3).each do |group| %>
-      <div class="four columns">
-        <% group.each do |testimonial| %>
-          <% if testimonial.photo.file? %>
-            <div class="testimonial">
-              <%= image_tag testimonial.photo.url(:medium) %>
-              <p>
-                <%= testimonial.caption %><br/>
-                <%= link_to "@#{testimonial.social_handle}", testimonial.social_url if testimonial.has_social? %>
-              </p>
-          <% end %>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-  <div class="twelve columns">
-    <%= will_paginate @testimonials %>
-  </div>
+  <%= render 'testimonials/testimonials', testimonials: @testimonials, should_paginate: true %>
 </div>
 
 <script>

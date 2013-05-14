@@ -4,11 +4,11 @@ class PagesController < ApplicationController
   end
 
   def graduation
-    @product = Product.where(category: :suit).first
+    @product = Product.where(category: :suit).order('price ASC').first
     @gift_cards = Product.order('price ASC').where(category: :gift_card)
-    #@gift_cards = gift_cards.map do |gift_card|
-    #  { id: gift_card.id, price: "$#{gift_card.display_price}" }
-    #end
+    @selected_gift_card = @gift_cards.find { |g| g.price == 349 }.id
+    puts @selected_gift_card
+    @testimonials = Testimonial.paginate(page: params[:page] ||= 1, per_page: 15)
   end
 
   def admin

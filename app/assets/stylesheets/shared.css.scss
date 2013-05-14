@@ -311,6 +311,10 @@ a.next, a.accept {
   margin-bottom: 20px;
 }
 
+.clearfix {
+  @include clearfix;
+}
+
 .progress-bar {
   padding: 10px 0;
   @include clearfix;
@@ -399,4 +403,8 @@ textarea {
   @include clearfix;
   padding-bottom: 10px;
   border-bottom: 1px dashed #aaa;
+}
+
+.line-through {
+  text-decoration: line-through;
 }
