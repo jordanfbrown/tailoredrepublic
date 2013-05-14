@@ -1,5 +1,5 @@
 class TR.Views.Graduation extends TR.Views.GiftCard
-  el: '.graduation'
+  el: '.pages'
 
   events:
     'submit .graduation-form': 'submitForm'
