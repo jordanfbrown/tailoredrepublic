@@ -70,7 +70,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def set_cart
-    if user_signed_in && current_user.cart.nil?
+    if user_signed_in? && current_user.cart.nil?
       @cart.user = current_user
       @cart.save
     end
