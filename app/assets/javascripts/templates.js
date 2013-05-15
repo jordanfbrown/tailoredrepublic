@@ -572,6 +572,11 @@ function program3(depth0,data) {
   buffer += escapeExpression(stack1) + "</a>\n  </div>\n";
   return buffer;}
 
+function program5(depth0,data) {
+  
+  
+  return "\n  <div class=\"facebook-pixel-add-to-cart\"></div>\n";}
+
   buffer += "<div class=\"twelve columns\">\n  <p>";
   foundHelper = helpers.text;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
@@ -579,6 +584,10 @@ function program3(depth0,data) {
   buffer += escapeExpression(stack1) + "</p>\n</div>\n\n";
   stack1 = depth0.confirmOnly;
   stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data)});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n\n";
+  stack1 = depth0.facebookPixel;
+  stack1 = helpers['if'].call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(5, program5, data)});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n";
   return buffer;});

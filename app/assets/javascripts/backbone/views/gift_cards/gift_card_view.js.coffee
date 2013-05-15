@@ -19,6 +19,7 @@ class TR.Views.GiftCard extends TR.Views.Base
       text: "The $#{@price} gift card has been added to your cart!"
       confirmText: 'Checkout'
       cancelText: 'Close'
+      facebookPixel: true
       action: ->
         window.location.href = '/cart'
 

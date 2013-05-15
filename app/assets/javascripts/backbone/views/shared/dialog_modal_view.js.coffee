@@ -15,11 +15,12 @@ class TR.Views.DialogModal extends TR.Views.Modal
     @confirmText = options.confirmText || 'Ok'
     @cancelText = options.cancelText || 'Cancel'
     @confirmOnly = options.confirmOnly || false
+    @facebookPixel = options.facebookPixel || false
     @template = @getTemplate 'dialog_modal'
     @render()
 
   render: ->
-    @$el.html @template text: @text, confirmText: @confirmText, cancelText: @cancelText, confirmOnly: @confirmOnly
+    @$el.html @template text: @text, confirmText: @confirmText, cancelText: @cancelText, confirmOnly: @confirmOnly, facebookPixel: @facebookPixel
     super()
     @centerVertically()
 
